@@ -1,0 +1,3045 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png" type="image/png">
+<title>链接归档 · 阅读版（行距 1.9 · 每行 38 字）</title>
+<style>
+:root{
+  /* 每行最大字数：中文约 38 字。字号变了字数不变，因为行宽用的是 em */
+  --measure: 38em;
+  --lh: 1.9;                       /* 固定行距 */
+  /* 字号随窗口宽度平滑变化：窄窗减小、宽窗略增，两端封顶 */
+  --fs: clamp(15.5px, 0.3vw + 12.6px, 19px);
+  --gap: clamp(16px, 4vw, 56px);      /* 左右留白随窗口自适应 */
+  --colgap: clamp(24px, 3vw, 56px);   /* 两栏间距 */
+  --nav: 19em;                        /* 宽屏左侧目录栏宽 */
+  --ink:#1f2328; --ink-2:#57606a; --line:#d8dee4; --bg:#f6f4ef; --card:#fffdf8; --accent:#8a5a2b;
+}
+*{box-sizing:border-box}
+html{background:var(--bg);scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:"Noto Serif SC","Source Han Serif SC","Songti SC",-apple-system,"Segoe UI","Microsoft YaHei",serif;
+  font-size:var(--fs);
+  line-height:var(--lh);
+  color:var(--ink);
+  overflow-wrap:break-word;
+  word-break:break-word;
+}
+
+/* 页头 */
+.masthead{
+  max-width:calc(var(--measure) + var(--nav) + var(--colgap) + 2*var(--gap));
+  margin:0 auto;padding:clamp(28px,4vw,64px) var(--gap) 0
+}
+.masthead h1{margin:0 0 .5em;font-size:1.7em;line-height:1.4;border-bottom:3px solid var(--accent);padding-bottom:.35em}
+.masthead p{margin:.4em 0;color:var(--ink-2);font-size:.94em}
+
+/* 主体：宽屏两栏（目录+正文），窄屏单栏 */
+.layout{
+  max-width:calc(var(--measure) + var(--nav) + var(--colgap) + 2*var(--gap));
+  margin:0 auto;padding:0 var(--gap) 4em;
+}
+main{min-width:0}
+
+.toc{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:1em 1.2em}
+.toc h2{border:0;font-size:1.02em;margin:0 0 .6em;padding:0;color:var(--ink-2)}
+.toc ol{margin:0;padding-left:1.3em}
+.toc li{margin:.16em 0;font-size:.85em;line-height:1.5}
+.toc a{color:#0b5cad}
+
+@media (min-width:1180px){
+  .layout{
+    display:grid;
+    grid-template-columns:var(--nav) minmax(0,var(--measure));
+    gap:var(--colgap);
+    align-items:start;
+  }
+  /* 页头右移到正文列，与正文左边界对齐 */
+  .masthead{padding-left:calc(var(--gap) + var(--nav) + var(--colgap))}
+  footer{padding-left:calc(var(--gap) + var(--nav) + var(--colgap))}
+  .toc{
+    position:sticky;top:clamp(12px,2vh,28px);
+    margin:0;max-height:calc(100vh - 3em);overflow:auto;
+    max-height:calc(100dvh - 3em);
+  }
+}
+@media (max-width:1179px){
+  .layout{max-width:calc(var(--measure) + 2*var(--gap))}
+  .toc{margin:1.2em 0 2.6em}
+}
+
+/* 正文元素 */
+p{margin:0 0 1em}
+h1,h2,h3,h4{line-height:1.45;margin:1.9em 0 .7em;font-weight:700}
+.doc h1{font-size:1.62em;border-bottom:2px solid var(--accent);padding-bottom:.3em;margin-top:.2em}
+h2{font-size:1.3em;color:#0d1117;border-left:5px solid var(--accent);padding-left:.55em}
+h3{font-size:1.1em;color:#243b53}
+h4{font-size:1em;color:#243b53}
+a{color:#0b5cad;text-decoration:none;border-bottom:1px solid rgba(11,92,173,.3)}
+a:hover{border-bottom-color:#0b5cad}
+strong,b{color:#111}
+span[style*="color"]{font-weight:600}
+ul,ol{margin:0 0 1em;padding-left:1.6em}
+li{margin:.25em 0}
+blockquote{margin:1.2em 0;padding:.7em 1em;background:#fbf7ee;border-left:4px solid #d8b98a;color:#4a3b28}
+blockquote p:last-child{margin-bottom:0}
+hr{border:0;border-top:1px dashed var(--line);margin:2.2em 0}
+code{font-family:"JetBrains Mono",Consolas,Menlo,monospace;font-size:.88em;background:#f1efea;padding:.1em .35em;border-radius:3px}
+pre{background:#f1efea;padding:1em;border-radius:4px;white-space:pre-wrap;overflow-wrap:anywhere;font-size:.9em;line-height:1.7}
+table{display:block;max-width:100%;overflow-x:auto;border-collapse:collapse;font-size:.9em;line-height:1.6;margin:1.2em 0}
+th,td{border:1px solid var(--line);padding:.45em .6em;vertical-align:top;white-space:nowrap}
+td:nth-child(2),th:nth-child(2){white-space:normal;min-width:11em}
+thead th{background:#efe9dd}
+img{max-width:100%;height:auto}
+mark{background:#fff3a8;padding:0 .15em}
+
+.doc{padding-top:2.4em}
+.doc+.doc{border-top:1px solid var(--line)}
+.doc-meta{color:var(--ink-2);font-size:.85em;margin:-.4em 0 1em}
+.top{display:inline-block;font-size:.8em;color:var(--ink-2)}
+footer{
+  max-width:calc(var(--measure) + var(--nav) + var(--colgap) + 2*var(--gap));
+  margin:3em auto 0;padding:0 var(--gap) 3em;color:var(--ink-2);font-size:.85em
+}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---------- 手机 / 触屏 ---------- */
+.to-top{
+  position:fixed;z-index:30;display:none;
+  right:calc(env(safe-area-inset-right,0px) + 14px);
+  bottom:calc(env(safe-area-inset-bottom,0px) + 14px);
+  width:46px;height:46px;border-radius:50%;
+  align-items:center;justify-content:center;
+  background:var(--accent);color:#fff;font-size:19px;line-height:1;
+  box-shadow:0 3px 10px rgba(0,0,0,.22);border:0;text-decoration:none;
+  -webkit-tap-highlight-color:transparent;
+}
+@media (max-width:900px){.to-top{display:flex}}
+
+/* 平板/触屏窄屏：目录限高可滚；桌面小窗口仍给完整目录 */
+@media (max-width:1179px) and (pointer:coarse){
+  .toc{max-height:46vh;overflow:auto;-webkit-overflow-scrolling:touch}
+}
+
+/* 手机 */
+@media (max-width:760px){
+  :root{--fs:16px;--lh:1.85;--gap:15px}
+  .masthead{padding:calc(env(safe-area-inset-top,0px) + 18px) var(--gap) 0}
+  .masthead h1{font-size:1.4em}
+  .masthead p{font-size:.9em}
+  .layout{padding:0 var(--gap) 3.2em}
+  .toc{max-height:46vh;overflow:auto;-webkit-overflow-scrolling:touch;padding:.75em .9em;
+       margin:.9em 0 1.8em;scrollbar-width:thin}
+  .toc h2{margin-bottom:.45em}
+  .toc h2::after{content:"（可上下滑动）";font-size:.7em;font-weight:400;color:#8a8f98;margin-left:.4em}
+  .toc li{margin:0;font-size:.95em;line-height:1.45}
+  .toc a{display:block;padding:.62em 0;border-bottom:1px solid rgba(0,0,0,.06)}
+  .toc li:last-child a{border-bottom:0}
+  .doc h1{font-size:1.32em}
+  h2{font-size:1.16em;padding-left:.45em}
+  h3{font-size:1.04em}
+  p{margin:0 0 1.05em}
+  blockquote{padding:.6em .8em;margin:1em 0}
+  pre{font-size:.78em;padding:.8em}
+  table{font-size:.8em}
+  th,td{padding:.38em .45em}
+  td:nth-child(2),th:nth-child(2){min-width:8em}
+  code{font-size:.85em}
+  .top{font-size:.78em}
+  footer{padding-bottom:calc(env(safe-area-inset-bottom,0px) + 3em)}
+}
+
+/* 触屏设备：去掉 hover 视觉、加大可点区域 */
+@media (hover:none){
+  a:hover{border-bottom-color:rgba(11,92,173,.3)}
+  a{-webkit-tap-highlight-color:rgba(11,92,173,.12)}
+}
+
+@media print{
+  html{background:#fff}
+  body{font-size:11.5pt;line-height:1.8}
+  .layout{display:block;max-width:none;padding:0;margin:0}
+  .masthead{max-width:none;padding:0}
+  .top{display:none}
+  /* 纸质版保留目录，便于翻查；目录不跨页断开 */
+  .toc{display:block;position:static;max-height:none;overflow:visible;
+       break-inside:avoid;font-size:.92em;margin:0 0 1.6em}
+  .toc h2{font-size:1em}
+  .toc ol{padding-left:1.2em}
+  .doc+.doc{page-break-before:always;border-top:0}
+  table{overflow:visible}
+}
+</style>
+</head>
+<body id="top">
+<div class="masthead">
+<h1>链接归档 · 阅读版</h1>
+<p>15 条链接的原文、归纳、可信度核验与外文译文。共 22 篇。<br>
+排版约定：<b>固定行距 1.9</b>、<b>正文每行最多 38 个汉字</b>；<b>字号与留白随窗口自适应</b>，宽屏时目录固定左侧、窄屏回到顶部；
+表格可横向滚动；文末附打印样式。</p>
+</div>
+<div class="layout">
+<nav class="toc"><h2>目录</h2><ol><li><a href="#sec-01-总说明">总说明</a></li>
+<li><a href="#sec-02-00-总览与横向归纳">00 总览与横向归纳</a></li>
+<li><a href="#sec-03-A-多模态情感识别与推理">A 多模态情感识别与推理</a></li>
+<li><a href="#sec-04-B-心理健康检测与咨询对话">B 心理健康检测与咨询对话</a></li>
+<li><a href="#sec-05-C-情感陪伴产品与行业乱象">C 情感陪伴产品与行业乱象</a></li>
+<li><a href="#sec-06-D-课程与论文精读">D 课程与论文精读</a></li>
+<li><a href="#sec-07-译文-外文五篇">译文 外文五篇</a></li>
+<li><a href="#sec-08-原文-A-AAAI26-ESCA-情感支持对话">原文 · A · AAAI26-ESCA-情感支持对话</a></li>
+<li><a href="#sec-09-原文-A-ICLR26-HitEmotion与TMPO-心智理论情感推理">原文 · A · ICLR26-HitEmotion与TMPO-心智理论情感推理</a></li>
+<li><a href="#sec-10-原文-A-arXiv-Emotion-LLaMA-多模态情感识别与推理">原文 · A · arXiv-Emotion-LLaMA-多模态情感识别与推理</a></li>
+<li><a href="#sec-11-原文-A-PMLR-AffectGPT-情感理解数据集与基准">原文 · A · PMLR-AffectGPT-情感理解数据集与基准</a></li>
+<li><a href="#sec-12-原文-A-ICLR26-HitEmotion深度拆解-学术牛马小王">原文 · A · ICLR26-HitEmotion深度拆解-学术牛马小王</a></li>
+<li><a href="#sec-13-原文-B-EMNLP26-AuroraCounsel-多智能体心理咨询">原文 · B · EMNLP26-AuroraCounsel-多智能体心理咨询</a></li>
+<li><a href="#sec-14-原文-B-arXiv-MLlm-DR-可解释抑郁识别">原文 · B · arXiv-MLlm-DR-可解释抑郁识别</a></li>
+<li><a href="#sec-15-原文-B-Displays-DepressionLLM-情感与因果抑郁检测">原文 · B · Displays-DepressionLLM-情感与因果抑郁检测</a></li>
+<li><a href="#sec-16-原文-B-arXiv-ItHearsItSeesToo-视听融合抑郁检测">原文 · B · arXiv-ItHearsItSeesToo-视听融合抑郁检测</a></li>
+<li><a href="#sec-17-原文-B-IEEE-TAC-心理健康情感语言处理综述">原文 · B · IEEE-TAC-心理健康情感语言处理综述</a></li>
+<li><a href="#sec-18-原文-C-心域智护XinyuCare-项目推广文">原文 · C · 心域智护XinyuCare-项目推广文</a></li>
+<li><a href="#sec-19-原文-C-南方都市报-情感陪伴平台乱象调查">原文 · C · 南方都市报-情感陪伴平台乱象调查</a></li>
+<li><a href="#sec-20-原文-D-B站-吴恩达机器学习课程合集">原文 · D · B站-吴恩达机器学习课程合集</a></li>
+<li><a href="#sec-21-原文-D-B站-李沐GNN论文精读">原文 · D · B站-李沐GNN论文精读</a></li>
+<li><a href="#sec-22-原文-E-work-buddy-视频号">原文 · E · work-buddy-视频号</a></li></ol></nav>
+<main>
+<section class="doc" id="sec-01-总说明">
+<h1>链接归档说明（2026-11-13）</h1>
+<p>本文件夹是 <code>..\链接.txt</code> 里 15 条链接的抓取归档：<strong>原文照抄 + 中文归纳 + 可信度核验 + 外文翻译 + 分类</strong>。</p>
+<p>抓取与整理时间：2026-11-13 20:06–20:16（北京时间）｜ 抓取环境：本机 curl（无登录态）+ DSH web 抓取工具</p>
+<hr />
+<h2>📁 一、文件夹里有什么</h2>
+<pre><code>链接归档_20261113\
+├─ README.md                ← 本文件：分类方法、索引、结论、局限
+├─ 阅读版_全归档.html        ← 【推荐】22 篇合成一页，固定行距 1.9、每行 ≤38 字，双击用浏览器看
+├─ index.html                ← 网页端入口（访问 `/` 时自动跳到阅读版）
+├─ 阅读版_全归档.pdf         ← 同一份内容的 A4 PDF，发微信/打印/存档用
+├─ 上传包_网页托管.zip       ← 拖到 Netlify Drop（免注册）就能得到一个公网 https 链接，里面文件全用英文名
+├─ GitHub部署\               ← 已 init + 提交好的 git 仓库（10 个文件、1.7 MB），推上去开 Pages 就有永久网址，见其中 `推送说明.md`
+├─ 手机扫码.png              ← 【已停用】那个二维码指向局域网地址，本轮改成不走局域网，只在允许局域网时才用
+├─ 阅读版预览.png            ← 阅读版首页截图（不用打开文件也能看排版）
+├─ 排版样式.css              ← 把同一套行距/行宽套到 md 预览器上（Typora / Obsidian / VS Code）
+├─ 原文合集_15篇.md          ← 【一个文件】15 条链接的原文汇总（按 链接.txt 顺序）
+├─ 原文\                    ← 同一批原文的分篇文件，按分类放 5 个子目录
+│   ├─ A-多模态情感识别与推理\   （04、05、09、11、14）
+│   ├─ B-心理健康检测与咨询对话\ （06、07、08、10、15）
+│   ├─ C-情感陪伴产品与行业乱象\ （02、03）
+│   ├─ D-课程与论文精读\         （12、13）
+│   └─ E-未获取\                 （01）
+├─ 译文\外文五篇译文.md      ← 【一个文件】5 篇英文文献的标题＋摘要中文翻译
+├─ 分析\                    ← 归纳、总结、可信度核验
+│   ├─ 00-总览与横向归纳.md      （先读这个）
+│   ├─ A-…／B-…／C-…／D-…        （分篇细读，含每篇双项评分）
+└─ _raw\                    ← 过程文件：原始 HTML、抽取的纯文本、抓取脚本（可删）
+</code></pre>
+<h3>行距与每行字数怎么固定的</h3>
+<p>Markdown 本身没有行距、行宽的概念，所以这件事做在两处：</p>
+<table>
+<thead>
+<tr>
+<th>用哪种方式看</th>
+<th>行距</th>
+<th>每行最长</th>
+<th>怎么改</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>阅读版 HTML</strong>（推荐）</td>
+<td>固定 <strong>1.9</strong></td>
+<td><strong>38 个汉字</strong>（<code>--measure: 38em</code>）</td>
+<td>用记事本改文件开头 <code>:root{--measure:38em;--lh:1.9}</code>，两个数任改其一</td>
+</tr>
+<tr>
+<td>任意 md 预览器 + <code>排版样式.css</code></td>
+<td>同上</td>
+<td>同上</td>
+<td>在 Typora（主题→打开主题文件夹）、Obsidian（CSS snippets）、VS Code（<code>markdown.styles</code>）里载入该 css</td>
+</tr>
+<tr>
+<td>直接看 <code>.md</code> 源码</td>
+<td>无</td>
+<td>无</td>
+<td>无解法——纯文本没有排版</td>
+</tr>
+</tbody>
+</table>
+<p>约定值：字号随窗口 <strong>15.5 → 19px 自适应</strong>、行距 1.9（段间再留 1em）、正文栏宽固定 <strong>38em</strong>（中文一行 34–38 字）、表格横向滚动、打印时去掉栏宽限制。</p>
+<h3>窗口拉伸时怎么变（自适应规则）</h3>
+<table>
+<thead>
+<tr>
+<th>窗口宽度</th>
+<th>布局</th>
+<th>字号</th>
+<th>正文栏宽</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥ 1180px</td>
+<td><strong>两栏</strong>：目录固定左侧（sticky，随滚动跟随），正文在右</td>
+<td>clamp 自适应，封顶 19px</td>
+<td>恒定 38em（约 660–722px）</td>
+</tr>
+<tr>
+<td>640–1179px</td>
+<td>单栏：目录回到正文上方，整块居中</td>
+<td>自适应</td>
+<td>恒定 38em；窗口更窄时按窗口收缩</td>
+</tr>
+<tr>
+<td>&lt; 640px</td>
+<td>单栏紧凑，左右留白收到 16px</td>
+<td>15.5px 起</td>
+<td>撑满可用宽度</td>
+</tr>
+</tbody>
+</table>
+<p>变化的是<strong>字号与留白</strong>，不变的是<strong>每行字数</strong>——因为栏宽用 <code>em</code>，字号变则物理宽度同比变，一行字数恒定。目录在宽屏自动变左栏并吸顶，滚动正文时目录常驻；窗口缩到 1180px 以下自动回到顶部，不遮挡内容。</p>
+<h3>网页端怎么访问（<strong>不走局域网</strong>）</h3>
+<p>已按你的要求改成<strong>只在本机开</strong>：服务只绑 <code>127.0.0.1</code>，同一 Wi-Fi 下的手机、别的电脑都连不上；原来绑 <code>0.0.0.0</code> 的那个服务已经停掉。</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本机浏览器（推荐，零服务）</td>
+<td>直接双击 <code>阅读版_全归档.html</code>；或双击 <code>index.html</code>（自动跳转过去）</td>
+</tr>
+<tr>
+<td>本机想要一个地址栏 URL</td>
+<td><a href="http://127.0.0.1:8765/">http://127.0.0.1:8765/</a>（需先启动服务，命令在下面；只有本机能连）</td>
+</tr>
+<tr>
+<td>手机 / 平板</td>
+<td><strong>不走网络，传文件</strong>：把 <code>阅读版_全归档.pdf</code>（或那个 <code>.html</code>）用微信文件传输助手 / USB 发到手机，用手机浏览器或 PDF 阅读器打开，手机版布局照样生效</td>
+</tr>
+<tr>
+<td>手机要一个真网址</td>
+<td>只剩第 7 项<strong>公网托管</strong>（要你的账号）；局域网这条路本轮已排除</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>127.0.0.1</code> 是回环地址，<strong>物理上不经过网卡</strong>，同一网段既扫不到也连不上，没有"内容暴露给同网段"的风险。</li>
+<li>访问 <code>/</code> 会自动跳到阅读版（<code>index.html</code> 里做了一次跳转，避免中文文件名在手机上打错）。</li>
+<li>停止：关掉那个窗口 / <code>Ctrl+C</code>，或在任务管理器结束对应进程；端口 8765 被占用时换一个端口重起。</li>
+<li>启动命令（Python，<strong>只绑本机</strong>）：</li>
+</ul>
+<pre><code>&lt;DSH 运行时&gt;\python\python.exe -m http.server 8765 --bind 127.0.0.1 --directory &quot;C:\Users\Administrator\Desktop\项目群的某些链接\链接归档_20261113&quot;
+</code></pre>
+<p>手机端适配（<code>&lt; 760px</code> 生效）：<code>viewport-fit=cover</code> + 安全区 <code>env(safe-area-inset-*)</code>；字号固定 16px、行距 1.85；目录限高 46vh 可上下滑动（带"可上下滑动"提示）；目录项改为整行可点（热区 ≥ 44px）；右下角出现"↑"回到顶部按钮；表格字号 0.8em 并横向滚动；<code>theme-color</code> 与 apple 相关 meta 让"添加到主屏幕"后接近原生外观。这些是纯 CSS 媒体查询，<strong>跟开不开服务无关</strong>——把 HTML 文件传到手机里打开，手机版布局照样生效，只是"添加到主屏幕"在 <code>file://</code> 下不生效。</p>
+<h3>还有哪些实现方式（都已放在目录里或写明做法）</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>方式</th>
+<th>现状</th>
+<th>适合</th>
+<th>限制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Python 静态服务</strong>（已改成只绑本机）</td>
+<td>✅ 命令已改成 <code>--bind 127.0.0.1</code>，只本机可连</td>
+<td>本机想要地址栏 URL</td>
+<td>要走网络；<strong>不再对局域网开放</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>Node 零依赖服务</strong> <code>静态服务器.js</code></td>
+<td>✅ 已改绑 <code>127.0.0.1</code>（原 0.0.0.0 版本已备份）</td>
+<td>不想依赖 Python、想要固定入口</td>
+<td>同上；需 Node</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>直接双击 HTML</strong>（file://）</td>
+<td>✅ 一直可用，<strong>本轮首选</strong></td>
+<td>单机离线阅读、零服务零端口</td>
+<td>手机上要先传文件过去；manifest/SW 不生效</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>PDF</strong> <code>阅读版_全归档.pdf</code></td>
+<td>✅ 已生成（A4，约 57 页，含目录）</td>
+<td>微信发手机、打印、长期存档、排版永不跑版</td>
+<td>目录是文字不是阅读器书签（Ctrl+F 能搜）</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>PWA 添加到主屏幕</strong>（manifest + 图标已配）</td>
+<td>⚠️ 资产齐了但<strong>本方案下用不上</strong></td>
+<td>若走公网 https 才有意义</td>
+<td>安装要求 https 或 localhost；传文件到手机是 file://，装不了</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>DSH 插件路由</strong>（把归档挂到 GUI 的 <code>/archive</code>）</td>
+<td>⛔ 未做</td>
+<td>开机即有、复用 127.0.0.1:53323、<strong>同样不走局域网</strong></td>
+<td>要写插件并装进 desktop profile，改 <code>%USERPROFILE%\.dsh\*</code>，需你先同意</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>公网静态托管</strong>（GitHub Pages / Gitee Pages / Cloudflare Pages）</td>
+<td>⛔ 未做</td>
+<td><strong>不走局域网又想在手机上用真网址，只有这条</strong></td>
+<td>需要账号；内容公开可被搜到</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>epub 电子书</strong></td>
+<td>⛔ 未做</td>
+<td>手机阅读器、可调字号</td>
+<td>本机没有 pandoc/calibre，需先装工具</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>局域网共享文件夹（SMB）</strong></td>
+<td>❌ 已排除</td>
+<td>——</td>
+<td>本身就走局域网，与本轮要求冲突</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>Netlify Drop 拖拽托管</strong>（免注册）</td>
+<td>✅ <strong>上传包已备好</strong> <code>上传包_网页托管.zip</code>（1.7 MB，6 个文件）</td>
+<td>手机/别人要一个<strong>公网 https 链接</strong>，你不注册任何账号</td>
+<td>内容会公开在 <code>xxx.netlify.app</code>；免费站 30 天后需"claim"才保留；单文件 &gt;10 MB 易卡（本包最大 2.4 MB，安全）</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>Cloudflare Quick Tunnel</strong>（免注册、临时）</td>
+<td>⛔ 未装成：官方文档确认免账号可用，但 cloudflared 二进制 55 MB，本机从 GitHub 只有约 60 KB/s，180 秒仅下完 11 MB</td>
+<td>本机继续当服务器、外面发一个 <code>trycloudflare.com</code> 临时 https；还能用 <code>--allowed-mail</code> 只放行某个邮箱</td>
+<td>电脑必须开着；进程一停链接就失效；域名每次变</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>GitHub Pages</strong></td>
+<td>✅ <strong>本地全备好</strong>：<code>GitHub部署\</code> 已 init + 提交（10 个文件、1.7 MB、含 <code>.nojekyll</code>），附一键推送脚本</td>
+<td>要<strong>永久、可分享、可长期更新</strong>的网址</td>
+<td>仓库须 public；首次要你建仓库 + 生成令牌；<code>*.github.io</code> 在国内不保证稳定</td>
+</tr>
+</tbody>
+</table>
+<h3>不走局域网时的其他办法（2026-11-13 补查）</h3>
+<p>先说结论：<strong>不碰局域网也想让别人或手机看到，只有两条路</strong>——把文件传过去，或把内容放到公网上。本机外网实测都能出去：<code>github.com</code> 144ms、<code>app.netlify.com</code> 58ms、<code>trycloudflare.com</code> 641ms、<code>bore.pub:7835</code> 346ms；真正的瓶颈是<strong>下载速度</strong>：GitHub releases 拉 55 MB 只有约 60 KB/s，180 秒只完成 11 MB。</p>
+<p><strong>A. 公网托管（最省事，免注册）</strong>：把 <code>上传包_网页托管.zip</code> 拖进 <a href="https://app.netlify.com/drop">https://app.netlify.com/drop</a>，几十秒后给你一个 <code>https://随机名.netlify.app</code> 的链接，手机上打开就是手机版排版，也能直接发给别人。Netlify 官方对比页写明"可以先部署、之后再 claim 站点"，而 Vercel Drop 必须先登录。包内已把中文文件名换成 ASCII（<code>archive.html</code> / <code>archive.pdf</code>），避免托管后 URL 编码出问题；<code>index.html</code> 会自动跳到 <code>archive.html</code>。</p>
+<p><strong>B. 临时隧道（本机继续当服务器，不注册）</strong>：Cloudflare Quick Tunnels 的官方文档写明<strong>不需要账号、不需要域名</strong>，<code>cloudflared tunnel --url http://localhost:8765</code> 就给一个 <code>trycloudflare.com</code> 的临时 https 地址；再加 <code>--allowed-mail 某人@邮箱</code> 就变成"只有这个邮箱能进（收一次性验证码）"。代价：要先有 cloudflared（约 55 MB），按本机现在的下载速度得十几分钟；进程一停链接即失效，域名每次都不一样。（另试了更轻的 bore：便携版下得来，但解压出的 <code>bore.exe</code> 被系统清掉了，没跑通。）</p>
+<p><strong>C. 完全不上网（最稳）</strong>：<code>archive.pdf</code> 用微信直接发；<code>archive.html</code> 传到手机用浏览器打开——手机版布局是纯 CSS，不依赖任何服务器。</p>
+<p><strong>D. GitHub Pages（要永久网址就走这条，本轮已备好本地部分）</strong>：<code>GitHub部署\</code> 已经是一个初始化并提交好的 git 仓库（10 个文件、1.7 MB，带 <code>.nojekyll</code> 防止 Jekyll 改写中文路径）。你只需四步：① 在 <a href="https://github.com/new">https://github.com/new</a> 建一个 <strong>public</strong> 的空仓库（不要勾 README）；② 在 <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a> 生成 classic 令牌，勾 <code>repo</code>；③ 进 <code>GitHub部署</code> 目录执行 <code>pwsh -File .\推送.ps1</code>，按提示输用户名、仓库名、粘贴令牌（令牌只在内存里用一次，不落盘）；④ 仓库 <strong>Settings → Pages → Deploy from a branch → <code>main</code> / <code>(root)</code> → Save</strong>。地址形如 <code>https://用户名.github.io/仓库名/</code>，根路径是门面页，<code>/archive.html</code> 是阅读版，<code>/archive.pdf</code> 是 PDF。本机实测 <code>github.io</code> 可达（<code>octocat.github.io</code> 返回 200、2.6 秒），但<strong>国内手机网络不保证</strong>，发给别人前先用自己手机流量点一下。</p>
+<p><strong>已被排除的</strong>：SMB 本身就是局域网；Vercel Drop 要登录；tiiny.host 要注册且免费站有效期短；Gitee Pages 据社区帖子反映已下架或转 Pro（这一条未在本机核实）。</p>
+<p>其中 2 号的使用方式（一条命令，零依赖，<strong>同样只绑本机</strong>）：</p>
+<pre><code>&lt;DSH 运行时&gt;\node\bin\node.exe &quot;C:\Users\Administrator\Desktop\项目群的某些链接\链接归档_20261113\静态服务器.js&quot; 8765
+</code></pre>
+<p>启动后会打印 <code>http://127.0.0.1:8765/</code> 和一行"仅本机可访问（不监听局域网）"。哪天临时要局域网访问，把 <code>静态服务器.js</code> 里 <code>const HOST = "127.0.0.1"</code> 改成 <code>"0.0.0.0"</code> 即可，改回来同理。</p>
+<p>4 号 PDF 的重新生成命令（内容更新后要重打；直接打印本地文件，<strong>不需要任何服务</strong>）：</p>
+<pre><code>&lt;Edge&gt;\msedge.exe --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=&quot;C:\Users\Administrator\Desktop\项目群的某些链接\链接归档_20261113\阅读版_全归档.pdf&quot; --virtual-time-budget=8000 &quot;file:///C:/Users/Administrator/Desktop/项目群的某些链接/链接归档_20261113/阅读版_全归档.html&quot;
+</code></pre>
+<p><strong>推荐组合</strong>（不走局域网的前提下）：电脑上日常看 → <strong>双击 HTML</strong>（零服务、零端口）；要发给别人或长期保存 → <strong>PDF</strong>；手机上移动看 → 把 PDF 传过去；<strong>要给手机或别人一个能点的链接</strong> → 10 号 Netlify Drop（拖那个 zip，免注册，几十秒）；<strong>要永久网址、以后还能更新</strong> → 12 号 GitHub Pages（本地全备好，你只需建仓库 + 推一次）；以后想开机即用、不占端口、仍然只本机 → 6 号插件路由（你说一声我就做）。</p>
+<h2>🧭 二、怎么分类的（分类依据）</h2>
+<p>不是按"公众号/网站"分，也不是按时间分，而是按<strong>内容的功能角色</strong>分四类，另设一个"未获取"：</p>
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>名称</th>
+<th>归入标准</th>
+<th>条数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>多模态情感识别与推理</td>
+<td>研究对象是"情绪/情感"本身：识别、理解、推理、基准与数据集</td>
+<td>5</td>
+</tr>
+<tr>
+<td>B</td>
+<td>心理健康检测与咨询对话</td>
+<td>研究对象是"心理健康应用"：抑郁检测、咨询对话、领域综述</td>
+<td>5</td>
+</tr>
+<tr>
+<td>C</td>
+<td>情感陪伴产品与行业乱象</td>
+<td>不是研究成果，而是产品的市场呈现与行业风险</td>
+<td>2</td>
+</tr>
+<tr>
+<td>D</td>
+<td>课程与论文精读</td>
+<td>学习资源，不是新研究</td>
+<td>2</td>
+</tr>
+<tr>
+<td>E</td>
+<td>未获取</td>
+<td>需登录、无法读取</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>两点说明：
+- <strong>序号 05 与 14 是同一篇 ICLR 2026 论文</strong>（HitEmotion/TMPO）的两篇不同解读，故 A 类 5 条对应 4 篇论文；全库 15 条对应 <strong>9 篇不同论文 + 2 篇非论文内容 + 2 个课程 + 1 条未获取</strong>。
+- 分类一律按<strong>页面实际内容</strong>判定，不看原标签怎么写；原标签字段已按你的要求清空（见 02、03 两篇的文件头）。</p>
+<h2>📊 三、索引与可信度总表</h2>
+<p>评分口径：<strong>出处</strong>＝这条链接是不是它自称的东西；<strong>内容</strong>＝文中说法能核到什么程度。A 一手可核 / B 可靠但非一手 / C 单一来源或营销 / D 无法核验。</p>
+<p><strong>颜色怎么读</strong>（本归档统一约定）：<span style="color:#1a7f37"><strong>绿色 A</strong></span> 一手可核 ｜ <span style="color:#0b6bcb"><strong>蓝色 B</strong></span> 可靠但非一手 ｜ <span style="color:#b26a00"><strong>橙色 C</strong></span> 单一来源或营销 ｜ <span style="color:#c62828"><strong>红色 D</strong></span> 无法核验。加粗＝关键结论或需要留意的点。</p>
+<table>
+<thead>
+<tr>
+<th>序</th>
+<th>内容</th>
+<th>类型</th>
+<th>语言</th>
+<th>发布时间</th>
+<th>出处</th>
+<th>内容</th>
+<th>文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01</td>
+<td>work buddy（视频号）</td>
+<td>视频</td>
+<td>中</td>
+<td>未知</td>
+<td><span style="color:#c62828"><strong>D</strong></span></td>
+<td>—</td>
+<td><code>原文\E-未获取\</code></td>
+</tr>
+<tr>
+<td>02</td>
+<td>心域智护 XinyuCare 项目推广</td>
+<td>软文</td>
+<td>中</td>
+<td>2026-10-17</td>
+<td><span style="color:#b26a00"><strong>C</strong></span></td>
+<td><span style="color:#b26a00"><strong>C</strong></span></td>
+<td><code>原文\C-…\</code></td>
+</tr>
+<tr>
+<td>03</td>
+<td>南都调查：情感陪伴平台乱象</td>
+<td>调查报道</td>
+<td>中</td>
+<td>2026-10-22</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#1a7f37"><strong>A-</strong></span></td>
+<td><code>原文\C-…\</code></td>
+</tr>
+<tr>
+<td>04</td>
+<td>AAAI-26 ESCA 情感支持对话</td>
+<td>会议论文解读</td>
+<td>中</td>
+<td>2026-10-27</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B+</strong></span></td>
+<td><code>原文\A-…\</code></td>
+</tr>
+<tr>
+<td>05</td>
+<td>ICLR 2026 HitEmotion/TMPO（科普）</td>
+<td>会议论文解读</td>
+<td>中</td>
+<td>2026-10-30</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B+</strong></span></td>
+<td><code>原文\A-…\</code></td>
+</tr>
+<tr>
+<td>06</td>
+<td>EMNLP 2026 AuroraCounsel</td>
+<td>会议论文（自述）</td>
+<td>中</td>
+<td>2026-10-28</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B+</strong></span></td>
+<td><code>原文\B-…\</code></td>
+</tr>
+<tr>
+<td>07</td>
+<td>arXiv MLlm-DR 可解释抑郁识别</td>
+<td>预印本</td>
+<td>英</td>
+<td>2025-07-08</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B</strong></span></td>
+<td><code>原文\B-…\</code></td>
+</tr>
+<tr>
+<td>08</td>
+<td>Displays DepressionLLM</td>
+<td>期刊论文</td>
+<td>英</td>
+<td>2026-04</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B</strong></span></td>
+<td><code>原文\B-…\</code></td>
+</tr>
+<tr>
+<td>09</td>
+<td>arXiv Emotion-LLaMA</td>
+<td>会议论文（NeurIPS 24）</td>
+<td>英</td>
+<td>2024-06-17</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B</strong></span></td>
+<td><code>原文\A-…\</code></td>
+</tr>
+<tr>
+<td>10</td>
+<td>arXiv It Hears, It Sees too</td>
+<td>预印本</td>
+<td>英</td>
+<td>2025-11-25</td>
+<td><span style="color:#0b6bcb"><strong>B</strong></span></td>
+<td><span style="color:#3b82f6"><strong>B-</strong></span></td>
+<td><code>原文\B-…\</code></td>
+</tr>
+<tr>
+<td>11</td>
+<td>ICML 2025 AffectGPT</td>
+<td>会议论文</td>
+<td>英</td>
+<td>2025</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B</strong></span></td>
+<td><code>原文\A-…\</code></td>
+</tr>
+<tr>
+<td>12</td>
+<td>B 站 吴恩达机器学习课程</td>
+<td>课程合集</td>
+<td>中英</td>
+<td>未知</td>
+<td><span style="color:#b26a00"><strong>C+</strong></span></td>
+<td><span style="color:#0b6bcb"><strong>B</strong></span></td>
+<td><code>原文\D-…\</code></td>
+</tr>
+<tr>
+<td>13</td>
+<td>B 站 李沐 GNN 论文精读</td>
+<td>课程</td>
+<td>中</td>
+<td>未知</td>
+<td><span style="color:#1a7f37"><strong>A-</strong></span></td>
+<td><span style="color:#1a7f37"><strong>A-</strong></span></td>
+<td><code>原文\D-…\</code></td>
+</tr>
+<tr>
+<td>14</td>
+<td>ICLR 2026 HitEmotion 深度拆解</td>
+<td>论文精读</td>
+<td>中</td>
+<td>2026-11-02</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#1a7f37"><strong>A-</strong></span></td>
+<td><code>原文\A-…\</code></td>
+</tr>
+<tr>
+<td>15</td>
+<td>IEEE TAC 心理健康综述</td>
+<td>期刊综述</td>
+<td>中</td>
+<td>2026-11-11</td>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td><span style="color:#1a7f37"><strong>A-</strong></span></td>
+<td><code>原文\B-…\</code></td>
+</tr>
+</tbody>
+</table>
+<h2>✅ 四、核实过什么（本轮实际打开的独立证据）</h2>
+<table>
+<thead>
+<tr>
+<th>结论</th>
+<th>证据来源</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>04 论文真实发表于 AAAI-26</td>
+<td><code>ojs.aaai.org/index.php/AAAI/article/view/38807</code></td>
+<td>✅ 第 40 卷第 21 号，页 17526–17534，DOI 10.1609/aaai.v40i21.38807</td>
+</tr>
+<tr>
+<td>05/14 论文真实发表于 ICLR 2026</td>
+<td><code>proceedings.iclr.cc/.../89ab43b6…</code></td>
+<td>✅ 标题、11 位作者、摘要全对；含 NUS 的 Mong-Li Lee、Wynne Hsu</td>
+</tr>
+<tr>
+<td>06 论文真实被 EMNLP 2026 主会录用</td>
+<td><code>aclanthology.org/2026.emnlp-main.132/</code></td>
+<td>✅ 页 3052–3084，Budapest，DOI 10.18653/2026.emnlp-main.132</td>
+</tr>
+<tr>
+<td>08 论文真实发表于 Displays</td>
+<td>Crossref + Semantic Scholar + OpenAlex + 藤田医科大学 Pure</td>
+<td>✅ 四方一致；正文付费墙（403），仅取到摘要</td>
+</tr>
+<tr>
+<td>09 已被 NeurIPS 2024 接收</td>
+<td>arXiv 页面 Comments 字段</td>
+<td>✅ "Accepted at NeurIPS 2024"</td>
+</tr>
+<tr>
+<td>11 为 ICML 2025 论文集论文</td>
+<td>PMLR v267 条目</td>
+<td>✅ 第 42 届 ICML；GitHub 仓库 200</td>
+</tr>
+<tr>
+<td>15 论文真实发表于 IEEE TAC</td>
+<td>作者出版物页 + IEEE 文章号 11664281</td>
+<td>✅ Wu et al. 2026；中文解读与英文摘要逐条对应</td>
+</tr>
+<tr>
+<td>03 "中管院 2024-06 被撤销"</td>
+<td>国家事业单位登记管理局通告及多家媒体转载</td>
+<td>✅ 属实</td>
+</tr>
+<tr>
+<td>03 "曲曲大女人被罚 758 万"</td>
+<td>光明网等 2025-04-01 报道</td>
+<td>✅ 属实</td>
+</tr>
+<tr>
+<td>04/06/11/14 等项目仓库真实存在</td>
+<td>GitHub</td>
+<td>✅ 5 个仓库均返回 200</td>
+</tr>
+<tr>
+<td>03 "人社部 2022-05 声明"</td>
+<td>未独立打开原文</td>
+<td>⚠️ 未核（与该中心历年口径一致）</td>
+</tr>
+<tr>
+<td>02 "开源代码"</td>
+<td><code>gitcc.com/LexBBQ/ai-xinyucare</code> 返回 200，但为 SPA</td>
+<td>⚠️ 无法确认仓库内容</td>
+</tr>
+</tbody>
+</table>
+<h2>🔎 五、三条整体结论</h2>
+<ol>
+<li><strong>技术主线清晰</strong>：2025—2026 年这批工作共同在做"从识别情绪到解释情绪、再按咨询理论回应"，标配手段是多模态融合 + SFT + GRPO + LLM 评审。代表：04（策略解耦）、05/14（认知分层 + 心智理论）、06（多智能体 + 咨询节奏）、08/07/10（抑郁检测的可解释化）。</li>
+<li><strong>共同软肋也清晰</strong>：推理链多为"答案引导生成"（08 伪标签、05/14 标签筛选），评测靠自动指标与 LLM 评审，<strong>没有任何一篇报告真实患者的症状改善</strong>；基准小且难排除预训练污染。</li>
+<li><strong>学术与市场的落差是这批链接最大的信息</strong>：15 号综述说"现有证据不足以支持大模型自主治疗"，03 号调查展示了不设边界的市场长什么样（虚假资质、低价钩子转高价套餐、AI 输出扭曲价值观），而 02 号推广文把同类系统直接卖成"医疗级"。<strong>判断具体产品时看三样：资质备案、量表施测者资质、真实结局数据。</strong></li>
+</ol>
+<h2>⚠️ 六、方法、口径与局限（如实交代）</h2>
+<ul>
+<li><strong>原文抄录方式</strong>：curl 取 HTML → lxml 提取正文容器（微信 <code>#js_content</code>、南方网 article 容器、arXiv/PMLR abstract、B 站 meta），<strong>只剔除导航/广告/相关推荐</strong>，段落顺序与措辞未改；原文错字、口语、图表位置说明均保留。</li>
+<li><strong>排版也一并保留</strong>：正文里原页面的<strong>加粗</strong>与<strong>彩色文字</strong>已按原样搬过来（用 <code>&lt;b&gt;</code> 与 <code>&lt;span style="color:#rrggbb"&gt;</code> 内联标签，颜色值直接取自原页面样式）。白字与灰白卡片底色没有着色——在白底文档里那样反而看不见。<strong>纯文本编辑器会看到这些标签，Markdown 预览里则是正常的彩色加粗文字。</strong></li>
+<li><strong>微信文章</strong>：mp.weixin.qq.com 直连会触发"环境异常"验证页，改用微信内置浏览器 UA 的 curl 请求后取到正文（02 首次失败、加 <code>?scene=1</code> 后成功）。<strong>这是抓取手段，不涉及登录或绕过付费</strong>。</li>
+<li><strong>未能取到正文的三处，以及处理口径</strong>（2026-11-13 20:22 按你的要求收敛，不再逐条跟进）：</li>
+<li><strong>08 Elsevier 正文（付费墙 403）—— 已结案，不再管</strong>。改用作者单位机构库公开的期刊摘要 + Crossref / Semantic Scholar / OpenAlex 四方一致的题录，按"摘要级收录"视为完成；正文指标数值仍按"作者自述"标注。</li>
+<li><strong>01 微信视频号（需登录）</strong> 与 <strong>12/13 B 站视频</strong>（页面动态渲染，只取到标题/UP 主/简介/统计）—— 属视频，仅保留现状说明，不追视频内容本身。</li>
+<li><strong>未做的核验</strong>：所有论文 PDF 正文未下载逐表核对，因此文中具体指标数值（AT/SR/BLEU、9.81 分、72.27 等）均标注为"作者自述/未核"。若需逐数核对，请指定篇目。</li>
+<li><strong>评分主观性</strong>：出处/内容两级评分由我据"可核证据的强度"给出，属判断而非客观测量；依据已在 <code>分析\</code> 各文件中逐条写明，可据以复核或推翻。</li>
+</ul>
+<h2>❓ 七、待确认</h2>
+<p>只剩视频类一项（与"网页打不开"无关）：</p>
+<ol>
+<li><strong>01 视频号</strong>需在微信内提供文案/截图才能补入。</li>
+<li><strong>12 号课程</strong>是 2022 版 Specialization 还是 2011 版 CS229，点开第 1 P 可自行确认。</li>
+</ol>
+<blockquote>
+<p>除以上两项外，本归档没有未完成事项：08 付费墙按"摘要级收录"结案，其余 14 条正文/元信息均已落盘。</p>
+</blockquote>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-02-00-总览与横向归纳">
+<h1>总览与横向归纳</h1>
+<blockquote>
+<p>15 条链接的横向比较：都讲了什么、彼此什么关系、哪些结论站得住。
+分篇细节见同目录 <code>A-…</code>、<code>B-…</code>、<code>C-…</code>、<code>D-…</code> 四个文件；原文见 <code>../原文合集_15篇.md</code>。</p>
+</blockquote>
+<h2>📦 一、这批链接是什么</h2>
+<p>15 条链接里，<strong>10 条指向 9 篇学术工作</strong>（序号 05 与 14 是同一篇 ICLR 2026 论文的两篇不同解读），其余 5 条是 1 篇调查报道、1 篇产品推广、2 个视频课程、1 条无法读取的视频号。</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>条数</th>
+<th>序号</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>学术工作（会议/期刊/预印本）</td>
+<td>9 篇 / 10 条链接</td>
+<td>04、05、06、07、08、09、10、11、14、15</td>
+</tr>
+<tr>
+<td>行业调查报道</td>
+<td>1</td>
+<td>03</td>
+</tr>
+<tr>
+<td>产品推广（软文）</td>
+<td>1</td>
+<td>02</td>
+</tr>
+<tr>
+<td>视频课程 / 论文精读</td>
+<td>2</td>
+<td>12、13</td>
+</tr>
+<tr>
+<td>未获取</td>
+<td>1</td>
+<td>01</td>
+</tr>
+</tbody>
+</table>
+<p>从时间看，除 09（2024-06）与 12、13 外，其余内容集中在 <strong>2025-07 至 2026-11</strong>，最新的是 15（2026-11-11 发布）。这批链接的共同主题可以一句话概括：</p>
+<blockquote>
+<p><strong>让模型不仅"识别情绪"，还要"解释情绪、评估风险、按咨询理论回应"，并且这件事在 2025—2026 年被系统性地拆成了基准、模型、对齐训练、临床落地四件事。</strong></p>
+</blockquote>
+<h2>🧭 二、四条技术主线</h2>
+<h3>主线 1｜从情感分类到情感推理（认知深度）</h3>
+<ul>
+<li><strong>09 Emotion-LLaMA</strong>（2024，NeurIPS）代表早期路线：造多模态情感指令数据集（MERR），用情感专用编码器把音视频文本对齐到共享空间，靠指令微调提升"识别 + 说理由"。</li>
+<li><strong>11 AffectGPT</strong>（ICML 2025）把重点放在<strong>数据与基准</strong>：115K 样本、2K+ 细粒度类别的描述性标注（MER-Caption），并用前置融合（pre-fusion）减少对 LLM 内部隐式对齐的依赖。</li>
+<li><strong>05 / 14 HitEmotion + TMPO</strong>（ICLR 2026）把"认知深度"显式分层：感知识别（10 项）→ 理解分析（8 项）→ 认知推理（6 项），24 项任务 20,114 条样本；再用<strong>心智理论（ToM）推理链</strong>做 SFT，用 GRPO 做四路奖励对齐。</li>
+<li>这三篇构成一条清晰的升级链：<strong>加数据 → 加基准 → 加认知结构</strong>。共同的方法学信号是"生成式解释"取代单一标签。</li>
+</ul>
+<h3>主线 2｜抑郁检测的可解释化</h3>
+<ul>
+<li><strong>07 MLlm-DR</strong>：小 LLM + LQ-former 查询模块，同时输出 PHQ 类评分与评估理由，在 CMDC、E-DAIC-WOZ 上报 SOTA。</li>
+<li><strong>08 DepressionLLM</strong>（Displays，2026-04）：三阶段——GPT-4o 造"情感+因果"伪标签 → Qwen2.5 粗粒度学习 → 多模态提示融合细调；在 E-DAIC、CMDC、EATD 上报稳定提升。</li>
+<li><strong>10 It Hears, It Sees too</strong>（arXiv 2025-11）：不换大模型，改<strong>对齐方式</strong>——在音频语言模型上加视觉理解，并在<strong>时间戳层面</strong>对齐视听特征，以降低数据与算力需求。</li>
+<li>三篇的差别其实是"可解释性从哪来"：07 来自理由生成，08 来自伪标签里的因果线索，10 来自跨模态对齐的物理意义。<strong>都还没有一篇给出临床可用的因果证据</strong>。</li>
+</ul>
+<h3>主线 3｜咨询对话：从生成回复到规划行为</h3>
+<ul>
+<li><strong>04 ESCA</strong>（AAAI-26）：把"选策略"与"表达策略"拆开——用情绪强度、信任度、改变阶段、对话行为四维状态做策略规划器，再用 Q-Former 式软提示 + 知识检索让冻结的 LLM 把策略表达出来；PPO 只优化提示生成器。</li>
+<li><strong>06 AuroraCounsel</strong>（EMNLP 2026 主会）：三智能体 Sense→Reflect→Guide，情绪驱动的动态路由（仅负向情绪触发反思），六维奖励的 GRPO 对齐咨询节奏（提问率随轮次衰减等）。</li>
+<li>这两篇是本批链接里<strong>最接近"产品形态"</strong>的学术工作，也都明确写了"不能用于诊断、不能替代医生"。</li>
+</ul>
+<h3>主线 4｜把领域收拢成框架</h3>
+<ul>
+<li><strong>15 IEEE TAC 综述</strong>（2026）：以情感计算为视角，提出"方法基础—服务应用—保障与治理"三层分类 + 六大研究方向，覆盖筛查、评估、诊断与风险推理、干预与支持全流程。</li>
+<li>它的价值不在新技术，而在给出<strong>评价语言</strong>：现有证据为何不足以支持"大模型自主治疗"。</li>
+</ul>
+<h2>⚠️ 三、跨篇一致的三个薄弱环节</h2>
+<p>这是横向读下来最值得记的部分——不是某篇的缺陷，而是整批研究共同的软肋：</p>
+<ol>
+<li>
+<p><strong>推理链是"答案引导"出来的，不是自然产生的。</strong>
+   08 的伪标签由 GPT-4o 生成；05/14 的推理链先用真实标签筛选、再由 Gemini 纠正；14 直接指出"训练链已经使用答案信息筛选，不能视为模型未知答案时自然产生的推理记录"。所以"模型会推理"与"模型会背解释"在这批工作里尚未被分开。</p>
+</li>
+<li>
+<p><strong>评测靠自动指标和 LLM 评审，缺真实临床结局。</strong>
+   04 的人工偏好只有 100 段对话、Fleiss' κ=0.42；其"信任"状态标注一致性仅 0.33。06 的 9.81 分是 5 位教授对 240 轮的盲评（ICC=0.85，方法较规范，但仍是自建量表）。14 记录了论文内部的数字衔接疑点（Table 4 八项均值 62.195 与 Table 6 的 64.70 不一致）。<strong>没有一个研究报告了患者症状改善的纵向结局。</strong></p>
+</li>
+<li>
+<p><strong>基准小、且难排除预训练污染。</strong>
+   10 只在 DAIC-WoZ 上验证（经典小样本数据集）；14 明确写"该安排不等于已经排除了基础模型预训练污染"；07/08 的 SOTA 声明均为作者自述。</p>
+</li>
+</ol>
+<h2>🏛️ 四、学术叙事与商业现实的对照</h2>
+<p>这批链接里最有信息量的一组对照，是 <strong>02 与 03</strong>：</p>
+<ul>
+<li><strong>02</strong>（公众号 www.gitcc.com，2026-10-17）是"心域智护 XinyuCare"的推广文，把"手环生理数据 + 文本/语音/表情识别 + PHQ-9/GAD-7 量表 + 医生后台 + 匿名社区"打包成产品，并给出商业化路径（C 端订阅、B 端 EAP、按席位收费、渠道分成）。</li>
+<li><strong>03</strong>（南方都市报，2026-10-22，署名记者）调查的正是同一条赛道：AI 情感陪伴 App 输出扭曲价值观、以"中国管理科学研究院"等<strong>已被撤销或已声明无关的机构</strong>证书引流、低价钩子（12.9 元）转高价套餐（3980 元）、注册后收到 47 条营销短信。</li>
+<li>两篇之间的落差，恰好被 <strong>15</strong> 综述的结论说中：现有证据不足以支持大模型作为自主心理治疗主体；也被 03 中中山大学张桂萍博士的判断印证：AI 的对话是线性的，无法做多维深度评估与风险识别。</li>
+</ul>
+<blockquote>
+<p>换句话说：<strong>学术侧在 2026 年的共识是"辅助、可监督、别越界"，商业侧却已经在按"替代咨询师"卖会员。</strong> 这是这批链接合起来最该被记住的一句话。</p>
+</blockquote>
+<h2>🔎 五、可信度分级口径</h2>
+<p>本归档对每条链接给<strong>两项独立评分</strong>，避免把"文章真实存在"和"文中说法为真"混为一谈：</p>
+<ul>
+<li><strong>出处可信度</strong>：这条链接是不是它自称的那个东西（期刊/会议/媒体/账号）。</li>
+<li><strong>内容可信度</strong>：文中具体说法能被核到什么程度。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>等级</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span style="color:#1a7f37"><strong>A</strong></span></td>
+<td>一手可核：官方出版记录、机构页面、通讯社/大报署名报道，本轮已实际打开核对</td>
+</tr>
+<tr>
+<td><span style="color:#0b6bcb"><strong>B</strong></span></td>
+<td>可靠但非一手：预印本、作者自述、二手解读，主要事实可交叉验证，细节未核</td>
+</tr>
+<tr>
+<td><span style="color:#b26a00"><strong>C</strong></span></td>
+<td>单一来源或营销内容：无独立证据，含推广性表述</td>
+</tr>
+<tr>
+<td><span style="color:#c62828"><strong>D</strong></span></td>
+<td>无法核验：页面读不到或关键信息缺失</td>
+</tr>
+</tbody>
+</table>
+<p>各项评分与依据见后续四个文件的分篇小节。</p>
+<h2>📚 六、如果你只想读三篇</h2>
+<ol>
+<li><strong>15 IEEE TAC 综述</strong> —— 建立领域地图与"什么还不能做"的边界感。</li>
+<li><strong>14 HitEmotion 深度拆解</strong> —— 看一篇论文如何被逐表核对、以及作者哪些地方没交代清楚（方法学范本）。</li>
+<li><strong>03 南都调查</strong> —— 看同一批技术在市场上的真实形态与风险。</li>
+</ol>
+<p>若目标是做研究，再补 <strong>04 ESCA</strong>（策略规划与表达解耦）与 <strong>06 AuroraCounsel</strong>（多智能体 + 咨询节奏对齐）；若目标是做数据，读 <strong>11 AffectGPT</strong>。</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-03-A-多模态情感识别与推理">
+<h1>A｜多模态情感识别与推理（04、05、09、11、14）</h1>
+<blockquote>
+<p>这一组的共同问题：模型能不能从"看到表情"走到"解释情绪为什么产生"。
+对应原文：<code>../原文/A-多模态情感识别与推理/</code></p>
+</blockquote>
+<hr />
+<h2>04｜AAAI-26 · ESCA：把"选对策略"和"说得出来"拆开</h2>
+<p><strong>原文</strong>：<code>04-AAAI26-ESCA-情感支持对话.md</code> ｜ 公众号 gh_f454fbd1aa6d（未显示昵称），2026-10-27
+<strong>论文</strong>：ESCA: An Emotional Support Conversation Agent for Enhancing Reasonable Strategy Planning and Effective Expression，AAAI-26</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>情感支持对话（ESC）里，两件事常被混淆：<strong>策略选得对不对</strong> 与 <strong>策略有没有真的表达出来</strong>。ESCA 把它们拆成两个可训练模块。</li>
+<li>策略规划器读四维求助者状态：情绪强度（1–5）、<strong>信任度（1–5）</strong>、改变阶段（跨理论模型五阶段）、对话行为（9 类），与对话历史一起预测支持策略。</li>
+<li>表达侧用 Q-Former 式结构：把"策略指令 + 检索知识 + 对话历史"压成软提示 token，喂给<strong>冻结的</strong> LLaMA2-7B-chat。知识按策略类型分流：信息类查 PsyQA、情绪类查 ER、上下文类由 LLM 总结当前话题。</li>
+<li>训练两段：先监督（规划器交叉熵 + 提示生成器 NLL），再让系统与 LLaMA3.3-70B 扮演的求助者交互，用 LLM critic 给 1/0.5/0 奖励，<strong>PPO 只更新提示生成器</strong>。</li>
+<li>结果（作者报告）：AT 8.96 轮、SR@10 47.44%（最强基线 DPDP 为 9.58 轮 / 32.31%）；Distinct-1/2/3 三项最高；但 BLEU-3/4 与 ROUGE-L 并非全胜。消融中最关键的是提示生成器（去掉后 SR 掉到 32.31%）。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。已核对 AAAI 官方 OJS 页面（<code>ojs.aaai.org/.../38807</code>）：AAAI-26 第 40 卷第 21 号，页码 17526–17534，DOI <code>10.1609/aaai.v40i21.38807</code>，2026-03-14 出版；作者为东北大学 + 哥廷根大学团队（Jing Li 等）。原文给出的论文链接与之一致。</li>
+<li><strong>内容：</strong><span style="color:#0b6bcb"><strong>B+</strong></span>。方法描述与官方摘要逐条吻合（四维状态、plug-in 规划器、软提示、RL 优化提示生成器）；但文中具体数值（AT/SR/BLEU）来自 PDF 表格，本轮未下载 PDF 逐项核对。</li>
+<li><strong>原文自己标注的疑点值得记</strong>：状态标签由三个 LLM 投票 + DeepSeek-R1 裁决，人工抽检准确率 87.67%–94.67%，但 <strong>Fleiss' κ 只有 0.60/0.58/0.55/0.33（信任最低）</strong>；人工偏好 κ=0.42。作者本人也承认"信任"这一维最不稳。</li>
+<li><strong>风险</strong>：SR@10 是"与 LLM 模拟求助者对话"的成功率，不等于真实咨询效果；自动指标（BLEU/ROUGE/Distinct）衡量的是重合度与多样性，不能证明回复更安全或更适切。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>把"决策"与"表达"解耦是这批工作里最工程可取的设计；但它的"成功"定义建立在模拟用户之上，离临床还隔着一层。</p>
+<hr />
+<h2>05｜ICLR 2026 · HitEmotion + TMPO：用认知深度给情感理解分层</h2>
+<p><strong>原文</strong>：<code>05-ICLR26-HitEmotion与TMPO-心智理论情感推理.md</code> ｜ 公众号「Today读什么」，2026-10-30
+<strong>论文</strong>：Unveiling the Cognitive Compass: Theory-of-Mind-Guided Multimodal Emotion Reasoning，ICLR 2026</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>核心论点：<strong>"识别情绪"与"理解情绪为何产生"是两种能力</strong>。同一表情在不同处境下含义相反，需要判断人物知道什么、相信什么。</li>
+<li>HitEmotion 基准：24 项任务、20,114 条样本，按认知复杂度分三层——感知与识别（10 项）、理解与分析（8 项）、认知与推理（6 项）。数据集是<strong>整理已有公开数据</strong>后统一格式 + 人工抽样检查，不是全新采集。</li>
+<li>TMPO：先让模型按任务要求输出 <code>&lt;think&gt;</code> 推理链再给 <code>&lt;answer&gt;</code>，用 Qwen2.5-Omni-7B 做 SFT；再用 GRPO，奖励含结构、内容、过程（ToM 关键词）、一致性四项。</li>
+<li>结果（作者报告）：评测 17 个模型；第三层六项任务基线平均分均未超过 60；TMPO 训练后 7B 模型在 24 项中 16 项取得所比较设置中的最佳；情绪解释 62.36→72.27，讽刺检测 59.92→70.13，情感翻转 40.50→54.16（SFT→GRPO）。</li>
+<li>文章自己点明的局限：推理监督来自模型生成 + 标签纠正，逻辑一致性也靠另一个模型评判，<strong>不能证明模型拥有真实心智理论</strong>。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。已打开 ICLR 2026 官方论文集页（<code>proceedings.iclr.cc/paper_files/paper/2026/hash/89ab43b6...</code>），标题、作者（Meng Luo, Bobo Li, Shanqing Xu, …, Mong-Li Lee, Wynne Hsu）、摘要全部对得上；后两位作者为新加坡国立大学，与标题"新加坡国立大学"相符。</li>
+<li><strong>内容：</strong><span style="color:#0b6bcb"><strong>B+</strong></span>。与 14 号文（另一篇独立解读，逐表核对）交叉比对后一致：24 项任务、20,114 条、17 个对比模型、"16 项最佳"表述均相同——<strong>两篇独立来源互相印证，这是本批链接里交叉验证最强的一组</strong>。</li>
+<li><strong>未核</strong>：文中"第三层六项基线平均分均未超过 60"无法从摘要核实，需看 PDF 表 5。</li>
+<li><strong>保留</strong>：这是一篇<strong>面向公众的科普解读</strong>，图表解释较浅；若要引用具体数字，应改用 14 号文或直接读 PDF。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>把心理学的心智理论变成可评测的任务分层，是本批最"有想法"的一篇；但"会写推理链"被作者自己也承认不等于"有心智理论"。</p>
+<hr />
+<h2>09｜arXiv · Emotion-LLaMA：早期多模态情感指令微调</h2>
+<p><strong>原文</strong>：<code>09-arXiv-Emotion-LLaMA-多模态情感识别与推理.md</code> ｜ arXiv:2406.11161（v1 2024-06-17）
+<strong>状态</strong>：arXiv 页面注明 "Accepted at NeurIPS 2024"</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>问题：单模态方法抓不住情感的多模态性；现有多模态大模型在<strong>音频整合</strong>与<strong>细微面部微表情</strong>上仍有短板。</li>
+<li>贡献一：MERR 数据集，28,618 条粗粒度 + 4,487 条细粒度标注。</li>
+<li>贡献二：Emotion-LLaMA——情感专用编码器把音频/视觉/文本对齐到共享空间，接改造版 LLaMA 做指令微调，同时提升识别与"说理由"能力。</li>
+<li>结果（作者报告）：EMER 基准 Clue Overlap 7.83、Label Overlap 6.25；MER2023-SEMI F1 0.9036；DFEW 零样本 UAR 45.59 / WAR 59.37。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。arXiv 条目存在，v1 2024-06-17，Comments 明确写 "Accepted at NeurIPS 2024"，可据此认定经过同行评审。</li>
+<li><strong>内容：</strong><span style="color:#0b6bcb"><strong>B</strong></span>。摘要级信息完整，但"outperforms other MLLMs"为作者表述；Clue/Label Overlap 是生成文本的关键词重合度指标，<strong>不是准确率</strong>，容易被误读为"识别准确率 7.83"。</li>
+<li><strong>注意时间</strong>：这是本批链接中最早的一篇（2024 年中），技术判断已被后续工作（11、05）推进，不宜当作最新 SOTA 引用。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>数据与工程的扎实工作，2024 年的代表性基线；今天读它的价值主要是看清"情感指令微调"这条路的起点。</p>
+<hr />
+<h2>11｜ICML 2025 · AffectGPT：把"描述性情感标注"做成规模</h2>
+<p><strong>原文</strong>：<code>11-PMLR-AffectGPT-情感理解数据集与基准.md</code> ｜ PMLR v267（第 42 届 ICML）
+<strong>论文</strong>：Zheng Lian 等 12 位作者</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>领域缺口有两块：<strong>缺带密集描述性标注的大规模数据</strong>，<strong>缺以多模态为中心的框架</strong>。</li>
+<li>MER-Caption 数据集：115K 样本、2K+ 细粒度情感类别，用"基于模型的众包"（model-based crowd-sourcing）策略构造，作者称为迄今最大的描述性情感数据集。</li>
+<li>AffectGPT 模型：用 <strong>pre-fusion</strong> 在送入 LLM 前完成跨模态融合。</li>
+<li>MER-UniBench：统一基准，指标同时适配分类类任务与 MLLM 的自由文本输出。</li>
+<li>代码与数据开源：<code>github.com/zeroQiaoba/AffectGPT</code>（本轮已验证仓库返回 200）。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。PMLR v267 为 ICML 2025 正式论文集，作者页（lian25a）可查，12 位作者名单已核对；同步确认 GitHub 仓库存在。</li>
+<li><strong>内容：</strong><span style="color:#0b6bcb"><strong>B</strong></span>。"最大描述性情感数据集"是作者自述规模，未与同期数据集逐项比对；"2K+ 细粒度类别"的分类体系合理性需看正文附录。</li>
+<li><strong>方法学看点</strong>：用模型来众包标注（先由强模型生成描述再人工校验），与 08 的"伪标签"是同一类做法——<strong>规模换质量</strong>，代价是标注分布带上生成模型的偏好。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>做情感多模态数据的人应当先读这篇：它把"标注怎么造"这件事摆到了方法之前。</p>
+<hr />
+<h2>14｜ICLR 2026 · HitEmotion 深度拆解（与 05 同一论文，另一篇解读）</h2>
+<p><strong>原文</strong>：<code>14-ICLR26-HitEmotion深度拆解-学术牛马小王.md</code> ｜ 公众号「学术牛马小王」，2026-11-02</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>依据<strong>71 页会议正式版</strong>逐节整理，图表保留原编号，并声明"未验证训练复现"（仓库 code 目录未见完整 SFT/GRPO 训练入口）。</li>
+<li>关键澄清：正文写"汇集 24 个数据集"，附录 C.1 写"22 个数据集构成 24 项任务"——<strong>作者采用附录口径</strong>，不称其为 24 个全新数据集。</li>
+<li>推理链来源：视频+任务提示给 GPT-5，声音线索由 Qwen2-Audio 提取；每条输入保留 3 条候选链，按标签筛选，Gemini-2.5-Pro 依标注修正，最后 GPT-4o 归一化 + 两名博士生审核。<strong>结论：训练链使用了答案信息，不能视为自然推理记录。</strong></li>
+<li>奖励权重实测：R = 0.4·结构 + 1.0·内容 + 0.1·过程 + 1.0·一致性。过程项权重扫 0/0.1/0.3/0.5 → 63.99/64.70/63.65/62.31，0.1 最优；结构项权重扫 0.1/0.4/0.7/1.0 → 61.25/64.70/64.10/63.80，0.4 最优。</li>
+<li>指出论文内部不一致：Table 4 完整模型 8 项分数简单平均为 62.195，而 Table 6 的 L2 写 64.70，论文未解释聚合方式；Table 5 表题未单列 EI/LR 的 LLM 评价例外。</li>
+<li>自动评判可靠性：GPT-4.1 与人工一致率 98.5%（κ=0.98，第三层自由生成三分之一抽样）与 96.5%（κ=0.96，2,000 条不合规回答的标签抽取）。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。文中给出的 ICLR 官方论文地址可打开，标题/作者/摘要完全一致。</li>
+<li><strong>内容：</strong><span style="color:#1a7f37"><strong>A-</strong></span>。这是本批链接中<strong>方法学最严谨的一篇</strong>：主动标注不确定性、区分"哪些图我没核"、指出原文自身矛盾、区分 ACC 与 Micro-F1/EMF/LLM 评分不混用。扣分项：作者身份不可查（公众号匿名），未附分析脚本，部分判断依赖其个人阅读。</li>
+<li><strong>与 05 的差异</strong>：05 只讲"结论"，14 讲"这个结论是怎么来的、哪里不成立"。<strong>同一论文的两篇解读放在一起，正好示范了"科普"与"审稿式阅读"的区别。</strong></li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>如果只能保留一篇中文解读，保留这篇。它的价值不在夸论文，而在教你怎么核对一篇论文。</p>
+<hr />
+<h2>📊 本组小结</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>出处</th>
+<th>内容</th>
+<th>主要贡献</th>
+<th>主要短板</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>04</td>
+<td>A</td>
+<td>B+</td>
+<td>策略规划与表达解耦；四维状态</td>
+<td>成功定义靠 LLM 模拟用户</td>
+</tr>
+<tr>
+<td>05</td>
+<td>A</td>
+<td>B+</td>
+<td>认知深度分层基准</td>
+<td>科普级，数字需回原文</td>
+</tr>
+<tr>
+<td>09</td>
+<td>A</td>
+<td>B</td>
+<td>多模态情感指令数据集</td>
+<td>2024 年基线，非最新 SOTA</td>
+</tr>
+<tr>
+<td>11</td>
+<td>A</td>
+<td>B</td>
+<td>描述性标注规模 + 统一基准</td>
+<td>"最大"为自述，标注带模型偏好</td>
+</tr>
+<tr>
+<td>14</td>
+<td>A</td>
+<td>A-</td>
+<td>逐表核对 + 主动暴露疑点</td>
+<td>作者匿名，无脚本</td>
+</tr>
+</tbody>
+</table>
+<p>共同趋势：<strong>从"分类准确率"转向"理由是否可信"；但"理由是否可信"目前仍主要靠另一个模型来判。</strong></p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-04-B-心理健康检测与咨询对话">
+<h1>B｜心理健康检测与咨询对话（06、07、08、10、15）</h1>
+<blockquote>
+<p>这一组的问题：模型能不能测抑郁、能不能按咨询理论对话、这条路的边界在哪里。
+对应原文：<code>../原文/B-心理健康检测与咨询对话/</code> ｜ 英文摘要译文：<code>../译文/外文五篇译文.md</code></p>
+</blockquote>
+<hr />
+<h2>06｜EMNLP 2026 主会 · AuroraCounsel：三智能体 + 咨询节奏对齐</h2>
+<p><strong>原文</strong>：<code>06-EMNLP26-AuroraCounsel-多智能体心理咨询.md</code> ｜ 公众号「luocont」（作者团队自述），2026-10-28
+<strong>论文</strong>：AuroraCounsel: A Multi-Agent Large Language Model Collaboration Framework for Psychological Counseling</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>三智能体分工：<strong>AC-Sense</strong>（BERT-Base-Chinese + MLP 判情绪极性）→ <strong>AC-Reflect</strong>（Qwen2.5-7B，负向情绪时生成四维结构化反思：模式识别、心理机制、干预结构、危机预警）→ <strong>AC-Guide</strong>（Qwen2.5-7B 出回复，SFT + GRPO 对齐）。</li>
+<li><strong>情绪驱动路由</strong>是省钱的关键设计：只有负向情绪才触发反思，token 消耗从 3,319 降到 1,953（约 -41%），总分几乎不掉（9.79 → 9.81）。</li>
+<li>六维 GRPO 奖励专门治"咨询节奏"：分阶段提问率（前 8 轮 0.70–1.00、9–16 轮 0.40–0.70、之后 0–0.40）、非提问奖励、重复惩罚（2-gram Jaccard）、长度约束（35–65 token，最优 50）、多问题惩罚、区间内稳定性。</li>
+<li>数据：AC-Sense 用 NLPCC 2014 + 7,000+ 条人工标注咨询对话（16,000 训练 / 1,000 测试，F1 87.99）；AC-Reflect 基于 PsyDTCorpus 重构 2,400 个会话、44,000 轮；自动评估 60 段对话 1,100+ 轮。</li>
+<li>人工评估：5 位有临床认证的高校心理学教授盲评，每模型 240 轮；总分 9.81±0.39，高于 DeepSeek-v3.2 的 9.09±0.43；ICC(2,5)=0.85，自动评估与专家评分 Pearson 0.67。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。已核对 ACL Anthology 正式条目 <code>2026.emnlp-main.132</code>：EMNLP 2026 主会，页码 3052–3084，Budapest，DOI <code>10.18653/2026.emnlp-main.132</code>，作者 Yuean Zhu / ZiChao Song / Haiming Luo，与原文一致。<strong>"被主会录用"为真，不是自称。</strong></li>
+<li><strong>内容：</strong><span style="color:#0b6bcb"><strong>B+</strong></span>。结构描述与 Anthology 摘要高度吻合（三智能体、情绪驱动路由、GRPO、REBT 对齐）。但所有分数是作者自报，且：</li>
+<li>总分 9.81 的量表是<strong>自建五维（Comprehensive/Professionalism/Authenticity/Empathy/Safety）</strong>，Safety 一列所有模型都是 1.00±0.00——<strong>没有区分度</strong>，拉高了整体分；</li>
+<li>对比模型（DeepSeek-v3.2、Kimi-K2 等）未必在同一提示与同一评审流程下测试，跨模型比较需谨慎；</li>
+<li>作者单位标注为嘉应学院，论文为本科生/硕士生团队作品的可能性较高，规模不大（60 段对话）。</li>
+<li><strong>加分项</strong>：作者在文中主动写了"不能用于医学诊断、不能替代专业医疗决策"，并配了危机预警与转介机制说明——合规意识到位。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>工程完整度是本批最高的（三智能体 + 路由 + 六维奖励 + 双端评估），但"9.81 分"这个数字的说服力取决于那张自建量表，不宜直接对外引用为"超越 DeepSeek"。</p>
+<hr />
+<h2>07｜arXiv · MLlm-DR：小模型 + 查询模块做可解释抑郁评分</h2>
+<p><strong>原文 / 译文</strong>：<code>07-arXiv-MLlm-DR-可解释抑郁识别.md</code> ｜ <code>../译文/外文五篇译文.md#07</code>
+<strong>状态</strong>：arXiv:2507.05591，v1 2025-07-08，v2 2026-03-18；另有 ACM DOI <code>10.1145/3796722</code></p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>痛点不是"测不准"，而是"说不清"：访谈视频能算抑郁分，但临床不敢用，因为不知道分怎么来的。</li>
+<li>方案：较小 LLM 负责输出<strong>评分 + 评估理由</strong>；LQ-former 从语音/视觉里抽与抑郁相关的特征，压成少量 query 供 LLM 使用。</li>
+<li>为补偿通用 LLM 没在访谈数据上训练过，专门构建训练集做领域微调。</li>
+<li>结果：在 CMDC 与 E-DAIC-WOZ 两个访谈基准上取得 SOTA（作者自述）。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。arXiv 条目有效（有 v2 修订，说明作者仍在维护），且标注了 ACM 关联 DOI，指向正式发表版本；本轮未打开 ACM 页面核对最终版差异。</li>
+<li><strong>内容：</strong><span style="color:#0b6bcb"><strong>B</strong></span>。摘要未给任何数值，"state-of-the-art"仅为作者表述；两个数据集都是小规模访谈集，且 E-DAIC-WOZ 与 10 号文复用的 DAIC-WoZ 同源，<strong>这类基准上的提升幅度对划分方式敏感</strong>。</li>
+<li><strong>保留</strong>：v1 到 v2 相隔 8 个月、体积从 1.5MB 涨到 3.3MB，说明有实质性修改；引用时应指明版本。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>"评分 + 理由"双输出的思路实用，但可解释性只到"能写出理由"，没到"理由与决策一致"。</p>
+<hr />
+<h2>08｜Displays（Elsevier）· DepressionLLM：三阶段伪标签 + 因果线索</h2>
+<p><strong>原文 / 译文</strong>：<code>08-Displays-DepressionLLM-情感与因果抑郁检测.md</code> ｜ <code>../译文/外文五篇译文.md#08</code>
+<strong>载体</strong>：<em>Displays</em> 第 92 卷 103304，2026-04</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>三阶段：GPT-4o 生成<strong>带情感与因果线索的伪标签</strong>扩训练信号 → Qwen2.5 粗粒度学习"抑郁水平—情绪状态—推断理由"的关系 → 多模态提示融合模块细调，融合视频/音频/文本成统一抑郁表征。</li>
+<li>在 E-DAIC、CMDC、EATD 三个基准上，检测与因果推理两类任务均稳定提升（作者自述）。</li>
+<li>定位：把基础模型与多模态视频理解结合，做"稳健且可解释"的心理健康分析。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。四方一致：Crossref（Displays, Vol.92, 103304, 2026-04, 11 位作者）、Semantic Scholar（venue Displays (Guildford), 2026）、OpenAlex（2025）、作者单位机构库（藤田医科大学 Pure，标注 "Externally published: Yes"，Scopus 被引 3）。DOI 解析正常。</li>
+<li><strong>内容：B（未达 A 的原因：正文在付费墙后）</strong>。ScienceDirect 返回 403，本轮只拿到机构库公开摘要；方法与实验细节、指标数值均未核。</li>
+<li><strong>处理结论（2026-11-13 20:22 定）：本篇按"摘要级收录"结案，不再追正文</strong>。已取得的摘要与四方题录足以支撑上面的要点归纳；若要引用具体指标，请直接看期刊 PDF。</li>
+<li>这里不做"打不开也算缺陷"的反复标注——除视频类外，抓不到的页面一律按此口径收尾。</li>
+<li><strong>需要注意的两点</strong>：</li>
+<li>"伪标签由 GPT-4o 生成"意味着<strong>训练信号的上限由 GPT-4o 的偏好决定</strong>，这与 11 号文"基于模型的众包"是同一类风险；</li>
+<li>"causality-aware"是"带因果线索"，<strong>不是</strong>因果推断意义上的因果效应识别，标题容易被误读为"能证明因果"。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>是这批里除 15 号综述之外唯一一篇期刊论文（Elsevier《Displays》），学术门槛相对更高；但三阶段里最关键的"伪标签质量"没有在摘要层面被论证。</p>
+<hr />
+<h2>10｜arXiv · It Hears, It Sees too：用时间戳对齐视听，省数据省算力</h2>
+<p><strong>原文 / 译文</strong>：<code>10-arXiv-ItHearsItSeesToo-视听融合抑郁检测.md</code> ｜ <code>../译文/外文五篇译文.md#10</code>
+<strong>状态</strong>：arXiv:2511.19877，v1 2025-11-25；作者含 Robert Desimone、Dominic Dwyer、Zongyuan Ge 等</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>观察：通用 LLM 是文本中心的，读不到音频/视频里的非言语线索；而现有多模态 LLM 很少为心理场景定制。</li>
+<li>做法：不重造模型，而是在<strong>音频语言模型上加视觉理解</strong>，并在<strong>时间戳层面</strong>对齐视听特征——细粒度对齐既改善跨模态时序建模，又降低对大数据与算力的需求。</li>
+<li>结果：在 DAIC-WoZ 上优于单模态与以往多模态方法；框架可扩展到更多生理信号。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#0b6bcb"><strong>B</strong></span>。arXiv 预印本，页面<strong>无任何接收/会议标注</strong>（对比 09 明确写了 NeurIPS 2024），说明尚未见同行评审记录；投递时间为 2025-11-25，很新。</li>
+<li><strong>内容：</strong><span style="color:#3b82f6"><strong>B-</strong></span>。核心主张（时间戳级对齐省数据）在逻辑上合理，但只在 <strong>DAIC-WoZ 一个数据集</strong>上验证，且该数据集样本量小、受试者构成单一，"outperforms"的稳健性有限；摘要也没有给出具体指标。</li>
+<li><strong>作者阵容值得注意</strong>：含 MIT 麦戈文研究所的 Robert Desimone（神经科学），说明是跨学科团队，但这也意味着方法可复现性依赖其内部管线。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>"不改模型改对齐"是聪明的低算力路线；但目前证据只有一篇预印本 + 一个数据集，属于"值得跟进"而非"可以引用为结论"。</p>
+<hr />
+<h2>15｜IEEE TAC 综述 · 面向心理健康全流程的情感语言处理</h2>
+<p><strong>原文</strong>：<code>15-IEEE-TAC-心理健康情感语言处理综述.md</code> ｜ 公众号「ML_RSer（机器学习与推荐算法）」，2026-11-11
+<strong>论文</strong>：Affective Language Processing for Mental Healthcare: A Survey of LLM-Based Approaches Across the Care Continuum，<em>IEEE Transactions on Affective Computing</em>，2026（Wu 等）</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>视角：以<strong>情感计算</strong>为切口，而不是按应用场景罗列模型。核心追问是"模型能否在具体交互情境中可靠地理解、追踪并恰当回应情感"，而非"能否生成像共情的文本"。</li>
+<li>连续照护框架：筛查 → 评估 → 诊断与风险推理 → 干预与支持，四段以情感反馈闭环相连。</li>
+<li><strong>三层分类体系</strong>：情感计算方法基础（数据增强与内容丰富化）→ 情感介导的心理健康服务（检测分类、支持与咨询智能体、治疗支持与心理教育内容）→ 情感保障与治理（问答与解释、伦理评估、偏差与公平）。</li>
+<li><strong>六大研究方向</strong>：数据增强、信号检测与分类、咨询型对话智能体、治疗支持与内容生成、心理健康问答与解释、伦理与公平。</li>
+<li>关键结论（也是本批最该记住的一句）：<strong>现有证据尚不足以支持大模型作为自主心理治疗主体</strong>，应用应定位于有明确边界、可被专业人员监督的辅助性服务。</li>
+<li>五项议程：多阶段多模态纵向建模、临床驱动的能力评价、开放可复核的数据生态、情感安全与临床协同治理、情感信息驱动的辅助支持。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。已通过作者主页独立核实：Wu et al. (2026), <em>IEEE Transactions on Affective Computing</em>, IEEE Xplore 文章号 11664281；作者之一 Onno Kampman 的出版物页给出与原文一致的英文摘要。</li>
+<li><strong>内容：</strong><span style="color:#1a7f37"><strong>A-</strong></span>。中文解读与英文摘要<strong>逐条对应</strong>（care continuum 四段、three-level taxonomy、six research lines 均一致），没有添油加醋；扣分项是解读未给出 DOI、作者全名单与文献检索截止时间之外的细节。</li>
+<li><strong>一个可核的细节</strong>：英文摘要写明覆盖 <strong>2019 年至 2025 年 10 月</strong>的文献，中文解读未提这一时间范围——引用时需自己补上。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>这批链接里唯一的"地图型"文献。若只读一篇，读它；它同时也是对 02 类商业宣传最有力的反证。</p>
+<hr />
+<h2>📊 本组小结</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>出处</th>
+<th>内容</th>
+<th>类型</th>
+<th>关键提醒</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>06</td>
+<td>A</td>
+<td>B+</td>
+<td>会议论文（EMNLP 主会）</td>
+<td>9.81 分来自自建量表，Safety 维无区分度</td>
+</tr>
+<tr>
+<td>07</td>
+<td>A</td>
+<td>B</td>
+<td>预印本（有 ACM DOI）</td>
+<td>无具体数值；基准小、对划分敏感</td>
+</tr>
+<tr>
+<td>08</td>
+<td>A</td>
+<td>B</td>
+<td>期刊（Displays）</td>
+<td>正文付费墙；"因果"仅指线索</td>
+</tr>
+<tr>
+<td>10</td>
+<td>B</td>
+<td>B-</td>
+<td>预印本（未见评审）</td>
+<td>单数据集验证，很新</td>
+</tr>
+<tr>
+<td>15</td>
+<td>A</td>
+<td>A-</td>
+<td>期刊综述（IEEE TAC）</td>
+<td>覆盖 2019–2025.10；结论是"只能辅助"</td>
+</tr>
+</tbody>
+</table>
+<p>一条贯穿全组的判断：<strong>这五篇都在做"让机器更像咨询师"，但没有一篇报告真实患者的症状改善。</strong> 06 与 15 都主动划了"不能诊断、不能替代医生"的边界——这不是免责套话，而是这个方向目前的真实水位。</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-05-C-情感陪伴产品与行业乱象">
+<h1>C｜情感陪伴产品与行业乱象（02、03）</h1>
+<blockquote>
+<p>这一组不是论文，而是"同一批技术在市场上的两种样子"：一篇是产品推广，一篇是记者调查。
+对应原文：<code>../原文/C-情感陪伴产品与行业乱象/</code></p>
+</blockquote>
+<hr />
+<h2>02｜心域智护 XinyuCare：一份写得很完整的项目推广文</h2>
+<p><strong>原文</strong>：<code>02-心域智护XinyuCare-项目推广文.md</code> ｜ 公众号「www.gitcc.com」，2026-10-17 09:15</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>定位：多模态 AI 心理检测与疗愈系统，服务"普通用户 + 心理医生"双端，覆盖 Web/H5/Android/iOS/Windows。</li>
+<li>功能清单（原文如此）：
+   - 四路并行评估：文本情绪、语音情感、面部微表情、视频行为；
+   - 对话式完成 <strong>PHQ-9、GAD-7、HAMD-17</strong> 等量表，支持中断续评；
+   - 输出风险等级、9 维情绪雷达、趋势分析、PDF 报告；
+   - 疗愈侧：3D 呼吸动画 + 冥想音频库 + 视频冥想；
+   - 硬件侧：蓝牙手环采集心率/血氧/体温/压力/步数/睡眠；
+   - 医生后台：患者统计、风险预警、知识库（RAG）；
+   - 匿名树洞社区，宣称"端到端加密 + AI + 人工双重审核"。</li>
+<li>商业化：C 端订阅（基础评估免费引流）、B 端 EAP 按组织收费、医生端<strong>按席位收费</strong>、硬件联动分成、医院/机构渠道分成。</li>
+<li>举了两个"案例"：24 岁失眠青年用手环 + 对话式 PHQ-9 得到中风险报告；某咨询中心 200 名随访患者由预警看板管理。</li>
+<li>两次给出源代码地址：<code>https://www.gitcc.com/LexBBQ/ai-xinyucare</code>。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#b26a00"><strong>C</strong></span>。发布者是代码托管站 gitcc.com 的公众号，推广的是<strong>托管在自己平台上的项目</strong>——属于平台自家项目宣传，不是第三方报道。仓库地址返回 HTTP 200，但站点为纯前端渲染，<strong>无法确认仓库内是否真有可运行代码</strong>（本轮未取到 README 或提交记录）。</li>
+<li><strong>内容：</strong><span style="color:#b26a00"><strong>C</strong></span>。逐条看：</li>
+<li>功能描述具体、可信度较高（这类项目通常真能跑出界面）；</li>
+<li>但"符合医疗数据安全规范""医疗级对齐""隐私是底线不是卖点"等表述<strong>没有任何认证、审计或第三方评估支撑</strong>；</li>
+<li>两个"案例"是<strong>叙事化场景，不是实测数据</strong>（没有样本量、没有随访周期、没有量表前后测分数）；</li>
+<li>"端到端加密"与"AI + 人工双重审核"在架构上相互冲突（人工审核要求可读明文或可解密），原文未解释如何并存——这是<strong>技术上说不通的一处</strong>。</li>
+<li><strong>合规风险（重要）</strong>：PHQ-9 / GAD-7 是筛查量表，HAMD-17 是他评量表（需经培训的临床人员施测）。让 AI 对话自动完成并<strong>输出风险等级与"疗愈方案"</strong>，在国内属于医疗器械/心理治疗边界地带；原文未提任何资质、备案或临床验证。</li>
+<li><strong>与 03、15 的对照</strong>：15 号综述的结论是"现有证据不足以支持大模型作为自主治疗主体"；02 的产品叙事恰恰把"AI 初筛 + AI 疗愈方案"当成卖点。这不是说 02 一定有问题，而是<strong>它没有提供任何能反驳 15 的证据</strong>。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>作为"AI 心理产品应该长什么样"的功能清单，这篇很有参考价值；作为"这东西可靠"的证据，它一条都没给。</p>
+<hr />
+<h2>03｜南方都市报调查：情感陪伴平台的灰色产业链</h2>
+<p><strong>原文</strong>：<code>03-南方都市报-情感陪伴平台乱象调查.md</code> ｜ 南方网转南方都市报，2026-10-22 11:28，记者唐进、林诗妍；编辑赖玉清</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li><strong>"美人支招"App</strong>：宣称"AI 大语言模型 + 海量真实案例"，实际输出把亲密关系工具化——"在感情里得到的归根结底就三样：物质、情绪价值、或合法伴侣身份"，并给出"豪门上位博弈策略""职场暧昧借力策略"等指导。新用户免费 3 条消息，之后 VIP 月/季/年卡 199/569/1999 元；客服再推 3980 元课程。</li>
+<li><strong>背景</strong>：该 App 标注"曲曲大女人官方唯一授权"，运营方上海美丽猪猪科技有限公司与主播乐传曲（网名曲曲大女人）关联。该账号 2023-12 因"宣扬不良恋爱观博取热度、贩卖课程谋私利"被微博处置；2025-04-01 上海税务部门公布其偷税案，追缴税款、滞纳金与罚款<strong>合计 758 万元</strong>。</li>
+<li><strong>资质造假</strong>：某"轻诉"平台咨询师证书盖"中国管理科学研究院"公章，而该院<strong>已于 2024 年 6 月被撤销登记</strong>；另有"中国国家人才测评网"证书，而人社部全国人才流动中心<strong>2022 年 5 月即声明从未开展此类测评、从未发放此类证书</strong>；"广州市婚恋情感规划协会"检索不到。</li>
+<li><strong>获客流水线</strong>：低价钩子（12.9 元"原价 69.99"）→ 小程序注册 → 4 位"咨询师"发语音 → 5 分钟免费连麦 → 挂断即推 89 元/20 分钟套餐 → 注册后数日收到 47 条"灵机文化""灵机吉品"落款营销短信。同一账号用完全不同的问题咨询，都得到"你已出现严重感情问题"的相同诊断。</li>
+<li><strong>未成年人</strong>：页面写明"此功能严禁未成年人使用"，但系统未拦截"高中生"用户，导师也未停止对话。</li>
+<li><strong>专家意见</strong>（中山大学心理学张桂萍博士）：国家已取消人社部心理咨询师职业资格考试；现存的各类"技能证"不具备执业准入效力；AI 对话是线性的，无法做多维度深度评估，<strong>依赖 AI 判断严重情绪问题极易漏掉高危信号</strong>。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A</strong></span>。南方都市报署名调查报道，南方网（广东省委机关报南方日报旗下）转载，有采写记者、编辑、责任编辑署名。</li>
+<li><strong>内容：</strong><span style="color:#1a7f37"><strong>A-</strong></span>。关键事实均可外部印证：</li>
+<li>中国管理科学研究院 2024-06 被国家事业单位登记管理局撤销登记 —— 有官方通告及多家媒体转载，<strong>已核实</strong>；</li>
+<li>"曲曲大女人"2025-04-01 被罚 758 万元 —— 光明网等多家媒体同日报道，<strong>已核实</strong>；</li>
+<li>人社部全国人才流动中心 2022-05-18 的声明 —— <strong>本轮未独立打开原文</strong>，属未核（但与该中心历年打假口径一致）；</li>
+<li>"广州市婚恋情感规划协会"查无此会 —— 属记者检索结论，未核。</li>
+<li><strong>方法透明度</strong>：记者说明了实测过程（换账号复测、付费走完全流程、统计短信条数），这是调查报道里较好的做法；但涉事平台的回应在文中只出现客服口径，<strong>未见平台正式回应</strong>，属单方叙事。</li>
+<li><strong>注意</strong>：文中"AI 生成内容"的判断依据是客服自述（"过往真实案例沉淀下来的模型"），并非技术鉴定。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>这是本批链接里<strong>唯一有执法/撤销记录支撑</strong>的一篇，也是把"AI 情感陪伴"从论文语境拉回市场语境的关键一篇。</p>
+<hr />
+<h2>02 与 03 摆在一起看</h2>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>02（产品推广）</th>
+<th>03（记者调查）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>技术在做什么</td>
+<td>多模态情绪识别 + 量表 + 疗愈内容 + 医生后台</td>
+<td>AI 生成"情感军师"话术 + 真人/AI 混合接单</td>
+</tr>
+<tr>
+<td>收费方式</td>
+<td>订阅、席位、渠道分成</td>
+<td>免费 3 条 → 会员 → 3980 元课程 / 89 元 20 分钟</td>
+</tr>
+<tr>
+<td>资质</td>
+<td>未提任何资质与备案</td>
+<td>证书来自已撤销机构、已声明无关的网站、查无此会的协会</td>
+</tr>
+<tr>
+<td>对"AI 能力"的表述</td>
+<td>"医疗级对齐""逼近人类观察者"</td>
+<td>客服承认是"模型生成"，专家称 AI 无法多维评估</td>
+</tr>
+<tr>
+<td>证据</td>
+<td>两个叙事化场景</td>
+<td>记者实测 + 官方撤销/处罚记录 + 专家意见</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：这两篇不是"好产品 vs 坏产品"的对比，而是同一条赛道上<strong>"没有证据的乐观叙事"与"有记录的风险事实"</strong>的对比。判断任何具体产品（包括 02 描述的这类系统）时，该看的是三样东西：<strong>资质与备案、量表施测者资质、以及有没有真实结局数据</strong>——这三样在 02 里都缺，在 03 里恰好是造假重灾区。</p>
+<p>一个可操作的判别清单（由 03 的案例反推）：
+1. 证书上的发证机构，是否仍在事业单位登记名录内？（中管院已撤销）
+2. 证书是否由人社部或其下属单位发放？（该中心已声明从未发放）
+3. 是否用"低价诊断 + 高价套餐"的结构？（12.9 → 89 → 3980）
+4. 是否对不同问题给出同一套"严重"诊断？（记者复测即暴露）
+5. 是否拦截未成年人？（03 中未拦截）
+6. 是否有真实随访结局，而不只是"学员成功反馈"截图？</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-06-D-课程与论文精读">
+<h1>D｜课程与论文精读（12、13）</h1>
+<blockquote>
+<p>这一组是"怎么学"，与 A/B 组的前沿研究形成基础→进阶的梯度。
+对应原文：<code>../原文/D-课程与论文精读/</code></p>
+</blockquote>
+<hr />
+<h2>12｜B 站 · 吴恩达机器学习课程中文合集（146 P）</h2>
+<p><strong>原文</strong>：<code>12-B站-吴恩达机器学习课程合集.md</code> ｜ UP 主「吴恩达AI_AndrewNg」(UID 3493134768016008)
+<strong>页面数据</strong>（2026-11-13 抓取）：播放 4,777,264 ｜ 收藏 97,019 ｜ 点赞 35,619 ｜ 投币 24,724 ｜ 评论 2,610 ｜ 146 条视频</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>标题自称"<strong>【官方中英】</strong>2025年公认最好的【吴恩达机器学习课程】附课件、代码及实战项目"。</li>
+<li>内容形态：146 P 合集，逐周课程；简介提到"课程配套作业与习题见评论区"。</li>
+<li>分区：人工智能 / 机器学习 / 深度学习。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#b26a00"><strong>C+</strong></span>。页面可访问、数据真实（播放量与收藏量为平台计数）。但两点存疑：</li>
+<li>账号名 <code>吴恩达AI_AndrewNg</code> <strong>看起来像官方，但账号名可自定义</strong>，本轮没有找到平台认证标识或与 DeepLearning.AI / Coursera 的官方关联证据；</li>
+<li>标题里的"官方""2025年公认最好"属于<strong>平台化标题写法</strong>，"公认最好"无任何评选依据。</li>
+<li><strong>内容：B（就课程本体而言）</strong>。吴恩达的机器学习课程（2022 版 Machine Learning Specialization，或更早的 CS229 公开课）本身是成熟教材，内容大概率是其译制/搬运版；<strong>翻译与课件质量取决于上传者，不是原作者</strong>。</li>
+<li><strong>风险提示</strong>：</li>
+<li>若为搬运，"配套作业与习题见评论区"通常指向网盘/公众号导流，<strong>链接失效与版权问题都常见</strong>；</li>
+<li>学习时以 Coursera / DeepLearning.AI 官方渠道的作业环境为准，B 站版本适合"过一遍概念"。</li>
+<li><strong>未核</strong>：是否为 2022 版 Specialization（含 TensorFlow 实操）还是 2011 版 CS229（含 Octave 作业），从简介无法判断——这两版难度与工具链差别很大，<strong>选课前需点开第 1 P 确认</strong>。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>当作"免费过一遍吴恩达课"的入口可以；把它当"官方渠道"或"最佳课程"就过头了。</p>
+<hr />
+<h2>13｜B 站 · 李沐「论文精读」GNN/GCN 专题</h2>
+<p><strong>原文</strong>：<code>13-B站-李沐GNN论文精读.md</code> ｜ UP 主「跟李沐学AI」(UID 1567748478，简介"BosonAI 联合创始人")
+<strong>页面数据</strong>（2026-11-13 抓取）：播放 725,562 ｜ 收藏 23,592 ｜ 点赞 18,706 ｜ 投币 17,250 ｜ 评论 852</p>
+<h3>📝 说了什么（要点）</h3>
+<ol>
+<li>标题："零基础多图详解图神经网络（GNN/GCN）【论文精读】"。</li>
+<li>简介只给了两个信息：配套资源 <code>https://github.com/mli/paper-reading</code>（本轮已验证返回 200），以及字幕由用户 I3IANG 制作。</li>
+<li>定位：属于「跟李沐学AI」的论文精读系列，逐段讲论文并配图解释。</li>
+</ol>
+<h3>🔎 可信度</h3>
+<ul>
+<li><strong>出处：</strong><span style="color:#1a7f37"><strong>A-</strong></span>。李沐是前亚马逊首席科学家、BosonAI 联合创始人，账号简介与公开身份一致；配套 GitHub 仓库 <code>mli/paper-reading</code> 真实存在（200），是同一系列长期维护的资源库。<strong>这是本批链接里出处最扎实的一条非学术内容。</strong></li>
+<li><strong>内容：</strong><span style="color:#1a7f37"><strong>A-</strong></span>。论文精读属于"讲解类"，其准确性可由原论文直接校验；李沐系列的风格是逐段翻译 + 逐图解释，通常会在视频里指出论文的不足。扣分项：本视频的<strong>具体对应论文</strong>（大概率是 Kipf &amp; Welling 的 GCN，ICLR 2017）需点开确认，标题只写了 GNN/GCN。</li>
+<li><strong>适合谁</strong>：零基础想建立 GNN 直觉的人；不适合想直接拿代码落地的人（该系列偏"读懂论文"，不偏工程实现）。</li>
+</ul>
+<h3>💬 一句话评价</h3>
+<p>如果想在 1 小时内搞懂"图卷积为什么是这么写的"，这个系列是中文区最省时间的选择。</p>
+<hr />
+<h2>01｜work buddy（微信视频号）——未获取</h2>
+<p><strong>原文</strong>：<code>../原文/E-未获取/01-work-buddy-视频号.md</code></p>
+<h3>📍 情况</h3>
+<ul>
+<li>链接是微信视频号分享页（<code>weixin.qq.com/sph/AGj5fQFqkL</code>），302 跳转到 <code>channels.weixin.qq.com</code>。</li>
+<li>服务端只返回 2.7 KB 空壳 HTML，可见文本 13 个字符（"视频号"），跳转后标题为"视频号助手"。已试：原始链接、跳转后链接、浏览器 UA、微信内置浏览器 UA，四种组合都拿不到内容。</li>
+<li>视频标题、作者、发布时间、文案/字幕<strong>全部未知</strong>，因此无法判断"work buddy"是产品名、账号名还是视频标题的一部分。</li>
+</ul>
+<h3>🙋 建议（需你配合，二选一）</h3>
+<ol>
+<li>在微信里打开该链接，把视频文案/字幕（或截图）发我，我补进归档并做同样的归纳与核验；</li>
+<li>告诉我视频号名称或产品全名，我据此检索公开报道/官网，用外部资料侧写它的可信度。</li>
+</ol>
+<blockquote>
+<p>在拿到内容之前，这条不做任何结论，也不猜测它与"心域智护"或其他项目是否相关。</p>
+</blockquote>
+<hr />
+<h2>📊 本组小结</h2>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>出处</th>
+<th>内容</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12</td>
+<td>C+</td>
+<td>B</td>
+<td>免费过一遍吴恩达课；账号官方性未核实</td>
+</tr>
+<tr>
+<td>13</td>
+<td>A-</td>
+<td>A-</td>
+<td>建立 GNN 直觉，配套 mli/paper-reading</td>
+</tr>
+<tr>
+<td>01</td>
+<td>D</td>
+<td>—</td>
+<td>需登录，待补</td>
+</tr>
+</tbody>
+</table>
+<p>学习路径建议：<strong>13（GNN 直觉）→ 12（机器学习基础）→ 11（情感数据与基准）→ 04/06（对话系统与对齐）→ 15（领域地图）</strong>。</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-07-译文-外文五篇">
+<h1>外文文献译文（5 篇）</h1>
+<blockquote>
+<p>收录范围内语言为英文的 5 条链接（序号 07、08、09、10、11），标题与摘要逐段译成中文。
+翻译原则：以准确传达原意为先，专业术语首次出现时并列英文原词；不做意译美化、不补写原文没有的结论。
+原文见 <code>原文合集_15篇.md</code> 或 <code>原文/B-…/</code>、<code>原文/A-…/</code> 下对应文件。
+译文为人工对照原文翻译，未经原作者校订，正式引用请以英文原文为准。</p>
+</blockquote>
+<hr />
+<h2>07｜MLlm-DR：面向可解释抑郁识别的多模态大语言模型</h2>
+<p><strong>原文标题</strong>：MLlm-DR: Towards Explainable Depression Recognition with MultiModal Large Language Models
+<strong>作者</strong>：Wei Zhang, Juan Chen, En Zhu, Wenhong Cheng, YunPeng Li, Yanbo J. Wang
+<strong>载体</strong>：arXiv:2507.05591（cs.AI），v1 2025-07-08，v2 2026-03-18
+<strong>原文链接</strong>：https://arxiv.org/abs/2507.05591</p>
+<h3>🈶 摘要译文</h3>
+<p>自动抑郁诊断的目标是分析访谈视频中的多模态信息，以预测受试者的抑郁评分。已有研究往往没有清楚说明这些评分是如何得出的，这限制了此类方法在临床实践中的采用。大语言模型（LLM）的出现为可解释的抑郁诊断提供了一条可能的路径，但当前能够处理多模态数据的 LLM 并未在访谈数据上训练过，直接使用时诊断表现较差。</p>
+<p>本文提出一种新的多模态大语言模型 MLlm-DR，它能够理解多模态信息输入，并支持可解释的抑郁诊断。MLlm-DR 集成了一个较小的 LLM 与一个轻量查询模块（lightweight query module，LQ-former）。具体而言，较小的 LLM 被设计用于生成抑郁评分及相应的评估理由（evaluation rationales）；为了在保持实用性的同时增强其面向领域特定任务的逻辑推理能力，我们构建了一个稳健的训练数据集对其微调。与此同时，LQ-former 从语音与视觉数据中提取与抑郁相关的特征，帮助模型处理多模态信息，从而实现全面的抑郁诊断。我们的方法在两个基于访谈的基准数据集 CMDC 与 E-DAIC-WOZ 上取得了当前最优（state-of-the-art）结果，证明了其有效性与优越性。</p>
+<h3>🔤 术语注记</h3>
+<ul>
+<li>"explainable"：本文指模型同时输出评分与理由，属于"事后可解释"而非因果可解释。</li>
+<li>"LQ-former"：借鉴 Q-Former 结构的轻量查询模块，用于把语音/视觉特征压缩成 LLM 可用的少量 query token。</li>
+<li>"state-of-the-art"：作者自述结论，摘要中未给出具体指标数值。</li>
+</ul>
+<hr />
+<h2>08｜DepressionLLM：具备情感与因果意识、基于基础模型的抑郁检测</h2>
+<p><strong>原文标题</strong>：DepressionLLM: Emotion- and causality-aware depression detection with foundation models
+<strong>作者</strong>：Shiyu Teng, Jiaqing Liu, Hao Sun, Yue Huang, Rahul Kumar Jain, Shurong Chai, Ruibo Hou, Tomoko Tateyama, Lanfen Lin, Lang He, Yen-Wei Chen
+<strong>载体</strong>：<em>Displays</em>（Elsevier），第 92 卷，文章号 103304，2026 年 4 月
+<strong>原文链接</strong>：https://doi.org/10.1016/j.displa.2025.103304（正文在付费墙后；摘要取自作者单位机构库公开版本）</p>
+<h3>🈶 摘要译文</h3>
+<p>抑郁是一种复杂的心理健康问题，常通过语音、面部表情与语言中细微的多模态信号反映出来。然而，现有基于大语言模型（LLM）的方法在整合这些不同模态并提供可解释洞察方面存在局限，制约了其在真实世界与临床环境中的效果。</p>
+<p>本研究提出一个新框架，利用基础模型（foundation models）实现可解释的多模态抑郁检测，流程分为三个阶段：第一，使用预训练语言模型（GPT-4o）生成富含情感与因果线索的伪标签（pseudo-labels），把训练信号扩展到真实标签之外；第二，在一个粗粒度学习阶段，使用另一个模型（Qwen2.5）捕捉抑郁水平、情绪状态与推断理由之间的关系；第三，在细粒度微调阶段，通过多模态提示融合模块（multimodal prompt fusion module）融合视频、音频与文本输入，构建统一的抑郁表征。</p>
+<p>我们在基准数据集 E-DAIC、CMDC 与 EATD 上评估该框架，在抑郁检测与因果推理两类任务上相较当前最优方法均取得稳定提升。通过将基础模型与多模态视频理解相结合，本工作为心理健康分析提供了一种稳健且可解释的方案，推动了多模态 AI 在临床与真实场景中的应用。</p>
+<h3>🔤 术语注记</h3>
+<ul>
+<li>"pseudo-labels"：用强模型生成、未经人工确认的标签，用于扩充训练信号；其质量直接决定效果上限。</li>
+<li>"causality-aware"：文中指引入因果推理线索，不等于因果推断（causal inference）意义上的可识别因果效应。</li>
+</ul>
+<hr />
+<h2>09｜Emotion-LLaMA：基于指令微调的多模态情感识别与推理</h2>
+<p><strong>原文标题</strong>：Emotion-LLaMA: Multimodal Emotion Recognition and Reasoning with Instruction Tuning
+<strong>作者</strong>：Zebang Cheng, Zhi-Qi Cheng, Jun-Yan He, Jingdong Sun, Kai Wang, Yuxiang Lin, Zheng Lian, Xiaojiang Peng, Alexander Hauptmann
+<strong>载体</strong>：arXiv:2406.11161（cs.AI, cs.MM）；v1 2024-06-17；页面注明已被 NeurIPS 2024 接收
+<strong>原文链接</strong>：https://arxiv.org/abs/2406.11161</p>
+<h3>🈶 摘要译文</h3>
+<p>准确的情感感知对人机交互、教育、心理咨询等多种应用至关重要。然而，传统的单模态方法往往无法刻画真实世界情感表达的复杂性——情感本质上是多模态的。此外，现有多模态大语言模型（MLLM）在整合音频、识别细微面部微表情方面仍面临挑战。</p>
+<p>为解决上述问题，我们提出 MERR 数据集，包含 28,618 条粗粒度与 4,487 条细粒度标注样本，覆盖多样化的情感类别。该数据集使模型能够从多种场景中学习，并泛化到真实应用。在此基础上，我们提出 Emotion-LLaMA 模型，通过情感专用编码器（emotion-specific encoders）将音频、视觉与文本输入无缝整合；把特征对齐到共享空间，并使用经指令微调的改造版 LLaMA 模型，显著增强了情感识别与推理能力。</p>
+<p>大量评测显示，Emotion-LLaMA 优于其他 MLLM：在 EMER 基准上取得最高的线索重叠度（Clue Overlap，7.83）与标签重叠度（Label Overlap，6.25），在 MER2023-SEMI 挑战赛上取得 0.9036 的 F1 分数，并在 DFEW 数据集的零样本评测中取得最高的 UAR（45.59）与 WAR（59.37）。</p>
+<h3>🔤 术语注记</h3>
+<ul>
+<li>"Clue Overlap / Label Overlap"：生成式情感解释的评价指标，衡量生成文本与参考答案在关键线索词、标签词上的重合度，不是分类准确率。</li>
+<li>"UAR / WAR"：非加权平均召回率（Unweighted Average Recall）与加权平均召回率（Weighted Average Recall），情感识别中常用的类别不均衡稳健指标。</li>
+</ul>
+<hr />
+<h2>10｜它听，也看见了：把视觉理解融入音频语言模型的多模态抑郁检测</h2>
+<p><strong>原文标题</strong>：It Hears, It Sees too: Multi-Modal LLM for Depression Detection By Integrating Visual Understanding into Audio Language Models
+<strong>作者</strong>：Xiangyu Zhao, Yaling Shen, Yiwen Jiang, Zimu Wang, Jiahe Liu, Maxmartwell H Cheng, Guilherme C Oliveira, Robert Desimone, Dominic Dwyer, Zongyuan Ge
+<strong>载体</strong>：arXiv:2511.19877（cs.MM, cs.CV, cs.LG, eess.AS），v1 2025-11-25
+<strong>原文链接</strong>：https://arxiv.org/abs/2511.19877</p>
+<h3>🈶 摘要译文</h3>
+<p>抑郁是全球最常见的心理健康障碍之一。近年来，语音、视频与文本转写等多模态数据被越来越多地用于构建 AI 辅助的抑郁评估系统。大语言模型凭借强大的语言理解与泛化能力进一步推动了这一领域。然而，常规 LLM 仍以文本为中心，无法处理音频与视觉模态中丰富的非言语线索，而这些线索正是心理健康评估的关键组成部分。多模态 LLM 提供了一条有前景的路径，但针对心理学应用定制的模型仍然很少。</p>
+<p>本研究提出一种新的多模态 LLM 框架用于抑郁检测：在音频语言模型上增强视觉理解能力，并在时间戳层面（timestamp level）对齐视听特征。这种细粒度对齐改善了对跨模态时间动态的建模，同时降低了对大规模训练数据与算力的需求。在 DAIC-WoZ 数据集上的实验表明，该模型优于单模态方法与以往的多模态方法。此外，该框架可扩展以纳入更多生理信号，为超越心理健康的更广泛临床应用铺路。</p>
+<h3>🔤 术语注记</h3>
+<ul>
+<li>"timestamp-level alignment"：把音视频两路特征按同一时间轴对齐，是本文声称降低数据与算力需求的关键设计。</li>
+<li>"DAIC-WoZ"：AVEC 系列中常用的抑郁访谈数据集，样本量小，结论对划分方式敏感。</li>
+</ul>
+<hr />
+<h2>11｜AffectGPT：面向多模态大模型情感理解的新数据集、模型与基准</h2>
+<p><strong>原文标题</strong>：AffectGPT: A New Dataset, Model, and Benchmark for Emotion Understanding with Multimodal Large Language Models
+<strong>作者</strong>：Zheng Lian, Haoyu Chen, Lan Chen, Haiyang Sun, Licai Sun, Yong Ren, Zebang Cheng, Bin Liu, Rui Liu, Xiaojiang Peng, Jiangyan Yi, Jianhua Tao
+<strong>载体</strong>：PMLR v267（第 42 届国际机器学习大会 ICML 2025 论文集）
+<strong>原文链接</strong>：https://proceedings.mlr.press/v267/lian25a.html</p>
+<h3>🈶 摘要译文</h3>
+<p>多模态大语言模型（MLLM）的出现，把多模态情感识别（MER）推进到新的层次：从朴素的判别式任务，走向具备高级视频理解能力与自然语言描述能力的复杂情感理解。然而，当前社区既缺少带有密集、描述性情感标注的大规模数据集，也缺少以多模态为中心、能充分释放 MLLM 情感理解潜力的框架。</p>
+<p>为此，我们建立了面向 MLLM 情感理解的新基准，包含一个新数据集（MER-Caption）与一个新模型（AffectGPT）。借助基于模型的众包数据采集策略，我们构建了迄今规模最大的描述性情感数据集，覆盖 115K 个样本、超过 2K 个细粒度情感类别。我们还提出 AffectGPT 模型，通过前置融合（pre-fusion）操作增强多模态整合。最后，我们提出 MER-UniBench——一个统一基准，其评价指标同时适配典型 MER 任务与 MLLM 的自由形式自然语言输出风格。大量实验表明，AffectGPT 在多种 MER 任务上表现稳健。我们已公开代码与数据集以推进情感理解研究：https://github.com/zeroQiaoba/AffectGPT 。</p>
+<h3>🔤 术语注记</h3>
+<ul>
+<li>"descriptive emotion annotations"：要求标注不仅给类别，还要用自然语言描述情绪及其成因，这与传统分类标注不同。</li>
+<li>"pre-fusion"：在送入 LLM 之前完成跨模态融合，而非依赖 LLM 内部隐式对齐。</li>
+<li>"MER-UniBench"：统一评测，指标同时覆盖分类类任务与生成类任务。</li>
+</ul>
+<hr />
+<h2>⚠️ 翻译说明与局限</h2>
+<ol>
+<li>以上 5 篇均为<strong>摘要级</strong>翻译：07、09、10、11 抓取的是 arXiv/PMLR 摘要页，08 抓取的是机构库公开摘要。正文（方法与实验细节）未逐段翻译，如需正文译文请另行说明。</li>
+<li>摘要中的数字与"最优/SOTA"表述均为<strong>作者自述</strong>，本译文照译，不代表已验证（验证情况见 <code>分析/</code> 下各篇"可信度"小节）。</li>
+<li>各篇作者名单均按 arXiv / PMLR 页面原样转写（含缩写与姓名拼写），未做归并或翻译。</li>
+<li>术语译名采用国内情感计算领域通行译法（如 Theory of Mind 译"心智理论"、modality 译"模态"、zero-shot 译"零样本"），首次出现保留英文。</li>
+</ol>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-08-原文-A-AAAI26-ESCA-情感支持对话">
+<h1>04-AAAI26-ESCA-情感支持对话</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>04</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>AAAI-26｜ESCA：让情感支持既能选对策略，也能说得到位</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://mp.weixin.qq.com/s/mpscpgpFQe-LsqYiABvjGw</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>微信公众号 gh_f454fbd1aa6d（未显示昵称）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-10-27 16:00</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl（微信内置浏览器 UA）→ #js_content 正文提取</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p><b>📌 一句话概括</b></p>
+<p>情感支持对话不只要生成听起来温暖的话，还要在合适的时机选择合适的支持策略。ESCA把策略规划与策略表达拆成两个可学习模块：先综合求助者的情绪、信任、对话行为和改变阶段选策略，再用检索知识与可学习软提示引导冻结的 LLM 更充分地表达策略；作者报告其在模拟对话目标达成率和多项回复指标上优于对比方法。</p>
+<p><b>📄 1. 论文信息</b></p>
+<p><b>📑 Paper</b>：ESCA: An Emotional Support Conversation Agent for Enhancing Reasonable Strategy Planning and Effective Expression</p>
+<p><b>🏆 Conference</b>：The Fortieth AAAI Conference on Artificial Intelligence（AAAI-26）</p>
+<p><b>🎯 Task</b>：多轮情感支持对话（Emotional Support Conversation, ESC），通过支持性对话缓解求助者的负面情绪并推动其应对问题。</p>
+<p><b>🧠 Core Idea</b>：显式建模求助者状态来规划策略，再训练一个策略对齐的 prompt generator，把策略指令、外部知识和对话上下文压成软提示，交给基础 LLM 生成回复。</p>
+<p><b>🔗 Resources</b>：论文（https://ojs.aaai.org/index.php/AAAI/article/view/38807）；代码（https://github.com/outsider-lj/ESCA）</p>
+<p><b>🎯 2. 背景与问题</b></p>
+<p>情感支持对话的目标不是单轮答疑，而是在多轮互动中帮助求助者逐渐缓解情绪、理解处境并找到应对方式。现有工作分别改善了策略规划或回复生成：规划器常根据话题、上下文或情绪选策略，生成器则通过知识、示例或更强的语言模型提升回复质量。论文指出，两处仍有断点：只看上下文和情绪，可能忽略求助者是否信任支持者、是否准备采取行动；即使策略选对了，简单地把策略名称写进 prompt，也不保证回复真的能体现该策略。</p>
+<p><b>⚠️ 挑战一｜策略取决于求助者所处的互动状态</b></p>
+<p>相同的问题在不同阶段需要不同回应。高负面情绪、低信任、尚未准备行动时，直接给建议可能显得冒进；信任建立、求助者进入准备阶段后，行动建议才更可能有帮助。若规划器只读话题或情绪，策略容易不合时宜。</p>
+<p><b>⚠️ 挑战二｜“选了策略”不等于“表达了策略”</b></p>
+<p>回复可以和上下文相关，却没有做到该策略应有的支持功能。例如，建议策略需要提供具体、可用的信息；肯定与安慰则需要表达理解、确认感受。通用 LLM 未必掌握这些 ESC 场景下的表达模式。</p>
+<p><b>❓ 核心问题</b></p>
+<p>能否让支持系统既根据求助者状态合理规划下一步，又让最终回复具体、自然地实现所选策略？</p>
+<p><b>💡 3. 核心洞察</b></p>
+<p>作者的切入点是：把“当前该做什么”和“该怎么把它说出来”作为相互关联、但需要分别建模的两件事。</p>
+<p><b>💡 Insight 1｜策略选择需要比情绪更完整的状态</b></p>
+<p>作者把情绪强度、信任程度、改变阶段和对话行为一起纳入规划。情绪反映当下困扰，信任影响建议能否被接受，改变阶段表示行动准备度，对话行为则帮助理解求助者此刻是在陈述、提问还是反馈。这样做也让策略选择更容易解释。</p>
+<p><b>🧠 Insight 2｜策略表达需要“内容支撑”，而不只是策略标签</b></p>
+<p>策略指令告诉模型目标，但相关知识和上下文才提供可说的具体内容。作者因此将策略指令、检索到的知识和对话历史共同送入可训练的 prompt generator，生成软提示来引导基础模型。</p>
+<p><b>🔗 从洞察到方法</b></p>
+<p>ESCA 先用轻量策略规划器读状态与对话历史，再按策略类型检索知识、形成指令，最后由软提示模块整合这些信息。规划器负责“选什么”，prompt generator 负责“怎样让 LLM 表达得更充分”；在线强化学习进一步优化后者。</p>
+<p><b>🧩 4. 方法介绍</b></p>
+<p>ESCA 由状态抽取、策略规划、知识增强的提示生成和基础 LLM 回复组成。训练数据来自 ESConv：作者用多个 LLM 为对话轮次补充状态标签，再分别监督训练策略规划器和 prompt generator；之后通过模拟求助者的在线交互，用 PPO 继续优化 prompt generator。</p>
+<p><b>🧭 方法流程概览</b></p>
+<p>① <b>状态抽取与策略规划</b>：从对话历史提取四类求助者状态，与历史表示融合后预测支持策略。 ② <b>知识与指令准备</b>：根据策略类型从 PsyQA、ER 等资源检索支持知识；上下文类策略还使用当前主题摘要，并生成对应指令。 ③ <b>软提示生成与回复</b>：prompt generator 融合指令、知识和对话历史，输出软提示；冻结的基础 LLM 据此生成回复。</p>
+<p>关键在于，规划和表达并非一个端到端黑盒：策略预测可以单独查看，回复模块再利用与策略相匹配的内容线索补足表达。</p>
+<p><span style="color:#888888">ESCA 整体框架：状态感知策略规划、知识检索与软提示生成协同工作</span></p>
+<p>图 1：策略规划器预测策略。prompt generator 将指令、知识和对话历史编码为软提示，输入基础 LLM。</p>
+<p><b>🔧 模块 1：求助者状态建模与策略规划</b></p>
+<p>作者建模四种状态：情绪强度为 1–5 的离散值，数值越高表示负面情绪越强；信任程度也为 1–5，由支持者可靠性、支持者回应能力和求助者感知可理解性三个维度的均值转换得到；改变阶段采用跨理论模型的五阶段（前意向、意向、准备、行动、维持）；对话行为包括问候、提问、反馈、事实陈述、观点陈述、情绪陈述、命令、认可和其他。</p>
+<p>这些状态由基础 LLM 根据当前对话抽取，并与对话历史一起送入策略规划器。规划器使用 RoBERTa-large 编码四类状态，通过注意力给各状态特征分配权重，再与对话表示拼接，经过前馈网络和 softmax 得到支持策略分布，选择概率最高的策略。形式上可概括为：</p>
+<p>状态标签由三个 LLM 独立标注并投票；三者结果不同时再用 DeepSeek-R1 判定。作者报告 100 个样本的人工检查准确率约为 87.67%–94.67%，但 Fleiss’ 在情绪、改变阶段、行为和信任上分别为 0.60、0.58、0.55 和 0.33。尤其信任标注的一致性偏低，说明“信任”虽然有用，却也是这套状态建模中较不稳的一环。</p>
+<p><b>🔧 模块 2：按策略类型检索外部知识</b></p>
+<p>不同策略需要不同内容支撑。论文把策略粗分为上下文相关、情绪相关和信息相关三类：上下文相关策略包括提问、复述/释义等；情绪相关策略包括肯定与安慰、反映感受；信息相关策略包括自我披露、提供建议和信息。</p>
+<p>-</p>
+<p><b>信息类策略</b>：从 PsyQA 问答库检索相关知识。</p>
+<p>-</p>
+<p><b>情绪类策略</b>：从 ER 单轮对话资源检索支持性内容。</p>
+<p>-</p>
+<p><b>上下文类策略</b>：由基础 LLM 总结当前轮次的核心话题，作为上下文线索。</p>
+<p>知识库以句向量建立索引，再根据求助者当前话语的语义相似度取 top-k 内容。这里的检索不是直接把长段材料塞进最终 prompt，而是把知识表示交给下一个模块压缩和融合。</p>
+<p><b>🔧 模块 3：策略对齐的 Prompt Generator</b></p>
+<p>作者借鉴 Q-Former 的结构，为指令和知识分别设置可学习 query。query 与对话历史表示先经过 self-attention，再分别对指令和知识表示做 cross-attention；经残差连接、层归一化和前馈网络后，得到两组软提示 token。两组 token 与对话表示共同作为基础 LLM 的输入。</p>
+<p>这一步针对的不是“让模型知道策略名字”，而是把策略相关信息变成模型更容易利用的连续表示。prompt generator 通过回复数据进行监督微调，基础 LLM 参数保持冻结。</p>
+<p><b>🔧 模块 4：监督微调与在线强化学习</b></p>
+<p>训练分两步。第一步分别训练策略规划器和 prompt generator：规划器用交叉熵预测策略；prompt generator 以真实支持者回复做自回归负对数似然训练。第二步让 ESCA 与 LLaMA3.3-70B-instruct 模拟的求助者交互，由一个 LLM critic 按回复是否很好地执行策略给出 1、0.5 或 0 的奖励，再用 PPO 更新 prompt generator，并训练价值网络估计长期回报。</p>
+<p>实验配置中，基础 LLM 为 LLaMA2-7B-chat，策略规划器为 RoBERTa-large。论文的策略规划器仍采用监督学习，在线 RL 优化的是 prompt generator；这一区分很关键，不能把本文概括成“用强化学习训练策略规划”。</p>
+<p><b>📊 5. 实验结果</b></p>
+<p><b>✅ ① 所提方法是否有效？</b></p>
+<p>实验使用扩展标注后的 ESConv，按 8:1:1 划分训练、验证和测试集。回复生成比较 PAL、CauESC、D2RCU、DKPE、COOPER；策略规划比较 PPDPP、DPDP。生成结果报告 Distinct-1/2/3、BLEU-3/4、ROUGE-L，并对 100 段测试对话进行人工偏好比较。策略规划则在最多 10 轮的交互中报告平均轮数 AT 和成功率 SR@10。</p>
+<p><b>📈 结果亮点</b></p>
+<p>-</p>
+<p><b>回复多样性</b>：ESCA 的 Distinct-1/2/3 为 6.15、30.51、55.82，三项均为比较模型中最高。</p>
+<p>-</p>
+<p><b>回复相似度指标</b>：BLEU-3、BLEU-4、ROUGE-L 分别为 4.24、2.50、17.87；其中 BLEU-3/4 落后于 D2RCU 的 4.61/2.68，ROUGE-L 落后于 DKPE 的 18.51。因此结果不是所有自动指标都领先。</p>
+<p>-</p>
+<p><b>策略规划与目标达成</b>：ESCA 的 AT 为 8.96、SR@10 为 47.44%；相较表中最强基线 DPDP（LLaMA-13B）的 9.58 轮、32.31%，成功率高 15.13 个百分点，平均轮数少 0.62 轮。</p>
+<p>-</p>
+<p><b>人工偏好</b>：对 D2RCU，ESCA 在“安慰”维度的胜/负/平为 53%/37%/10%，整体为 50%/44%/6%；对 COOPER，整体为 70%/18%/12%。三位标注者的 Fleiss’ 为 0.42，属于一般一致性。</p>
+<p><span style="color:#888888">自动回复指标</span></p>
+<p>图 2：论文 Table 1 自动回复指标。</p>
+<p><span style="color:#888888">人工偏好</span></p>
+<p>图 3：人工偏好比较。</p>
+<p><span style="color:#888888">对话目标达成率和平均轮数</span></p>
+<p>图 4：目标达成结果。</p>
+<p><b>🔬 ② 为什么有效？</b></p>
+<p>消融实验分别去掉状态信息、知识、prompt generator 或在线 RL。完整模型得到 AT 8.96、SR 47.44%；去掉在线 RL 后 SR 为 44.61%；去掉 prompt generator 后 SR 为 32.31%，同时回复指标明显下降；去掉知识后 SR 为 40.33%；不使用状态信息时 AT 为 9.33、SR 为 37.31%。这些结果支持各组件都有贡献，其中 prompt generator 和多方面状态建模对目标达成尤其明显。</p>
+<p><b>🔍 关键证据</b></p>
+<p>-</p>
+<p><b>状态信息有帮助</b>：去掉状态后，成功率从 47.44% 降至 37.31%，平均轮数从 8.96 增至 9.33。</p>
+<p>-</p>
+<p><b>知识与软提示各自有贡献</b>：去掉知识后 SR 降至 40.33%；移除 prompt generator 后降至 32.31%，并出现回复更长但更不聚焦、推理时间增加的现象。</p>
+<p>-</p>
+<p><b>在线 RL 有增益但幅度较小</b>：在其余组件保留时，加入 RL 后 SR 从 44.61% 提至 47.44%，AT 从 9.17 降至 8.96；BLEU-4 和 ROUGE-L 也从 2.28、17.74 提至 2.50、17.87。</p>
+<p><span style="color:#888888">ESCA 组件消融</span></p>
+<p>图 5：消融结果。各组件对不同指标的影响并不完全一致；例如，不含 RL 的一行 Distinct-1 略高于完整模型。</p>
+<p><b>⚠️ ③ 有什么不足？</b></p>
+<p><b>⚠️ 当前局限</b></p>
+<p>-</p>
+<p><b>状态抽取稳定性不足</b>：训练标签来自多模型标注与投票，但真实交互时由基础LLM用固定one-shot prompt抽取状态；准确率和鲁棒性仍需提高。信任标签的 也提示其定义和标注边界值得进一步验证。</p>
+<p>-</p>
+<p><b>知识检索可能带来噪声</b>：PsyQA条目可能较长，简单检索会引入不相关内容；作者计划用模型摘要和过滤，但当前版本尚未解决。</p>
+<p>-</p>
+<p><b>生成评估仍有限</b>：人工评估仅100段对话，整体一致性；自动指标主要衡量多样性或与参考回复的重合，无法单独证明回复更安全、更适切或真正有帮助。</p>
+<p><b>🚀 6. 总结与思考</b></p>
+<p>ESCA 针对情感支持对话中的两个互补问题提出模块化方案：以求助者多维状态和对话历史规划支持策略，再通过知识增强的软提示模块帮助基础 LLM 充分表达策略。实验显示，这套组合在作者设定的模拟目标达成任务上显著提升成功率，并在回复多样性、部分相似度指标和人工偏好比较中取得较好结果。它的主要贡献是把“策略是否合理”与“策略是否表达出来”放进同一系统，但证据强度仍受标注质量、自动评测和模拟求助者设定限制。</p>
+<p>我认为这篇工作的价值不在于“LLM 会安慰人了”，而在于把支持行为拆成可检查的决策和表达环节；这也让下一步可以更明确地追问：状态判断是否可靠、所选策略是否适合当事人、回复是否真的改善体验。</p>
+<p><b>🎯 核心思路：状态感知地规划，内容支撑地表达</b></p>
+<p>① 选择策略时，应把信任和行动准备度等互动状态纳入考虑； ② 生成回复时，要为策略提供可用知识和上下文，而非只给策略标签； ③ 论文的模拟成功率是系统能力证据，不等同于真实情绪疗效。</p>
+<p><b>🧭 未来可能的发展方向</b></p>
+<p>-</p>
+<p><b>🔭 提高状态判断的可靠性</b>：改进信任和改变阶段的操作化定义，报告跨标注者、跨模型和真实交互中的一致性，并让系统表达不确定度。</p>
+<p>-</p>
+<p><b>🔭 用真实用户评估支持效果</b>：在安全、伦理审查和用户知情的前提下，测量用户感知、短期情绪变化、策略适切性及潜在负面影响，而不只依赖 LLM 模拟与参考回复相似度。</p>
+<p>-</p>
+<p><b>🔭 让知识检索更短、更相关、可追溯</b>：对检索内容做相关性过滤和摘要，检查其是否与所选策略及用户情境一致，并明确记录知识来源。</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-09-原文-A-ICLR26-HitEmotion与TMPO-心智理论情感推理">
+<h1>05-ICLR26-HitEmotion与TMPO-心智理论情感推理</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>05</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>ICLR 2026｜新加坡国立大学：用心智理论重新定义多模态情感推理</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://mp.weixin.qq.com/s/_tn-5V4FCESe5dlpVyNyzw</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>微信公众号：Today读什么</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-10-30 21:51</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl（微信内置浏览器 UA）→ #js_content 正文提取</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p><b>原文可点击文末「阅读原文」查看。</b></p>
+<p>一个人明明在微笑，心里却可能非常失望；另一个人看起来正在生气，实际只是担心朋友的安全。同样的表情，在不同处境下可能代表完全不同的情绪。</p>
+<p>设想两个朋友约好一起参加活动，其中一个人临时离开，没有解释原因。留下的人可能认为自己被故意忽视，因此感到难过。但如果他知道朋友是为了准备惊喜才离开，相同的事件就可能引发完全不同的情绪。</p>
+<p>理解其中的区别，需要的不只是观察表情和语气，还需要判断当事人知道什么、相信什么，以及如何理解他人的行为。</p>
+<p>现代多模态大语言模型（Multimodal Large Language Model，MLLM）已经能够识别笑容、分析语调，也能根据视频和对话预测情绪。但它们未必真正理解情绪产生的心理过程。模型可以准确回答“这个人很难过”，却可能无法解释为什么难过，或者忽略不同人物对同一事件存在不同认知。</p>
+<p><span style="color:#2457ff">识别一个人表现出了什么情绪，与理解这个人为什么会产生这种情绪，是两种不同层次的能力。</span></p>
+<p>ICLR 2026 的论文 <span style="color:#fa5151"><b>Unveiling the Cognitive Compass: Theory-of-Mind-Guided Multimodal Emotion Reasoning</b></span> 沿着这一问题提出 HitEmotion 和 TMPO。</p>
+<p>作者首先建立一个按照心理认知深度组织的情感理解基准，研究模型究竟在哪个阶段开始失去判断能力。随后，引入 Theory of Mind（ToM，心智理论），让模型显式推断人物的信念、意图和心理状态，再通过监督微调与强化学习优化推理过程。</p>
+<p>研究希望推动多模态情感理解从表面线索识别，进一步走向对人物心理状态的结构化推断。</p>
+<h3><span style="color:#fa5151"><b>Motivation</b></span></h3>
+<p>多模态情感计算长期关注如何从语言、声音和视觉中识别情绪。面对一段视频，模型可以根据人物表情判断开心或难过，也可以结合语气和语言内容，区分愤怒、惊讶和讽刺。</p>
+<p>随着多模态大模型的发展，研究任务已经不再局限于简单分类。模型还需要理解幽默、判断说话者的立场、解释情绪变化，以及寻找引发某种情绪的具体事件。</p>
+<p>但这些任务需要的能力并不相同。</p>
+<p>判断一个人是否微笑，主要依赖视觉感知；理解一句话为什么具有讽刺意味，需要比较字面表达与实际意图；解释人物为什么突然愤怒，则可能需要追踪先前发生的事件，以及人物对事件的理解。</p>
+<p>过去的情感评测往往将这些任务分别组织成独立数据集。模型可以在表情识别中取得很高分数，却在情绪原因推断中失败，而总体准确率很难说明这种差异究竟来自哪里。</p>
+<p>普通 Chain-of-Thought（CoT，思维链）也没有完全解决问题。模型虽然能够生成一段看似合理的解释，但其中的心理状态可能只是根据最终答案补充出来的，并没有真正考虑人物的认知差异。</p>
+<p>作者因此引入心理学中的心智理论。ToM指个体理解自己和他人心理状态的能力，包括信念、愿望、意图、知识和情绪，并利用这些状态解释或者预测行为。</p>
+<p>对于情感推理而言，ToM提供了一条更加明确的分析路径：先观察人物接收到什么信息，再推断其如何理解当前处境，最后解释相应情绪为什么产生。</p>
+<h3><span style="color:#fa5151"><b>现象剖析：模型知道人物在生气，却可能不知道他为什么生气</b></span></h3>
+<p>设想一段多人对话。</p>
+<p>甲向乙提出一个问题，乙没有立即回答，而是转身离开。甲看起来很不满。模型根据表情和语气，可以判断甲正在生气。</p>
+<p>但如果进一步询问甲为什么生气，答案就不再只取决于可观察的情绪信号。</p>
+<p>甲可能认为乙故意无视自己，也可能认为乙不愿意继续合作。即使乙实际只是没有听到问题，甲仍然可能因为错误的理解而产生负面情绪。</p>
+<p>情绪由人物所处的客观环境和主观认知共同影响。不同人物看到相同事件，也可能因为掌握的信息不同而形成不同判断。</p>
+<p>论文认为，现有评测对这种认知深度缺少清晰区分。</p>
+<p>为此，作者提出 HitEmotion，将多模态情感理解划分为三个层次。</p>
+<p><span style="color:#fa5151"><b>第一层是 Emotion Perception and Recognition（情绪感知与识别）。</b></span></p>
+<p>模型需要从面部表情、语音、图片和语言中识别直接呈现的情绪，例如判断说话者是否愤怒，或者识别图片传达的情感类别。</p>
+<p><span style="color:#fa5151"><b>第二层是 Emotion Understanding and Analysis（情绪理解与分析）。</b></span></p>
+<p>模型不仅需要识别情绪，还要理解情绪与具体人物、对象和交际意图之间的关系。例如，判断一句评价针对谁，或者理解某段对话为什么具有幽默效果。</p>
+<p><span style="color:#fa5151"><b>第三层是 Emotion Cognition and Reasoning（情绪认知与推理）。</b></span></p>
+<p>模型需要进一步解释情绪产生的原因，追踪情绪随事件变化的过程，并推断人物如何理解他人的行为。讽刺识别、情绪原因推断和情绪反转分析都属于这一层次。</p>
+<p>HitEmotion整合了24项已有任务，共20,114个样本，并按照认知复杂度组织为10项基础感知任务、8项理解分析任务和6项深层推理任务。</p>
+<p><span style="color:#2457ff">HitEmotion关注的不只是模型能否给出正确情绪标签，而是随着任务从观察表情走向理解心理原因，模型的能力究竟在哪里开始下降。</span></p>
+<p>需要注意，HitEmotion不是完全重新采集的数据集。作者主要整理已有公开数据，并通过统一格式和人工抽样检查建立分层评测体系。</p>
+<h3><span style="color:#fa5151"><b>核心解读：让情绪判断经过明确的心理状态推理</b></span></h3>
+<p>发现评测中的能力缺口以后，作者进一步提出 Theory-of-Mind Reasoning Chain Preference Optimization（TMPO，心智理论推理链偏好优化）。</p>
+<p>它不再要求模型从多模态输入直接跳到情绪标签，而是引导模型先分析能够观察到的证据，再推断人物的心理状态，最后得出情绪判断。</p>
+<p>不同任务使用不同深度的推理结构。</p>
+<p>对于基础情绪识别，模型主要整合表情、语气和语言中的情绪线索；对于复杂对话，需要进一步判断人物关系、交际目标和情绪针对的对象；对于情绪原因和讽刺推理，则要解释人物的信念、意图与事件之间的关系。</p>
+<p>例如，判断某个人是否因为朋友离开而生气，模型不应该只写“他皱眉，因此很生气”，还需要考虑人物是否认为朋友故意离开，以及这种判断如何影响情绪。</p>
+<p>但只设计推理模板，并不意味着模型会真正遵循其中的逻辑。</p>
+<p>作者首先利用大模型生成候选推理链，再根据真实标签进行筛选和纠正，并经过规范化与人工检查，形成用于训练的结构化推理数据。</p>
+<p>随后，以 Qwen2.5-Omni-7B 为基础模型执行监督微调（Supervised Fine-Tuning，SFT），让模型学习同时输出中间推理和最终答案。</p>
+<p>中间推理使用 <span style="color:#fa5151"><think></span> 标签表示，最终答案使用 <span style="color:#fa5151"><answer></span> 标签区分。模型因此不再只学习输出标签，而是学习按照任务所要求的顺序组织分析过程。</p>
+<p><span style="color:#2457ff">TMPO希望模型学习的不是一套固定的情绪解释，而是根据任务需要，先建立人物心理状态与情境之间的关系，再利用这些关系形成判断。</span></p>
+<h3><span style="color:#fa5151"><b>核心解读：为什么生成了推理过程，还需要强化学习？</b></span></h3>
+<p>监督微调能够教会模型按照模板输出推理，却不能保证推理内容始终正确。</p>
+<p>一个模型可能准确写出“人物的信念”“人物的意图”等步骤，却在后续分析中自相矛盾；也可能生成一段很有说服力的解释，最终答案却与真实标签不符。</p>
+<p>TMPO因此进一步采用 Group Relative Policy Optimization（GRPO，组相对策略优化）训练模型。</p>
+<p>它对同一个输入采样多个候选回答，再根据综合奖励比较这些回答，让模型逐渐偏向质量更高的推理结果。</p>
+<p>奖励包含四个部分：</p>
+<p><span style="color:#fa5151"><b>结构奖励</b></span>检查推理步骤是否符合当前任务要求；<span style="color:#fa5151"><b>内容奖励</b></span>根据真实标签评价最终答案；<span style="color:#fa5151"><b>过程奖励</b></span>鼓励使用信念、意图和愿望等ToM相关概念；<span style="color:#fa5151"><b>一致性奖励</b></span>利用另一个大模型检查推理是否存在内部矛盾，以及是否与多模态输入冲突。</p>
+<p>四种奖励共同作用，使模型不仅需要回答正确，还需要保持推理格式完整、内容相互一致。</p>
+<p>其中，内容正确性和逻辑一致性具有最高权重，过程奖励权重相对较低。原因在于，仅仅频繁使用心理学术语，并不能证明模型真的理解了人物状态。</p>
+<p>实际上，论文中的过程奖励主要依据ToM关键词出现情况计算，而不是真实心理状态的独立标注。因此，它更适合被视为一种引导模型使用心理概念的训练信号。</p>
+<p><span style="color:#2457ff">TMPO的改进不只来自让模型多写几步推理，而是通过训练奖励同时约束最终答案、推理结构和内容一致性。</span></p>
+<h3><span style="color:#fa5151"><b>图表深度解读</b></span></h3>
+<h5><span style="color:#fa5151"><b>情绪识别、情境理解和心理推理之间有什么区别？</b></span></h5>
+<p><span style="color:#fa5151"><b>画面描述：</b></span> 图中将24项任务划分为三个层次。第一层主要包含表情、语音和图像情绪识别，第二层涉及幽默理解、立场与人物关系分析，第三层则包含情绪原因推断、讽刺理解和情绪反转分析，并展示了不同层次的任务示例。</p>
+<p><span style="color:#fa5151"><b>深度解读：</b></span> 三层任务不只是按照难度简单排序，而是对应不同的认知要求。基础感知主要回答“表现出什么情绪”，情境理解进一步回答“情绪针对什么”，深层推理则需要解释“为什么产生这种情绪”。这样的划分使模型能力的不足可以被更具体地定位，而不只是通过一个总体分数判断模型是否擅长情感理解。</p>
+<h5><span style="color:#fa5151"><b>模型的心理状态推理链是怎样构建出来的？</b></span></h5>
+<p><span style="color:#fa5151"><b>画面描述：</b></span> 图中展示推理链数据构建过程。系统首先根据多模态输入和任务提示生成候选推理，再结合真实标签筛选与纠正错误结果，随后规范化推理步骤，最后通过人工验证形成用于训练的推理链。</p>
+<p><span style="color:#fa5151"><b>深度解读：</b></span> 原始情感数据通常只有任务输入和答案，并没有完整的人物心理状态推理标注。TMPO必须先补足中间监督信息，才能让模型学习明确的推理过程。图中也体现了这种监督的局限：推理链主要由大模型生成并经后续检查，不能直接视为真实人物心理活动的记录。</p>
+<h5><span style="color:#fa5151"><b>只要求模型逐步思考，为什么仍然不够？</b></span></h5>
+<p><span style="color:#fa5151"><b>画面描述：</b></span> Figure 5比较直接回答、普通CoT、基础ToM引导和完整ToM提示在深层情感推理任务中的表现。Table 6则逐步加入结构、内容、一致性和过程奖励，观察不同训练信号对三个认知层次的影响。</p>
+<p><span style="color:#fa5151"><b>深度解读：</b></span> 普通CoT虽然增加了推理文字，却不一定改善心理状态分析。加入任务相关的ToM概念以后，较强模型能够取得更稳定的提升。奖励消融则显示，仅有结构约束远远不够，加入答案正确性和逻辑一致性以后性能明显提高。心理推理不能只依靠格式和术语，还需要受到实际任务结果的约束。</p>
+<h3><span style="color:#fa5151"><b>实验结果说明了什么？</b></span></h3>
+<p>作者评估了17种多模态模型，覆盖不同规模的开源模型以及GPT、Gemini系列。</p>
+<p>HitEmotion首先揭示了一个明显现象：随着任务从情绪识别进入深层心理推理，模型整体表现下降。尤其在最高认知层次，六项任务的基线平均得分均未超过60，说明复杂情绪推理仍然存在明显不足。</p>
+<p>ToM提示本身也具有一定作用。例如，在情绪反转分析中，Gemini-2.5-Pro从41.22提升到52.78。但这种提升并不适用于所有模型，部分较弱模型在加入复杂推理提示后反而退化。</p>
+<p>经过完整TMPO训练以后，7B模型在24项任务中的16项取得最高结果。</p>
+<p>以深层任务为例，情绪解释得分从SFT阶段的62.36提升到GRPO后的72.27，讽刺检测从59.92提升到70.13，情绪反转分析从40.50提升到54.16。</p>
+<p>消融实验同样显示，增加内容奖励和一致性奖励带来的提升较为明显。仅使用结构奖励时，第三层平均得分为52.34；加入全部奖励后达到63.58。</p>
+<p><span style="color:#2457ff">实验说明，明确的心理状态推理结构能够改善复杂情绪任务，但真正稳定的提升还需要通过训练，让推理过程与最终答案保持一致。</span></p>
+<h3><span style="color:#fa5151"><b>为什么这项研究值得关注？</b></span></h3>
+<p>过去的大模型情感计算，往往把模型能否识别情绪作为主要评价标准。但真实的人际理解并不止于分类。</p>
+<p>一个人在愤怒时可能表现得很平静，在开心时也可能因为礼貌而隐藏情绪。只有理解人物知道什么、想要什么，以及如何解释他人的行为，模型才有机会对复杂情绪作出更加合理的判断。</p>
+<p>HitEmotion为这种差异提供了相对系统的评测方式，TMPO则尝试把心理状态推理从临时提示转化成经过训练的模型能力。</p>
+<p>不过，<span style="color:#fa5151"><b>推理链更加完整，不等于模型已经拥有真实的人类心智理论。</b></span></p>
+<p>论文中的推理监督主要来自模型生成和标签纠正，逻辑一致性也依赖另一个模型评价。这些方法能够改善可观察的回答质量，却不能直接证明生成的心理解释就是人物真实的心理过程。</p>
+<p>此外，模型仍然需要准确感知视觉、语音和语言信息。对于基础感知能力不足的模型，增加推理训练也无法完全补偿输入理解上的缺陷。</p>
+<p>因此，研究更适合被理解为一种面向情绪理解的认知结构化训练方法，而不是对机器真正理解人类心理的证明。</p>
+<h3><span style="color:#fa5151"><b>研究脉络：从情绪识别，到显式建模他人心理状态</b></span></h3>
+<p><span style="color:#fa5151"><b>1. Does the Chimpanzee Have a Theory of Mind?</b></span></p>
+<p>1978｜Behavioral and Brain Sciences</p>
+<p>提出心智理论研究的重要问题，推动对个体如何理解他人信念、意图和心理状态的系统研究。</p>
+<p><span style="color:#fa5151"><b>2. EmoBench: Evaluating the Emotional Intelligence of Large Language Models</b></span></p>
+<p>2024｜ACL</p>
+<p>基于心理学理论评估大模型的情绪理解与应用能力，说明简单的情绪识别不足以代表完整的情感智能。</p>
+<p><span style="color:#fa5151"><b>3. ToMBench: Benchmarking Theory of Mind in Large Language Models</b></span></p>
+<p>2024｜ACL</p>
+<p>建立系统的心智理论评测框架，研究语言模型理解信念、意图和社会认知的能力。</p>
+<p><span style="color:#fa5151"><b>4. MMToM-QA: Multimodal Theory of Mind Question Answering</b></span></p>
+<p>2024｜ACL</p>
+<p>将心智理论评测扩展到多模态环境，要求模型结合观察信息推断人物的目标、知识和信念。</p>
+<p><span style="color:#fa5151"><b>5. EmotionHallucer: Evaluating Emotion Hallucinations in Multimodal Large Language Models</b></span></p>
+<p>2025｜arXiv</p>
+<p>研究多模态模型在情绪理解中的幻觉问题，揭示心理学知识与真实多模态感知之间存在差距。</p>
+<p><span style="color:#fa5151"><b>6. Unveiling the Cognitive Compass: Theory-of-Mind-Guided Multimodal Emotion Reasoning</b></span></p>
+<p>2026｜ICLR</p>
+<p>通过分层情感基准与心智理论引导的推理优化，将情绪研究进一步推进到对人物心理状态和情绪原因的结构化分析。</p>
+<h3><span style="color:#fa5151"><b>总结一下</b></span></h3>
+<p>识别一个人的表情，和理解这个人为什么产生某种情绪，并不是同一回事。</p>
+<p>多模态大模型已经能够从视频、语音和文字中识别大量情绪线索，却仍然可能忽略人物的信念、意图以及对事件的主观理解。面对复杂的人际关系、讽刺表达和情绪变化，单纯依靠表面特征很难得到可靠判断。</p>
+<p>HitEmotion把情感理解组织成从感知、分析到认知推理的三个层次，使模型的能力缺口更加容易被发现。TMPO进一步让模型显式生成心理状态推理链，并通过监督微调和强化学习提高答案正确性与逻辑一致性。</p>
+<p><span style="color:#2457ff">情感智能不只是知道一个人正在感受什么，还需要理解他如何看待眼前的世界，以及这种理解为什么会产生相应的情绪。</span></p>
+<p>论文尚未证明模型真正获得了人类心智理论，但提供了一种更加清晰的研究方向：让多模态情感计算从识别外部情绪信号，逐步走向解释人物内部心理状态与行为之间的关系。</p>
+<p><span style="color:#fa5151"><b>论文题目：</b></span> Unveiling the Cognitive Compass: Theory-of-Mind-Guided Multimodal Emotion Reasoning</p>
+<p><span style="color:#3f6f67">欢迎关注、分享与交流</span></p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-10-原文-A-arXiv-Emotion-LLaMA-多模态情感识别与推理">
+<h1>09-arXiv-Emotion-LLaMA-多模态情感识别与推理</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>09</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>Emotion-LLaMA: Multimodal Emotion Recognition and Reasoning with Instruction Tuning</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://arxiv.org/abs/2406.11161</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>arXiv（cs.AI, cs.MM），NeurIPS 2024 接收</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2024-06-17</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl → arXiv 摘要页（abstract 区块）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>Abstract:Accurate emotion perception is crucial for various applications, including human-computer interaction, education, and counseling. However, traditional single-modality approaches often fail to capture the complexity of real-world emotional expressions, which are inherently multimodal. Moreover, existing Multimodal Large Language Models (MLLMs) face challenges in integrating audio and recognizing subtle facial micro-expressions. To address this, we introduce the MERR dataset, containing 28,618 coarse-grained and 4,487 fine-grained annotated samples across diverse emotional categories. This dataset enables models to learn from varied scenarios and generalize to real-world applications. Furthermore, we propose Emotion-LLaMA, a model that seamlessly integrates audio, visual, and textual inputs through emotion-specific encoders. By aligning features into a shared space and employing a modified LLaMA model with instruction tuning, Emotion-LLaMA significantly enhances both emotional recognition and reasoning capabilities. Extensive evaluations show Emotion-LLaMA outperforms other MLLMs, achieving top scores in Clue Overlap (7.83) and Label Overlap (6.25) on EMER, an F1 score of 0.9036 on MER2023-SEMI challenge, and the highest UAR (45.59) and WAR (59.37) in zero-shot evaluations on DFEW dataset.</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-11-原文-A-PMLR-AffectGPT-情感理解数据集与基准">
+<h1>11-PMLR-AffectGPT-情感理解数据集与基准</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>11</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>AffectGPT: A New Dataset, Model, and Benchmark for Emotion Understanding with Multimodal Large Language Models</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://proceedings.mlr.press/v267/lian25a.html</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>PMLR v267（ICML 2025 论文集）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2025</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl → PMLR 论文页（abstract 区块）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>The emergence of multimodal large language models (MLLMs) advances multimodal emotion recognition (MER) to the next level—from naive discriminative tasks to complex emotion understanding with advanced video understanding abilities and natural language description. However, the current community suffers from a lack of large-scale datasets with intensive, descriptive emotion annotations, as well as a multimodal-centric framework to maximize the potential of MLLMs for emotion understanding. To address this, we establish a new benchmark for MLLM-based emotion understanding with a novel dataset (MER-Caption) and a new model (AffectGPT). Utilizing our model-based crowd-sourcing data collection strategy, we construct the largest descriptive emotion dataset to date (by far), featuring over 2K fine-grained emotion categories across 115K samples. We also introduce the AffectGPT model, designed with pre-fusion operations to enhance multimodal integration. Finally, we present MER-UniBench, a unified benchmark with evaluation metrics tailored for typical MER tasks and the free-form, natural language output style of MLLMs. Extensive experimental results show AffectGPT’s robust performance across various MER tasks. We have released both the code and the dataset to advance research and development in emotion understanding: https://github.com/zeroQiaoba/AffectGPT.</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-12-原文-A-ICLR26-HitEmotion深度拆解-学术牛马小王">
+<h1>14-ICLR26-HitEmotion深度拆解-学术牛马小王</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>14</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>ICLR 2026｜HitEmotion与TMPO：从情感识别到心理状态推理</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://mp.weixin.qq.com/s/OdfUV39pmQxeOsr2Nx9qow</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>微信公众号：学术牛马小王</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-11-02 13:59</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl（微信内置浏览器 UA）→ #js_content 正文提取</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>这篇ICLR 2026论文研究多模态模型的情感推理。作者先整理出HitEmotion：20,114条实例，覆盖24项任务，按感知、理解、推理分层评测；随后在Qwen2.5-Omni-7B上训练TMPO，将任务相关的心智理论步骤用于监督微调与GRPO。正式版本报告，完整模型在其中16项任务上取得所比较设置中的最佳结果。阅读时值得同时看两条线：基准怎样区分情感能力，训练又怎样利用这些任务的推理结构。</p>
+<p><mark><b>01</b></mark></p>
+<p><b>｜论文来源</b></p>
+<p><b>【论文标题】</b></p>
+<p>Unveiling the Cognitive Compass: Theory-of-Mind–Guided Multimodal Emotion Reasoning</p>
+<p><b>【论文作者】</b></p>
+<p>Meng Luo、Bobo Li、Shanqing Xu、Shize Zhang、Qiuchan Chen、Menglu Han、Wenhao Chen、Yanxiang Huang、Hao Fei、Mong-Li Lee、Wynne Hsu。</p>
+<p><b>【论文地址】</b></p>
+<p>https://proceedings.iclr.cc/paper_files/paper/2026/hash/89ab43b626b480347dbaccda7be8aedb-Abstract-Conference.html</p>
+<p><b>【论文源码】</b></p>
+<p>https://github.com/Eurekaleo/Emotional-Intelligence</p>
+<p><b>【论文等级】</b></p>
+<p>ICLR 2026主会正式论文。按《中国计算机学会推荐国际学术会议和期刊目录（2026年）》第七版，ICLR属于人工智能领域CCF-A类会议。会议论文不使用中科院期刊分区表述。</p>
+<p>本文依据71页会议正式版本整理，图表保留原编号，仅裁切并调整显示尺寸。仓库公开了推理与评测相关资源，README还提及推理链数据生成；但目前核对的code目录未见SFT、GRPO完整训练入口，本文未验证训练复现。下文分类差值以百分点计，不将不同任务的指标混称为准确率。</p>
+<p><mark><b>02</b></mark></p>
+<p><b>｜论文背景</b></p>
+<p>识别一句话里的情感，和解释说话者为什么产生这种情感，所需的信息并不相同。表情、声音和词义可以支持直接分类；涉及讽刺、情感转折或交际意图时，还要处理人物知道什么、期待什么，以及表达与实际意图是否一致。仅给出一个情感标签，无法区分这些环节。</p>
+<p>已有评测也很难直接拼成统一答案。语音情感识别、幽默检测和情感原因抽取的标签、输出形式与评价口径各异。一个模型在某项分类任务领先，并不意味着它在解释原因或跟踪观点变化时同样可靠。作者据此提出分层诊断，而不是再用一个总分代替全部情感能力。</p>
+<p><span style="color:#888888">Figure 1：HitEmotion的三层任务组织与心智理论推理路径</span></p>
+<p><mark><b>03</b></mark></p>
+<p><b>｜方法动机</b></p>
+<p>作者将心智理论（Theory of Mind，ToM）用于组织推理：从可观察线索形成心理状态假设，再结合人物视角和上下文，得到任务答案。它与通用的“逐步思考”提示不同，要求中间步骤具有任务含义，例如先定位对话中的情感对象，再判断该对象与说话者意图的关系。</p>
+<p>但有了步骤名称，模型仍可能填入没有依据的内容。训练因而分为两个阶段：SFT先学习推理结构，GRPO再同时约束答案、格式和一致性。论文还保留了一个轻量的术语奖励。其作用需要单独检验，因为出现belief或intention这样的词，并不等于已经正确推断了信念或意图。</p>
+<p><mark><b>04</b></mark></p>
+<p><b>｜论文方法</b></p>
+<p><b>4.1 HitEmotion：三层任务，而非单一情感分类集</b></p>
+<p>基准包含24项任务、20,114条实例。第一层有10项，覆盖表情情感、图像情感、语音及歌曲情感等识别任务；第二层有8项，加入幽默、意图、方面情感和多方对话；第三层有6项，涉及情感诱因、解释、笑声原因、情感原因对、讽刺及情感翻转。</p>
+<p><span style="color:#888888">Table 2：24项任务的数据来源、实例数量和原始评价指标</span></p>
+<p>这里需区分任务数与数据集数。正文写汇集24个数据集，附录C.1则写22个数据集构成24项任务；本文采用后者区分，不称其为24个全新采集数据集。作者说明评测采用源数据集的官方测试划分，并抽取各来源约三分之一进行双人交叉核验。该安排不等于已经排除了基础模型预训练污染。</p>
+<p><b>4.2 推理链从哪里来</b></p>
+<p>数据生成分工见图3及附录D.4。视频和任务提示交给GPT-5，声音线索由Qwen2-Audio提取；每条输入保留三条候选推理链，再检查它们预测的标签。若预测与标注不符，Gemini-2.5-Pro会接收标注进行修正。最后才是GPT-4o的格式归一化和两名计算机方向博士生的审核。因此，训练链已经使用答案信息筛选，不能视为模型未知答案时自然产生的推理记录。</p>
+<p><span style="color:#888888">Figure 3：候选推理生成、标签对齐修正、格式整理及人工审核流程</span></p>
+<p>SFT使用约10,000组提示—回答，GRPO另用约10,000条提示。对准备复现的读者，还缺少一组需要确认的信息：这些训练样本来自哪些源划分，选择检查点所用的验证集如何构成，以及它们与评测集怎样做实例级去重。正文和附录没有把这几项完整列出，不能据现有披露判断是否存在泄漏。</p>
+<p><b>4.3 任务相关提示与两阶段适配</b></p>
+<p>提示随层级变化。第一层从多模态信号归纳即时情感；第二层把情感与对象、角色及交际目标联系起来；第三层加入原因归因、时间变化和人物之间的视角推断。模型分别在think和answer标签块输出推理及答案。</p>
+<p>骨干采用Qwen2.5-Omni-7B，在8张A800 80GB显卡上训练。SFT学习率为1×10⁻⁵、训练2个epoch；GRPO学习率为1×10⁻⁶、训练1个epoch，每条提示采样8个回答，KL系数0.001。训练视频取16帧，推理允许16至64帧；因此不能把所有测试都理解为固定16帧输入。</p>
+<p><b>4.4 四项奖励各自约束什么</b></p>
+<p>总奖励为R=0.4R_structure+1.0R_content+0.1R_process+1.0R_consistency。结构项检查XML标记及任务步骤是否按序出现；内容项以任务指标比较答案与标注；过程项统计推理链中不同ToM关键词的归一化数量；一致性项由LLM检查内部矛盾及与输入冲突的事实，无冲突时取1.0，否则取0.1。</p>
+<p>从实现看，R_process奖励的是词汇覆盖，R_consistency奖励的是裁判认可的一致性；二者都属于代理信号。附录D.1没有逐步核验“人物信念是否推断正确”的外部标注。因此，奖励消融适合回答各项约束是否有助于任务得分，不能单凭它判断模型内部是否形成了人的心智理论。</p>
+<p><mark><b>05</b></mark></p>
+<p><b>｜实验结果</b></p>
+<p>主比较包含13个开源模型与4个闭源模型，另列作者的SFT及GRPO结果。Table 3使用ACC；Table 4中的DPTM、MABSA、MQE使用Micro-F1，其余列以原表为准；第三层还包含LLM语义评分和EMF。各任务先分开读取，不跨列计算“统一准确率”。</p>
+<p><b>5.1 感知与识别：训练收益是否覆盖基础任务</b></p>
+<p><b>为什么做：</b> 先检查模型能否识别输入中的直接情感信号，避免只展示较复杂任务的收益。</p>
+<p><b>对应图表：</b> Table 3。</p>
+<p><b>实验结果：</b> 多模态情感识别MER从SFT的66.23升至GRPO的75.41，语音情感识别SPER从55.43升至65.91。相对原始骨干的56.08、44.60，两项分别提高19.33、21.31个百分点。但表情情感FESD为77.12，低于Gemini-2.5-Pro加ToM提示的79.11；SPER也低于后者的69.31。</p>
+<p><b>实验结论：</b> 适配改善了这些基础任务，但没有让7B模型在所有感知任务上领先。推理优化的收益应与基础感知能力的上限分别讨论。</p>
+<p><span style="color:#888888">Table 3：第一层10项感知与识别任务的ACC比较</span></p>
+<p><b>5.2 理解与分析：能否利用对象、意图和对话关系</b></p>
+<p><b>为什么做：</b> 第二层加入情境关系，检查识别之外的分析能力，以及训练收益是否只集中于单一任务。</p>
+<p><b>对应图表：</b> Table 4。</p>
+<p><b>实验结果：</b> SFT到GRPO后，情感相关意图分析EBIA由23.11变为32.82，多方对话情感识别MDER由51.83变为61.08，均为ACC。多模态五元组抽取MQE的Micro-F1由37.24升至45.68。完整模型在立场检测MSD为71.56，仍低于Gemini-2.5-Pro加ToM提示的73.79。</p>
+<p><b>实验结论：</b> 收益不局限于情感类别预测，也出现在关系分析与结构抽取中；但不同任务的绝对难度与指标不同，不能据这些数字给任务排出统一的难度顺序。</p>
+<p><span style="color:#888888">Table 4：第二层8项理解与分析任务，ACC与Micro-F1分列读取</span></p>
+<p><b>5.3 认知与推理：情感原因和变化能否得到更好解释</b></p>
+<p><b>为什么做：</b> 第三层直接考察论文的主要目标，包括原因推断、解释生成和情感翻转。</p>
+<p><b>对应图表：</b> Table 5，评价口径同时参照附录Table 12、15及D.5。</p>
+<p><b>实验结果：</b> 情感诱因推理EER从60.10升至73.13；情感原因对抽取MECPE从26.33升至39.34；情感翻转SFA从40.50升至54.16。三列分别为ACC、Micro-F1和EMF，不能都称为分类准确率。EI与LR达到72.27、72.45，附录结果表将其标为LLM评价。</p>
+<p><b>实验结论：</b> GRPO后的六列均高于SFT。Table 5表题没有单列EI、LR的LLM指标例外，D.5又以LR举例说明词重叠评价，存在说明不一致。本文保留分数并以附录表头说明口径，不据此断言人工解释质量已提高同样比例。</p>
+<p><span style="color:#888888">Table 5：第三层6项认知与推理结果，生成评分不与分类准确率混用</span></p>
+<p><b>5.4 只加ToM提示：哪些模型受益，哪些会退化</b></p>
+<p><b>为什么做：</b> 不更新模型参数，只改变提示，可区分推理提示本身的效果与训练带来的效果。</p>
+<p><b>对应图表：</b> Figure 6；完整数值分别见附录Table 10至15。</p>
+<p><b>实验结果：</b> GPT-4.1的情感解释EI由57.67变为69.00，情感翻转SFA由36.73变为47.75。开源模型并非同样受益：Qwen2.5-Omni-7B在多方对话MDER从37.68降至35.55，情感诱因EER从51.25降至40.62。</p>
+<p><b>实验结论：</b> 同一套提示在GPT-4.1的EI、SFA上有收益，在Qwen2.5-Omni-7B的MDER、EER上却退化。这里的差异发生于不更新参数的条件下，说明后续SFT和GRPO的动机不能只用闭源模型的提示收益来替代。</p>
+<p><span style="color:#888888">Figure 6：代表模型加入ToM提示前后的逐任务雷达图</span></p>
+<p><b>5.5 提示设计：通用CoT与ToM结构有什么区别</b></p>
+<p><b>为什么做：</b> Figure 5保留同一个模型，依次更换直接作答、通用CoT、ToM-Init和ToM-Full。ToM-Init只给认知路径，ToM-Full再加入相关术语，用这个对照区分步骤设计与术语引导。</p>
+<p><b>对应图表：</b> Figure 5，报告第三层平均表现。</p>
+<p><b>实验结果：</b> 图中Qwen2.5-VL-32B的直接回答基线为43.41，普通CoT相对它下降0.3分，ToM-Init和ToM-Full则分别提高5.3、6.3分。GPT-4.1基线为51.47，三种提示依次提高1.3、5.8、7.1分。图上的增量均相对于Vanilla，不是相邻柱之间的差值。</p>
+<p><b>实验结论：</b> 四个模型的ToM-Init均高于普通CoT，ToM-Full又各高于ToM-Init 1.0至1.5分。主要差距出现在引入任务路径之后，补充术语带来较小的追加收益。这一提示实验没有分离术语数量与具体措辞的影响。</p>
+<p><span style="color:#888888">Figure 5：第三层任务中Vanilla、普通CoT与两种ToM提示的消融</span></p>
+<p><b>5.6 奖励组成：格式、答案、术语和一致性如何配合</b></p>
+<p><b>为什么做：</b> 用逐项加入和单项移除，检查四种奖励是否只是在重复约束同一件事。</p>
+<p><b>对应图表：</b> Table 6。</p>
+<p><b>实验结果：</b> 第一层只使用结构奖励为56.61；再加入答案、一致性和过程项后，依次为62.63、65.12、65.82。完整模型在第二、三层为64.70、63.58。保留其余三项而移除结构项时，三层结果降至56.20、55.10、55.05。</p>
+<p><b>实验结论：</b> 正确答案奖励带来较大增量，一致性约束继续改善，关键词项的追加收益较小。移除结构项也涉及输出格式与解析，不能全部归因于情感知识丢失。另需注意：Table 4完整模型的8项分数简单平均为62.195，而此表L2写64.70，论文未解释聚合方式或设置是否改变。本文将其作为消融表报告值，不与主表均值等同。</p>
+<p><span style="color:#888888">Table 6：四项奖励的累加消融与结构项移除结果</span></p>
+<p><b>5.7 过程奖励权重：多用心理术语是否更有效</b></p>
+<p><b>为什么做：</b> 过程项按词汇计分，权重过高可能改变表达偏好，需要检查它是否持续带来任务收益。</p>
+<p><b>对应图表：</b> Table 7。</p>
+<p><b>实验结果：</b> 固定结构项权重0.4，过程项权重取0、0.1、0.3、0.5，Score依次为63.99、64.70、63.65、62.31。0.1在测试范围内最高，比不使用该项高0.71分；从0.1增至0.5则下降2.39分。</p>
+<p><b>实验结论：</b> 关键词约束适合作为较轻的辅助信号。表中测到的是最终得分变化，没有直接统计关键词堆叠率；不能把作者对退化原因的解释当作另一次已量化实验。</p>
+<p><span style="color:#888888">Table 7：过程奖励权重扫描，其他奖励条件固定</span></p>
+<p><b>5.8 结构奖励权重：格式约束是否越强越好</b></p>
+<p><b>为什么做：</b> XML与步骤检查有助于解析，但过强的模板偏好也可能限制输出，需要寻找合理范围。</p>
+<p><b>对应图表：</b> Table 8。</p>
+<p><b>实验结果：</b> 固定过程项权重0.1，结构项取0.1、0.4、0.7、1.0时，Score为61.25、64.70、64.10、63.80。最佳测试点为0.4。附录将Table 7、8的Score称为三层平均，64.70也确实等于Table 6完整配置的三个层级均值；这一算术关系本身没有冲突，但仍受前述L2与主表衔接疑点的影响。</p>
+<p><b>实验结论：</b> 扫描显示适中权重更合适，不支持无限增强格式惩罚。参数扫描表不能替代逐层明细，也不足以确定哪一类任务最先受到强模板约束的影响。</p>
+<p><span style="color:#888888">Table 8：结构奖励权重扫描，Score按原文汇总口径记录</span></p>
+<p><b>5.9 类别级诊断：一个任务分数会掩盖哪些差别</b></p>
+<p><b>为什么做：</b> 附录将任务结果进一步分到类别，检查总体分数是否掩盖某些情感难以识别的问题。</p>
+<p><b>对应图表：</b> Figure 15；Figure 8至21为其他任务的类别图，Figure 22、23另给出Gemini-2.5-Pro的混淆矩阵。</p>
+<p><b>实验结果：</b> 以SPER的类别F1为例，Gemini-2.5-Pro在Neutral为78.1、Happy为75.4，Calm却只有25.0。GPT-4.1的Calm为12.5。较高的总体表现并没有消除相邻或低唤醒情感类别上的差距。</p>
+<p><b>实验结论：</b> 类别图补充了主表ACC，二者不能互相替换。图15比较的是所列基线模型，并未加入TMPO列，因此不能从该图推断TMPO已经解决Calm类别的识别问题。</p>
+<p><span style="color:#888888">Figure 15：语音情感识别SPER的类别F1热力图，不含TMPO结果</span></p>
+<p><b>5.10 自动评判可靠性：LLM评分与人工判断是否一致</b></p>
+<p><b>为什么做：</b> GPT-4.1在评测中承担两项工作：给开放式解释作语义判断，以及从不合规输出中提取预测标签。前者会影响生成任务分数，后者会改变分类标签的解析结果，附录E.2分别用人工标注检查。</p>
+<p><b>对应图表：</b> 附录E.2原文摘图；该节没有单列编号表格，配图保留这段核验说明。</p>
+<p><b>实验结果：</b> 第一次抽查覆盖第三层自由生成数据的三分之一，GPT-4.1与人工判断的一致率为98.5%，Cohen's Kappa=0.98。第二次分层抽取2,000条格式不合规回答，核对抽出的标签是否符合人工理解，一致率为96.5%，Kappa=0.96。两个样本池与核验对象不同，不能合并成一个评测准确率。</p>
+<p><b>实验结论：</b> 人工对照支持继续使用这两项自动评测处理。需要保留的范围是“这两类抽查样本中的判断一致性”；它没有测量解释是否忠实于模型决策，也没有给出其他任务的逐类裁判误差。</p>
+<p><span style="color:#888888">附录E.2原文：自由生成评价与标签抽取的人工一致性核验</span></p>
+<p><b>5.11 案例对照：写出推理链之后还会不会判错</b></p>
+<p><b>为什么做：</b> 固定输入，分别观察改变提示及改变模型时，答案和中间描述如何变化，为汇总分数提供具体对照。</p>
+<p><b>对应图表：</b> Figure 75、78；附录Figure 72至80包含三类比较：相同提示跨模型、同一模型换提示，以及统一ToM提示跨模型。</p>
+<p><b>实验结果：</b> Figure 75中，Gemini-2.5-Pro从Moderate Negative改为与标注一致的Strongly Negative，但生成解释引用的具体措辞与图中问题转写并不完全对应，不能只看绿色勾号。Figure 78的歌曲标签为Calm，Qwen2.5-VL-32B在ToM提示下仍回答Sadness；Gemini-2.5-Pro回答Calm。</p>
+<p><b>实验结论：</b> 提示可以改变预测，却不能保证解释中的每一句都有依据；不同模型也可能沿相似结构走向不同标签。这些是定性例子，不能据其数量估算总体错误率。</p>
+<p><span style="color:#888888">Figure 75：同一模型直接回答与ToM提示的对照，标签改正不等于解释全部可靠</span></p>
+<p><span style="color:#888888">Figure 78：统一ToM提示下的跨模型歌曲情感判断，Calm与Sadness仍有混淆</span></p>
+<p><mark><b>06</b></mark></p>
+<p><b>｜结论</b></p>
+<p>这篇论文以HitEmotion组织多模态情感任务，将感知与识别、理解与分析、认知与推理分开评测。配套的TMPO通过任务相关ToM提示、推理链监督及GRPO，联合约束输出结构、答案正确性、心理术语和逻辑事实一致性。</p>
+<p>实验覆盖三个任务层级、不同模型的提示收益、奖励组成与权重、类别表现、自动评价可靠性和案例对照。训练后的模型在多项任务上取得改善，ToM提示的效果则随模型和任务变化。全文由此给出一条从分层评测到推理训练的研究路径，同时以各任务的具体结果呈现情感识别与情感推理之间的差别。</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-13-原文-B-EMNLP26-AuroraCounsel-多智能体心理咨询">
+<h1>06-EMNLP26-AuroraCounsel-多智能体心理咨询</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>06</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>论文被EMNLP 2026主会收录，我们的心理咨询模型都做了什么？</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://mp.weixin.qq.com/s/ph0Xn8XBYS6Fdunm6g43yQ</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>微信公众号：luocont（作者团队自述）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-10-28 17:55</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl（微信内置浏览器 UA）→ #js_content 正文提取</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<h3><b>[EMNLP 2026 Main] AuroraCounsel: A Multi-Agent Large Language Model Collaboration Framework for Psychological Counseling</b></h3>
+<p>我们的论文 <span style="color:#009874"><b>AuroraCounsel: A Multi-Agent Large Language Model Collaboration Framework for Psychological Counseling</b></span> 已被 <span style="color:#009874"><b>EMNLP 2026 主会录用</b></span>。</p>
+<ul>
+<li>
+<p>本项目仓库正式公开论文与海报，欢迎关注、引用和反馈。</p>
+</li>
+<li>
+<p>作者：<span style="color:#009874"><b>Yuean Zhu</b></span>、<span style="color:#009874"><b>Zichao Song</b></span>、<span style="color:#009874"><b>Haiming Luo</b></span>；单位：<span style="color:#009874"><b>嘉应学院（Jiaying University）</b></span>。</p>
+</li>
+</ul>
+<h4><b>简介</b></h4>
+<p>心理健康服务需求持续增长，但专业咨询师资源仍然有限。现有大语言模型虽然在心理咨询和情感支持场景中展现出潜力，却常常难以处理复杂情绪动态，也难以稳定遵循具有理论依据的咨询过程。</p>
+<p>针对这些问题，我们提出 <span style="color:#009874"><b>AuroraCounsel</b></span>，一个面向心理咨询的多智能体协作框架。AuroraCounsel 将咨询过程拆分为情绪感知、结构化心理反思和引导式回复生成三个阶段，并通过 <span style="color:#009874"><b>情绪驱动的动态路由</b></span> 在正向和负向情绪输入之间自适应选择推理路径。对于负向情绪输入，系统会启动结构化反思，避免不必要的计算开销；同时，我们使用 <span style="color:#009874"><b>Grouped Relative Policy Optimization（GRPO）</b></span> 优化引导智能体，使提问频率、支持策略和干预节奏更符合 REBT 等咨询理论。</p>
+<p>与现有方法相比，AuroraCounsel 的主要特点包括：</p>
+<ul>
+<li>
+<p><span style="color:#009874"><b>Sense → Reflect → Guide：</b></span> 三个专门智能体协同完成情绪识别、心理推理和咨询回复。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Step-by-step CoT：</b></span> 基于 PsyDTCorpus，由专家参与设计提示，重构具有专业认知逻辑的推理链。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Six-reward GRPO：</b></span> 通过阶段提问率、非提问、重复、长度、多问题区间和区间内稳定性六类奖励，对齐咨询对话节奏。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Emotion-driven routing：</b></span> 仅在检测到负向情绪时触发反思推理，在保持质量的同时减少约 <span style="color:#009874"><b>41% token 消耗</b></span>。</p>
+</li>
+</ul>
+<h4><b>论文与海报</b></h4>
+<p><b>资源</b><b>链接</b></p>
+<p>arXiv / ACL Anthology</p>
+<p>https://aclanthology.org/2026.emnlp-main.132/</p>
+<p>论文 PDF</p>
+<p>https://github.com/ananzhu/AuroraCounsel_open/blob/main/paper/AuroraCounsel_EMNLP2026.pdf</p>
+<p>海报 PDF</p>
+<p>https://github.com/ananzhu/AuroraCounsel_open/blob/main/poster/AuroraCounsel_EMNLP2026_A0.pdf</p>
+<p>GitHub</p>
+<p>https://github.com/ananzhu/AuroraCounsel_open</p>
+<p>模型开源地址</p>
+<p>https://huggingface.co/sunear/AuroraCounsel/tree/main</p>
+<h4><b>方法</b></h4>
+<p>AuroraCounsel 由三个核心模块组成：</p>
+<p><b>模块</b><b>角色</b><b>主要实现</b></p>
+<p><span style="color:#009874"><b>AC-Sense</b></span>感知单元基于 <span style="color:#009874">BERT-Base-Chinese</span> 与 <span style="color:#009874">MLP</span> 的情绪分类器，对来访者输入进行正向 / 负向情绪判断。</p>
+<p><span style="color:#009874"><b>AC-Reflect</b></span>认知核心基于 <span style="color:#009874">Qwen2.5-7B-Instruct</span>，在负向情绪触发后生成结构化推理链。</p>
+<p><span style="color:#009874"><b>AC-Guide</b></span>执行单元基于 <span style="color:#009874">Qwen2.5-7B-Instruct</span>，结合对话历史和推理链生成咨询回复，并通过 SFT + GRPO 对齐专业咨询节奏。</p>
+<h5><b>1. 情绪驱动的动态路由</b></h5>
+<p>系统首先使用 <span style="color:#009874">AC-Sense</span> 判断当前用户话语的情绪极性：</p>
+<ul>
+<li>
+<p><span style="color:#009874"><b>正向情绪：</b></span> 跳过反思模块，直接由 <span style="color:#009874">AC-Guide</span> 生成支持性回复。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>负向情绪：</b></span> 激活 <span style="color:#009874">AC-Reflect</span>，生成结构化心理推理链，再交由 <span style="color:#009874">AC-Guide</span> 生成回复。</p>
+</li>
+</ul>
+<p>这种路由机制能够在需要时保留显式心理推理，同时避免每一轮都执行额外推理，从而兼顾专业性与推理成本。</p>
+<h5><b>2. 结构化反思链</b></h5>
+<p><span style="color:#009874">AC-Reflect</span> 与心理学专家协作构建角色扮演提示，并基于 <span style="color:#009874">PsyDTCorpus</span> 重构推理数据。推理链覆盖四个专业维度：</p>
+<ul>
+<li>
+<p><span style="color:#009874"><b>Pattern Recognition：</b></span> 识别主导情绪、潜在情绪及其长期认知或关系模式。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Psychological Mechanism Analysis：</b></span> 追溯依恋、不安全感和家庭系统等深层心理机制。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Intervention Structure：</b></span> 形成认知重构、资源激活等可执行的干预框架。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Crisis Warning：</b></span> 识别自伤或伤害风险，并触发安全评估和专业转介协议。</p>
+</li>
+</ul>
+<h5><b>3. 六维奖励驱动的 GRPO 对齐</b></h5>
+<p>仅使用监督微调容易导致过度提问、单轮多问或重复追问，难以形成专业咨询的阶段性节奏。为此，AuroraCounsel 使用 GRPO 优化 <span style="color:#009874">AC-Guide</span>，奖励函数包含：</p>
+<ul>
+<li>
+<p><span style="color:#009874"><b>Phase-based Question Rate Reward：</b></span> 前 8 轮目标提问率为 <span style="color:#009874">[0.70, 1.00]</span>，第 9–16 轮为 <span style="color:#009874">[0.40, 0.70]</span>，之后为 <span style="color:#009874">[0.00, 0.40]</span>。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Non-question Reward：</b></span> 鼓励后期从追问转向解释、建议和情感支持。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Repetition Penalty：</b></span> 基于 2-gram Jaccard 相似度抑制重复回复。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Length Reward：</b></span> 将回复长度约束在 <span style="color:#009874">[35, 65]</span> token，最优长度设为 <span style="color:#009874">50</span>。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>Multi-question Penalty：</b></span> 当单轮问题数超过两个时施加渐进惩罚。</p>
+</li>
+<li>
+<p><span style="color:#009874"><b>In-zone Reward：</b></span> 鼓励提问率稳定在目标区间中心，减少对话节奏波动。</p>
+</li>
+</ul>
+<h4><b>数据与实验设置</b></h4>
+<p><b>数据 / 设置</b><b>规模与说明</b></p>
+<p>AC-Sense 情绪数据NLPCC 2014 语料与 7,000+ 条人工标注心理咨询对话融合；16,000 条训练、1,000 条测试。</p>
+<p>AC-Reflect 推理数据由心理学专家参与设计提示，基于 PsyDTCorpus 重构 2,400 个会话、44,000 轮对话。</p>
+<p>AC-Guide 训练数据PsyDTCorpus。SFT 后继续使用 GRPO 进行行为对齐。</p>
+<p>自动评估集60 个对话、1,100+ 轮，覆盖 PsyDTCorpus 的 12 个主题领域。</p>
+<p>人工评估5 位具有临床咨询认证的高校心理学教授，每个模型评估 240 轮。</p>
+<p>基座模型<span style="color:#009874">Qwen2.5-7B-Instruct</span>。</p>
+<p>对比模型Qwen2.5-7B、Qwen3-32B、Kimi-K2、DeepSeek-v3.2、MeChat、PsyChat、PsyDTLLM、CPsyCounX、MindChat、MultiAgentESC、Xinyuan 等。</p>
+<h4><b>实验结果</b></h4>
+<h5><b>人工专家评估</b></h5>
+<p>在 5 位心理学教授参与的盲评中，AuroraCounsel 在专业性、真实性和共情三个维度取得最高分，总分为 <span style="color:#009874"><b>9.81 ± 0.39</b></span>，高于最强基线 DeepSeek-v3.2 的 <span style="color:#009874"><b>9.09 ± 0.43</b></span>。</p>
+<p><b>模型</b><b>Comprehensiveness</b><b>Professionalism</b><b>Authenticity</b><b>Empathy</b><b>Safety</b><b>Total</b></p>
+<p>DeepSeek-v3.21.51 ± 0.102.42 ± 0.152.07 ± 0.132.09 ± 0.161.00 ± 0.009.09 ± 0.43</p>
+<p>Xinyuan1.32 ± 0.132.36 ± 0.171.81 ± 0.161.96 ± 0.151.00 ± 0.008.45 ± 0.54</p>
+<p><span style="color:#009874"><b>AuroraCounsel</b></span><span style="color:#009874"><b>1.39 ± 0.08</b></span><span style="color:#009874"><b>2.84 ± 0.11</b></span><span style="color:#009874"><b>2.20 ± 0.11</b></span><span style="color:#009874"><b>2.38 ± 0.13</b></span><span style="color:#009874"><b>1.00 ± 0.00</b></span><span style="color:#009874"><b>9.81 ± 0.39</b></span></p>
+<p>人工评估的评分者一致性为 <span style="color:#009874"><b>ICC(2,5) = 0.85</b></span>，自动评估与专家评分之间的 Pearson 相关系数为 <span style="color:#009874"><b>0.67</b></span>。</p>
+<h5><b>动态路由与消融</b></h5>
+<p><b>设置</b><b>Total</b><b>Token</b></p>
+<p>AuroraCounsel（完整框架）<span style="color:#009874"><b>9.81 ± 0.39</b></span><span style="color:#009874"><b>1,953 ± 99</b></span></p>
+<p>w/o AC-Sense（始终触发反思）9.79 ± 0.243,319 ± 152</p>
+<p>Only AC-Guide (GRPO)9.25 ± 0.441,169 ± 85</p>
+<p>Only AC-Guide (SFT)8.26 ± 0.45648 ± 43</p>
+<p>动态路由在几乎不损失总分的情况下，将 token 消耗从 <span style="color:#009874">3,319</span> 降至 <span style="color:#009874">1,953</span>，约减少 <span style="color:#009874"><b>41%</b></span>；反之，关闭路由会使计算成本增加约 70%。</p>
+<h5><b>MAGneT 协议评估</b></h5>
+<p>在 MAGneT 评估协议下，AuroraCounsel 取得最佳整体表现，其中：</p>
+<ul>
+<li>
+<p>CTRS Collaboration：<span style="color:#009874"><b>+11.8%</b></span></p>
+</li>
+<li>
+<p>CTRS Interpersonal：<span style="color:#009874"><b>+8.8%</b></span></p>
+</li>
+<li>
+<p>WAI Task：<span style="color:#009874"><b>+9.7%</b></span></p>
+</li>
+<li>
+<p>PANAS 正向情绪变化：<span style="color:#009874"><b>+3.0%</b></span></p>
+</li>
+</ul>
+<h5><b>AC-Sense 情绪识别</b></h5>
+<p>在 1,000 条留出测试样本上，<span style="color:#009874">AC-Sense</span> 的性能为：</p>
+<p><b>Accuracy</b><b>Precision</b><b>Recall</b><b>F1</b></p>
+<p><span style="color:#009874"><b>88.00%</b></span><span style="color:#009874"><b>88.10%</b></span><span style="color:#009874"><b>88.00%</b></span><span style="color:#009874"><b>87.99%</b></span></p>
+<h4><b>安全与使用边界</b></h4>
+<p>AuroraCounsel 是面向科研的心理咨询对话原型。尽管系统通过 <span style="color:#009874">AC-Reflect</span>、危机预警和人工评估机制提升安全性，模型输出 <span style="color:#009874"><b>不能用于医学诊断，也不能替代专业医疗决策或临床干预</b></span>。在真实应用前，需要引入专业监管、隐私保护、风险筛查和紧急转介机制。</p>
+<h4><b>联系方式</b></h4>
+<ul>
+<li>
+<p>Yuean Zhu: <span style="color:#009874">zhuyuean@jyu.edu.cn</span></p>
+</li>
+<li>
+<p>Zichao Song: <span style="color:#009874">songzichao084@gmail.com</span></p>
+</li>
+</ul>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-14-原文-B-arXiv-MLlm-DR-可解释抑郁识别">
+<h1>07-arXiv-MLlm-DR-可解释抑郁识别</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>07</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>MLlm-DR: Towards Explainable Depression Recognition with MultiModal Large Language Models</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://arxiv.org/abs/2507.05591</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>arXiv（cs.AI），v2 修订于 2026-03-18</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>v1 2025-07-08</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl → arXiv 摘要页（abstract 区块）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>Abstract:Automated depression diagnosis aims to analyze multimodal information from interview videos to predict participants' depression scores. Previous studies often lack clear explanations of how these scores were determined, limiting their adoption in clinical practice. While the advent of LLMs provides a possible pathway for explainable depression diagnosis, current LLMs capable of processing multimodal data lack training on interview data, resulting in poor diagnostic performance when used directly. In this paper, we propose a novel multimodal large language model (MLlm-DR) that can understand multimodal information inputs and supports explainable depression diagnosis. MLlm-DR integrates a smaller LLMs and a lightweight query module (LQ-former). Specifically, the smaller LLMs is designed to generate depression scores and corresponding evaluation rationales. To enhance its logical reasoning for domain-specific tasks while maintaining practicality, we constructed a robust training dataset to fine-tune it. Meanwhile, the LQ-former captures depression-related features from speech and visual data, aiding the model's ability to process multimodal information, to achieve comprehensive depression diagnosis. Our approach achieves state-of-the-art results on two interview-based benchmark datasets, CMDC and E-DAIC-WOZ, demonstrating its effectiveness and superiority.</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-15-原文-B-Displays-DepressionLLM-情感与因果抑郁检测">
+<h1>08-Displays-DepressionLLM-情感与因果抑郁检测</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>08</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>？（原文标题待补）</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://doi.org/10.1016/j.displa.2025.103304</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>Elsevier《Displays》第 92 卷 103304</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-04（在线页码）</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl → DOI 跳转 ScienceDirect（403）→ Crossref / Semantic Scholar / OpenAlex / 作者单位机构库</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>链接：https://doi.org/10.1016/j.displa.2025.103304
+（DOI 解析至 Elsevier / ScienceDirect：https://www.sciencedirect.com/science/article/pii/S0141938225003415）</p>
+<p>【抓取状态】原文正文位于 Elsevier 付费墙后（ScienceDirect 返回 HTTP 403），以下为经 Crossref、Semantic Scholar、OpenAlex 与作者单位机构库（藤田医科大学 Pure）核对一致的题录信息，以及机构库页面公开的英文摘要原文。该摘要即期刊正式摘要。</p>
+<p>【收录口径】本篇按"摘要级收录"结案，不再追正文（2026-11-13 20:22 定）。</p>
+<p>────────────────────────────
+题录（Crossref 主记录，2026-11-13 核对）</p>
+<p>Title:   DepressionLLM: Emotion- and causality-aware depression detection with foundation models
+Journal: Displays (Elsevier BV)
+Volume:  92
+Article number / Pages: 103304
+Published: 2026-04
+DOI:     10.1016/j.displa.2025.103304
+Type:    journal-article（同行评审论文）
+Authors: Shiyu Teng, Jiaqing Liu, Hao Sun, Yue Huang, Rahul Kumar Jain, Shurong Chai,
+         Ruibo Hou, Tomoko Tateyama, Lanfen Lin, Lang He, Yen-Wei Chen
+（作者单位为立命馆大学、藤田医科大学、浙江大学等，见机构库条目；Fujita Health University Pure 标注 "Externally published: Yes"）
+Scopus 被引：3 次（Fujita Pure 页面，2026-11 抓取）；Semantic Scholar 记录被引 6 次
+ASJC 分类：Human-Computer Interaction / Hardware and Architecture / Electrical and Electronic Engineering
+UN SDG：SDG 3 Good Health and Well-being</p>
+<p>────────────────────────────
+Abstract（英文原文，来源：藤田医科大学 Pure 机构库条目公开摘要）</p>
+<p>Depression is a complex mental health issue often reflected through subtle multimodal signals in speech, facial expressions, and language. However, existing approaches using large language models (LLMs) face limitations in integrating these diverse modalities and providing interpretable insights, restricting their effectiveness in real-world and clinical settings. This study presents a novel framework that leverages foundation models for interpretable multimodal depression detection. Our approach follows a three-stage process: First, pseudo-labels enriched with emotional and causal cues are generated using a pretrained language model (GPT-4o), expanding the training signal beyond ground-truth labels. Second, a coarse-grained learning phase employs another model (Qwen2.5) to capture relationships among depression levels, emotional states, and inferred reasoning. Finally, a fine-grained tuning stage fuses video, audio, and text inputs via a multimodal prompt fusion module to construct a unified depression representation. We evaluate our framework on benchmark datasets – E-DAIC, CMDC, and EATD – demonstrating consistent improvements over state-of-the-art methods in both depression detection and causal reasoning tasks. By integrating foundation models with multimodal video understanding, our work offers a robust and interpretable solution for mental health analysis, contributing to the advancement of multimodal AI in clinical and real-world applications.</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-16-原文-B-arXiv-ItHearsItSeesToo-视听融合抑郁检测">
+<h1>10-arXiv-ItHearsItSeesToo-视听融合抑郁检测</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>10</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>It Hears, It Sees too: Multi-Modal LLM for Depression Detection By Integrating Visual Understanding into Audio Language Models</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://arxiv.org/abs/2511.19877</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>arXiv（cs.MM, cs.CV, cs.LG, eess.AS）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2025-11</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>英文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl → arXiv 摘要页（abstract 区块）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>Abstract:Depression is one of the most prevalent mental health disorders globally. In recent years, multi-modal data, such as speech, video, and transcripts, has been increasingly used to develop AI-assisted depression assessment systems. Large language models have further advanced this field due to their strong language understanding and generalization capabilities. However, conventional LLMs remain text-centric and cannot process the rich non-verbal cues found in audio and visual modalities, which are critical components in mental health evaluation. While multi-modal LLMs offer a promising direction, few are tailored for psychological applications. In this study, we propose a novel multi-modal LLM framework for depression detection. Our approach augments an audio language model with visual understanding and aligns audio-visual features at the timestamp level. This fine-grained alignment improves modeling of temporal dynamics across modalities while reducing the need for extensive training data and computational resources. Experiments on the DAIC-WoZ dataset demonstrate that our model outperforms both single-modality approaches and previous multi-modal methods. Moreover, the proposed framework can be extended to incorporate additional physiological signals, paving the way for broader clinical applications beyond mental health.</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-17-原文-B-IEEE-TAC-心理健康情感语言处理综述">
+<h1>15-IEEE-TAC-心理健康情感语言处理综述</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>15</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>IEEE TAC综述: 面向心理健康全流程的大模型情感语言处理</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://mp.weixin.qq.com/s/K9eM6K6q0YWInof2Oi_O6w</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>微信公众号：ML_RSer（机器学习与推荐算法）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-11-11 08:00</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl（微信内置浏览器 UA）→ #js_content 正文提取</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p><span style="color:#888888"><b>嘿，记得给“</b></span><span style="color:#0052ff"><b>机器学习与推荐算法</b></span><span style="color:#888888"><b>”添加</b></span><span style="color:#d6a841"><b>星标</b></span></p>
+<p><b>TLDR:</b> 西北工业大学计算机学院吴佳伦等联合新加坡国立大学、南洋理工大学等机构完成的综述论文“Affective Language Processing for Mental Healthcare: A Survey of LLM-Based Approaches Across the Care Continuum”发表于IEEE Transactions on Affective Computing。论文以情感计算（Affective Computing）为核心视角，系统梳理大语言模型（Large Language Models, LLMs）在心理健康语言处理中的研究进展，提出贯穿心理健康连续照护流程的概念框架，构建“方法基础—服务应用—保障与治理”三层研究分类体系，并围绕六条研究主线总结技术进展、证据局限与未来方向。与侧重应用场景或模型能力的既有综述不同，该研究进一步关注一个具有临床意义的基础问题：大模型能否在具体交互情境中可靠地理解、追踪并恰当地回应个体情感，而不仅仅是生成流畅、看似具有共情性的文本？</p>
+<p><b>论文信息</b></p>
+<p><b>论文题目：</b> Affective Language Processing for Mental Healthcare: A Survey of LLM-Based Approaches Across the Care Continuum</p>
+<p><b>发表期刊：</b> IEEE Transactions on Affective Computing</p>
+<p><b>通讯作者：</b> Xuequn Shang、Erik Cambria、Mengling Feng</p>
+<p><b>主要合作单位：</b> 西北工业大学、新加坡国立大学、南洋理工大学</p>
+<p><b>一、研究背景：心理健康服务为何需要“情感感知”的大模型？</b></p>
+<p>心理健康服务具有鲜明的语言交互特征。无论是早期筛查、症状评估、风险研判，还是心理支持与持续随访，个体的情绪表达、认知评价、隐性痛苦与治疗关系，往往通过自然语言和多轮对话逐步呈现。与一般信息问答不同，同一表达在不同个体、文化背景及对话阶段中，可能对应截然不同的情感与临床含义。</p>
+<p>传统自然语言处理方法主要依赖情感分类、关键词识别和单轮文本预测，难以充分建模<b>隐含情感线索、跨轮情绪变化、共情回应与治疗联盟（Therapeutic Alliance）</b>等复杂特征。大语言模型在上下文理解、指令适应和多轮交互方面提供了新的技术基础，但其临床应用价值仍取决于情感理解的有效性、回应的适当性及安全保障机制。</p>
+<p>论文据此提出情感感知的大模型应用框架，将<b>筛查（Screening）—评估（Assessment）—诊断与风险推理（Diagnosis &amp; Risk Reasoning）—干预与支持（Intervention &amp; Support）</b>组织为相互关联的连续照护环节，并通过情感反馈形成迭代闭环。</p>
+<p>图1｜面向心理健康连续照护流程的情感感知大模型总体概念框架。</p>
+<p><b>二、技术演进：从规则式对话系统走向情感感知与安全评估</b></p>
+<p>论文从四条相互关联的技术轨迹梳理领域演进：<b>通用大语言模型、医学与临床大模型、心理健康对话系统与专用模型，以及数据集、基准与安全评估体系</b>。</p>
+<p>从发展阶段看，早期系统以规则驱动、任务特定模型和基础评测为主；随后，指令微调、医学领域适配与混合式对话系统推动应用扩展；2023—2025年，研究逐步转向大模型原生心理健康智能体、结构化支持、临床评价以及高风险情境中的安全性验证。</p>
+<p>这一演进表明，研究重心已不再局限于“模型能否识别情绪或生成回复”，而是逐步转向<b>交互过程是否具有持续的情感一致性、临床相关性及可验证的安全边界</b>。</p>
+<p>图2｜通用大模型、医学大模型、心理健康系统和评测基础设施的代表性演进路线。</p>
+<p><b>三、核心研究框架：方法基础—服务应用—保障与治理</b></p>
+<p>针对现有研究任务多样、数据来源异构、情感构念与评估协议难以直接比较的问题，论文提出<b>三层研究分类体系（Three-Level Taxonomy）</b>，从技术方法、服务功能和可信要求三个维度组织相关工作。</p>
+<p><b>第一层：情感计算方法基础（Affective Methodological Foundations）。</b></p>
+<p>重点研究数据增强与内容丰富化，解决心理健康语言中情感标注稀缺、表达分布不均以及情感真实性难以保持等问题，为下游识别、交互与生成任务提供高质量训练信号。</p>
+<p><b>第二层：情感介导的心理健康服务（Affect-Mediated Mental Health Services）。</b></p>
+<p>涵盖心理健康信号检测与分类、支持与咨询型对话智能体，以及心理支持和教育内容生成，连接从被动评估到交互支持、再到干预导向内容生成的服务过程。</p>
+<p><b>第三层：情感保障与治理（Affective Assurance and Governance）。</b></p>
+<p>重点关注心理健康问答与解释、伦理评估、偏差与公平性，强调系统输出的可解释性、共情适当性、情感安全以及人类监督与临床治理。</p>
+<p>三层体系并非独立的任务集合，而是从模型构建、功能应用到真实部署形成相互约束、相互支撑的研究框架。</p>
+<p>图3｜情感计算方法基础、情感介导的心理健康服务及情感保障与治理三层分类框架。</p>
+<p><b>四、六大研究方向：从情感信号建模到可信心理健康支持</b></p>
+<p>在上述框架下，论文对现有研究形成六个方向的系统性归纳。</p>
+<p><b>方向一｜数据增强与内容丰富化（Data Augmentation &amp; Content Enrichment）。</b></p>
+<p>通过情感属性引导的受控生成与数据增强流程，扩充心理健康语言数据，改善情感类别及表达形式覆盖不足的问题。关键不只是生成文本的流畅性，更在于能否保持<b>情感真实性、构念有效性与临床合理性</b>。</p>
+<p><b>方向二｜心理健康信号检测与分类（Signal Detection &amp; Classification）。</b></p>
+<p>围绕抑郁、自杀风险、情绪与其他心理健康相关信号，梳理由浅层情感极性判断转向<b>情感—认知模式识别、隐性风险理解与情境化分析</b>的研究趋势。论文强调，模型预测性能需要结合不确定性校准、群体偏差与临床有效性进行解释。</p>
+<p><b>方向三｜心理支持与咨询型对话智能体（Conversational Agents for Support &amp; Counseling）。</b></p>
+<p>聚焦情绪支持、认知重构、跨语言与跨文化适配，以及情感感知的自助支持。评价重点由单轮回复质量转向<b>多轮共情一致性、情感状态追踪、关系边界管理与风险升级处置</b>，避免将语言上的亲和力等同于治疗效果。</p>
+<p><b>方向四｜治疗支持与心理教育内容生成（Therapeutic Support &amp; Educational Content Generation）。</b></p>
+<p>分析基于认知行为疗法等既有框架的心理教育、引导式自助和咨询风格内容生成。核心在于使生成内容遵循适当的支持原则，匹配个体当前情感状态，并通过结构化流程与专业监督降低不当建议风险。</p>
+<p><b>方向五｜心理健康问答与解释（Mental Health QA &amp; Explanation）。</b></p>
+<p>探讨模型如何基于可辨识的情感—认知结构提供解释，包括情绪触发、认知偏差与可能的应对路径。论文指出，<b>表面合理的文本解释不等于忠实、可靠的临床推理</b>，解释质量必须与情感构念、证据依据和稳定性相联系。</p>
+<p><b>方向六｜伦理评估、偏差与公平性（Ethical Evaluation, Bias &amp; Fairness）。</b></p>
+<p>系统讨论不同群体及文化背景下的情感识别与共情差异，以及过度迎合、情绪操纵、不健康依赖和危机情境处置等潜在风险。心理健康系统的可信性不仅体现在准确性上，更体现在<b>情感公平、行为边界、隐私保护与持续安全评估</b>之中。</p>
+<p><b>六、关键挑战与未来方向：从“能生成”走向“可验证、可治理”</b></p>
+<p>尽管大语言模型在情感信号识别、心理健康对话及内容生成中展现出潜力，论文指出，现有证据仍存在多方面局限：</p>
+<p>其一，情感状态具有隐含性与个体差异，不同研究对情绪、症状、认知偏差和治疗关系的测量定义尚不统一；其二，模型输出可能存在情感失配、解释不稳定和跨人群泛化不足；其三，单轮测试和通用安全指标难以充分反映持续互动中的心理风险；其四，情感数据隐私、临床工作流集成和模型全生命周期治理仍需进一步完善。</p>
+<p>基于这些问题，论文提出五项值得持续推进的研究议程：</p>
+<p><b>（1）多阶段、多模态与纵向情感建模。</b> 构建跨筛查、评估、干预与随访的情感建模框架，动态刻画个体的情绪变化、情感反应与交互状态。</p>
+<p><b>（2）临床驱动的情感能力评价。</b> 建立以临床情感构念和真实结局为依据的评估与证据体系，超越单一分类指标与生成质量评价。</p>
+<p><b>（3）开放、可复核的情感数据生态。</b> 建设具有跨语言及跨文化适应性的情感标注资源和标准化评测体系。</p>
+<p><b>（4）情感安全与临床协同治理。</b> 将情感安全机制、人类监督和临床协同设计融入系统全流程，实现持续评估与风险控制。</p>
+<p><b>（5）情感信息驱动的辅助支持方式。</b> 在严格临床监督下探索情感信息支持的新型评估与辅助干预方式，推动情感计算与临床实践的有机结合。</p>
+<p>其中，多模态线索与纵向情感建模被视为有潜力的研究方向，但仍需要通过真实场景的持续评估加以验证。论文特别强调，<b>现有研究尚不足以支持大模型作为自主心理治疗主体的结论</b>，未来应用应优先定位于具有明确边界、可被专业人员监督的辅助性服务。</p>
+<p>图6｜从情感监测、交互支持与内容生成，到临床验证、危机应对、偏差审计和持续监测的未来应用及保障流程。</p>
+<p><b>七、研究总结与意义</b></p>
+<p>本项工作以<b>情感语言处理</b>为贯穿主线，将大语言模型的计算能力与心理健康服务中的情感构念、照护流程和安全治理要求建立系统联系。</p>
+<p>其主要价值体现为三个方面：首先，从情感计算视角重新界定心理健康语言智能的核心研究问题；其次，通过三层分类框架及六大研究方向，为异构研究建立可比较的组织结构；最后，围绕纵向评价、共情一致性、临床证据和可信治理，提出面向后续研究与实际应用的技术议程。</p>
+<p>研究认为，心理健康大模型的进一步发展，不应仅以语言生成质量或单项任务性能为目标，而应将<b>情感理解的有效性、交互过程的适当性、长期服务的连续性和系统部署的安全性</b>作为共同评价维度。</p>
+<p>在临床证据、专业监督和风险治理充分支撑的前提下，情感感知大模型有望成为心理健康服务体系中的有益辅助工具。</p>
+<h4><span style="color:#7a4fd6"><b>欢迎</b></span><span style="color:#ab1942"><b>干货投稿 \</b></span> <span style="color:#0052ff"><b>论文宣传</b></span> <span style="color:#ab1942"><b>\</b></span> <span style="color:#7a4fd6"><b>合作交流</b></span></h4>
+<p>由于公众号试行乱序推送，您可能不再准时收到<span style="color:#d92142">机器学习与推荐算法</span>的推送。为了第一时间收到本号的干货内容， 请将本号设为<span style="color:#d92142">星标</span>，以及常点文末右下角的“<span style="color:#d92142">在看</span>”。</p>
+<p><span style="color:#3daad6"><b>喜欢的话点个在看吧</b></span><span style="color:#021eaa"><b>👇</b></span></p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-18-原文-C-心域智护XinyuCare-项目推广文">
+<h1>02-心域智护XinyuCare-项目推广文</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>02</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>（已按要求删除）</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://mp.weixin.qq.com/s/aw0ApSrJMIcIGhERUEIOdA</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>微信公众号：www.gitcc.com</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-10-17 09:15</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl（微信内置浏览器 UA）→ #js_content 正文提取</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p><b>"最近总是睡不好，情绪很低落……"——这句话，你是在心里憋了很久，还是鼓起勇气发给了医生？</b></p>
+<p><b>现实中，很多人连这句话都说不出口：怕被贴标签，怕挂号排队，怕一次咨询 800 块，更怕说了也没后续。而另一头的心理医生，面对海量患者，常常"看不准、管不了、顾不过来"。</b></p>
+<p><b>如果有一套系统，戴上智能手环就能采集你的生理数据，对着镜头说几句话、露个脸，AI 就能分析你的情绪状态，还能像朋友一样陪你聊天、做量表、给疗愈方案——你会不会愿意试试？</b></p>
+<p><b>源代码：</b><b>https://www.gitcc.com/LexBBQ/ai-xinyucare</b></p>
+<p><b>01 💡 一句话介绍</b></p>
+<p>心域智护（XinyuCare）是一款基于多模态 AI 的心理检测与疗愈系统，整合智能手环生理数据、文本/语音/面部表情多模态情绪识别、主动式 AI 对话评估与个性化疗愈方案，服务普通用户与心理医生双端，打造"低门槛、高精准、人性化、无压力"的心理抑郁检测与疗愈平台。</p>
+<p><b>心域智护产品概览</b></p>
+<p><b>02 🧩 系统功能</b></p>
+<p>🏠 <b>首页模块</b> 智能问候（按时间与天气个性化打招呼）、SVG 动画健康评分仪表盘、连续打卡激励、2x2 快捷功能入口、每日健康提示与最近评估趋势展示。</p>
+<p><b>用户端主页</b></p>
+<p>🧠 <b>AI 评估模块</b> 文本情绪分析、语音情感识别、面部微表情识别、视频行为分析四路并行；流式 AI 对话 + 上下文记忆，支持 PHQ-9、GAD-7、HAMD-17 等专业量表，自适应提问、未完成自动保存续评；输出风险等级、个性化建议、趋势分析与 PDF 报告导出。</p>
+<p><b>AI评估三方式：量表 / 语音 / 表情</b></p>
+<p>🧘 <b>疗愈模块</b> 专业音频播放器 + 3D 呼吸动画（三层同心圆渐进引导、发光效果、节拍可调）；冥想库按呼吸/放松/睡眠/专注分类，支持智能推荐、收藏与时长统计；新增视频冥想指导。</p>
+<p><b>沉浸式冥想播放器</b></p>
+<p>📝 <b>情绪日记与知识库</b> 文本/语音/图片多模态记录，农历智能日历、情绪标记与趋势分析；知识库支持文档上传、RAG 检索、视频播放，涵盖专业文章、教学视频、音频课程与 PDF/Word 文档预览。</p>
+<p>👤 <b>个人模块</b> 自定义头像与背景、中文用户名、微信号绑定；健康评分、趋势分析、评估历史、成就系统；支持智能手环/手表连接与医生对接。</p>
+<p><b>用户端与医生端登录注册</b></p>
+<p>⌚ <b>智能手环模块</b> 设备扫描、蓝牙连接、模拟数据模式；实时监测心率、血氧、体温、压力、步数与睡眠；Recharts 趋势图表、AI 健康评估与异常预警。</p>
+<p>👨‍⚕️ <b>医生后台</b> 患者统计与病历管理、风险预警实时监控、知识库管理（诊疗指南/案例库/文档上传）、验证码注册体系、康复进度可视化。</p>
+<p><b>03 ✨ 核心亮点</b></p>
+<p>🤖 <b>多模态 AI 评估</b> 集成文本、语音、微表情识别，从"说什么"到"怎么说"再到"表情藏着什么"综合判断心理状态，降低单模态误判。</p>
+<p>📋 <b>AI 量表对话</b> PHQ-9、HAMD-17 等专业量表以对话方式智能完成，支持未完成自动保存、随时恢复续评，把枯燥填表变成自然聊天。</p>
+<p>🧘 <b>沉浸式冥想</b> 3D 呼吸动画 + 专业音频 + 视频指导 + 数据追踪，用"可感知的放松"留住用户，建立使用习惯。</p>
+<p>👥 <b>匿名树洞社区</b> 自动匿名昵称、端到端加密、AI + 人工双重审核；支持情感倾诉、康复故事分享、点赞评论与举报机制，隐私与温度并存。</p>
+<p>⌚ <b>智能手环联动</b> 心率、血氧、压力等生理数据实时同步，AI 健康评估让情绪判断从"主观报告"升级为"客观数据 + 主观感受"双证据。</p>
+<p><b>语音与表情识别实操</b></p>
+<p>📊 <b>专业评估报告</b> 风险分级、情绪雷达（9 维）、AI 综合分析、趋势追踪与 PDF/PNG 导出，让评估结果可留存、可分享、可复诊。</p>
+<p><b>表情识别结果与情绪雷达报告</b></p>
+<p>🚨 <b>医生风险预警</b> 自动识别高风险患者并实时推送，预警处理留痕、干预效果统计，让医生从"被动等挂号"变成"主动盯风险"。</p>
+<p><b>医生后台预警消息处理</b></p>
+<p>🔒 <b>隐私安全</b> 符合医疗数据安全规范，RLS 细粒度权限控制 + 端到端加密，数据安全是底线不是卖点。</p>
+<p><b>04 📖 案例说明</b></p>
+<p><b>场景一：不敢看医生的年轻人</b> 小林，24 岁，连续失眠三周，情绪低落但不敢去医院。他在心域智护注册后，先用手环记录了两天心率与压力数据，再花 15 分钟完成了对话式 PHQ-9 评估——语音情绪识别提示"语调平淡、能量偏低"，表情识别捕捉到"微笑减少"。系统生成中风险报告，建议预约医生，并推送当晚的"睡前放松引导"冥想。一周后他鼓起勇气把报告带给医生，复诊效率明显提高。</p>
+<p><b>场景二：顾不过来的心理医生</b> 某心理咨询中心接入医生后台后，200 名随访患者的状态一目了然：数据看板实时显示待处理预警，一名患者因"外出频率骤降、社交回避明显"触发 6/10 风险预警，医生一键标记处理并制定随访计划，把危机拦截在门诊之前。</p>
+<p><b>05 💰 商业推广</b></p>
+<ul>
+<li><b>C 端订阅</b></li>
+</ul>
+<p>：基础评估免费引流，个性化疗愈方案、冥想课程包、深度报告按订阅付费</p>
+<ul>
+<li><b>B 端企业服务</b></li>
+</ul>
+<p>：面向企业员工 EAP 心理健康服务，批量开通账号 + 组织级匿名数据看板</p>
+<ul>
+<li><b>医生/机构增值</b></li>
+</ul>
+<p>：医生端后台按席位收费，提供患者管理、风险预警与知识库增值服务</p>
+<ul>
+<li><b>硬件联动</b></li>
+</ul>
+<p>：与智能手环品牌合作，健康数据同步能力成为差异化卖点</p>
+<ul>
+<li><b>渠道分成</b></li>
+</ul>
+<p>：通过医院、心理咨询机构、保险健康服务等渠道推广，按转化分成</p>
+<p><b>06 💎 行业价值</b></p>
+<ul>
+<li><b>降低求助门槛</b></li>
+</ul>
+<p>：把"挂号见医生"变成"随时随地 AI 初筛"，让不敢开口的人先迈出第一步</p>
+<ul>
+<li><b>缓解医疗资源错配</b></li>
+</ul>
+<p>：AI 完成高频初筛与随访，医生聚焦高风险个案，缓解"看不准、管不了"</p>
+<ul>
+<li><b>让心理健康可量化</b></li>
+</ul>
+<p>：从量表主观报告升级为"主观感受 + 生理数据 + 多模态特征"多维证据链</p>
+<ul>
+<li><b>推动数据化康复管理</b></li>
+</ul>
+<p>：趋势追踪与康复进度可视化，让疗愈效果不再是"感觉好没好"</p>
+<p><b>07 🚀 AI 时代的发展</b></p>
+<ul>
+<li><b>从单模态到多模态</b></li>
+</ul>
+<p>：文本 + 语音 + 表情 + 生理数据融合，情绪识别正在逼近"人类观察者"水平</p>
+<ul>
+<li><b>从评估工具到陪伴系统</b></li>
+</ul>
+<p>：主动式对话、持续追踪、个性化干预，AI 从"测一次"走向"陪全程"</p>
+<ul>
+<li><b>从通用模型到医疗级对齐</b></li>
+</ul>
+<p>：RAG 医疗知识库 + 专业量表 + 风险预警，推动大模型向可落地的专业场景收敛</p>
+<ul>
+<li><b>从个体服务到群体防护</b></li>
+</ul>
+<p>：匿名社区 + 医生预警网络，AI 时代心理健康正在从"一对一治疗"转向"社会级预防"</p>
+<p>在 AI 能力快速普及的当下，心理健康服务的竞争点已不在"模型多聪明"，而在<b>检测够不够准、入口够不够低、陪伴够不够久</b>——这正是心域智护聚焦的方向。</p>
+<p><b>源代码：</b><b>https://www.gitcc.com/LexBBQ/ai-xinyucare</b></p>
+<p><b>一款面向普通用户与心理医生的多端产品（Web/H5/Android/ios/Windows），系统通过整合智能手环生理数据、多模态AI情绪识别（文本、语音、面部表情）、主动式AI对话评估、个性化疗愈方案，为用户提供一站式的心理健康管理服务，打造“低门槛，高精准，人性化，无压力“的心理抑郁检测与疗愈平台。</b></p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-19-原文-C-南方都市报-情感陪伴平台乱象调查">
+<h1>03-南方都市报-情感陪伴平台乱象调查</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>03</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>（已按要求删除）</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://news.southcn.com/node_17a07e5926/9336a93552.shtml</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>南方网转南方都市报（记者唐进、林诗妍）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>2026-10-22 11:28</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl + lxml 正文提取（article 容器）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<h4>诱导高价付费、虚假资质引流……“情感专属陪伴”平台乱象多</h4>
+<p>2026-10-22 11:28
+ 来源：南方都市报</p>
+<p>打着“情感专属陪伴”旗号的App，宣扬“你在床上越自信、越松弛，他越觉得你迷人”等价值观，以及“小三豪门上位博弈策略”“职场暧昧借力策略”等内容；还有平台主推的所谓“一对一情感咨询师”，亮出的“专业资质证书”竟早已被官方打假……</p>
+<p>连日来，南都记者调查多个情感专属陪伴平台发现，背后暗藏AI生成内容传递错误价值导向、诱导高价付费、以虚假资质引流的灰色产业链。</p>
+<p>持续向用户输出扭曲价值观的情感专属陪伴App，其背后竟是此前因宣扬不良恋爱观被封禁的情感大V“曲曲大女人”，该主播因偷税被查后又借着“美人支招”App摇身一变重返互联网。该App客服人员直言不讳：对话均由“过往的真人咨询案例沉淀下来的模型”生成，并推销3980元的后续服务。</p>
+<p>另外，在“轻诉”平台上，情感导师主页展示“高级情感婚恋咨询师”等资质，证书盖有“中国管理科学研究院”的公章，但该单位已于2024年6月就被撤销；另有咨询师展示“中国国家人才测评网”证书，而人力资源和社会保障部全国人才流动中心于2022年5月即声明，从未开展过此类人才测评服务，也从未发放过相关证书。目前，南都记者已将相关涉嫌违规的线索反馈至有关部门。</p>
+<p><b>咨询乱象</b></p>
+<p><b>推销3980元服务 并主张亲密关系利益化</b></p>
+<p>在人工智能技术加速落地的当下，各类“AI情感咨询”服务随之涌现。其中，一款名为“美人支招”的App宣称，“以人工智能大语言模型为基础，结合海量真实案例，打造专业、温暖、正向的智能对话服务体系”。</p>
+<p>该App直接打出“女性情感、事业、人际关系超强军师”的旗号。南都记者注意到，用户可选择不同的“AI陪伴角色”展开对话，新注册用户只能免费发3条消息，此后的多项核心功能需开通VIP会员才能进一步使用。会员分为月度卡、季度卡、年度卡，限时特惠价格分别为199元、569元、1999元。</p>
+<p>在进一步的实测中，这位AI情感导师的实际输出内容却与“正向”的宣传存在明显差异，且涉及多个敏感话题、传授性暗示极强的技巧。如指导用户“打破羞耻感”“你在床上越自信、越松弛，他越觉得你迷人”“轻轻抚摸他的背部、大腿内侧，这种非生殖区的触碰往往更能撩拨神经”。</p>
+<p>南都记者注意到，“美人支招”输出的婚恋观将亲密关系工具化、利益化，如“在感情里得到的归根结底就三样东西：物质（钱、资源、阶层跃迁的梯子）、情绪价值，或者是一个合法的长期伴侣身份（婚姻）”。</p>
+<p>在涉婚姻伦理边界的情境中，AI情感导师继续“发力”，给出“豪门上位博弈策略”“职场暧昧借力策略”等，如对于“小三靠怀孕豪门上位”，持续指导“以退为进，在豪门博弈里，孩子可以是筹码，也可以是累赘”；“职场女性爱上已婚男领导”的讨论中，指出“切断日常琐碎的分享”“引入竞争机制”，并将这段关系视为“事业跃迁的跳板”。</p>
+<p>南都记者将此类提问发到目前主流的对话式人工智能生成平台中，AI给出的回复是“这本质上涉及操纵、欺骗和破坏他人婚姻，既不道德，也可能带来严重的法律和人生风险”。那么，如此“侃侃而谈”的AI情感专属陪伴App，输出内容是如何生成的？</p>
+<p>“美人支招”App客服人员告诉南都记者，App内并没有真人，对话均由“过往的真实咨询案例沉淀下来的模型”做对话问答，是“AI生成回复”。该客服还强调，平台拥有过去6年累计沉淀的咨询案例总量，会做脱敏处理，“真正复用的是处理模式”。</p>
+<p>与此同时，这些越界的内容还在悄然变现。在咨询中，“美人支招”App客服主动添加了南都记者的微信，并推销了一项后续服务：“3980元可选择《金贵的关系1或2》；进群可以领取课程以及直播链接；可以链接高质同频女性一起交流讨论；会不定期组织线下见面等等。”</p>
+<p><b>引流背后</b></p>
+<p><b>被封禁的主播借情感专属陪伴App“还魂”</b></p>
+<p>深挖这款AI情感陪伴App的底层逻辑与利益链条后，南都记者发现，“美人支招”宣传图打出“曲曲大女人官方唯一授权App”，由上海美丽猪猪科技有限公司独家运营，而这家公司是网络主播乐传曲的关联公司。</p>
+<p>情感大V“曲曲大女人”账号早在2023年12月就已被平台处置。据微博管理员当时发布的公告，“@曲曲大女人多次宣扬不良恋爱观博取热度，并借此贩卖课程谋取私利，传递错误价值导向，目前相关账号均已无法查看。”</p>
+<p>2025年4月1日，税务部门公布国家税务总局上海市税务局第四稽查局依法查处网络主播乐传曲偷税案件。经查，网络主播乐传曲（网名：曲曲大女人）被依法追缴税费款、加收滞纳金并处罚款，共计758万元。</p>
+<p>如今，“曲曲大女人”又借AI情感专属陪伴平台“还魂”，其输出的不良价值观重返互联网。</p>
+<p>南都记者注意到，该App客服的朋友圈充斥着大量学员的“成功反馈”，有学员自称套用了导师教的“话术与技巧”去对付男友，“曲曲老师说的对，下面口袋在哪，上面口袋就在哪”。如此扭曲的价值观在线上线下等渠道被扩散。</p>
+<p>在另一类号称“真人陪伴”的网页上，前端引流则更加直接。其实际服务或是由AI程序接单，再通过一套流水线式的机制进行获客变现。</p>
+<p>南都记者随机进入一个名为“情感咨询师在线咨询免费一对一在线聊天24小时”的网页，页面标题变为“轻诉”，并弹出两个提问框：“您的感情状态、在一起的时间、出现的问题是什么？”“您最需要老师帮助你做什么？”</p>
+<p>填写内容提交后，网页弹出一个要求支付的提示框“原价69.99元，现在仅需12.9元”，并附文：“您目前已经出现了严重的感情问题……如果拒绝改变和无所作为，可能造成无法挽救的后果，支付成功之后，老师帮助你理清思路，解决当前困境。”南都记者切换其他账号重新输入完全不同的咨询问题，均得到了相同的“严重感情问题的诊断”。</p>
+<p>南都记者随即支付12.9元，便被引导至“轻诉”小程序注册账号。注册完成后，平台推荐了四个不同的“情感咨询师”，分别发送了一则2到3分钟的语音条，此后更是持续不断发来了明显预设好的话术信息，强调“有免费5分钟连麦的体验机会”。通话5分钟后电话被挂断，南都记者被立即推荐了89元20分钟的通话套餐。</p>
+<p>而在账号注册后的几天内，南都记者持续收到显示“灵机文化”“灵机吉品”等落款的短信，部分内容为“恭喜您获得0元深度咨询福利”“累计为20万+客户修复感情，好评度98%”，截至发稿前，南都记者已收到47条上述来源的短信。</p>
+<p>除了前端获客引流、持续诱导消费以外，“轻诉”平台的情感专属陪伴、情感咨询服务环节同样问题重重。用户与“情感问题导师”连麦时，页面明确提醒“此功能严禁未成年人使用”。然而，系统并未拦截“高中生”用户，该情感导师也未停止对话。</p>
+<p><b>资质核查</b></p>
+<p><b>情感陪伴导师“资质证书”早已被官方打假</b></p>
+<p>这些情感专属陪伴导师的“专业资质”同样经不起核查。</p>
+<p>在“轻诉”平台，这些情感导师的主页显示，“咨询师本人承诺内容属实，接受监督并承担法律责任”，其专业资质显示为“高级情感婚恋咨询师”“高级早期教育指导师”“广州市婚恋情感规划协会会员”。附上的证书盖有“中国管理科学研究院”“中国管理科学研究院素质教育研究所”等单位的公章。但证书上的姓名、身份证号、证书编号、授予时间等内容均被打码。</p>
+<p>南都记者检索发现，2024年6月23日，国家事业单位登记管理局发布通告，中国管理科学研究院因滥设下属机构、大肆销售培训证书等，被撤销登记并收缴《事业单位法人证书》及单位印章。此外，南都记者在各大平台检索“广州市婚恋情感规划协会”，并未发现该协会。</p>
+<p>有业内人士向南都记者透露，“很多情感平台或机构只要在咨询平台上传一两个心理咨询师或心理治疗师的资格证，其他人就可以借着这个资质在平台接单干活。实际上可能持证的人并没有在执业，干活的是别人，平台也分不清。”</p>
+<p>还有咨询师的主页展示出“职业能力素质测评证书”，证书还加盖“中国国家人才测评网”的公章。</p>
+<p>然而，南都记者检索发现，人力资源和社会保障部全国人才流动中心早在2022年5月18日就发文，“发现有不法单位假冒中国国家人才测评网名义，发放所谓的‘职业能力素质评价证书’及‘人才入库卡’”。对此，该中心严正声明：“中国国家人才测评网从未开展过此类人才测评服务，也从未发放过诸如此类的证书。”</p>
+<p>针对平台展示的这些“资质证书”，精神心理医疗机构专业心理师、中山大学心理学张桂萍博士向南都记者介绍，目前国家早已取消了人社部颁发的心理咨询师职业资格考试，“目前做一般的心理辅导不需要持证，但做心理治疗则必须有卫健委颁发的心理治疗师资格证。”</p>
+<p>张桂萍表示，在国家停止心理咨询师考试以后，社会上出现了各种技能培训证。这些由各种机构颁发的证书不是“资格证”，只是证明参加过相关学习的“技能证”，并不具备国家认可的执业准入效力。</p>
+<p>针对AI涉足情感专属陪伴、情感咨询甚至诊断的乱象，张桂萍向南都记者指出，“人的心理问题成因极其复杂，包含多重维度。目前AI的对话是线性的，它无法像专业医生那样进行多维度的深度评估和诊断。”</p>
+<p>她强调，真正的精神心理治疗和诊断必须由持证的专业医疗人员完成，AI既无法进行诊断，也无法评估风险，“如果依赖AI对严重情绪问题进行判断，极易漏掉高危信号，造成无法挽回的后果”。</p>
+<p>出品：南都即时</p>
+<p>统筹：向雪妮 冯奕然</p>
+<p>采写：见习记者 唐进 南都记者 林诗妍</p>
+<p>编辑：赖玉清
+ 责任编辑：陈海敏</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-20-原文-D-B站-吴恩达机器学习课程合集">
+<h1>12-B站-吴恩达机器学习课程合集</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>12</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>【官方中英】2025年公认最好的【吴恩达机器学习课程】</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://www.bilibili.com/video/BV1owrpYKEtP</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>B 站 UP 主：吴恩达AI_AndrewNg（UID 3493134768016008）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>页面未标注（抓取日 2026-11-13）</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文（中英字幕）</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl → 播放页内嵌元信息（meta description + <strong>INITIAL_STATE</strong>）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>链接：https://www.bilibili.com/video/BV1owrpYKEtP
+（原始链接带 B 站分享参数 vd_source=ddb3b70a1e9e07ef07c3c114d79b3768）</p>
+<p>【抓取状态】B 站播放页为动态渲染，正文仅能取到页面内嵌的元信息（标题、UP 主、简介、统计）。以下为页面元数据原文，未包含视频内容本身。</p>
+<p>────────────────────────────
+页面标题：
+【官方中英】2025年公认最好的【吴恩达机器学习课程】附课件、代码及实战项目！！！--人工智能/机器学习/深度学习</p>
+<p>页面简介（meta description 原文）：
+【官方中英】2025年公认最好的【吴恩达机器学习课程】附课件、代码及实战项目！！！--人工智能/机器学习/深度学习共计146条视频，包括：1.欢迎来到机器学习（课程配套作业与习题见评论区）、2.什么是机器学习（建议学习本课程一定要）、3.监督学习部分（完成代码作业与课后习题）等，UP主更多精彩视频，请关注UP账号。</p>
+<p>UP 主：吴恩达AI_AndrewNg（UID 3493134768016008）
+分区：人工智能 / 机器学习 / 深度学习
+视频数：146 条（多 P 合集）</p>
+<p>页面统计（2026-11-13 抓取）：
+播放 4,777,264 ｜ 弹幕 8,407 ｜ 评论 2,610 ｜ 收藏 97,019 ｜ 投币 24,724 ｜ 分享 16,762 ｜ 点赞 35,619 ｜ 当前排名 0 ｜ 历史最高排名 0</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-21-原文-D-B站-李沐GNN论文精读">
+<h1>13-B站-李沐GNN论文精读</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>13</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>零基础多图详解图神经网络（GNN/GCN）【论文精读】</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://www.bilibili.com/video/BV1iT4y1d7zP</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>B 站 UP 主：跟李沐学AI（UID 1567748478）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>页面未标注（抓取日 2026-11-13）</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl → 播放页内嵌元信息（meta description + <strong>INITIAL_STATE</strong>）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>链接：https://www.bilibili.com/video/BV1iT4y1d7zP
+（原始链接带 B 站分享参数 vd_source=ddb3b70a1e9e07ef07c3c114d79b3768）</p>
+<p>【抓取状态】B 站播放页为动态渲染，正文仅能取到页面内嵌的元信息（标题、UP 主、简介、统计）。以下为页面元数据原文，未包含视频内容本身。</p>
+<p>────────────────────────────
+页面标题：
+零基础多图详解图神经网络（GNN/GCN）【论文精读】</p>
+<p>页面简介（正文区原文）：
+更多：https://github.com/mli/paper-reading
+字幕制作者（中文（中国））：I3IANG</p>
+<p>页面统计（2026-11-13 抓取）：
+播放 725,562 ｜ 弹幕 3,019 ｜ 评论 852 ｜ 收藏 23,592 ｜ 投币 17,250 ｜ 分享 4,936 ｜ 点赞 18,706 ｜ 当前排名 0 ｜ 历史最高排名 0</p>
+<p>UP 主：跟李沐学AI（UID 1567748478，作者简介："BosonAI 联合创始人"）
+分区：人工智能 / 机器学习 / 深度学习</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+<section class="doc" id="sec-22-原文-E-work-buddy-视频号">
+<h1>01-work-buddy-视频号</h1>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>序号</td>
+<td>01</td>
+</tr>
+<tr>
+<td>原始标签（来自 链接.txt）</td>
+<td>work buddy</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>https://weixin.qq.com/sph/AGj5fQFqkL</td>
+</tr>
+<tr>
+<td>渠道 / 作者</td>
+<td>微信视频号（未登录不可读）</td>
+</tr>
+<tr>
+<td>发布或页面时间</td>
+<td>未知</td>
+</tr>
+<tr>
+<td>抓取时间</td>
+<td>2026-11-13 20:38</td>
+</tr>
+<tr>
+<td>原文语言</td>
+<td>中文（未获取）</td>
+</tr>
+<tr>
+<td>抓取方式</td>
+<td>curl（原始链接 + 跟随跳转，两种 UA）→ 仅得空壳页</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：以下正文为抓取所得页面正文的<strong>原样抄录</strong>（仅去除了站点导航、广告、相关推荐等模板区块，保留了原文段落顺序与措辞）。原文中的错字、口语与图表位置说明均未改动。</p>
+<p>排版：正文里的<strong>加粗</strong>与<strong>彩色文字</strong>是原页面自带的强调样式，已按原文保留（颜色值照搬原页面的内联样式；白色文字与灰白卡片底色因在白底文档中不可读，未着色）。纯文本编辑器里会看到 <code>&lt;b&gt;</code> / <code>&lt;span style="color:…"&gt;</code> 这类标签，属正常现象。</p>
+</blockquote>
+<hr />
+<p>链接：https://weixin.qq.com/sph/AGj5fQFqkL
+（微信视频号分享链接；302 跳转至 https://channels.weixin.qq.com/sph/AGj5fQFqkL）</p>
+<p>【抓取状态】该链接为微信视频号的单条视频分享页。页面为纯前端渲染，服务端只返回 2.7 KB 的空壳 HTML（<title>视频号</title>，可见文本 13 个字符），跳转后页面标题为"视频号助手"。视频标题、作者、正文/字幕均需在微信客户端内登录后由接口下发，未登录无法取得。</p>
+<p>本次已尝试：直接 GET 原始链接、跟随跳转至 channels.weixin.qq.com、浏览器 UA / 微信内置浏览器 UA 两种指纹。三种方式均只得到空壳页面。</p>
+<p>────────────────────────────
+可确认的信息（仅此两项）：
+1. 链接属于微信视频号（视频号分享域名 weixin.qq.com/sph/）。
+2. 分享口令编号 AGj5fQFqkL。</p>
+<p>未能确认的信息：
+视频标题、作者（是否为"work buddy"官方账号）、发布时间、视频正文/字幕、是否为产品介绍或推广。</p>
+<p>【本地替代方案】若需收录该条内容，可在微信中打开该链接，把视频文案/字幕复制给我，或用手机录屏后转写；也可提供视频号名称，我再据此检索公开转载。</p>
+<p class="top"><a href="#top">↑ 回到目录</a></p>
+</section>
+</main>
+</div>
+<a class="to-top" href="#top" aria-label="回到顶部" title="回到顶部">↑</a>
+<footer>生成于 2026-11-13 ｜ 原文的颜色与加粗取自原页面内联样式 ｜ 本文件自包含，无外部依赖</footer>
+</body>
+</html>

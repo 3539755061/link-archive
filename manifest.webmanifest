@@ -1,0 +1,16 @@
+{
+  "name": "链接归档 · 阅读版",
+  "short_name": "链接归档",
+  "description": "15 条链接的原文、归纳、可信度核验与外文译文（22 篇）",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#f6f4ef",
+  "theme_color": "#8a5a2b",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
