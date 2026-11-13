@@ -3,7 +3,7 @@
 2026-11-13 抓取归档。**原文照抄 + 中文归纳 + 可信度核验 + 外文翻译 + 分类**。
 
 - 阅读版（网页，推荐）：[`archive.html`](archive.html)
-- PDF（A4，约 57 页）：[`archive.pdf`](archive.pdf)
+- PDF（A4，约 56 页）：[`archive.pdf`](archive.pdf)
 - 仓库首页门面：`index.html`
 
 ## 这份归档里有什么

@@ -216,6 +216,7 @@ footer{
 <section class="doc" id="sec-01-总说明">
 <h1>链接归档说明（2026-11-13）</h1>
 <p>本文件夹是 <code>..\链接.txt</code> 里 15 条链接的抓取归档：<strong>原文照抄 + 中文归纳 + 可信度核验 + 外文翻译 + 分类</strong>。</p>
+<p><strong>公网阅读地址：<a href="https://3539755061.github.io/link-archive/">https://3539755061.github.io/link-archive/</a></strong>（GitHub Pages，手机可直接打开；<code>/archive.html</code> 阅读版、<code>/archive.pdf</code> PDF）</p>
 <p>抓取与整理时间：2026-11-13 20:06–20:16（北京时间）｜ 抓取环境：本机 curl（无登录态）+ DSH web 抓取工具</p>
 <hr />
 <h2>📁 一、文件夹里有什么</h2>
@@ -225,7 +226,7 @@ footer{
 ├─ index.html                ← 网页端入口（访问 `/` 时自动跳到阅读版）
 ├─ 阅读版_全归档.pdf         ← 同一份内容的 A4 PDF，发微信/打印/存档用
 ├─ 上传包_网页托管.zip       ← 拖到 Netlify Drop（免注册）就能得到一个公网 https 链接，里面文件全用英文名
-├─ GitHub部署\               ← 已 init + 提交好的 git 仓库（10 个文件、1.7 MB），推上去开 Pages 就有永久网址，见其中 `推送说明.md`
+├─ GitHub部署\               ← 已推送并上线的 git 仓库（`3539755061/link-archive`），以后改内容 push 一下即更新，见其中 `推送说明.md`
 ├─ 手机扫码.png              ← 【已停用】那个二维码指向局域网地址，本轮改成不走局域网，只在允许局域网时才用
 ├─ 阅读版预览.png            ← 阅读版首页截图（不用打开文件也能看排版）
 ├─ 排版样式.css              ← 把同一套行距/行宽套到 md 预览器上（Typora / Obsidian / VS Code）
@@ -380,7 +381,7 @@ footer{
 <tr>
 <td>4</td>
 <td><strong>PDF</strong> <code>阅读版_全归档.pdf</code></td>
-<td>✅ 已生成（A4，约 57 页，含目录）</td>
+<td>✅ 已生成（A4，含目录，约 56 页）</td>
 <td>微信发手机、打印、长期存档、排版永不跑版</td>
 <td>目录是文字不是阅读器书签（Ctrl+F 能搜）</td>
 </tr>
@@ -436,9 +437,9 @@ footer{
 <tr>
 <td>12</td>
 <td><strong>GitHub Pages</strong></td>
-<td>✅ <strong>本地全备好</strong>：<code>GitHub部署\</code> 已 init + 提交（10 个文件、1.7 MB、含 <code>.nojekyll</code>），附一键推送脚本</td>
-<td>要<strong>永久、可分享、可长期更新</strong>的网址</td>
-<td>仓库须 public；首次要你建仓库 + 生成令牌；<code>*.github.io</code> 在国内不保证稳定</td>
+<td>✅ <strong>已上线</strong>：<a href="https://3539755061.github.io/link-archive/">https://3539755061.github.io/link-archive/</a>（2026-11-13 22:09 实测：根路径 200、<code>archive.html</code> 200、<code>archive.pdf</code> 200）</td>
+<td>永久、可分享、可长期更新的网址；手机或别人直接点开</td>
+<td>仓库是 <strong>public</strong>（能被搜到）；<code>*.github.io</code> 在国内不保证稳定</td>
 </tr>
 </tbody>
 </table>
@@ -447,7 +448,7 @@ footer{
 <p><strong>A. 公网托管（最省事，免注册）</strong>：把 <code>上传包_网页托管.zip</code> 拖进 <a href="https://app.netlify.com/drop">https://app.netlify.com/drop</a>，几十秒后给你一个 <code>https://随机名.netlify.app</code> 的链接，手机上打开就是手机版排版，也能直接发给别人。Netlify 官方对比页写明"可以先部署、之后再 claim 站点"，而 Vercel Drop 必须先登录。包内已把中文文件名换成 ASCII（<code>archive.html</code> / <code>archive.pdf</code>），避免托管后 URL 编码出问题；<code>index.html</code> 会自动跳到 <code>archive.html</code>。</p>
 <p><strong>B. 临时隧道（本机继续当服务器，不注册）</strong>：Cloudflare Quick Tunnels 的官方文档写明<strong>不需要账号、不需要域名</strong>，<code>cloudflared tunnel --url http://localhost:8765</code> 就给一个 <code>trycloudflare.com</code> 的临时 https 地址；再加 <code>--allowed-mail 某人@邮箱</code> 就变成"只有这个邮箱能进（收一次性验证码）"。代价：要先有 cloudflared（约 55 MB），按本机现在的下载速度得十几分钟；进程一停链接即失效，域名每次都不一样。（另试了更轻的 bore：便携版下得来，但解压出的 <code>bore.exe</code> 被系统清掉了，没跑通。）</p>
 <p><strong>C. 完全不上网（最稳）</strong>：<code>archive.pdf</code> 用微信直接发；<code>archive.html</code> 传到手机用浏览器打开——手机版布局是纯 CSS，不依赖任何服务器。</p>
-<p><strong>D. GitHub Pages（要永久网址就走这条，本轮已备好本地部分）</strong>：<code>GitHub部署\</code> 已经是一个初始化并提交好的 git 仓库（10 个文件、1.7 MB，带 <code>.nojekyll</code> 防止 Jekyll 改写中文路径）。你只需四步：① 在 <a href="https://github.com/new">https://github.com/new</a> 建一个 <strong>public</strong> 的空仓库（不要勾 README）；② 在 <a href="https://github.com/settings/tokens">https://github.com/settings/tokens</a> 生成 classic 令牌，勾 <code>repo</code>；③ 进 <code>GitHub部署</code> 目录执行 <code>pwsh -File .\推送.ps1</code>，按提示输用户名、仓库名、粘贴令牌（令牌只在内存里用一次，不落盘）；④ 仓库 <strong>Settings → Pages → Deploy from a branch → <code>main</code> / <code>(root)</code> → Save</strong>。地址形如 <code>https://用户名.github.io/仓库名/</code>，根路径是门面页，<code>/archive.html</code> 是阅读版，<code>/archive.pdf</code> 是 PDF。本机实测 <code>github.io</code> 可达（<code>octocat.github.io</code> 返回 200、2.6 秒），但<strong>国内手机网络不保证</strong>，发给别人前先用自己手机流量点一下。</p>
+<p><strong>D. GitHub Pages（已上线，最省事的一条）</strong>：地址就是 <strong><a href="https://3539755061.github.io/link-archive/">https://3539755061.github.io/link-archive/</a></strong>——根路径是门面页，<code>/archive.html</code> 是阅读版，<code>/archive.pdf</code> 是 PDF，手机和别人的电脑都能直接点开。这个站点由 <code>GitHub部署\</code> 目录里的 git 仓库发布，本地 <code>git push</code> 之后 Pages 约一分钟自动重建。原来那四步（建仓库 → 生成令牌 → <code>pwsh -File .\推送.ps1</code> → Settings 里开 Pages）已经在本轮做完；只有换账号时才需要重做。以后更新内容：重建阅读版 → 复制成 <code>archive.html</code>/<code>archive.pdf</code> → <code>git commit &amp;&amp; git push</code>，细节见 <code>GitHub部署\推送说明.md</code> 第五节。注意仓库是 <strong>public</strong>，内容可被搜索收录。</p>
 <p><strong>已被排除的</strong>：SMB 本身就是局域网；Vercel Drop 要登录；tiiny.host 要注册且免费站有效期短；Gitee Pages 据社区帖子反映已下架或转 Pro（这一条未在本机核实）。</p>
 <p>其中 2 号的使用方式（一条命令，零依赖，<strong>同样只绑本机</strong>）：</p>
 <pre><code>&lt;DSH 运行时&gt;\node\bin\node.exe &quot;C:\Users\Administrator\Desktop\项目群的某些链接\链接归档_20261113\静态服务器.js&quot; 8765
@@ -456,7 +457,7 @@ footer{
 <p>4 号 PDF 的重新生成命令（内容更新后要重打；直接打印本地文件，<strong>不需要任何服务</strong>）：</p>
 <pre><code>&lt;Edge&gt;\msedge.exe --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=&quot;C:\Users\Administrator\Desktop\项目群的某些链接\链接归档_20261113\阅读版_全归档.pdf&quot; --virtual-time-budget=8000 &quot;file:///C:/Users/Administrator/Desktop/项目群的某些链接/链接归档_20261113/阅读版_全归档.html&quot;
 </code></pre>
-<p><strong>推荐组合</strong>（不走局域网的前提下）：电脑上日常看 → <strong>双击 HTML</strong>（零服务、零端口）；要发给别人或长期保存 → <strong>PDF</strong>；手机上移动看 → 把 PDF 传过去；<strong>要给手机或别人一个能点的链接</strong> → 10 号 Netlify Drop（拖那个 zip，免注册，几十秒）；<strong>要永久网址、以后还能更新</strong> → 12 号 GitHub Pages（本地全备好，你只需建仓库 + 推一次）；以后想开机即用、不占端口、仍然只本机 → 6 号插件路由（你说一声我就做）。</p>
+<p><strong>推荐组合</strong>（不走局域网的前提下）：电脑上日常看 → <strong>双击 HTML</strong>（零服务、零端口）；手机或别人要看 → <strong>直接给这个地址</strong> <a href="https://3539755061.github.io/link-archive/">https://3539755061.github.io/link-archive/</a>（12 号，已上线）；要发给别人或长期存档 → <strong>PDF</strong>；要给手机或别人一个临时链接又不想公开仓库 → 10 号 Netlify Drop（拖那个 zip，免注册）；以后想开机即用、不占端口、仍然只本机 → 6 号插件路由（你说一声我就做）。</p>
 <h2>🧭 二、怎么分类的（分类依据）</h2>
 <p>不是按"公众号/网站"分，也不是按时间分，而是按<strong>内容的功能角色</strong>分四类，另设一个"未获取"：</p>
 <table>
