@@ -215,7 +215,7 @@ footer{
 <main>
 <section class="doc" id="sec-01-总说明">
 <h1>链接归档说明（2026-11-13）</h1>
-<p>本文件夹是原 <code>链接.txt</code> 里 15 条链接的抓取归档：<strong>原文照抄 + 中文归纳 + 可信度核验 + 外文翻译 + 分类</strong>。（本目录 2026-11-13 22:29 已从桌面 <code>C:\Users\Administrator\Desktop\项目群的某些链接\</code> 移入工作区 <code>E:\ds3\</code>；源 <code>链接.txt</code> 仍在桌面原处。）</p>
+<p>本文件夹是原 <code>链接.txt</code> 里 15 条链接的抓取归档：<strong>原文照抄 + 中文归纳 + 可信度核验 + 外文翻译 + 分类</strong>。（本目录 2026-11-13 22:29 从原桌面目录移入本机归档库，2026-11-14 18:43 再归入归档库的 <code>04-网页与前端</code>；源 <code>链接.txt</code> 仍在原桌面处。）</p>
 <p><strong>公网阅读地址：<a href="https://3539755061.github.io/link-archive/">https://3539755061.github.io/link-archive/</a></strong>（GitHub Pages，手机可直接打开；<code>/archive.html</code> 阅读版、<code>/archive.pdf</code> PDF）</p>
 <p>抓取与整理时间：2026-11-13 20:06–20:16（北京时间）｜ 抓取环境：本机 curl（无登录态）+ DSH web 抓取工具</p>
 <hr />
@@ -341,7 +341,7 @@ footer{
 <li>停止：关掉那个窗口 / <code>Ctrl+C</code>，或在任务管理器结束对应进程；端口 8765 被占用时换一个端口重起。</li>
 <li>启动命令（Python，<strong>只绑本机</strong>）：</li>
 </ul>
-<pre><code>&lt;DSH 运行时&gt;\python\python.exe -m http.server 8765 --bind 127.0.0.1 --directory &quot;E:\ds3\链接归档_20261113&quot;
+<pre><code>&lt;DSH 运行时&gt;\python\python.exe -m http.server 8765 --bind 127.0.0.1 --directory &quot;〈归档目录〉&quot;
 </code></pre>
 <p>手机端适配（<code>&lt; 760px</code> 生效）：<code>viewport-fit=cover</code> + 安全区 <code>env(safe-area-inset-*)</code>；字号固定 16px、行距 1.85；目录限高 46vh 可上下滑动（带"可上下滑动"提示）；目录项改为整行可点（热区 ≥ 44px）；右下角出现"↑"回到顶部按钮；表格字号 0.8em 并横向滚动；<code>theme-color</code> 与 apple 相关 meta 让"添加到主屏幕"后接近原生外观。这些是纯 CSS 媒体查询，<strong>跟开不开服务无关</strong>——把 HTML 文件传到手机里打开，手机版布局照样生效，只是"添加到主屏幕"在 <code>file://</code> 下不生效。</p>
 <h3>还有哪些实现方式（都已放在目录里或写明做法）</h3>
@@ -450,11 +450,11 @@ footer{
 <p><strong>D. GitHub Pages（已上线，最省事的一条）</strong>：地址就是 <strong><a href="https://3539755061.github.io/link-archive/">https://3539755061.github.io/link-archive/</a></strong>——根路径是门面页，<code>/archive.html</code> 是阅读版，<code>/archive.pdf</code> 是 PDF，手机和别人的电脑都能直接点开。这个站点由 <code>GitHub部署\</code> 目录里的 git 仓库发布，本地 <code>git push</code> 之后 Pages 约一分钟自动重建。原来那四步（建仓库 → 生成令牌 → <code>pwsh -File .\推送.ps1</code> → Settings 里开 Pages）已经在本轮做完；只有换账号时才需要重做。以后更新内容：重建阅读版 → 复制成 <code>archive.html</code>/<code>archive.pdf</code> → <code>git commit &amp;&amp; git push</code>，细节见 <code>GitHub部署\推送说明.md</code> 第五节。注意仓库是 <strong>public</strong>，内容可被搜索收录。</p>
 <p><strong>已被排除的</strong>：SMB 本身就是局域网；Vercel Drop 要登录；tiiny.host 要注册且免费站有效期短；Gitee Pages 据社区帖子反映已下架或转 Pro（这一条未在本机核实）。</p>
 <p>其中 2 号的使用方式（一条命令，零依赖，<strong>同样只绑本机</strong>）：</p>
-<pre><code>&lt;DSH 运行时&gt;\node\bin\node.exe &quot;E:\ds3\链接归档_20261113\静态服务器.js&quot; 8765
+<pre><code>&lt;DSH 运行时&gt;\node\bin\node.exe &quot;〈归档目录〉\静态服务器.js&quot; 8765
 </code></pre>
 <p>启动后会打印 <code>http://127.0.0.1:8765/</code> 和一行"仅本机可访问（不监听局域网）"。哪天临时要局域网访问，把 <code>静态服务器.js</code> 里 <code>const HOST = "127.0.0.1"</code> 改成 <code>"0.0.0.0"</code> 即可，改回来同理。</p>
 <p>4 号 PDF 的重新生成命令（内容更新后要重打；直接打印本地文件，<strong>不需要任何服务</strong>）：</p>
-<pre><code>&lt;Edge&gt;\msedge.exe --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=&quot;E:\ds3\链接归档_20261113\阅读版_全归档.pdf&quot; --virtual-time-budget=8000 &quot;file:///E:/ds3/链接归档_20261113/阅读版_全归档.html&quot;
+<pre><code>&lt;Edge&gt;\msedge.exe --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=&quot;〈归档目录〉\阅读版_全归档.pdf&quot; --virtual-time-budget=8000 &quot;file:///〈归档目录〉/阅读版_全归档.html&quot;
 </code></pre>
 <p><strong>推荐组合</strong>（不走局域网的前提下）：电脑上日常看 → <strong>双击 HTML</strong>（零服务、零端口）；手机或别人要看 → <strong>直接给这个地址</strong> <a href="https://3539755061.github.io/link-archive/">https://3539755061.github.io/link-archive/</a>（12 号，已上线）；要发给别人或长期存档 → <strong>PDF</strong>；要给手机或别人一个临时链接又不想公开仓库 → 10 号 Netlify Drop（拖那个 zip，免注册）；以后想开机即用、不占端口、仍然只本机 → 6 号插件路由（你说一声我就做）。</p>
 <h2>🧭 二、怎么分类的（分类依据）</h2>
