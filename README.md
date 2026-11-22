@@ -34,6 +34,10 @@
 
 `ml-specialization/index.html` 收录吴恩达《机器学习专项课程》中文语音版（B 站 BV1DLRbBTE6E，105 个分 P，约 16.8 小时音轨）的转写讲稿。文本由本机语音识别生成并校正术语，按课程、周、讲编排，每段带时间戳，非官方字幕。未完成的讲在页面中显示为“转写中”，重跑生成脚本即可补全。
 
+## 课程字幕合集
+
+`course-subtitles/` 收录从夸克下载的 26 个课程资料包中提取的字幕：25 门课、2,423 讲、中文约 425 万字，每讲中英各一份 txt。站点每门课一页，中文正文为主、英文原文折叠展开，单页内目录吸顶。`course-subtitles/courses.json` 是课程索引，`index.html` 为合集入口。
+
 ## 更新方式
 
 替换 `archive.html` / `archive.pdf` 后 `git commit && git push`，GitHub Pages 会在一分钟左右自动重新发布。

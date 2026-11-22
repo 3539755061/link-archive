@@ -1,0 +1,152 @@
+[
+  {
+    "course": "04.Blazor for Front-End Development（使用 Blazor 进行前端开发）",
+    "slug": "blazor-front-end-development",
+    "lectures": 92,
+    "zh": 104422
+  },
+  {
+    "course": "Achieving Personal and Professional Success Specialization【实现个人与职业成功专业课程】课程资料及字幕文本",
+    "slug": "achieving-personal-professional-success-speciali",
+    "lectures": 146,
+    "zh": 287318
+  },
+  {
+    "course": "AI in C# using the Microsoft Agent Framework【在 C# 中使用 Microsoft Agent Framework 实现人工智能】字幕和资料",
+    "slug": "ai-c-microsoft-agent-framework",
+    "lectures": 52,
+    "zh": 89104
+  },
+  {
+    "course": "Blender 5 Project Based Bootcamp 40+ Hands On Mini Projects【Blender 5 项目驱动训练营 40+ 动手实操迷你项目】课程资料及字幕文本",
+    "slug": "blender-project-based-bootcamp-hands-on",
+    "lectures": 60,
+    "zh": 177711
+  },
+  {
+    "course": "Claude Code_ The Complete Course【Claude Code：完整课程】 字幕及课程资料",
+    "slug": "claude-code-complete-course",
+    "lectures": 44,
+    "zh": 108657
+  },
+  {
+    "course": "Code with Mosh - Claude Code for Professional Developers《专业开发者实战：Claude Code》资料及字幕",
+    "slug": "code-mosh-claude-professional-developers",
+    "lectures": 120,
+    "zh": 134560
+  },
+  {
+    "course": "Code With Mosh - Next.js_Projects_Build_an_Issue_Tracker【Next.js 项目：构建一个问题追踪器】字幕文本(1)",
+    "slug": "code-mosh-nextjs-projects-build-issue",
+    "lectures": 87,
+    "zh": 88396
+  },
+  {
+    "course": "Code with Mosh - Spring Boot_ Mastering the Fundamentals【Spring Boot：掌握核心基础】资料及字幕",
+    "slug": "code-mosh-spring-boot-mastering-fundamentals",
+    "lectures": 76,
+    "zh": 80543
+  },
+  {
+    "course": "CompTIA A+ Core 1 (220-1201) Complete Exam Prep Course 2026【CompTIA A+ Core 1 (220-1201) 完整考试备考课程 2026】课程资料及字幕文本",
+    "slug": "comptia-a-core-complete-exam-prep",
+    "lectures": 270,
+    "zh": 442589
+  },
+  {
+    "course": "Cursor AI Beginner to Pro Build Production Web Apps with AI【Cursor AI从入门到精通：使用AI构建生产级Web应用】课程资料及字幕文本",
+    "slug": "cursor-ai-beginner-pro-build-production",
+    "lectures": 34,
+    "zh": 90824
+  },
+  {
+    "course": "Embedded C Reusable Modules & Unit Testin【嵌入式 C 可复用模块与单元测试】",
+    "slug": "embedded-reusable-modules-unit-testin",
+    "lectures": 26,
+    "zh": 33826
+  },
+  {
+    "course": "Kotlin Coroutines and Concurrency【Kotlin 协程与并发】字幕文本",
+    "slug": "kotlin-coroutines-concurrency",
+    "lectures": 57,
+    "zh": 147460
+  },
+  {
+    "course": "Mastering ASPNET Core Web API with NET 10【精通 ASP.NET Core Web API 与 .NET 10 实战】字幕文本",
+    "slug": "mastering-aspnet-core-web-api-net",
+    "lectures": 59,
+    "zh": 56621
+  },
+  {
+    "course": "Microsoft Full-Stack Developer Professional Certificate【微软全栈开发专家证书】01.Foundations of Coding Full-Stack（全栈编码基础）资料及字幕",
+    "slug": "microsoft-full-stack-developer-professional-cert",
+    "lectures": 100,
+    "zh": 112502
+  },
+  {
+    "course": "Microsoft Full-Stack Developer Professional Certificate【微软全栈开发专家证书】02.Introduction to Programming With C#（C# 编程入门）资料及",
+    "slug": "microsoft-full-stack-developer-professional--15",
+    "lectures": 66,
+    "zh": 72649
+  },
+  {
+    "course": "Microsoft Intune Zero to Hero with Real Enterprise Labs【Microsoft Intune 从入门到精通：真实企业实验实战】课程资料及字幕文本",
+    "slug": "microsoft-intune-zero-hero-real-enterprise",
+    "lectures": 102,
+    "zh": 140663
+  },
+  {
+    "course": "Minimal API with .NET 10 and C#【基于 .NET 10 和 C# 的极简 API】课程资料及字幕文本",
+    "slug": "minimal-api-net-c",
+    "lectures": 24,
+    "zh": 78166
+  },
+  {
+    "course": "Oreilly - Grokking AI Algorithms, Second Edition, Video Edition字幕文本",
+    "slug": "oreilly-grokking-ai-algorithms-second-edition",
+    "lectures": 12,
+    "zh": 156184
+  },
+  {
+    "course": "React Design Patterns【React 设计模式】字幕文本",
+    "slug": "react-design-patterns",
+    "lectures": 39,
+    "zh": 42040
+  },
+  {
+    "course": "React Native The Practical Guide《React Native 实战指南》课程资料及字幕文本",
+    "slug": "react-native-practical-guide",
+    "lectures": 551,
+    "zh": 831595
+  },
+  {
+    "course": "Selenium WebDriver 4 With Python - Novice To Ninja【Selenium WebDriver 4 Python 实战：从入门到精通】课程资料及字幕文本",
+    "slug": "selenium-webdriver-python-novice-ninja",
+    "lectures": 213,
+    "zh": 417620
+  },
+  {
+    "course": "the-ultimate-typescript【TypeScript 终极指南】字幕及资料",
+    "slug": "the-ultimate-typescript-typescript",
+    "lectures": 92,
+    "zh": 61670
+  },
+  {
+    "course": "【深度学习、生成对抗网络和变分自编码器】Deep Learning Gans And Variational Autoencoders",
+    "slug": "deep-learning-gans-variational-autoencoders",
+    "lectures": 55,
+    "zh": 100211
+  },
+  {
+    "course": "基于IoT Linux物联网安全的红蓝对抗 & EmbeddedIoT Linux for Red-Blue Teams 字幕文本",
+    "slug": "iot-linux-embeddediot-red-blue-teams",
+    "lectures": 28,
+    "zh": 74394
+  },
+  {
+    "course": "李飞飞·斯坦福CS231n计算机视觉课程（全18讲）字幕及资料",
+    "slug": "cs231n",
+    "lectures": 18,
+    "zh": 319774
+  }
+]
