@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 14 讲 How neural networks are implemented efficiently (optional)【如何高效实现神经网络（ · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 14 讲 How neural networks are implemented efficiently (optional)【如何高效实现神经网络（</h1>
+<p class="lead">How neural networks are implemented efficiently (optional)【如何高效实现神经网络（ · 4:33 · 分 P 56</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>过去10年里，深度学习研究者能够不断扩展神经网络，构建真正的大型神经网络。</p>
+<p><span class="ts">00:08</span>原因之一，就在于，神经网络可以被相量化。</p>
+<p><span class="ts">00:13</span>他们可以通过举证惩罚非常高效的实现。</p>
+<p><span class="ts">00:18</span>而事实证明，并行计算硬件，包括 GPU，也包括一些 CPU 功能，非常擅长进行超大规模的举证惩罚。</p>
+<p><span class="ts">00:30</span>在这个视频中，我们来看看神经网络的这些相量化实现是如何工作的。</p>
+<p><span class="ts">00:36</span>如果没有这些思想，我认为深度学习绝不会有今天这样的成功和规模。</p>
+<p><span class="ts">00:42</span>左边是你之前见过的代码。</p>
+<p><span class="ts">00:45</span>关于如何在单层中实现前向传播。</p>
+<p><span class="ts">00:55</span>这里的 x 是输入 w 是比如第1、第2、第3个神经元的权重。</p>
+<p><span class="ts">01:03</span>参数 b，然后这段代码和你之前看到的一样。</p>
+<p><span class="ts">01:08</span>它将输出三个数字，就像这样。</p>
+<p><span class="ts">01:12</span>如果你实际运行这个计算，你会得到1、0、1。</p>
+<p><span class="ts">01:18</span>事实证明，你可以如下这样开发这个函数的相量化实现。</p>
+<p><span class="ts">01:23</span>将 x 设为等于这个。</p>
+<p><span class="ts">01:29</span>注意这里有两层方，括号。</p>
+<p><span class="ts">01:32</span>现在它是一个二维数组，就像在 TensorFlow 中一样。</p>
+<p><span class="ts">01:37</span>w 和之前一样。</p>
+<p><span class="ts">01:39</span>而 b，我现在用大写 b，也是一个1×3的二维数组。</p>
+<p><span class="ts">01:45</span>然后，所有这些步骤。</p>
+<p><span class="ts">01:52</span>里面的这个 for 寻环都可以用几行代码来替代。</p>
+<p><span class="ts">01:58</span>z 等于 np.matmew。</p>
+<p><span class="ts">02:01</span>matmew 是 Numpi 进行举证惩罚的方式。</p>
+<p><span class="ts">02:06</span>现在 x 和 w 都是举证。</p>
+<p><span class="ts">02:09</span>你只需把它们相乘即可。</p>
+<p><span class="ts">02:12</span>结果这个 for 寻环，所有这些代码行都可以用几行代码替代。</p>
+<p><span class="ts">02:19</span>从而给出这个函数的相量化实现。</p>
+<p><span class="ts">02:22</span>你计算 z，现在 z 又是一个举证。</p>
+<p><span class="ts">02:28</span>通过 numpi.matmew 在 a 下滑线 in 和 w 之间进行运算。</p>
+<p><span class="ts">02:35</span>这里 a 下滑线 in 和 w 都是举证。</p>
+<p><span class="ts">02:39</span>matmew 是 Numpi 执行举证与举证惩罚的方式。</p>
+<p><span class="ts">02:45</span>它将两个举证相乘，然后加上举证 b。</p>
+<p><span class="ts">02:49</span>然后这里的 a 或叫 a 下滑线 out 等于激活函数 g，也就是 sigma 的函数。</p>
+<p><span class="ts">02:58</span>按元素作用于这个举证 z，最后你返回 a 下滑线 out。</p>
+<p><span class="ts">03:05</span>代码看起来就是这样。</p>
+<p><span class="ts">03:08</span>注意，在相量化实现中，所有这些量 x，它被传入作为 a 下滑线 in 的值，还有 wb，以及 z 和 a 下滑线 out。</p>
+<p><span class="ts">03:20</span>所有这些现在都是二维数组。</p>
+<p><span class="ts">03:23</span>所有这些都是举证。</p>
+<p><span class="ts">03:26</span>而这对于神经网络中通过一个全连阶层进行一步前向传播来说，被证明是一种非常高效的实现。</p>
+<p><span class="ts">03:35</span>这是神经网络中前向传播相量化实现的代码。</p>
+<p><span class="ts">03:39</span>但这代码到底在做什么？它实际上是如何工作的呢？这个 matmure 到底在做什么？在接下来的两个视频中也都是选修的。</p>
+<p><span class="ts">03:54</span>我们将讲解举证惩罚及其工作原理。</p>
+<p><span class="ts">03:59</span>如果你熟悉线性代数，如果你熟悉象量、举证、转质以及举证与举证的惩罚，你完全可以快速浏览这两个视频，然后跳到本周的最后一个视频。</p>
+<p><span class="ts">04:14</span>然后在本周的最后一个视频中也同样是选修的。</p>
+<p><span class="ts">04:19</span>我们将深入更多细节，解释 matmure 是如何实现这种象量化计算的。</p>
+<p><span class="ts">04:26</span>接下来让我们进入下一个视频，看看举证惩罚是什么。</p>
+</main>
+<nav class="pager"><a href="P055.html">← 上一讲 通往AGI之路是否存在</a><a class="mid" href="index.html">总目录</a><a href="P057.html">下一讲 矩阵乘法（选修） →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 45 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

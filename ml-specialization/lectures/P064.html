@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 5 讲 为什么需要激活函数 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 5 讲 为什么需要激活函数</h1>
+<p class="lead">Why do we need activation functions · 5:44 · 分 P 64</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>我们来看看为什么神经网络需要激活函数，以及如果在神经网络的每个神经元中都使用线性激活函数，它为什么就行不通。</p>
+<p><span class="ts">00:15</span>回顾一下这个需求预测的例子：如果我们为这个神经网络中的所有节点都使用线性激活函数，会发生什么？结果是这个大型神经网络将变得和线性回归没什么两样。</p>
+<p><span class="ts">00:32</span>这就违背了使用神经网络的初衷，因为它只能拟合我们第一门课中学过的线性回归模型，无法处理任何更复杂的情况。我们用一个更简单的例子来说明。</p>
+<p><span class="ts">00:49</span>来看这个神经网络的例子。输入 x 只是一个数字，我们有一个隐藏单元，参数为 w1 和 b1，它输出 a1，这里也只是一个数字。</p>
+<p><span class="ts">01:08</span>然后第二层是输出层，它也只有一个输出单元，参数为 w2 和 b2，并输出 a2，这同样只是一个数字、一个标量，也就是神经网络的输出 f(x)。</p>
+<p><span class="ts">01:22</span>我们来看看，如果所有地方都使用线性激活函数，即 g(z) 等于 z，这个神经网络会怎样。</p>
+<p><span class="ts">01:36</span>为了计算 a1 关于 x 的函数，神经网络会使用 a1 等于 g(w1·x + b1)；但 g(z) 等于 z，所以这就是 w1·x + b1，然后 a2 等于 w2·a1 + b2。</p>
+<p><span class="ts">02:01</span>因为 g(z) 等于 z，我把 a1 的表达式代入进去，就变成了 w2(w1·x + b1) + b2，简化后得到 w2w1·x + w2b1 + b2。</p>
+<p><span class="ts">02:28</span>结果是：如果我将 w 设为 w2 乘 w1，并将 b 设为后面这一堆，那么我们刚刚展示的 a2 就等于 w·x + b。a2 只是输入 x 的一个线性函数。</p>
+<p><span class="ts">02:53</span>与其使用带有一个隐藏层和一个输出层的神经网络，我们还不如直接使用一个线性回归模型。如果你熟悉线性代数，这个结果源于这样一个事实：线性函数的线性函数本身还是线性函数。</p>
+<p><span class="ts">03:12</span>这就是为什么在神经网络中拥有多个层，并不能让神经网络计算出更复杂的特征，或学到比线性函数更复杂的东西。</p>
+<p><span class="ts">03:24</span>在一般情况下，如果你有一个像这样的多层神经网络，并且对所有隐藏层都使用线性激活函数，同时也对输出层使用线性激活函数，那么结果就是这个模型计算出的输出完全等价于线性回归。</p>
+<p><span class="ts">03:47</span>输出 A4 可以表示为输入特征 X 的线性函数加 B。或者换一种情况：如果我们同样对所有隐藏层，也就是这里的三层隐藏层，使用线性激活函数，但为输出层使用逻辑激活函数。</p>
+<p><span class="ts">04:11</span>那么你会发现，这个模型就等价于逻辑回归。在这种情况下，A4 可以表示为 1 / (1 + e^-(WX + B))，其中 W 和 B 是某些值。</p>
+<p><span class="ts">04:30</span>这个大型神经网络能做到的，逻辑回归也都能做到。这就是为什么一条通用的经验法则是：不要在神经网络的隐藏层中使用线性激活函数。</p>
+<p><span class="ts">04:45</span>事实上，我一般推荐使用 ReLU 激活函数，应该就完全够用了。这就是为什么神经网络需要在所有地方都使用线性激活函数之外的激活函数。</p>
+<p><span class="ts">05:00</span>到目前为止，你已经学会了为二分类问题构建神经网络，其中 y 要么是 0 要么是 1。</p>
+<p><span class="ts">05:09</span>也为回归问题构建，其中 y 可以取负值或正值，或者只取正值和非负值。在下一个视频中，我想和你分享一个你目前所学的分类问题的推广。</p>
+<p><span class="ts">05:24</span>具体来说，就是当 y 不只取两个值，而是可能取 3 个、4 个、10 个。</p>
+<p><span class="ts">05:32</span>甚至更多个类别值的情况。我们来看看如何为这类分类问题构建一个神经网络。</p>
+</main>
+<nav class="pager"><a href="P063.html">← 上一讲 选择激活函数</a><a class="mid" href="index.html">总目录</a><a href="P065.html">下一讲 多分类 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 20 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

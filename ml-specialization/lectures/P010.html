@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 10 讲 线性回归模型（二） · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 1 周</p>
+<h1>第 10 讲 线性回归模型（二）</h1>
+<p class="lead">Linear regression model part 2 · 6:58 · 分 P 10</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>在本期视频中，我们来看看监督学习的工作流程是怎样的。</p>
+<p><span class="ts">00:07</span>监督学习算法会输入一个数据级，那么它到底做了什么又会输出什么呢？我们在这期视频中一探究竟。</p>
+<p><span class="ts">00:17</span>回顾一下，监督学习中的训练集既包含输入特征，比如房屋面积，也包含输出目标，比如房价。</p>
+<p><span class="ts">00:26</span>输出目标是模型将要学习的正确答案。</p>
+<p><span class="ts">00:32</span>为了训练模型，你将训练集包括输入特征和输出目标一并提供给学习算法。</p>
+<p><span class="ts">00:39</span>然后你的监督学习算法就会产生某个函数。</p>
+<p><span class="ts">00:46</span>我们将这个函数写作小写 f，其中 f 代表函数。</p>
+<p><span class="ts">00:52</span>过去这个函数曾被称为假设，但在这门课中我就直接称之为函数 f。</p>
+<p><span class="ts">01:00</span>f 的作用是接收一个新的输入 x，然后输出一个估计值或预测值，我称之为 Y hat。</p>
+<p><span class="ts">01:10</span>它的写法和变量 Y 一样，只是上面加了这个小小的帽子符号。</p>
+<p><span class="ts">01:21</span>在机器学习中，惯例是用 Y hat 表示对 Y 的估计或预测。</p>
+<p><span class="ts">01:27</span>函数 f 被称为模型。</p>
+<p><span class="ts">01:34</span>x 被称为输入或输入特征，模型的输出则是预测值 Y hat。</p>
+<p><span class="ts">01:43</span>模型的预测就是 Y 的估计值。</p>
+<p><span class="ts">01:48</span>当符号仅仅是字母 Y 时，那指的是目标，即训练集中实际的真实值。</p>
+<p><span class="ts">01:59</span>相比之下，Y hat 是一个估计值，它可能是也可能不是实际的真实值。</p>
+<p><span class="ts">02:06</span>如果你在帮客户卖房，在房子售出前，其真实价格是未知的。</p>
+<p><span class="ts">02:13</span>你的模型 f 在给定面积后会输出一个价格，也就是估计值，即对真实价格的预测。</p>
+<p><span class="ts">02:22</span>当我们设计一个学习算法时，一个关键问题是，我们该如何表示函数 f。</p>
+<p><span class="ts">02:30</span>换言之，我们要用什么数学公式来计算 f 呢？目前，我们先坚持用一条直线来表示 f。</p>
+<p><span class="ts">02:44</span>那么，你的函数可以写成 f。</p>
+<p><span class="ts">02:47</span>下标 w，逗号 b，括号 x 等于，我将使用 w 乘以 x 加 b。</p>
+<p><span class="ts">02:57</span>我稍后会定义 w 和 b。</p>
+<p><span class="ts">03:00</span>但现在，只需知道 w 和 b 是数字，他们取的值将决定基于输入特征 x，得出的预测值 Y hat。</p>
+<p><span class="ts">03:10</span>这个 fwb，括号 x，意味着 f 是一个接收输入 x 的函数。</p>
+<p><span class="ts">03:22</span>并且取决于 w 和 b 的值，f 会输出某个预测值 Y hat。</p>
+<p><span class="ts">03:29</span>作为这种写法的替代，我有时也会简写成 f 括号 x，而不在下标中显示的包含 w 和 b。</p>
+<p><span class="ts">03:41</span>这只是一种更简单的计法，但与 fwb 括号 x 的意思完全相同。</p>
+<p><span class="ts">03:48</span>我们把训练集画在图上，横轴是输入特征 x，纵轴是输出目标外。</p>
+<p><span class="ts">03:59</span>记住，算法从这些数据中学习并生成一条最佳铷合线，可能就像这里这条。</p>
+<p><span class="ts">04:07</span>这条直线就是线性函数 f_{w,b}，括号 x 等于 w 乘以 x 加 b。</p>
+<p><span class="ts">04:17</span>或者更简单的，我们可以省略 w 和 b，直写成 f 括号 x 等于 wx 加 b。</p>
+<p><span class="ts">04:26</span>这个函数所做的是，利用一条关于 x 的直线函数来预测 Y 的值。</p>
+<p><span class="ts">04:32</span>你可能会问，我们为什么要选择线性函数，即一条直线而不是某些非线性函数，比如一条曲线或抛物线呢？有时你确实也需要你和更复杂的非线性函数，比如像这样的曲线。</p>
+<p><span class="ts">04:53</span>但既然线性函数相对简单且易于处理，我们就先用直线作为基础。</p>
+<p><span class="ts">05:01</span>这最终会帮助你过渡到更复杂的非线性模型。</p>
+<p><span class="ts">05:06</span>这个模型有个名字叫做线性回归。</p>
+<p><span class="ts">05:11</span>同具体的说，这是单变量线性回归。</p>
+<p><span class="ts">05:15</span>其中，单变量亦词意味着只有一个输入变量或特征 x，即房屋的面积。</p>
+<p><span class="ts">05:23</span>具有一个输入变量的线性模型的另一个名称是单变量线性回归。</p>
+<p><span class="ts">05:29</span>其中，Uni 在拉丁语中意为 e,variate，意为变量。</p>
+<p><span class="ts">05:36</span>单变量就是一个变量的另一种说法。</p>
+<p><span class="ts">05:42</span>在之后的视频里，你还会看到回归的一种变体。</p>
+<p><span class="ts">05:46</span>那时你要做的预测不仅仅基于房屋的面积，还基于你可能了解的有关房子的许多其他方面。</p>
+<p><span class="ts">05:54</span>比如卧室数量和其他特征。</p>
+<p><span class="ts">05:57</span>顺便提一下，你看完这期视频后还有一个可选的实验练习。</p>
+<p><span class="ts">06:03</span>你不需要编写任何代码，只需回顾一下运行代码看看它的功能，它会向你展示如何操作。</p>
+<p><span class="ts">06:11</span>在拍摄中定义一个直线函数。</p>
+<p><span class="ts">06:15</span>这个实验会让你选择 w 和 b 的值，来尝试你和训练数据。</p>
+<p><span class="ts">06:22</span>如果你不想做这个实验也没关系，但我希望你看完这期视频后能去尝试一下。</p>
+<p><span class="ts">06:29</span>以上就是线性回归。</p>
+<p><span class="ts">06:32</span>为了让这个方法奏效，你必须做的最重要的事情之一就是构建一个代价函数。</p>
+<p><span class="ts">06:38</span>代价函数的概念是机器学习中最普遍最重要的概念之一。</p>
+<p><span class="ts">06:44</span>用于线性回归以及训练世界上许多最先进的 AI 模型。</p>
+<p><span class="ts">06:50</span>让我们进入下期视频，看看如何构建一个代价函数。</p>
+</main>
+<nav class="pager"><a href="P009.html">← 上一讲 线性回归模型（一）</a><a class="mid" href="index.html">总目录</a><a href="P011.html">下一讲 成本函数公式 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 55 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

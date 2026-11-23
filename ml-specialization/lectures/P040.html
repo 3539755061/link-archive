@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 10 讲 正则化线性回归 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 3 周</p>
+<h1>第 10 讲 正则化线性回归</h1>
+<p class="lead">Regularized linear regression · 9:14 · 分 P 40</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>在本视频中 我们将弄清楚如何让 T 度下降适用于正则化线性回归。</p>
+<p><span class="ts">00:07</span>让我们开始吧。</p>
+<p><span class="ts">00:09</span>这是我们在上一个视频中为正则化线性回归提出的代价函数。</p>
+<p><span class="ts">00:15</span>第一部分是常规的平方误差代价函数。</p>
+<p><span class="ts">00:20</span>现在你有了这个额外的正则化像，其中 Lambda 是正则化参数。</p>
+<p><span class="ts">00:27</span>你想要找到能够最小化这个正则化代价函数的参数 w 和 b。</p>
+<p><span class="ts">00:35</span>之前 在我们添加第二个正则化像之前，我们对原始的只有第一项的代价函数使用了 T 度下降法。</p>
+<p><span class="ts">00:45</span>之前 我们有如下的 T 度下降算法，即根据这个公式，对于 j 从1到 n 我们反复更新参数 wj，同时 b 也进行类似的更新。</p>
+<p><span class="ts">01:01</span>记住哈，Alpha 是一个很小的正数，称为学习率。</p>
+<p><span class="ts">01:06</span>事实上，正则化线性回归的更新看起来完全一样。</p>
+<p><span class="ts">01:11</span>只不过，现在代价函数 j 的定义略有不同。</p>
+<p><span class="ts">01:16</span>之前，j 对 wj 的导数由这个表达式给出，对 b 的导数由这个表达式给出。</p>
+<p><span class="ts">01:30</span>现在我们添加了额外的正则化相。</p>
+<p><span class="ts">01:33</span>唯一的变化是，关于 wj 的导数表达式最后会多出一项。</p>
+<p><span class="ts">01:41</span>也就是加上 lambda 除以 m 再乘以 wj。</p>
+<p><span class="ts">01:47</span>具体来说，对于新定义的代价函数 j，这里的两个表达式就是 j 对 wj 和 j 对 b 的新的导数。</p>
+<p><span class="ts">02:02</span>回忆一下，我们不对 b 进行正则化。</p>
+<p><span class="ts">02:07</span>所以，我们不试图缩小 b。</p>
+<p><span class="ts">02:10</span>这就是为什么 b 的更新保持不变。</p>
+<p><span class="ts">02:13</span>而 w 的更新会改变，因为正则化相会导致我们试图缩小 wj。</p>
+<p><span class="ts">02:22</span>让我们采用这些导数的定义，并将它们放回左边的表达式中，写出正则化线性回归的 T 度下降算法。</p>
+<p><span class="ts">02:34</span>为了实现正则化线性回归的 T 度下降，你的代码需要执行以下操作。</p>
+<p><span class="ts">02:40</span>这是对于 j 从1到 n 的 wj 的更新，这是 b 的更新。</p>
+<p><span class="ts">02:49</span>像往常一样，请记住对所有参数进行同步更新。</p>
+<p><span class="ts">02:55</span>为了让这个算法起作用，你需要了解的就是这些。</p>
+<p><span class="ts">03:02</span>但我想在本视频的剩余部分讲一些可选材料。</p>
+<p><span class="ts">03:07</span>目的是让你对这个公式实际的作用有一个稍深入的理解。</p>
+<p><span class="ts">03:12</span>并简要讨论一下这些导数是如何推导出来的。</p>
+<p><span class="ts">03:17</span>本视频的其余部分完全是可选的。</p>
+<p><span class="ts">03:20</span>跳过本视频的剩余部分完全没有问题。</p>
+<p><span class="ts">03:24</span>但如果你对数学有浓厚的兴趣，那就请继续跟我看下去。</p>
+<p><span class="ts">03:31</span>能在这里陪你一会儿总是件愉快的事。</p>
+<p><span class="ts">03:35</span>通过这些方程，也许你也能对数学以及导数的作用建立更深入的理解。</p>
+<p><span class="ts">03:43</span>让我们来看一看。</p>
+<p><span class="ts">03:45</span>我们来看一下 wj 的更新规则。</p>
+<p><span class="ts">03:49</span>并用另一种方式，重写它。</p>
+<p><span class="ts">03:52</span>我们正在将 wj 更新为1乘以 wj 减去 alpha 乘以 lambda 除以 m 再乘以 wj。</p>
+<p><span class="ts">04:01</span>我把最后这项移到了前面。</p>
+<p><span class="ts">04:07</span>然后，减去 alpha 乘以 m 分之1，再乘以后面的那部分项。</p>
+<p><span class="ts">04:13</span>我们只是稍微重新排列了一下各项。</p>
+<p><span class="ts">04:18</span>如果简化一下，那么，我们就是在说 wj 被更新为 wj 乘以括号1，减去 alpha 乘以 lambda 除以 m，再减去 alpha 乘以后面的这一项。</p>
+<p><span class="ts">04:33</span>你可能会认出，这第二项正是没有正则化的线性回归的常规梯度下降更新。</p>
+<p><span class="ts">04:42</span>这是我们在有正则化之前的线性回归更新，也是我们在课程第二周看到的项。</p>
+<p><span class="ts">04:51</span>添加正则化后唯一的变化是，不再是将 wj 设置为等于 wj 减去 alpha 乘以这一项，而是 w 乘以这个数，再减去常规的更新项。</p>
+<p><span class="ts">05:08</span>这就是我们课程第一周的内容。</p>
+<p><span class="ts">05:11</span>前面的这一项是什么呢？alpha 是一个非常小的正数，比如0.01。</p>
+<p><span class="ts">05:20</span>lambda 通常是一个小数字，比如1或者10。</p>
+<p><span class="ts">05:26</span>在这个例子中，假设 lambda 等于1，m 是训练集大小，比如50。</p>
+<p><span class="ts">05:34</span>当你计算 alpha 乘以 lambda 除以 m 时，比如0.01乘以1除以50。</p>
+<p><span class="ts">05:42</span>这一项最终是一个很小的正数，比如0.002。</p>
+<p><span class="ts">05:50</span>1减去 alpha 乘以 lambda 除以 m，将是一个略小于1的数字。</p>
+<p><span class="ts">05:56</span>在这种情况下，为0.9998。</p>
+<p><span class="ts">06:00</span>这一项的效果是，在 T 度下降的每一次迭代中，你在进行常规更新之前，都要将 Wj 乘以0.9998，也就是乘以一个略小于1的数字。</p>
+<p><span class="ts">06:12</span>正则化在每一次迭代中所做的是，将 W 乘以一个略小于1的数字，这会产生使 Wj 的值略微缩小的效果。</p>
+<p><span class="ts">06:27</span>这为我们提供了另一个视角，理解为什么正则化会在每次迭代中，产生使参数 Wj 略微缩小的效果。</p>
+<p><span class="ts">06:38</span>这就是正则化的工作原理。</p>
+<p><span class="ts">06:41</span>如果你对这些导数项，是如何计算出来的感到好奇，我还有最后一张可选的幻灯片，简要介绍一下导数项的计算过程。</p>
+<p><span class="ts">06:52</span>记住哈，这张幻灯片和本视频的其余部分，完全是可选的。</p>
+<p><span class="ts">06:57</span>这意味着，你完成练习实验和测验，都不需要这些内容。</p>
+<p><span class="ts">07:02</span>让我们快速浏览一下，导数的计算过程。</p>
+<p><span class="ts">07:06</span>Wj 对 Wj 的导数看起来是这样的。</p>
+<p><span class="ts">07:09</span>回忆一下，线性回归的 fx 定义为 W 点乘 x 加上 b，或者说 W 点 gx 再加 b。</p>
+<p><span class="ts">07:33</span>根据危机分规则，导数最终看起来是这样的。</p>
+<p><span class="ts">07:37</span>等于1除以2倍的 m 乘以 i 从1到 m 的合，是 W 点乘 x 加 b-y，再乘以2倍的 xj。</p>
+<p><span class="ts">07:52</span>再加上正则画像的导数。</p>
+<p><span class="ts">07:55</span>也就是 lambda 除以2倍的 m，再乘以2倍的 Wj。</p>
+<p><span class="ts">08:03</span>注意，第二项不再有这从1到 n 的求合符号，这里的2和这里的2约掉了，这里的2和这里的2也约掉了，它简化成了这里的表达式。</p>
+<p><span class="ts">08:20</span>最后，记住 W 点乘 x 加 b 就是 fx。</p>
+<p><span class="ts">08:30</span>所以，你可以把它重写成下面的这个表达式。</p>
+<p><span class="ts">08:35</span>这就是为什么使用这个表达式来计算正则画线性回归中的 T 度。</p>
+<p><span class="ts">08:42</span>现在你知道如何实现正则画线性回归了。</p>
+<p><span class="ts">08:46</span>使用这种方法，当你拥有大量特征，但训练集相对较小时，它确实能减少过拟合。</p>
+<p><span class="ts">08:54</span>这应该能让线性回归在许多问题上表现得更好。</p>
+<p><span class="ts">08:59</span>在下一个视频中，我们将把这个正则画的思想应用到逻辑回归上，以避免逻辑回归也出现过拟合。</p>
+<p><span class="ts">09:09</span>让我们在下一个视频中看看这个内容。</p>
+</main>
+<nav class="pager"><a href="P039.html">← 上一讲 带正则化的代价函数</a><a class="mid" href="index.html">总目录</a><a href="P041.html">下一讲 正则化逻辑回归 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 75 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

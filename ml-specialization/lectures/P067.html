@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 8 讲 带Softmax输出的神经网络 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 8 讲 带Softmax输出的神经网络</h1>
+<p class="lead">Neural Network with Softmax output · 7:52 · 分 P 67</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>为了构建一个能执行多类分类的神经网络，我们将采用 softmax 回归模型，并将其本质上放入神经网络的输出层。</p>
+<p><span class="ts">00:12</span>我们来看看具体如何操作。</p>
+<p><span class="ts">00:17</span>之前，当我们只进行两个类别的手写数字识别时，我们使用的是这种架构的神经网络。</p>
+<p><span class="ts">00:24</span>如果你现在想进行10个类别的手写数字分类，也就是从0到9的所有数字，那么，我们将把这个神经网络改成有10个输出单元，就像这样。</p>
+<p><span class="ts">00:43</span>而这个新的输出层将是一个 softmax 输出层。</p>
+<p><span class="ts">00:47</span>有时我们会说这个神经网络有一个 softmax 输出，或者说这个输出层是一个 softmax 层。</p>
+<p><span class="ts">00:56</span>在这个神经网络中，前向传播的工作方式是，给定一个输入 XA1的计算方式与之前完全相同。</p>
+<p><span class="ts">01:05</span>然后，第二个隐藏层的激活值 A2，也以完全相同的方式计算。</p>
+<p><span class="ts">01:14</span>现在，我们需要计算这个输出层的激活值，也就是 A3。</p>
+<p><span class="ts">01:21</span>它的工作原理如下。</p>
+<p><span class="ts">01:23</span>如果你有10个输出类别，我们将使用这些表达式计算 Z1、Z2、一直到 Z10。</p>
+<p><span class="ts">01:32</span>这实际上与我们之前用于计算 Z 的公式非常相似，Z1是 W1与来自前一层的激活值 A2的点击，加上 B1。</p>
+<p><span class="ts">01:44</span>Z1到 Z10以此类推。</p>
+<p><span class="ts">01:47</span>然后 A1等于 E 的这一次方，除 EE 的这一次方，加上点点点一直，加到 E 的这十次方。</p>
+<p><span class="ts">01:56</span>这就是我们对 Y 等于 E 的概率的估计。</p>
+<p><span class="ts">02:00</span>A2也类似，E 类推一直到 A10。</p>
+<p><span class="ts">02:11</span>这样就给出了你对 Y 等于 E2，一直到第10个可能标签的概率。</p>
+<p><span class="ts">02:19</span>估计呢？为了完整性，如果你想指明这些是与第三层相关的量，技术上我应该在这些地方加上上标3。</p>
+<p><span class="ts">02:30</span>这确实会让符号看起来更杂乱一些，但这明确指出了。</p>
+<p><span class="ts">02:39</span>例如，这是 Z 下标31的值。</p>
+<p><span class="ts">02:43</span>而这些是与该神经网络第三层的第一个单元相关的参数。</p>
+<p><span class="ts">02:48</span>有了这个，你的 softmax 输出层，现在就能给出 Y 为这10个可能输出标签中任何一个的概率估计。</p>
+<p><span class="ts">03:02</span>我想提一下 softmax 层，有时也称为 softmax 激活函数。</p>
+<p><span class="ts">03:08</span>与目前我们见过的其他激活函数，如 Sigmoid,Railu 和线性函数相比，它在一个方面有点不寻常，那就是当我们考虑 Sigmoid,Railu 或线性激活函数时，A1是 Z1的函数，A2是 Z2，且仅是 Z2的函数。</p>
+<p><span class="ts">03:32</span>换句话说，为了获得激活值，我们可以将激活函数 G，无论是 Sigmoid,Railu 还是其他什么，逐元素的应用于 Z1、Z2等等，来得到 A1、A2、A3和 A4，但对于 softmax 激活函数，请注意 A1是 Z1、Z2、Z3，</p>
+<p><span class="ts">03:59</span>一直到 Z10的函数。</p>
+<p><span class="ts">04:02</span>这里的每一个激活值都依赖于所有的 Z 值，这是 softmax 输出或 softmax 激活函数所特有的一个性质。</p>
+<p><span class="ts">04:13</span>或者换个说法，如果你想计算 A1到 A10，它是从 Z1一直到 Z10同时作用的一个函数，这与我们目前见过的其他激活函数不同。</p>
+<p><span class="ts">04:31</span>最后，我们来看看如何在 TensorFlow 中实现它。</p>
+<p><span class="ts">04:36</span>如果你想实现我这页幻灯片上展示的神经网络，这就是相应的代码。</p>
+<p><span class="ts">04:44</span>和之前类似，指定并训练模型分为三个步骤。</p>
+<p><span class="ts">04:49</span>第一步，是告诉 TensorFlow 按顺序串联三个层。</p>
+<p><span class="ts">04:54</span>第一层是这25个单元，使用 Relew 激活函数，第二层15个单元，使用 Relew 激活函数，然后是第三层，因为现在有10个输出单元，你想要输出 A1到 A10，现在有10个输出单元。</p>
+<p><span class="ts">05:16</span>我们将告诉 TensorFlow，使用 Softmax 激活函数，而你在上个视频中看到的代价函数，TensorFlow 称之为稀疏分类交叉商函数，我知道这个名字有点傲口。</p>
+<p><span class="ts">05:36</span>对于逻辑回归，我们用的是2元交叉商函数。</p>
+<p><span class="ts">05:41</span>这里，我们使用的是稀疏分类交叉商函数，而稀疏分类，指的是你仍在将外分类到不同类别中，它是分类的。</p>
+<p><span class="ts">05:54</span>外的取值从1到10，而稀疏指的是外，只能取这10个值中的一个，每张图片要么是0，要么是1，要么是2，以此类推直到9，你不会看到一张同时是数字2和数字7的图片，稀疏指的就是这点，每个数字只能属于这些类别中的一种，</p>
+<p><span class="ts">06:21</span>这就是为什么你在上个视频中看到的损失函数，在 TensorFlow 中被称为稀疏分类交叉商损失函数，然后训练模型的代码就和之前完全一样了。</p>
+<p><span class="ts">06:35</span>如果你使用这段代码，就可以在一个多类分类问题上训练一个神经网络，只有一个重要的提醒。</p>
+<p><span class="ts">06:45</span>如果你完全按照我在这里写的代码来用，它是可以工作的，但请不要实际使用这段代码，因为在 TensorFlow 中，有更好的代码版本能让 TensorFlow 工作的更好，即使这张幻灯片展示的代码能工作，也不要按我在这里写的方式使用它，</p>
+<p><span class="ts">07:07</span>因为在本周稍后的视频中，你会看到一个不同的版本，那实际上是推荐使用的实现方式，效果会更好，但我们会在之后的视频中再来看那个版本。</p>
+<p><span class="ts">07:21</span>现在你知道如何训练一个带有 Softmax 上层的神经网络了，但有一点需要注意。</p>
+<p><span class="ts">07:28</span>有另一种版本的代码，能让 TensorFlow 更精确的计算这些概率，我们会在下一个视频中探讨它。</p>
+<p><span class="ts">07:39</span>那个视频还会向你展示，如果你要训练一个 Softmax 神经网络，我推荐你使用的实际代码，让我们继续观看下一个视频。</p>
+</main>
+<nav class="pager"><a href="P066.html">← 上一讲 Softmax函数</a><a class="mid" href="index.html">总目录</a><a href="P068.html">下一讲 改进实现Softmax →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 44 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

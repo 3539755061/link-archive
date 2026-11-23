@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 2 讲 逻辑回归 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 3 周</p>
+<h1>第 2 讲 逻辑回归</h1>
+<p class="lead">Logistic regression · 10:02 · 分 P 32</p>
+</header>
+<main>
+<p><span class="ts">00:00</span>我们来谈谈逻辑回归。</p>
+<p><span class="ts">00:02</span>这可能是世界上应用最广泛的单一分类算法了。</p>
+<p><span class="ts">00:08</span>我在工作中也一直在用它。</p>
+<p><span class="ts">00:11</span>我们继续用判断肿瘤是否为恶性的例子。</p>
+<p><span class="ts">00:15</span>和之前一样，我们用标签1或是及正类来表示恶性肿瘤。</p>
+<p><span class="ts">00:22</span>用零或否及复利来表示良性肿瘤。</p>
+<p><span class="ts">00:27</span>这是数据级的图表。</p>
+<p><span class="ts">00:31</span>横肘是肿瘤大小。</p>
+<p><span class="ts">00:33</span>纵肘只取零和一两个值。</p>
+<p><span class="ts">00:36</span>因为这是个分类问题。</p>
+<p><span class="ts">00:42</span>你在上个视频中看到，线性回归对于这个问题不是一个好的算法。</p>
+<p><span class="ts">00:48</span>相比之下，逻辑回归最重要做的是你和一条看起来像这样的曲线。</p>
+<p><span class="ts">00:56</span>一条 s 型曲线到这个数据级上。</p>
+<p><span class="ts">01:01</span>在这个例子中，如果一位病患来了，其肿瘤是这个大小。</p>
+<p><span class="ts">01:07</span>就如我在 x 轴上所示，那么算法将输出0.7。</p>
+<p><span class="ts">01:11</span>提示着更接近或更可能是恶性而非良性。</p>
+<p><span class="ts">01:19</span>稍后我们会更多解释0.7在这个情境下实际意味着什么。</p>
+<p><span class="ts">01:24</span>但输出的标签外永远不会是0.7。</p>
+<p><span class="ts">01:28</span>它只能是0或1。</p>
+<p><span class="ts">01:31</span>为了构建逻辑回归算法，有一个我想介绍的重要数学函数，叫作 sigma 的函数。</p>
+<p><span class="ts">01:39</span>有时也称为逻辑函数。</p>
+<p><span class="ts">01:45</span>sigma 的函数看起来像这样的。</p>
+<p><span class="ts">01:48</span>请注意，左侧和右侧图表的 x 轴是不同的。</p>
+<p><span class="ts">01:54</span>在左侧的图中，x 轴上是种流大小，所以全是正数。</p>
+<p><span class="ts">02:01</span>而在右侧的图中，这里下方是0，横轴同时取负值和正值。</p>
+<p><span class="ts">02:11</span>我已将横轴标记为 z。</p>
+<p><span class="ts">02:14</span>我在这里展示的只是一个从负三到正三的范围。</p>
+<p><span class="ts">02:20</span>因此 sigma 的函数输出0到1之间的值。</p>
+<p><span class="ts">02:25</span>如果我用 j of z 来表示这个函数，那么 j of z 的公式等于1除以1加1的负责次方。</p>
+<p><span class="ts">02:34</span>其中 e 是一个数学常数。</p>
+<p><span class="ts">02:38</span>取值约为2.7。</p>
+<p><span class="ts">02:43</span>因此 e 的负责次方就是这个数学常数的负责次密。</p>
+<p><span class="ts">02:49</span>注意，如果 z 非常大，比如100e 的负责次方就是 e 的负100次方。</p>
+<p><span class="ts">02:56</span>这是一个非常非常小的数字。</p>
+<p><span class="ts">03:00</span>这最终变成了1。</p>
+<p><span class="ts">03:04</span>1除以1加上一个极其微小的数。</p>
+<p><span class="ts">03:08</span>因此分母将基本上非常非常接近于1。</p>
+<p><span class="ts">03:13</span>这就是为什么当 z 很大时，j of z 也就是 z 的 sigma 的函数，会非常接近于1。</p>
+<p><span class="ts">03:22</span>相反地你也可以自己验证一下。</p>
+<p><span class="ts">03:25</span>当 z 是一个非常大的负数时，lz 就变成了 e 除以一个巨大的数。</p>
+<p><span class="ts">03:32</span>这就是为什么 z 非常接近于0。</p>
+<p><span class="ts">03:39</span>这就是 sigma 的函数拥有这种形状的原因。</p>
+<p><span class="ts">03:43</span>它开始非常接近于0，然后慢慢建立或增长到值1。</p>
+<p><span class="ts">03:51</span>此外，在 sigma 的函数中，当 z 等于0时，e 的负责次方是 e 的负0次方，这等于1。</p>
+<p><span class="ts">04:02</span>因此 g of z 等于1除以1加1也就是0.5。</p>
+<p><span class="ts">04:10</span>这就是为什么它在纵轴0.5处穿过，让我们利用它来构建逻辑回归算法。</p>
+<p><span class="ts">04:20</span>我们将分两步来做。</p>
+<p><span class="ts">04:23</span>第一步，我希望你记得一条直线函数，就像线性回归函数可以定义为 w 点成 x 加 b。</p>
+<p><span class="ts">04:36</span>那么让我们把这个值存在一个辨量里，我将称它为 z。</p>
+<p><span class="ts">04:42</span>这将和你在前一张幻灯片上看到的 z 是一样的。</p>
+<p><span class="ts">04:47</span>我们稍后就会讲到。</p>
+<p><span class="ts">04:49</span>下一步，就是将这个 z 的值传递给 sigma 的函数，也叫做逻辑函数 g。</p>
+<p><span class="ts">05:00</span>那么现在 g of z 会输出一个由这个公式计算的值1，除以1加1的负责次方。</p>
+<p><span class="ts">05:09</span>这个值会在0到1之间。</p>
+<p><span class="ts">05:14</span>当你把这两个等式放在一起时，它们就给了你逻辑回归模型 f of x。</p>
+<p><span class="ts">05:23</span>它等于 g of w.x plus b 或者等价于 g of z。</p>
+<p><span class="ts">05:33</span>也就是等于这里的这个公式。</p>
+<p><span class="ts">05:38</span>这就是逻辑回归模型。</p>
+<p><span class="ts">05:41</span>它所做的是输入一个特征或一组特征 x，并输出一个借于0到1之间的数字。</p>
+<p><span class="ts">05:50</span>接下来，我们看看如何解释逻辑回归的输出。</p>
+<p><span class="ts">05:56</span>我们回到种流分类的例子。</p>
+<p><span class="ts">06:00</span>我鼓励你思考逻辑回归输出的方式是，将其视为输出在给定某个输入 x 的条件下。</p>
+<p><span class="ts">06:09</span>类别或标签外等于1的概率。</p>
+<p><span class="ts">06:16</span>举例来说。</p>
+<p><span class="ts">06:18</span>在这个应用中，x 是种流大小。</p>
+<p><span class="ts">06:22</span>i 要么是0，要么是1。</p>
+<p><span class="ts">06:24</span>如果你有一位病患前来，他的种流是某个特定大小 x，并且基于这个输入 x，模型输出了0.7。</p>
+<p><span class="ts">06:36</span>那么这意味着模型正在预测，或者模型认为，对于这位病患真实标签外等于1的可能性是70%。</p>
+<p><span class="ts">06:47</span>换句话说，模型在告诉我们，它认为这位病患的种流有70%的几率，最终会是恶性的。</p>
+<p><span class="ts">06:57</span>我问你一个问题。</p>
+<p><span class="ts">06:59</span>看看你能不能答对。</p>
+<p><span class="ts">07:02</span>我们知道，外必须是0或1。</p>
+<p><span class="ts">07:07</span>那么如果外有70%的几率是1，它是0的几率是多少呢？外必然是0或1之1。</p>
+<p><span class="ts">07:18</span>因此，它是0或1的概率。</p>
+<p><span class="ts">07:21</span>这两个数字加起来必须等于1，或者说100%的几率。</p>
+<p><span class="ts">07:27</span>这就是为什么，如果外是1的几率是0.7或者说70%，那么它是0的几率就一定是0.3或者说30%.如果某天，你读到关于逻辑回归的研究论文或博客文章，有时你会看到这个计号。</p>
+<p><span class="ts">07:47</span>f of x 等于给定输入特征 x 和参数 w 及 b 下，外等于1的概率 p。</p>
+<p><span class="ts">07:58</span>这里，分号用来表示的是 w 和 b，是影响这个计算的参数，计算的是给定输入特征 x-y 等于1的概率。</p>
+<p><span class="ts">08:12</span>就本课程而言，不必太担心这个数线和分号意味着什么。</p>
+<p><span class="ts">08:19</span>在这门课中，你不需要记住或遵循这些数学符号。</p>
+<p><span class="ts">08:24</span>我提到这个，只是因为你可能会在其他地方看到，在本视频之后的选修实验中，你也会看到 Sigma 的函数是如何用代码实现的。</p>
+<p><span class="ts">08:35</span>你可以看到一幅图，它使用了 Sigma 的函数，以便在你前一个选修实验中看到的分类任务上做得更好。</p>
+<p><span class="ts">08:45</span>记住，代码会提供给你们，你们只需运行即可。</p>
+<p><span class="ts">08:49</span>我希望你们去看看，熟悉一下代码。</p>
+<p><span class="ts">08:53</span>恭喜你学到这里。</p>
+<p><span class="ts">08:56</span>你现在知道了什么是逻辑回归模型，以及定义逻辑回归的数学公式。</p>
+<p><span class="ts">09:04</span>在很长一段时间里，大量的互联网广告，实际上就是由逻辑回归的一个稍微辨题所驱动的。</p>
+<p><span class="ts">09:13</span>这对一些大公司来说非常有利可图。</p>
+<p><span class="ts">09:16</span>而这基本上就是那个决定在你和许多其他人浏览一些大型网站时展示什么广告的算法。</p>
+<p><span class="ts">09:26</span>关于这个算法还有更多要学习。</p>
+<p><span class="ts">09:29</span>在下个视频中，我们将看看逻辑回归的细节。</p>
+<p><span class="ts">09:34</span>我们会看一些可视化，还会探讨一个叫做决策边界的东西。</p>
+<p><span class="ts">09:41</span>这将给你几种不同的方法，去将模型输出的比如0.3,0.7，或0.65这样的数字，映射到外实际上是0还是1的预测上。</p>
+<p><span class="ts">09:55</span>让我们进入下一个视频，去学习更多关于逻辑回归的知识。</p>
+</main>
+<nav class="pager"><a href="P031.html">← 上一讲 动机</a><a class="mid" href="index.html">总目录</a><a href="P033.html">下一讲 决策边界 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 94 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

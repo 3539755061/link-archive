@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 8 讲 选择学习率 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 8 讲 选择学习率</h1>
+<p class="lead">Choosing the learning rate · 6:26 · 分 P 28</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>恰当的学习率选择会让你的学习算法运行的好得多。</p>
+<p><span class="ts">00:07</span>如果它太小，算法会跑得非常慢，而如果它太大，它甚至可能不会收敛。</p>
+<p><span class="ts">00:14</span>我们来看看如何为你的模型选择一个好的学习率。</p>
+<p><span class="ts">00:19</span>具体来说，如果你画出了一定迭代次数下的代价，并注意到代价有时上升有时下降。</p>
+<p><span class="ts">00:27</span>你应该将这视为 T 度下降没有正常工作的明确信号。</p>
+<p><span class="ts">00:34</span>这可能意味着代码中有 bug，或者有时可能意味着你的学习率太大了。</p>
+<p><span class="ts">00:41</span>这里有一个图示说明可能发生的情况。</p>
+<p><span class="ts">00:45</span>这里纵轴是代价函数 j，横轴代表某个参数，比如 w1。</p>
+<p><span class="ts">00:52</span>如果学习率太大，那么如果你从这开始，你的更新不长可能会越过最小值，最终停在这里。</p>
+<p><span class="ts">01:04</span>而在下一步更新中，你又会再次越过，所以你最终停在这，以此类推。</p>
+<p><span class="ts">01:12</span>这就是为什么代价有时会上升而不是下降。</p>
+<p><span class="ts">01:17</span>要解决这个问题，你可以使用一个较小的学习率。</p>
+<p><span class="ts">01:22</span>这样你的更新可能从这开始下降一点点，再下降一点点，并有望持续下降，直到达到全局最小值。</p>
+<p><span class="ts">01:34</span>有时你可能会看到代价在每次迭代后持续上升，就像这里的这条曲线。</p>
+<p><span class="ts">01:41</span>这也很可能是由于学习率太大，可以通过选择一个较小的学习率来解决。</p>
+<p><span class="ts">01:47</span>但像这样的学习率表现，也可能预示着代码中可能存在的 Bug。</p>
+<p><span class="ts">01:55</span>例如，如果我写的代码里 w1的更新方式是 w1加 Alpha 乘以其导数项，这可能导致代价在每次迭代时持续增加。</p>
+<p><span class="ts">02:07</span>这是因为加上导数项会让你的代价这，离全局最小值越来越远，而不是越来越近。</p>
+<p><span class="ts">02:19</span>要记住，你想用的是简号，所以代码应该更新 w1为 w1-Alpha 乘以导数项。</p>
+<p><span class="ts">02:27</span>对于正确实现 T 度下降的一个调识技巧是，只要学习率足够小，代价函数就应该在每一次迭代中都下降。</p>
+<p><span class="ts">02:40</span>如果 T 度下降不起作用，我常常会做的一件事，也希望你觉得这个技巧有用。</p>
+<p><span class="ts">02:50</span>我常常会做的一件事，就是把 Alpha 设成一个非常非常小的数字，看看这能否让代价在每次迭代中都下降。</p>
+<p><span class="ts">03:01</span>如果即使 Alpha 设得非常小，代价 j 也没有在每一次迭代中都下降，反而有时上升。</p>
+<p><span class="ts">03:10</span>那么这通常意味着代码中的某个地方有 bug。</p>
+<p><span class="ts">03:14</span>注意，把 Alpha 设得极其小在这里，是作为一个调识步骤来用的。</p>
+<p><span class="ts">03:19</span>而一个极其小的 Alpha 值对于实际训练你的学习算法来说不会是最有效的选择。</p>
+<p><span class="ts">03:26</span>一个重要的权衡是，如果你的学习率太小，T 度下降，就可能需要大量的迭代次数来收敛。</p>
+<p><span class="ts">03:35</span>当我运行 T 度下降时，我通常会尝试一组不同的学习率 Alpha 值。</p>
+<p><span class="ts">03:42</span>我可能会尝试从0.001的学习率开始，我也可能会尝试一个10倍大的学习率，比如0.01和0.1等等。</p>
+<p><span class="ts">03:52</span>并且对于每个 Alpha 的选择，你可能只运行 T 度下降少量几次迭代，并画出代价函数 j 关于迭代次数的图像。</p>
+<p><span class="ts">04:05</span>在尝试了几个不同的值之后，你可能就会挑出那个看起来能快速且能持续降低代价的 Alpha 值。</p>
+<p><span class="ts">04:14</span>事实上，我实际做的是尝试像这样的一系列曲值。</p>
+<p><span class="ts">04:22</span>在尝试了0.001之后，我会将学习率提高3倍到0.003，之后我会尝试0.01。</p>
+<p><span class="ts">04:31</span>这又大约是0.003的3倍大。</p>
+<p><span class="ts">04:35</span>这大致就是在尝试 T 度下降时，让每个 Alpha 值大约比前一个值大3倍。</p>
+<p><span class="ts">04:47</span>我将尝试一系列的值，直到我找到一个值它太小了，然后也确保我找到一个值它太大了。</p>
+<p><span class="ts">04:56</span>然后我会慢慢的尝试，挑选最大的可能学习率。</p>
+<p><span class="ts">05:01</span>或者，就是挑一个比我找到的最大合理值稍微小一点的值。</p>
+<p><span class="ts">05:06</span>当我那样做实，通常能为我的模型找到一个好的学习率。</p>
+<p><span class="ts">05:12</span>我希望这个技巧对于你为 T 度下降的实现，选择一个好的学习率也会很有用。</p>
+<p><span class="ts">05:21</span>在接下来的选修实验中，你还可以看看特征缩放在代码中是如何完成的。</p>
+<p><span class="ts">05:28</span>也看看学习率 Alpha 的不同选择，如何导致你模型训练得更好或更差。</p>
+<p><span class="ts">05:35</span>我希望你享受调试 Alpha 的值，并观察选择不同 Alpha 值所带来的不同结果。</p>
+<p><span class="ts">05:43</span>请看一看，并运行选修实验中的代码，以获得关于特征缩放以及学习率 Alpha 的更深的直观理解。</p>
+<p><span class="ts">05:53</span>选择学习率是训练许多学习算法的关键一环。</p>
+<p><span class="ts">05:58</span>我希望这个视频能给你关于不同选择的直观感受以及如何去挑选一个好的 Alpha 值。</p>
+<p><span class="ts">06:06</span>还有一些想法可以用来使多元线性回归更加强大，那就是选择自定义特征，这也将。..允许你去你和曲线，而不只是一条直线。</p>
+<p><span class="ts">06:19</span>到你的数据上，让我们在下一个视频中看看这一点。</p>
+</main>
+<nav class="pager"><a href="P027.html">← 上一讲 检查梯度下降是否收敛</a><a class="mid" href="index.html">总目录</a><a href="P029.html">下一讲 特征工程 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 48 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

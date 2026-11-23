@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 16 讲 实现梯度下降 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 1 周</p>
+<h1>第 16 讲 实现梯度下降</h1>
+<p class="lead">Implementing gradient descent · 10:23 · 分 P 16</p>
+</header>
+<main>
+<p><span class="ts">00:04</span>我们来看看如何实际实现 T 度下降算法。</p>
+<p><span class="ts">00:09</span>让我写下 T 度下降算法。</p>
+<p><span class="ts">00:13</span>就是这个。</p>
+<p><span class="ts">00:15</span>在每一步中，参数 w 会被更新为 w 的就职，减去 Alpha 乘以这一项，及代价函数 j 括号 wb 对 w 的偏导数。</p>
+<p><span class="ts">00:28</span>这个表达是说的是，更新你的参数 w 方法式取 w 的当前值，并对其进行少量调整。</p>
+<p><span class="ts">00:39</span>也就是右边这个表达是，减去 Alpha 乘以后面这一项。</p>
+<p><span class="ts">00:44</span>如果你觉得这个等式里有太多内容，没关系。</p>
+<p><span class="ts">00:51</span>别担心，我们会一起把它拆解清楚。</p>
+<p><span class="ts">00:59</span>首先，这里的这个等号计法。</p>
+<p><span class="ts">01:03</span>注意，我说过，我们用这个等号来给 w 复职。</p>
+<p><span class="ts">01:08</span>在这里，这个等号是复职运算符。</p>
+<p><span class="ts">01:12</span>具体来说，在这种语境下，如果你写代码 A 等于 C，意思是取 C 的值，并将其存储到电脑的辨量 A 中。</p>
+<p><span class="ts">01:25</span>或者，如果你写 A 等于 A 加1，意思是，将 A 的值设为 A 加1，即将 A 的值增加1。</p>
+<p><span class="ts">01:36</span>编程中的复职运算符与数学中的真值断言是不同的。</p>
+<p><span class="ts">01:41</span>在数学里，如果我写 A 等于 C，我是在断言，即我声称 A 和 C 的值彼此相等。</p>
+<p><span class="ts">01:49</span>而且希望我永远不会写一个真值断言 A 等于 A 加1。</p>
+<p><span class="ts">02:00</span>因为你知道，那根本不可能是真的。</p>
+<p><span class="ts">02:03</span>在 Python 和其他编程语言中，真值断言有时会写成双等号。</p>
+<p><span class="ts">02:09</span>你可能会看到代码写 A，双等于 C。</p>
+<p><span class="ts">02:14</span>如果你在测试 A，是否等于 C。</p>
+<p><span class="ts">02:18</span>但在数学计法中，正如我们通常使用的。</p>
+<p><span class="ts">02:21</span>比如，在这些视频里，等号既可以用于复职，也可以用于真值断言。</p>
+<p><span class="ts">02:28</span>当我写等号时，我会尽量说清楚，我们到底是在给变量复职，还是在断言两个值相等的真值。</p>
+<p><span class="ts">02:37</span>让我们更深入的了解这个等式中各个符号的含义。</p>
+<p><span class="ts">02:45</span>这里的符号是希腊字母 alpha。</p>
+<p><span class="ts">02:48</span>在这个等式中，alpha 也被称为学习率。</p>
+<p><span class="ts">02:55</span>学习率通常是一个介于0和1之间的较小的证数。</p>
+<p><span class="ts">03:01</span>比如，可能是0.01。</p>
+<p><span class="ts">03:04</span>alpha 的作用是，它基本上，控制了你下山时卖出的步子有多大。</p>
+<p><span class="ts">03:11</span>如果 alpha 非常大，那对应的是一个非常激进的 T 度下降过程。</p>
+<p><span class="ts">03:17</span>你会试图卖出巨大的不符下山。</p>
+<p><span class="ts">03:21</span>而如果 alpha 非常小，那你就会卖着小岁步下山。</p>
+<p><span class="ts">03:26</span>我们稍后会回来更深入的探讨，如何选择一个好的学习率 alpha。</p>
+<p><span class="ts">03:32</span>最后，这项是代价含书这的导数项。</p>
+<p><span class="ts">03:37</span>我们现在先不深究这个导数的细节，但稍后你会了解更多关于导数项的内容。</p>
+<p><span class="ts">03:46</span>但就目前而言，你可以把我在扬红色矿中标注的这个导数项，看作是，告诉你想要朝哪个方向卖出你的小岁步。</p>
+<p><span class="ts">03:58</span>在结合学习率 alpha，它也决定了你下山时不符的大小。</p>
+<p><span class="ts">04:04</span>我的确想提一下，导数来自危机分。</p>
+<p><span class="ts">04:11</span>即使你不熟悉危机分，也别担心。</p>
+<p><span class="ts">04:15</span>即使完全不懂任何危机分，你也能在本期和下期视频中弄清楚关于这个导数项你需要知道的所有内容。</p>
+<p><span class="ts">04:25</span>还有一件事，记住，你的模型有两个参数，不仅仅是 w，还有 b。</p>
+<p><span class="ts">04:32</span>因此，你也有一个更新参数 b 的负值操作，看起来非常相似。</p>
+<p><span class="ts">04:38</span>b 被负值为 b 的就职，减去学习率 alpha 乘以这个稍有不同的导数项，即 j 括号 wb 对 b 的偏导数。</p>
+<p><span class="ts">04:54</span>还记得在取面图上，你正卖着小岁步，直到抵达山谷底部吗？对于 t 度下降算法，你会重复这两个更新步骤，要算法收敛。</p>
+<p><span class="ts">05:08</span>我所说的收敛是指，你到达了局部最小值那个点。</p>
+<p><span class="ts">05:13</span>在此之后，参数 w 和 b 不再随着你每多走一步，而发生太大变化。</p>
+<p><span class="ts">05:20</span>关于如何正确实现 t 度下降，还有一个更微妙的细节。</p>
+<p><span class="ts">05:26</span>你要更新两个参数 w 和 b，对吧？这个更新对两个参数 w 和 b 都会发生，一个重要的细节是，对于 t 度下降，你需要同时更新 w 和 b。</p>
+<p><span class="ts">05:43</span>意思是，你想在同一时间更新这两个参数。</p>
+<p><span class="ts">05:47</span>我这么说的意思是，在这个表达式中，你要将 w 从旧 w，更新为新 w。</p>
+<p><span class="ts">05:59</span>同时，你也在将 b 从其旧值，更新为 b 的新值。</p>
+<p><span class="ts">06:05</span>而实现的方法，是计算右侧，为 w 和 b 计算出这个东西，并在同一时刻，同时将 w 和 b 更新为新值。</p>
+<p><span class="ts">06:21</span>我们来看看，这意味着什么。</p>
+<p><span class="ts">06:24</span>这是实现 t 度下降的正确方式，即执行同时更新。</p>
+<p><span class="ts">06:30</span>这将一个变量 tamp 下滑线 w 设为那个表达式，也就是 w 减去这一项。</p>
+<p><span class="ts">06:38</span>我们再设另一个变量，tamp 下滑线 b，等于那个即 b 减去这一项。</p>
+<p><span class="ts">06:46</span>这样你计算了两个右侧，算出了两个更新值，并把他们存入变量 tamp 下滑线 w 和 tamp 下滑线 b 中。</p>
+<p><span class="ts">06:55</span>然后，你把 tamp 下滑线 w 的值，复制给 w，再把 tamp 下滑线 b 的值，复制给 b。</p>
+<p><span class="ts">07:05</span>你可能注意到的一点是，这里的 w 值是 w 被更新之前的值，这里，请注意，进入导数项的是更新前的 w，明白了吗？相比之下，这里有一个不正确的 t 渡下降实现，它没有执行同时更新。</p>
+<p><span class="ts">07:29</span>在这个不正确的实现中，我们计算 tamp 下滑线 w，和之前一样，到目前为止，这还好，情况开始，有所不同了。</p>
+<p><span class="ts">07:40</span>我们再为另一个参数 b 计算新值之前，就先用 tamp 下滑线 w 中的值，更新了 w。</p>
+<p><span class="ts">07:50</span>接下来，我们计算 tamp 下滑线 b，等于 b 减去这一项。</p>
+<p><span class="ts">07:56</span>最后，我们用 tamp 下滑线 b 中的值，更新 b。</p>
+<p><span class="ts">08:01</span>右边实现，和左边实现的区别在于，如果你看这里，这个 w，已经被更新成了这个新值，而正是这个更新后的 w，实际进入了代价函数 j，括号 wb 中。</p>
+<p><span class="ts">08:20</span>这意味着，右边这里的这一项，和你在左边看到的这一项，并不相同。</p>
+<p><span class="ts">08:27</span>那也意味着，右边这个 tamp 下滑线 b 项，和左边的 tamp 下滑线 b 项，也不完全相同。</p>
+<p><span class="ts">08:37</span>右边，更新后的 b 值，和左边变量 b 更新后的值，也不相同。</p>
+<p><span class="ts">08:46</span>用代码，实现 tamp 下降时，实际上，采用正确的同时更新方式，实现起来，更自然。</p>
+<p><span class="ts">08:54</span>当你听别人谈论 tamp 下降时，他们，总是指执行参数，同时更新的 tamp 下降。</p>
+<p><span class="ts">09:05</span>然而，如果你要实现非同时更新，结果多半也能差不多工作，但这样做，并非真正正确的实现方式，这其实，是某种具有不同性质的其他算法。</p>
+<p><span class="ts">09:21</span>我建议你，坚持正确的同步更新，不要使用右边这个不正确的版本。</p>
+<p><span class="ts">09:29</span>这就是，t 度下降。</p>
+<p><span class="ts">09:32</span>在下期视频中，我们将详细探讨导数下，你在本期视频中看到过，但我们并未真正详细讨论，导数是危机分的一部分，再强调一次。</p>
+<p><span class="ts">09:45</span>如果你不熟悉危机分，别担心，你完全不需要懂危机分，就能完成这门课，或这个专项课程。</p>
+<p><span class="ts">09:54</span>你将拥有实现 t 度下降所需的全部信息。</p>
+<p><span class="ts">09:59</span>在接下来的下期视频中，我们会一起过一遍导数，而你将会带着自己实现和应用 t 度下降所需的直觉，和知识离开。</p>
+<p><span class="ts">10:11</span>我认为，知道如何实现这个，对你来说，会是件激动人心的事。</p>
+<p><span class="ts">10:17</span>让我们进入下期视频，看看具体怎么做。</p>
+</main>
+<nav class="pager"><a href="P015.html">← 上一讲 梯度下降</a><a class="mid" href="index.html">总目录</a><a href="P017.html">下一讲 梯度下降直观解读 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 78 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

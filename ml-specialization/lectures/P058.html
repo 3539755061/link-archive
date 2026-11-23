@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 16 讲 矩阵乘法规则（选修） · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 16 讲 矩阵乘法规则（选修）</h1>
+<p class="lead">Matrix multiplication rules (optional) · 9:48 · 分 P 58</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>我们来了解一下两个矩阵相乘的一般形式。</p>
+<p><span class="ts">00:08</span>然后，在下个视频中，我们将把这个方法应用到神经网络的象量化实现上。</p>
+<p><span class="ts">00:16</span>我们开始吧。</p>
+<p><span class="ts">00:18</span>这里有一个矩阵 A，它是一个二乘三矩阵，因为它有两行三列。</p>
+<p><span class="ts">00:24</span>和之前一样，我鼓励你把这个矩阵的列看作三个象量，象量 A1、A2和 A3。</p>
+<p><span class="ts">00:36</span>我们要做的是取 A 的转质，然后与一个矩阵 W 相乘。</p>
+<p><span class="ts">00:46</span>但首先，什么是 A 的转质？A 的转质是这样得到的，把 A 的第一列拿过来，像这样横放，然后把 A 的第二列拿过来，像这样横放，再把 A 的第三列拿过来，像这样横放。</p>
+<p><span class="ts">01:01</span>这些行现在就变成了 A1转质，A2转质和 A3转质。</p>
+<p><span class="ts">01:11</span>接下来，这是矩阵 W。</p>
+<p><span class="ts">01:14</span>我鼓励你把 W 看作是象量 W1、W2、W3和 W4这样堆叠在一起。</p>
+<p><span class="ts">01:22</span>我们来看看如何计算 A 转质乘以 W。</p>
+<p><span class="ts">01:29</span>注意，我也用了深浅稍有不同的橙色来表示 A 的不同列。</p>
+<p><span class="ts">01:34</span>相同深浅的颜色对应我们认为组合成一个象量的数字。</p>
+<p><span class="ts">01:43</span>并且相同的颜色也用来表示 A 转质的不同行。</p>
+<p><span class="ts">01:48</span>因为 A 转质的不同行就是 A1转质，A2转质和 A3转质。</p>
+<p><span class="ts">01:55</span>类似地，我用不同深浅的蓝色来表示 W 的不同列。</p>
+<p><span class="ts">02:00</span>因为同一蓝色深浅的数字是组合在一起形成象量 W1、W2、W3或 W4的。</p>
+<p><span class="ts">02:12</span>我们来看看如何计算 A 转质乘以 W。</p>
+<p><span class="ts">02:16</span>我将用不同深浅的蓝色画数条，用不同深浅的橙色画横条来表示 Z，即 A 转质 W 中的哪些元素？是受 A 转质不同行的影响，哪些是受 W 不同列的影响？举个例子，我们来看看 W 的第一列。</p>
+<p><span class="ts">02:47</span>这就是 W1。</p>
+<p><span class="ts">02:50</span>在这里，用最浅的蓝色标出。</p>
+<p><span class="ts">02:53</span>W1将会影响或者对应用这里最浅蓝色标示的 Z 的第一列，而 W 的第二列，即 W2。</p>
+<p><span class="ts">03:09</span>用第二浅的蓝色标出，会影响 Z 的第二列计算出的值。</p>
+<p><span class="ts">03:14</span>以此类推，第三，第四列。</p>
+<p><span class="ts">03:17</span>相应地，我们来看看 A 转质。</p>
+<p><span class="ts">03:26</span>A 转质是 A 转质的第一行，用最浅的橙色标出。</p>
+<p><span class="ts">03:32</span>A 转质会影响或者对应用 Z 的第一行的值。</p>
+<p><span class="ts">03:36</span>A 转质会影响 Z 的第二行，A 转质会影响或者对应用 Z 的第三行。</p>
+<p><span class="ts">03:47</span>我们来弄清楚如何计算举证 Z，它将是一个3×4的举证，总共有12个数字。</p>
+<p><span class="ts">03:59</span>我们先来弄清楚如何计算 Z 中第一行，第一列的数字，也就是这个左上角的元素。</p>
+<p><span class="ts">04:11</span>因为它位于第一行，第一列，对应最浅的橙色和最浅的蓝色。</p>
+<p><span class="ts">04:16</span>计算它的方法是取 A 转质的第一行和 W 的第一列，求它们的内积或点成。</p>
+<p><span class="ts">04:28</span>这个数字就是1,2，点成3,4，也就是1×3加2×4等于11。</p>
+<p><span class="ts">04:38</span>我们再看第二个例子。</p>
+<p><span class="ts">04:42</span>怎么计算这个 Z 的元素呢？它在第三行，第一行，第二行，第三行，这是第三行，第二列，第一列，第二列。</p>
+<p><span class="ts">04:58</span>要计算 Z 的第三行，第二列的数字，你现在就要取 A 转质的第三行和 W 的第二列，把它们点成起来。</p>
+<p><span class="ts">05:10</span>注意，这对应最深的橙色和第二浅的蓝色。</p>
+<p><span class="ts">05:19</span>计算过程是0.1×5加0.2×6等于0.5加1.2等于1.7。</p>
+<p><span class="ts">05:29</span>要计算 Z 的第三行，第二列的数字，你就取 A 转质的第三行和 W 的第二列。</p>
+<p><span class="ts">05:42</span>我们再来看一个例子，看看你能不能自己算出来。</p>
+<p><span class="ts">05:47</span>这是矩阵 Z 的第二行，第三列。</p>
+<p><span class="ts">05:55</span>你不妨看一下，看看能否找出应该取哪一行和哪一列进行点成，从而得出这个矩阵元素中的数字。</p>
+<p><span class="ts">06:08</span>希望你明白了，我们可以取 A 转质的第二行和 W 的第三列。</p>
+<p><span class="ts">06:17</span>当你把它们点成起来，A2转质点成 W3等于-1×7加-2×8等于-7加-16，结果是-23。</p>
+<p><span class="ts">06:31</span>这样，你就计算出了矩阵 Z 的这个元素。</p>
+<p><span class="ts">06:35</span>事实证明，如果你对矩阵 Z 的每个元素都这样操作，你就能算出这个矩阵中的所有数字。</p>
+<p><span class="ts">06:43</span>看起来是这样的。</p>
+<p><span class="ts">06:45</span>如果你想的话，可以暂停视频，随便选一个元素，验证一下我们讲的公式能得到正确的贼值。</p>
+<p><span class="ts">06:55</span>我只想指出，矩阵相乘的最后一个有趣要求，这里的 X 转质是一个3×2矩阵，因为它有三行，两列，而这里的 W 是一个2×4矩阵，因为它有两行四列，两个矩阵能相乘的一个要求是，这个数字必须和那个数字匹配，这是因为你只能在长度相同的项量之间进行点乘。</p>
+<p><span class="ts">07:30</span>你可以对包含两个数字的项量做点乘。</p>
+<p><span class="ts">07:35</span>那是因为你只能用一个长度为二的项量和另一个长度也为二的项量求内疾。</p>
+<p><span class="ts">07:43</span>例如，你不能用一个长度为二的项量和一个长度为三的项量求内疾。</p>
+<p><span class="ts">07:50</span>这就是为什么，矩阵惩罚有效的前提是，第一个矩阵，这里是 A 转质。</p>
+<p><span class="ts">07:57</span>的列数必须等于第二个矩阵，这里是 W 的行数。</p>
+<p><span class="ts">08:03</span>这样，在这个过程中做点乘时，你是在对大小相同的项量做点乘。</p>
+<p><span class="ts">08:14</span>另一个观察结论是，输出 Z 等于 A 转质乘以 W,Z 的维度是3×4。</p>
+<p><span class="ts">08:24</span>这个惩罚的输出结果将拥有和 X 转质相同的行数以及和 W 相同的列数。</p>
+<p><span class="ts">08:35</span>这也是矩阵惩罚的另一个性质。</p>
+<p><span class="ts">08:40</span>以上就是矩阵惩罚。</p>
+<p><span class="ts">08:43</span>所有这些视频都是选修的。</p>
+<p><span class="ts">08:46</span>感谢你坚持听我讲完这些。</p>
+<p><span class="ts">08:49</span>如果你感兴趣，这周晚些时候还有一些纯选修的测验，可以让你自己再练习一些这类计算。</p>
+<p><span class="ts">08:57</span>那么接下来，就让我们把学到的矩阵惩罚知识应用回神经网络的相量化实现上。</p>
+<p><span class="ts">09:08</span>我得说，我第一次理解相量化实现的时候，觉得这真的太酷了。</p>
+<p><span class="ts">09:15</span>我自己已经用非相量化方式实现神经网络有一阵子了。</p>
+<p><span class="ts">09:21</span>当我最终理解了相量化实现，并第一次以那种方式实现它时，它运行的比我之前做的任何实现都快得多。</p>
+<p><span class="ts">09:31</span>我就想，哇，我真希望自己能早点搞懂这个。</p>
+<p><span class="ts">09:38</span>相量化实现有点复杂，但它能让神经网络运行的快得多。</p>
+<p><span class="ts">09:44</span>那我们在下个视频里看看吧。</p>
+</main>
+<nav class="pager"><a href="P057.html">← 上一讲 矩阵乘法（选修）</a><a class="mid" href="index.html">总目录</a><a href="P059.html">下一讲 矩阵乘法代码（选修） →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 69 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

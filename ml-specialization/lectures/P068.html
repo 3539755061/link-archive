@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 9 讲 改进实现Softmax · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 9 讲 改进实现Softmax</h1>
+<p class="lead">Improved implementation of softmax · 9:27 · 分 P 68</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>你在上一视频中看到的戴 softmax 层的神经网络实现是可以工作的，但有一种更好的实现方式。</p>
+<p><span class="ts">00:11</span>我们来看看那种实现可能出什么问题，以及如何改进它。</p>
+<p><span class="ts">00:19</span>我先向你展示在计算机中计算同一个量的两种不同方式。</p>
+<p><span class="ts">00:24</span>方式1，我们可以设 x 等于1万分之2。</p>
+<p><span class="ts">00:29</span>方式2，我们可以设 x 等于1加1万分之1。</p>
+<p><span class="ts">00:34</span>减去1-1万分之1。</p>
+<p><span class="ts">00:37</span>你先计算这个，再计算这个，然后去差值。</p>
+<p><span class="ts">00:44</span>如果你划减这个表达式，结果会等于1万分之2。</p>
+<p><span class="ts">00:51</span>让我在这个 notebook 中演示一下。</p>
+<p><span class="ts">00:54</span>首先，设 x 等于1万分之2并将结果打印到很多位小数精度。</p>
+<p><span class="ts">01:02</span>好，这看起来相当不错。</p>
+<p><span class="ts">01:05</span>其次，让我设 x 等于我坚持要计算1加1万分之1。</p>
+<p><span class="ts">01:12</span>然后从中减去1-1万分之1，再把它打印出来。</p>
+<p><span class="ts">01:17</span>嗯，好吧，这看起来有点偏差，好像存在某种舍入误差。</p>
+<p><span class="ts">01:25</span>因为计算机只有有限的内存来存出每个数字，在这里称为伏点数。</p>
+<p><span class="ts">01:33</span>根据你决定如何计算1万分之2这个值，结果可能会有或多或少的数值舍入误差。</p>
+<p><span class="ts">01:44</span>事实证明，虽然我们一直用来计算 softmax 代价函数的方式是正确的，但有另一种不同的表述方式可以减少这些数值舍入误差。</p>
+<p><span class="ts">01:55</span>从而在 tancerflow 中得到更精确的计算结果。</p>
+<p><span class="ts">02:02</span>让我先用逻辑回归更详细的解释一下。</p>
+<p><span class="ts">02:05</span>然后我们会展示这些思想如何应用于改进我们的 softmax 实现。</p>
+<p><span class="ts">02:13</span>首先让我用逻辑回归来说明这些思想。</p>
+<p><span class="ts">02:17</span>然后再继续展示如何也改进你的 softmax 实现。</p>
+<p><span class="ts">02:23</span>回想一下逻辑回归，如果你想计算损失函数对于给定的样本，你会首先计算这个输出激活值 A 及 GZ，或1除以1加1的负责次方。</p>
+<p><span class="ts">02:37</span>然后你使用这里的这个表达式计算损失。</p>
+<p><span class="ts">02:43</span>事实上对于使用二元交叉商损失的逻辑输出层，代码看起来就会像这样。</p>
+<p><span class="ts">02:55</span>对于逻辑回归，这工作得不错。</p>
+<p><span class="ts">02:59</span>通常数值舍入误差没有那么大。</p>
+<p><span class="ts">03:03</span>但事实证明，如果你允许 tancerflow 不必将 A 作为一个中间项来计算，而是如果你告诉 tancerflow 损失就是下面这个表达式。</p>
+<p><span class="ts">03:17</span>我所做的只是取 A 并将其展开成下面这个表达式。</p>
+<p><span class="ts">03:24</span>那么 tancerflow 可以重新排列这个表达式中的项，并得出一种在数值上更精确的方式来计算这个损失函数。</p>
+<p><span class="ts">03:35</span>原来的过程就像是坚持要计算中间值1加1万分之1。</p>
+<p><span class="ts">03:45</span>以及另一个中间值1-1万分之1。</p>
+<p><span class="ts">03:50</span>然后处理这两个值来得到1万分之2。</p>
+<p><span class="ts">03:54</span>这个原始实现坚持要显示的将 A 作为一个中间量来计算。</p>
+<p><span class="ts">04:02</span>但相反，通过直接在底部将此表达式指定为损失函数，它给了 tancerflow 更大的灵活性来决定如何计算以及是否要显示计算 A。</p>
+<p><span class="ts">04:16</span>你可以用来实现此功能的代码展示在这里。</p>
+<p><span class="ts">04:21</span>这段代码所做的是将输出层设置为仅使用线性激活函数，并将激活函数1除以1加1的负责次方，以及这个交叉商损失都放到这里的损失函数规范中。</p>
+<p><span class="ts">04:42</span>这正是那个 fromlogets 等于处参数让 tancerflow 去做的事情。</p>
+<p><span class="ts">04:49</span>如果你想知道 logets 是什么，它基本上就是这个数字。</p>
+<p><span class="ts">04:55</span>tancerflow 将计算字作为一个中间值，但它可以重新排列各项，使得计算更精确。</p>
+<p><span class="ts">05:04</span>这段代码的一个缺点是它变得稍微不那么易读，但这使得 tancerflow 产生更少的数值、舍入误差。</p>
+<p><span class="ts">05:14</span>在逻辑回归的情况下，这两种实现实际上都工作的不错，但是当涉及 softmax 时，数值舍入误差会变得更糟。</p>
+<p><span class="ts">05:25</span>现在让我们采纳这个思想，并将其应用到 softmax 回归。</p>
+<p><span class="ts">05:30</span>回想一下，你在上一视频中看到的是按如下方式计算激活值。</p>
+<p><span class="ts">05:37</span>激活值是 z1到 z10的函数，计。</p>
+<p><span class="ts">05:41</span>其中例如 A1等于 e 的 z1次方除以 e 的 z 下标，这次方的核。</p>
+<p><span class="ts">05:49</span>然后损失是这个取决于 y 的实际值，是某个 A 下标 j 的负对数。</p>
+<p><span class="ts">05:57</span>这就是我们分两个独立步骤进行此计算的代码。</p>
+<p><span class="ts">06:04</span>但是，如果你再次改为指定损失为，如果 y 等于 e，就是该公式的负对数。</p>
+<p><span class="ts">06:16</span>e 此类推，如果 y 等于10，就是这个公式。</p>
+<p><span class="ts">06:20</span>那么，这赋予了 tensorflow 重新排列各项，并以一种数值上更精确的方式进行计算的能力。</p>
+<p><span class="ts">06:31</span>为了让你对 tensorflow 为什么要这样做有点直观理解，事实表明，如果某个 z 值非常小，那么 e 的一个很小的负数次方会变得非常非常小。</p>
+<p><span class="ts">06:43</span>或者，如果某个 z 值非常大，那么 e 的 z 次方会变得非常非常大。</p>
+<p><span class="ts">06:50</span>通过重新排列各项，tensorflow 可以避免这些非常小或非常大的数，从而得出对损失函数更精确的计算，执行此操作的代码如下所示。</p>
+<p><span class="ts">07:04</span>在输出层，我们现在只使用限性激活函数，因此输出层仅计算 z1到 z10。</p>
+<p><span class="ts">07:14</span>而损失的整个计算，则被整合到这里的损失函数中。</p>
+<p><span class="ts">07:19</span>我们再次使用了 fromlogits 等于处参数。</p>
+<p><span class="ts">07:27</span>这两段代码做的事情几乎完全相同，区别在于推荐的版本在数值上更精确，尽管不幸的是它也稍微更难阅读一些。</p>
+<p><span class="ts">07:41</span>如果你在阅读别人的代码时看到这个，并想知道这是怎么回事。</p>
+<p><span class="ts">07:46</span>它至少在概念上等同于原始实现，只是数值上更精确。</p>
+<p><span class="ts">07:52</span>逻辑回归的数值舍入误差没那么严重，但还是建议你使用底部的这个实现。</p>
+<p><span class="ts">08:04</span>并且从概念上讲，这段代码和你之前拥有的第一个版本做的是同样的事情，只是它在数值上稍微更精确一些。</p>
+<p><span class="ts">08:15</span>虽然缺点可能是理解起来也稍微更难一点。</p>
+<p><span class="ts">08:20</span>还有最后一个细节，那就是我们现在已经将神经网络改为使用限性激活函数，而不是 softmax 激活函数。</p>
+<p><span class="ts">08:31</span>神经网络的最后一层不再输出这些概率 A1到 A10，它改为输出 Z1到 Z10。</p>
+<p><span class="ts">08:43</span>我在逻辑回归的例子中没有谈到这一点，但如果你将输出逻辑函数与损失函数结合在一起，那么对于逻辑回归，你也必须像这样修改代码对输出值进行处理。</p>
+<p><span class="ts">08:56</span>通过逻辑函数硬设它，以实际得到概率。</p>
+<p><span class="ts">09:04</span>现在你知道了如何使用 softmax 输出层进行多类别分类，以及如何以一种数值稳定的方式进行。</p>
+<p><span class="ts">09:14</span>在结束多类别分类之前，我还想和你分享另一种类型的分类问题，叫做多标签分类问题。</p>
+<p><span class="ts">09:23</span>我们下一视频再谈这个。</p>
+</main>
+<nav class="pager"><a href="P067.html">← 上一讲 带Softmax输出的神经网络</a><a class="mid" href="index.html">总目录</a><a href="P069.html">下一讲 多输出分类（选修） →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 70 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

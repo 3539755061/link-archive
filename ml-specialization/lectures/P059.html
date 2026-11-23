@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 17 讲 矩阵乘法代码（选修） · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 17 讲 矩阵乘法代码（选修）</h1>
+<p class="lead">Matrix multiplication code (optional) · 6:49 · 分 P 59</p>
+</header>
+<main>
+<p><span class="ts">00:00</span>话不多说 我们直接进入神经网络的象量化实现。</p>
+<p><span class="ts">00:05</span>我们来看看你在之前视频中见过的代码。</p>
+<p><span class="ts">00:10</span>希望举证惩罚，也就是那个举证惩罚计算能让你更明白。</p>
+<p><span class="ts">00:16</span>我们开始吧。</p>
+<p><span class="ts">00:18</span>你之前看到了如何取举证 A 并计算 A 的转字乘以 W 得到这个举证 Z。</p>
+<p><span class="ts">00:25</span>在代码中，如果这是举证 A，这是一个 NanPy 数组。</p>
+<p><span class="ts">00:35</span>其元素对应我上面写的内容。</p>
+<p><span class="ts">00:38</span>那么 A 的转字，我将写成 at，将是这个举证，同样 A 的列，现在被放到了行上。</p>
+<p><span class="ts">00:48</span>顺便说一下，除了这样设置 at，在 NanPy 中计算 at 的另一种方法是写 at 等于 at。</p>
+<p><span class="ts">01:01</span>那是转字函数，它将举证的列取出来并放到一边。</p>
+<p><span class="ts">01:09</span>在代码中，你会这样出使化举证 W。</p>
+<p><span class="ts">01:13</span>这是另一个二维 NanPy 数组。</p>
+<p><span class="ts">01:17</span>然后，要计算 Z 等于 A 的转字乘以 W。</p>
+<p><span class="ts">01:22</span>你会写 Z 等于 Np 点 MatMu，传入 atW。</p>
+<p><span class="ts">01:29</span>这将计算出这里的举证 Z，得到下面这个结果。</p>
+<p><span class="ts">01:38</span>顺便一说，如果你读别人的代码，有时会看到 Z 等于 at，然后 atw。</p>
+<p><span class="ts">01:46</span>这是调用 MatMu 函数的另一种方式。</p>
+<p><span class="ts">01:49</span>尽管我觉得使用 Np 点 MatMu 更清晰，你在这门课看到的代码中，我们就用这样的 MatMu 函数，而不是这个 at 符号。</p>
+<p><span class="ts">02:02</span>我们来看看前向传播的向量化实现是什么样子的。</p>
+<p><span class="ts">02:07</span>我将设置 A 的转字等于输入特征值217。</p>
+<p><span class="ts">02:15</span>这就是常规的输入特征值。</p>
+<p><span class="ts">02:18</span>200度烘烤咖啡17分钟。</p>
+<p><span class="ts">02:22</span>这是一个1×2的矩阵。</p>
+<p><span class="ts">02:25</span>我将取参数 w1w2和 w3。</p>
+<p><span class="ts">02:30</span>像这样将他们按列堆叠，形成这个矩阵大写 w。</p>
+<p><span class="ts">02:38</span>而值 b1b2b3我将放入一个1×3的矩阵，也就是这个矩阵 b 如下所示。</p>
+<p><span class="ts">02:46</span>那么结果是，如果你计算 Z 等于 A 转至乘 w 加 b，会得到这三个数字。</p>
+<p><span class="ts">02:54</span>这是通过取输入特征值并乘以第一列，然后加上 b 得到165。</p>
+<p><span class="ts">03:10</span>取这些特征值与第二列，也就是权重 w2做点击，再加上 b2得到-531。</p>
+<p><span class="ts">03:20</span>这些特征值与权重 w3.g 再加上 b3得到900。</p>
+<p><span class="ts">03:28</span>如果你想仔细核对这些计算，可以暂停视频，但这会给出 Z11、Z12和 Z13的值。</p>
+<p><span class="ts">03:40</span>最后，如果函数 g 将 Segmoid 函数逐个元素应用于这三个数，也就是说，将 Segmoid 函数应用于165-531和900。</p>
+<p><span class="ts">03:54</span>那么你最终得到 A 等于 g 作用于这个矩阵 Z，结果是101，它是101。</p>
+<p><span class="ts">04:05</span>因为 Segmoid 函数作用于165的结果，非常接近1。</p>
+<p><span class="ts">04:11</span>你知道，不考虑数值，舍入误差，它基本就是1，而这俩基本是零和1。</p>
+<p><span class="ts">04:19</span>我们来看看如何在代码中实现，A 的转质等于这个就是这个1×2的数组217。</p>
+<p><span class="ts">04:29</span>举证 W 是这个2×3举证，B 是这个1×3举证。</p>
+<p><span class="ts">04:37</span>你可以这样在层中实现前向传播。</p>
+<p><span class="ts">04:41</span>Dance 输入 A 转质，WB 等于 Z 等于 MatMuA 转质乘 W 加 B。</p>
+<p><span class="ts">04:50</span>这就实现了这行带码。</p>
+<p><span class="ts">04:53</span>然后 A 下滑线 Out，也就是这个层的输出等于 g 及逐个元素应用于这个矩阵 Z 的激活函数。</p>
+<p><span class="ts">05:06</span>然后你返回 A 下滑线 Out，这就给出了这个值。</p>
+<p><span class="ts">05:12</span>如果你把这张幻灯片和几个视频前的幻灯片比较，会发现只有一点小区别。</p>
+<p><span class="ts">05:20</span>根据惯例，在 TensorFlow 中的实现方式，我们不把这个变量叫 At，而是叫 A 下滑线 In。</p>
+<p><span class="ts">05:28</span>这也是为什么这同样是带码的正确实现。</p>
+<p><span class="ts">05:33</span>TensorFlow 中还有一个惯例，即单个样本实际上是在矩阵 X 中按行排列的，而不是在矩阵 X 的转质中。</p>
+<p><span class="ts">05:44</span>这就是为什么在 TensorFlow 中带码实现看起来像这样。</p>
+<p><span class="ts">05:49</span>但这解释了为什么只用几行带码，你就能在神经网络中实现前向传播。</p>
+<p><span class="ts">05:56</span>而且还能获得巨大的好处，因为现代计算机非常擅长高效的实现矩阵惩罚。</p>
+<p><span class="ts">06:06</span>比如，MatMew，这是本周的最后一个视频。</p>
+<p><span class="ts">06:10</span>感谢你一直坚持看完这些可选视频的最后。</p>
+<p><span class="ts">06:15</span>本周剩下的时间，我希望你也去看看。</p>
+<p><span class="ts">06:20</span>看看测验和实践实验，以及可选的实验，以便更深入的练习这些材料。</p>
+<p><span class="ts">06:27</span>你现在知道了如何在神经网络中进行推理和前向传播，我觉得这真的很酷。</p>
+<p><span class="ts">06:35</span>恭喜你，在你完成测验和实验之后，请一定再回来。</p>
+<p><span class="ts">06:41</span>下周，我们将学习如何真正的训练神经网络。</p>
+<p><span class="ts">06:45</span>期待下周见到你。</p>
+</main>
+<nav class="pager"><a href="P058.html">← 上一讲 矩阵乘法规则（选修）</a><a class="mid" href="index.html">总目录</a><a href="P060.html">下一讲 实现TensorFlow →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 57 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 1 讲 决定下一步尝试什么 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 3 周</p>
+<h1>第 1 讲 决定下一步尝试什么</h1>
+<p class="lead">Deciding what to try next · 4:20 · 分 P 75</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>欢迎回来。</p>
+<p><span class="ts">00:04</span>到现在为止，你已经见识了很多不同的学习算法，包括线性回归、逻辑回归，甚至深度学习或神经网络。</p>
+<p><span class="ts">00:14</span>下周，你还会看到决策树。</p>
+<p><span class="ts">00:17</span>你现在拥有了很多强大的机器学习工具。</p>
+<p><span class="ts">00:21</span>但你如何有效使用这些工具呢？我见过一些团队花费6个月时间，构建一个机器学习系统。</p>
+<p><span class="ts">00:29</span>而我认为一个更有经验的团队可能只需几周就能完成。</p>
+<p><span class="ts">00:34</span>你能多快的让一个机器学习系统良好运行。</p>
+<p><span class="ts">00:38</span>其效率在很大程度上取决于你在机器学习项目过程中能否反复就下一步做什么，做出正确决策。</p>
+<p><span class="ts">00:48</span>在本周，我希望与你分享一些关于如何在机器学习项目中决定下一步做什么的技巧。</p>
+<p><span class="ts">00:56</span>我希望能为你最终节省大量时间。</p>
+<p><span class="ts">00:59</span>我们来看看关于如何构建机器学习系统的一些建议。</p>
+<p><span class="ts">01:04</span>让我们从一个例子开始，假设你已经实现了政责化线性回归来预测房价。</p>
+<p><span class="ts">01:11</span>你拥有学习算法通常的代价函数，及平方误差加上这个政责化项。</p>
+<p><span class="ts">01:19</span>但如果训练完模型后，你发现它在预测中产生了不可接受的大误差，你接下来会尝试什么。</p>
+<p><span class="ts">01:28</span>当你构建一个机器学习算法时，通常有许多不同的方法可以尝试。</p>
+<p><span class="ts">01:34</span>例如，你可能会决定获取更多的训练样本，因为似乎有更多数据就应该有帮助，对吧。</p>
+<p><span class="ts">01:42</span>或者，也许你认为我们可能拥有太多的特征，你可以尝试使用一个更小的特征级，再或者，你可能想获取额外的特征，比如寻找房屋的额外属性，扔进你的数据里。</p>
+<p><span class="ts">01:58</span>也许，那将有助于它，做得更好。</p>
+<p><span class="ts">02:01</span>或者，你可能拿现有特征，X1、X2等等，尝试添加多项式特征，如 X1的平方，X2的平方，X1×X2等等。</p>
+<p><span class="ts">02:15</span>或者，你可能怀疑 Lambda 的值选得是否合适。</p>
+<p><span class="ts">02:19</span>你可能会说，嗯，也许它太大了，我想减小它。</p>
+<p><span class="ts">02:24</span>或者，你可能会说，哦，也许它太小了。</p>
+<p><span class="ts">02:29</span>我想尝试增大它。</p>
+<p><span class="ts">02:32</span>在任何给定的机器学习应用中，往往情况是，其中一些尝试可能是富有成效的，而另一些则不是。</p>
+<p><span class="ts">02:41</span>有效构建机器学习算法的关键在于，你是否能找到一种方法，在决定将时间投入到何处时，做出正确的选择。</p>
+<p><span class="ts">02:52</span>例如，我见过一些团队花费了几乎好几个月的时间，去收集更多的训练样本，认为更多的训练数据肯定有帮助。</p>
+<p><span class="ts">03:02</span>但事实证明，有时它帮助很大，有时则没有。</p>
+<p><span class="ts">03:08</span>在本周，你将学习如何执行一套诊断方法。</p>
+<p><span class="ts">03:12</span>我所说的诊断，是指，你可以运行的一种测试。</p>
+<p><span class="ts">03:18</span>用以动茶学习算法中，哪些部分有效或无效，进而为改进其性能提供指导。</p>
+<p><span class="ts">03:26</span>其中一些诊断将告诉你，诸如，是否值得花几周，甚至几个月时间，去收集更多训练数据。</p>
+<p><span class="ts">03:34</span>因为如果值得，那么，你就可以继续投入，去获取更多数据。</p>
+<p><span class="ts">03:40</span>这有望带来性能提升，而如果不值得，那么运行这个诊断，可能就为你省下了数月的时间。</p>
+<p><span class="ts">03:49</span>你在本周还会看到的一点是，诊断可能需要时间来实施，但运行它们，可以是你时间利用上非常划算的一件事。</p>
+<p><span class="ts">04:00</span>本周，我们将花大量时间讨论你可以使用的不同诊断方法，为你如何改进学习算法的性能，提供指导。</p>
+<p><span class="ts">04:10</span>但首先，我们来看看，如何评估你的学习算法的性能。</p>
+<p><span class="ts">04:15</span>让我们在下一视频中去做这件事。</p>
+</main>
+<nav class="pager"><a href="P074.html">← 上一讲 大型神经网络示例（选修）</a><a class="mid" href="index.html">总目录</a><a href="P076.html">下一讲 评估模型 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 37 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

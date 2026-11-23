@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 6 讲 特征缩放（二） · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 6 讲 特征缩放（二）</h1>
+<p class="lead">Feature scaling part 2 · 7:54 · 分 P 26</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>我们来看看如何实现特征缩放。</p>
+<p><span class="ts">00:04</span>以处理那些取值范围差异很大的特征，将它们缩放到彼此具有可比性的值范围。</p>
+<p><span class="ts">00:12</span>你实际上如何缩放特征呢？嗯，如果 X1的范围从3到2000，一个得到 X1缩放版本的方法，是取每个原始的 X1值并除以2000，即该范围的最大值。</p>
+<p><span class="ts">00:30</span>于是，缩放后的 X1的范围将从0.15到1。</p>
+<p><span class="ts">00:36</span>类似地，由于 X2的范围从0到5，你可以通过取每个原始的 X2并除以5。</p>
+<p><span class="ts">00:43</span>这同样也是最大值，来计算 X2的缩放版本。</p>
+<p><span class="ts">00:48</span>于是，缩放后的 X2的范围现在从0到1。</p>
+<p><span class="ts">00:54</span>如果你将缩放后的 X1和 X2画在图表上，可能看起来像这样。</p>
+<p><span class="ts">01:00</span>除了除以最大值之外，你还可以做所谓的均值归1画。</p>
+<p><span class="ts">01:06</span>这看起来是这样的。</p>
+<p><span class="ts">01:08</span>你从原始特征开始，然后重新缩放它们，使得它们两者都以0为中心。</p>
+<p><span class="ts">01:15</span>之前，它们只有大于0的值，现在它们既有负值也有正值，但大约通常在负1到正1之间。</p>
+<p><span class="ts">01:27</span>要计算 X1的均值归1画。</p>
+<p><span class="ts">01:31</span>首先，找到你训练集中 X1的平均值，也称为均值。</p>
+<p><span class="ts">01:35</span>我们称这个均值为μ1，这是希腊字母μ。</p>
+<p><span class="ts">01:42</span>举例来说，你可能发现，特征1的平均值μ1是600平方英尺。</p>
+<p><span class="ts">01:49</span>让我们取每一个 X1减去均值μ1，然后再除以 X 值2000，减去300。</p>
+<p><span class="ts">01:59</span>其中2000是最大值，300是最小值。</p>
+<p><span class="ts">02:04</span>如果你这样做，你会得到归1画后的 X1，其范围从-0.18到-0.82。</p>
+<p><span class="ts">02:13</span>类似的，要对 X2进行均值归1画，你可以计算特征2的平均值，比方说μ2可能是2.3。</p>
+<p><span class="ts">02:24</span>然后你可以取每一个 X2减去μ2，并除以5-0。</p>
+<p><span class="ts">02:32</span>同样，最大值5减去最小值0。</p>
+<p><span class="ts">02:36</span>均值归1画后的 X2现在范围从-0.46到-0.54。</p>
+<p><span class="ts">02:45</span>如果你使用均值归1画后的 X1和 X2来绘制训练数据，它可能看起来像这样。</p>
+<p><span class="ts">02:52</span>还有最后一种常见的重新缩放方法，叫做 Z 分数归1画。</p>
+<p><span class="ts">02:59</span>要实现 Z 分数归1画，你需要计算每个特征的一个叫做标准 X 的量。</p>
+<p><span class="ts">03:07</span>如果你不知道什么是标准 X，别担心。</p>
+<p><span class="ts">03:10</span>你不需要为这门客了解它，或者如果你听说过正态分布或中型曲线，有时也称为高丝分布，这就是正态分布的标准 X 看起来的样子。</p>
+<p><span class="ts">03:24</span>但如果你没听说过这些，你也不必担心。</p>
+<p><span class="ts">03:28</span>但如果你确实知道什么是标准 X，那么要实现 Z 分数归1画。</p>
+<p><span class="ts">03:34</span>你首先要计算每个特征的军值 Mu 以及标准 X，标准 X 通常用小写希腊字母 Sigma 来表示。</p>
+<p><span class="ts">03:45</span>举个例子，也许特征1的标准 X 是450，军值是600。</p>
+<p><span class="ts">03:54</span>然后要对 X1进行 Z 分数归1，画取每一个 X1减去 Mu，然后除以标准 X，我将用 Sigma1来表示。</p>
+<p><span class="ts">04:07</span>你可能会发现，Z 分数归1画后的 X1现在范围从-0.67到-3.1。</p>
+<p><span class="ts">04:17</span>同样，如果你计算第二个特征的标准 X 是1.4，军值是2.3。</p>
+<p><span class="ts">04:24</span>那么你可以计算 X2减去 Mu2除以 Sigma2。</p>
+<p><span class="ts">04:33</span>在这种情况下，Z 分数归1画后的 X2现在可能范围从-1.6到-1.9。</p>
+<p><span class="ts">04:42</span>如果你在图表上画出归1画后的 X1和 X2的训练数据，它可能看起来像这样。</p>
+<p><span class="ts">04:51</span>作为经验法则，在进行特征缩放时，你可能希望达到的目标是，对于每个特征 X 让特征的范围大概在-1到-1附近的某个地方。</p>
+<p><span class="ts">05:05</span>但这些值-1和-1可以稍微宽松一点。</p>
+<p><span class="ts">05:12</span>如果特征的范围从-3到-3，或者从-0.3到-0.3，所有这些都完全没问题。</p>
+<p><span class="ts">05:21</span>如果你有一个特征 X1，其值最终介于-0.3之间，这不成问题。</p>
+<p><span class="ts">05:28</span>如果你愿意，可以重新缩放它。</p>
+<p><span class="ts">05:32</span>但如果你不重新缩放，它也应该可以正常工作。</p>
+<p><span class="ts">05:37</span>或者，如果你有一个不同的特征 X2，其值介于-2到-0.5之间，同样，这也没问题。</p>
+<p><span class="ts">05:46</span>重新缩放它没有坏处，但如果你不去管它，也可能没问题。</p>
+<p><span class="ts">05:51</span>但如果另一个特征，比如这里的 X3，其范围从-100到-100，那么这就有着和-4-1到-1的范围，非常不同的取值范围。</p>
+<p><span class="ts">06:04</span>你最好重新缩放这个特征 X3，使其范围更接近-1到-1。</p>
+<p><span class="ts">06:14</span>同样地，如果你有一个特征 X4，它的取值非常小，比如介于-0.001和-0.001之间，那么这些值太小了，这意味着你可能也想重新缩放它。</p>
+<p><span class="ts">06:31</span>最后，如果你的特征 X5，例如一位医院病患的体温测量值，范围从-98.6华氏度到-105华氏度呢？在这种情况下，这些值大约在-100左右，相较于其他缩放后的特征而言，实际上非常大，这确实会导致 T 度下降运行的更慢。</p>
+<p><span class="ts">06:57</span>在这种情况下，特征重新缩放很可能会有所帮助。</p>
+<p><span class="ts">07:02</span>进行特征，重新缩放几乎从来没有任何坏处。</p>
+<p><span class="ts">07:06</span>所以当不确定时，我鼓励你就直接去做。</p>
+<p><span class="ts">07:10</span>特征缩放就是这些。</p>
+<p><span class="ts">07:13</span>借助这个小技巧，你通常能够让 T 度下降运行的快得多。</p>
+<p><span class="ts">07:19</span>这就是特征缩放。</p>
+<p><span class="ts">07:22</span>而在使用了或不使用特征缩放的情况下，当你运行 T 度下降时，你又如何能知道，如何能检查 T 度下降是否真的在工作，是否正在为你找到全局最小值或接近它的某个值。</p>
+<p><span class="ts">07:38</span>在下一个视频中，我们来看看如何识别 T 度下降是否正在收敛。</p>
+<p><span class="ts">07:45</span>然后在那之后的视频中，这将引向关于如何为 T 度下降选择一个好的学习率的讨论。</p>
+</main>
+<nav class="pager"><a href="P025.html">← 上一讲 特征缩放（一）</a><a class="mid" href="index.html">总目录</a><a href="P027.html">下一讲 检查梯度下降是否收敛 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 59 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

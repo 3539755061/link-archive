@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 10 讲 有放回采样 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 4 周</p>
+<h1>第 10 讲 有放回采样</h1>
+<p class="lead">Sampling with replacement · 4:21 · 分 P 101</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>为了构建数级程模型，我们需要一种叫有放回抽样的技术。</p>
+<p><span class="ts">00:08</span>我们来看看这是什么意思。</p>
+<p><span class="ts">00:11</span>为了演示有放回抽样是如何工作的。</p>
+<p><span class="ts">00:15</span>我将用红、黄、绿、蓝四个牌子。</p>
+<p><span class="ts">00:19</span>向你展示一遍有放回抽样。</p>
+<p><span class="ts">00:22</span>我这里正好有红、黄、绿、蓝四种颜色的牌子。</p>
+<p><span class="ts">00:31</span>我将演示如何用它们进行有放回抽样。</p>
+<p><span class="ts">00:37</span>这是一个空的黑色容布袋。</p>
+<p><span class="ts">00:41</span>我用这四个牌子做例子，把它们丢进去。</p>
+<p><span class="ts">00:46</span>我要从这个袋子里有放回地抽四次样。</p>
+<p><span class="ts">00:50</span>意思是我会摇一摇袋子，我看不见自己拿的是什么。</p>
+<p><span class="ts">00:56</span>抽出一个牌子是绿色的。</p>
+<p><span class="ts">00:59</span>有放回这个词的意思是，在我取出下一个牌子之前，我会把这个放回去，再摇一摇。</p>
+<p><span class="ts">01:07</span>然后再取出一个黄色的把它放回去。</p>
+<p><span class="ts">01:12</span>这就是有放回的部分。</p>
+<p><span class="ts">01:15</span>接着再抽，蓝色的再次放回，然后再抽一个，又是蓝色的。</p>
+<p><span class="ts">01:23</span>我得到的牌子序列是绿、黄、蓝、蓝。</p>
+<p><span class="ts">01:30</span>注意，我抽中了两次蓝色，而红色一次都没抽到。</p>
+<p><span class="ts">01:36</span>如果你多次重复这个有放回抽样过程，也就是再做一遍，你可能得到红、黄、红、绿，或者绿、绿、蓝、红，也可能得到红、蓝、黄、绿。</p>
+<p><span class="ts">01:54</span>注意，这个过程里有放回的部分至关重要。</p>
+<p><span class="ts">01:59</span>因为如果我每次抽样都不把牌子放回去，那么我从装有四个牌子的袋子里抽四次，将总是拿到同样的四个牌子。</p>
+<p><span class="ts">02:10</span>这就是为什么每次抽出后都把牌子放回去很重要。</p>
+<p><span class="ts">02:15</span>确保我不会每次都只拿到同样的四个牌子。</p>
+<p><span class="ts">02:19</span>有放回抽样应用于构建数集成模型的方法如下。</p>
+<p><span class="ts">02:27</span>我们将构建多个随机的训练集，它们都与原始训练集略有不同。</p>
+<p><span class="ts">02:35</span>具体来说，我们拿出这10个猫狗的例子，将这10个训练样本放入一个理论上的袋子中。</p>
+<p><span class="ts">02:45</span>请不要把真的猫或狗放进袋子里。</p>
+<p><span class="ts">02:49</span>这听起来很不人道，但如果你想的话，可以把一个训练样本放进理论上的袋子里。</p>
+<p><span class="ts">02:55</span>利用这个理论上的袋子，我们将创建一个新的随机训练集，包含10个样本，大小与原始数据级完全相同。</p>
+<p><span class="ts">03:06</span>做法是，我们把手伸进去，随机抽取一个训练样本。</p>
+<p><span class="ts">03:12</span>假设我们拿到了这个训练样本，然后我们把它放回袋子里。</p>
+<p><span class="ts">03:18</span>接着，再次随机抽取一个训练样本。</p>
+<p><span class="ts">03:23</span>于是你拿到了那个，然后你一次又一次的抽。</p>
+<p><span class="ts">03:29</span>注意，现在这第5个训练样本和我们之前拿到的第2个一样，但这没问题。</p>
+<p><span class="ts">03:37</span>你继续抽，继续抽。</p>
+<p><span class="ts">03:40</span>我们又得到一个重复的样本，如此反复，直到最终你拿到10个训练样本，其中有些是重复的。</p>
+<p><span class="ts">03:48</span>你还会注意到，这个训练集并未包含所有10个原始训练样本。</p>
+<p><span class="ts">03:55</span>但没关系，这是有放回抽样过程的一部分。</p>
+<p><span class="ts">04:00</span>有放回抽样过程，让你能构建一个新的训练集，它与你的原始训练集有些许相似，但又大不相同。</p>
+<p><span class="ts">04:10</span>事实证明，这将是构建数级成模型的关键基石。</p>
+<p><span class="ts">04:15</span>在下一个视频中，我们来看看具体该怎么做。</p>
+</main>
+<nav class="pager"><a href="P100.html">← 上一讲 使用多棵决策树</a><a class="mid" href="index.html">总目录</a><a href="P102.html">下一讲 随机森林算法 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 41 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

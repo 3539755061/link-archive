@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 12 讲 更多层类型 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 12 讲 更多层类型</h1>
+<p class="lead">Additional Layer Types · 9:15 · 分 P 71</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>到目前为止，我们使用的所有神经网络层都是全连接层类型。</p>
+<p><span class="ts">00:08</span>在这种层中，层内的每个神经员都接收来自前一层的所有激活值作为其输入。</p>
+<p><span class="ts">00:15</span>事实证明，仅使用全连接层类型，你实际上就能构建出一些相当强大的学习算法。</p>
+<p><span class="ts">00:23</span>而为了帮助你进一步建立关于神经网络能做什么的直觉，原来还存在一些具有其他特性的其他类型层。</p>
+<p><span class="ts">00:33</span>在本视频中，我想简要提及这一点，并给你一个不同类型的神经网络层的例子。</p>
+<p><span class="ts">00:40</span>我们来看看，回顾一下在我们一直使用的全连接层中，比如说第二个隐藏层中一个神经员的激活值，是前一层的每一个激活值 A1的函数。</p>
+<p><span class="ts">00:59</span>但事实证明，对于某些应用、设计神经网络的人可能会选择使用不同类型的层。</p>
+<p><span class="ts">01:08</span>你可能在某些工作中见到的另一种层类型，叫做卷基层。</p>
+<p><span class="ts">01:15</span>让我用一个例子来说明，我在左侧展示的是输入 X，它是一个手写数字9的图像。</p>
+<p><span class="ts">01:24</span>我将要做的是构建一个隐藏层。</p>
+<p><span class="ts">01:27</span>它将根据这个输入图像 X 计算不同的激活值，但我可以做这样一件事。</p>
+<p><span class="ts">01:35</span>对于第一个隐藏单元，我用蓝色标出，我不是让这个神经员可以查看这幅图像中的所有像素，而是规定这个神经员只能查看这个小举行区域内的像素。</p>
+<p><span class="ts">01:50</span>第二个神经员，我将用洋红色来说明，同样也不会查看整个输入图像 X。</p>
+<p><span class="ts">01:58</span>相反，他只会查看图像中一个有线区域内的像素。</p>
+<p><span class="ts">02:03</span>对于第三个神经员，第四个神经员，以此类推，直到最后一个神经员，他可能只查看图像的那个区域。</p>
+<p><span class="ts">02:14</span>那么你为什么要这样做呢？你为什么不每个神经员都查看所有像素，而只让他们查看部分像素呢？嗯，这样做的一些好处是，首先，他加快了计算速度。</p>
+<p><span class="ts">02:33</span>第二个优势是，使用这种称为卷基层的神经网络，可能需要的训练数据更少。</p>
+<p><span class="ts">02:40</span>或者，他也可以不那么容易过你盒。</p>
+<p><span class="ts">02:47</span>你在之前的课程中听过我谈过一些关于过你盒的问题，但这是我们下周在讨论使用学习算法的实用技巧时会更深入探讨的内容。</p>
+<p><span class="ts">03:00</span>这种特定类型的层，即每个神经员只查看输入图像的一个区域，被称为卷基层。</p>
+<p><span class="ts">03:08</span>一位名叫 Yen Le Kuan 的研究人员弄清楚了如何让卷基层有效工作的许多细节，并普及了他们的使用。</p>
+<p><span class="ts">03:20</span>让我更详细的说明一下卷基层。</p>
+<p><span class="ts">03:23</span>如果你在一个神经网络中有多个卷基层，有时这被称为卷基神经网络。</p>
+<p><span class="ts">03:34</span>为了说明卷基层或卷基神经网络，在这张幻灯片上我将不使用二维图像输入，而是使用一维输入。</p>
+<p><span class="ts">03:46</span>我将使用的起发性例子是新电图信号或新电图分类。</p>
+<p><span class="ts">03:51</span>如果你在胸口贴上两个电集，你会记录下像这样的电压他们对应你的心跳。</p>
+<p><span class="ts">04:03</span>这实际上是我的斯坦福研究小组做过研究的内容。</p>
+<p><span class="ts">04:08</span>我们实际上在读取像这样的新电图信号，以尝试诊断患者是否可能有心脏问题。</p>
+<p><span class="ts">04:16</span>一个新电图信号，有些地方叫 ECJ，有些地方叫 EKJ，就是一系列数字。</p>
+<p><span class="ts">04:25</span>对应着这个曲线上不同时间点的高度。</p>
+<p><span class="ts">04:29</span>你可能有比如说，100个数字对应这条曲线在100个不同时间点的高度。</p>
+<p><span class="ts">04:38</span>学习任务则是，给定这个时间序列，给定这个新电图信号进行分类。</p>
+<p><span class="ts">04:46</span>比如说，判断这位患者是否有心脏病或某种可诊断的心脏状况。</p>
+<p><span class="ts">04:53</span>卷机神经网络可能会这样做。</p>
+<p><span class="ts">04:56</span>我现在要把新电图信号拿来，旋转90度，把它平放。</p>
+<p><span class="ts">05:02</span>于是我们这里有了100个输入 X1、X2。</p>
+<p><span class="ts">05:07</span>一直到 X100就像这样。</p>
+<p><span class="ts">05:10</span>当我构建第一个隐藏层时，我不让第一个隐藏单元接收所有100个数字作为输入。</p>
+<p><span class="ts">05:18</span>而是让第一个隐藏单元只看 X1到 X20。</p>
+<p><span class="ts">05:23</span>这相当于只查看这个新电图信号的一个小窗口。</p>
+<p><span class="ts">05:30</span>第二个隐藏单元。</p>
+<p><span class="ts">05:33</span>这里用不同颜色表示，将查看 X11到 X30。</p>
+<p><span class="ts">05:39</span>它查看的是这个新电图信号中的一个不同窗口。</p>
+<p><span class="ts">05:44</span>然后第三个隐藏单元，查看另一个窗口，X21到 X40。</p>
+<p><span class="ts">05:50</span>依此类推。</p>
+<p><span class="ts">05:52</span>而这个例子中的最后一个隐藏单元将查看 X81到 X100。</p>
+<p><span class="ts">05:59</span>它查看的是这个新电图时间序列末端的一个小窗口。</p>
+<p><span class="ts">06:04</span>这是一个卷机层。</p>
+<p><span class="ts">06:07</span>因为该层中的每个单元只查看输入的一个有线窗口。</p>
+<p><span class="ts">06:13</span>这个神经网络层有9个单元。</p>
+<p><span class="ts">06:18</span>下一层也可以是卷机层。</p>
+<p><span class="ts">06:23</span>在第二个隐藏层中，我设计我的第一个单元，不让它查看前一层的所有9个激活值。</p>
+<p><span class="ts">06:30</span>比如说，只让它查看前一层的头5个激活值。</p>
+<p><span class="ts">06:33</span>然后，我第二个隐藏层中的第二个单元，可能只查看另外5个数值。</p>
+<p><span class="ts">06:45</span>比如说 A3到 A7。</p>
+<p><span class="ts">06:50</span>而这一层的第三个，也就是最后一个隐藏单元，只会查看 A5到 A9。</p>
+<p><span class="ts">06:56</span>然后，也许最终，这些激活值 A2，会被输入到一个 Sigmoid 的单元。</p>
+<p><span class="ts">07:02</span>该单元确实会查看 A2的所有这三个值。</p>
+<p><span class="ts">07:06</span>以便对是否存在心脏病进行二分类。</p>
+<p><span class="ts">07:10</span>这将是一个神经网络的例子。</p>
+<p><span class="ts">07:16</span>其第一个隐藏层是卷机层，第二个隐藏层也是卷机层，然后输出层是一个 Sigmoid 层。</p>
+<p><span class="ts">07:26</span>事实证明，对于卷机层，你有许多架构选择。</p>
+<p><span class="ts">07:31</span>比如，单个神经元应该查看多大的输入窗口，以及每层应该有多少个神经元。</p>
+<p><span class="ts">07:38</span>通过有效的选择这些架构参数，你可以构建出新版本的神经网络。</p>
+<p><span class="ts">07:47</span>他们对于某些应用来说，甚至可能比全连接层更有效。</p>
+<p><span class="ts">07:52</span>回顾一下，卷机层和卷机神经网络的内容就是这些。</p>
+<p><span class="ts">07:58</span>在这门课中，我不会更深入地讲解卷机网络。</p>
+<p><span class="ts">08:02</span>你也不需要了解任何关于他们的知识来完成作业，并顺利学完这门课。</p>
+<p><span class="ts">08:08</span>但我希望你能觉得这个额外的直觉，即神经网络也可以有其他类型的层是有用的。</p>
+<p><span class="ts">08:16</span>事实上，如果你有时听到一些最新的前沿架构，比如 Transformer 模型、LSTM 或者注意力模型。</p>
+<p><span class="ts">08:26</span>许多神经网络方面的研究，即便在今天都关乎研究人员尝试发明新类型的神经网络层，并将这些不同类型的层向机幕一样拼接在一起。</p>
+<p><span class="ts">08:39</span>以形成更复杂，且有望更强大的神经网络。</p>
+<p><span class="ts">08:44</span>本周的必修视频就到这里。</p>
+<p><span class="ts">08:47</span>感谢你，并恭喜你，坚持陪我走到了这里。</p>
+<p><span class="ts">08:52</span>我也期待在下周见到你，届时我们将开始探讨关于如何构建机器学习系统的实用建议。</p>
+<p><span class="ts">09:01</span>我希望你在下周学到的技巧，能帮助你更有效的构建有用的机器学习系统。</p>
+<p><span class="ts">09:09</span>我也期待着下周与你再见。</p>
+</main>
+<nav class="pager"><a href="P070.html">← 上一讲 进阶优化算法</a><a class="mid" href="index.html">总目录</a><a href="P072.html">下一讲 什么是导数（选修） →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 77 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 8 讲 代码中的推理 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 8 讲 代码中的推理</h1>
+<p class="lead">Inference in Code · 6:59 · 分 P 50</p>
+</header>
+<main>
+<p><span class="ts">00:00</span>TensorFlow 是实现深度学习算法的领先框架之一。</p>
+<p><span class="ts">00:04</span>我做项目的时候，TensorFlow 实际上是我最常用的工具。</p>
+<p><span class="ts">00:09</span>另一个流行的工具是 PyTorch。</p>
+<p><span class="ts">00:13</span>但在这个专项课程里，我们将重点关注 TensorFlow。</p>
+<p><span class="ts">00:17</span>在本视频中，我们来看看如何在代码中使用 TensorFlow 实现推理。</p>
+<p><span class="ts">00:23</span>我们开始吧。</p>
+<p><span class="ts">00:25</span>神经网络的一个非凡之处在于，同一个算法可以应用于这么多不同的领域。</p>
+<p><span class="ts">00:33</span>为了让大家在本视频和一些实验中看清神经网络在做什么，我将用另一个例子来说明推理过程。</p>
+<p><span class="ts">00:42</span>我有时候确实喜欢自己在家烘焙咖啡豆。</p>
+<p><span class="ts">00:51</span>我最喜欢的其实是哥伦比亚咖啡豆。</p>
+<p><span class="ts">00:54</span>学习算法能否帮助优化？像这样的烘焙过程所得到的咖啡豆品质呢？烘焙咖啡时，你可以控制的两个参数是，将生咖啡豆加热变成美味熟豆的温度，以及烘焙的时长，也就是你要烤多久。</p>
+<p><span class="ts">01:12</span>在这个稍微简化的例子中，我们创建了一个数据级，包含不同的温度，不同的时长，以及标明我们烘焙的咖啡是否好喝的标签。</p>
+<p><span class="ts">01:29</span>这里，正类外等于1，对应好喝的咖啡。</p>
+<p><span class="ts">01:38</span>而0，极负类，对应不好喝的咖啡。</p>
+<p><span class="ts">01:43</span>理解这个数据级的一个合理方式似乎是，如果你用太低的温度烘焙，它没被烤熟，结果就是火候不足。</p>
+<p><span class="ts">01:52</span>如果你烤的时间不够长，时长太短，那也不是一炉烘焙得当的豆子。</p>
+<p><span class="ts">02:03</span>最后，如果你烤的太久或温度太高，结果你就会得到过度烘焙的豆子。</p>
+<p><span class="ts">02:10</span>它们会带点焦糊味，那样也不算好咖啡。</p>
+<p><span class="ts">02:14</span>只有在这么个小三角区域里的点，才对应着好喝的咖啡。</p>
+<p><span class="ts">02:21</span>这个例子，相较真实的咖啡烘焙，做了一点简化。</p>
+<p><span class="ts">02:26</span>尽管这个例子是为了说明而简化的，但确实已经有人在做一些严肃的项目。</p>
+<p><span class="ts">02:33</span>利用机器学习来优化咖啡烘焙了。</p>
+<p><span class="ts">02:37</span>任务就是，给定一个包含温度和时长的特征相量 X，比如200摄氏度。</p>
+<p><span class="ts">02:46</span>17分钟，我们如何在神经网络中进行推理，来让它告诉我们，这个温度和时长设定能否得到好喝的咖啡，它看起来是这样的。</p>
+<p><span class="ts">03:02</span>将 X 设为一个包含俩数字的数组，输入特征是200摄氏度和17分钟。</p>
+<p><span class="ts">03:12</span>然后，你将第一层创建为网络的第一个隐藏层，用 dance，左括号，units 等于3。</p>
+<p><span class="ts">03:23</span>表示这一层有3个单元或3个隐藏单元，并使用 S 型函数作为激活函数。</p>
+<p><span class="ts">03:32</span>dance 是我们目前为止所学的那种神经网络层的另一个名称。</p>
+<p><span class="ts">03:38</span>随着你对神经网络了解的更多，你还会学到其他类型的层，但就目前而言，在我们所有的例子中，我们将止使用 dance 层，也就是你在过去几个视频中学到的那种层类型。</p>
+<p><span class="ts">03:55</span>接下来，你通过取第一层，它实际上是一个函数，并对 x 的值应用这个第一层的函数，来计算 A1。</p>
+<p><span class="ts">04:06</span>这样你就得到了 A1，它将是3个数字的列表，因为第一层有3个单元，为了说明，这里的 A1可能是0.2,0.7,0.3。</p>
+<p><span class="ts">04:20</span>接下来，对于第二个隐藏层，第二层将是 dance，这次它只有一个单元，并且同样使用 s 型激活函数。</p>
+<p><span class="ts">04:30</span>然后，你可以通过将这个第二层的函数，应用于来自第一层的激活值 A1，来计算 A2。</p>
+<p><span class="ts">04:39</span>这样会得到 A2的值，仅为说明，它可能是0.8。</p>
+<p><span class="ts">04:45</span>最后，如果你希望以0.5作为预值，那么你只需测试 A2是否大于等于0.5，并相应的设置 Y hat 等于1或0，也就是正类或复类。</p>
+<p><span class="ts">04:59</span>这就是如何在 tensorflow 中用神经网络做推理。</p>
+<p><span class="ts">05:03</span>这里还有一些我没有展开讲的额外细节，比如，如何加载 tensorflow cool，以及如何加载神经网络的参数 w 和 b。</p>
+<p><span class="ts">05:15</span>但我们会在实验中讲到这些。</p>
+<p><span class="ts">05:19</span>请务必去看看实验。</p>
+<p><span class="ts">05:21</span>但这些就是前向传播的关键步骤，以及如何计算 A1、A2，并可选择性的对 A2进行预值判断。</p>
+<p><span class="ts">05:32</span>我们再看一个例子，我们要回到手写数字分类问题。</p>
+<p><span class="ts">05:37</span>在这个例子中，x 是向速强度值的列表，x 等于这个向速强度值列表的 NUMPI 数组，然后为了初始化并执行一步前向传播，第一层是一个具有25个单元和 s 型激活函数的单四层。</p>
+<p><span class="ts">06:01</span>接着，你计算 A1等于应用于 x 的第一层函数，要构建并通过第二层执行推理，你类似第案如下设置第二层，然后计算 A2等于应用于 A1的第二层函数，然后第三层是第三个，也是最后一个单四层。</p>
+<p><span class="ts">06:27</span>最后，你可以有选择性的对 A3进行预值处理，以给出 WHYTE 的二元预测。</p>
+<p><span class="ts">06:34</span>这就是在 TensorFlow 中执行推理的语法。</p>
+<p><span class="ts">06:39</span>我之前简单提到的一件事，是 NUMPI 数组的结构。</p>
+<p><span class="ts">06:44</span>TensorFlow 以某种特定的方式处理数据，搞清楚这一点很重要。</p>
+<p><span class="ts">06:51</span>在下一个视频中，我们来看看 TensorFlow 是如何处理数据的。</p>
+</main>
+<nav class="pager"><a href="P049.html">← 上一讲 推理：做出预测（前向传播）</a><a class="mid" href="index.html">总目录</a><a href="P051.html">下一讲 在TensorFlow中的数据 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 48 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

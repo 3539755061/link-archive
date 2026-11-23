@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 7 讲 无监督学习（二） · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 1 周</p>
+<h1>第 7 讲 无监督学习（二）</h1>
+<p class="lead">Unsupervised learning part 2 · 3:53 · 分 P 7</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>在上一个视频中，你了解了什么是无监督学习，以及一种称为巨类的无监督学习类型。</p>
+<p><span class="ts">00:09</span>让我们给出一个稍微更正式的无监督学习定义，并快速了解除巨类之外的其他一些无监督学习类型。</p>
+<p><span class="ts">00:19</span>在监督学习中，数据同时包含输入 x 和输出标签外。</p>
+<p><span class="ts">00:25</span>而在无监督学习中，数据仅包含输入 x，不包含输出标签外。</p>
+<p><span class="ts">00:31</span>算法需要在数据中找到某种结构、某种模式，或者某种有趣的东西。</p>
+<p><span class="ts">00:38</span>我们只看到了一个无监督学习的例子，成为巨类算法。</p>
+<p><span class="ts">00:43</span>它将相似的数据点分组在一起。</p>
+<p><span class="ts">00:47</span>在本专项课程中，你将学习巨类以及其他两种类型的无监督学习。</p>
+<p><span class="ts">00:54</span>一种称为异常检测，用于检测异常事件。</p>
+<p><span class="ts">00:59</span>事实证明，这对于金融系统中的欺诈检测非常重要。</p>
+<p><span class="ts">01:06</span>其中异常事件、异常交易可能是欺诈的迹象，并且该技术还适用于许多其他应用。</p>
+<p><span class="ts">01:14</span>你还将学习降维，这让你能够获取一个大数据级，并几乎奇迹般的将其压缩成一个更小的数据级。</p>
+<p><span class="ts">01:25</span>同时，尽可能少的丢失信息。</p>
+<p><span class="ts">01:29</span>如果你觉得异常检测和降维暂时还不太容易理解，不用担心。</p>
+<p><span class="ts">01:34</span>我们将在本专项课程的后面部分学习这些内容。</p>
+<p><span class="ts">01:41</span>我想再问你一个问题，以帮助你检查理解程度。</p>
+<p><span class="ts">01:46</span>别紧张，如果你第一次没答对，完全没问题。</p>
+<p><span class="ts">01:51</span>请选出你认为属于无监督学习势力的所有选项。</p>
+<p><span class="ts">01:56</span>其中两个是无监督学习的例子，两个是监督学习的例子。</p>
+<p><span class="ts">02:03</span>请看一下。</p>
+<p><span class="ts">02:05</span>也许你还记得垃圾邮件过滤问题。</p>
+<p><span class="ts">02:11</span>如果你有标记数据，及标记为垃圾邮件或非垃圾邮件的电子邮件，你可以将其视为一个监督学习问题。</p>
+<p><span class="ts">02:21</span>第二个例子，新闻报道的例子，正是你在上一个视频中看到的百度 News 和熊猫的例子。</p>
+<p><span class="ts">02:29</span>你可以使用巨类算法来处理该问题。</p>
+<p><span class="ts">02:33</span>将新闻文章分组在一起，那会用到无监督学习。</p>
+<p><span class="ts">02:40</span>我之前稍微谈到的市场细分例子，你也可以将其作为一个无监督学习问题来处理。</p>
+<p><span class="ts">02:47</span>因为你可以给算法一些数据，让它自动发现市场细分。</p>
+<p><span class="ts">02:52</span>最后一个是关于诊断糖尿病的例子。</p>
+<p><span class="ts">02:59</span>实际上，这很像我们在监督学习视频中的乳腺癌例子。</p>
+<p><span class="ts">03:05</span>只是将粮性或恶性肿瘤换成了患有糖尿病或胃患糖尿病。</p>
+<p><span class="ts">03:11</span>你可以像处理乳腺肿瘤分类问题一样，将其作为一个监督学习问题来处理。</p>
+<p><span class="ts">03:19</span>尽管在这个视频和上一个视频中，我们主要讨论了巨类，但在本专项课程的后续视频中，我们也将更深入的探讨异常检测和降维。</p>
+<p><span class="ts">03:31</span>以上就是无监督学习的内容。</p>
+<p><span class="ts">03:36</span>在结束本部分之前，我想与你分享一件我觉得非常令人兴奋且有用的事情。</p>
+<p><span class="ts">03:43</span>那就是，在机器学习中使用 Jupiter 笔记本。</p>
+<p><span class="ts">03:47</span>让我们在下一个视频中看看它。</p>
+</main>
+<nav class="pager"><a href="P006.html">← 上一讲 无监督学习（一）</a><a class="mid" href="index.html">总目录</a><a href="P008.html">下一讲 交互式Jupyter笔记 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 36 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

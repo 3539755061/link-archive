@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 6 讲 梯度下降的实现 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 3 周</p>
+<h1>第 6 讲 梯度下降的实现</h1>
+<p class="lead">Gradient Descent Implementation · 6:45 · 分 P 36</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>为了你和逻辑回归模型的参数，我们将尝试找到能最小化代价函数这关于 W 和 B 的值的参数 W 和 B。</p>
+<p><span class="ts">00:12</span>我们仍会应用 T 度下降来实现这一点。</p>
+<p><span class="ts">00:16</span>我们来看看具体怎么做。</p>
+<p><span class="ts">00:19</span>在本视频中，我们将聚焦于如何为参数 W 和 B 找到好的选择。</p>
+<p><span class="ts">00:25</span>当你这样做之后，如果你给模型一个新的输入 X，比如医院里来了一位新病患，他有特定的肿瘤大小和年龄，需要做出诊断。</p>
+<p><span class="ts">00:37</span>那么模型就可以做出预测。</p>
+<p><span class="ts">00:39</span>或者说他可以尝试估计标签外围1的概率。</p>
+<p><span class="ts">00:47</span>你可以用来最小化代价函数的算法就是 T 度下降。</p>
+<p><span class="ts">00:52</span>这里再次给出代价函数。</p>
+<p><span class="ts">00:55</span>如果你想最小化关于 W 和 B 的代价函数 J，这就是常规的 T 度下降算法，你重复更新每个参数，用旧值减去 Alpha，也就是学习率乘以这个导数项。</p>
+<p><span class="ts">01:12</span>我们来看一下 J 关于 WJ 的导数，也就是上面这一项。</p>
+<p><span class="ts">01:21</span>照常 J 的取值范围是从1到 n，其中 n 是特征的数量。</p>
+<p><span class="ts">01:27</span>如果有人应用危机分法则，你可以证明代价函数大写 J 关于 WJ 的导数等于这里的这个表达式。</p>
+<p><span class="ts">01:39</span>它是 m 分之1乘以从1到 m 求合的这个误差项，即 f 减去标签外再乘以 xj。</p>
+<p><span class="ts">01:50</span>这里这个11j 是第2个训练样本的第 J 个特征。</p>
+<p><span class="ts">02:05</span>我们也来看一下 J 关于参数 B 的导数。</p>
+<p><span class="ts">02:09</span>结果就是这里的这个表达式，它和上面的表达式非常相似。</p>
+<p><span class="ts">02:17</span>除了末尾没有乘以这个带有上标 i 下标 j 的 x。</p>
+<p><span class="ts">02:22</span>提醒一下，与你在线性回归中看到的类似。</p>
+<p><span class="ts">02:28</span>执行这些更新的方式是要使用同步更新，意味着你会先为所有这些更新计算右侧的值。</p>
+<p><span class="ts">02:37</span>然后同时附写左侧所有的值。</p>
+<p><span class="ts">02:42</span>让我把这些导数表达式拿过来，带入到这些项中。</p>
+<p><span class="ts">02:53</span>这就给出了逻辑回归的 T 度下降。</p>
+<p><span class="ts">02:56</span>你可能会好奇一件有趣的事。</p>
+<p><span class="ts">03:02</span>嗯，这很奇怪啊。</p>
+<p><span class="ts">03:04</span>这两个方程看起来和我们之前为线性回归想出的算法一模一样。</p>
+<p><span class="ts">03:11</span>你可能会想，线性回归是不是实际上就等同于逻辑回归？嗯，尽管这些方程看起来一样，但这不是线性回归的原因在于，函数 F 的定义已经变了。</p>
+<p><span class="ts">03:26</span>在线性回归中，x 的 F 是这样的，是 wx 加 b，但在逻辑回归中，F 被定义为应用于 wx 加 b 的 sigma 的函数。</p>
+<p><span class="ts">03:43</span>尽管写出来的算法在线性回归和逻辑回归中看起来相同，但实际上，他们是两个非常不同的算法，因为关于 x 的 F 的定义不同。</p>
+<p><span class="ts">03:55</span>当我们之前讨论，线性回归的 T 度下降时，你看到了如何监控 T 度下降，以确保它收敛。</p>
+<p><span class="ts">04:06</span>你可以对逻辑回归应用，同样的方法来确保它也能收敛。</p>
+<p><span class="ts">04:13</span>我写出这些更新事实，像是你每次更新参数 w 这种的一个参数。</p>
+<p><span class="ts">04:19</span>与讨论线性回归的像量化实现类似，你也可以使用像量化，让逻辑回归的 T 度下降运行的更快。</p>
+<p><span class="ts">04:32</span>我不会在这个视频中深入探讨像量化实现的细节，但你也可以在选修实验中了解更多，并看到相关代码。</p>
+<p><span class="ts">04:47</span>那么你知道了如何为逻辑回归实现 T 度下降？你可能还记得，我们在使用线性回归时的特征缩放。</p>
+<p><span class="ts">04:58</span>你看到了特征缩放，也就是将所有特征缩放到相似的值范围，比如-1-1之间，这如何能帮助 T 度下降更快的收敛。</p>
+<p><span class="ts">05:11</span>以同样的方式应用特征缩放，将不同特征缩放到相似的值范围，也可以加速逻辑回归的 T 度下降。</p>
+<p><span class="ts">05:21</span>在接下来的选修实验中，你也会看到逻辑回归的 T 度是如何在代码中计算的。</p>
+<p><span class="ts">05:31</span>这会很有用，因为你将在本周结束时的练习实验中实现它。</p>
+<p><span class="ts">05:38</span>在你于该实验中运行 T 度下降之后，会有一系列漂亮的动画图表展示 T 度下降的实际运作过程。</p>
+<p><span class="ts">05:48</span>你会看到 Sigmoid 函数，代价的等高线图，代价的三维曲面图，以及学习曲线，都随着 T 度下降的运行而演变。</p>
+<p><span class="ts">05:59</span>在那之后，还有另一个选修实验，它简短而惊悍，但也非常有用。</p>
+<p><span class="ts">06:04</span>因为它会向你展示如何使用流行的 SigkitLearn 库。</p>
+<p><span class="ts">06:09</span>来训练，用于分类的逻辑回归模型。</p>
+<p><span class="ts">06:14</span>当今许多公司的机器学习从业者都在日常工作中经常使用 SigkitLearn。</p>
+<p><span class="ts">06:21</span>我希望你也能看看 SigkitLearn 的函数，并了解它的使用方法。</p>
+<p><span class="ts">06:28</span>就是这样，你现在知道如何实现逻辑回归了。</p>
+<p><span class="ts">06:33</span>这是一个非常强大，应用非常广泛的学习算法。</p>
+<p><span class="ts">06:38</span>你现在知道如何让它为你工作了。</p>
+<p><span class="ts">06:42</span>恭喜！</p>
+</main>
+<nav class="pager"><a href="P035.html">← 上一讲 简化版的逻辑回归代价函数</a><a class="mid" href="index.html">总目录</a><a href="P037.html">下一讲 过拟合问题 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 50 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

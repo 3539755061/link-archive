@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 7 讲 Softmax函数 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 7 讲 Softmax函数</h1>
+<p class="lead">Softmax · 12:04 · 分 P 66</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>Softmax 回归算法是逻辑回归这一二分类算法在多分类场景下的推广。我们来看看它是如何工作的。</p>
+<p><span class="ts">00:16</span>回想一下，当 y 可以取两个可能的输出值，即 0 或 1 时，就适用逻辑回归。</p>
+<p><span class="ts">00:29</span>它计算输出的方式是：先计算 z 等于 w 与 x 的点积再加上 b，然后计算我这里要称之为 a 等于 g(z) 的值，也就是应用于 z 的 S 型函数。</p>
+<p><span class="ts">00:44</span>我们将其解释为逻辑回归对给定输入特征 x 下 y 等于 1 的概率估计。来一道快速测试题。</p>
+<p><span class="ts">00:58</span>如果 y 等于 1 的概率是 0.71，那么 y 等于 0 的概率是多少？嗯，y 为 1 的概率和 y 为 0 的概率，两者相加必须等于 1，对吧？</p>
+<p><span class="ts">01:19</span>如果它有 71% 的概率为 1，那么它就有 29%，或者 0.29 的概率为 0。为了稍微丰富一下逻辑回归，以便为推广到 Softmax 回归做准备。</p>
+<p><span class="ts">01:36</span>我将把逻辑回归看做实际上是在计算两个数值。首先，a1，这是我们之前有的那个量，即在给定 x 下 y 等于 1 的概率。</p>
+<p><span class="ts">01:51</span>其次，我将认为逻辑回归也在计算 a2，即 1 减去这个值，也就是在给定输入特征 x 下 y 等于 0 的概率。</p>
+<p><span class="ts">02:07</span>a1 和 a2 当然相加必须等于 1。现在让我们将其推广到 Softmax 回归。我将用一个 y 可以取四个可能输出值的具体例子来说明。</p>
+<p><span class="ts">02:23</span>y 可以取值 1、2、3 或 4。Softmax 回归会这样做：它将计算 z1 等于 w1 与 x 的点积加上 b1。</p>
+<p><span class="ts">02:37</span>然后 z2 等于 w2 与 x 的点积加上 b2，z3 和 z4 以此类推。这里 w1、w2、w3 以及 b1、b2、b3、b4 都是 Softmax 回归的参数。</p>
+<p><span class="ts">02:57</span>接下来，这是 Softmax 回归的公式：我们将计算 a1 等于 e 的 z1 次方，除以 e 的 z1 次方加上 e 的 z2 次方加上 e 的 z3 次方加上 e 的 z4 次方。</p>
+<p><span class="ts">03:13</span>而 a1 将被解释为模型对给定输入特征 x 下 y 等于 1 的概率估计。</p>
+<p><span class="ts">03:21</span>接着，Softmax 回归的公式将计算 a2 等于 e 的 z2 次方，除以相同的分母，即 e 的 z1 次方加上 e 的 z2 次方，加上 e 的 z3 次方加上 e 的 z4 次方。</p>
+<p><span class="ts">03:40</span>我们将 a2 解释为模型对给定输入特征 x 下 y 等于 2 的概率估计。a3 同理，这里分子变成了 e 的 z3 次方除以相同的分母，那是 y 为 3 的估计概率。</p>
+<p><span class="ts">03:58</span>类似地，a4 取这个表达式。而左边，我们写下了逻辑回归模型的规格说明；右边这些等式，则是我们对 Softmax 回归模型的规格说明，它拥有参数 w1 到 w4 以及 b1 到 b4。</p>
+<p><span class="ts">04:21</span>如果你能为所有这些参数学到合适的取值，那么这就为你提供了一种方法，用来预测给定一组输入特征 x 下 y 分别为 1、2、3 或 4 的概率。</p>
+<p><span class="ts">04:36</span>快速测试：假设你对一组新的输入 x 运行 Softmax 回归，发现 a1 是 0.30，a2 是 0.20，a3 是 0.15，你认为 a4 会是多少？</p>
+<p><span class="ts">04:53</span>为什么不看看这道题，看你能不能找出正确答案呢？你可能已经意识到，因为 y 取值为 1、2、3 或 4 的概率，它们相加必须等于 1。</p>
+<p><span class="ts">05:09</span>所以 a4，即 y 等于 4 的概率，必须是 0.35，即 1 - 0.3 - 0.2 - 0.15。我在这里写下了 Softmax 回归在四种可能输出情况下的公式。</p>
+<p><span class="ts">05:28</span>现在让我们写下一般情况下的 Softmax 回归公式。在一般情况下，y 可以取 n 个可能的值，y 可以是 1、2、3，一直到 n。</p>
+<p><span class="ts">05:45</span>在这种情况下，Softmax 回归将计算 z 下标 j 等于 w 下标 j 与 x 的点积加上 b 下标 j。</p>
+<p><span class="ts">05:57</span>此时 Softmax 回归的参数是 w1、w2 一直到 w 下标 n，以及 b1、b2 一直到 b 下标 n。</p>
+<p><span class="ts">06:09</span>最后我们将计算 a 下标 j 等于 e 的 z 下标 j 次方，除以从 k 等于 1 到 n 的求和，即对 e 的 z 下标 k 次方求和。</p>
+<p><span class="ts">06:24</span>这里我用另一个变量 k 来索引求和，因为这里的 j 指的是一个特定的固定数字，比如 j 等于 1。a 下标 j 被解释为模型对给定输入特征 x 下 y 等于 j 的估计概率。</p>
+<p><span class="ts">06:43</span>并且注意，根据这个公式的构造，如果你把 a1、a2 一直到 a 下标 n 全部加起来，这些数字最终总是会等于 1。</p>
+<p><span class="ts">06:53</span>这样我们就说明了如何计算 Softmax 回归模型。我不会在本视频中证明这一点。</p>
+<p><span class="ts">07:02</span>但事实表明，如果你在 n 等于 2 的情况下应用 Softmax 回归，即只有两个可能的输出类别，那么 Softmax 回归最终计算出的结果基本上与逻辑回归相同。</p>
+<p><span class="ts">07:18</span>参数最终会有些许不同，但它会简化为一个逻辑回归模型。但这就是为什么 Softmax 回归模型是逻辑回归的推广。</p>
+<p><span class="ts">07:29</span>定义了 Softmax 回归如何计算其输出之后，我们现在来看看如何为 Softmax 回归指定代价函数。回想一下逻辑回归，这是我们之前的内容，我们说过 z 等于这个。</p>
+<p><span class="ts">07:45</span>然后我之前写过 a1，即 g(z)，被解释为 y 等于 1 的概率。我们也写过，a2 是 y 等于类别 0 的概率。</p>
+<p><span class="ts">07:58</span>之前我们曾将逻辑回归的损失写为 -y·log a1 减去 (1 - y)·log(1 - a1)。</p>
+<p><span class="ts">08:11</span>但 1 - a1 也等于 a2，因为根据这里的表达式，a2 就是 1 - a1。我可以稍微重写或简化逻辑回归的损失为 -y·log a1 减去 (1 - y)·log a2。</p>
+<p><span class="ts">08:37</span>换句话说，如果 y 等于 1，损失就是 -log a1；如果 y 等于 0，那么损失就是 -log a2。</p>
+<p><span class="ts">08:51</span>然后和之前一样，模型中所有参数的代价函数，是在整个训练集上计算的平均损失。这就是逻辑回归的代价函数。</p>
+<p><span class="ts">09:03</span>让我们写下通常用于 Softmax 回归的代价函数。回想一下，这些是我们用于 Softmax 回归的方程式。</p>
+<p><span class="ts">09:16</span>我们将要用于 Softmax 回归的损失就是这个：当算法输出 a1 到 a 下标 n，且真实标签为 y 时。</p>
+<p><span class="ts">09:31</span>如果 y 等于 1，损失就是 -log a1，也就是它认为 y 等于 1 的概率的负对数。</p>
+<p><span class="ts">09:43</span>或者如果 y 等于 2，那么我将定义的损失为 -log a2。y 等于 2 时，算法在这个样本上的损失，就是它认为 y 等于 2 的概率的负对数。</p>
+<p><span class="ts">09:59</span>以此类推，一直到如果 y 等于 n，那么损失就是 a 下标 n 的负对数。为了说明这起到了什么作用：如果 y 等于 j，那么损失就是 a 下标 j 的负对数。</p>
+<p><span class="ts">10:19</span>这就是该函数的样子：a 下标 j 的负对数，是一条看起来像这样的曲线。如果 a 下标 j 非常接近于 1，那么你就会处于曲线的这一部分。</p>
+<p><span class="ts">10:33</span>损失会非常小。但如果它认为，比方说 a 下标 j 只有 50% 的概率，那么损失就会变大一点；并且 a 下标 j 越小，损失就越大。</p>
+<p><span class="ts">10:48</span>这就激励算法让 a 下标 j 尽可能大，尽可能接近于 1。因为无论 y 的实际值是什么，你都希望算法能寄希望于认为 y 是那个值的概率相当大。</p>
+<p><span class="ts">11:04</span>注意，在这个损失函数中，每个训练样本中的 y 只能取一个值。</p>
+<p><span class="ts">11:11</span>你最终只为 a 下标 j 的一个值计算这个负对数，该值对应的是在那个特定训练样本中 y 等于 j 的实际值。</p>
+<p><span class="ts">11:24</span>例如，如果 y 等于 2，你最终计算的是 a2 的负对数，而不会计算 a1 的负对数，或这里的其他任何项。</p>
+<p><span class="ts">11:34</span>以上就是 Softmax 回归的模型形式，以及代价函数。如果你要训练这个模型，你就可以开始构建多类别分类算法。</p>
+<p><span class="ts">11:45</span>我们接下来要做的是，将这个 Softmax 回归模型整合到一个神经网络中，这样我们就能真正做出更棒的事情，也就是训练一个用于多类分类的神经网络。让我们在下一个视频中来实现这一点。</p>
+</main>
+<nav class="pager"><a href="P065.html">← 上一讲 多分类</a><a class="mid" href="index.html">总目录</a><a href="P067.html">下一讲 带Softmax输出的神经网络 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 48 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

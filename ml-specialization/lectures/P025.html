@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 5 讲 特征缩放（一） · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 5 讲 特征缩放（一）</h1>
+<p class="lead">Feature scaling part 1 · 6:42 · 分 P 25</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>欢迎回来。</p>
+<p><span class="ts">00:04</span>我们来看一些能让 T 度下降工作的好的技巧。</p>
+<p><span class="ts">00:08</span>本视频你会看到一个叫做特征缩放的技术。</p>
+<p><span class="ts">00:12</span>它将使 T 度下降运行的快得多。</p>
+<p><span class="ts">00:16</span>让我们先来看看一个特征的大小。</p>
+<p><span class="ts">00:19</span>也就是该特征数字的大小，与其相关参数大小之间的关系。</p>
+<p><span class="ts">00:26</span>举一个具体的例子。</p>
+<p><span class="ts">00:29</span>我们用两个特征来预测房价。</p>
+<p><span class="ts">00:32</span>X1是房屋的面积，X2是卧室的数量。</p>
+<p><span class="ts">00:37</span>假设 X1通常的范围是从300到2000平方英尺，而数据集中的 X2范围是从0到5间卧室。</p>
+<p><span class="ts">00:49</span>在这个例子中，X1取值的范围相对较大，而 X2取值的范围相对较小。</p>
+<p><span class="ts">00:55</span>让我们以移动房子为例，其面积为2000平方英尺。</p>
+<p><span class="ts">01:03</span>由5间卧室价格为50万及50万美元。</p>
+<p><span class="ts">01:07</span>对于这一个训练样本，你认为参数 W1和 W2的合理取值是多少？我们来看一种可能的参数设置。</p>
+<p><span class="ts">01:25</span>为了讨论方便，假设 W1是50，W2是0.1，B 是50。</p>
+<p><span class="ts">01:31</span>在这种情况下，以千美元为单位的预测价格是这里的10万，加上0.5千，再加50千。</p>
+<p><span class="ts">01:43</span>也就是略高于1亿美元。</p>
+<p><span class="ts">01:46</span>这显然和实际价格50万美元相去甚远。</p>
+<p><span class="ts">01:56</span>这对于 W1和 W2来说，并不是一组很好的参数选择。</p>
+<p><span class="ts">02:04</span>我们来看另一种可能性。</p>
+<p><span class="ts">02:07</span>假设 W1和 W2的值互换，W1是0.1，W2是50，而 B 依然是50。</p>
+<p><span class="ts">02:18</span>在这种 W1和 W2的选择下，W1相对较小，而 W2相对较大。</p>
+<p><span class="ts">02:26</span>50要比0.1大的多。</p>
+<p><span class="ts">02:29</span>这里预测的价格是0.1乘12000，加50乘15，再加50。</p>
+<p><span class="ts">02:36</span>第一项变成20万，第二项变成25万，然后再加上5万。</p>
+<p><span class="ts">02:46</span>这个版本的模型预测的价格是50万美元，这是一个合理的多的估计。</p>
+<p><span class="ts">02:53</span>并且，它恰好与房子的真实价格相同。</p>
+<p><span class="ts">02:57</span>你可能注意到，当一个特征的可能取值范围很大时，比如面积，最高能到2000，一个好的模型更可能会学习选择一个相对较小的参数值，比如0.1。</p>
+<p><span class="ts">03:12</span>同样地，当一个特征的可能取值很小时，比如卧视数量，那么，其参数的合理值将是相对较大的，比如50。</p>
+<p><span class="ts">03:26</span>这与 T 度下降有什么关系呢？嗯，我们来看看，一个特征的散点图，横轴是面积，即 X1，纵轴是卧视数量，即 X2。</p>
+<p><span class="ts">03:46</span>如果你画出训练数据，你会注意到横轴的尺度或取值范围，相比于纵轴要大的多。</p>
+<p><span class="ts">03:53</span>接下来，我们看看代价函数在等高线图中会是什么样子。</p>
+<p><span class="ts">04:02</span>你可能会看到一个等高线图，其横轴的范围要窄得多，比如在0-1之间，而纵轴取的值要大的多，比如在10-100之间。</p>
+<p><span class="ts">04:14</span>这些等高线形成了椭圆形状，它们一边短，而另一边长。</p>
+<p><span class="ts">04:26</span>这是因为，对 W1的微小改变，能对估计价格产生非常大的影响，进而对代价这产生非常大的影响。</p>
+<p><span class="ts">04:36</span>因为 W1往往会成为一个非常大的数字，面积。</p>
+<p><span class="ts">04:42</span>相反，需要很大的改变 W2，才能较多的改变预测值。</p>
+<p><span class="ts">04:49</span>因此对 W2的微小改变，几乎不会对代价函数产生那么大影响。</p>
+<p><span class="ts">04:56</span>这会导致什么结果呢？如果你直接使用原始训练数据，运行 T 度下降，就可能会最终发生这种情况。</p>
+<p><span class="ts">05:06</span>因为这些等高线又高又瘦，T 度下降，可能最终会来回反弹很长时间，才能最终找到通往全局最小值的路径。</p>
+<p><span class="ts">05:19</span>在这样的情况下，做一件有用的事，就是缩放特征。</p>
+<p><span class="ts">05:24</span>这意味着，对你的训练数据进行某种变换，使得 X1，比如，现在范围变为0-1，而 X2的范围也变为0-1。</p>
+<p><span class="ts">05:36</span>数据点现在看起来更像这样，你可能注意到底部图的尺度，现在与顶部图的相当不同。</p>
+<p><span class="ts">05:44</span>关键点在于，重新缩放后的 X1和 X2，现在彼此处于可比较的取值范围了。</p>
+<p><span class="ts">05:55</span>如果你在使用这个变换后的数据，在基于重新缩放后的 X1和 X2定义的代价函数上，运行 T 度下降，那么等高线将看起来更像这样，更接近圆形，而不是又高又瘦，而 T 度下降可以找到一条更直接的路径，通往全局最小值。</p>
+<p><span class="ts">06:18</span>总结一下，当你有不同特征，其取值范围差异很大时，可能会导致 T 度下降运行缓慢。</p>
+<p><span class="ts">06:26</span>但重新缩放不同的特征，使它们都处于可比较的取值范围，可以显著加快 T 度下降的速度。</p>
+<p><span class="ts">06:35</span>你实际上如何做到这一点呢？让我们在下一个视频中看一看。</p>
+</main>
+<nav class="pager"><a href="P024.html">← 上一讲 多元线性回归中的梯度下降</a><a class="mid" href="index.html">总目录</a><a href="P026.html">下一讲 特征缩放（二） →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 48 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

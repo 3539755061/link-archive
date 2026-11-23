@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 1 讲 实现TensorFlow · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 1 讲 实现TensorFlow</h1>
+<p class="lead">TensorFlow implementation · 3:50 · 分 P 60</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>欢迎回到这门高级学习算法课程的第二周。</p>
+<p><span class="ts">00:07</span>上周，你学习了如何在神经网络中进行推理。</p>
+<p><span class="ts">00:12</span>本周，我们将讲解神经网络的训练。</p>
+<p><span class="ts">00:16</span>我觉得能够用你自己的数据来训练你自己的神经网络，真的很有趣。</p>
+<p><span class="ts">00:23</span>本周，我们将看看你能如何做到这一点。</p>
+<p><span class="ts">00:27</span>让我们开始吧。</p>
+<p><span class="ts">00:29</span>我们继续以手写数字识别为例。</p>
+<p><span class="ts">00:32</span>识别这幅图像是0还是1。</p>
+<p><span class="ts">00:38</span>这里，我们使用你上周看到的神经网络架构。</p>
+<p><span class="ts">00:42</span>其中，你有一个输入 X，也就是图像。</p>
+<p><span class="ts">00:46</span>然后是第一隐藏层，有25个单元。</p>
+<p><span class="ts">00:50</span>第二隐藏层有15个单元。</p>
+<p><span class="ts">00:53</span>然后是一个输出单元。</p>
+<p><span class="ts">00:56</span>如果给你一个包含图像 X，以及真实标签 Y 的训练样本集，你会如何训练这个神经网络的参数呢？我先给你看看在 TensorFlow 中用来训练这个网络的代码。</p>
+<p><span class="ts">01:11</span>然后，在这之后的几个视频里，我们会深入探讨细节，解释这些代码实际在做什么。</p>
+<p><span class="ts">01:19</span>这是你会写下的代码。</p>
+<p><span class="ts">01:21</span>这第一部分你可能从上周就很熟悉了。</p>
+<p><span class="ts">01:25</span>你在要求 TensorFlow 将这神经网络的三个层按顺序串联起来。</p>
+<p><span class="ts">01:33</span>第一，隐藏层有25个单元，并使用 Segmoid 激活函数。</p>
+<p><span class="ts">01:39</span>然后是第二隐藏层，最后是输出层。</p>
+<p><span class="ts">01:43</span>相对于你上周看到的内容，这里没有什么新的东西。</p>
+<p><span class="ts">01:48</span>第二步是，你必须要求 TensorFlow 编译模型。</p>
+<p><span class="ts">01:53</span>而要求 TensorFlow 编译模型的关键一步，是指定你想要使用的损失函数是什么。</p>
+<p><span class="ts">02:00</span>在这个例子中，我们将使用一个叫做二元交叉商损失函数的东西。</p>
+<p><span class="ts">02:06</span>我们会在下一个视频中详细说明这到底是什么。</p>
+<p><span class="ts">02:10</span>然后，在指定了损失函数之后，第三步是调用 Fate 函数。</p>
+<p><span class="ts">02:17</span>它告诉 TensorFlow 使用你在第二步中指定的损失或代价函数，将你在第一步中指定的模型擬合到数据级 XY 上。</p>
+<p><span class="ts">02:28</span>回想一下，在第一门课中，当我们讨论 T 度下降时，我们必须决定运行 T 度下降多少步，或者说运行多长时间。</p>
+<p><span class="ts">02:38</span>Epoch 是一个技术术语，表示你可能希望运行像 T 度下降这样的学习算法多少步。</p>
+<p><span class="ts">02:44</span>就是这样。</p>
+<p><span class="ts">02:47</span>第一步是指定模型。</p>
+<p><span class="ts">02:49</span>它告诉 TensorFlow 如何进行推理计算。</p>
+<p><span class="ts">02:54</span>第二步是使用特定的损失函数来编译模型。</p>
+<p><span class="ts">02:58</span>第三步是训练模型。</p>
+<p><span class="ts">03:01</span>这就是你在 TensorFlow 中训练神经网络的方式。</p>
+<p><span class="ts">03:06</span>像网长一样，我希望你不仅能调用这几行代码来训练模型，而且还能理解这几行代码背后实际发生了什么。</p>
+<p><span class="ts">03:16</span>这样，你就不会再只是调用它，却不理解其原理。</p>
+<p><span class="ts">03:21</span>我认为这很重要，因为当你运行一个学习算法时，如果它一开始不工作，拥有一个关于背后实际运作原理的思维框架，将有助于你在事情不如预期时进行调试。</p>
+<p><span class="ts">03:36</span>带着这个想法，让我们进入下一个视频。</p>
+<p><span class="ts">03:41</span>我们将更深入的探讨这些 TensorFlow 实现步骤的真正含义。</p>
+<p><span class="ts">03:47</span>下个视频见。</p>
+</main>
+<nav class="pager"><a href="P059.html">← 上一讲 矩阵乘法代码（选修）</a><a class="mid" href="index.html">总目录</a><a href="P061.html">下一讲 训练详解 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 41 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

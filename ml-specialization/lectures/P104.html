@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 13 讲 何时使用决策树 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 4 周</p>
+<h1>第 13 讲 何时使用决策树</h1>
+<p class="lead">When to use decision trees · 6:43 · 分 P 104</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>决策树包括数级乘以及神经网络都是非常强大非常有效的学习算法。</p>
+<p><span class="ts">00:09</span>你该在什么时候选择其中一种呢？我们来看看他们各自的优缺点。</p>
+<p><span class="ts">00:15</span>决策树和数级乘通常在表格数据也称为结构化数据上表现良好。</p>
+<p><span class="ts">00:23</span>这意味着如果你的数据级看起来像一个巨大的电子表格，那么决策树值得你考虑。</p>
+<p><span class="ts">00:31</span>举个例子，在房价预测应用中我们有一个数据级，其特征包括房屋面积、卧室数量、楼层数和房灵。</p>
+<p><span class="ts">00:41</span>这类数据存储在电子表格中，特征要么是类别型的，要么是连续值。</p>
+<p><span class="ts">00:50</span>无论是分类任务还是回归任务，我们要么预测一个理散类别，要么预测一个数字。</p>
+<p><span class="ts">00:58</span>所有这些问题决策树都能做得很好。</p>
+<p><span class="ts">01:02</span>相比之下，我不推荐在非结构化数据上使用决策树和数级乘。</p>
+<p><span class="ts">01:10</span>非结构化数据就是如图像、视频、音频和文本这类。</p>
+<p><span class="ts">01:17</span>你不太可能用电子表格格式存储的数据，而神经网络我们稍后就会看到，通常在非结构化数据任务中表现更好。</p>
+<p><span class="ts">01:29</span>决策树和数级乘的一大优势是，他们训练起来可以非常快。</p>
+<p><span class="ts">01:34</span>你可能还记得前一周的这张图，我们讨论了机器学习开发的迭代循环。</p>
+<p><span class="ts">01:42</span>如果你的模型训练需要很多小时，那就会限制你通过这个循环来改进算法性能的速度。</p>
+<p><span class="ts">01:53</span>但因为决策树包括数级乘，通常训练的相当快，这让你能更快地走完这个循环。</p>
+<p><span class="ts">02:01</span>也许能更高效地提升学习算法的表现。</p>
+<p><span class="ts">02:06</span>最后一点，小型决策树可能是人类可解释的。</p>
+<p><span class="ts">02:11</span>如果你只训练单科决策树，而且这科数只有比如几十个节点，你也许可以把它打印出来。</p>
+<p><span class="ts">02:20</span>确切地理解它是如何做决策的。</p>
+<p><span class="ts">02:23</span>我认为，决策树的可解释性有时有点被夸大了。</p>
+<p><span class="ts">02:29</span>因为当你构建一个包含100颗数的集成时，如果每颗数都有数百个节点，那么审视这个集成来弄懂它在做什么，确实会变得困难。</p>
+<p><span class="ts">02:42</span>并且可能需要一些单独的可视化技术。</p>
+<p><span class="ts">02:46</span>但如果你有一颗小决策树，你确实能看着它，然后明白。</p>
+<p><span class="ts">02:53</span>哦，它是通过以特定方式查看特定特征来判断某个东西是不是猫的。</p>
+<p><span class="ts">03:00</span>如果你决定使用决策树或数集成对于我要做的大多数应用，我很可能会选 XGBoost。</p>
+<p><span class="ts">03:10</span>数集成的一个小缺点是，它比单颗决策树要昂贵一点。</p>
+<p><span class="ts">03:16</span>如果你的计算预算非常非常有限，你也许会用单颗决策树。</p>
+<p><span class="ts">03:23</span>但除此情况之外，我几乎总是会用数集成，尤其是 XGBoost。</p>
+<p><span class="ts">03:30</span>那神经网络呢？与决策树和数集成相比，神经网络在各种类型的数据上都表现良好，包括表格或结构化数据，也包括非结构化数据，还包括同时包含结构化和非结构化成分的混合数据。</p>
+<p><span class="ts">03:50</span>虽然在表格这种结构化数据上，神经网络和决策树往往不相上下。</p>
+<p><span class="ts">03:57</span>但在非结构化数据上，如图像、视频、音频和文本，神经网络才是真正首选的算法，而不是决策树或数集成。</p>
+<p><span class="ts">04:09</span>不过，缺点在于，神经网络可能比决策树慢。</p>
+<p><span class="ts">04:15</span>一个大型的神经网络，训练起来可能就要花很长时间。</p>
+<p><span class="ts">04:20</span>神经网络的其他优点包括，它适用于迁移学习。</p>
+<p><span class="ts">04:25</span>这点非常重要。</p>
+<p><span class="ts">04:27</span>因为对于许多你只有小型数据级的应用来说，能够使用迁移学习在更大的数据级上进行预训练。</p>
+<p><span class="ts">04:36</span>是获得有竞争力表现的关键。</p>
+<p><span class="ts">04:40</span>最后，如果你要构建一个由多个机器学习模型协同工作的系统，将多个神经网络串联起来一起训练，可能会比串联多个决策树更容易。</p>
+<p><span class="ts">04:54</span>这背后的原因相当技术性，对这门客来说你不需要担心。</p>
+<p><span class="ts">04:58</span>但这涉及到一个事实，即使你把多个神经网络串联起来，你也可以用 T 度下降法一起训练它们。</p>
+<p><span class="ts">05:08</span>而对于决策树，你一次只能训练一颗决策树。</p>
+<p><span class="ts">05:13</span>就这些了。</p>
+<p><span class="ts">05:15</span>你已经学完了这门高级学习算法课程的所有视频，感谢你一路以来的坚持。</p>
+<p><span class="ts">05:21</span>祝贺你学完了高级学习算法课程的全部视频。</p>
+<p><span class="ts">05:25</span>你现在已经学会了如何构建和使用神经网络以及决策树，也听到了许多技巧和实用建议，关于如何让这些算法为你很好的工作。</p>
+<p><span class="ts">05:39</span>但即使你已经了解了这么多关于监督学习的知识，那也只是学习算法能做的事情中的一部分。</p>
+<p><span class="ts">05:48</span>监督学习需要带标签的数据级，你的训练集上要有标签外。</p>
+<p><span class="ts">05:56</span>还有另一类非常强大的算法，成为无监督学习算法。</p>
+<p><span class="ts">06:01</span>对于这类算法，你甚至不需要标签外，算法就能找出非常有趣的模式，并对你拥有的数据进行处理。</p>
+<p><span class="ts">06:10</span>我期待着在这个专项课程的第三门，也是最后一门课程中见到你。</p>
+<p><span class="ts">06:17</span>内门课将关于无监督学习。</p>
+<p><span class="ts">06:20</span>在你完成这门课之前，我希望你也能在练习测验和练习实验中享受实践决策树思想的过程。</p>
+<p><span class="ts">06:29</span>祝你在练习实验中好运，或者对于你们当中可能是星球大战粉丝的人，请允许我说，远森林与你同在。</p>
+</main>
+<nav class="pager"><a href="P103.html">← 上一讲 XGBoost算法</a><a class="mid" href="index.html">总目录</a><a href="P105.html">下一讲 Andrew Ng and Chris Manning on Natural Language Processing【吴恩达与克里斯·曼宁谈 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 53 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

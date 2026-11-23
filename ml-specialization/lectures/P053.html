@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 11 讲 单层前向传播 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 11 讲 单层前向传播</h1>
+<p class="lead">Forward prop in a single layer · 5:24 · 分 P 53</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>如果必须用 Python 从头实现前向传播，你会怎么做呢？除了能让你直观的了解像 TensorFlow 和 PyTorch 这类库背后到底在做什么之外，如果将来某天你决定想构建一些比 TensorFlow 和 PyTorch 更好的东西，</p>
+<p><span class="ts">00:21</span>也许现在你就更清楚该怎么做了。</p>
+<p><span class="ts">00:25</span>我其实并不太建议大多数人这样做，但说不定哪天真的会有人发明出一个比 TensorFlow 和 PyTorch 更优秀的框架。</p>
+<p><span class="ts">00:35</span>而那个做到的人可能最终就得自己从头实现这些东西了。</p>
+<p><span class="ts">00:41</span>那我们来看看吧。</p>
+<p><span class="ts">00:43</span>这一幻灯片里我会带大家过不少代码。</p>
+<p><span class="ts">00:47</span>所有这些代码你后续在可选实验和练习实验里还会再次看到。</p>
+<p><span class="ts">00:53</span>不用担心得记下每一行代码，或者背下每一行代码。</p>
+<p><span class="ts">00:58</span>你会在实验的 Jupiter Notebook 里看到这些代码。</p>
+<p><span class="ts">01:03</span>本视频的目标仅仅是给你过一遍代码，确保你能理解它在做什么。</p>
+<p><span class="ts">01:10</span>这样当你进入可选实验和练习实验时看到那些代码，你就明白该怎么做了。</p>
+<p><span class="ts">01:17</span>不用费心去主行做详细笔记。</p>
+<p><span class="ts">01:20</span>如果你能读懂这张幻灯片上的代码，理解它在做什么，那就足够了。</p>
+<p><span class="ts">01:26</span>那么我们来看看，如何为一个单层网络实现前向传播。</p>
+<p><span class="ts">01:31</span>我们继续使用这里展示的咖啡烘焙模型。</p>
+<p><span class="ts">01:37</span>来看看你如何接受一个输入特征相量 X，并实现前向传播以获得这个输出 AR。</p>
+<p><span class="ts">01:48</span>在这个 Python 实现里，我们将用 E 为数组来表示所有这些相量和参数。</p>
+<p><span class="ts">01:54</span>这就是为什么这里只有单层方括号了。</p>
+<p><span class="ts">01:59</span>这是 Python 中的 E 为数组，而不是像我们用双层方括号时得到的二维矩阵。</p>
+<p><span class="ts">02:07</span>你需要计算的第一个值是 A 上标方括号一下标一，也就是 A1的第一个激活值。</p>
+<p><span class="ts">02:15</span>它是这个表达是经过 G 函数作用后的结果。</p>
+<p><span class="ts">02:20</span>在这张幻灯片中，我将采用一种约定，比如像 W21这样的相。</p>
+<p><span class="ts">02:26</span>我将表示为变量 W2，然后下滑线1。</p>
+<p><span class="ts">02:31</span>这个下滑线1就表示下标1。</p>
+<p><span class="ts">02:38</span>W2下滑线1就意味着上标方括号2以及下标1，要计算 A11。</p>
+<p><span class="ts">02:50</span>我们有参数 W11和 B11。</p>
+<p><span class="ts">02:55</span>假设它们分别是2,1和-1。</p>
+<p><span class="ts">03:00</span>然后，你将计算 Z11及参数 W111与输入 X 的点击，加上 B11。</p>
+<p><span class="ts">03:13</span>最后，A11等于对 Z11应用这函数，也就是 S 型函数。</p>
+<p><span class="ts">03:22</span>接下来，我们继续计算 A12，再说一遍，按照我在这里描述的约定，它将会被写成那样。</p>
+<p><span class="ts">03:31</span>和我们左边做过的类似，W12是你的两个参数，-3,4，B2是那边的向 B2。</p>
+<p><span class="ts">03:44</span>你计算出中间这项 Z，然后应用 S 型函数，最终得到 A12。</p>
+<p><span class="ts">03:50</span>最后，你再用同样的步骤，计算出 A13。</p>
+<p><span class="ts">03:57</span>现在，你已经算出了这三个值，A11，A12，和 A13。</p>
+<p><span class="ts">04:07</span>我们想把这三个数组合在一起，形成一个数组，来得到上方的 A1，也就是第一层的输出。</p>
+<p><span class="ts">04:16</span>你可以像下面这样，用 NP 外数组，把它们组合起来实现。</p>
+<p><span class="ts">04:23</span>如此，你就计算出了 A1，我们也来实现第二层，以计算出输出 A2。</p>
+<p><span class="ts">04:32</span>A2，是用这个表达式算出来的。</p>
+<p><span class="ts">04:35</span>那么，我们将有参数 W21，和 B21与之对应。</p>
+<p><span class="ts">04:43</span>然后，你会计算 Z，及 W21与 A1的点击，加上 B21。</p>
+<p><span class="ts">04:50</span>接着，应用 S 型函数得到 A21。</p>
+<p><span class="ts">04:54</span>这就完成了。</p>
+<p><span class="ts">04:56</span>这就是如何仅用 Py and NonPy 来实现前向传播。</p>
+<p><span class="ts">05:00</span>到目前为止，你刚看到的这些代码里，包含了很多表达式。</p>
+<p><span class="ts">05:06</span>在接下来的视频里，我们来看看，如何简化这个过程。</p>
+<p><span class="ts">05:11</span>为一个更通用的神经网络，实现前向传播。</p>
+<p><span class="ts">05:15</span>而不是像我们刚才那样，为每一个神经员都去硬编码。</p>
+<p><span class="ts">05:20</span>我们下个视频来瞧瞧。</p>
+</main>
+<nav class="pager"><a href="P052.html">← 上一讲 构建神经网络</a><a class="mid" href="index.html">总目录</a><a href="P054.html">下一讲 前向传播通用实现 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 48 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

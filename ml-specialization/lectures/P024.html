@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 4 讲 多元线性回归中的梯度下降 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 4 讲 多元线性回归中的梯度下降</h1>
+<p class="lead">Gradient descent for multiple linear regression · 8:08 · 分 P 24</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>你已经学习了 T 度下降，多元线性回归，还有向量化。</p>
+<p><span class="ts">00:08</span>让我们把这些结合起来。</p>
+<p><span class="ts">00:11</span>用向量化为多元线性回归，实现 T 度下降。</p>
+<p><span class="ts">00:16</span>这回很酷。</p>
+<p><span class="ts">00:18</span>我们先快速回顾一下多元线性回归是什么样子的。</p>
+<p><span class="ts">00:22</span>使用我们之前的符号，我们来看看如何用向量符号更简洁的书写它。</p>
+<p><span class="ts">00:29</span>我们有参数 w1到 wn 以及 b。</p>
+<p><span class="ts">00:33</span>但我们不把 w1到 wn 看作是独立的数字，即独立的参数。</p>
+<p><span class="ts">00:42</span>而是让我们把所有 w 收集到一个向量 w 中。</p>
+<p><span class="ts">00:47</span>这样现在 w 就是一个长度为 n 的向量。</p>
+<p><span class="ts">00:52</span>我们只需将此模型的参数视为一个向量 w 以及 b。</p>
+<p><span class="ts">00:57</span>其中 b 仍然是一个数字。</p>
+<p><span class="ts">01:00</span>与之前一样，之前我们是这样定义多元线性回归的。</p>
+<p><span class="ts">01:05</span>现在用向量符号，我们可以将模型写为 f 关于 wb 和 x 等于向量 w 点乘向量 x 再加上 b。</p>
+<p><span class="ts">01:16</span>记住，这里的点表示点击。</p>
+<p><span class="ts">01:21</span>我们的代价函数可以定义为 j 关于 w1到 wn 和 b 的函数。</p>
+<p><span class="ts">01:29</span>但我们不把 j 仅仅看作 n 个不同参数 wj 以及 b 的函数。</p>
+<p><span class="ts">01:35</span>我们要把 j 写为参数向量 w 和数字 b 的函数。</p>
+<p><span class="ts">01:40</span>jw1到 wn 被这个向量 w 所替代，而 j 现在接受其输入。</p>
+<p><span class="ts">01:54</span>一个向量 w 和一个数字 b 并返回一个数字，这是 t 度下降的样子。</p>
+<p><span class="ts">02:01</span>我们将重复的更新每个参数 wj，使其等于 wj 减去 Alpha 乘以代价 j 的倒数。</p>
+<p><span class="ts">02:12</span>其中，j 有参数 w1到 wn 和 b。</p>
+<p><span class="ts">02:17</span>再次，我们把这个记为关于向量 w 和数字 b 的 j。</p>
+<p><span class="ts">02:24</span>我们来看看当你实现 t 度下降时，这会是什么样子。</p>
+<p><span class="ts">02:29</span>特别地，我们来看看倒数向。</p>
+<p><span class="ts">02:33</span>我们将会看到和单一特征相比，有多个特征时的 t 度下降会变得有些许不同。</p>
+<p><span class="ts">02:41</span>这是我们只有一个特征时做 t 度下降所用的式子。</p>
+<p><span class="ts">02:46</span>我们对 w 有一条更新规则，对 b 有另一条独立的更新规则。</p>
+<p><span class="ts">02:52</span>希望这些你看着眼熟。</p>
+<p><span class="ts">02:55</span>这里这一项是代价函数 j 关于参数 w 的倒数。</p>
+<p><span class="ts">03:01</span>类似 d，我们对参数 b 也有一条更新规则。</p>
+<p><span class="ts">03:06</span>在单变量回归中，我们只有一个特征。</p>
+<p><span class="ts">03:10</span>我们称那个特征为 x，不带任何下标。</p>
+<p><span class="ts">03:16</span>这是我们当有 n 个特征，且 n 大于等于20的新记号。</p>
+<p><span class="ts">03:22</span>我们得到 t 度下降的更新规则。</p>
+<p><span class="ts">03:25</span>更新 w1为 w1-alpha 乘以这里的这个表达式。</p>
+<p><span class="ts">03:32</span>这个公式实际上就是代价 j 关于 w1的倒数。</p>
+<p><span class="ts">03:41</span>右边关于 w1的倒数公式，看起来和左边仅有一个特征的情况，非常相似。</p>
+<p><span class="ts">03:50</span>误差项仍然是预测值 f of x 减去目标外。</p>
+<p><span class="ts">03:54</span>一个不同之处，在于 w 和 x 现在是像量。</p>
+<p><span class="ts">04:00</span>正如左边的 w 现在变成了右边的 w1。</p>
+<p><span class="ts">04:04</span>左边的 xi 现在则变成了右边的带下标1的 xi。</p>
+<p><span class="ts">04:13</span>而这只针对 j 等于1的情况。</p>
+<p><span class="ts">04:18</span>对于多元线性回归，我们有 j 从1变化到 n，所以我们将更新参数 w1，w2，一直到 wn。</p>
+<p><span class="ts">04:34</span>然后和之前一样，我们将更新 b。</p>
+<p><span class="ts">04:38</span>如果你实现了这些，你就得到了多元回归的 t 度下降。</p>
+<p><span class="ts">04:43</span>以上就是多元回归 t 度下降的内容。</p>
+<p><span class="ts">04:48</span>在结束这个视频之前，我想快速提一下，或者说做个庞住。</p>
+<p><span class="ts">04:53</span>介绍另一种为线性回归寻找 w 和 b 的方法。</p>
+<p><span class="ts">04:58</span>这种方法称为正规方程。</p>
+<p><span class="ts">05:05</span>虽然事实证明，t 度下降是用于最小化代价函数 j 以找到 w 和 b 的一个极好方法。</p>
+<p><span class="ts">05:13</span>但还有另一种算法，它只是用于线性回归。</p>
+<p><span class="ts">05:17</span>而几乎不是用于你在本专项课程中看到的其他用于求解 w 和 b 的算法。</p>
+<p><span class="ts">05:25</span>而这种方法不需要迭代式的 t 度下降算法。</p>
+<p><span class="ts">05:30</span>它被称为正规方程法。</p>
+<p><span class="ts">05:33</span>事实证明，可以使用高级线性代数库，仅在一次运算中就能直接解出 w 和 b，无需迭代。</p>
+<p><span class="ts">05:42</span>正规方程法的一些缺点是，首先，与 t 度下降不同，它不能泛化到其他学习算法上。</p>
+<p><span class="ts">05:51</span>比如，你下周将要学习的逻辑回归算法，或你在本专项课程稍后看到的神经网络或其他算法。</p>
+<p><span class="ts">06:00</span>如果特征数量 n 很大，正规方程法也会相当慢。</p>
+<p><span class="ts">06:06</span>几乎没有任何机器学习从业者应该自己实现正规方程法。</p>
+<p><span class="ts">06:12</span>但如果你使用一个成熟的机器学习库，并调用线性回归，那么在后端，它有可能正使用这种方法来求解 w 和 b。</p>
+<p><span class="ts">06:24</span>如果你在面试中听到正规方程这个术语，指的就是这个方法。</p>
+<p><span class="ts">06:31</span>不用担心正规方程的工作原理细节，只需了解某些机器学习库，可能会在其后端使用这种复杂的方法来求解 w 和 b。</p>
+<p><span class="ts">06:41</span>但对于大多数学习算法，包括你自己如何实现线性回归，t 度下降往往是完成任务的更好方法。</p>
+<p><span class="ts">06:52</span>在本视频之后的选修实验中，你将看到如何在代码中定义一个多元回归模型，以及如何计算预测值 f of x。</p>
+<p><span class="ts">07:04</span>你也会看到如何为一个多元线性回归模型计算代价并实现 t 度下降。</p>
+<p><span class="ts">07:12</span>这将使用 Python 的 non-py 库，所以如果有些代码看起来很陌生，那没关系。</p>
+<p><span class="ts">07:19</span>但你也应该可以自由去看看之前那个介绍 non-py 和项量化的选修实验，来复习一下 non-py 函数，以及如何在代码中实现它们。</p>
+<p><span class="ts">07:31</span>就是这些。</p>
+<p><span class="ts">07:35</span>你现在懂得了多元线性回归，这大概是当今世界上使用最广泛的单一学习算法了。</p>
+<p><span class="ts">07:44</span>但还有更多。</p>
+<p><span class="ts">07:46</span>仅需几个小技巧，比如恰当的选择和缩放特征，以及恰当的选择学习率 alpha，你就能让它工作的好得多。</p>
+<p><span class="ts">07:56</span>本周就只剩几个视频了。</p>
+<p><span class="ts">07:59</span>让我们进入下一个视频，去看看那些将帮助你把多元线性回归应用的更好的小技巧。</p>
+</main>
+<nav class="pager"><a href="P023.html">← 上一讲 向量化（二）</a><a class="mid" href="index.html">总目录</a><a href="P025.html">下一讲 特征缩放（一） →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 74 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

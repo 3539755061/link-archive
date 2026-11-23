@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 9 讲 带正则化的代价函数 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 3 周</p>
+<h1>第 9 讲 带正则化的代价函数</h1>
+<p class="lead">Cost function with regularization · 9:28 · 分 P 39</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>在上一个视频中，我们了解到政则化常识让参数 w1到 wn 的值变小，以减少过你和。</p>
+<p><span class="ts">00:10</span>在本视频中，我们将基于这个直观理解为你的学习算法开发一个修正后的代价函数。</p>
+<p><span class="ts">00:19</span>你可以用它来实际应用政则化。</p>
+<p><span class="ts">00:23</span>让我们开始吧。</p>
+<p><span class="ts">00:25</span>回顾一下之前视频中的这个例子。</p>
+<p><span class="ts">00:28</span>我们看到，如果用二次函数你和这些数据，会得到相当好的你和效果。</p>
+<p><span class="ts">00:35</span>但是，如果你你和一个非常高阶的多项式，最终会得到一条过你和数据的曲线。</p>
+<p><span class="ts">00:44</span>考虑下面这种做法。</p>
+<p><span class="ts">00:47</span>假设你有办法让参数 w3和 w4变得非常非常小。</p>
+<p><span class="ts">00:52</span>比如说接近于0。</p>
+<p><span class="ts">00:54</span>我的意思是这样的。</p>
+<p><span class="ts">00:58</span>假设我们不直接最小化这个目标函数，这是线性回归的代价函数。</p>
+<p><span class="ts">01:06</span>假设我们修改代价函数给它加上1000乘以 w3的平方，再加上1000乘以 w4的平方。</p>
+<p><span class="ts">01:16</span>这里我选择1000是因为它是一个大数，但其他任何非常大的数字也可以。</p>
+<p><span class="ts">01:24</span>使用这个修正后的代价函数，如果 w3和 w4很大，实际上就会对模型进行惩罚。</p>
+<p><span class="ts">01:32</span>因为如果你想最小化这个函数，让这个新的代价函数变小的唯一方法，就是让 w3和 w4都变小，对吧。</p>
+<p><span class="ts">01:42</span>否则这1000乘以 w3的平方和1000乘以 w4的平方向将会变得非常大。</p>
+<p><span class="ts">01:50</span>当你最小化这个函数时，最终会得到 w3接近于0，w4也接近于0。</p>
+<p><span class="ts">02:00</span>这样我们实际上就几乎消除了特征 x 的三四方和 x 的四四方的影响，去掉了这里的这两项。</p>
+<p><span class="ts">02:10</span>如果我们这样做，那么最终对数据的拟合就会更接近二次函数。</p>
+<p><span class="ts">02:19</span>可能只包含来自 x 的三四方和 x 的四四方特征的微小贡献。</p>
+<p><span class="ts">02:26</span>这很好，因为与所有参数都可以很大并最终得到这条剧烈波动的曲线相比。</p>
+<p><span class="ts">02:33</span>这样对数据的拟合要好得多，更一般的，这就是政则化背后的思想。</p>
+<p><span class="ts">02:41</span>其思想是，如果参数的直较小，那就有点像拥有一个更简单的模型，也许特征更少，因此更不容易出现过拟合。</p>
+<p><span class="ts">02:54</span>在上一张幻灯片中，我们只惩罚了，或者说只政则化了 w3和 w4。</p>
+<p><span class="ts">03:02</span>但更一般的，政则化的实现方式通常是，如果你有很多特征，比如100个特征。</p>
+<p><span class="ts">03:10</span>你可能不知道哪些是最重要的特征，哪些应该被惩罚。</p>
+<p><span class="ts">03:15</span>政则化通常的实现方式是惩罚所有特征，或者更准确的说惩罚所有的 w 这参数。</p>
+<p><span class="ts">03:25</span>并且可以证明，这通常会导致你和出一个更平华、更简单、波动更小的函数，从而更不容易过拟合。</p>
+<p><span class="ts">03:35</span>对于这个例子，如果你有包含100个特征的房屋数据，可能很难事先挑选出哪些特征该包含，哪些该排除。</p>
+<p><span class="ts">03:44</span>我们就构建一个使用全部100个特征的模型。</p>
+<p><span class="ts">03:49</span>你有100个参数，w1-w100以及第101个参数 b，因为我们不知道这些参数中哪些是重要的。</p>
+<p><span class="ts">04:04</span>让我们稍微惩罚所有的参数，通过添加一个新项，lambda 乘以这从1到 n 的和，其中 n 是100，即特征的数量，求和项为 wj 的平方，以此来缩小所有参数。</p>
+<p><span class="ts">04:21</span>这个值 lambda 是希腊字母 lambda，也被称为正则化参数。</p>
+<p><span class="ts">04:27</span>类似于选择学习率 alpha，你现在也需要为 lambda 选择一个数值。</p>
+<p><span class="ts">04:35</span>有几点我想指出，按照惯例，我们不仅使用 lambda 乘以 wj 的平方的和，还会将 lambda 除以两倍的 m。</p>
+<p><span class="ts">04:50</span>这样，这里的第一项和第二项都按两倍的 m 分之一进行缩放。</p>
+<p><span class="ts">04:56</span>事实证明，通过以相同方式缩放这两项，选择一个好的 lambda 值会变得稍微容易一些。</p>
+<p><span class="ts">05:04</span>特别是，你会发现，即使你的训练集规模增大，比如说你找到了更多的训练样本，那么 m 也就是训练集大小变得更大了。</p>
+<p><span class="ts">05:16</span>如果你有这额外的除以两倍的 m 的缩放，那么你之前选择的同一个 lambda 值也更有可能继续有效。</p>
+<p><span class="ts">05:25</span>另外，顺便说一下，按照惯例，我们不打算惩罚参数 b 过大。</p>
+<p><span class="ts">05:31</span>在实践中，是否这样做影响非常小？一些机器学习工程师，实际上一些学习算法的实现，也会包含 lambda 除以两倍的 m 乘以 b。</p>
+<p><span class="ts">05:46</span>但这在实践中影响非常小。</p>
+<p><span class="ts">05:51</span>更常见的惯例，也是本课程中将采用的，是指政则化参数 w，而不政则化参数 b。</p>
+<p><span class="ts">06:00</span>总结一下，在这个修正后的代价函数中，我们想要最小化原始的代价，及军方误差代价，再加上第二项，称为政则化项。</p>
+<p><span class="ts">06:12</span>这个新的代价函数在你可能拥有的两个目标之间进行全衡。</p>
+<p><span class="ts">06:21</span>尝试最小化第一项，通过最小化预测值与实际值之间差的平方，来鼓励算法很好的拟合训练数据。</p>
+<p><span class="ts">06:31</span>而尝试最小化第二项，算法也会尝试保持参数 w 这较小，这将有助于减少过拟合。</p>
+<p><span class="ts">06:40</span>你选择的 Lambda 值指定了这两个目标之间的相对重要性，或者说相对的全衡，或者说你如何平衡这两个目标，让我们看看不同的 Lambda 值会导致你的学习算法有什么行为。</p>
+<p><span class="ts">06:59</span>我们继续使用限性回归的防价预测例子。</p>
+<p><span class="ts">07:03</span>5x 是限性回归模型。</p>
+<p><span class="ts">07:06</span>如果 Lambda 被设置为0，那么你根本没有使用政则画像，因为政则画像乘以了0。</p>
+<p><span class="ts">07:14</span>如果 Lambda 为0，你最终会拟合出这条过度波动、过度复杂的曲线导致过拟合。</p>
+<p><span class="ts">07:24</span>这是 Lambda 为0的一个极端情况。</p>
+<p><span class="ts">07:27</span>现在我们来看另一个极端。</p>
+<p><span class="ts">07:31</span>如果你将 Lambda 设置为一个非常非常大的数字，比如 Lambda 等于10的十字方，那么你就对右边的这个政则画像赋予了非常大的权重。</p>
+<p><span class="ts">07:44</span>最小画这个函数的唯一方法是确保所有的 W 值都非常接近于0。</p>
+<p><span class="ts">07:50</span>如果 Lambda 非常非常大，学习算法将选择 W1、W2、W3和 W4都极其接近于0。</p>
+<p><span class="ts">08:03</span>于是 fx 基本上就等于 b。</p>
+<p><span class="ts">08:07</span>所以，学习算法拟合出的是一条水平的直线，导致欠你合。</p>
+<p><span class="ts">08:14</span>回顾一下，如果 Lambda 为0，这个模型会过你合。</p>
+<p><span class="ts">08:19</span>如果 Lambda 非常大，比如10的十字方，这个模型会欠你合。</p>
+<p><span class="ts">08:25</span>你需要的是某个介于两者之间的 Lambda 值。</p>
+<p><span class="ts">08:29</span>它能更恰当的平衡第一项和第二项。</p>
+<p><span class="ts">08:32</span>即在最小画军方误差和保持参数较小之间进行全衡。</p>
+<p><span class="ts">08:38</span>当 Lambda 的值记不过小也不过大，而是恰到好处时，你就有望能够你和一个四接多像式保留所有这些特征。</p>
+<p><span class="ts">08:51</span>但得到的函数看起来像这样。</p>
+<p><span class="ts">08:54</span>这就是政则画的工作原理。</p>
+<p><span class="ts">08:59</span>在本专业课程后面讨论模型选择时，我们还会看到多种为 Lambda 选择好值的方法。</p>
+<p><span class="ts">09:06</span>在接下来的两个视频中，我们将详细阐述如何将政则画应用于线性回归和逻辑回归，以及如何使用 T 度下降来训练这些模型。</p>
+<p><span class="ts">09:19</span>掌握了这些，你就能避免过你和问题了。</p>
+<p><span class="ts">09:23</span>对于这两种算法都是如此。</p>
+</main>
+<nav class="pager"><a href="P038.html">← 上一讲 解决过拟合</a><a class="mid" href="index.html">总目录</a><a href="P040.html">下一讲 正则化线性回归 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 72 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

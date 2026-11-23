@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 7 讲 推理：做出预测（前向传播） · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 7 讲 推理：做出预测（前向传播）</h1>
+<p class="lead">Inference：making predictions (forward propagation) · 5:45 · 分 P 49</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>让我们把锁学内容整合成一个算法 让神经网络进行推理或做出预测。</p>
+<p><span class="ts">00:09</span>这个算法叫做前向传播。</p>
+<p><span class="ts">00:12</span>我们来看一下。</p>
+<p><span class="ts">00:14</span>我将用多元例子手写数字识别来说明。</p>
+<p><span class="ts">00:19</span>为简单起见，我们只区分手写数字0和1。</p>
+<p><span class="ts">00:24</span>这只是一个二分类问题。</p>
+<p><span class="ts">00:28</span>我们输入一张图片并分类这是数字0还是数字1。</p>
+<p><span class="ts">00:34</span>本周晚些时候，你也能在练习实验中自己动手玩玩这个。</p>
+<p><span class="ts">00:39</span>对于本张幻灯片的例子，我将使用一张8×8的图片。</p>
+<p><span class="ts">00:44</span>这张数字1的图片是这个8×8的网格或矩阵，或者说64个像素强度值。</p>
+<p><span class="ts">00:53</span>其中255表示纯白像素，0表示纯黑像素。</p>
+<p><span class="ts">00:58</span>不同数字则对应黑白之间不同的灰度。</p>
+<p><span class="ts">01:03</span>给定这64个输入特征，我们将使用一个有粮隐藏层的神经网络。</p>
+<p><span class="ts">01:12</span>其中第一个隐藏层有25个神经园，或者说25个单元。</p>
+<p><span class="ts">01:18</span>第二个隐藏层有15个神经园，或者说15个单元。</p>
+<p><span class="ts">01:24</span>然后最后输出层输出它为0或1的可能性，分别是多大。</p>
+<p><span class="ts">01:30</span>让我们逐步过一遍神经网络。</p>
+<p><span class="ts">01:34</span>从输入 X，也就是这8×8的64个数字，到预测概率 A3所需进行的计算序列。</p>
+<p><span class="ts">01:43</span>第一步计算是从 X 到 A1。</p>
+<p><span class="ts">01:48</span>这是第一层，或者说第一个隐藏层所做的。</p>
+<p><span class="ts">01:53</span>它执行的计算是上标方框号1的 A 等于右边这个公式。</p>
+<p><span class="ts">01:59</span>注意 A1包含25个数字，因为这个隐藏层有25个单元。</p>
+<p><span class="ts">02:07</span>这就是为什么参数从 W1一直到 W25以及 B1到 B25。</p>
+<p><span class="ts">02:15</span>我在这里写的是 X，但我也可以写成 A0，因为根据惯例，D0层的激活也就是 A0等于输入特征值 X。</p>
+<p><span class="ts">02:27</span>这就让我们能计算 A1了。</p>
+<p><span class="ts">02:30</span>下一步是计算 A2。</p>
+<p><span class="ts">02:33</span>看看第二个隐藏层，它接着执行这个计算。</p>
+<p><span class="ts">02:39</span>其中 A2是 A1的函数。</p>
+<p><span class="ts">02:43</span>其计算方式为对 W 点成 A1加上对应的 B 值应用 S 型激活函数。</p>
+<p><span class="ts">02:50</span>注意，第二层有15个神经元或说15个单元。</p>
+<p><span class="ts">02:59</span>这就是为什么这里的参数从 W1一直到 W15B1到 B15。</p>
+<p><span class="ts">03:07</span>我们已经计算出了 A2。</p>
+<p><span class="ts">03:09</span>最后一步是计算 A3。</p>
+<p><span class="ts">03:13</span>我们通过非常相似的计算来做到这点。</p>
+<p><span class="ts">03:17</span>只是现在这第三层即输出层只有一个单元。</p>
+<p><span class="ts">03:22</span>这就是为什么这里只有一个输出。</p>
+<p><span class="ts">03:26</span>A3只是一个标辆。</p>
+<p><span class="ts">03:29</span>最后你可以有选择性的取 A3下标一，并用0.5作为预值进行判断。</p>
+<p><span class="ts">03:37</span>以得出2元分类标签。</p>
+<p><span class="ts">03:40</span>这是数字1吗？是还是否？这个计算序列首先取 X，然后计算 A1。</p>
+<p><span class="ts">03:48</span>接着计算 A2，再计算 A3。</p>
+<p><span class="ts">03:52</span>这也是神经网络的输出。</p>
+<p><span class="ts">03:54</span>你也可以把它写成 fx。</p>
+<p><span class="ts">03:58</span>记住，我们学习线性回归和逻辑回归时就用 fx 来表示线性回归或逻辑回归的输出。</p>
+<p><span class="ts">04:08</span>我们也可以用 fx 来表示神经网络作为 X 的函数所计算出的结果。</p>
+<p><span class="ts">04:16</span>因为这个计算是从左向右进行的。</p>
+<p><span class="ts">04:20</span>你从 X 开始，然后计算 A1，接着 A2，然后 A3。</p>
+<p><span class="ts">04:25</span>这个算法也称为前向传播。</p>
+<p><span class="ts">04:29</span>因为你在传播神经元的激活值，你是沿着从左到右的正向进行这些计算的。</p>
+<p><span class="ts">04:37</span>这与另一种叫做反向传播或逆传播的算法形成对比。</p>
+<p><span class="ts">04:45</span>后者用于学习过程，那是你下周要学习的内容。</p>
+<p><span class="ts">04:50</span>顺便提一下，这种神经网络架构即一开始有较多隐藏单元，然后越靠近输出层，隐藏单元数量越少。</p>
+<p><span class="ts">05:01</span>在选择神经网络架构时，这也是一种非常典型的选择。</p>
+<p><span class="ts">05:07</span>在练习实验中，你也会看到更多这方面的例子。</p>
+<p><span class="ts">05:12</span>以上就是使用前向传播算法进行神经网络推理的过程。</p>
+<p><span class="ts">05:17</span>有了这个，你就能下载别人训练好并发布在互联网上的神经网络参数，并且使用他们的神经网络对你自己的新数据进行推理。</p>
+<p><span class="ts">05:31</span>现在你已经了解了这个图谱和算法。</p>
+<p><span class="ts">05:35</span>我们来看看如何在 TensorFlow 中实际实现它。</p>
+<p><span class="ts">05:40</span>具体来说，我们下个视频来看看这个。</p>
+</main>
+<nav class="pager"><a href="P048.html">← 上一讲 更复杂的神经网络</a><a class="mid" href="index.html">总目录</a><a href="P050.html">下一讲 代码中的推理 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 59 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

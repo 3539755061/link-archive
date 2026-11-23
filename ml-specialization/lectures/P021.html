@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 1 讲 多特征 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 1 讲 多特征</h1>
+<p class="lead">Multiple features · 10:11 · 分 P 21</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>欢迎回来，本周我们将学习如何让线性回归变得更快、更强大。</p>
+<p><span class="ts">00:09</span>到本周结束，你将完成这门第一门课程三分之二的内容。</p>
+<p><span class="ts">00:15</span>我们先来看一个线性回归版本，它不仅能看一个特征，还能看许多不同的特征。</p>
+<p><span class="ts">00:22</span>我们来看看。</p>
+<p><span class="ts">00:24</span>在原始版本的线性回归中，你只有一个特征 X，即房屋的面积，并且你能预测 Y，也就是房价。</p>
+<p><span class="ts">00:34</span>那时，模型是 F，下 W，下 B,(x)，等于 WX 加 B。</p>
+<p><span class="ts">00:45</span>但如果你不仅仅有房屋面积这一个特征来尝试预测价格呢？如果你还知道卧室的数量、楼层的数量以及房零，这似乎会给你更多信息来预测价格。</p>
+<p><span class="ts">01:00</span>为了引入一点新的符号，我们将使用变量 X 下标1、X 下标2、X 下标3和 X 下标4来表示这四个特征。</p>
+<p><span class="ts">01:15</span>为简单起见，我们再引入一点符号。</p>
+<p><span class="ts">01:20</span>我们将写作 X 下标 j，或者有时我简称为 X 字 j，来代表特征的列表。</p>
+<p><span class="ts">01:28</span>这里，j 将从1取到4，因为我们有四个特征。</p>
+<p><span class="ts">01:35</span>我将用小写 n 来表示特征的总数，在这个例子中 n 等于4。</p>
+<p><span class="ts">01:44</span>和之前一样，我们将使用 X 上标 i 来表示第2个训练样本。</p>
+<p><span class="ts">01:50</span>那么这里，X 上标 i 实际上将是一个包含4个数字的列表。</p>
+<p><span class="ts">01:57</span>或者有时我们称之为一个项量，它包含了第1个训练样本的所有特征。</p>
+<p><span class="ts">02:04</span>举个具体例子，带括号的 X 上标2将是第2个训练样本的特征项量。</p>
+<p><span class="ts">02:15</span>它将等于1416、32和40。</p>
+<p><span class="ts">02:24</span>严格来说，我是把这些数字写成了一行。</p>
+<p><span class="ts">02:28</span>有时这被称为形象量，而不是列象量。</p>
+<p><span class="ts">02:33</span>但如果你不知道区别是什么，不用担心。</p>
+<p><span class="ts">02:37</span>对于现在这个目的，这没那么重要。</p>
+<p><span class="ts">02:40</span>而为了指代，第2个训练样本中的特定特征，我将写作 X 上标 i 下标 j。</p>
+<p><span class="ts">02:48</span>举例来说，X 上标2下标3，将是第2个训练样本中第3个特征的值。</p>
+<p><span class="ts">02:59</span>也就是楼层数量，所以那将等于2。</p>
+<p><span class="ts">03:04</span>有时为了强调这个 X2不只是一个数字，而实际上是一个数字列表，即一个项量。</p>
+<p><span class="ts">03:13</span>我们会在它上面画一个小箭头，就为了直观的表示它是一个项量，这里也一样。</p>
+<p><span class="ts">03:20</span>但你在自己的符号中，不必非得画这个箭头。</p>
+<p><span class="ts">03:27</span>你可以把这个箭头看作一个可选的标识符。</p>
+<p><span class="ts">03:31</span>有时用它，只是为了强调这是一个项量，而不是一个数字。</p>
+<p><span class="ts">03:36</span>现在我们有了多个特征，来看看我们的模型会是什么样子。</p>
+<p><span class="ts">03:41</span>之前我们是这样定义模型的。</p>
+<p><span class="ts">03:44</span>那时 X 是单个特征，也就是单个数字。</p>
+<p><span class="ts">03:50</span>但现在有了多个特征，我们将有不同的定义。</p>
+<p><span class="ts">03:54</span>取而代之，模型将是 f_W，下 B,(x) 等于 W1，X1加 W2，X2加 W3，X3加 W4，X4加 B。</p>
+<p><span class="ts">04:10</span>具体来说，对于房价预测，一个可能的模型，可能是我们估计房价为0.1,0.1乘以 X1，及房屋面积，加上4乘以 X2，及卧室数量，加上10乘以 X3，及楼层数量，减去2乘以 X4，及房零再加上80。</p>
+<p><span class="ts">04:36</span>让我们稍微思考一下如何解释这些参数。</p>
+<p><span class="ts">04:40</span>如果模型试图以千美元为单位预测房价，你可以认为，这个 B 等于80，意味着移动房子的基础价格起步价大约是8万美元，假设它没有面积，没有卧室，没有楼层，也没有房零。</p>
+<p><span class="ts">04:59</span>你可以认为，这个0.1，意味着，也许每增加一平方英尺，价格就会增加0.1000美元，也就是100美元。</p>
+<p><span class="ts">05:11</span>也许每增加一间浴室，价格增加4000美元。</p>
+<p><span class="ts">05:16</span>每增加一个楼层，价格可能增加1万美元。</p>
+<p><span class="ts">05:22</span>而房零每增加一年，价格可能减少2000美元，因为参数是-2。</p>
+<p><span class="ts">05:28</span>一般来说，如果你有 N 个特征，那么模型将看起来像一样。</p>
+<p><span class="ts">05:34</span>这里再次给出具有 N 个特征的模型定义。</p>
+<p><span class="ts">05:42</span>我们接下来要做的是引入一点符号，来以一种更简单，但等价的方式，重写这个表达式。</p>
+<p><span class="ts">05:53</span>让我们将 W 定义为一个数字列表，列出参数 W1，W2，W3，一直到 Wn，在数学中，这被称为相量。</p>
+<p><span class="ts">06:06</span>有时为了指明这是一个相量，即意味着一组数字的列表，我会在顶部画一个小箭头。</p>
+<p><span class="ts">06:14</span>你不必总是画这个箭头，在你的符号中你可以画也可以不画。</p>
+<p><span class="ts">06:20</span>你可以把这个小箭头画一个小箭头，来提醒我们，这是一个相量。</p>
+<p><span class="ts">06:29</span>如果你以前上过线性代数课，你可能会认出这是一个形相量与列相量相对。</p>
+<p><span class="ts">06:37</span>但如果，你不知道这些术语是什么意思，你不必担心。</p>
+<p><span class="ts">06:43</span>接下来，和之前一样，B 是一个数字，而不是相量。</p>
+<p><span class="ts">06:50</span>这个相量 W 连同这个数字 B 就是模型的参数。</p>
+<p><span class="ts">06:55</span>我也将 X 写作一个列表或相量。</p>
+<p><span class="ts">06:58</span>同样是形相量，它列出了所有特征 X1，X2，X3，一直到 Xn。</p>
+<p><span class="ts">07:10</span>这同样是一个相量，所以我将在顶部加一个小箭头来表示。</p>
+<p><span class="ts">07:19</span>在上方的符号中，我们也可以在这点，和这里添加小箭头，以表示那个 W 和那个 X，实际上是这些数字的列表。</p>
+<p><span class="ts">07:33</span>它们实际上是这些相量。</p>
+<p><span class="ts">07:36</span>有了这种符号，模型现在可以更简洁的重写为 f-x，等于相量 W 点成 x，再加上数字 B。</p>
+<p><span class="ts">07:50</span>这个点指的是，线性代数中，相量 X 的点击。</p>
+<p><span class="ts">07:56</span>那么这个点击到底是什么呢？嗯，两个相量，即两组数字列表 W 和 X 的点击，是通过取对应的数字对 W1和 X1将它们相乘。</p>
+<p><span class="ts">08:17</span>W2，X2，相乘，W3，X3，相乘，一直到 Wn,Xn，相乘，然后将所有这些成绩相加来计算的，写出来就是，这意味着，点击等于 W1，X1，加 W2，X2，加 W3，X3，一直加到 Wn,Xn，最后，我们再把 B 加回来，</p>
+<p><span class="ts">09:00</span>你会注意到，这给了我们和上面完全相同的表达是，点击符号，让你能用更少，更紧凑的形式来书写模型。</p>
+<p><span class="ts">09:14</span>这种具有多个输入特征的线性回归模型，其名称是多元线性回归。</p>
+<p><span class="ts">09:23</span>这与单变量回归形成对比，后者只有一个特征。</p>
+<p><span class="ts">09:29</span>顺便提一下，你可能以为这个算法叫多变量回归，但它属于实际上指的是其他东西，我们这里不会用到。</p>
+<p><span class="ts">09:38</span>我要称这个模型为多元线性回归。</p>
+<p><span class="ts">09:42</span>以上就是具有多个特征的线性回归，也称为多元线性回归。</p>
+<p><span class="ts">09:49</span>为了实现它，有一个非常巧妙的技巧，叫做相辆化。</p>
+<p><span class="ts">09:55</span>它会使实现它，以及许多其他学习算法变得简单的多。</p>
+<p><span class="ts">10:01</span>让我们进入下期视频看看什么是相辆化。</p>
+</main>
+<nav class="pager"><a href="P020.html">← 上一讲 运行梯度下降</a><a class="mid" href="index.html">总目录</a><a href="P022.html">下一讲 向量化（一） →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 70 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

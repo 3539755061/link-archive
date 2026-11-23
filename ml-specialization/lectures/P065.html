@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 6 讲 多分类 · 吴恩达机器学习专项课程</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">讲稿目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 6 讲 多分类</h1>
+<p class="lead">Multiclass · 3:32 · 分 P 65</p>
+</header>
+<main>
+<p><span class="ts">00:01</span>多分类问题指的是可以有超过两种输出标签的分类问题。</p>
+<p><span class="ts">00:07</span>不只是0或1，我们来看看这意味着什么。</p>
+<p><span class="ts">00:16</span>以我们之前看的手写数字分类问题为例，我们只是试图区分手写数字0和1。</p>
+<p><span class="ts">00:24</span>但如果你要识别信封上的邮政编码，那实际上会有10个你可能想要识别的数字。</p>
+<p><span class="ts">00:34</span>或者在第一门课中你看到过一个例子。</p>
+<p><span class="ts">00:40</span>如果你想对患者可能患有3种或5种不同疾病中的哪一种进行分类，那也会是一个多分类问题。</p>
+<p><span class="ts">00:54</span>还有一件我投入大量经历研究的事情，就是工厂制造零件的视觉缺陷检测。</p>
+<p><span class="ts">01:01</span>你可能会查看一家制药公司生产的药丸图片，并试图判断它是否有滑痕缺陷，变色缺陷，或是缺口缺陷。</p>
+<p><span class="ts">01:12</span>这同样会有多个类别，或者说你可以将这颗药丸判定为多种不同类型的缺陷。</p>
+<p><span class="ts">01:22</span>多分类问题仍然是一个分类问题，因为 Y 只能取少量离散的类别，它不能是任意数字，但现在 Y 可以取超过两种可能的值，之前的二分类问题，你可能有一个像这样的数据级，包含特征 X1和 X2。</p>
+<p><span class="ts">01:50</span>这种情况下，逻辑回归会你和一个模型来估计给定特征 X10Y 等于1的概率，因为 Y 要么是0，要么是1。</p>
+<p><span class="ts">02:01</span>而对于多分类问题，你将会有一个看起来像这样的数据级。</p>
+<p><span class="ts">02:07</span>这里有四个类别，圆圈代表一个类别，差号代表另一个类别，三角形代表第三个类别，正方形代表第四个类别。</p>
+<p><span class="ts">02:21</span>我们不再仅仅估计 Y 等于1的概率，现在我们想要估计 Y 等于1的概率是多少，或者 Y 等于2的概率是多少，再或者 Y 等于3的概率，以及 Y 等于4的概率。</p>
+<p><span class="ts">02:38</span>结果你会发现，在下一个视频中学习的算法，能够学习到一个可能像这样的决策边界，它将 X1和 X2构成的空间划分成四个类别，而不只是两个类别。</p>
+<p><span class="ts">02:56</span>以上就是多分类问题的定义。</p>
+<p><span class="ts">02:59</span>在下一个视频中，我们将学习 Softmax 回归算法，它是逻辑回归算法的推广。</p>
+<p><span class="ts">03:10</span>使用它，你将能够执行多分类问题。</p>
+<p><span class="ts">03:14</span>在那之后，我们会将 Softmax 回归应用到新的神经网络中。</p>
+<p><span class="ts">03:19</span>这样，你也能训练一个神经网络来执行多分类问题。</p>
+<p><span class="ts">03:28</span>我们继续看下一个视频。</p>
+</main>
+<nav class="pager"><a href="P064.html">← 上一讲 为什么需要激活函数</a><a class="mid" href="index.html">总目录</a><a href="P066.html">下一讲 Softmax函数 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 音轨的本地转写稿，共 21 个带时间戳的段落。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>
