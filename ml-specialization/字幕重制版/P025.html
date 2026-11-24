@@ -23,13 +23,13 @@
 <p><span class="ts">00:27</span>举一个具体的例子，我们用两个特征来预测房价，x 一是房屋的面积，x 二是卧室的数量。</p>
 <p><span class="ts">00:38</span>假设 x 一通常的范围是从三百到两千平方英尺，而数据集中的 x 二范围是从零到五间卧室。</p>
 <p><span class="ts">00:49</span>所以，在这个例子中，x 一取值的范围相对较大，而 x 二取值的范围相对较小。</p>
-<p><span class="ts">00:58</span>现在，让我们以一栋房子为例，其面积为两千平方英尺，有五间卧室，价格为五十万，即五十万美。</p>
+<p><span class="ts">00:58</span>现在，让我们以一栋房子为例，其面积为两千平方英尺，有五间卧室，价格为五十万，即五十万美元。</p>
 <figure><img src="img/P025/kf003.jpg" alt="01:00" loading="lazy"><figcaption>01:00</figcaption></figure>
 <figure><img src="img/P025/kf004.jpg" alt="01:10" loading="lazy"><figcaption>01:10</figcaption></figure>
 <p><span class="ts">01:12</span>对于这一个训练样本，你认为参数 W 一和 W 二的合理取值是多少？</p>
 <p><span class="ts">01:21</span>嗯，我们来看一种可能的参数设置。</p>
 <p><span class="ts">01:25</span>为了讨论方便，假设 W 一是五十，W 二是零点一，B 是五十。</p>
-<p><span class="ts">01:36</span>那么，在这种情况下，以千美元为单位的预测价格是这里的十万，加上零点五千，再加五十千，也就是略高于亿美元。</p>
+<p><span class="ts">01:36</span>那么，在这种情况下，以千美元为单位的预测价格是这里的十万，加上零点五千，再加五十千，也就是略高于一亿美元。</p>
 <figure><img src="img/P025/kf005.jpg" alt="01:38" loading="lazy"><figcaption>01:38</figcaption></figure>
 <figure><img src="img/P025/kf006.jpg" alt="01:49" loading="lazy"><figcaption>01:49</figcaption></figure>
 <p><span class="ts">01:52</span>所以，这显然和实际价格五十万美元相去甚远。</p>
@@ -37,7 +37,7 @@
 <p><span class="ts">02:06</span>现在，我们来看另一种可能性。</p>
 <p><span class="ts">02:08</span>假设 W 一和 W 二的值互换。</p>
 <p><span class="ts">02:13</span>W 一是零点一，W 二是五十，而 B 依然是五十。</p>
-<p><span class="ts">02:19</span>在这种 W 一和 W 二的选择下，W 一相对较小，而 W 二相对较大，五十要比零点一人得多。</p>
+<p><span class="ts">02:19</span>在这种 W 一和 W 二的选择下，W 一相对较小，而 W 二相对较大，五十要比零点一大得多。</p>
 <p><span class="ts">02:30</span>那么，这里预测的价格是零点一乘以两千，加五十乘以五，再加五十。</p>
 <p><span class="ts">02:40</span>第一项变成二十万，第二项变成二十五万，然后再加上五万。</p>
 <p><span class="ts">02:48</span>所以这个版本的模型预测的价格是五十万美元，这是一个合理得多的估计，并且它恰好与房子的真实价格相同。</p>

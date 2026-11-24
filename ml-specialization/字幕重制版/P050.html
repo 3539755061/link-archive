@@ -21,7 +21,7 @@
 <p><span class="ts">00:19</span>在本视频中，我们来看看如何在代码中使用 TensorFlow 实现推理。</p>
 <p><span class="ts">00:27</span>神经网络的一个非凡之处在于，同一个算法可以应用于这么多不同的领域。</p>
 <figure><img src="img/P050/kf001.jpg" alt="00:28" loading="lazy"><figcaption>00:28</figcaption></figure>
-<p><span class="ts">00:35</span>所以，为了让大家在本视频和一些实验中看清神经网络在做什么，我将用另一个例子来说明推理过。</p>
+<p><span class="ts">00:35</span>所以，为了让大家在本视频和一些实验中看清神经网络在做什么，我将用另一个例子来说明推理过程。</p>
 <p><span class="ts">00:48</span>我有时候确实喜欢自己在家烘焙咖啡豆。</p>
 <p><span class="ts">00:52</span>我最喜欢的其实是哥伦比亚咖啡豆。</p>
 <p><span class="ts">00:56</span>那么，学习算法能否帮助优化，像这样的烘焙过程所得到的咖啡豆品质呢？</p>
@@ -29,7 +29,7 @@
 <figure><img src="img/P050/kf002.jpg" alt="01:04" loading="lazy"><figcaption>01:04</figcaption></figure>
 <figure><img src="img/P050/kf003.jpg" alt="01:15" loading="lazy"><figcaption>01:15</figcaption></figure>
 <p><span class="ts">01:18</span>在这个稍微简化的例子中，我们创建了一个数据集，包含不同的温度、不同的时长，以及标明我们烘焙的咖啡是否好喝的标签。</p>
-<p><span class="ts">01:34</span>这里，正类 V 等于一对应好喝的咖啡，而零，即负类，对应不好喝的咖啡。</p>
+<p><span class="ts">01:34</span>这里，正类 y 等于一对应好喝的咖啡，而零，即负类，对应不好喝的咖啡。</p>
 <p><span class="ts">01:44</span>所以，理解这个数据集的一个合理方式似乎是：如果你用太低的温度烘焙，它没被烤熟，结果就是火候不足。</p>
 <figure><img src="img/P050/kf004.jpg" alt="01:55" loading="lazy"><figcaption>01:55</figcaption></figure>
 <p><span class="ts">01:56</span>如果你烤的时间不够长，时长太短，那也不是一炉烘焙得当的豆子。</p>
@@ -61,8 +61,8 @@
 <p><span class="ts">05:04</span>这里还有一些我没有展开讲的额外细节，比如如何加载 TensorFlow 库，以及如何加载神经网络的参数 W 和。</p>
 <p><span class="ts">05:16</span>但我们会在实验中讲到这些。</p>
 <p><span class="ts">05:20</span>所以请务必去看看实验。</p>
-<p><span class="ts">05:22</span>但这些就是前向传播的关键步骤，以及如何计算 A 一、A 二，并可选择性地对 A 二进行间值判断。</p>
-<p><span class="ts">05:35</span>我门安回到子与数子力关可题。</p>
+<p><span class="ts">05:22</span>但这些就是前向传播的关键步骤，以及如何计算 A 一、A 二，并可选择性地对 A 二进行阈值判断。</p>
+<p><span class="ts">05:35</span>我们安回到子与数子力关可题。</p>
 <p><span class="ts">05:40</span>在这个例子中，x 是像素强度值的列表。</p>
 <figure><img src="img/P050/kf008.jpg" alt="05:40" loading="lazy"><figcaption>05:40</figcaption></figure>
 <p><span class="ts">05:45</span>所以 x 等于这个像素强度值列表的 numpy 数组。</p>

@@ -33,11 +33,11 @@
 <p><span class="ts">01:40</span>并假设参数 w 的值等于三。</p>
 <p><span class="ts">01:44</span>S 那么 j 关于 W 将等于九，即 w 的平方，或者说三的平方。</p>
 <p><span class="ts">01:52</span>现在，如果我们将 w 增加一个微小的量，称为 epsilon，我将其设为零点零零 r。</p>
-<p><span class="ts">02:06</span>买宁 W 的值云如何受化？</p>
+<p><span class="ts">02:06</span>买宁 W 的值会如何变化？</p>
 <p><span class="ts">02:10</span>如果我们将 w 增加零点零零一，那么 w 变为三加零点零零一，即三点零零一。</p>
 <p><span class="ts">02:20</span>那么 J 关于 W，也就是我们上面定义的 W 的平方，现在是这个三点零零一的平方，即九点零零六零。</p>
-<p><span class="ts">02:32</span>所以我们看到的是，如果 W 增加了零点零零一，我将用这个向上的箭头来表示 W 增加了零点零零。</p>
-<p><span class="ts">02:44</span>其中零点零零一就是这个小量 epsilon，那么 J 关于 W 大约增加了它的六倍，六乘以零点零零一 N9。</p>
+<p><span class="ts">02:32</span>所以我们看到的是，如果 W 增加了零点零零一，我将用这个向上的箭头来表示 W 增加了零点零零一。</p>
+<p><span class="ts">02:44</span>其中零点零零一就是这个小量 epsilon，那么 J 关于 W 大约增加了它的六倍，六乘以零点零零一。</p>
 <p><span class="ts">03:00</span>它实际上不是增加到九点零零六，而是九点零零六零零一。</p>
 <p><span class="ts">03:08</span>但事实证明，如果 epsilon 是无穷小的，我说无穷小，意思是非常、非常、非常、非常小。</p>
 <p><span class="ts">03:19</span>相当小，但它不是无穷小。</p>
@@ -52,39 +52,39 @@
 <p><span class="ts">04:35</span>它大约增加到九点零一二，而这个零点零一二大约是六乘以零点零零二。</p>
 <p><span class="ts">04:50</span>这里有额外的，你知道，零点零零零零四，因为 epsilon 并非完全无穷小。</p>
 <p><span class="ts">04:59</span>我们再次看到了 W 增加的量与 j 关于 w 增加的量之间这种六比一的比例。</p>
-<p><span class="ts">05:09</span>g.这就是为什么 j 关于 w 对 w 的导数等于六。</p>
+<p><span class="ts">05:09</span>这就是为什么 j 关于 w 对 w 的导数等于六。</p>
 <p><span class="ts">05:14</span>而且 epsilon 越小，这就变得越精确。</p>
 <p><span class="ts">05:19</span>顺便说一句，你可以随时暂停视频，并自己用其他的 epsilon 值尝试这个计算。</p>
 <p><span class="ts">05:27</span>关键在于，只要 epsilon 非常小，J 关于 W 增加的量与 W 增加的量之比就应该是六比一。</p>
 <p><span class="ts">05:37</span>所以请随意用其他的 epsilon 值自己尝试，看看这是否真的成立。</p>
 <figure><img src="img/P072/kf002.jpg" alt="05:42" loading="lazy"><figcaption>05:42</figcaption></figure>
-<p><span class="ts">05:43</span>这就弓 l 出了导数的一个非正式定义，即每当 w 增加一个微小量 epsilon，这导致 j 关于 w 增加 k 乘.。</p>
+<p><span class="ts">05:43</span>这就引出了导数的一个非正式定义，即每当 w 增加一个微小量 epsilon，这导致 j 关于 w 增加 k 乘.。</p>
 <p><span class="ts">05:58</span>在我们刚才的例子中，k 等于六。</p>
 <p><span class="ts">06:02</span>那么我们就说 j 关于 w 对 w 的导数等于 k，在刚才的例子中，k 再次等于六。</p>
 <p><span class="ts">06:12</span>所以你可能还记得，在实现梯度下降时，你会反复使用这个规则来更新参数 w 下标 j，其中和平常一样，alpha 是学习率。</p>
 <p><span class="ts">06:26</span>那么梯度下降做了什么呢？</p>
-<p><span class="ts">06:29</span>请注意，如果导数很小，那么这个更新步骤会对参数 w 下标 j 做一个小更新，而如果这个导数项很大，N 这将导致对参数 w 下标 j 的一个大改变。</p>
-<p><span class="ts">06:45</span>这是有道理的，因为这本质上意味着，如果导数很小，这说明改变 w 不会对的值产生大的影响。</p>
+<p><span class="ts">06:29</span>请注意，如果导数很小，那么这个更新步骤会对参数 w 下标 j 做一个小更新，而如果这个导数项很大，这将导致对参数 w 下标 j 的一个大改变。</p>
+<p><span class="ts">06:45</span>这是有道理的，因为这本质上意味着，如果导数很小，这说明改变 w 不会对 j 的值产生大的影响。</p>
 <p><span class="ts">06:58</span>因此我们不用费心去对 w 下标 j 做巨大的改变。</p>
 <p><span class="ts">07:03</span>但如果导数很大，这意味着即使是对 w 下标 j 的微小改变，也能在多大程度上改变或降低代价函数关于 w 方面产生巨大影响。</p>
 <p><span class="ts">07:16</span>所以在这种情况下，我们对 w 下标 j 做一个更大的改变，因为这样做实际上会极大地影响我们能降低多少代价函数 j。</p>
 <figure><img src="img/P072/kf003.jpg" alt="07:26" loading="lazy"><figcaption>07:26</figcaption></figure>
 <p><span class="ts">07:26</span>我们来看几个关于导数的例子。</p>
-<p><span class="ts">07:31</span>你在刚才的例子中看到的是，如果 w 等于三，且 j 关于 w 等于 w 的平方等于九，g.那么如果 w 增加了 epsilon 零点零零一，那么 j 关于 w 变为 j 关于三点零零一，现在是九点零零六零零一，或者换句话说，j 增加了大约零点零零六，N。</p>
+<p><span class="ts">07:31</span>你在刚才的例子中看到的是，如果 w 等于三，且 j 关于 w 等于 w 的平方等于九，那么如果 w 增加了 epsilon 零点零零一，那么 j 关于 w 变为 j 关于三点零零一，现在是九点零零六零零一，或者换句话说，j 增加了大约零点零零六，N。</p>
 <p><span class="ts">07:59</span>即六乘以零点零零一，或六乘以 epsilon，这就是为什么 j 关于 w 对 w 的导数等于六。</p>
 <p><span class="ts">08:14</span>我们来看看对于其他 w 值，导数会是什么。</p>
 <p><span class="ts">08:22</span>在这种情况下，j 关于 w 即 w 的平方，现在等于四，并且如果 w 增加零点零零一，那么 j 关于 w 变为 j 关于二点零零一，等于这个值，四点零零四零零一。N。</p>
-<p><span class="ts">08:38</span>所以 J 关于 W 已从四增加到了这里的这个值，这大约比四大四乘以 epsilon，这就是为什么现在导数是四，因为 w 增加了 epsilon 导致 J 关于增了四倍那么多。</p>
+<p><span class="ts">08:38</span>所以 J 关于 W 已从四增加到了这里的这个值，这大约比四大四乘以 epsilon，这就是为什么现在导数是四，因为 w 增加了 epsilon 导致 J 关于 w 增了四倍那么多。</p>
 <p><span class="ts">09:01</span>再次强调，这个额外的零点零零一是因为它不够准确，因为 epsilon 并非无穷小。</p>
-<p><span class="ts">09:08</span>或者我们门来看另一十例于。</p>
-<p><span class="ts">09:11</span>如果 W 寺于贝三云忌样？</p>
-<p><span class="ts">09:15</span>关于 W，即 W 的平方，仍然等于九，因为负三的平方是九。</p>
+<p><span class="ts">09:08</span>或者我们来看看另一个例子。</p>
+<p><span class="ts">09:11</span>如果 W 等于负三会怎样？</p>
+<p><span class="ts">09:15</span>j 关于 W，即 W 的平方，仍然等于九，因为负三的平方是九。</p>
 <p><span class="ts">09:22</span>如果 w 再次增加 epsilon，那么你现在有 w 等于负二点九，所以那是 j 关于负二点九。</p>
 <p><span class="ts">09:34</span>而负二点九九九的平方等于这个八点九九四零零一，因为 W 是负三加零点零零一！</p>
 <p><span class="ts">09:44</span>在这里请注意，j 关于 w 下降了大约零点零零六，即六乘以 epsilon。</p>
 <p><span class="ts">09:55</span>所以在这个例子中，我们得到的是从九开始，但它现在下降了，注意这里是向下的箭头而不是向上的箭头，下降了六乘以 epsilon。</p>
 <p><span class="ts">10:10</span>或者等价地说，它增加了负六乘以 epsilon。</p>
-<p><span class="ts">10:16</span>这就是为什么这种情况下的导数等于负六，因为当 epsilon 很小时，w 增加 epsilon 导致 j 关于增加负六乘以 epsilon。N。</p>
+<p><span class="ts">10:16</span>这就是为什么这种情况下的导数等于负六，因为当 epsilon 很小时，w 增加 epsilon 导致 j 关于 w 增加负六乘以 epsilon。N。</p>
 <p><span class="ts">10:32</span>另一种可视化方法是绘制函数 j 关于 w 的图像。</p>
 <p><span class="ts">10:40</span>所以如果横轴是 W，这是 j 关于 w，那么当 w 等于三时，j 关于 w 等于九。</p>
 <p><span class="ts">10:52</span>当它为二时，j 关于 w 等于四。</p>
@@ -92,27 +92,27 @@
 <p><span class="ts">11:03</span>但如果你没有，我接下来六十秒说的可能没意义，但不用担心。</p>
 <p><span class="ts">11:10</span>你不需要理解它也能完全跟上这些视频的其余部分。</p>
 <p><span class="ts">11:15</span>如果你在某个时候上过微积分课，你可能会意识到导数对应于一条刚好在这一点（比如 w 等于三处）与函数 j 关于 w 相切的直线的斜率。</p>
-<p><span class="ts">11:31</span>所以这条线在这一点的斜率，而斜率是这个高度除以这个宽度，当 w 等于三时，结果等于兴。</p>
+<p><span class="ts">11:31</span>所以这条线在这一点的斜率，而斜率是这个高度除以这个宽度，当 w 等于三时，结果等于六。</p>
 <p><span class="ts">11:41</span>当 W 等于二时，这条线的斜率结果是四。</p>
 <p><span class="ts">11:46</span>而当 W 等于负三时，这条线的斜率结果是负六。</p>
 <p><span class="ts">11:51</span>在微积分中，这些线的斜率就对应于函数的导数。</p>
 <p><span class="ts">11:57</span>但如果你以前没有上过微积分课，并且以前没见过这个斜率的概念，不用担心。</p>
-<p><span class="ts">12:05</span>现在，在继续之前，我想做最后一个观察，那就是你在这三个例子中都看到，j 关于 w 是同一个函。</p>
-<p><span class="ts">12:16</span>关于 W 等于 W 的十方。</p>
+<p><span class="ts">12:05</span>现在，在继续之前，我想做最后一个观察，那就是你在这三个例子中都看到，j 关于 w 是同一个函数。</p>
+<p><span class="ts">12:16</span>关于 W 等于 W 的平方。</p>
 <p><span class="ts">12:20</span>但 j 关于 w 的导数取决于 w。</p>
 <p><span class="ts">12:24</span>当 w 为负三时，导数是负六。</p>
 <figure><img src="img/P072/kf004.jpg" alt="12:34" loading="lazy"><figcaption>12:34</figcaption></figure>
 <p><span class="ts">12:35</span>事实证明，如果你熟悉微积分，再说一次，不熟悉也完全没问题。</p>
 <p><span class="ts">12:42</span>微积分使我们能够计算出 J 关于 W 对 W 的导数为二乘以 W。</p>
-<p><span class="ts">12:51</span>稍后，我将向你展示如何使用 Python 和一个叫做 SymPy 的巧妙 Python 包来自行计算这些导数。9。</p>
-<p><span class="ts">13:02</span>但因为微积分告诉我们 w 的平方，j 关于 w 的导数是二 w，这就是为什么当 w 为三时，导数是二乘。</p>
+<p><span class="ts">12:51</span>稍后，我将向你展示如何使用 Python 和一个叫做 SymPy 的巧妙 Python 包来自行计算这些导数。</p>
+<p><span class="ts">13:02</span>但因为微积分告诉我们 w 的平方，j 关于 w 的导数是二 w，这就是为什么当 w 为三时，导数是二乘以三。</p>
 <p><span class="ts">13:16</span>当它为二时是二乘以二。</p>
 <p><span class="ts">13:22</span>当它为负三时是二乘以负三，因为这个 w 的值乘以二，结果就给出了导数。</p>
 <figure><img src="img/P072/kf005.jpg" alt="13:30" loading="lazy"><figcaption>13:30</figcaption></figure>
 <p><span class="ts">13:33</span>在我们结束之前，再多看几个例子。</p>
 <p><span class="ts">13:37</span>对于这些例子，我将设 W 等于二。</p>
 <p><span class="ts">13:42</span>你在上一张幻灯片中看到，如果 J 关于 W 是 W 的平方，那么我所说的导数将是二乘以 W，即四。</p>
-<p><span class="ts">13:52</span>因此，如果 W 增加了零点零零一，即 epsilon，J 关于 W 就变成了这个，或大致上 J 关于 W 增加了四来.。</p>
+<p><span class="ts">13:52</span>因此，如果 W 增加了零点零零一，即 epsilon，J 关于 W 就变成了这个，或大致上 J 关于 W 增加了四乘以 epsilon。</p>
 <p><span class="ts">14:10</span>如果 J 关于 W 等于 W 的立方呢？</p>
 <p><span class="ts">14:15</span>所以在这种情况下，W 的立方，二的立方，将等于八。</p>
 <p><span class="ts">14:21</span>或者如果 J 关于 W 仅仅等于 W 呢？</p>
@@ -140,7 +140,7 @@
 <p><span class="ts">16:07</span>这给出了值四，这就是为什么当 w 等于二时，我们看到的导数是四。</p>
 <figure><img src="img/P072/kf012.jpg" alt="16:08" loading="lazy"><figcaption>16:08</figcaption></figure>
 <figure><img src="img/P072/kf013.jpg" alt="16:15" loading="lazy"><figcaption>16:15</figcaption></figure>
-<p><span class="ts">16:17</span>我们再看其他儿 T 例子。</p>
+<p><span class="ts">16:17</span>我们再看其他几个例子。</p>
 <p><span class="ts">16:19</span>如果是 W 的立方呢？</p>
 <figure><img src="img/P072/kf014.jpg" alt="16:19" loading="lazy"><figcaption>16:19</figcaption></figure>
 <p><span class="ts">16:24</span>那么导数变为三乘以 w 的平方。</p>
@@ -167,12 +167,12 @@
 <p><span class="ts">17:42</span>所以 SymPy，或者说实际上是微积分，告诉我们的是，如果 J 关于 W 是 w 的立方，导数是三 w 的平方，当 w 等于二时，等于十二。</p>
 <p><span class="ts">17:55</span>当 j 关于 w 等于 w 时，导数正好等于一。</p>
 <figure><img src="img/P072/kf023.jpg" alt="17:56" loading="lazy"><figcaption>17:56</figcaption></figure>
-<p><span class="ts">17:59</span>而当 j 关于 w 是 W 分之一时，是负的 w 平方分之一，当 w 等于二时，是负四分之 r。</p>
+<p><span class="ts">17:59</span>而当 j 关于 w 是 W 分之一时，是负的 w 平方分之一，当 w 等于二时，是负四分之一。</p>
 <p><span class="ts">18:11</span>让我们再次核对一下我们从 SymPy 得到的这些表达式是否正确。</p>
 <p><span class="ts">18:19</span>所以让我们尝试将 w 增加 epsilon。</p>
-<p><span class="ts">18:23</span>在这种情况下，j 关于 w，同样的，如果你想的话，可以随意暂停视频并用自己的计算器检查这个计。</p>
+<p><span class="ts">18:23</span>在这种情况下，j 关于 w，同样的，如果你想的话，可以随意暂停视频并用自己的计算器检查这个计算。</p>
 <p><span class="ts">18:33</span>但在这种情况下，j 关于 w，二点零零一的立方，变成了这个。</p>
-<p><span class="ts">18:40</span>所以已从八大约增加到了八点零一二。</p>
+<p><span class="ts">18:40</span>所以它从八大约增加到了八点零一二。</p>
 <p><span class="ts">18:48</span>因此它大约增加了十二乘以 epsilon。</p>
 <p><span class="ts">18:52</span>所以，导数确实是十二。</p>
 <p><span class="ts">18:56</span>或者，如果 j 关于 w 等于 w，那么如果 w 增加了 epsilon，那么 j 关于 w，也就是 w，现在是二点零。</p>
@@ -185,7 +185,7 @@
 <p><span class="ts">19:54</span>但这结果是零点五减去零点零零零二五。</p>
 <p><span class="ts">20:02</span>所以 J 关于 W 从零点五开始，然后下降了零点零零零二五。</p>
 <p><span class="ts">20:10</span>而这个零点零零零二五，是零点二五乘以 epsilon。</p>
-<p><span class="ts">20:18</span>它下降了这么多，或者说它增加了负零点二五乘以 epsilon，因为负零点二五乘以 epsilon 等于这&amp;里的这一项。</p>
+<p><span class="ts">20:18</span>它下降了这么多，或者说它增加了负零点二五乘以 epsilon，因为负零点二五乘以 epsilon 等于这里的这一项。</p>
 <p><span class="ts">20:29</span>所以我们看到，如果 w 增加了 epsilon，j 关于 w 就会增加负四分之一或负零点二五乘以 epsilon，这就是为什么这种情况下的导数是负四分之一。</p>
 <figure><img src="img/P072/kf024.jpg" alt="20:43" loading="lazy"><figcaption>20:43</figcaption></figure>
 <p><span class="ts">20:45</span>所以我希望，通过这些例子，你对 j 关于 w 对 w 的导数意味着什么有点感觉了。</p>

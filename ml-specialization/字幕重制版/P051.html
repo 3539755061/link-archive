@@ -19,7 +19,7 @@
 <p><span class="ts">00:18</span>关于当今代码中处理事情的方式，有一件不太走运的事情是，很多很多年前，NumPy 率先被创建出来，并成为了 Python 中线性代数的标准库。</p>
 <p><span class="ts">00:31</span>然后过了很久，Google Brain 团队，也就是我创立并一度领导的那个团队，创建了 TensorFlow。</p>
 <p><span class="ts">00:40</span>所以不幸的是，NumPy 和 TensorFlow 表示数据的方式存在一些不一致之处。</p>
-<p><span class="ts">00:48</span>因此，了解这些约定是有好处的，这样你就能实现正确的代码，并有望让你的神经网络顺利运行起。</p>
+<p><span class="ts">00:48</span>因此，了解这些约定是有好处的，这样你就能实现正确的代码，并有望让你的神经网络顺利运行起来。</p>
 <p><span class="ts">00:57</span>我们先来看一看 TensorFlow 是如何表示数据的。</p>
 <p><span class="ts">01:02</span>假设你有这样一个来自咖啡例子中的数据集。</p>
 <figure><img src="img/P051/kf001.jpg" alt="01:03" loading="lazy"><figcaption>01:03</figcaption></figure>
@@ -54,7 +54,7 @@
 <figure><img src="img/P051/kf003.jpg" alt="03:59" loading="lazy"><figcaption>03:59</figcaption></figure>
 <p><span class="ts">04:00</span>那我们之前把 x 设为输入特征向量时，做的是将 x 设为 np.array，里面用双层方括号包着“二百。</p>
 <p><span class="ts">04:13</span>这样做的效果是创建了一个一乘二的矩阵，也就是只有一行两列。</p>
-<p><span class="ts">04:23</span>我们门来看另一 T 例于。</p>
+<p><span class="ts">04:23</span>我们来看另一个例子。</p>
 <p><span class="ts">04:26</span>如果你将 x 定义为 np.array，但像这样写，这会创建一个二乘一的矩阵，有两行一列。</p>
 <p><span class="ts">04:41</span>因为第一行只是数字二百，第二行只是数字十七。</p>
 <p><span class="ts">04:50</span>所以，这有同样的数字，但是在一个二乘一，而不是一乘二的矩阵里。</p>
@@ -86,7 +86,7 @@
 <p><span class="ts">08:07</span>这是一一乘三的矩阵。</p>
 <p><span class="ts">08:09</span>这是 TensorFlow 表示这是一个浮点数的方式，意味着它是一个带小数点的数字，在你的计算机中用三十二位内存来表示。</p>
 <p><span class="ts">08:23</span>这就是 32 的含义。</p>
-<p><span class="ts">08:28</span>这里的张量是 TensorFlow 团队创建的一种数据类型，目的是为了高效地存储矩阵并在其上进行计。</p>
+<p><span class="ts">08:28</span>这里的张量是 TensorFlow 团队创建的一种数据类型，目的是为了高效地存储矩阵并在其上进行计算。</p>
 <p><span class="ts">08:38</span>所以，在这个幻灯片中，每当你看到张量，就把它想成矩阵就可以了。</p>
 <p><span class="ts">08:44</span>严格来说，张量比矩阵更泛化一些，但就本课程的目的而言，把张量仅仅看作是表示矩阵的一种方式即可。</p>
 <p><span class="ts">08:55</span>记住，我在这个视频开头说过，有 TensorFlow 表示矩阵的方式，也有 NumPy 表示矩阵的方式。</p>
@@ -101,12 +101,12 @@
 <p><span class="ts">10:14</span>所以它就等于这个数字零点八。</p>
 <p><span class="ts">10:20</span>如果你打印输出 A 二，你会看到它是一个 TensorFlow 张量，只有一个元素，一个数字，零点八，它是一个一乘一的矩阵。</p>
 <p><span class="ts">10:32</span>再次说明，它是一个32的浮点数，占用三十二位计算机内存。</p>
-<p><span class="ts">10:40</span>再次，你可以使用 A 二.numpy(）将 TensorFlow 张量转换为 NumPy 矩阵，这将会把它转回一个看起来像这样的 NumPy 数组。</p>
+<p><span class="ts">10:40</span>再次，你可以使用 A 二.numpy()将 TensorFlow 张量转换为 NumPy 矩阵，这将会把它转回一个看起来像这样的 NumPy 数组。</p>
 <figure><img src="img/P051/kf008.jpg" alt="10:41" loading="lazy"><figcaption>10:41</figcaption></figure>
 <p><span class="ts">10:54</span>所以，这希望能让你了解数据在 TensorFlow 和 NumPy 中是如何表示的。</p>
 <p><span class="ts">11:00</span>我习惯在 NumPy 中加载和操作数据，但当你把 NumPy 数组传给 TensorFlow 时，TensorFlow 喜欢把它转换成自己的内部格式，也就是张量，然后利用张量进行高效运算。</p>
 <p><span class="ts">11:19</span>而当你读回数据时，你可以让它保持为张量，或者把它转回 NumPy 数组。</p>
-<p><span class="ts">11:27</span>我觉得有点可惜的是，这些库的演化历史导致我们不得不做这种额外的转换工作，而实际上这两个，库可以协作得很好。</p>
+<p><span class="ts">11:27</span>我觉得有点可惜的是，这些库的演化历史导致我们不得不做这种额外的转换工作，而实际上这两个库可以协作得很好。</p>
 <p><span class="ts">11:39</span>但当你来回转换时，不论你用的是 NumPy 数组还是张量，这都是你在编写代码时需要注意的一件事。</p>
 <p><span class="ts">11:48</span>接下来，让我们把所学内容整合起来，真正地去构建一个神经网络。</p>
 </main>

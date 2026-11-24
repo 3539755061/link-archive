@@ -16,17 +16,17 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>让我们来看看，用 TensorFlow 代码训练神经网络的细节，它到底在做什么。</p>
-<p><span class="ts">00:10</span>我门来深入探讨一下。</p>
+<p><span class="ts">00:10</span>我们来深入探讨一下。</p>
 <p><span class="ts">00:13</span>在了解训练神经网络的细节之前，我们先回顾一下，在上一个课程中是如何训练逻辑回归模型的。</p>
 <figure><img src="img/P061/kf001.jpg" alt="00:14" loading="lazy"><figcaption>00:14</figcaption></figure>
 <p><span class="ts">00:22</span>构建逻辑回归模型的第一步，是给定输入特征 x 和参数 w、b，指定如何计算输出。</p>
 <p><span class="ts">00:34</span>所以在第一门课中，我们说逻辑回归函数预测 f(x)等于 g，也就是对 w 点乘 x 加 b 应用 sigmoid 函数，即对 w 点乘 x 加 b 应用 sigmoid 函数。n。</p>
-<p><span class="ts">00:50</span>所以如采2定 W 点来 X 加 O，那么 f 就等于一除以一加 e 的负 z 次方。</p>
+<p><span class="ts">00:50</span>所以如采2定 W 点乘 X 加 b，那么 f 就等于一除以一加 e 的负 z 次方。</p>
 <p><span class="ts">01:05</span>我们必须指定逻辑回归从输入到输出的函数是什么。</p>
 <p><span class="ts">01:12</span>这取决于输入 x 和模型的参数。</p>
 <p><span class="ts">01:17</span>第二步，训练逻辑回归模型需要指定损失函数，还有成本函数。</p>
-<p><span class="ts">01:26</span>你或许还记得，损失函数是指，如果逻辑回归输出 f(x)，而真实标签，也就是训练集中的实际标签是 y，那么该单个训练样本的损失，等于负 y 乘以 log(f(x))，再减去一减乘以 log（一减 f（x))。</p>
-<p><span class="ts">01:37</span>也就是训练集中的实际标签是 y，那么该单个训练样本的损失，等于负 y 乘以 log(f(x))，再减去一减.乘 L 以 log(一减 f(x))。</p>
+<p><span class="ts">01:26</span>你或许还记得，损失函数是指，如果逻辑回归输出 f(x)，而真实标签，也就是训练集中的实际标签是 y，那么该单个训练样本的损失，等于负 y 乘以 log(f(x))，再减去一减 y 乘以 log（一减 f（x))。</p>
+<p><span class="ts">01:37</span>也就是训练集中的实际标签是 y，那么该单个训练样本的损失，等于负 y 乘以 log(f(x))，再减去一减 y 乘以 log(一减 f(x))。</p>
 <p><span class="ts">01:50</span>这衡量了逻辑回归在单个训练样本(x,y)上的表现好坏。</p>
 <p><span class="ts">02:00</span>有了损失函数的定义，我们接着定义成本函数。</p>
 <p><span class="ts">02:07</span>而成本函数是参数 w 和 b 的函数。</p>
@@ -56,7 +56,7 @@
 <p><span class="ts">05:12</span>这段代码片段指定了神经网络的整个架构。</p>
 <p><span class="ts">05:18</span>它告诉你，第一个隐藏层有二十五个隐藏单元，接着下一层有十五个，然后有一个输出单元，并且我们使用的是 sigmoid 激活函数。n。</p>
 <p><span class="ts">05:30</span>因此，基于这段代码片段，我们也知道了参数有哪些：第一层的 w 一、b 一，第二层的参数，以及第三层的参数。</p>
-<p><span class="ts">05:41</span>所以这段代码片段指定了神经网络的整个架构，因此告诉 TensorFlow，为了计算输出 A 三或者 f，作为输入 X 和参数（这里我们记为和）的函数，它需要的一切信息。</p>
+<p><span class="ts">05:41</span>所以这段代码片段指定了神经网络的整个架构，因此告诉 TensorFlow，为了计算输出 A 三或者 f，作为输入 X 和参数（这里我们记为 W、B）的函数，它需要的一切信息。</p>
 <figure><img src="img/P061/kf004.jpg" alt="06:04" loading="lazy"><figcaption>06:04</figcaption></figure>
 <p><span class="ts">06:05</span>在第二步中，你必须指定损失函数是什么，这也将定义我们用来训练神经网络的成本函数。</p>
 <p><span class="ts">06:14</span>对于手写数字分类问题，图像要么是零，要么是一。</p>
@@ -74,7 +74,7 @@
 <figure><img src="img/P061/kf005.jpg" alt="07:59" loading="lazy"><figcaption>07:59</figcaption></figure>
 <figure><img src="img/P061/kf006.jpg" alt="08:11" loading="lazy"><figcaption>08:11</figcaption></figure>
 <p><span class="ts">08:13</span>优化这个成本函数，将使神经网络拟合你的二元分类数据。</p>
-<p><span class="ts">08:21</span>如果你想解决回归问题而非分类问题，你也可以告诉 TensorFlow 使用不同的损失函数来编译你的模。</p>
+<p><span class="ts">08:21</span>如果你想解决回归问题而非分类问题，你也可以告诉 TensorFlow 使用不同的损失函数来编译你的模型。</p>
 <figure><img src="img/P061/kf007.jpg" alt="08:23" loading="lazy"><figcaption>08:23</figcaption></figure>
 <p><span class="ts">08:34</span>例如，如果你有一个回归问题，并且如果你想最小化平方误差损失，这就是平方误差损失，如果你的学习算法输出 f(x)，目标或真实标签是 y，损失等于二分之一乘以平方误差，n。</p>
 <p><span class="ts">08:44</span>这就是平方误差损失，如果你的学习算法输出 f(x)，目标或真实标签是 y，损失等于二分之一乘以平.方误差。</p>
@@ -92,7 +92,7 @@
 <p><span class="ts">10:14</span>最后，你会要求 TensorFlow 最小化成本函数。</p>
 <p><span class="ts">10:20</span>你可能还记得第一门课里的梯度下降算法。</p>
 <p><span class="ts">10:24</span>如果你使用梯度下降来训练神经网络的参数，那么你会重复地，对于每一层 L，对于每一个单元 J，根据减去学习率 alpha 乘以成本函数对该参数的偏导数，来更新。</p>
-<p><span class="ts">10:51</span>对于参数也是突似操作。</p>
+<p><span class="ts">10:51</span>对于参数也是类似操作。</p>
 <p><span class="ts">10:56</span>在进行，比如说，一百次梯度下降迭代后，你有望得到较好的参数值。</p>
 <p><span class="ts">11:05</span>为了使用梯度下降，你需要计算的关键就是这些偏导数项。</p>
 <p><span class="ts">11:12</span>而 TensorFlow 所做的，事实上也是神经网络训练的标准做法，是使用一种称为反向传播的算法来计算这些偏导数项。TensorFlow 可以为你完成所有这些事。N。</p>
@@ -113,7 +113,7 @@
 <figure><img src="img/P061/kf010.jpg" alt="13:23" loading="lazy"><figcaption>13:23</figcaption></figure>
 <p><span class="ts">13:31</span>但如我所提，理解它们底层的工作原理仍然有用，这样如果发生意料之外的事（这在今天的库中仍会发生），你更有可能知道如何修复它。</p>
 <p><span class="ts">13:44</span>现在你知道了如何训练一个基本的神经网络，也叫多层感知器，你可以对神经网络做一些改动，让，它变得更强大。</p>
-<p><span class="ts">13:57</span>在下一个视频中，我们来看看如何换用不同的激活函数，作为我们一直使用的 sigmoid 激活函数的替。</p>
+<p><span class="ts">13:57</span>在下一个视频中，我们来看看如何换用不同的激活函数，作为我们一直使用的 sigmoid 激活函数的替代。</p>
 <p><span class="ts">14:07</span>这将使你的神经网络工作得更好。</p>
 </main>
 <nav class="pager"><a href="P060.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P062.html">下一讲 →</a></nav>

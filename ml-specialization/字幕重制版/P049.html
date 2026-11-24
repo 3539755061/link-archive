@@ -31,12 +31,12 @@
 <p><span class="ts">01:19</span>第二个隐藏层有十五个神经元，或者说十五个单元。</p>
 <p><span class="ts">01:25</span>然后最后，输出层输出它为零或一的可能性分别是多大。</p>
 <p><span class="ts">01:31</span>那么，让我们逐步过一遍神经网络，从输入 x，也就是这八乘八的六十四个数字，到预测概率 A 三，所需进行的计算序列。</p>
-<p><span class="ts">01:45</span>第一少计算是从 x 到 a 一。</p>
+<p><span class="ts">01:45</span>第一步计算是从 x 到 a 一。</p>
 <p><span class="ts">01:50</span>这是第一层，或者说第一个隐藏层所做的。</p>
 <p><span class="ts">01:54</span>它执行的计算是，上标方括号一的 a 等于右边这个公式。</p>
 <p><span class="ts">02:02</span>注意，A 一包含二十五个数字，因为这个隐藏层有二十五个单元，这就是为什么参数从 W 一一直到二十五，以及 B 一到 B 二十五。</p>
 <figure><img src="img/P049/kf005.jpg" alt="02:03" loading="lazy"><figcaption>02:03</figcaption></figure>
-<p><span class="ts">02:17</span>我在这里写的是 X，但我也可以写成 A 零，因为根据惯例，第零层的激活，也就是 A 零，等于输入特。</p>
+<p><span class="ts">02:17</span>我在这里写的是 X，但我也可以写成 A 零，因为根据惯例，第零层的激活，也就是 A 零，等于输入特征。</p>
 <figure><img src="img/P049/kf006.jpg" alt="02:18" loading="lazy"><figcaption>02:18</figcaption></figure>
 <p><span class="ts">02:29</span>这就让我们能计算 A 一了。</p>
 <figure><img src="img/P049/kf007.jpg" alt="02:34" loading="lazy"><figcaption>02:34</figcaption></figure>
@@ -56,7 +56,7 @@
 <p><span class="ts">04:27</span>这个算法也称为前向传播，因为你在传播神经元的激活值。</p>
 <p><span class="ts">04:35</span>所以，你是沿着从左到右的正向进行这些计算的。</p>
 <p><span class="ts">04:41</span>这与另一种叫做反向传播或逆传播的算法形成对比，后者用于学习过程，那是你下周要学习的内容。</p>
-<p><span class="ts">04:53</span>顺便提一下，这种神经网络架构，即一开始有较多隐藏单元，然后越靠近输出层，隐藏单元数量越“少，在选择神经网络架构时，这也是一种非常典型的选择。</p>
+<p><span class="ts">04:53</span>顺便提一下，这种神经网络架构，即一开始有较多隐藏单元，然后越靠近输出层，隐藏单元数量越少，在选择神经网络架构时，这也是一种非常典型的选择。</p>
 <figure><img src="img/P049/kf009.jpg" alt="04:54" loading="lazy"><figcaption>04:54</figcaption></figure>
 <p><span class="ts">05:09</span>在练习实验中，你也会看到更多这方面的例子。</p>
 <figure><img src="img/P049/kf010.jpg" alt="05:10" loading="lazy"><figcaption>05:10</figcaption></figure>

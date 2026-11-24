@@ -25,16 +25,16 @@
 <figure><img src="img/P035/kf003.jpg" alt="00:41" loading="lazy"><figcaption>00:41</figcaption></figure>
 <p><span class="ts">00:51</span>你可以按如下方式写出损失函数。</p>
 <figure><img src="img/P035/kf004.jpg" alt="00:51" loading="lazy"><figcaption>00:51</figcaption></figure>
-<p><span class="ts">00:55</span>给定预测值 f 和目标标签 y，损失等于负 y 乘以 f 的对数，减去一减乘以一减 f 的对数。</p>
+<p><span class="ts">00:55</span>给定预测值 f 和目标标签 y，损失等于负 y 乘以 f 的对数，减去一减 y 乘以一减 f 的对数。</p>
 <figure><img src="img/P035/kf005.jpg" alt="00:55" loading="lazy"><figcaption>00:55</figcaption></figure>
 <p><span class="ts">01:12</span>结果证明，我们刚刚用一行写出的这个等式，完全等价于上面这个更复杂的公式。</p>
 <p><span class="ts">01:22</span>我们来看看为什么是这样。</p>
 <p><span class="ts">01:25</span>现在，记住，y 只能取一或零这两个值。</p>
-<p><span class="ts">01:33</span>在第一种情况，假设等于一。</p>
-<p><span class="ts">01:38</span>这里的第一个是一，而这个一减就是一减一，因此等于零。</p>
+<p><span class="ts">01:33</span>在第一种情况，假设 y 等于一。</p>
+<p><span class="ts">01:38</span>这里的第一个是一，而这个一减 y 就是一减一，因此等于零。</p>
 <p><span class="ts">01:48</span>于是损失就变成了负一乘以 f 的对数，减去零乘以后面一堆结果为零的东西，后面那项就没了。</p>
-<p><span class="ts">02:00</span>所以当等于一时，损失确实就是上面的第一项，即 x 的 f 的负对数。</p>
-<p><span class="ts">02:10</span>我们再看看第二种情况，当等于零时。</p>
+<p><span class="ts">02:00</span>所以当 y 等于一时，损失确实就是上面的第一项，即 x 的 f 的负对数。</p>
+<p><span class="ts">02:10</span>我们再看看第二种情况，当 y 等于零时。</p>
 <p><span class="ts">02:16</span>在这种情况下，这里的这个 y 等于零，所以第一项就消失了。</p>
 <p><span class="ts">02:23</span>而第二项是一减零乘以那个对数项。</p>
 <p><span class="ts">02:31</span>所以损失就变成了这个负一乘以一减 x 的 f 的对数。</p>
@@ -45,7 +45,7 @@
 <figure><img src="img/P035/kf007.jpg" alt="03:16" loading="lazy"><figcaption>03:16</figcaption></figure>
 <p><span class="ts">03:25</span>那么，这里再次给出这个简化的损失函数。</p>
 <figure><img src="img/P035/kf008.jpg" alt="03:25" loading="lazy"><figcaption>03:25</figcaption></figure>
-<p><span class="ts">03:29</span>回想一下，代价就是在整个包含㎡个样本的训练集上所求的损失的平均值。</p>
+<p><span class="ts">03:29</span>回想一下，代价就是在整个包含 m 个样本的训练集上所求的损失的平均值。</p>
 <p><span class="ts">03:38</span>所以，它是 m 分之一乘以从 i 等于一到 m 的损失之和。</p>
 <p><span class="ts">03:45</span>现在，如果你代入上述简化损失的定义，那么它看起来就是这样：m 分之一乘以上面这一项的和。</p>
 <figure><img src="img/P035/kf009.jpg" alt="03:47" loading="lazy"><figcaption>03:47</figcaption></figure>

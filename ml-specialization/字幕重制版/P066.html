@@ -21,19 +21,19 @@
 <figure><img src="img/P066/kf001.jpg" alt="00:18" loading="lazy"><figcaption>00:18</figcaption></figure>
 <p><span class="ts">00:27</span>它计算输出的方式是，先计算 z 等于 w 与 x 的点积再加上 b，然后计算我这里要称之为 a 等于 g(z)的值，也就是应用于 z 的 S 型函数。</p>
 <p><span class="ts">00:44</span>我们将其解释为逻辑回归对给定输入特征 x 下 y 等于一的概率估计。</p>
-<p><span class="ts">00:55</span>现往，来一道快速测试题。</p>
+<p><span class="ts">00:55</span>现在，来一道快速测试题。</p>
 <p><span class="ts">00:58</span>如果 y 等于一的概率是零点七一，那么 y 等于零的概率是多少？</p>
 <p><span class="ts">01:10</span>嗯，y 为一的概率和 y 为零的概率，两者相加必须等于一，对吧？</p>
 <p><span class="ts">01:19</span>所以如果它有百分之七十一的概率为一，那么它就有百分之二十九或者零点二九的概率为零。</p>
 <p><span class="ts">01:30</span>为了稍微丰富一下逻辑回归，以便为推广到 softmax 回归做准备，我将把逻辑回归看作实际上是在计算两个数值。</p>
-<p><span class="ts">01:42</span>首先，a-，这是我们之前有的那个量，即在给定 x 下 y 等于一的概率。</p>
+<p><span class="ts">01:42</span>首先，a 一，这是我们之前有的那个量，即在给定 x 下 y 等于一的概率。</p>
 <p><span class="ts">01:52</span>其次，我将认为逻辑回归也在计算 a 二，即一减去这个值。</p>
 <p><span class="ts">02:01</span>也就是在给定输入特征 x 下 y 等于零的概率。</p>
 <p><span class="ts">02:07</span>所以 a 一和 a 二当然相加必须等于一。</p>
 <p><span class="ts">02:12</span>现在让我们将其推广到 softmax 回归。</p>
 <p><span class="ts">02:17</span>我将用一个 y 可以取四个可能输出值的具体例子来说明。</p>
 <p><span class="ts">02:24</span>所以 y 可以取值一、二、三或四。</p>
-<p><span class="ts">02:32</span>它将计算 z 一等于 w-与 x 的点积加上 b 一，然后 z 二等于 w 二与 x 的点积加上 b 二，z 三和 z 四以此类推。</p>
+<p><span class="ts">02:32</span>它将计算 z 一等于 w 一与 x 的点积加上 b 一，然后 z 二等于 w 二与 x 的点积加上 b 二，z 三和 z 四以此类推。</p>
 <p><span class="ts">02:46</span>这里,W、W、w 四，以及 b 一、b 二、b 三、b 四，都是 softmax 回归的参数。</p>
 <p><span class="ts">02:57</span>接下来，这是 softmax 回归的公式。</p>
 <p><span class="ts">03:02</span>我们将计算 a 一等于 e 的 z 一次方。</p>
@@ -49,7 +49,7 @@
 <p><span class="ts">04:22</span>如果你能为所有这些参数学到合适的取值，那么这就为你提供了一种方法，用来预测给定一组输入特征 x 时，y 分别为一、二、三或四的概率。N。</p>
 <p><span class="ts">04:37</span>快速测试，假设你对一组新的输入 x 运行 softmax 回归，发现 a 一是零点三零，a 二是零点二零，a 三是零点一五。</p>
 <p><span class="ts">04:54</span>为什么不看看这道题，看你能不能找出正确答案呢？</p>
-<p><span class="ts">05:01</span>你可能已经意识到，因为 y 取值为一、二、三或四的概率，它们相加必须等于一，所以 a 四，即 y 等于四的概率，必须是零点三五，即一减去零点三减去零点二减去零点一五。9。</p>
+<p><span class="ts">05:01</span>你可能已经意识到，因为 y 取值为一、二、三或四的概率，它们相加必须等于一，所以 a 四，即 y 等于四的概率，必须是零点三五，即一减去零点三减去零点二减去零点一五。</p>
 <p><span class="ts">05:21</span>所以我在这里写下了 softmax 回归在四种可能输出情况下的公式。</p>
 <p><span class="ts">05:28</span>现在让我们写下一般情况下的 softmax 回归公式。</p>
 <p><span class="ts">05:34</span>在一般情况下，y 可以取 n 个可能的值。</p>
@@ -98,7 +98,7 @@
 <p><span class="ts">11:12</span>所以你最终只为 a 下标 j 的一个值计算这个负对数，该值对应的是在那个特定训练样本中 y 等于 j 的实。</p>
 <p><span class="ts">11:24</span>例如，如果 y 等于二，你最终计算的是 a 二的负对数，而不会计算 a 一的负对数或这里的其他任何项。</p>
 <p><span class="ts">11:34</span>以上就是 softmax 回归的模型形式以及代价函数。</p>
-<p><span class="ts">11:40</span>如果你要训练这个模型，你就可以开始构建多类别分类算法。我们接下来要做的是，将这个 softmax 回归模型整合到一个神经网络中，这样我们就能真正做出更棒的事情，也就是训练一个用于多类分，类的神经网络。</p>
+<p><span class="ts">11:40</span>如果你要训练这个模型，你就可以开始构建多类别分类算法。我们接下来要做的是，将这个 softmax 回归模型整合到一个神经网络中，这样我们就能真正做出更棒的事情，也就是训练一个用于多类分类的神经网络。</p>
 </main>
 <nav class="pager"><a href="P065.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P067.html">下一讲 →</a></nav>
 <footer>

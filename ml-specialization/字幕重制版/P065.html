@@ -17,21 +17,21 @@
 <main>
 <p><span class="ts">00:02</span>多分类问题，指的是可以有超过两种输出标签的分类问题。</p>
 <p><span class="ts">00:11</span>所以，不只是零或一。</p>
-<p><span class="ts">00:14</span>我们来看看这息味着什么。</p>
+<p><span class="ts">00:14</span>我们来看看这意味着什么。</p>
 <p><span class="ts">00:16</span>我们来看有这息咪看什么。</p>
 <p><span class="ts">00:17</span>以我们之前看的手写数字分类问题为例，我们只是试图区分手写数字零和一。</p>
 <figure><img src="img/P065/kf001.jpg" alt="00:18" loading="lazy"><figcaption>00:18</figcaption></figure>
 <p><span class="ts">00:27</span>但如果你要识别信封上的邮政编码，那实际上会有十个你可能想要识别的数字。</p>
 <p><span class="ts">00:37</span>或者，在第一门课中你看到过一个例子，如果你想对患者可能患有三种或五种不同疾病中的哪一种进行分类。</p>
 <p><span class="ts">00:51</span>那也会是一个多分类问题。</p>
-<p><span class="ts">00:54</span>还有一件我投入大量精力研究的事情，就是工厂制造零件的视觉缺陷检测，你可能会查看一家制药公司生产的药丸图片，并试图判断它是否有划痕缺陷、变色缺陷或是缺口缺。</p>
+<p><span class="ts">00:54</span>还有一件我投入大量精力研究的事情，就是工厂制造零件的视觉缺陷检测，你可能会查看一家制药公司生产的药丸图片，并试图判断它是否有划痕缺陷、变色缺陷或是缺口缺陷。</p>
 <p><span class="ts">01:16</span>这同样会有多个类别，或者说你可以将这颗药丸判定为多种不同类型的缺陷。</p>
 <p><span class="ts">01:24</span>所以，多分类问题仍然是一个分类问题，因为 y 只能取少量离散的类别。</p>
 <p><span class="ts">01:36</span>但现在可以取超过两种可能的值。</p>
-<p><span class="ts">01:42</span>因此，之前的二分类问题，你可能有一个像这样的数据集，包含特征 x 一和 x 二，这种情况下，逻辑回归会拟合一个模型来估计给定特征 x 时 y 等于一的概率，因为 y 要么是零，要么是一。丨。</p>
+<p><span class="ts">01:42</span>因此，之前的二分类问题，你可能有一个像这样的数据集，包含特征 x 一和 x 二，这种情况下，逻辑回归会拟合一个模型来估计给定特征 x 时 y 等于一的概率，因为 y 要么是零，要么是一。</p>
 <figure><img src="img/P065/kf002.jpg" alt="01:42" loading="lazy"><figcaption>01:42</figcaption></figure>
 <figure><img src="img/P065/kf003.jpg" alt="01:47" loading="lazy"><figcaption>01:47</figcaption></figure>
-<p><span class="ts">02:03</span>而对于多分类问题，你将会有一个看起来像这样的数据集，圆圈代表一个类别，叉号代表另一个类别，三角形代表第三个类别，我们不再仅仅估计 y 等于一的概率，现在我们想要估计等于一的概率是多少，或者等于二的概率是多少，再或者 y 等于三的概率，以及 y 等于四的概率。</p>
+<p><span class="ts">02:03</span>而对于多分类问题，你将会有一个看起来像这样的数据集，圆圈代表一个类别，叉号代表另一个类别，三角形代表第三个类别，我们不再仅仅估计 y 等于一的概率，现在我们想要估计 y 等于一的概率是多少，或者等于二的概率是多少，再或者 y 等于三的概率，以及 y 等于四的概率。</p>
 <figure><img src="img/P065/kf004.jpg" alt="02:09" loading="lazy"><figcaption>02:09</figcaption></figure>
 <figure><img src="img/P065/kf005.jpg" alt="02:25" loading="lazy"><figcaption>02:25</figcaption></figure>
 <figure><img src="img/P065/kf006.jpg" alt="02:41" loading="lazy"><figcaption>02:41</figcaption></figure>

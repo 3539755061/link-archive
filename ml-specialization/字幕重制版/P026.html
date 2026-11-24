@@ -15,16 +15,16 @@
 <p class="lead">课程一 监督机器学习：回归与分类 · 第 2 周 · 7:52 · 分 P 26 · 52 段 29 图</p>
 </header>
 <main>
-<p><span class="ts">00:02</span>我们来看看如何实现特征缩放，以处理那些取值范围差异很大的特征，将它们缩放到彼此具有可比一性的值范围。</p>
+<p><span class="ts">00:02</span>我们来看看如何实现特征缩放，以处理那些取值范围差异很大的特征，将它们缩放到彼此具有可比性的值范围。</p>
 <figure><img src="img/P026/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
 <figure><img src="img/P026/kf002.jpg" alt="00:04" loading="lazy"><figcaption>00:04</figcaption></figure>
 <p><span class="ts">00:13</span>那么，你实际上如何缩放特征呢？</p>
 <figure><img src="img/P026/kf003.jpg" alt="00:15" loading="lazy"><figcaption>00:15</figcaption></figure>
-<p><span class="ts">00:16</span>嗯，如果 x 一的范围从三到两千，一个得到 x 一缩放版本的方法是取每个原始的 x 一值并除以两干，即该范围的最大值。</p>
+<p><span class="ts">00:16</span>嗯，如果 x 一的范围从三到两千，一个得到 x 一缩放版本的方法是取每个原始的 x 一值并除以两千，即该范围的最大值。</p>
 <figure><img src="img/P026/kf004.jpg" alt="00:18" loading="lazy"><figcaption>00:18</figcaption></figure>
 <p><span class="ts">00:30</span>于是，缩放后的 x 一的范围将从零点一五到一。</p>
 <figure><img src="img/P026/kf005.jpg" alt="00:32" loading="lazy"><figcaption>00:32</figcaption></figure>
-<p><span class="ts">00:36</span>类似地，由于 x 二的范围从零到五，你可以通过取每个原始的 x 二并除以五，这同样也是最大值，来计算二的缩放版本。</p>
+<p><span class="ts">00:36</span>类似地，由于 x 二的范围从零到五，你可以通过取每个原始的 x 二并除以五，这同样也是最大值，来计算 x 二的缩放版本。</p>
 <figure><img src="img/P026/kf006.jpg" alt="00:38" loading="lazy"><figcaption>00:38</figcaption></figure>
 <p><span class="ts">00:49</span>于是，缩放后的 x 二的范围现在从零到一。</p>
 <figure><img src="img/P026/kf007.jpg" alt="00:50" loading="lazy"><figcaption>00:50</figcaption></figure>
@@ -45,20 +45,20 @@
 <p><span class="ts">02:33</span>同样，最大值五减去最小值零。</p>
 <p><span class="ts">02:37</span>均值归一化后的 x 二现在范围从负零点四六到零点五四。</p>
 <p><span class="ts">02:46</span>因此，如果你使用均值归一化后的 x 一和 x 二来绘制训练数据，它可能看起来像这样。</p>
-<p><span class="ts">02:53</span>还有最后一种常见的重新缩放方法，叫做乙分数归一化。</p>
+<p><span class="ts">02:53</span>还有最后一种常见的重新缩放方法，叫做 Z 分数归一化。</p>
 <figure><img src="img/P026/kf011.jpg" alt="02:53" loading="lazy"><figcaption>02:53</figcaption></figure>
-<p><span class="ts">02:59</span>要实现乙分数归一化，你需要计算每个特征的一个叫做标准差的量。</p>
+<p><span class="ts">02:59</span>要实现 Z 分数归一化，你需要计算每个特征的一个叫做标准差的量。</p>
 <p><span class="ts">03:07</span>如果你不知道什么是标准差，别担心。</p>
 <p><span class="ts">03:11</span>你不需要为这门课了解它。</p>
 <p><span class="ts">03:13</span>或者，如果你听说过正态分布或钟形曲线，有时也称为高斯分布，这就是正态分布的标准差看起来。</p>
 <figure><img src="img/P026/kf012.jpg" alt="03:15" loading="lazy"><figcaption>03:15</figcaption></figure>
 <p><span class="ts">03:25</span>但如果你没听说过这些，你也不必担心。</p>
 <figure><img src="img/P026/kf013.jpg" alt="03:26" loading="lazy"><figcaption>03:26</figcaption></figure>
-<p><span class="ts">03:28</span>但如果你确实知道什么是标准差，那么要实现乙分数归一化，你首先要计算每个特征的均值 mu 以及标准差，标准差通常用小写希腊字母 sigma 来表示。</p>
+<p><span class="ts">03:28</span>但如果你确实知道什么是标准差，那么要实现 Z 分数归一化，你首先要计算每个特征的均值 mu 以及标准差，标准差通常用小写希腊字母 sigma 来表示。</p>
 <figure><img src="img/P026/kf014.jpg" alt="03:30" loading="lazy"><figcaption>03:30</figcaption></figure>
 <p><span class="ts">03:46</span>举个例子，也许特征一的标准差是四百五十，均值是六百。</p>
 <figure><img src="img/P026/kf015.jpg" alt="03:46" loading="lazy"><figcaption>03:46</figcaption></figure>
-<p><span class="ts">03:54</span>然后要对 x 一进行乙分数归一化，取每一个 x 一，减去 mu 一，然后除以标准差，我将用来。</p>
+<p><span class="ts">03:54</span>然后要对 x 一进行 Z 分数归一化，取每一个 x 一，减去 mu 一，然后除以标准差，我将用来。</p>
 <figure><img src="img/P026/kf016.jpg" alt="03:55" loading="lazy"><figcaption>03:55</figcaption></figure>
 <p><span class="ts">04:07</span>你可能会发现，Z 分数归一化后的 x 一现在范围从负零点六七到三点一。</p>
 <figure><img src="img/P026/kf017.jpg" alt="04:07" loading="lazy"><figcaption>04:07</figcaption></figure>
@@ -67,7 +67,7 @@
 <figure><img src="img/P026/kf019.jpg" alt="04:30" loading="lazy"><figcaption>04:30</figcaption></figure>
 <p><span class="ts">04:33</span>在这种情况下，Z 分数归一化后的 x 二现在可能范围从负一点六到一点九。</p>
 <p><span class="ts">04:43</span>所以，如果你在图表上画出归一化后的 x 一和 x 二的训练数据，它可能看起来像这样。</p>
-<p><span class="ts">04:51</span>作为经验法则，在进行特征缩放时，你可能希望达到的目标是，对于每个特征 x，让特征的范围大概在负到正一附近的某个地方。</p>
+<p><span class="ts">04:51</span>作为经验法则，在进行特征缩放时，你可能希望达到的目标是，对于每个特征 x，让特征的范围大概在负一到正一附近的某个地方。</p>
 <figure><img src="img/P026/kf020.jpg" alt="04:53" loading="lazy"><figcaption>04:53</figcaption></figure>
 <figure><img src="img/P026/kf021.jpg" alt="05:04" loading="lazy"><figcaption>05:04</figcaption></figure>
 <p><span class="ts">05:06</span>但这些值，负一和正一，可以稍微宽松一点。</p>

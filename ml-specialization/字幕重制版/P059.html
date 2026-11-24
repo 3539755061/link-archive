@@ -25,8 +25,8 @@
 <p><span class="ts">01:09</span>在代码中，你会这样初始化矩阵 W。</p>
 <p><span class="ts">01:14</span>这是另一个二维 NumPy 数组。</p>
 <p><span class="ts">01:18</span>然后，要计算 Z 等于 A 的转置乘以 W，你会写 Z 等于点 matmul，传入 AT，W。</p>
-<p><span class="ts">01:30</span>这将计算出这里的矩阵乙，得到下面这个结果。</p>
-<p><span class="ts">01:38</span>顺便一说，如果你读别人的代码，有时会看到乙等于 AT 然后符号 W。</p>
+<p><span class="ts">01:30</span>这将计算出这里的矩阵 Z，得到下面这个结果。</p>
+<p><span class="ts">01:38</span>顺便一说，如果你读别人的代码，有时会看到 Z 等于 AT 然后符号 W。</p>
 <p><span class="ts">01:46</span>这是调用 matmul 函数的另一种方式，尽管我觉得使用 np 点 matmul 更清晰。</p>
 <p><span class="ts">01:55</span>所以你在这门课看到的代码中，我们就用这样的 matmul 函数，而不是这个符号。</p>
 <p><span class="ts">02:03</span>那么，我们来看看前向传播的向量化实现是什么样子的。</p>
@@ -34,13 +34,13 @@
 <p><span class="ts">02:08</span>我将设置 A 的转置等于输入特征值二一七。</p>
 <p><span class="ts">02:16</span>这就是常规的输入特征值，二百度烘烤咖啡十七分钟。</p>
 <p><span class="ts">02:22</span>所以这是一个一乘二的矩阵。</p>
-<p><span class="ts">02:26</span>我将取参数 W-、W 二和 w 三，像这样将它们按列堆叠，形成这个矩阵大写 W。</p>
+<p><span class="ts">02:26</span>我将取参数 W 一、W 二和 w 三，像这样将它们按列堆叠，形成这个矩阵大写 W。</p>
 <p><span class="ts">02:38</span>而值 b、b、b，我将放入一个一乘三的矩阵，也就是这个矩阵 B，如下所示。</p>
 <p><span class="ts">02:47</span>那么结果是，如果你计算 Z 等于 A 转置乘 W 加 B，会得到这三个数字。</p>
 <p><span class="ts">02:59</span>这是通过取输入特征值并乘以第一列，然后加上 b，得到一六五。</p>
-<p><span class="ts">03:11</span>取这些特征值，与第二列，也就是权重 w 二做点积，再加上 b 二，得到负五三-。</p>
+<p><span class="ts">03:11</span>取这些特征值，与第二列，也就是权重 w 二做点积，再加上 b 二，得到负五三一。</p>
 <p><span class="ts">03:21</span>这些特征值与权重 w 三点积，再加上 b 三，得到九百。</p>
-<p><span class="ts">03:28</span>如果你想仔细核对这些计算，可以暂停视频，但这会给出 z 一一、2一二和 z 一三的值。</p>
+<p><span class="ts">03:28</span>如果你想仔细核对这些计算，可以暂停视频，但这会给出 z 一一、z 一二和 z 一三的值。</p>
 <p><span class="ts">03:41</span>最后，如果函数 g 将 sigmoid 函数逐个元素应用于这三个数，也就是说，将 sigmoid 函数应用于一六五、负五三一和九百。</p>
 <p><span class="ts">03:55</span>那么你最终得到 a 等于 g 作用于这个矩阵 z，结果是一零一。</p>
 <p><span class="ts">04:02</span>它是一、零、一，因为 sigmoid 函数作用于一六五的结果非常接近一，你知道，不考虑数值舍入误差，它基本就是一。</p>
@@ -49,7 +49,7 @@
 <p><span class="ts">04:23</span>A 的转置等于这个，就是这个一乘二的数组二一七。</p>
 <p><span class="ts">04:29</span>矩阵 W 是这个二乘三矩阵。</p>
 <p><span class="ts">04:37</span>所以，你可以这样在层中实现前向传播：dense 输入 A 转置，W B 等于 Z 等于 matmul A 转置乘 W。</p>
-<p><span class="ts">04:54</span>然后 A_，也就是这个层的输出，等于 g，即逐个元素应用于这个矩阵乙的激活函数。</p>
+<p><span class="ts">04:54</span>然后 A_，也就是这个层的输出，等于 g，即逐个元素应用于这个矩阵 Z 的激活函数。</p>
 <p><span class="ts">05:07</span>然后你返回 A_，这就给出了这个值。</p>
 <p><span class="ts">05:13</span>如果你把这张幻灯片和几个视频前的幻灯片比较，会发现只有一点小区别，根据惯例，在 TensorFlow 中的实现方式，我们不把这个变量叫 AT，而是叫 A_in，这也是为什么这同样是代码的正确实现。</p>
 <figure><img src="img/P059/kf004.jpg" alt="05:23" loading="lazy"><figcaption>05:23</figcaption></figure>

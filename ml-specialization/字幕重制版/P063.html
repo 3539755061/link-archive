@@ -29,32 +29,32 @@
 <p><span class="ts">01:35</span>例如，如果你想预测明天股价相对于今天股价的变化，嗯，它可以涨也可以跌。</p>
 <p><span class="ts">01:45</span>所以在这种情况下，会是一个可正可负的数字。</p>
 <p><span class="ts">01:50</span>在这种情况下，我会推荐你使用线性激活函数。</p>
-<p><span class="ts">01:57</span>这是因为，那样的话你的神经网络输出 f (x)，也就是上面例子中的 a 三，将是 g 作用于2兰。</p>
+<p><span class="ts">01:57</span>这是因为，那样的话你的神经网络输出 f (x)，也就是上面例子中的 a 三，将是 g 作用于 z。</p>
 <p><span class="ts">02:07</span>而使用线性激活函数，g(z）可以取正值或负值。</p>
 <p><span class="ts">02:13</span>所以 y 就可以是正或负。</p>
 <p><span class="ts">02:20</span>如果只能取非负值，比如你在预测房屋价格，那么最自然的选择就是 ReLU 激活函数，因为正如你在这里看到的，这个激活函数只取非负值，要么是零，要么是正值。</p>
 <p><span class="ts">02:34</span>因为正如你在这里看到的，这个激活函数只取非负值，要么是零，要么是正值。</p>
 <p><span class="ts">02:41</span>所以，在为输出层选择激活函数时，通常取决于你试图预测的标签是什么，就会有一个相当自然的选择。</p>
 <p><span class="ts">02:53</span>事实上，这张幻灯片上的指导原则，也几乎就是我一直以来为神经网络输出层选择激活函数的方式。</p>
-<p><span class="ts">03:03</span>那公神经网给的隐臧层呢！</p>
+<p><span class="ts">03:03</span>那么神经网络的隐藏层呢！</p>
 <figure><img src="img/P063/kf002.jpg" alt="03:03" loading="lazy"><figcaption>03:03</figcaption></figure>
 <p><span class="ts">03:07</span>事实证明，ReLU 激活函数是目前许多从业者在训练神经网络时最常用的选择。</p>
 <p><span class="ts">03:19</span>尽管我们最初是用 sigmoid 激活函数来描述神经网络的，并且事实上，在神经网络发展的早期，人们确实在很多地方使用 sigmoid 激活函数。</p>
 <figure><img src="img/P063/kf003.jpg" alt="03:23" loading="lazy"><figcaption>03:23</figcaption></figure>
 <p><span class="ts">03:34</span>但这个领域已经发展到更频繁地使用 ReLU，几乎不再用 sigmoid，唯一的例外是，如果你有二元分类问题，确实会在输出层使用 sigmoid 激活函数。n。</p>
 <figure><img src="img/P063/kf004.jpg" alt="03:48" loading="lazy"><figcaption>03:48</figcaption></figure>
-<p><span class="ts">03:51</span>首先，比较 ReLU 和 sigmoid 激活函数，ReLU 计算起来更快一些，因为它只需要计算零和_z 的最大值，而 sigmoid 则需要取指数，然后取倒数等等。</p>
+<p><span class="ts">03:51</span>首先，比较 ReLU 和 sigmoid 激活函数，ReLU 计算起来更快一些，因为它只需要计算零和 z 的最大值，而 sigmoid 则需要取指数，然后取倒数等等。</p>
 <figure><img src="img/P063/kf005.jpg" alt="03:53" loading="lazy"><figcaption>03:53</figcaption></figure>
-<p><span class="ts">04:08</span>所以已的效率精低一些。</p>
+<p><span class="ts">04:08</span>所以它的效率稍低一些。</p>
 <figure><img src="img/P063/kf006.jpg" alt="04:09" loading="lazy"><figcaption>04:09</figcaption></figure>
-<p><span class="ts">04:10</span>但第二个原因，也是更重要的一个原因，是 ReLU 函数只在图的这一部分，也就是左侧这里，变得。</p>
+<p><span class="ts">04:10</span>但第二个原因，也是更重要的一个原因，是 ReLU 函数只在图的这一部分，也就是左侧这里，变得平坦。</p>
 <p><span class="ts">04:24</span>而 sigmoid 激活函数，有两个地方会变得平坦。</p>
 <p><span class="ts">04:28</span>它在图的左侧变平，在图的右侧也变平。</p>
 <p><span class="ts">04:36</span>如果你使用梯度下降来训练神经网络，那么当函数在很多地方都很平坦时，梯度下降会非常缓慢。</p>
 <p><span class="ts">04:48</span>我知道梯度下降优化的是代价函数 J(W，B），而不是优化激活函数。</p>
 <p><span class="ts">04:57</span>但激活函数是计算过程的一部分。</p>
 <p><span class="ts">05:01</span>这会导致代价函数 J(W，B）中有更多平坦区域，梯度很小，从而减慢学习速度。</p>
-<p><span class="ts">05:11</span>我知道这只是一个直观的解释，但研究人员发现，使用 ReLU 激活函数也能让你的神经网络学习得更快此。</p>
+<p><span class="ts">05:11</span>我知道这只是一个直观的解释，但研究人员发现，使用 ReLU 激活函数也能让你的神经网络学习得更快些。</p>
 <p><span class="ts">05:22</span>这就是为什么对于大多数从业者来说，如果要决定为隐藏层使用什么激活函数，ReLU 激活函数已成为目前最常用的选择。</p>
 <figure><img src="img/P063/kf007.jpg" alt="05:24" loading="lazy"><figcaption>05:24</figcaption></figure>
 <p><span class="ts">05:33</span>事实上，如果我在构建一个神经网络，我也是这样为隐藏层选择激活函数的。</p>

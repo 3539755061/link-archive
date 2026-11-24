@@ -38,8 +38,8 @@
 <figure><img src="img/P068/kf009.jpg" alt="01:54" loading="lazy"><figcaption>01:54</figcaption></figure>
 <p><span class="ts">02:02</span>让我先用逻辑回归更详细地解释一下，然后我们会展示这些思想如何应用于改进我们的 softmax 实现。</p>
 <figure><img src="img/P068/kf010.jpg" alt="02:02" loading="lazy"><figcaption>02:02</figcaption></figure>
-<p><span class="ts">02:13</span>那公，首先让我用逻辑回归来说明这些思想，然后再继续展示如何也改进你的 softmax 实现。</p>
-<p><span class="ts">02:24</span>回想一下逻辑回归，如果你想计算损失函数，对于给定的样本，你会首先计算这个输出激活值 A，即 g(z)，或一除以一加 e 的负 z 次方，T。</p>
+<p><span class="ts">02:13</span>那么，首先让我用逻辑回归来说明这些思想，然后再继续展示如何也改进你的 softmax 实现。</p>
+<p><span class="ts">02:24</span>回想一下逻辑回归，如果你想计算损失函数，对于给定的样本，你会首先计算这个输出激活值 A，即 g(z)，或一除以一加 e 的负 z 次方。</p>
 <p><span class="ts">02:38</span>然后你使用这里的这个表达式计算损失。</p>
 <p><span class="ts">02:44</span>事实上，对于使用二元交叉熵损失的逻辑输出层，代码看起来就会像这样。</p>
 <p><span class="ts">02:56</span>对于逻辑回归，这工作得不错。</p>
@@ -64,11 +64,11 @@
 <p><span class="ts">06:04</span>但是，如果你再次改为指定损失为：如果 y 等于一，就是该公式的负对数，依此类推，如果 y 等于十，就是这个公式，那么这赋予了 TensorFlow 重新排列各项并以一种数值上更精确的方式进行计算的能力。</p>
 <p><span class="ts">06:32</span>为了让你对 TensorFlow 为什么要这样做有点直观理解，事实表明，如果某个 z 值非常小，那么 e 的一个很小的负数次方会变得非常非常小。N。</p>
 <p><span class="ts">06:43</span>或者如果某个 z 值非常大，那么 e 的 z 次方会变得非常非常大。</p>
-<p><span class="ts">06:51</span>通过重新排列各项，TensorFlow 可以避免这些非常小或非常大的数，从而得出对损失函数更精确的计算 e。</p>
+<p><span class="ts">06:51</span>通过重新排列各项，TensorFlow 可以避免这些非常小或非常大的数，从而得出对损失函数更精确的计算。</p>
 <p><span class="ts">07:01</span>所以执行此操作的代码如下所示。</p>
 <p><span class="ts">07:05</span>在输出层，我们现在只使用线性激活函数。</p>
 <p><span class="ts">07:10</span>因此输出层仅计算 z 一到 z 十。</p>
-<p><span class="ts">07:15</span>而损失的整个计算则被整合到这里的损失函数中，我们再次使用了等于 true 参数。</p>
+<p><span class="ts">07:15</span>而损失的整个计算则被整合到这里的损失函数中，我们再次使用了 logits 等于 true 参数。</p>
 <p><span class="ts">07:28</span>所以，这两段代码做的事情几乎完全相同，区别在于推荐的版本在数值上更精确，尽管不幸的是，它也稍微更难阅读一些。</p>
 <p><span class="ts">07:41</span>所以，如果你在阅读别人的代码时看到这个，并想知道这是怎么回事，它至少在概念上等同于原始实现，只是数值上更精确。N。</p>
 <p><span class="ts">07:53</span>逻辑回归的数值舍入误差没那么严重，但还是建议你使用底部的这个实现。</p>

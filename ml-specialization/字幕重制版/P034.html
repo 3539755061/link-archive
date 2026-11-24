@@ -18,8 +18,8 @@
 <p><span class="ts">00:02</span>记住，代价函数为你提供了一种衡量特定参数集合拟合训练数据效果的方法，并由此为你提供了一种尝试选择更好参数的途径。</p>
 <figure><img src="img/P034/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
 <figure><img src="img/P034/kf002.jpg" alt="00:04" loading="lazy"><figcaption>00:04</figcaption></figure>
-<p><span class="ts">00:16</span>本视频我们将探讨为什么平方误差代价函数对于逻辑回归来说不是一个理想的代价函数，并将着眼一于一个不同的代价函数，它能帮助我们为逻辑回归选择更好的参数。</p>
-<p><span class="ts">00:31</span>这是一个逻辑回归模型的训练集可能的模样，这里每一行可能对应一位去看医生并最终获得某种诊的病人。</p>
+<p><span class="ts">00:16</span>本视频我们将探讨为什么平方误差代价函数对于逻辑回归来说不是一个理想的代价函数，并将着眼于一个不同的代价函数，它能帮助我们为逻辑回归选择更好的参数。</p>
+<p><span class="ts">00:31</span>这是一个逻辑回归模型的训练集可能的模样，这里每一行可能对应一位去看医生并最终获得某种诊断的病人。</p>
 <figure><img src="img/P034/kf003.jpg" alt="00:32" loading="lazy"><figcaption>00:32</figcaption></figure>
 <figure><img src="img/P034/kf004.jpg" alt="00:43" loading="lazy"><figcaption>00:43</figcaption></figure>
 <p><span class="ts">00:46</span>和之前一样，我们用 m 来表示训练样本的数量。</p>
@@ -60,7 +60,7 @@
 <p><span class="ts">04:32</span>我就在这里写下我们将用于逻辑回归的损失函数的定义。</p>
 <p><span class="ts">04:40</span>如果标签等于零，那么损失就是一减 x 的 f 的负对数。</p>
 <p><span class="ts">04:57</span>我们来看看为什么这个损失函数希望是有道理的。</p>
-<p><span class="ts">05:04</span>让我们首先考虑等于一的情况，并绘制这个函数的图像，以获得一些关于这个损失函数在做什么的直观理解。</p>
+<p><span class="ts">05:04</span>让我们首先考虑 y 等于一的情况，并绘制这个函数的图像，以获得一些关于这个损失函数在做什么的直观理解。</p>
 <figure><img src="img/P034/kf017.jpg" alt="05:05" loading="lazy"><figcaption>05:05</figcaption></figure>
 <p><span class="ts">05:15</span>记住，损失函数衡量的是你在一个训练样本上的表现，而通过将所有训练样本上的损失加起来，你才得到了代价函数，它衡量的是你在整个训练集上的表现。</p>
 <figure><img src="img/P034/kf018.jpg" alt="05:16" loading="lazy"><figcaption>05:16</figcaption></figure>
@@ -81,10 +81,10 @@
 <figure><img src="img/P034/kf024.jpg" alt="07:16" loading="lazy"><figcaption>07:16</figcaption></figure>
 <p><span class="ts">07:19</span>所以当等于一时，损失函数激励或者说推动、帮助算法去做出更准确的预测，因为当它预测的值接近一时，损失是最低的。</p>
 <figure><img src="img/P034/kf025.jpg" alt="07:21" loading="lazy"><figcaption>07:21</figcaption></figure>
-<p><span class="ts">07:33</span>在这张幻灯片上，我们一直在看等于一时的损失情况。</p>
+<p><span class="ts">07:33</span>在这张幻灯片上，我们一直在看 y 等于一时的损失情况。</p>
 <figure><img src="img/P034/kf026.jpg" alt="07:33" loading="lazy"><figcaption>07:33</figcaption></figure>
 <figure><img src="img/P034/kf027.jpg" alt="07:38" loading="lazy"><figcaption>07:38</figcaption></figure>
-<p><span class="ts">07:39</span>在这张幻灯片上，我们来看损失函数的第二部分，对应于等于零的情况。</p>
+<p><span class="ts">07:39</span>在这张幻灯片上，我们来看损失函数的第二部分，对应于 y 等于零的情况。</p>
 <p><span class="ts">07:46</span>在这种情况下，损失是一减 x 的 f 的负对数。</p>
 <p><span class="ts">07:53</span>当绘制这个函数时，它实际上看起来像这样。</p>
 <p><span class="ts">07:57</span>f 的范围被限制在零到一，因为逻辑回归只输出零到一之间的值。</p>
@@ -113,7 +113,7 @@
 <figure><img src="img/P034/kf035.jpg" alt="10:12" loading="lazy"><figcaption>10:12</figcaption></figure>
 <p><span class="ts">10:22</span>证明这个函数是凸的已超出本课程的范围。</p>
 <figure><img src="img/P034/kf036.jpg" alt="10:23" loading="lazy"><figcaption>10:23</figcaption></figure>
-<p><span class="ts">10:28</span>你可能还记得，代价函数是整个训练集的函数，因此是各个训练样本上损失函数的平均值，或者说分之一乘以它们之和。</p>
+<p><span class="ts">10:28</span>你可能还记得，代价函数是整个训练集的函数，因此是各个训练样本上损失函数的平均值，或者说 m 分之一乘以它们之和。</p>
 <figure><img src="img/P034/kf037.jpg" alt="10:29" loading="lazy"><figcaption>10:29</figcaption></figure>
 <figure><img src="img/P034/kf038.jpg" alt="10:41" loading="lazy"><figcaption>10:41</figcaption></figure>
 <p><span class="ts">10:42</span>所以，特定参数集合 W 和 b 上的代价等于，m 分之一乘以所有训练样本上的损失之和。</p>
@@ -129,7 +129,7 @@
 <p><span class="ts">11:39</span>所以请在这个视频之后看看代码和图表。</p>
 <p><span class="ts">11:46</span>好的，那么本视频我们看了很多内容。</p>
 <p><span class="ts">11:48</span>在下个视频中，让我们回过头来，取单个训练样本的损失函数，并用它来定义整个训练集的整体代价函数。</p>
-<p><span class="ts">12:08</span>我们也将找出一种更简单的方法写出代价函数，这将随后允许我们运行梯度下降来为逻辑回归找到子的参数。</p>
+<p><span class="ts">12:08</span>我们也将找出一种更简单的方法写出代价函数，这将随后允许我们运行梯度下降来为逻辑回归找到好的参数。</p>
 <p><span class="ts">12:09</span>让我们进入下一个视频。</p>
 </main>
 <nav class="pager"><a href="P033.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P035.html">下一讲 →</a></nav>

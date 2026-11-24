@@ -36,12 +36,12 @@
 <figure><img src="img/P028/kf005.jpg" alt="01:36" loading="lazy"><figcaption>01:36</figcaption></figure>
 <p><span class="ts">01:43</span>这也很可能是由于学习率太大，可以通过选择一个较小的学习率来解决。</p>
 <p><span class="ts">01:51</span>但像这样的学习率表现也可能预示着代码中可能存在的 bug。</p>
-<p><span class="ts">01:57</span>例如，如果我写的代码里 w 一的更新方式是 w 一加 alpha 乘以其导数项，这可能导致代价在每次迭代时持续增。</p>
+<p><span class="ts">01:57</span>例如，如果我写的代码里 w 一的更新方式是 w 一加 alpha 乘以其导数项，这可能导致代价在每次迭代时持续增加。</p>
 <figure><img src="img/P028/kf006.jpg" alt="01:58" loading="lazy"><figcaption>01:58</figcaption></figure>
 <figure><img src="img/P028/kf007.jpg" alt="02:10" loading="lazy"><figcaption>02:10</figcaption></figure>
 <p><span class="ts">02:12</span>这是因为加上导数项会让你的代价离全局最小值越来越远，而不是越来越近。</p>
 <p><span class="ts">02:20</span>所以要记住，你想用的是减号，所以代码应该更新 w 一为 w 一减去 alpha 乘以导数项。</p>
-<p><span class="ts">02:32</span>对于正确实现梯度下降的一个调试技巧是，只要学习率足够小，代价函数就应该在每一次迭代中都。</p>
+<p><span class="ts">02:32</span>对于正确实现梯度下降的一个调试技巧是，只要学习率足够小，代价函数就应该在每一次迭代中都下降。</p>
 <figure><img src="img/P028/kf008.jpg" alt="02:34" loading="lazy"><figcaption>02:34</figcaption></figure>
 <figure><img src="img/P028/kf009.jpg" alt="02:43" loading="lazy"><figcaption>02:43</figcaption></figure>
 <p><span class="ts">02:44</span>所以如果梯度下降不起作用，我常常会做的一件事，也希望你觉得这个技巧有用，我常常会做的一件事就是把 alpha 设成一个非常非常小的数字，看看这能否让代价在每次迭代中都下降。e。</p>
@@ -74,7 +74,7 @@
 <p><span class="ts">05:12</span>所以，我希望这个技巧对于你为梯度下降的实现选择一个好的学习率也会很有用。</p>
 <p><span class="ts">05:25</span>在接下来的选修实验中，你还可以看看特征缩放在代码中是如何完成的，也看看学习率 alpha 的不同选择如何导致你模型训练得更好或更差。</p>
 <p><span class="ts">05:36</span>我希望你享受调试 alpha 的值，并观察选择不同 alpha 值所带来的不同结果。</p>
-<p><span class="ts">05:44</span>所以，请看一看并运行选修实验中的代码，以获得关于特征缩放以及学习率 alpha 的更深的直观理。</p>
+<p><span class="ts">05:44</span>所以，请看一看并运行选修实验中的代码，以获得关于特征缩放以及学习率 alpha 的更深的直观理解。</p>
 <figure><img src="img/P028/kf023.jpg" alt="05:52" loading="lazy"><figcaption>05:52</figcaption></figure>
 <p><span class="ts">05:55</span>选择学习率是训练许多学习算法的关键一环，我希望这个视频能给你关于不同选择的直观感受，以及如何去挑选一个好的 alpha 值。</p>
 <p><span class="ts">06:07</span>现在，还有一些想法可以用来使多元线性回归更加强大，那就是选择自定义特征，这也将。</p>

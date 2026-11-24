@@ -33,7 +33,7 @@
 <p><span class="ts">01:38</span>因此，计算机可以获取向量 w 和 x 的所有值，在单一步骤中，它同时并行地将每一对 w 和 x 相乘。</p>
 <figure><img src="img/P023/kf004.jpg" alt="01:39" loading="lazy"><figcaption>01:39</figcaption></figure>
 <figure><img src="img/P023/kf005.jpg" alt="01:50" loading="lazy"><figcaption>01:50</figcaption></figure>
-<p><span class="ts">01:51</span>在那之后，计算机取得这十六个数字，并使用专门的硬件非常高效地将它们全部加总起来，而不是需要－个接一个地执行不同的加法来累加这十六个数字。</p>
+<p><span class="ts">01:51</span>在那之后，计算机取得这十六个数字，并使用专门的硬件非常高效地将它们全部加总起来，而不是需要一个接一个地执行不同的加法来累加这十六个数字。</p>
 <figure><img src="img/P023/kf006.jpg" alt="01:53" loading="lazy"><figcaption>01:53</figcaption></figure>
 <p><span class="ts">02:07</span>这意味着带有向量化的代码能在比没有向量化的代码少得多的时间内完成计算。</p>
 <figure><img src="img/P023/kf007.jpg" alt="02:07" loading="lazy"><figcaption>02:07</figcaption></figure>
@@ -57,7 +57,7 @@
 <p><span class="ts">04:54</span>在代码中，你可以这样实现：w 被赋值为 w 减去零点一乘以 d。</p>
 <p><span class="ts">05:04</span>在幕后，计算机取这些 NumPy 数组 W 和 d，并使用并行处理硬件高效地执行所有十六次计算。</p>
 <p><span class="ts">05:15</span>所以，使用向量化实现，你应该会得到一个高效得多的线性回归实现。</p>
-<p><span class="ts">05:22</span>如果你只有十六个特征，速度差异也许不会很大，但如果你有成千上万个特征以及可能非常大的训 u 练集，这种向量化实现将在你的学习算法的运行时间上产生巨大差异。</p>
+<p><span class="ts">05:22</span>如果你只有十六个特征，速度差异也许不会很大，但如果你有成千上万个特征以及可能非常大的训练集，这种向量化实现将在你的学习算法的运行时间上产生巨大差异。</p>
 <figure><img src="img/P023/kf013.jpg" alt="05:24" loading="lazy"><figcaption>05:24</figcaption></figure>
 <p><span class="ts">05:39</span>这可能是代码在一两分钟内完成，还是花费很多很多小时做同样事情的区别。</p>
 <p><span class="ts">05:52</span>在这个视频之后的选修实验中，你会看到对机器学习中最常用的 Python 库之一的介绍，这个库我们在本视频中已经提及，叫做 NumPy。</p>
@@ -75,7 +75,7 @@
 <p><span class="ts">06:36</span>所以当你阅读这个选修实验时，请不要觉得你必须立刻理解所有代码，但你可以保存这个，并在处理存储在 NumPy 数组中的数据时，把它当作一份参考资料来查看。</p>
 <figure><img src="img/P023/kf020.jpg" alt="06:38" loading="lazy"><figcaption>06:38</figcaption></figure>
 <p><span class="ts">06:51</span>那么，恭喜你完成了这个关于向量化的视频。</p>
-<p><span class="ts">07:05</span>你已经学习了实现机器学习算法中最重要也最有用的技巧之一。在下一个视频中，我们将把多元线－一性回归的数学与向量化结合起来，以便你用向量化为多元线性回归实现梯度下降。</p>
+<p><span class="ts">07:05</span>你已经学习了实现机器学习算法中最重要也最有用的技巧之一。在下一个视频中，我们将把多元线性回归的数学与向量化结合起来，以便你用向量化为多元线性回归实现梯度下降。</p>
 <p><span class="ts">07:12</span>让我们进入下一个视频。</p>
 </main>
 <nav class="pager"><a href="P022.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P024.html">下一讲 →</a></nav>

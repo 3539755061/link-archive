@@ -36,7 +36,7 @@
 <p><span class="ts">01:43</span>它是 m 分之一乘以从一到 m 求和的这个误差项，即 f 减去标签 y 再乘以 xj。</p>
 <p><span class="ts">01:59</span>这里，这个 xij 是第 i 个训练样本的第 j 个特征。</p>
 <p><span class="ts">02:07</span>现在，我们也来看一下 J 关于参数 b 的导数。</p>
-<p><span class="ts">02:12</span>结果就是这里的这个表达式，它和上面的表达式非常相似，除了末尾没有乘以这个带有上标 i 下称 j 的 x。</p>
+<p><span class="ts">02:12</span>结果就是这里的这个表达式，它和上面的表达式非常相似，除了末尾没有乘以这个带有上标 i 下标 j 的 x。</p>
 <figure><img src="img/P036/kf011.jpg" alt="02:14" loading="lazy"><figcaption>02:14</figcaption></figure>
 <figure><img src="img/P036/kf012.jpg" alt="02:25" loading="lazy"><figcaption>02:25</figcaption></figure>
 <p><span class="ts">02:26</span>提醒一下，与你在线性回归中看到的类似，执行这些更新的方式是要使用同步更新，意味着你会先为所有这些更新计算右侧的值。</p>
@@ -59,11 +59,11 @@
 <p><span class="ts">04:07</span>你可以对逻辑回归应用同样的方法来确保它也能收敛。</p>
 <p><span class="ts">04:14</span>我写出这些更新式时，像是你每次更新参数 wj 中的一个参数。</p>
 <p><span class="ts">04:24</span>与讨论线性回归的向量化实现类似，你也可以使用向量化来让逻辑回归的梯度下降运行得更快。</p>
-<p><span class="ts">04:37</span>我不会在这个视频中深入探讨向量化实现的细节，但你也可以在选修实验中了解更多并看到相关代。</p>
+<p><span class="ts">04:37</span>我不会在这个视频中深入探讨向量化实现的细节，但你也可以在选修实验中了解更多并看到相关代码。</p>
 <figure><img src="img/P036/kf020.jpg" alt="04:39" loading="lazy"><figcaption>04:39</figcaption></figure>
 <p><span class="ts">04:48</span>那么现在，你知道了如何为逻辑回归实现梯度下降。</p>
 <figure><img src="img/P036/kf021.jpg" alt="04:50" loading="lazy"><figcaption>04:50</figcaption></figure>
-<p><span class="ts">04:54</span>你可能还记得我们在使用线性回归时的特征缩放，你看到了特征缩放，也就是将所有特征缩放到相 a 似的值范围，比如负一到正一之间，这如何能帮助梯度下降更快地收敛。</p>
+<p><span class="ts">04:54</span>你可能还记得我们在使用线性回归时的特征缩放，你看到了特征缩放，也就是将所有特征缩放到相似的值范围，比如负一到正一之间，这如何能帮助梯度下降更快地收敛。</p>
 <figure><img src="img/P036/kf022.jpg" alt="04:56" loading="lazy"><figcaption>04:56</figcaption></figure>
 <p><span class="ts">05:12</span>以同样的方式应用特征缩放，将不同特征缩放到相似的值范围，也可以加速逻辑回归的梯度下降。</p>
 <figure><img src="img/P036/kf023.jpg" alt="05:12" loading="lazy"><figcaption>05:12</figcaption></figure>
