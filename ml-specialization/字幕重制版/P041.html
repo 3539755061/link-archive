@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 41 讲 正则化逻辑回归 · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 3 周</p>
+<h1>第 41 讲 正则化逻辑回归</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 3 周 · 5:44 · 分 P 41 · 36 段 11 图</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>在本视频中，你将看到如何实现正则化逻辑回归。</p>
+<figure><img src="img/P041/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<p><span class="ts">00:08</span>正如逻辑回归的梯度更新与线性回归的梯度更新看起来惊人地相似一样，你会发现正则化逻辑回归的梯度下降更新看起来也与正则化线性回归的更新相似。</p>
+<figure><img src="img/P041/kf002.jpg" alt="00:26" loading="lazy"><figcaption>00:26</figcaption></figure>
+<p><span class="ts">00:26</span>之前我们了解到，如果使用像这样的高阶多项式特征来拟合逻辑回归，它可能会出现过拟合。</p>
+<p><span class="ts">00:35</span>这里的 z 是一个高阶多项式，像这样传递给 sigmoid 函数来计算 f。</p>
+<p><span class="ts">00:45</span>特别是，你最终可能会得到一个过于复杂的决策边界，从而过拟合训练集。</p>
+<p><span class="ts">00:54</span>更一般地说，当你使用大量特征训练逻辑回归时，无论是多项式特征还是其他特征，过拟合的风险都会更高。</p>
+<figure><img src="img/P041/kf003.jpg" alt="00:55" loading="lazy"><figcaption>00:55</figcaption></figure>
+<figure><img src="img/P041/kf004.jpg" alt="01:05" loading="lazy"><figcaption>01:05</figcaption></figure>
+<p><span class="ts">01:09</span>如果你想修改它以使用正则化，所需要做的就是添加下面这一项。</p>
+<p><span class="ts">01:17</span>我们加上 lambda，也就是正则化参数，除以两倍的 m，乘以从 j 等于一到 n 的和，其中 n 照常是特征的数量，求和项为 wj 的平方。</p>
+<figure><img src="img/P041/kf005.jpg" alt="01:19" loading="lazy"><figcaption>01:19</figcaption></figure>
+<p><span class="ts">01:31</span>因此，当你将这个代价函数作为 w 和 b 的函数进行最小化时，它会产生惩罚参数 w 一、w 二直到的效果，并防止它们变得过大。N。</p>
+<p><span class="ts">01:44</span>如果你这样做，那么即使你使用包含许多参数的高阶多项式进行拟合，你仍然会得到一个看起来像这样的决策边界。</p>
+<p><span class="ts">01:54</span>这样的决策边界在分离正负样本时看起来更合理，同时也有望对训练集之外的新样本进行泛化。</p>
+<figure><img src="img/P041/kf006.jpg" alt="01:56" loading="lazy"><figcaption>01:56</figcaption></figure>
+<p><span class="ts">02:05</span>那么，当使用正则化时，即使你有很多特征，实际该如何实现呢？</p>
+<p><span class="ts">02:12</span>你究竟怎样才能最小化这个包含了正则化项的代价函数 J(w,b) 呢？</p>
+<p><span class="ts">02:19</span>让我们像之前一样使用梯度下降法。</p>
+<figure><img src="img/P041/kf007.jpg" alt="02:19" loading="lazy"><figcaption>02:19</figcaption></figure>
+<p><span class="ts">02:23</span>这是你想要最小化的代价函数。</p>
+<figure><img src="img/P041/kf008.jpg" alt="02:24" loading="lazy"><figcaption>02:24</figcaption></figure>
+<p><span class="ts">02:27</span>为了实现梯度下降，像之前一样，我们将对 wj 和 b 进行如下的同步更新。</p>
+<p><span class="ts">02:37</span>这些是梯度下降的常规更新规则。</p>
+<p><span class="ts">02:41</span>就像正则化线性回归一样，当你计算这些导数项时，唯一改变的是，对于 wj 的导数，最后会加上这一项，也就是 lambda 除以 m 乘以 wj。</p>
+<p><span class="ts">03:00</span>同样，这看起来非常像正则化线性回归的更新。</p>
+<p><span class="ts">03:05</span>事实上，除了 f 的定义现在不再是线性函数，而是应用于 z 的逻辑函数之外，其他部分是完全相同的方程。</p>
+<p><span class="ts">03:17</span>与线性回归类似，我们只对参数 wj 进行正则化，而不对参数 b 进行正则化，这就是为什么 b 的更新没有变化的原因。</p>
+<p><span class="ts">03:30</span>在本周最后一个可选实验中，你将重新探讨过拟合问题。</p>
+<figure><img src="img/P041/kf009.jpg" alt="03:31" loading="lazy"><figcaption>03:31</figcaption></figure>
+<figure><img src="img/P041/kf010.jpg" alt="03:36" loading="lazy"><figcaption>03:36</figcaption></figure>
+<p><span class="ts">03:36</span>在可选实验的交互式绘图中，你现在可以通过在梯度下降过程中选择 lambda 的值来启用正则化，从而对回归和分类模型进行正则化。</p>
+<figure><img src="img/P041/kf011.jpg" alt="03:43" loading="lazy"><figcaption>03:43</figcaption></figure>
+<p><span class="ts">03:51</span>请特别留意实现正则化逻辑回归的代码，因为你将在本周结束时的练习实验中亲自实现它。</p>
+<p><span class="ts">04:04</span>那么，现在你已经知道如何实现正则化逻辑回归了。</p>
+<p><span class="ts">04:07</span>当我在硅谷走动时，有很多工程师正在使用机器学习创造大量价值，有时为公司赚了很多钱。</p>
+<p><span class="ts">04:18</span>我知道你学习这些东西才几周时间，但如果你理解并能应用线性回归和逻辑回归，这实际上就足以让你创建一些非常有价值的应用了。</p>
+<p><span class="ts">04:32</span>虽然你使用的具体学习算法很重要，但了解诸如何时以及如何减少过拟合等知识，结果证明在现实世界中也是一项非常有价值的技能。</p>
+<p><span class="ts">04:43</span>所以，我想说，恭喜你取得了这么大的进步。</p>
+<p><span class="ts">04:48</span>而且我想说，你能坚持看完这个视频，真的很棒。</p>
+<p><span class="ts">04:53</span>我也希望你能完成练习实验和测验。</p>
+<p><span class="ts">04:58</span>话虽如此，仍然有许多更令人兴奋的东西需要学习。</p>
+<p><span class="ts">05:03</span>在本专业课程的第二门课中，你将学习神经网络，也就是常说的深度学习算法。从实用的语音识别到计算机准确识别图像中的物体，再到自动驾驶汽车，当今人工智能的许多最新突破都归功于神经网络。</p>
+<p><span class="ts">05:32</span>构建神经网络的方式实际上大量运用了你已经学过的知识，比如代价函数、梯度下降和 sigmoid 函。</p>
+<p><span class="ts">05:33</span>再次祝贺你完成了第一门课程第三周也就是最后一周的学习。</p>
+<p><span class="ts">05:39</span>希望你在实验中玩得开心，我们下周关于神经网络的课程材料中再见。</p>
+</main>
+<nav class="pager"><a href="P040.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P042.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 36 个带时间戳的段落、11 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 7 讲 无监督学习（二） · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 1 周</p>
+<h1>第 7 讲 无监督学习（二）</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 1 周 · 3:51 · 分 P 7 · 29 段 14 图</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>在上一个视频中，你了解了什么是无监督学习，以及一种称为聚类的无监督学习类型。</p>
+<figure><img src="img/P007/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<p><span class="ts">00:10</span>让我们给出一个稍微更正式的无监督学习定义，并快速了解除聚类之外的其他一些无监督学习类型。</p>
+<p><span class="ts">00:20</span>在监督学习中，数据同时包含输入 X 和输出标签丫，而在无监督学习中，数据仅包含输入 X，不包含输出标签 Y。</p>
+<figure><img src="img/P007/kf002.jpg" alt="00:21" loading="lazy"><figcaption>00:21</figcaption></figure>
+<p><span class="ts">00:32</span>算法需要在数据中找到某种结构、某种模式或者某种有趣的东西。</p>
+<figure><img src="img/P007/kf003.jpg" alt="00:33" loading="lazy"><figcaption>00:33</figcaption></figure>
+<p><span class="ts">00:39</span>我们只看到了一个无监督学习的例子，称为聚类算法，它将相似的数据点分组在一起。</p>
+<p><span class="ts">00:48</span>在本专项课程中，你将学习聚类以及其他两种类型的无监督学习。</p>
+<p><span class="ts">00:55</span>一种称为异常检测，用于检测异常事件。</p>
+<p><span class="ts">01:02</span>事实证明，这对于金融系统中的欺诈检测非常重要，其中异常事件、异常交易可能是欺诈的迹象，并且该技术还适用于许多其他应用。</p>
+<figure><img src="img/P007/kf004.jpg" alt="01:03" loading="lazy"><figcaption>01:03</figcaption></figure>
+<figure><img src="img/P007/kf005.jpg" alt="01:17" loading="lazy"><figcaption>01:17</figcaption></figure>
+<p><span class="ts">01:19</span>这让你能够获取一个大数据集，并几乎奇迹般地将其压缩成一个更小的数据集，同时尽可能少地丢失信息。</p>
+<figure><img src="img/P007/kf006.jpg" alt="01:21" loading="lazy"><figcaption>01:21</figcaption></figure>
+<p><span class="ts">01:31</span>如果你觉得异常检测和降维暂时还不太容易理解，不用担心。</p>
+<figure><img src="img/P007/kf007.jpg" alt="01:32" loading="lazy"><figcaption>01:32</figcaption></figure>
+<p><span class="ts">01:38</span>我们将在本专项课程的后面部分学习这些内容。</p>
+<p><span class="ts">01:42</span>现在，我想再问你一个问题，以帮助你检查理解程度。</p>
+<figure><img src="img/P007/kf008.jpg" alt="01:43" loading="lazy"><figcaption>01:43</figcaption></figure>
+<p><span class="ts">01:49</span>别紧张，如果你第一次没答对，完全没问题。</p>
+<p><span class="ts">01:53</span>请选出你认为属于无监督学习示例的所有选项。</p>
+<figure><img src="img/P007/kf009.jpg" alt="01:54" loading="lazy"><figcaption>01:54</figcaption></figure>
+<p><span class="ts">01:59</span>其中两个是无监督学习的例子，两个是监督学习的例子。</p>
+<p><span class="ts">02:10</span>也许你还记得垃圾邮件过滤问题。</p>
+<p><span class="ts">02:13</span>如果你有标记数据，即标记为垃圾邮件或非垃圾邮件的电子邮件，你可以将其视为一个监督学习问。</p>
+<figure><img src="img/P007/kf010.jpg" alt="02:14" loading="lazy"><figcaption>02:14</figcaption></figure>
+<p><span class="ts">02:23</span>第二个例子，新闻报道的例子，正是你在上一个视频中看到的和熊猫的例子。</p>
+<figure><img src="img/P007/kf011.jpg" alt="02:24" loading="lazy"><figcaption>02:24</figcaption></figure>
+<p><span class="ts">02:31</span>因此，你可以使用聚类算法来处理该问题，将新闻文章分组在一起。</p>
+<p><span class="ts">02:38</span>所以那会用到无监督学习。</p>
+<p><span class="ts">02:41</span>我之前稍微谈到的市场细分例子，你也可以将其作为一个无监督学习问题来处理，因为你可以给算法一些数据，让它自动发现市场细分。</p>
+<figure><img src="img/P007/kf012.jpg" alt="02:42" loading="lazy"><figcaption>02:42</figcaption></figure>
+<figure><img src="img/P007/kf013.jpg" alt="02:54" loading="lazy"><figcaption>02:54</figcaption></figure>
+<p><span class="ts">02:56</span>最后一个是关于诊断糖尿病的例子。</p>
+<p><span class="ts">03:00</span>实际上，这很像我们在监督学习视频中的乳腺癌例子。</p>
+<p><span class="ts">03:06</span>只是将良性或恶性肿瘤换成了患有糖尿病或未患糖尿病。</p>
+<p><span class="ts">03:12</span>因此，你可以像处理乳腺肿瘤分类问题一样，将其作为一个监督学习问题来处理。</p>
+<p><span class="ts">03:21</span>尽管在这个视频和上一个视频中，我们主要讨论了聚类，但在本专项课程的后续视频中，我们也将更深入地探讨异常检测和降维。</p>
+<figure><img src="img/P007/kf014.jpg" alt="03:22" loading="lazy"><figcaption>03:22</figcaption></figure>
+<p><span class="ts">03:35</span>以上就是无监督学习的内容。</p>
+<p><span class="ts">03:38</span>在结束本部分之前，我想与你分享一件我觉得非常令人兴奋且有用的事情，那就是在机器学习中使用 Jupyter 笔记本。</p>
+<p><span class="ts">03:49</span>让我们在下一个视频中看看它。</p>
+</main>
+<nav class="pager"><a href="P006.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P008.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 29 个带时间戳的段落、14 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

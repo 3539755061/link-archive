@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 22 讲 向量化（一） · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 22 讲 向量化（一）</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 2 周 · 7:10 · 分 P 22 · 51 段 15 图</p>
+</header>
+<main>
+<p><span class="ts">00:03</span>在本期视频中，你将了解一个非常有用的概念，叫做向量化。</p>
+<figure><img src="img/P022/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<p><span class="ts">00:09</span>一当你实现一个学习算法时，使用向量化不仅能让你的代码更短，还能让它运行得高效得多。</p>
+<p><span class="ts">00:18</span>学习如何编写向量化代码，也能让你利用现代数值线性代数库，甚至可能是 GPU 硬件，即图形处理器单元。</p>
+<p><span class="ts">00:30</span>这是一种可选设计用于加速计算机图形处理的硬件，但事实证明，当你编写向量化代码时，它也能用来帮助你的代码执行得快得多。</p>
+<p><span class="ts">00:42</span>我们来看一个具体的例子，说明向量化意味着什么。</p>
+<figure><img src="img/P022/kf002.jpg" alt="00:44" loading="lazy"><figcaption>00:44</figcaption></figure>
+<p><span class="ts">00:47</span>这里有一个关于参数 w 和 b 的例子，其中 w 是一个包含三个数字的向量，你还有一个特征向量 x，也包含三个数字。</p>
+<figure><img src="img/P022/kf003.jpg" alt="00:49" loading="lazy"><figcaption>00:49</figcaption></figure>
+<figure><img src="img/P022/kf004.jpg" alt="01:00" loading="lazy"><figcaption>01:00</figcaption></figure>
+<p><span class="ts">01:04</span>请注意，在线性代数中，索引或计数是从一开始的，所以第一个值下标是 w 一和 x 一。</p>
+<p><span class="ts">01:16</span>在 Python 代码中，你可以使用这样的数组来定义这些变量 w、b 和 x。</p>
+<p><span class="ts">01:24</span>这里，我实际上用的是一个 Python 中的数值线性代数库，叫做 NumPy，它是迄今为止 Python 和机器学习领域使用最广泛的数值线性代数库。N。</p>
+<figure><img src="img/P022/kf005.jpg" alt="01:25" loading="lazy"><figcaption>01:25</figcaption></figure>
+<p><span class="ts">01:37</span>因为在 Python 中，数组的索引或计数是从零开始的，你会用 w 方括号零来访问 w 的第一个值，用 w 方括号一来访问第二个值，用 w 方括号二来访问第三个值。</p>
+<figure><img src="img/P022/kf006.jpg" alt="01:37" loading="lazy"><figcaption>01:37</figcaption></figure>
+<figure><img src="img/P022/kf007.jpg" alt="01:46" loading="lazy"><figcaption>01:46</figcaption></figure>
+<figure><img src="img/P022/kf008.jpg" alt="01:57" loading="lazy"><figcaption>01:57</figcaption></figure>
+<p><span class="ts">01:58</span>所以这里的索引是从零、一到二，而不是一、二、三。</p>
+<p><span class="ts">02:06</span>类似地，要访问 x 的各个特征，你会用 x 零、x 一和 x 二。</p>
+<p><span class="ts">02:14</span>许多编程语言，包括 Python，都是从零开始计数，而不是从一开始。</p>
+<p><span class="ts">02:20</span>现在，我们来看一个不使用向量化来计算模型预测的实现。</p>
+<p><span class="ts">02:27</span>在代码中，它看起来会像这样。</p>
+<p><span class="ts">02:30</span>你取每个参数 W，并将其乘以其关联的特征。</p>
+<p><span class="ts">02:37</span>现在，你可以像这样写代码，但如果 n 不是三，而是 n 等于一百或者十万呢？</p>
+<p><span class="ts">02:44</span>这样对你来说编写代码效率低，对你的计算机来说计算效率也低。</p>
+<p><span class="ts">02:50</span>所以，这里是另一种方式，仍然没有使用向量化，但使用了 for 循环。</p>
+<p><span class="ts">02:57</span>在数学中，你可以使用求和运算符，对 j 从一到 n，将所有 wj 和 xj 的乘积相加。</p>
+<p><span class="ts">03:07</span>然后在求和符号外面，最后加上 b。</p>
+<p><span class="ts">03:12</span>所以求和是从 j 等于一一直到 n，包括 n。</p>
+<p><span class="ts">03:18</span>对于 n 等于三，j 因此从一、二，到三。</p>
+<p><span class="ts">03:23</span>在代码中，你可以先将 f 初始化为零。</p>
+<figure><img src="img/P022/kf009.jpg" alt="03:24" loading="lazy"><figcaption>03:24</figcaption></figure>
+<p><span class="ts">03:27</span>然后对 j 在从零到 n 的范围内，这实际上使 j 从零取到 n 减一。</p>
+<p><span class="ts">03:40</span>然后你可以将 wj 乘以 xj 的积加到 f 上。</p>
+<p><span class="ts">03:47</span>最后，在 for 循环之外，你再加上 b。</p>
+<p><span class="ts">03:51</span>注意在 Python 中，范围零到 n 意味着 j 从零一直取到 n 减一，不包括 n 本身。</p>
+<p><span class="ts">04:00</span>更常见的写法是 Python 中的 range n，但在这期视频里，我在这里加了个零，只是为了强调它是从零开。</p>
+<figure><img src="img/P022/kf010.jpg" alt="04:02" loading="lazy"><figcaption>04:02</figcaption></figure>
+<p><span class="ts">04:11</span>虽然这个实现比第一个好一些，但它仍然没有用到向量化，效率也不是那么高。</p>
+<figure><img src="img/P022/kf011.jpg" alt="04:13" loading="lazy"><figcaption>04:13</figcaption></figure>
+<p><span class="ts">04:20</span>现在，我们来看看如何用向量化来做这件事。</p>
+<p><span class="ts">04:26</span>这是函数 f 的数学表达式，它是 w 和 x 的点积再加上 b。</p>
+<p><span class="ts">04:33</span>现在你可以用一行代码来实现它，计算 f 等于 np 点。</p>
+<p><span class="ts">04:42</span>我说“点”两次，因为第一个点是点号，第二个点是名为 dot 的函数或方法。</p>
+<p><span class="ts">04:50</span>但就是 f 等于 np 点 dot，括号 w，逗号 x。</p>
+<p><span class="ts">04:55</span>这实现了向量 w 和 x 之间的数学点积运算。</p>
+<p><span class="ts">05:03</span>然后最后，你可以在末尾加上 b。</p>
+<p><span class="ts">05:07</span>这个 numpy 的 dot 函数是两向量间点积运算的向量化实现。</p>
+<p><span class="ts">05:13</span>特别是当 n 很大时，这将比前两个代码示例运行得快得多。</p>
+<p><span class="ts">05:20</span>我想强调，向量化实际上有两个明显的好处。</p>
+<p><span class="ts">05:26</span>第一，它使代码更短。Andrew。</p>
+<p><span class="ts">05:33</span>第二，它还会让你的代码运行得比之前两个不用向量化的实现快得多。</p>
+<p><span class="ts">05:43</span>而向量化实现之所以快得多，原因是背后的 numpy 的 dot 函数能够利用你计算机中的并行硬件。</p>
+<p><span class="ts">05:55</span>无论你是在普通计算机上运行，即在普通的计算机 CPU 上，还是在使用 GPU，即常用于加速机器学习任务的图形处理器单元，情况都是如此。</p>
+<figure><img src="img/P022/kf012.jpg" alt="05:56" loading="lazy"><figcaption>05:56</figcaption></figure>
+<p><span class="ts">06:08</span>numpy 的 dot 函数利用并行硬件的能力，使其比我们之前看到的 for 循环或顺序计算高效得多。</p>
+<figure><img src="img/P022/kf013.jpg" alt="06:10" loading="lazy"><figcaption>06:10</figcaption></figure>
+<p><span class="ts">06:21</span>现在，这个版本在 n 很大时更加实用，因为你不用像上一个版本那样，键入 w 零乘以 x 零加 w 一乘以 x 一等等一大堆额外的项。</p>
+<figure><img src="img/P022/kf014.jpg" alt="06:22" loading="lazy"><figcaption>06:22</figcaption></figure>
+<p><span class="ts">06:36</span>但是，虽然这节省了大量的输入工作，它的计算效率依然不高，因为它仍然没有使用向量化。</p>
+<figure><img src="img/P022/kf015.jpg" alt="06:36" loading="lazy"><figcaption>06:36</figcaption></figure>
+<p><span class="ts">06:46</span>所以，总结一下，向量化让你的代码更短，因此希望更容易编写，也更容易让你或他人阅读。</p>
+<p><span class="ts">06:56</span>并且它还让代码运行得快得多。</p>
+<p><span class="ts">06:59</span>但向量化背后到底有什么魔力，能让它运行得如此之快呢？</p>
+<p><span class="ts">07:05</span>我们来看看你的计算机背后到底在做什么，使得向量化代码运行如此之快。</p>
+</main>
+<nav class="pager"><a href="P021.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P023.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 51 个带时间戳的段落、15 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

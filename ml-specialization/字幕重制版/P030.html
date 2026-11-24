@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 30 讲 多项式回归 · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 30 讲 多项式回归</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 2 周 · 6:05 · 分 P 30 · 41 段 20 图</p>
+</header>
+<main>
+<p><span class="ts">00:04</span>到目前为止，我们一直只是在用直线去拟合数据。</p>
+<figure><img src="img/P030/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<p><span class="ts">00:09</span>让我们结合多元线性回归和特征工程的思想，提出一种叫做多项式回归的新算法，它将允许你用曲线、非线性函数来拟合你的数据。</p>
+<p><span class="ts">00:23</span>假设你有一个住房数据集，看起来像这样，其中特征 x 是面积，以平方英尺为单位。</p>
+<figure><img src="img/P030/kf002.jpg" alt="00:25" loading="lazy"><figcaption>00:25</figcaption></figure>
+<p><span class="ts">00:32</span>看起来一条直线并不能很好地拟合这个数据集。</p>
+<p><span class="ts">00:37</span>所以，也许你想拟合一条曲线，可能是一个二次函数，像这样拟合数据，它包含面积 x 以及 x 的平方，也就是面积这个数的平方。</p>
+<figure><img src="img/P030/kf003.jpg" alt="00:38" loading="lazy"><figcaption>00:38</figcaption></figure>
+<figure><img src="img/P030/kf004.jpg" alt="00:50" loading="lazy"><figcaption>00:50</figcaption></figure>
+<p><span class="ts">00:51</span>这也许会给你一个更好的数据拟合。</p>
+<p><span class="ts">00:55</span>但之后，你可能会觉得你的二次模型并不真正合理，因为二次函数最终会回落。</p>
+<p><span class="ts">01:03</span>而我们通常并不预期房价会随着面积增大而下降，对吧？</p>
+<p><span class="ts">01:09</span>更大的房子似乎一般应该更贵。</p>
+<p><span class="ts">01:13</span>于是，你可能会选择一个三次函数，现在我们不仅有 x 的平方，还有 x 的立方。</p>
+<figure><img src="img/P030/kf005.jpg" alt="01:16" loading="lazy"><figcaption>01:16</figcaption></figure>
+<p><span class="ts">01:20</span>所以，也许这个模型产生了这里的这条曲线，它是对数据的一个稍微更好的拟合，因为随着面积增大，值最终又会回升。</p>
+<figure><img src="img/P030/kf006.jpg" alt="01:22" loading="lazy"><figcaption>01:22</figcaption></figure>
+<p><span class="ts">01:32</span>这些都是多项式回归的例子，因为你将原始特征 x 进行了二次方、三次方或任意次方的运算。</p>
+<figure><img src="img/P030/kf007.jpg" alt="01:34" loading="lazy"><figcaption>01:34</figcaption></figure>
+<p><span class="ts">01:43</span>而在三次函数这种情况下，第一个特征是面积，第二个特征是面积的平方，第三个特征是面积的立。</p>
+<figure><img src="img/P030/kf008.jpg" alt="01:45" loading="lazy"><figcaption>01:45</figcaption></figure>
+<p><span class="ts">01:53</span>我只想再指出一点，那就是如果你创建的这些特征，是像这样的原始特征的幂次方，那么特征缩放就变得愈发重要。</p>
+<figure><img src="img/P030/kf009.jpg" alt="02:05" loading="lazy"><figcaption>02:05</figcaption></figure>
+<p><span class="ts">02:06</span>如果房屋的面积范围是，比如说，从一平方英尺到一千平方英尺，那么第二个特征，即面积的平方的范围就会从一到一百万，而第三个特征，即面积的立方，范围则会从一到十亿。</p>
+<figure><img src="img/P030/kf010.jpg" alt="02:07" loading="lazy"><figcaption>02:07</figcaption></figure>
+<p><span class="ts">02:24</span>如果房屋的面积范围是，比如说，从一平方英尺到一千平方英尺，那么第二个特征，即面积的平方 r 的范围就会从一到一百万，而第三个特征，即面积的立方，范围则会从一到十亿。</p>
+<p><span class="ts">02:27</span>所以，平方和 x 立方这两个特征，与原始特征 x 相比，它们的取值范围差异非常大。</p>
+<figure><img src="img/P030/kf011.jpg" alt="02:28" loading="lazy"><figcaption>02:28</figcaption></figure>
+<p><span class="ts">02:37</span>如果你正在使用梯度下降，那么应用特征缩放来使你的特征处于可比较的值范围内是很重要的。</p>
+<p><span class="ts">02:46</span>最后，这里还有最后一个例子，说明你在选择特征时实际拥有非常广泛的选择。</p>
+<figure><img src="img/P030/kf012.jpg" alt="02:48" loading="lazy"><figcaption>02:48</figcaption></figure>
+<p><span class="ts">02:55</span>另一种除了使用面积的平方和立方之外的合理选择是，比如说，使用 x 的平方根。</p>
+<p><span class="ts">03:02</span>所以你的模型可能看起来像 W 一乘以 x 加 w 二乘以 x 的平方根再加上 b。</p>
+<p><span class="ts">03:11</span>平方根函数看起来像这样，它会变得稍微不那么陡峭。</p>
+<p><span class="ts">03:17</span>随着 x 增大，但它永远不会完全变平，而且它肯定不会回落。</p>
+<p><span class="ts">03:24</span>所以，这也可能是另一个特征选择，也许同样能很好地适用于这个数据集。</p>
+<p><span class="ts">03:30</span>那么，你可能会问自己，我如何决定要使用哪些特征呢？</p>
+<p><span class="ts">03:35</span>稍后，在专项课程的第二门课中，你将看到如何选择不同的特征和不同的模型，包括是否纳入这些特征，并且你将有一个流程来衡量这些不同模型的表现，以帮助你决定应包含或不包含哪些特征。</p>
+<figure><img src="img/P030/kf013.jpg" alt="03:37" loading="lazy"><figcaption>03:37</figcaption></figure>
+<p><span class="ts">03:56</span>就目前而言，我只想让你意识到，你可以选择使用什么特征，并且通过使用特征工程和多项式函数，你有可能为你的数据得到一个更好的模型。</p>
+<figure><img src="img/P030/kf014.jpg" alt="03:58" loading="lazy"><figcaption>03:58</figcaption></figure>
+<p><span class="ts">04:10</span>就目前而言，我只想让你意识到，你可以选择使用什么特征，并且通过使用特征工程和多项式函数，你有可能为你的数据得到一个更好的模型。</p>
+<p><span class="ts">04:14</span>在这个视频之后的选修实验中，你将看到一些代码，它们实现了使用诸如 x、x 的平方和 x 的立方等特征的多项式回归。</p>
+<figure><img src="img/P030/kf015.jpg" alt="04:16" loading="lazy"><figcaption>04:16</figcaption></figure>
+<p><span class="ts">04:22</span>所以，请看一看并运行代码，看看它是如何运作的。</p>
+<p><span class="ts">04:27</span>在那之后，还有另一个选修实验，展示了如何使用一个实现了线性回归的流行开源工具包。</p>
+<figure><img src="img/P030/kf016.jpg" alt="04:28" loading="lazy"><figcaption>04:28</figcaption></figure>
+<p><span class="ts">04:37</span>Scikit-learn 是一个应用非常广泛的开源机器学习库，被全球许多顶尖的 AI、互联网和机器学习公司的众多从业者所使用。</p>
+<figure><img src="img/P030/kf017.jpg" alt="04:40" loading="lazy"><figcaption>04:40</figcaption></figure>
+<figure><img src="img/P030/kf018.jpg" alt="04:45" loading="lazy"><figcaption>04:45</figcaption></figure>
+<p><span class="ts">04:50</span>所以，如果你现在或将来在工作中使用机器学习，那么你极有可能会使用像 scikit-learn 这样的工具来训练你的模型。</p>
+<figure><img src="img/P030/kf019.jpg" alt="05:01" loading="lazy"><figcaption>05:01</figcaption></figure>
+<p><span class="ts">05:02</span>因此，完成那个选修实验将给你一个机会，不仅能更好地理解线性回归，还能看到如何使用像 -learn 这样的库，仅仅几行代码就能实现这一点。 source。</p>
+<figure><img src="img/P030/kf020.jpg" alt="05:11" loading="lazy"><figcaption>05:11</figcaption></figure>
+<p><span class="ts">05:16</span>为了让你对这些算法有扎实的理解并能够应用它们，我确实认为，重要的是你要知道如何自己去实现线性回归，而不仅仅是调用某个 scikit-learn 函数，把它当作一个黑箱。</p>
+<p><span class="ts">05:31</span>但 scikit-learn 在当今实际应用的机器学习方式中也扮演着重要的角色。</p>
+<p><span class="ts">05:38</span>那么，我们就快要到本周的结尾了。</p>
+<p><span class="ts">05:42</span>恭喜你完成了本周所有的视频。</p>
+<p><span class="ts">05:45</span>请务必看看练习测验和练习实验，我希望这能让你尝试并练习我们讨论过的想法。</p>
+<p><span class="ts">05:55</span>在本周的练习实验中，你将实现线性回归。</p>
+<p><span class="ts">05:59</span>我希望你能享受让这个学习算法为你自己工作的乐趣。</p>
+</main>
+<nav class="pager"><a href="P029.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P031.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 41 个带时间戳的段落、20 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 67 讲 带Softmax输出的神经网络 · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 67 讲 带Softmax输出的神经网络</h1>
+<p class="lead">课程二 高级学习算法 · 第 2 周 · 7:49 · 分 P 67 · 54 段 9 图</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>为了构建一个能执行多类分类的神经网络，我们将采用 softmax 回归模型，并将其本质上放入神经，网络的输出层。</p>
+<p><span class="ts">00:15</span>我们门采看看其体如何操作。</p>
+<p><span class="ts">00:18</span>之前，当我们只进行两个类别的手写数字识别时，我们使用的是这种架构的神经网络。</p>
+<figure><img src="img/P067/kf001.jpg" alt="00:19" loading="lazy"><figcaption>00:19</figcaption></figure>
+<p><span class="ts">00:28</span>如果你现在想进行十个类别的手写数字分类，也就是从零到九的所有数字，那么我们将把这个神经网络改成有十个输出单元，就像这样。</p>
+<p><span class="ts">00:44</span>而这个新的输出层将是一个 softmax 输出层。</p>
+<p><span class="ts">00:48</span>所以有时我们会说这个神经网络有一个 softmax 输出，或者说这个输出层是一个 softmax 层。</p>
+<p><span class="ts">00:57</span>在这个神经网络中，前向传播的工作方式是，给定一个输入 x，a 一的计算方式与之前完全相同，然后第二个隐藏层的激活值 a 二也以完全相同的方式计算。H。</p>
+<figure><img src="img/P067/kf002.jpg" alt="00:58" loading="lazy"><figcaption>00:58</figcaption></figure>
+<figure><img src="img/P067/kf003.jpg" alt="01:14" loading="lazy"><figcaption>01:14</figcaption></figure>
+<p><span class="ts">01:14</span>现在我们需要计算这个输出层的激活值，也就是 a 三。</p>
+<p><span class="ts">01:24</span>如果你有十个输出类别，我们将使用这些表达式计算 z 一、z 二，一直到 z 十。</p>
+<p><span class="ts">01:32</span>所以这实际上与我们之前用于计算 z 的公式非常相似。</p>
+<p><span class="ts">01:39</span>一是 W 一与来自前一层的激活值 A 二的点积，加上 b 一，z 一到 z 十以此类推。</p>
+<p><span class="ts">01:50</span>然后 A 一等于 é 的 z 一次方除以 é 的 z 一次方加上点点点一直加到 e 的 z 十次方，这就是我们对 Y 等于一的概率的估计。</p>
+<figure><img src="img/P067/kf004.jpg" alt="01:51" loading="lazy"><figcaption>01:51</figcaption></figure>
+<p><span class="ts">02:05</span>A 二也类似，依此类推一直到 A 十。</p>
+<p><span class="ts">02:12</span>这样就给出了你对 Y 等于一、二，一直到第十个可能标签的概率估计。</p>
+<p><span class="ts">02:22</span>为了完整性，如果你想指明这些是与第三层相关的量，技术上我应该在这些地方加上上标三。</p>
+<p><span class="ts">02:34</span>这确实会让符号看起来更杂乱一些，但这明确指出了，例如，这是 z 下标三一的值，而这些是与该神经网络第三层的第一个单元相关的参数。</p>
+<p><span class="ts">02:52</span>有了这个，你的 softmax 输出层现在就能给出丫为这十个可能输出标签中任何一个的概率估计。</p>
+<p><span class="ts">03:02</span>我想提一下，softmax 层，有时也称为 softmax 激活函数，与目前我们见过的其他激活函数，如 sigmoid、relu 和线性函数相比，它在一个方面有点不寻常，那就是当我们考虑 sigmoid、relu 或线性激活函数时，A 一是 Z 一的函数， n。</p>
+<figure><img src="img/P067/kf005.jpg" alt="03:10" loading="lazy"><figcaption>03:10</figcaption></figure>
+<p><span class="ts">03:27</span>A 二是 Z 二且仅是 Z 二的函数。</p>
+<figure><img src="img/P067/kf006.jpg" alt="03:27" loading="lazy"><figcaption>03:27</figcaption></figure>
+<p><span class="ts">03:33</span>换句话说，为了获得激活值，我们可以将激活函数 G，无论是 sigmoid、ReLU 还是其他什么，逐元素地应用于 Z、Z 二等等，来得到 A 一、A 二、A 三和 A 四。</p>
+<p><span class="ts">03:51</span>但对于 softmax 激活函数，请注意 A 一是 Z 一、Z 二、Z 三，一直到 Z 十的函数。</p>
+<figure><img src="img/P067/kf007.jpg" alt="03:53" loading="lazy"><figcaption>03:53</figcaption></figure>
+<p><span class="ts">04:02</span>所以这里的每一个激活值都依赖于所有的乙值。</p>
+<p><span class="ts">04:08</span>这是 softmax 输出或 softmax 激活函数所特有的一个性质。</p>
+<p><span class="ts">04:14</span>或者换个说法，如果你想计算 A 一到 A 十，它是从 Z 一一直到 Z 十同时作用的一个函数。</p>
+<p><span class="ts">04:28</span>这与我们目前见过的其他激活函数不同。</p>
+<p><span class="ts">04:31</span>最后，我们来看看如何在 TensorFlow 中实现它。</p>
+<p><span class="ts">04:37</span>如果你想实现我这页幻灯片上展示的神经网络，这就是相应的代码。</p>
+<figure><img src="img/P067/kf008.jpg" alt="04:42" loading="lazy"><figcaption>04:42</figcaption></figure>
+<p><span class="ts">04:45</span>和之前类似，指定并训练模型分为三个步骤。</p>
+<p><span class="ts">04:50</span>第一步是告诉 TensorFlow 按顺序串联三个层。</p>
+<p><span class="ts">04:56</span>第一层是这二十五个单元，使用激活函数。</p>
+<p><span class="ts">05:06</span>然后是第三层，因为现在有十个输出单元，你想要输出 A 一到 A 十。</p>
+<p><span class="ts">05:14</span>所以现在有十个输出单元。</p>
+<p><span class="ts">05:17</span>我们将告诉 TensorFlow 使用 softmax 激活函数。</p>
+<p><span class="ts">05:22</span>而你在上个视频中看到的代价函数，TensorFlow 称之为稀疏分类交叉熵函数。</p>
+<p><span class="ts">05:33</span>我知道这个名字有点口。</p>
+<p><span class="ts">05:37</span>对于逻辑回归，我们用的是二元交叉熵函数。</p>
+<p><span class="ts">05:42</span>这里，我们使用的是稀疏分类交叉熵函数。</p>
+<p><span class="ts">05:47</span>而“稀疏分类”指的是，你仍在将 y 分类到不同类别中。</p>
+<p><span class="ts">05:58</span>而“稀疏”指的是 y 只能取这十个值中的一个。</p>
+<p><span class="ts">06:04</span>所以每张图片要么是零，要么是一，要么是二，以此类推直到九。</p>
+<p><span class="ts">06:10</span>你不会看到一张同时是数字二和数字七的图片。</p>
+<p><span class="ts">06:15</span>所以稀疏指的就是这点。</p>
+<p><span class="ts">06:17</span>每个数字只能属于这些类别中的一种。</p>
+<p><span class="ts">06:21</span>这就是为什么你在上个视频中看到的损失函数在 TensorFlow 中被称为稀疏分类交叉熵损失函数。</p>
+<p><span class="ts">06:31</span>然后训练模型的代码就和之前完全一样了。</p>
+<p><span class="ts">06:35</span>如果你使用这段代码，就可以在一个多类分类问题上训练一个神经网络。</p>
+<p><span class="ts">06:45</span>如果你完全按照我在这里写的代码来用，它是可以工作的。</p>
+<p><span class="ts">06:50</span>但请不要实际使用这段代码，因为在 TensorFlow 中，有更好的代码版本能让 TensorFlow 工作得更。</p>
+<p><span class="ts">07:00</span>所以即使这张幻灯片展示的代码能工作，也不要按我在这里写的方式使用它，因为在本周稍后的视频中，你会看到一个不同的版本，那实际上是推荐使用的实现方式，效果会更好。</p>
+<figure><img src="img/P067/kf009.jpg" alt="07:01" loading="lazy"><figcaption>07:01</figcaption></figure>
+<p><span class="ts">07:18</span>但我们会在之后的视频中再来看那个版本。</p>
+<p><span class="ts">07:22</span>所以现在你知道如何训练一个带有 softmax 上层的神经网络了，但有一点需要注意。</p>
+<p><span class="ts">07:28</span>有另一种版本的代码能让 TensorFlow 更精确地计算这些概率。</p>
+<p><span class="ts">07:36</span>我们会在下一个视频中探讨它，那个视频还会向你展示如果你要训练一个 softmax 神经网络，我推荐你使用的实际代码。</p>
+<p><span class="ts">07:49</span>让我们继续观看下一个视频。</p>
+</main>
+<nav class="pager"><a href="P066.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P068.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 54 个带时间戳的段落、9 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

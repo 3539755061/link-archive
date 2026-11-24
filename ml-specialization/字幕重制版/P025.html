@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 25 讲 特征缩放（一） · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 25 讲 特征缩放（一）</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 2 周 · 6:40 · 分 P 25 · 43 段 19 图</p>
+</header>
+<main>
+<p><span class="ts">00:05</span>我们来看一些能让梯度下降工作得好得多的技巧。</p>
+<figure><img src="img/P025/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<p><span class="ts">00:09</span>本视频你会看到一个叫做特征缩放的技术，它将使梯度下降运行得快得多。</p>
+<p><span class="ts">00:16</span>让我们先来看看一个特征的大小，也就是该特征数字的大小，与其相关参数大小之间的关系。</p>
+<figure><img src="img/P025/kf002.jpg" alt="00:18" loading="lazy"><figcaption>00:18</figcaption></figure>
+<p><span class="ts">00:27</span>举一个具体的例子，我们用两个特征来预测房价，x 一是房屋的面积，x 二是卧室的数量。</p>
+<p><span class="ts">00:38</span>假设 x 一通常的范围是从三百到两千平方英尺，而数据集中的 x 二范围是从零到五间卧室。</p>
+<p><span class="ts">00:49</span>所以，在这个例子中，x 一取值的范围相对较大，而 x 二取值的范围相对较小。</p>
+<p><span class="ts">00:58</span>现在，让我们以一栋房子为例，其面积为两千平方英尺，有五间卧室，价格为五十万，即五十万美。</p>
+<figure><img src="img/P025/kf003.jpg" alt="01:00" loading="lazy"><figcaption>01:00</figcaption></figure>
+<figure><img src="img/P025/kf004.jpg" alt="01:10" loading="lazy"><figcaption>01:10</figcaption></figure>
+<p><span class="ts">01:12</span>对于这一个训练样本，你认为参数 W 一和 W 二的合理取值是多少？</p>
+<p><span class="ts">01:21</span>嗯，我们来看一种可能的参数设置。</p>
+<p><span class="ts">01:25</span>为了讨论方便，假设 W 一是五十，W 二是零点一，B 是五十。</p>
+<p><span class="ts">01:36</span>那么，在这种情况下，以千美元为单位的预测价格是这里的十万，加上零点五千，再加五十千，也就是略高于亿美元。</p>
+<figure><img src="img/P025/kf005.jpg" alt="01:38" loading="lazy"><figcaption>01:38</figcaption></figure>
+<figure><img src="img/P025/kf006.jpg" alt="01:49" loading="lazy"><figcaption>01:49</figcaption></figure>
+<p><span class="ts">01:52</span>所以，这显然和实际价格五十万美元相去甚远。</p>
+<p><span class="ts">01:59</span>因此，这对于 W 一和 W 二来说并不是一组很好的参数选择。</p>
+<p><span class="ts">02:06</span>现在，我们来看另一种可能性。</p>
+<p><span class="ts">02:08</span>假设 W 一和 W 二的值互换。</p>
+<p><span class="ts">02:13</span>W 一是零点一，W 二是五十，而 B 依然是五十。</p>
+<p><span class="ts">02:19</span>在这种 W 一和 W 二的选择下，W 一相对较小，而 W 二相对较大，五十要比零点一人得多。</p>
+<p><span class="ts">02:30</span>那么，这里预测的价格是零点一乘以两千，加五十乘以五，再加五十。</p>
+<p><span class="ts">02:40</span>第一项变成二十万，第二项变成二十五万，然后再加上五万。</p>
+<p><span class="ts">02:48</span>所以这个版本的模型预测的价格是五十万美元，这是一个合理得多的估计，并且它恰好与房子的真实价格相同。</p>
+<figure><img src="img/P025/kf007.jpg" alt="02:49" loading="lazy"><figcaption>02:49</figcaption></figure>
+<p><span class="ts">02:59</span>所以你可能注意到，当一个特征的可能取值范围很大时，比如面积，最高能到两千，一个好的模型更可能会学习选择一个相对较小的参数值，比如零点一。</p>
+<figure><img src="img/P025/kf008.jpg" alt="03:00" loading="lazy"><figcaption>03:00</figcaption></figure>
+<figure><img src="img/P025/kf009.jpg" alt="03:15" loading="lazy"><figcaption>03:15</figcaption></figure>
+<p><span class="ts">03:17</span>同样地，当一个特征的可能取值很小时，比如卧室数量，那么其参数的合理值将是相对较大的，比。</p>
+<figure><img src="img/P025/kf010.jpg" alt="03:18" loading="lazy"><figcaption>03:18</figcaption></figure>
+<p><span class="ts">03:29</span>那么，这与梯度下降有什么关系呢？</p>
+<figure><img src="img/P025/kf011.jpg" alt="03:29" loading="lazy"><figcaption>03:29</figcaption></figure>
+<p><span class="ts">03:32</span>嗯，我们来看看一个特征的散点图，横轴是面积，即 x 一，纵轴是卧室数量，即 x 二。</p>
+<p><span class="ts">03:47</span>如果你画出训练数据，你会注意到横轴的尺度或取值范围相比于纵轴要大得多。</p>
+<p><span class="ts">03:57</span>接下来，我们看看代价函数在等高线图中会是什么样子。</p>
+<figure><img src="img/P025/kf012.jpg" alt="04:02" loading="lazy"><figcaption>04:02</figcaption></figure>
+<p><span class="ts">04:04</span>你可能会看到一个等高线图，其横轴的范围要窄得多，比如在零到一之间，而纵轴取的值要大得多比如在+到一百之间。</p>
+<figure><img src="img/P025/kf013.jpg" alt="04:05" loading="lazy"><figcaption>04:05</figcaption></figure>
+<figure><img src="img/P025/kf014.jpg" alt="04:16" loading="lazy"><figcaption>04:16</figcaption></figure>
+<p><span class="ts">04:19</span>因此，这些等高线形成了椭圆形状，它们一边短而另一边长。</p>
+<p><span class="ts">04:26</span>这是因为，对 W 一的微小改变能对估计价格产生非常大的影响，进而对代价产生非常大的影响，因为 W 一往往会乘以一个非常大的数字面积。</p>
+<figure><img src="img/P025/kf015.jpg" alt="04:28" loading="lazy"><figcaption>04:28</figcaption></figure>
+<p><span class="ts">04:44</span>相反，需要很大的改变 W 二才能较多地改变预测值，因此对 W 二的微小改变几乎不会对代价函数产生那么大影响。</p>
+<figure><img src="img/P025/kf016.jpg" alt="04:46" loading="lazy"><figcaption>04:46</figcaption></figure>
+<p><span class="ts">04:57</span>那么，这会导致什么结果呢？</p>
+<figure><img src="img/P025/kf017.jpg" alt="04:59" loading="lazy"><figcaption>04:59</figcaption></figure>
+<p><span class="ts">04:59</span>如果你直接使用原始训练数据运行梯度下降，就可能会最终发生这种情况。</p>
+<p><span class="ts">05:07</span>因为这些等高线又高又瘦，梯度下降可能最终会来回反弹很长时间，才能最终找到通往全局最小值。</p>
+<figure><img src="img/P025/kf018.jpg" alt="05:19" loading="lazy"><figcaption>05:19</figcaption></figure>
+<p><span class="ts">05:20</span>在这样的情况下，做一件有用的事就是缩放特征。</p>
+<p><span class="ts">05:25</span>这意味着对你的训练数据进行某种变换，使得 x 一，比如，现在范围变为零到一，而 x 二的范围也变为零到一。</p>
+<p><span class="ts">05:38</span>所以，数据点现在看起来更像这样，你可能注意到底部图的尺度现在与顶部图的相当不同。</p>
+<figure><img src="img/P025/kf019.jpg" alt="05:39" loading="lazy"><figcaption>05:39</figcaption></figure>
+<p><span class="ts">05:48</span>关键点在于，重新缩放后的 x 一和 x 二现在彼此处于可比较的取值范围了。</p>
+<p><span class="ts">05:57</span>如果你在使用这个变换后的数据、在基于重新缩放后的 x 一和 x 二定义的代价函数上运行梯度下降。</p>
+<p><span class="ts">06:06</span>那么等高线将看起来更像这样，更接近圆形，而不是又高又瘦，而梯度下降可以找到一条更直接的路径通往全局最小值。</p>
+<p><span class="ts">06:19</span>所以总结一下，当你有不同特征，其取值范围差异很大时，可能会导致梯度下降运行缓慢。</p>
+<p><span class="ts">06:28</span>但重新缩放不同的特征，使它们都处于可比较的取值范围，可以显著加快梯度下降的速度。</p>
+<p><span class="ts">06:36</span>你实际上如何做到这一点呢？</p>
+<p><span class="ts">06:39</span>让我们在下一个视频中看一看。</p>
+</main>
+<nav class="pager"><a href="P024.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P026.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 43 个带时间戳的段落、19 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

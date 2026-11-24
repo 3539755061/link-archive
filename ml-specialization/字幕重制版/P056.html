@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 56 讲 How neural networks are implemented efficiently (optional) · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 56 讲 How neural networks are implemented efficiently (optional)</h1>
+<p class="lead">课程二 高级学习算法 · 第 1 周 · 4:32 · 分 P 56 · 31 段 1 图</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>过去十年里，深度学习研究者能够不断扩展神经网络，构建真正的大型神经网络，原因之一就在于神经网络可以被向量化。</p>
+<p><span class="ts">00:14</span>它们可以通过矩阵乘法非常高效地实现。</p>
+<p><span class="ts">00:19</span>而事实证明，并行计算硬件，包括 GPU，也包括一些 CPU 功能，非常擅长进行超大规模的矩阵乘法。</p>
+<p><span class="ts">00:31</span>在这个视频中，我们来看看神经网络的这些向量化实现是如何工作的。</p>
+<p><span class="ts">00:37</span>如果没有这些思想，我认为深度学习绝不会有今天这样的成功和规模。</p>
+<p><span class="ts">00:43</span>左边是你之前见过的代码，关于如何在单层中实现前向传播。</p>
+<figure><img src="img/P056/kf001.jpg" alt="00:44" loading="lazy"><figcaption>00:44</figcaption></figure>
+<p><span class="ts">00:56</span>这里的 X 是输入，w 是比如第一、第二、第三个神经元的权重，参数 b，然后这段代码和你之前看到的一。</p>
+<p><span class="ts">01:09</span>它将输出三个数字，就像这样。</p>
+<p><span class="ts">01:13</span>如果你实际运行这个计算，你会得到一、零、一。</p>
+<p><span class="ts">01:19</span>事实证明，你可以如下这样开发这个函数的向量化实现。</p>
+<p><span class="ts">01:28</span>将 x 设为等于这个。</p>
+<p><span class="ts">01:31</span>注意这里有两层方括号。</p>
+<p><span class="ts">01:33</span>所以现在它是一个二维数组，就像在 TensorFlow 中一样。</p>
+<p><span class="ts">01:38</span>W 和之前一样，而 B，我现在用大写 B，也是一个一乘三的二维数组。</p>
+<p><span class="ts">01:50</span>然后，所有这些步骤，里面的这个 for 循环，都可以用几行代码来替代。</p>
+<p><span class="ts">02:03</span>matmul 是 numpy 进行矩阵乘法的方式，现在 x 和 w 都是矩阵，你只需把它们相乘即可。</p>
+<p><span class="ts">02:14</span>结果这个 for 循环，所有这些代码行，都可以用几行代码替代，从而给出这个函数的向量化实现。</p>
+<p><span class="ts">02:26</span>所以你计算 z，现在 z 又是一个矩阵，通过 numpy 点 matmul 在 a_in 和 w 之间进行运算，这里 a_in 和 w 都是矩阵，matmul 是 numpy 执行矩阵与矩阵乘法的方式。</p>
+<p><span class="ts">02:36</span>这里 a_in 和 w 都是矩阵，matmul 是 numpy 执行矩阵与矩阵乘法的方式。</p>
+<p><span class="ts">02:46</span>它将两个矩阵相乘，然后加上矩阵 B。</p>
+<p><span class="ts">02:50</span>然后这里的 A，或叫 A_，等于激活函数 G，也就是 sigmoid 函数，按元素作用于这个矩阵 Z，最后你 s 返回。s。</p>
+<p><span class="ts">03:06</span>所以，代码看起来就是这样。</p>
+<p><span class="ts">03:09</span>注意，在向量化实现中，所有这些量，x，它被传入作为 a_in 的值，还有 w、b，以及 z 和 a_，所有这些现在都是二维数组。</p>
+<p><span class="ts">03:26</span>而这对于神经网络中通过一个全连接层进行一步前向传播来说，被证明是一种非常高效的实现。</p>
+<p><span class="ts">03:36</span>因此，这是神经网络中前向传播向量化实现的代码。</p>
+<p><span class="ts">03:42</span>但这代码到底在做什么，它实际上是如何工作的呢？</p>
+<p><span class="ts">03:48</span>这个 MATMUL 到底在做什么？</p>
+<p><span class="ts">03:52</span>在接下来的两个视频中，也都是选修的，我们将讲解矩阵乘法及其工作原理。</p>
+<p><span class="ts">04:00</span>如果你熟悉线性代数，如果你熟悉向量、矩阵、转置以及矩阵与矩阵的乘法，你完全可以快速浏览这两个视频，然后跳到本周的最后一个视频。</p>
+<p><span class="ts">04:15</span>然后，在本周的最后一个视频中，也同样是选修的，我们将深入更多细节，解释 MATMUL 是如何实现，这种向量化计算的。</p>
+<p><span class="ts">04:27</span>那么，接下来让我们进入下一个视频，看看矩阵乘法是什么。</p>
+</main>
+<nav class="pager"><a href="P055.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P057.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 31 个带时间戳的段落、1 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 42 讲 Andrew Ng and Fei-Fei Li on Human-Centered AI (Optional) · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 3 周</p>
+<h1>第 42 讲 Andrew Ng and Fei-Fei Li on Human-Centered AI (Optional)</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 3 周 · 44:46 · 分 P 42 · 309 段 122 图</p>
+</header>
+<main>
+<p><span class="ts">00:08</span>嗨，今天非常高兴能请到我的老朋友，李飞飞教授。</p>
+<figure><img src="img/P042/kf001.jpg" alt="00:03" loading="lazy"><figcaption>00:03</figcaption></figure>
+<p><span class="ts">00:13</span>飞飞是斯坦福大学的计算机科学教授，同时也是以人为本人工智能研究所的联合主任。</p>
+<p><span class="ts">00:22</span>在此之前，她还曾担任谷歌云的首席科学家，负责该部门的人工智能相关工作。</p>
+<p><span class="ts">00:29</span>飞飞，很高兴你能来。</p>
+<p><span class="ts">00:34</span>非常开心能来这里。</p>
+<p><span class="ts">00:36</span>说起来，我们认识多久了？</p>
+<p><span class="ts">00:43</span>在我们见面之前，我就已经了解你的工作了。</p>
+<p><span class="ts">00:47</span>我是二零零九年到的斯坦福，但我们从二零零七年就开始交流了，所以有十五年了。</p>
+<figure><img src="img/P042/kf002.jpg" alt="00:56" loading="lazy"><figcaption>00:56</figcaption></figure>
+<p><span class="ts">00:57</span>我至今仍清晰记得，当时我们一群人，包括我、Chris Manning，大家一起想办法把你招进斯坦福，压，同人力有多大。</p>
+<figure><img src="img/P042/kf003.jpg" alt="00:59" loading="lazy"><figcaption>00:59</figcaption></figure>
+<figure><img src="img/P042/kf004.jpg" alt="01:02" loading="lazy"><figcaption>01:02</figcaption></figure>
+<p><span class="ts">01:11</span>我只是需要安排好我学生时期的生活，但斯坦福的吸引力确实难以抗拒。</p>
+<p><span class="ts">01:19</span>能有你这样的朋友和同事在这里，真是太好了。</p>
+<p><span class="ts">01:26</span>这么多年过去了，我们很幸运能成为见证人工智能巨大发展的这一代人。</p>
+<p><span class="ts">01:33</span>好的，你的背景中有一点我一直觉得备受启发：如今，各行各业的人都在进入人工智能领域。</p>
+<p><span class="ts">01:42</span>有时人们仍然会想，我主修的是某个别的专业。</p>
+<p><span class="ts">01:50</span>我觉得你背景中最有趣的一点是，你最初学的并不是计算机科学或人工智能，而是物理学，然后才走上了成为全球知名人工智能科学家的道路。</p>
+<p><span class="ts">02:04</span>那么，你是如何从物理学转向人工智能的呢？</p>
+<p><span class="ts">02:09</span>嗯，这是个好问题，Andrew，特别是我们俩都对年轻人的未来充满热情，希望他们进入人工智能的。</p>
+<p><span class="ts">02:21</span>事实是，如果我在二十多年前都能进入人工智能领域，那么今天任何人都可以，因为人工智能已经变得如此普及，并具有全球影响力。</p>
+<p><span class="ts">02:36</span>但我自己嘛，或许是个意外。</p>
+<p><span class="ts">02:40</span>我一直是个热爱物理的孩子，或者说是个理工科孩子。</p>
+<p><span class="ts">02:48</span>但物理学一直是我的热爱，贯穿了初中、高中和大学。</p>
+<p><span class="ts">02:54</span>我进入普林斯顿大学，主修物理学。</p>
+<p><span class="ts">03:07</span>物理学教会我的一件事，直到今天仍然受用，那就是对提出重大问题的热情，对追寻北极星般的指人引 l 的热情。</p>
+<p><span class="ts">03:09</span>作为普林斯顿的物理系学生，我过得非常愉快。</p>
+<p><span class="ts">03:14</span>我做的其中一件事，就是阅读二十世纪伟大物理学家的故事和著作。</p>
+<p><span class="ts">03:22</span>去了解他们对世界的看法，尤其是像 Albert、Roger Penrose、Erwin 这样的人。</p>
+<figure><img src="img/P042/kf005.jpg" alt="03:22" loading="lazy"><figcaption>03:22</figcaption></figure>
+<p><span class="ts">03:33</span>很有意思的是，这些伟大物理学家在职业生涯后半段的许多著作，并不仅仅是关于原子世界或物理。</p>
+<figure><img src="img/P042/kf006.jpg" alt="03:34" loading="lazy"><figcaption>03:34</figcaption></figure>
+<figure><img src="img/P042/kf007.jpg" alt="03:44" loading="lazy"><figcaption>03:44</figcaption></figure>
+<p><span class="ts">03:48</span>而是思考同样大胆的问题，比如生命、智能、人类状况。</p>
+<figure><img src="img/P042/kf008.jpg" alt="03:54" loading="lazy"><figcaption>03:54</figcaption></figure>
+<p><span class="ts">03:59</span>你知道，写过一本书叫《生命是什么？</p>
+<figure><img src="img/P042/kf009.jpg" alt="04:02" loading="lazy"><figcaption>04:02</figcaption></figure>
+<p><span class="ts">04:04</span>Roger Penrose 写过一本书叫《皇帝的新脑》，对吧？</p>
+<p><span class="ts">04:11</span>这真的让我对智能这个话题产生了极大的好奇。</p>
+<figure><img src="img/P042/kf010.jpg" alt="04:15" loading="lazy"><figcaption>04:15</figcaption></figure>
+<p><span class="ts">04:16</span>所以在大学期间，就自然而然地一步步发展下去。</p>
+<p><span class="ts">04:21</span>我在几个神经科学实验室实习过，尤其是与视觉相关的。</p>
+<figure><img src="img/P042/kf011.jpg" alt="04:25" loading="lazy"><figcaption>04:25</figcaption></figure>
+<p><span class="ts">04:29</span>我当时就觉得，哇，这个问题就像问宇宙的起源或物质由什么构成一样大胆。</p>
+<p><span class="ts">04:40</span>这让我从物理学本科学位转向了人工智能的研究生学位，尽管，不知道你是否有同感，在我们那个时代，人工智能这个词名声不佳。一量。</p>
+<figure><img src="img/P042/kf012.jpg" alt="04:45" loading="lazy"><figcaption>04:45</figcaption></figure>
+<p><span class="ts">04:54</span>当时是人工智能的冬天，所以与其说是计算神经科学，不如说是机器学习和计算机视觉。</p>
+<p><span class="ts">05:05</span>老实说，我觉得我读本科的时候，忙着写代码。</p>
+<p><span class="ts">05:10</span>我就那么愉快地忽略了人工智能寒冬，继续写我的代码。</p>
+<p><span class="ts">05:15</span>是啊，我当时忙着解偏微分方程呢。</p>
+<p><span class="ts">05:21</span>嘿，那么，你现在心中有大问题吗？</p>
+<p><span class="ts">05:25</span>有，我的大问题仍然是智能。</p>
+<p><span class="ts">05:29</span>我认为自以来，人类还没有完全理解智能背后的基本计算原理。</p>
+<p><span class="ts">05:42</span>你知道，今天我们使用人工智能这个词，使用通用人工智能这个词，但归根结底，我仍然梦想着能用一组简单的方程或简单的原理来定义智能的过程，无论是动物智能还是机器智能。</p>
+<p><span class="ts">06:05</span>这类似于物理学。</p>
+<p><span class="ts">06:07</span>例如，很多人拿飞行来做类比，对吧？</p>
+<p><span class="ts">06:11</span>我们是在模仿鸟类飞行，还是在建造飞机？</p>
+<p><span class="ts">06:17</span>很多人会问人工智能和大脑之间的关系问题。</p>
+<p><span class="ts">06:22</span>对我来说，无论我们是在制造一只鸟，复制一只鸟，还是在制造一架飞机，最终决定飞行过程的是空气动力学和物理学。</p>
+<figure><img src="img/P042/kf013.jpg" alt="06:35" loading="lazy"><figcaption>06:35</figcaption></figure>
+<p><span class="ts">06:36</span>我坚信总有一天我们会发现这个原理。</p>
+<p><span class="ts">06:40</span>我有时会思考这个单一学习算法的假说。</p>
+<figure><img src="img/P042/kf014.jpg" alt="06:44" loading="lazy"><figcaption>06:44</figcaption></figure>
+<p><span class="ts">06:44</span>很多智能，也许不是全部，但很多，能否由一个或非常简单的机器学习原理解释。</p>
+<figure><img src="img/P042/kf015.jpg" alt="06:52" loading="lazy"><figcaption>06:52</figcaption></figure>
+<p><span class="ts">06:53</span>感觉我们离攻克这个难题还有很长的路要走，但在周末有空的时候，当我思考学习算法及其发展方，向时，这仍然是我一想到就会兴奋的事情之一。—。</p>
+<figure><img src="img/P042/kf016.jpg" alt="06:56" loading="lazy"><figcaption>06:56</figcaption></figure>
+<figure><img src="img/P042/kf017.jpg" alt="07:01" loading="lazy"><figcaption>07:01</figcaption></figure>
+<p><span class="ts">07:07</span>我完全同意。</p>
+<p><span class="ts">07:09</span>如果用物理学来类比，我感觉我们仍处于前牛顿时代。</p>
+<p><span class="ts">07:15</span>在牛顿之前，已经有伟大的物理学、伟大的物理学家、大量的现象学研究，以及关于天体如何运动等等的研究。</p>
+<p><span class="ts">07:27</span>但正是牛顿开始写下那些非常简单的定律。</p>
+<p><span class="ts">07:31</span>我认为，作为一门基础科学，人工智能仍在经历那个非常激动人心的成熟过程。</p>
+<p><span class="ts">07:40</span>在我看来，我们还处于前牛顿时代。</p>
+<p><span class="ts">07:44</span>听到你谈论，尽管机器学习和人工智能已经取得了如此大的进步，但感觉仍然有更多未解的问题，还有更多的工作一一也许比已经完成的工作还要多一一需要今天进入这个领域的某些人去完成，这真的很棒。</p>
+<p><span class="ts">08:04</span>我的息总是，我们来算一下。</p>
+<p><span class="ts">08:09</span>这是一个非常年轻的领域。</p>
+<p><span class="ts">08:12</span>现代物理学、化学和生物学都有几百年的历史了，对吧？</p>
+<p><span class="ts">08:18</span>所以，我认为今天进入智能科学领域并研究人工智能是非常令人兴奋的。</p>
+<p><span class="ts">08:30</span>是啊，确实如此。</p>
+<p><span class="ts">08:33</span>我记得曾与已故的 John McCarthy 教授聊过，是他创造了“人工智能”这个词。</p>
+<p><span class="ts">08:40</span>哎呀，从他当年在研讨会上构想并创造出“人工智能”这个术语以来，这个领域已经发生了翻天覆地的变化。</p>
+<p><span class="ts">08:51</span>也许再过十年，也许正在观看这个视频的某个人会提出一套新的想法，然后他们会说，哎呀，人工，一智能的发展和你我当初想的大不一样了。</p>
+<p><span class="ts">09:04</span>那将是一个令人兴奋的未来，值得我们共同努力去创造。</p>
+<p><span class="ts">09:10</span>是啊，我敢肯定牛顿当年也未曾预见到爱因斯坦。</p>
+<p><span class="ts">09:25</span>所以，我们科学的演进有时会大步迈进，有时则需要一段时间，我认为我们现在正处于人工智能一一个令人激动万分的阶段。</p>
+<p><span class="ts">09:29</span>你知道吗，听你描绘人工智能的宏伟愿景很有意思。</p>
+<p><span class="ts">09:35</span>稍微回顾一下，你背景中还有一点我觉得很受启发，那就是在你刚开始的时候，我听你说过你不仅一是个物理系学生。</p>
+<p><span class="ts">09:49</span>同时，你还经营着一家洗衣店来支付学费。</p>
+<p><span class="ts">09:53</span>跟我们多聊聊那方面的事情吧。</p>
+<p><span class="ts">09:59</span>我十五岁时来到这个国家，美国，实际上是新泽西州。</p>
+<p><span class="ts">10:05</span>住在新泽西的一个好处是离普林斯顿很近。</p>
+<p><span class="ts">10:10</span>所以我经常在周末和父母一起去那里，瞻仰爱因斯坦度过他职业生涯后半生的地方。</p>
+<p><span class="ts">10:21</span>但是，你知道，典型的移民生活是很艰难的。</p>
+<p><span class="ts">10:26</span>到我进入普林斯顿的时候，我的父母不会说英语。</p>
+<p><span class="ts">10:31</span>事情就这样一环扣一环。</p>
+<figure><img src="img/P042/kf018.jpg" alt="10:32" loading="lazy"><figcaption>10:32</figcaption></figure>
+<p><span class="ts">10:34</span>结果发现，经营一家干洗店对我家来说可能是最好的选择，尤其是我来打理这个生意，因为它是个人周未生意。</p>
+<figure><img src="img/P042/kf019.jpg" alt="10:42" loading="lazy"><figcaption>10:42</figcaption></figure>
+<p><span class="ts">10:45</span>如果是工作日的生意，我很难兼顾学业。</p>
+<p><span class="ts">10:49</span>信不信由你，经营干洗店其实非常依赖机器，这对我这样的理工科学生有好处。</p>
+<p><span class="ts">11:00</span>所以我们决定在新泽西州一个叫的小镇开一家干洗店。</p>
+<p><span class="ts">11:08</span>结果我们发现，那里离贝尔实验室，以及许多早期卷积神经网络研究发生的地方，物理距离并不远，但我当时完全不知道。</p>
+<p><span class="ts">11:22</span>我实际上在 AT&amp;T 贝尔实验室做暑期实习生。</p>
+<p><span class="ts">11:27</span>对，和 Rob Shapire 一起。</p>
+<p><span class="ts">11:30</span>和 Michael Kearns 一起，他是我的导师，还有 Rob Shapire，他是布鲁斯·辛格伟大算法的发明者之一。</p>
+<p><span class="ts">11:40</span>看，你在写代码搞 A，而我在努力洗衣服。</p>
+<p><span class="ts">11:50</span>直到很久以后，我才开始实习。</p>
+<p><span class="ts">11:54</span>是啊，然后持续了七年。</p>
+<p><span class="ts">11:58</span>整个本科和大部分研究生阶段我都在做这个，我还雇佣了我的父母。</p>
+<p><span class="ts">12:06</span>是的，这真的很鼓舞人心。</p>
+<p><span class="ts">12:09</span>我觉得，你一生都在出色地做着激动人心的工作，而一个经营洗衣店的人成长为全球杰出的计算机科学家的故事，我希望它能激励正在观看这个视频的一些人，无论你身处何方，每个人都有足够空一一间去接触人工智能。</p>
+<p><span class="ts">12:25</span>我觉得，你一生都在出色地做着激动人心的工作，而一个经营洗衣店的人成长为全球杰出的计算机科学家的故事，我希望它能激励正在观看这个视频的一些人，无论你身处何方，每个人都有足够空，人间去接触人工智能。</p>
+<figure><img src="img/P042/kf020.jpg" alt="12:27" loading="lazy"><figcaption>12:27</figcaption></figure>
+<p><span class="ts">12:30</span>你可能不知道，我高中时的工作是办公室行政助理。</p>
+<figure><img src="img/P042/kf021.jpg" alt="12:31" loading="lazy"><figcaption>12:31</figcaption></figure>
+<figure><img src="img/P042/kf022.jpg" alt="12:35" loading="lazy"><figcaption>12:35</figcaption></figure>
+<p><span class="ts">12:36</span>直到今天，我还记得自己做了大量的复印工作。</p>
+<p><span class="ts">12:40</span>最令人兴奋的部分是用碎纸机。</p>
+<p><span class="ts">12:43</span>那可真算是光鲜的部分了。</p>
+<figure><img src="img/P042/kf023.jpg" alt="12:45" loading="lazy"><figcaption>12:45</figcaption></figure>
+<p><span class="ts">12:46</span>但我高中时复印了太多东西，我就想，哎呀，要是能造个机器人来做这些复印工作，我或许就能去人做点别的了。</p>
+<figure><img src="img/P042/kf024.jpg" alt="12:49" loading="lazy"><figcaption>12:49</figcaption></figure>
+<figure><img src="img/P042/kf025.jpg" alt="12:54" loading="lazy"><figcaption>12:54</figcaption></figure>
+<p><span class="ts">12:58</span>你成功了吗?。</p>
+<p><span class="ts">13:00</span>还在努力中。</p>
+<p><span class="ts">13:05</span>当人们想到你和你所做的工作时，大家都会想到的一个巨大成功就是，它建立了计算机视觉早期的基准。</p>
+<p><span class="ts">13:18</span>它确实对现代深度学习和计算机视觉的崛起起到了至关重要的作用。</p>
+<p><span class="ts">13:24</span>我敢打赌，没多少人知道你是如何开始做的。</p>
+<p><span class="ts">13:30</span>那就给我们讲讲的起源故事吧。</p>
+<p><span class="ts">13:35</span>好的，Andrew，这个问题问得好，因为很多人以为仅仅是给大量图像打标签。</p>
+<p><span class="ts">13:44</span>但我们的出发点其实是追寻北极星般的大问题，这又回到了我的物理学背景。</p>
+<figure><img src="img/P042/kf026.jpg" alt="13:45" loading="lazy"><figcaption>13:45</figcaption></figure>
+<figure><img src="img/P042/kf027.jpg" alt="13:50" loading="lazy"><figcaption>13:50</figcaption></figure>
+<p><span class="ts">13:50</span>当我进入研究生院时，你是哪年进入研究生院的？</p>
+<figure><img src="img/P042/kf028.jpg" alt="13:55" loading="lazy"><figcaption>13:55</figcaption></figure>
+<figure><img src="img/P042/kf029.jpg" alt="13:57" loading="lazy"><figcaption>13:57</figcaption></figure>
+<p><span class="ts">13:57</span>好的，我比你晚三年，两千年。</p>
+<p><span class="ts">14:01</span>那是一个非常激动人心的时期，因为我在加州理工学院的 Pietro Perona 和 Koch 的计算机一一视觉与计算神经科学实验室。</p>
+<figure><img src="img/P042/kf030.jpg" alt="14:02" loading="lazy"><figcaption>14:02</figcaption></figure>
+<p><span class="ts">14:13</span>在此之前，有两件事非常令人兴奋。</p>
+<p><span class="ts">14:18</span>第一，当时的人工智能领域，那时候还不叫人工智能，无论是计算机视觉还是自然语言处理，都找到了它们的通用语言，机器学习、统计建模作为一种新工具已经出现，对吧？</p>
+<figure><img src="img/P042/kf031.jpg" alt="14:21" loading="lazy"><figcaption>14:21</figcaption></figure>
+<figure><img src="img/P042/kf032.jpg" alt="14:24" loading="lazy"><figcaption>14:24</figcaption></figure>
+<p><span class="ts">14:35</span>它其实已经存在一段时间了。</p>
+<p><span class="ts">14:39</span>我记得当时把机器学习应用到计算机视觉这个想法，还是件有争议的事情。</p>
+<p><span class="ts">14:46</span>没错，而我是第一代拥抱所有基础网络、所有推理算法等等的研究生。</p>
+<p><span class="ts">14:55</span>这算是第一件激动人心的事。</p>
+<p><span class="ts">14:59</span>第二件大多数人不知道也不了解的事是，过去几十年，可能二三十年，在视觉领域，人类视觉领域，涌现了大量令人难以置信的认知科学和认知神经科学的工作，这些工作确实确立了一些非常关键的北极星式问题，其核心就是理解人类的视觉处理和人类智能。</p>
+<figure><img src="img/P042/kf033.jpg" alt="15:26" loading="lazy"><figcaption>15:26</figcaption></figure>
+<p><span class="ts">15:28</span>其中之一便是对自然物体和自然事物的识别与理解。</p>
+<figure><img src="img/P042/kf034.jpg" alt="15:32" loading="lazy"><figcaption>15:32</figcaption></figure>
+<p><span class="ts">15:35</span>因为许多心理学和认知科学的研究都指出，这是人类智能中一种天生优化的功能或能力。</p>
+<figure><img src="img/P042/kf035.jpg" alt="15:43" loading="lazy"><figcaption>15:43</figcaption></figure>
+<p><span class="ts">15:51</span>它比我们想象的更稳健、更快速、更精妙。</p>
+<figure><img src="img/P042/kf036.jpg" alt="15:56" loading="lazy"><figcaption>15:56</figcaption></figure>
+<p><span class="ts">16:00</span>我们甚至找到了神经关联，即大脑中专门负责处理面孔、场景或身体部位的脑区。</p>
+<p><span class="ts">16:09</span>这两件事促使我在博士期间专注于使用机器学习方法来处理现实世界中的物体识别问题。</p>
+<p><span class="ts">16:20</span>但很快，问题就变得非常棘手，我们撞上了人工智能和机器学习领域最重大、并且持续至今的挑战，之一，那就是缺乏泛化能力。</p>
+<p><span class="ts">16:40</span>你知道吗，你可以随心所欲地设计一个漂亮的模型，但如果模型过拟合了，那也没用。</p>
+<p><span class="ts">16:49</span>我记得过去发表计算机视觉论文是可能的，只要在一张图上有效就行。</p>
+<p><span class="ts">16:57</span>是的，就是因为过拟合，模型表达力不强，而且我们缺乏数据。</p>
+<figure><img src="img/P042/kf037.jpg" alt="17:04" loading="lazy"><figcaption>17:04</figcaption></figure>
+<p><span class="ts">17:06</span>我们领域当时还寄希望于通过手工设计特征来让变量变得极其丰富。</p>
+<figure><img src="img/P042/kf038.jpg" alt="17:08" loading="lazy"><figcaption>17:08</figcaption></figure>
+<p><span class="ts">17:15</span>记得吗，每个变量都承载着大量的语义信息，但用的是手工设计的特征。</p>
+<p><span class="ts">17:23</span>所以，到了博士快结束时，我的导师 Pietro 和我开始面面相，说，哎呀，我们需要更多数据。</p>
+<figure><img src="img/P042/kf039.jpg" alt="17:23" loading="lazy"><figcaption>17:23</figcaption></figure>
+<figure><img src="img/P042/kf040.jpg" alt="17:29" loading="lazy"><figcaption>17:29</figcaption></figure>
+<p><span class="ts">17:34</span>如果我们相信物体识别这个北极星问题，再回头看看我们拥有的工具，从数学角度来说，我们遇到，一的每个模型都过拟合了。</p>
+<figure><img src="img/P042/kf041.jpg" alt="17:36" loading="lazy"><figcaption>17:36</figcaption></figure>
+<figure><img src="img/P042/kf042.jpg" alt="17:38" loading="lazy"><figcaption>17:38</figcaption></figure>
+<figure><img src="img/P042/kf043.jpg" alt="17:40" loading="lazy"><figcaption>17:40</figcaption></figure>
+<p><span class="ts">17:47</span>我们需要重新审视这个问题。</p>
+<p><span class="ts">17:50</span>就这样，事情一步步发展下去。</p>
+<p><span class="ts">17:54</span>他和我决定，我们干脆做一个，当时我们认为是一个大规模的数据项目，叫做加州理工学院一零一数据集。</p>
+<p><span class="ts">18:06</span>我用你们的加州理工学院一零一数据集写过论文。</p>
+<figure><img src="img/P042/kf044.jpg" alt="18:08" loading="lazy"><figcaption>18:08</figcaption></figure>
+<p><span class="ts">18:11</span>是的，你和你的早期研究生。</p>
+<figure><img src="img/P042/kf045.jpg" alt="18:14" loading="lazy"><figcaption>18:14</figcaption></figure>
+<p><span class="ts">18:18</span>加州理工学院一零一数据集。</p>
+<p><span class="ts">18:22</span>对，那是我和我妈妈一起标注图像。</p>
+<p><span class="ts">18:26</span>哦，还有几个本科生。</p>
+<figure><img src="img/P042/kf046.jpg" alt="18:30" loading="lazy"><figcaption>18:30</figcaption></figure>
+<p><span class="ts">18:32</span>所以数据的突然可用是件新鲜事。</p>
+<figure><img src="img/P042/kf047.jpg" alt="18:35" loading="lazy"><figcaption>18:35</figcaption></figure>
+<p><span class="ts">18:36</span>我记得 Pietro 突然有了台超级昂贵的数码相机。</p>
+<figure><img src="img/P042/kf048.jpg" alt="18:38" loading="lazy"><figcaption>18:38</figcaption></figure>
+<p><span class="ts">18:42</span>好像是佳能的，大概六千美元，在加州理工学院到处拍照。</p>
+<figure><img src="img/P042/kf049.jpg" alt="18:48" loading="lazy"><figcaption>18:48</figcaption></figure>
+<p><span class="ts">18:55</span>我开始看到成千上万、数万张图片。</p>
+<figure><img src="img/P042/kf050.jpg" alt="18:58" loading="lazy"><figcaption>18:58</figcaption></figure>
+<p><span class="ts">18:59</span>我就告诉 Pietro，我们直接下载吧。</p>
+<p><span class="ts">19:03</span>当然，下载并非那么容易。</p>
+<figure><img src="img/P042/kf051.jpg" alt="19:04" loading="lazy"><figcaption>19:04</figcaption></figure>
+<p><span class="ts">19:05</span>争情瓶达件少少及展。</p>
+<p><span class="ts">19:06</span>事情就这样一少少发展。</p>
+<p><span class="ts">19:08</span>我们构建了这个加州理工学院一零一数据集，包含一百零一个物体类别，大概，我想想，三万张图片，每类大约三十到五十张。</p>
+<p><span class="ts">19:22</span>我觉得很有趣的是，尽管现在大家都听说过，你也是经过了几次迭代，做了加州理工学院一零一，并且取得了成功。</p>
+<p><span class="ts">19:37</span>但正是从构建加州理工学院一零一数据集中获得的早期经验，为你构建后来更成功的项目奠定了基。</p>
+<p><span class="ts">19:47</span>没错，只不过当我们开始着手时，我已经成为助理教授了，我们开始审视这个问题，意识到它远比我们想象的要宏大。</p>
+<p><span class="ts">20:01</span>仅从数学角度讲，加州理工学院一零一不足以驱动算法。我们决定做，那时大家开始觉得我们做得太过火了。</p>
+<p><span class="ts">20:18</span>这想法太疯狂了。</p>
+<p><span class="ts">20:19</span>下载整个互联网上的图像，并映射出所有英语名词，这个想法有点……。</p>
+<p><span class="ts">20:29</span>我开始遭到很多反对。</p>
+<p><span class="ts">20:31</span>我记得在某个计算机视觉与模式识别会议上，当我提出关于图像数据的早期想法时，有几个研究人员公开质疑说，如果你连一个物体类别都识别不了，比如你坐的那把椅子，你又怎么能想象，或者说，一个包含两万两千个类别、一千五百万张图像的数据集有什么用呢？</p>
+<p><span class="ts">20:59</span>是的，但最终，那个巨大的数据集为全世界无数的研究人员释放了巨大的价值。</p>
+<figure><img src="img/P042/kf052.jpg" alt="21:05" loading="lazy"><figcaption>21:05</figcaption></figure>
+<p><span class="ts">21:10</span>嗯，我认为这是押注于正确的北极星问题以及驱动它的数据的结合。</p>
+<figure><img src="img/P042/kf053.jpg" alt="21:10" loading="lazy"><figcaption>21:10</figcaption></figure>
+<p><span class="ts">21:19</span>所以那是一十有趣的过程。</p>
+<p><span class="ts">21:22</span>是的，对我来说，这个故事给我的一点启发是，有时候人们觉得应该只做那些一开始就非常宏大的项目。</p>
+<p><span class="ts">21:39</span>但我认为，对于刚开始搞机器学习的人来说，如果你的第一个项目规模小一点，也完全没问题。</p>
+<figure><img src="img/P042/kf054.jpg" alt="21:46" loading="lazy"><figcaption>21:46</figcaption></figure>
+<p><span class="ts">21:47</span>取得一个好的小成功，利用学到的经验去构建更大的东西，然后有时你就能获得一个像那量样的大胜利。</p>
+<p><span class="ts">21:58</span>是的，但与此同时，我认为被一个雄心勃勃的目标所驱动也很重要。</p>
+<p><span class="ts">22:08</span>你可以把问题或项目的规模设定为这条道路上的阶段性里程碑。</p>
+<p><span class="ts">22:16</span>但我也看到我们当前的一些学生，他们受到当今这个不停发表论文的环境所带来的同辈压力，为了发表而发表，导致论文越来越趋于渐进式。</p>
+<p><span class="ts">22:34</span>我个人总是督促我的学生去问自己一个问题：驱动你的那颗北极星是什么？</p>
+<figure><img src="img/P042/kf055.jpg" alt="22:36" loading="lazy"><figcaption>22:36</figcaption></figure>
+<figure><img src="img/P042/kf056.jpg" alt="22:40" loading="lazy"><figcaption>22:40</figcaption></figure>
+<p><span class="ts">22:45</span>就我自己而言，这些年来做研究，我基本上都是做我感兴趣的事情，做我想努力推动领域向前发展的事情。</p>
+<figure><img src="img/P042/kf057.jpg" alt="22:53" loading="lazy"><figcaption>22:53</figcaption></figure>
+<p><span class="ts">22:54</span>这不意味着不听取别人的意见。</p>
+<figure><img src="img/P042/kf058.jpg" alt="22:56" loading="lazy"><figcaption>22:56</figcaption></figure>
+<p><span class="ts">22:57</span>必须听取别人的意见，让他们的意见塑造你的观点。</p>
+<figure><img src="img/P042/kf059.jpg" alt="23:00" loading="lazy"><figcaption>23:00</figcaption></figure>
+<p><span class="ts">23:02</span>但最终，我认为最好的研究是让世界塑造他们的意见，但最终要用你自己的观点来推动事物前进。</p>
+<figure><img src="img/P042/kf060.jpg" alt="23:06" loading="lazy"><figcaption>23:06</figcaption></figure>
+<p><span class="ts">23:14</span>是的，关键在于你内心的火焰，对吧？</p>
+<p><span class="ts">23:19</span>那么，随着你研究项目的发展，你开始将你在计算机视觉和神经科学方面的基础应用到各种主题上—，包括你非常关注的医疗健康，以及神经科学应用。</p>
+<p><span class="ts">23:33</span>我想多听听这方面的故事。</p>
+<p><span class="ts">23:38</span>我认为我的计算机视觉研究演进也某种程度上遵循了动物视觉智能的演进路径。</p>
+<p><span class="ts">23:50</span>一是什么才是真正能帮助人类生活、具有影响力的应用领域，这就是医疗健康方面的工作。</p>
+<figure><img src="img/P042/kf061.jpg" alt="23:53" loading="lazy"><figcaption>23:53</figcaption></figure>
+<figure><img src="img/P042/kf062.jpg" alt="23:55" loading="lazy"><figcaption>23:55</figcaption></figure>
+<p><span class="ts">24:00</span>另一个是视觉归根结底是什么？</p>
+<figure><img src="img/P042/kf063.jpg" alt="24:00" loading="lazy"><figcaption>24:00</figcaption></figure>
+<p><span class="ts">24:06</span>这促使我尝试闭合感知与机器人学习之间的循环。</p>
+<p><span class="ts">24:13</span>所以，在医疗健康方面,。</p>
+<p><span class="ts">24:17</span>你知道，Andrew，大约十年前，当我遇到我在斯坦福医学院的长期合作者 Arnie 医生时，有人一个数字震惊了我。</p>
+<figure><img src="img/P042/kf064.jpg" alt="24:23" loading="lazy"><figcaption>24:23</figcaption></figure>
+<figure><img src="img/P042/kf065.jpg" alt="24:27" loading="lazy"><figcaption>24:27</figcaption></figure>
+<p><span class="ts">24:30</span>那就是每年约有二十五万美国人死于医疗差错。</p>
+<figure><img src="img/P042/kf066.jpg" alt="24:32" loading="lazy"><figcaption>24:32</figcaption></figure>
+<figure><img src="img/P042/kf067.jpg" alt="24:37" loading="lazy"><figcaption>24:37</figcaption></figure>
+<p><span class="ts">24:38</span>我之前从未想到医疗差错导致的死亡数字会如此之高。</p>
+<figure><img src="img/P042/kf068.jpg" alt="24:41" loading="lazy"><figcaption>24:41</figcaption></figure>
+<figure><img src="img/P042/kf069.jpg" alt="24:44" loading="lazy"><figcaption>24:44</figcaption></figure>
+<p><span class="ts">24:45</span>原因有很多，但我们可以确信，大多数原因都不是故意的。</p>
+<figure><img src="img/P042/kf070.jpg" alt="24:46" loading="lazy"><figcaption>24:46</figcaption></figure>
+<p><span class="ts">24:53</span>这些都是非故总的错误等等。</p>
+<figure><img src="img/P042/kf071.jpg" alt="24:53" loading="lazy"><figcaption>24:53</figcaption></figure>
+<figure><img src="img/P042/kf072.jpg" alt="24:56" loading="lazy"><figcaption>24:56</figcaption></figure>
+<p><span class="ts">24:59</span>举例来说，这个数字令人难以置信。</p>
+<p><span class="ts">25:02</span>每年大约有四万人死于车祸，这已经是完全的悲剧了，而这个数字甚至还要大得多。</p>
+<p><span class="ts">25:14</span>举一个例子，在这个令人难以置信的数字中，有一个数字是，因院内感染导致的死亡人数超过九万。</p>
+<p><span class="ts">25:27</span>这比，这是车祸死亡人数的二点五倍。</p>
+<p><span class="ts">25:33</span>在这种特定情况下，院内感染是很多因素造成的，但主要原因是缺乏良好的手部卫生习惯。</p>
+<p><span class="ts">25:45</span>所以，如果你看看世界卫生组织，已经有很多关于临床医生手部卫生习惯的规程。</p>
+<p><span class="ts">25:52</span>但在实际的医疗服务交付过程中，当事情变得繁忙，流程变得繁琐，并且缺乏反馈系统时，仍然会犯很多错误。</p>
+<figure><img src="img/P042/kf073.jpg" alt="25:58" loading="lazy"><figcaption>25:58</figcaption></figure>
+<p><span class="ts">26:06</span>另一个悲惨的医学事实是，每年因跌倒导致的损伤要花费超过七百亿美元。</p>
+<figure><img src="img/P042/kf074.jpg" alt="26:17" loading="lazy"><figcaption>26:17</figcaption></figure>
+<p><span class="ts">26:17</span>以及导致的死亡。</p>
+<p><span class="ts">26:19</span>这些大多发生在家中的老年人身上，但也发生在医院病房里。这些都是大问题。</p>
+<figure><img src="img/P042/kf075.jpg" alt="26:23" loading="lazy"><figcaption>26:23</figcaption></figure>
+<figure><img src="img/P042/kf076.jpg" alt="26:27" loading="lazy"><figcaption>26:27</figcaption></figure>
+<p><span class="ts">26:28</span>当 Arnie 和我在二零一二年聚在一起时，正值自动驾驶汽车的鼎盛时期，不能说炒作，该用什么词呢？</p>
+<p><span class="ts">26:43</span>然后我们看看智能传感摄像头、激光雷达、雷达之类的技术，智能传感器，机器学习算法，以及对涉及人命的复杂环境的整体理解。</p>
+<figure><img src="img/P042/kf077.jpg" alt="26:44" loading="lazy"><figcaption>26:44</figcaption></figure>
+<figure><img src="img/P042/kf078.jpg" alt="26:57" loading="lazy"><figcaption>26:57</figcaption></figure>
+<figure><img src="img/P042/kf079.jpg" alt="27:02" loading="lazy"><figcaption>27:02</figcaption></figure>
+<p><span class="ts">27:03</span>我把所有这些都看作是用于自动驾驶汽车的，然后意识到在医疗服务交付中，我们面临着同样的情。</p>
+<p><span class="ts">27:14</span>医疗服务的许多过程，人类行为过程，都是不透明的。</p>
+<p><span class="ts">27:20</span>如果我们能在病房或养老院安装智能传感器，帮助我们的临床医生和病人更安全，那就太棒了。</p>
+<p><span class="ts">27:32</span>所以 Arnie 和我开始了我们称之为环境智能的研究议程。</p>
+<p><span class="ts">27:38</span>但我学到的一件事，这可能将引出我们其他的话题，就是一旦你把人工智能应用到真实的人类环境中，除了机器学习问题，还有很多人类自身的问题。</p>
+<figure><img src="img/P042/kf080.jpg" alt="27:40" loading="lazy"><figcaption>27:40</figcaption></figure>
+<figure><img src="img/P042/kf081.jpg" alt="27:42" loading="lazy"><figcaption>27:42</figcaption></figure>
+<p><span class="ts">27:55</span>我记得读过你一些与 Arnie 合著的论文，发现你们如何构建和部署相对保护隐私的系统，这非常有趣。</p>
+<p><span class="ts">28:06</span>这项技术的第一代迭代是我们使用不捕捉 RGB 信息的摄像头。</p>
+<p><span class="ts">28:15</span>你在自动驾驶汽车中也用过很多这种技术，比如深度摄像头。</p>
+<p><span class="ts">28:21</span>通过不看到人的面孔和身份，你就保护了大量的隐私信息。</p>
+<p><span class="ts">28:31</span>但真正有趣的是，过去十年的技术变革实际上为我们提供了更强大的工具集，来应对这种条件下的隐私保护计算。</p>
+<p><span class="ts">28:44</span>例如，设备端推理。</p>
+<p><span class="ts">28:48</span>你知道，随着芯片越来越强大，如果你不必通过网络将任何数据传输到中央服务器，你就能更好地帮助人们。</p>
+<figure><img src="img/P042/kf082.jpg" alt="28:58" loading="lazy"><figcaption>28:58</figcaption></figure>
+<p><span class="ts">28:58</span>联邦学习，我们知道它仍处于早期阶段，但这是另一个潜在的隐私保护计算工具。</p>
+<figure><img src="img/P042/kf083.jpg" alt="29:00" loading="lazy"><figcaption>29:00</figcaption></figure>
+<figure><img src="img/P042/kf084.jpg" alt="29:02" loading="lazy"><figcaption>29:02</figcaption></figure>
+<figure><img src="img/P042/kf085.jpg" alt="29:07" loading="lazy"><figcaption>29:07</figcaption></figure>
+<p><span class="ts">29:08</span>然后还有差分隐私以及加密技术。</p>
+<figure><img src="img/P042/kf086.jpg" alt="29:13" loading="lazy"><figcaption>29:13</figcaption></figure>
+<p><span class="ts">29:13</span>所以我们开始看到，人类的需求，比如隐私和其他问题，正在驱动医疗健康环境智能领域的新一波机器学习技术。</p>
+<figure><img src="img/P042/kf087.jpg" alt="29:15" loading="lazy"><figcaption>29:15</figcaption></figure>
+<p><span class="ts">29:27</span>看到差分隐私在现实中有真正的实际应用，我感到很受鼓舞。</p>
+<p><span class="ts">29:35</span>联邦学习，正如你所说，宣传可能稍微领先于现实，但我认为我们会赶上来的。</p>
+<p><span class="ts">29:43</span>但有趣的是，在过去几年里，消费者们很幸运地变得对隐私问题了解得更多了，隐私也变得越来越重要。</p>
+<p><span class="ts">29:52</span>我认为公众也在促使我们成为更好的科学家。</p>
+<p><span class="ts">29:59</span>而且我最终认为，人们理解人工智能对所有人，包括我们，都有约束力，但人工智能要求每个人都，为做正确的事负责。</p>
+<p><span class="ts">30:11</span>说到这个，你一直在做的其中一项非常有趣的工作是，领导了几项工作，帮助教育立法者或帮助政，府，特别是美国政府，致力于制定更好的法律和更好的法规，尤其是在人工智能方面。</p>
+<p><span class="ts">30:31</span>这听起来非常重要，而且我猜在某些日子会变得相当令人沮丧，但我们很想多听听这方面的情况。</p>
+<p><span class="ts">30:41</span>是的，我想，首先，我要感谢非常多的人。</p>
+<p><span class="ts">30:46</span>大约四年前，我当时正在结束在谷歌的休假，我非常荣幸能与这么多企业合作，比如企业开发者，大量的、各种各样的垂直行业，我意识到人工智能对人类的影响。</p>
+<p><span class="ts">31:09</span>就在那时，斯坦福大学的许多教师领导，以及我们的校长、教务长、前校长和前教务长都聚在一起，意识到斯坦福在人工智能的进步中需要扮演一个历史性的角色。</p>
+<p><span class="ts">31:28</span>我们是人工智能诞生地的一部分。</p>
+<p><span class="ts">31:32</span>你知道，我们上一代人做了很多工作，你做了很多工作，我做的一些工作也促成了今天的人工智能。</p>
+<p><span class="ts">31:44</span>我们的历史机遇和责任是什么？</p>
+<p><span class="ts">31:48</span>基于此，我们相信下一代的人工智能教育、研究和政策需要以人为本。</p>
+<p><span class="ts">31:58</span>在建立了我们称之为 HAI 的以人为本人工智能研究所之后，其中一项真正将我带出舒适区或专业领域的工作，是与政策思考者和制定者进行更深入的接触。</p>
+<p><span class="ts">32:18</span>因为，你知道，我们身处硅谷，硅谷的文化是我们只管制造东西，法律会自行跟上。</p>
+<p><span class="ts">32:29</span>但人工智能正以如此之快的速度影响着人类生活，有时甚至是负面影响。</p>
+<p><span class="ts">32:29</span>但人工智能正以如此之快的速度影响着人类生活，有时甚至是负面影响，如果我们这些专家不与政策思考者和制定者坐在一起，真正努力让这项技术更好地服务于人民，那一对我们任何人都没有好处。</p>
+<figure><img src="img/P042/kf088.jpg" alt="32:41" loading="lazy"><figcaption>32:41</figcaption></figure>
+<figure><img src="img/P042/kf089.jpg" alt="32:48" loading="lazy"><figcaption>32:48</figcaption></figure>
+<p><span class="ts">32:50</span>我的意思是，我们在讨论公平性，我们在讨论隐私。</p>
+<p><span class="ts">32:55</span>我们也在讨论人工智能领域的人才流失到工业界，以及数据和计算能力集中在少数科技公司手中的问题。</p>
+<figure><img src="img/P042/kf090.jpg" alt="32:56" loading="lazy"><figcaption>32:56</figcaption></figure>
+<figure><img src="img/P042/kf091.jpg" alt="33:06" loading="lazy"><figcaption>33:06</figcaption></figure>
+<p><span class="ts">33:10</span>所有这些都是我们这个时代变革的一部分。</p>
+<p><span class="ts">33:14</span>有些是非常令人兴奋的变化，有些则具有我们尚无法预测的深远影响。</p>
+<p><span class="ts">33:23</span>所以，斯坦福 HAI 非常自豪地参与的一项政策工作是，我们是游说一项名为“国家人工智能研究云任务法案”的主要大学之一。</p>
+<p><span class="ts">33:38</span>后来名字从“研究云”改成了“研究资源”。</p>
+<p><span class="ts">33:43</span>所以现在这个法案的缩写是 NAIRR，即国家人工智能研究资源。</p>
+<p><span class="ts">33:49</span>这项法案呼吁成立一个特别工作组，为美国的公共部门，特别是高等教育和研究部门，制定一个路线图，以增加他们获取人工智能计算和人工智能数据资源的途径。一。</p>
+<figure><img src="img/P042/kf092.jpg" alt="33:56" loading="lazy"><figcaption>33:56</figcaption></figure>
+<p><span class="ts">34:08</span>它旨在振兴美国在人工智能创新和研究方面的生态系统。</p>
+<p><span class="ts">34:16</span>我是拜登政府下该法案十二人特别工作组的成员。</p>
+<p><span class="ts">34:24</span>我们希望这是一项不是监管性质的政策，而更像是一项激励政策，旨在建设和振兴生态系统。我很二高兴你这样做来帮助塑造美国的政策，我们希望这是一项不是监管性质的政策，而更像是一项激励政策，旨在建设和振兴生态系统。我很高兴你这样做来帮助塑造美国的政策，以及确保分配足够的资源来保障人工智能的健康发展。</p>
+<p><span class="ts">34:44</span>感觉这在现阶段是每个国家都需要的。</p>
+<p><span class="ts">34:49</span>仅仅从你自己正在做的事情来看，更不用说全球人工智能社区正在做的事情了，现在人工智能领域真是风起云涌。</p>
+<figure><img src="img/P042/kf093.jpg" alt="34:52" loading="lazy"><figcaption>34:52</figcaption></figure>
+<figure><img src="img/P042/kf094.jpg" alt="34:56" loading="lazy"><figcaption>34:56</figcaption></figure>
+<p><span class="ts">35:00</span>这么多的机会，这么多的热情。</p>
+<figure><img src="img/P042/kf095.jpg" alt="35:01" loading="lazy"><figcaption>35:01</figcaption></figure>
+<p><span class="ts">35:03</span>我发现，对于第一次开始学习机器学习的人来说，有时候发生的事情太多了，几乎会让人感到有些不知所措。</p>
+<p><span class="ts">35:15</span>对于那些开始学习机器学习的人，你有什么建议？</p>
+<p><span class="ts">35:22</span>我相信你肯定有很好的建议。</p>
+<p><span class="ts">35:25</span>你是世界知名的、倡导人工智能机器学习教育的专家之一。</p>
+<p><span class="ts">35:36</span>你说得完全对，如今的人工智能确实感觉和我们那个时代不一样了。</p>
+<p><span class="ts">35:42</span>在我们那个。</p>
+<p><span class="ts">35:44</span>仍然一直都是。</p>
+<p><span class="ts">35:47</span>是的，没错。</p>
+<p><span class="ts">35:49</span>当我们刚开始接触人工智能时。</p>
+<p><span class="ts">35:57</span>我们然是其中一部分。</p>
+<p><span class="ts">35:59</span>在我们刚开始的时候，进入人工智能和机器学习领域的门槛相对狭窄。</p>
+<p><span class="ts">36:06</span>你几乎必须从计算机科学的角度切入，对吧？</p>
+<p><span class="ts">36:11</span>你知道，作为物理专业的学生，我仍然得设法挤进计算机科学或电子工程的轨道才能接触到人工智。</p>
+<p><span class="ts">36:21</span>但今天，我实际上认为人工智能有很多方面为各行各业的人创造了切入点。</p>
+<p><span class="ts">36:32</span>在技术方面，我认为很明显，互联网上的资源多得令人难以置信，从 Coursera 到 YouTube，再到 TikTok 和 GitHub。</p>
+<p><span class="ts">36:49</span>与我们开始学习机器学习时相比，现在世界各地的学生可以学习到如此多关于人工智能和机器学习的内容。</p>
+<p><span class="ts">37:00</span>而且，在各个校园，我们谈论的不仅仅是大学校园，还有高中校园，有时甚至更早，我们开始看到更多可用的课程和资源。</p>
+<p><span class="ts">37:15</span>所以我认为，我确实鼓励那些有技术兴趣、资源和机会的年轻人去拥抱这些资源，因为这会带来很多乐趣。</p>
+<p><span class="ts">37:31</span>话虽如此，对于那些不是技术背景出身，但仍然对人工智能充满热情的人，无论是关注其下游应用、它所激发的创造力，还是政策和社会角度，或是重要的社会问题，无论是数字经济学、治理，还是你知道的，历史、伦理、政治科学，我都诚挚地邀请你加入我们，因为还有很多工作要做。</p>
+<figure><img src="img/P042/kf096.jpg" alt="37:56" loading="lazy"><figcaption>37:56</figcaption></figure>
+<p><span class="ts">38:11</span>例如，我在 HAI 的同事们在追问，试图寻找答案，比如我们如何在数字时代定义我们的经济？</p>
+<p><span class="ts">38:23</span>当机器人和软件越来越多地参与工作流程时，这意味着什么？</p>
+<p><span class="ts">38:30</span>我们如何衡量我们的经济？</p>
+<p><span class="ts">38:32</span>这不是一个人工智能编码问题。</p>
+<p><span class="ts">38:36</span>这是一个关于人工智能影响力的问题。</p>
+<figure><img src="img/P042/kf097.jpg" alt="38:36" loading="lazy"><figcaption>38:36</figcaption></figure>
+<p><span class="ts">38:39</span>我们正看到生成式人工智能令人难以置信的进步，而且未来还会有更多。</p>
+<figure><img src="img/P042/kf098.jpg" alt="38:43" loading="lazy"><figcaption>38:43</figcaption></figure>
+<figure><img src="img/P042/kf099.jpg" alt="38:46" loading="lazy"><figcaption>38:46</figcaption></figure>
+<p><span class="ts">38:50</span>对创作者，从音乐到艺术再到写作，又意味着什么？</p>
+<figure><img src="img/P042/kf100.jpg" alt="38:51" loading="lazy"><figcaption>38:51</figcaption></figure>
+<figure><img src="img/P042/kf101.jpg" alt="38:56" loading="lazy"><figcaption>38:56</figcaption></figure>
+<p><span class="ts">38:56</span>我认为有很多担忧，而且我认为这些担忧是合理的。</p>
+<figure><img src="img/P042/kf102.jpg" alt="39:01" loading="lazy"><figcaption>39:01</figcaption></figure>
+<p><span class="ts">39:03</span>但与此同时，这需要人们齐心协力去弄清楚，同时也要运用这个新工具。</p>
+<p><span class="ts">39:11</span>所以，简而言之，我认为这是一个非常激动人心的时代，无论你来自哪个行业，只要你对此充满热情，都可以发挥作用。</p>
+<p><span class="ts">39:22</span>是的，我觉得这真的很令人兴奋。</p>
+<p><span class="ts">39:26</span>当我们谈论经济学时，想想我和 Eric 教授的对话，对吧，就是研究人工智能对经济的影响。</p>
+<p><span class="ts">39:36</span>但根据你所说的，而且我也同意，似乎无论你目前的兴趣是什么，人工智能都是一种通用技术，你当前的兴趣与人工智能的结合往往很有前景。</p>
+<p><span class="ts">39:51</span>而且我发现，即使是那些可能还没有特定兴趣的学习者，如果你设法进入人工智能领域，开始学习一些东西，兴趣通常会随之发展，然后你就可以开始规划自己的道路了。</p>
+<p><span class="ts">40:06</span>鉴于人工智能目前的发展状况，仍有很大的空间和需求，需要更多的人来规划自己的道路，从事这些激动人心的工作，我认为世界仍然需要更多这样的努力。</p>
+<figure><img src="img/P042/kf103.jpg" alt="40:12" loading="lazy"><figcaption>40:12</figcaption></figure>
+<p><span class="ts">40:22</span>那么，你做过的一件我觉得很酷的工作是启动了一个最初叫 Sailors，后来改名为“全民人工智能”的项目，这个项目深入到高中生甚至更年轻的学生中，试图让他们获得更多参与人工智能的机会，也包括各行各业的人。</p>
+<p><span class="ts">40:34</span>这个目深入们与人工会。</p>
+<p><span class="ts">40:36</span>个项深入到牛人。</p>
+<p><span class="ts">40:36</span>个项深入牛们多与人工的机会。</p>
+<p><span class="ts">40:38</span>个项深入到牛人。</p>
+<p><span class="ts">40:41</span>这个目入中生，们与人会。</p>
+<p><span class="ts">40:41</span>的，这个项目入生，让们得多人工会。</p>
+<p><span class="ts">40:42</span>我很想多听听这方面的故事。</p>
+<p><span class="ts">40:45</span>好的，这正符合我们这次谈话的精神。</p>
+<p><span class="ts">40:51</span>那是仕二令一五年。</p>
+<p><span class="ts">40:54</span>当时人们对人工智能开始有了很多热情，但同时也开始出现了关于杀人机器人就要来到隔壁、终结，者就要来临的谈论。</p>
+<p><span class="ts">41:06</span>Andrew，那时候我是斯坦福人工智能实验室的主任，我在想，我们知道距离终结者出现还有多远，一一那似乎是一个有点过于牵强的担忧。</p>
+<figure><img src="img/P042/kf104.jpg" alt="41:08" loading="lazy"><figcaption>41:08</figcaption></figure>
+<figure><img src="img/P042/kf105.jpg" alt="41:10" loading="lazy"><figcaption>41:10</figcaption></figure>
+<figure><img src="img/P042/kf106.jpg" alt="41:22" loading="lazy"><figcaption>41:22</figcaption></figure>
+<p><span class="ts">41:22</span>但我当时在工作中一直担忧着一个真实的问题，我觉得没有人谈论，那就是人工智能领域缺乏代表。</p>
+<figure><img src="img/P042/kf107.jpg" alt="41:30" loading="lazy"><figcaption>41:30</figcaption></figure>
+<p><span class="ts">41:32</span>那时候，我猜在 Daphne 离开后，我是斯坦福人工智能实验室唯一的女教员。</p>
+<figure><img src="img/P042/kf108.jpg" alt="41:33" loading="lazy"><figcaption>41:33</figcaption></figure>
+<figure><img src="img/P042/kf109.jpg" alt="41:35" loading="lazy"><figcaption>41:35</figcaption></figure>
+<p><span class="ts">41:39</span>我们的女研究生比例非常小，大概只有百分之十五，而且在斯坦福的人工智能项目中，我们真的看不到任何来自代表性不足的少数群体的学生。一。</p>
+<figure><img src="img/P042/kf110.jpg" alt="41:45" loading="lazy"><figcaption>41:45</figcaption></figure>
+<figure><img src="img/P042/kf111.jpg" alt="41:53" loading="lazy"><figcaption>41:53</figcaption></figure>
+<p><span class="ts">41:54</span>这是一个全国甚至全世界范围内的问题，所以不仅仅是斯坦福。</p>
+<figure><img src="img/P042/kf112.jpg" alt="41:55" loading="lazy"><figcaption>41:55</figcaption></figure>
+<figure><img src="img/P042/kf113.jpg" alt="42:00" loading="lazy"><figcaption>42:00</figcaption></figure>
+<p><span class="ts">42:01</span>坦白说，今天这方面仍然需要做很多工作。</p>
+<figure><img src="img/P042/kf114.jpg" alt="42:05" loading="lazy"><figcaption>42:05</figcaption></figure>
+<p><span class="ts">42:08</span>嗯，我和我以前的学生 Olga，以及一位长期从事理工科教育的专家，来自斯坦福大学大学预科研究项目的 Rick Summer 博士聚在一起，考虑邀请当时的高中生，女性，高中年轻女性，来参加一个暑期项目，以激发她们学习人工智能的兴趣。</p>
+<figure><img src="img/P042/kf115.jpg" alt="42:15" loading="lazy"><figcaption>42:15</figcaption></figure>
+<p><span class="ts">42:36</span>这就是二零一五年的开端。</p>
+<p><span class="ts">42:39</span>二零一七年，我们得到了 Jensen 和 Laurie Huang 以及 Melinda Gates 等人的大力鼓励和支持。</p>
+<p><span class="ts">42:49</span>我们成立了全国性的非营利组织“全民人工智能”，致力于培养或帮助来自各行各业的未来领袖，塑造来自各行各业的、特别是传统上服务不足和代表性不足社区的学生，让他们成为人工智能领域的未来领袖。</p>
+<p><span class="ts">43:11</span>直到今天，我们已经在全美举办了非常非常多的夏令营和暑期项目。</p>
+<p><span class="ts">43:31</span>超过十五所大学参与其中，我们还有在线课程来鼓励学生，以及大学衔接项目，通过为他们匹配实，一习机会和导师来持续支持这些学生的职业生涯。</p>
+<p><span class="ts">43:40</span>所以这是一个持续的努力，旨在鼓励各行各业的学生。</p>
+<p><span class="ts">43:46</span>我记得那时候，你们的团队印制了一些很酷的 T 恤，上面提出了一个问题：人工智能将改变世界。</p>
+<figure><img src="img/P042/kf116.jpg" alt="43:55" loading="lazy"><figcaption>43:55</figcaption></figure>
+<p><span class="ts">43:58</span>我认为“确保每个人都能进来参与”这个答案，就是一个很棒的答案。</p>
+<figure><img src="img/P042/kf117.jpg" alt="44:02" loading="lazy"><figcaption>44:02</figcaption></figure>
+<p><span class="ts">44:04</span>今天这仍然是一个重要的问题。</p>
+<p><span class="ts">44:10</span>我想我们的访谈也接近尾声了。</p>
+<p><span class="ts">44:14</span>对正在观看的观众，你还有什么想说的吗？</p>
+<p><span class="ts">44:18</span>仍然是，这是一个非常年轻的领域。</p>
+<p><span class="ts">44:22</span>正如你所说，Andrew，我们仍处于这个过程之中。</p>
+<p><span class="ts">44:28</span>我仍然觉得有太多的问题，以至于我每天醒来都兴奋地想在实验室里和我的学生们一起研究。</p>
+<figure><img src="img/P042/kf118.jpg" alt="44:35" loading="lazy"><figcaption>44:35</figcaption></figure>
+<p><span class="ts">44:38</span>而且我认为，对于那些想要学习、贡献并塑造未来人工智能的年轻人来说，还有更多的机会。</p>
+<figure><img src="img/P042/kf119.jpg" alt="44:45" loading="lazy"><figcaption>44:45</figcaption></figure>
+<figure><img src="img/P042/kf120.jpg" alt="44:49" loading="lazy"><figcaption>44:49</figcaption></figure>
+<figure><img src="img/P042/kf121.jpg" alt="44:51" loading="lazy"><figcaption>44:51</figcaption></figure>
+<figure><img src="img/P042/kf122.jpg" alt="44:54" loading="lazy"><figcaption>44:54</figcaption></figure>
+</main>
+<nav class="pager"><a href="P041.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P043.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 309 个带时间戳的段落、122 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

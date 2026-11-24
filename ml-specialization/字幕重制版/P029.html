@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 29 讲 特征工程 · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
+<h1>第 29 讲 特征工程</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 2 周 · 3:13 · 分 P 29 · 20 段 10 图</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>特征的选择会对你的学习算法的性能产生巨大影响。</p>
+<figure><img src="img/P029/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<p><span class="ts">00:07</span>事实上，对于许多实际应用来说，选择或设计正确的特征是让算法良好运行的关键一步。</p>
+<p><span class="ts">00:17</span>在本视频中，我们来看看你如何为你的学习算法选择或设计最合适的特征。</p>
+<p><span class="ts">00:24</span>让我们通过重温预测房价的例子来看看特征工程。</p>
+<figure><img src="img/P029/kf002.jpg" alt="00:25" loading="lazy"><figcaption>00:25</figcaption></figure>
+<figure><img src="img/P029/kf003.jpg" alt="00:30" loading="lazy"><figcaption>00:30</figcaption></figure>
+<p><span class="ts">00:31</span>假设每栋房于你有两1持征。</p>
+<p><span class="ts">00:34</span>x 一是房子所建地块的临街宽度。</p>
+<p><span class="ts">00:40</span>这在房地产中也叫地块的面宽。</p>
+<p><span class="ts">00:45</span>而第二个特征，x 二，是这块地的大小里的进深，我们假设房子建在一块矩形土地上。</p>
+<p><span class="ts">00:54</span>给定这两个特征，x 一和 x 二，你可能会构建一个像这样的模型，其中 x 的 f 等于 W 一 x 一加二 X 二加 B，X 一是面宽或宽度，X 二是进深。</p>
+<figure><img src="img/P029/kf004.jpg" alt="00:56" loading="lazy"><figcaption>00:56</figcaption></figure>
+<figure><img src="img/P029/kf005.jpg" alt="01:11" loading="lazy"><figcaption>01:11</figcaption></figure>
+<p><span class="ts">01:13</span>但这里有另一种选择，你可以在模型中以不同方式使用这些特征，这可能会更有效。</p>
+<p><span class="ts">01:22</span>你可能会注意到，土地的面积可以通过面宽或宽度乘以进深来计算。</p>
+<p><span class="ts">01:30</span>而且你可能有一种直觉，土地面积比单独作为特征的面宽和进深更能预测价格。</p>
+<p><span class="ts">01:39</span>所以，你或许可以定义一个新特征 x 三，等于 x 一乘以 x 二。</p>
+<p><span class="ts">01:45</span>于是这个新特征 x 三就等于地块的面积。</p>
+<p><span class="ts">01:50</span>有了这个特征，你便可以构建一个模型，Fwb ofx 等于 W 一 x 一加 W 二 x 二加 W 三 x 三加 B。</p>
+<figure><img src="img/P029/kf006.jpg" alt="01:52" loading="lazy"><figcaption>01:52</figcaption></figure>
+<p><span class="ts">02:02</span>这样一来，模型现在就可以根据数据来选择参数 W 一、W 二和 W 三，看究竟是面宽、进深，还是地块面积 X 三，最终成为预测房价最重要的因素。</p>
+<figure><img src="img/P029/kf007.jpg" alt="02:04" loading="lazy"><figcaption>02:04</figcaption></figure>
+<p><span class="ts">02:18</span>我们刚刚所做的，即创建一个新特征，就是一个所谓特征工程的例子，过程中你可能会利用你对问题的知识或直觉来设计新特征，通常是通过对问题的原始特征进行变换或组合，以便让学习算法更容易做出准确的预测。w。</p>
+<figure><img src="img/P029/kf008.jpg" alt="02:19" loading="lazy"><figcaption>02:19</figcaption></figure>
+<figure><img src="img/P029/kf009.jpg" alt="02:24" loading="lazy"><figcaption>02:24</figcaption></figure>
+<p><span class="ts">02:41</span>所以，根据你对应用可能拥有的洞见，而不只是用你碰巧拿到的初始特征，有时通过定义新特征，你可能能够得到一个好得多的模型。</p>
+<figure><img src="img/P029/kf010.jpg" alt="02:43" loading="lazy"><figcaption>02:43</figcaption></figure>
+<p><span class="ts">02:58</span>而事实上，有一种特征工程的方法，可以让你不仅能拟合直线，还能在你的数据上拟合曲线、非线性函数。</p>
+<p><span class="ts">03:10</span>让我们在下一个视频中，看看你该如何做到这一点。</p>
+</main>
+<nav class="pager"><a href="P028.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P030.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 20 个带时间戳的段落、10 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

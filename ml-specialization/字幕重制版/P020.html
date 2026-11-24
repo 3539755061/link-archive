@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 20 讲 运行梯度下降 · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 1 周</p>
+<h1>第 20 讲 运行梯度下降</h1>
+<p class="lead">课程一 监督机器学习：回归与分类 · 第 1 周 · 6:07 · 分 P 20 · 46 段 21 图</p>
+</header>
+<main>
+<p><span class="ts">00:02</span>我们来看看运行线性回归的梯度下降时会发生什么。</p>
+<figure><img src="img/P020/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<p><span class="ts">00:08</span>让我们看一下这个算法的实际效果。</p>
+<p><span class="ts">00:11</span>左上角是模型和数据的图，右上角是代价函数的等高线图。</p>
+<figure><img src="img/P020/kf002.jpg" alt="00:12" loading="lazy"><figcaption>00:12</figcaption></figure>
+<p><span class="ts">00:21</span>底部则是同一个代价函数的曲面图。</p>
+<p><span class="ts">00:25</span>通常 w 和 b 都会初始化为零，但在这个演示中，我们将 w 初始化为负零点一，b 初始化为九百。</p>
+<p><span class="ts">00:38</span>这对应于 f 括号 x 等于负零点一 x 加九百。</p>
+<p><span class="ts">00:47</span>现在，如果我们用梯度下降走一步，最终会从代价函数的这个点出发，来到这个点，也就是向右下方移动。</p>
+<figure><img src="img/P020/kf003.jpg" alt="00:49" loading="lazy"><figcaption>00:49</figcaption></figure>
+<figure><img src="img/P020/kf004.jpg" alt="00:59" loading="lazy"><figcaption>00:59</figcaption></figure>
+<p><span class="ts">01:00</span>请注意，这条拟合直线也发生了一点变化。</p>
+<p><span class="ts">01:09</span>代价函数现在移动到了这第三个点，同样，函数括号 x 也再次发生了变化。</p>
+<p><span class="ts">01:18</span>当你进行更多步时，代价在每次更新时都在降低。</p>
+<p><span class="ts">01:24</span>所以参数 w 和 b 正沿着这条轨迹移动。</p>
+<figure><img src="img/P020/kf005.jpg" alt="01:28" loading="lazy"><figcaption>01:28</figcaption></figure>
+<p><span class="ts">01:30</span>如果你看左边，你会得到这条相应的拟合直线，它越来越贴合数据，直到我们到达全局最小值。</p>
+<p><span class="ts">01:43</span>全局最小值对应了这条拟合直线，它相当好地拟合了数据。</p>
+<p><span class="ts">01:55</span>我们将用它来为房价数据拟合一个模型。</p>
+<p><span class="ts">02:01</span>现在，你可以使用这个 f 括号 x 模型来预测你客户或任何其他人的房价了。</p>
+<p><span class="ts">02:10</span>举例来说，如果你朋友的房子面积是一千二百五十平方英尺，你现在可以读出这个值，并预测他们也许能卖个，我不知道，比如二十五万美元。</p>
+<figure><img src="img/P020/kf006.jpg" alt="02:11" loading="lazy"><figcaption>02:11</figcaption></figure>
+<p><span class="ts">02:24</span>更精确地说，这种梯度下降过程被称为批量梯度下降。</p>
+<figure><img src="img/P020/kf007.jpg" alt="02:24" loading="lazy"><figcaption>02:24</figcaption></figure>
+<p><span class="ts">02:30</span>“批量梯度下降”这个术语指的是，在梯度下降的每一步，我们都会查看所有的训练样本，而不是训 l 练数据的个子集。</p>
+<figure><img src="img/P020/kf008.jpg" alt="02:32" loading="lazy"><figcaption>02:32</figcaption></figure>
+<figure><img src="img/P020/kf009.jpg" alt="02:35" loading="lazy"><figcaption>02:35</figcaption></figure>
+<figure><img src="img/P020/kf010.jpg" alt="02:39" loading="lazy"><figcaption>02:39</figcaption></figure>
+<figure><img src="img/P020/kf011.jpg" alt="02:43" loading="lazy"><figcaption>02:43</figcaption></figure>
+<p><span class="ts">02:44</span>所以在计算梯度下降、计算导数时，我们是在算从 i 等于一到 m 的总和。</p>
+<p><span class="ts">02:54</span>批量梯度下降在每次更新时，都是在查看整个批次的训练样本。</p>
+<p><span class="ts">03:02</span>我知道“批量梯度下降”这个名字可能不是最直观的，但机器学习领域的人们就是这么称呼它的。</p>
+<p><span class="ts">03:11</span>如果你听说过 deeplearning.ai 出版的《The Batch》通讯，这份通讯《The Batch》也正是以机器学习中的这个概念命名的。N。</p>
+<figure><img src="img/P020/kf012.jpg" alt="03:14" loading="lazy"><figcaption>03:14</figcaption></figure>
+<p><span class="ts">03:23</span>另外，事实证明，还有其他版本的梯度下降，它们并不查看整个训练集，而是每次更新时只看训练数据中更小的子集。</p>
+<figure><img src="img/P020/kf013.jpg" alt="03:24" loading="lazy"><figcaption>03:24</figcaption></figure>
+<p><span class="ts">03:35</span>但对于线性回归，我们将使用批量梯度下降。</p>
+<figure><img src="img/P020/kf014.jpg" alt="03:36" loading="lazy"><figcaption>03:36</figcaption></figure>
+<p><span class="ts">03:40</span>以上就是线性回归的内容了。</p>
+<p><span class="ts">03:43</span>恭喜你完成了你的第一个机器学习模型。</p>
+<p><span class="ts">03:47</span>我希望你去庆祝一下，或者，我也不知道，也许在你的吊床上小憩片刻。</p>
+<figure><img src="img/P020/kf015.jpg" alt="03:54" loading="lazy"><figcaption>03:54</figcaption></figure>
+<p><span class="ts">03:56</span>在这期视频之后的可选实验中，你将看到对梯度下降算法的回顾，以及如何用代码实现它。</p>
+<figure><img src="img/P020/kf016.jpg" alt="04:04" loading="lazy"><figcaption>04:04</figcaption></figure>
+<p><span class="ts">04:05</span>你还会看到一张图，展示随着你进行更多次迭代训练，代价是如何下降的。</p>
+<figure><img src="img/P020/kf017.jpg" alt="04:10" loading="lazy"><figcaption>04:10</figcaption></figure>
+<p><span class="ts">04:13</span>你还会看到一张等高线图，展示当梯度下降为参数 w 和 b 找到越来越好的值时，代价是如何越来越接近全局最小值的。</p>
+<figure><img src="img/P020/kf018.jpg" alt="04:16" loading="lazy"><figcaption>04:16</figcaption></figure>
+<p><span class="ts">04:25</span>记住，要完成这个可选实验，你只需要阅读并运行这段代码。</p>
+<p><span class="ts">04:32</span>你不需要自己编写任何代码。</p>
+<figure><img src="img/P020/kf019.jpg" alt="04:34" loading="lazy"><figcaption>04:34</figcaption></figure>
+<p><span class="ts">04:35</span>我希望你花点时间来做一下，也熟悉一下梯度下降的代码，因为这将帮助你日后自己实现这个算法以及类似的算法。</p>
+<figure><img src="img/P020/kf020.jpg" alt="04:37" loading="lazy"><figcaption>04:37</figcaption></figure>
+<figure><img src="img/P020/kf021.jpg" alt="04:44" loading="lazy"><figcaption>04:44</figcaption></figure>
+<p><span class="ts">04:49</span>感谢你陪伴我直到第一周这最后一期视频的结尾，也祝贺你一路坚持到了这里。</p>
+<p><span class="ts">04:57</span>你正走在成为一名机器学习从业者的路上。</p>
+<p><span class="ts">05:02</span>除了可选的实验，如果你还没有做的话，我也希望你去看看练习测验，这是你检验自己对概念理解程度的好方法。</p>
+<p><span class="ts">05:13</span>如果第一次没有全对也完全没关系。</p>
+<p><span class="ts">05:17</span>你也可以多次参加测验，直到拿到你想要的分数。</p>
+<p><span class="ts">05:23</span>现在你已经知道如何实现单变量线性回归了。</p>
+<p><span class="ts">05:27</span>那么本周的内容到此就结束了。</p>
+<p><span class="ts">05:31</span>下周，我们将学习如何让线性回归变得更加强大。</p>
+<p><span class="ts">05:35</span>你将不再局限于像房屋面积这样的单一特征，而是学会如何让它处理许多特征。</p>
+<p><span class="ts">05:44</span>你还将学习如何让它拟合非线性的曲线。</p>
+<p><span class="ts">05:49</span>这些改进将使算法变得更加实用和有价值。</p>
+<p><span class="ts">05:53</span>最后，我们还会介绍一些实用技巧，这些技巧对于让线性回归在实际应用中真正发挥作用会很有帮。</p>
+<p><span class="ts">06:04</span>非常高兴你能和我一起在这门课里，期待下周见到你。</p>
+</main>
+<nav class="pager"><a href="P019.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P021.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 46 个带时间戳的段落、21 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

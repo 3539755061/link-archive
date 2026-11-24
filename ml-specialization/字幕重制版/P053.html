@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 53 讲 单层前向传播 · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 53 讲 单层前向传播</h1>
+<p class="lead">课程二 高级学习算法 · 第 1 周 · 5:21 · 分 P 53 · 38 段 1 图</p>
+</header>
+<main>
+<p><span class="ts">00:03</span>如果必须用 Python 从头实现前向传播，你会怎么做呢？</p>
+<p><span class="ts">00:10</span>除了能让你直观地了解像 TensorFlow 和 PyTorch 这类库背后到底在做什么之外，如果将来某天，你决定想构建一些比 TensorFlow 和 PyTorch 更好的东西，也许现在你就更清楚该怎么做了。</p>
+<p><span class="ts">00:25</span>我其实并不太建议大多数人这样做，但说不定哪天真的会有人发明出一个比 TensorFlow 和 PyTorch 更优秀的框架。</p>
+<p><span class="ts">00:36</span>而那个做到的人，可能最终就得自己从头实现这些东西了。</p>
+<p><span class="ts">00:44</span>这页幻灯片里，我会带大家过不少代码。</p>
+<figure><img src="img/P053/kf001.jpg" alt="00:45" loading="lazy"><figcaption>00:45</figcaption></figure>
+<p><span class="ts">00:47</span>所有这些代码，你后续在可选实验和练习实验里还会再次看到。</p>
+<p><span class="ts">00:54</span>所以不用担心得记下每一行代码，或者背下每一行代码。</p>
+<p><span class="ts">00:59</span>你会在实验的 Jupyter 里看到这些代码。</p>
+<p><span class="ts">01:04</span>本视频的目标，仅仅是给你过一遍代码，确保你能理解它在做什么，这样当你进入可选实验和练习实验时，看到那些代码，你就明白该怎么做了。</p>
+<p><span class="ts">01:17</span>所以，不用费心去逐行做详细笔记。</p>
+<p><span class="ts">01:20</span>如果你能读懂这张幻灯片上的代码，理解它在做什么，那就足够了。</p>
+<p><span class="ts">01:26</span>那么我们来看看，如何为一个单层网络实现前向传播。</p>
+<p><span class="ts">01:32</span>我们继续使用这里展示的咖啡烘焙模型。</p>
+<p><span class="ts">01:38</span>来看看你如何接收一个输入特征向量 x，并实现前向传播以获得这个输出 A 二。</p>
+<p><span class="ts">01:48</span>在这个 Python 实现里，我将用一维数组来表示所有这些向量和参数，这就是为什么这里只有单层方4。</p>
+<p><span class="ts">01:59</span>这是 Python 中的一维数组，而不是像我们用双层方括号时得到的二维矩阵。</p>
+<p><span class="ts">02:08</span>你需要计算的第一个值是 a 上标方括号一下标一，也就是 a 一的第一个激活值，它是这个表达式经过函数作用后的结果。</p>
+<p><span class="ts">02:22</span>所以，在这张幻灯片中，我将采用一种约定，比如像 w 二一这样的项，我将表示为变量 w 二，然后下。</p>
+<p><span class="ts">02:35</span>这个下划线一就表示下标一。</p>
+<p><span class="ts">02:39</span>所以 W 二下划线一，就意味着上标方括号二以及下标一。</p>
+<p><span class="ts">02:50</span>我们有参数 W 一和 b 一一，假设它们分别是二、一和负一。</p>
+<p><span class="ts">03:01</span>然后你将计算 z 一一，即参数 w—一与输入 x 的点积，最后，aμ等于对 z 一一应用 g 函数，也就是 S 型函数。</p>
+<p><span class="ts">03:23</span>接下来，我们继续计算 a 一一，再次说明，按照我在这里描述的约定，它将会被写成那样。</p>
+<p><span class="ts">03:34</span>所以和我们左边做过的类似，W 一二是你的两个参数，负三、四。</p>
+<p><span class="ts">03:41</span>一二是那边的项一二。</p>
+<p><span class="ts">03:45</span>所以你计算出中间这项 z，然后应用 S 型函数，最终得到 a 一二。</p>
+<p><span class="ts">03:53</span>最后，你再用同样的步骤计算出 a 一三。</p>
+<p><span class="ts">03:59</span>现在你已经算出了这三个值：a 一一、a 一二和 a 一三。</p>
+<p><span class="ts">04:07</span>我们想把这三个数组合在一起，形成一个数组，来得到上方的 a 一，也就是第一层的输出。</p>
+<p><span class="ts">04:17</span>所以，你可以像下面这样，用 NumPy 数组把它们组合起来实现。</p>
+<p><span class="ts">04:23</span>如此，你就计算出了 A 一。</p>
+<p><span class="ts">04:26</span>r 我们也来实现第二层，以计算出输出 A 二。</p>
+<p><span class="ts">04:32</span>A 二是用这个表达式算出来的。</p>
+<p><span class="ts">04:36</span>那么我们将有参数 W 二一和 B 二一与之对应。</p>
+<p><span class="ts">04:44</span>然后，你会计算 Z，即 W 二与 A 一的点积，加上 B 二一，接着应用 S 型函数得到 A 二。</p>
+<p><span class="ts">04:56</span>这就是如何仅用 Python 和 NumPy 来实现前向传播。</p>
+<p><span class="ts">05:01</span>到目前为止，你刚看到的这页代码里包含了很多表达式。</p>
+<p><span class="ts">05:07</span>在接下来的视频里，我们来看看如何简化这个过程，为一个更通用的神经网络实现前向传播，而不是像我们刚才那样为每一个神经元都去硬编码。</p>
+</main>
+<nav class="pager"><a href="P052.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P054.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 38 个带时间戳的段落、1 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

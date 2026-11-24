@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 58 讲 矩阵乘法规则（选修） · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 1 周</p>
+<h1>第 58 讲 矩阵乘法规则（选修）</h1>
+<p class="lead">课程二 高级学习算法 · 第 1 周 · 9:45 · 分 P 58 · 63 段 6 图</p>
+</header>
+<main>
+<p><span class="ts">00:03</span>我们来了解一下两个矩阵相乘的一般形式。</p>
+<p><span class="ts">00:09</span>然后在下个视频中，我们将把这个方法应用到神经网络的向量化实现上。</p>
+<p><span class="ts">00:19</span>这里有一个矩阵 A，它是一个二乘三矩阵，因为它有两行三列。</p>
+<figure><img src="img/P058/kf001.jpg" alt="00:21" loading="lazy"><figcaption>00:21</figcaption></figure>
+<p><span class="ts">00:28</span>和之前一样，我鼓励你把这个矩阵的列看作三个向量，向量 A 一、A 二和 A 三。</p>
+<p><span class="ts">00:39</span>我们要做的是取 A 的转置，然后与一个矩阵 W 相乘。</p>
+<p><span class="ts">00:49</span>A 的转置是这样得到的：把 A 的第一列拿过来，像这样横放；然后把 A 的第二列拿过来，像这样横放；再把 A 的第三列拿过来，像这样横放。</p>
+<figure><img src="img/P058/kf002.jpg" alt="00:51" loading="lazy"><figcaption>00:51</figcaption></figure>
+<figure><img src="img/P058/kf003.jpg" alt="01:03" loading="lazy"><figcaption>01:03</figcaption></figure>
+<p><span class="ts">01:04</span>所以这些行现在就变成了 A 一转置、A 二转置和 A 三转置。</p>
+<p><span class="ts">01:15</span>我鼓励你把 W 看作是向量 W 一、W 二、W 三和 W 四这样堆叠在一起。</p>
+<p><span class="ts">01:25</span>我们来看看如何计算 A 转置乘以 W。</p>
+<p><span class="ts">01:30</span>注意，我也用了深浅稍有不同的橙色来表示 A 的不同列，相同深浅的颜色对应我们认为组合成一个向量的数字。</p>
+<p><span class="ts">01:44</span>并且相同的颜色也用来表示 A 转置的不同行，因为 A 转置的不同行就是 A 一转置、A 二转置和 A 三转置。</p>
+<p><span class="ts">01:56</span>类似地，我用不同深浅的蓝色来表示 W 的不同列，因为同一蓝色深浅的数字是组合在一起形成向量一、W 二、W 三或 W 四的。</p>
+<p><span class="ts">02:13</span>现在，我们来看看如何计算 A 转置乘以 W。</p>
+<p><span class="ts">02:19</span>我将用不同深浅的蓝色画竖条，用不同深浅的橙色画横条，来标示 Z（即 A 转置 W）中的哪些元素。</p>
+<p><span class="ts">02:31</span>是受 A 转置不同行的影响，哪些是受 W 不同列的影响。</p>
+<p><span class="ts">02:44</span>举个例子，我们来看看 W 的第一列。</p>
+<p><span class="ts">02:48</span>这就是 W 一，在这里用最浅的蓝色标出。</p>
+<p><span class="ts">02:54</span>所以 W 一将会影响或者对应用这里最浅蓝色标示的 Z 的第一列。</p>
+<p><span class="ts">03:06</span>而 W 的第二列，即 W 二，用第二浅的蓝色标出，会影响乙的第二列计算出的值，以此类推第三、第四列。</p>
+<p><span class="ts">03:23</span>相应地，我们来看看 A 转置。</p>
+<p><span class="ts">03:26</span>A 一转置是 A 转置的第一行，用最浅的橙色标出，A 一转置会影响或者对应用 Z 的第一行的值。</p>
+<p><span class="ts">03:40</span>A 二转置会影响乙的第二行，A 三转置会影响或者对应用 Z 的第三行。</p>
+<p><span class="ts">03:51</span>我们来弄清楚如何计算矩阵乙，它将是一个三乘四的矩阵，总共有十二个数字。</p>
+<p><span class="ts">04:00</span>我们先来弄清楚如何计算乙中第一行第一列的数字。</p>
+<p><span class="ts">04:12</span>因为它位于第一行第一列，对应最浅的橙色和最浅的蓝色，计算它的方法是取 A 转置的第一行和 W 的第一列，求它们的内积或点乘。</p>
+<figure><img src="img/P058/kf004.jpg" alt="04:13" loading="lazy"><figcaption>04:13</figcaption></figure>
+<figure><img src="img/P058/kf005.jpg" alt="04:26" loading="lazy"><figcaption>04:26</figcaption></figure>
+<p><span class="ts">04:28</span>所以这个数字就是（一，二）点乘（三，四），也就是一乘三加二乘四，等于十-。</p>
+<p><span class="ts">04:41</span>找再省第一1例。</p>
+<p><span class="ts">04:43</span>怎么计算这个2的元素呢？</p>
+<p><span class="ts">04:49</span>它在第三行，第一行、第二行、第三行。</p>
+<p><span class="ts">04:54</span>所以这是第三行，第二列，第一列、第二列。</p>
+<p><span class="ts">04:59</span>所以要计算乙的第三行第二列的数字，你现在就要取 A 转置的第三行和 W 的第二列，把它们点乘起来。</p>
+<p><span class="ts">05:14</span>注意，这对应最深的橙色和第二浅的蓝色。</p>
+<p><span class="ts">05:20</span>计算过程是，零点一乘五加零点二乘六，等于零点五加一点二，等于一点七。</p>
+<p><span class="ts">05:33</span>所以要计算乙的第三行第二列的数字，你就取 A 转置的第三行和 W 的第二列。</p>
+<p><span class="ts">05:43</span>我们再来看一个例子，看看你能不能自己算出来。</p>
+<p><span class="ts">05:49</span>这是矩阵乙的第二行第三列。</p>
+<p><span class="ts">05:56</span>你不妨看一下，看看能否找出应该取哪一行和哪一列进行点乘，从而得出这个矩阵元素中的数字。</p>
+<p><span class="ts">06:08</span>希望你明白了，应该取 A 转置的第二行和 W 的第三列。</p>
+<p><span class="ts">06:16</span>当你把它们点乘起来，A 二转置点乘 W 三等于负一乘七加负二乘八，等于负七加负十六，结果是负二。</p>
+<p><span class="ts">06:31</span>这样你就计算出了矩阵乙的这个元素。</p>
+<p><span class="ts">06:35</span>事实证明，如果你对矩阵乙的每个元素都这样操作，你就能算出这个矩阵中的所有数字，结果看起来是这样的。</p>
+<p><span class="ts">06:45</span>如果你想的话，可以暂停视频，随便选一个元素，验证一下我们讲的公式能得到正确的乙值。</p>
+<p><span class="ts">06:55</span>我只想指出矩阵相乘的最后一个有趣要求，这里的 X 转置是一个三乘二矩阵，因为它有三行两列。</p>
+<p><span class="ts">07:10</span>而这里的 W 是一个二乘四矩阵，因为它有两行四列。</p>
+<p><span class="ts">07:17</span>两个矩阵能相乘的一个要求是，这个数字必须和那个数字匹配。</p>
+<p><span class="ts">07:25</span>这是因为你只能在长度相同的向量之间进行点乘。</p>
+<p><span class="ts">07:32</span>所以你可以对包含两个数字的向量做点乘。</p>
+<p><span class="ts">07:36</span>那是因为你只能用一个长度为二的向量和另一个长度也为二的向量求内积。</p>
+<p><span class="ts">07:44</span>例如，“你不能用一个长度为二的向量和一个长度为三的向量求内积。</p>
+<p><span class="ts">07:51</span>这就是为什么矩阵乘法有效的前提是，第一个矩阵（这里是 A 转置）的列数，必须等于第二个矩阵（这里是 W）的行数。</p>
+<figure><img src="img/P058/kf006.jpg" alt="08:06" loading="lazy"><figcaption>08:06</figcaption></figure>
+<p><span class="ts">08:07</span>这样，在这个过程中做点乘时，你是在对大小相同的向量做点乘。</p>
+<p><span class="ts">08:15</span>另一个观察结论是，输出 Z 等于 A 转置乘以 W。</p>
+<p><span class="ts">08:25</span>所以这个乘法的输出结果，将拥有和 X 转置相同的行数，以及和 W 相同的列数。</p>
+<p><span class="ts">08:36</span>这也是矩阵乘法的另一个性质。</p>
+<p><span class="ts">08:41</span>以上就是矩阵乘法。</p>
+<p><span class="ts">08:47</span>所以感谢你坚持听我讲完这些。</p>
+<p><span class="ts">08:50</span>如果你感兴趣，这周晚些时候还有一些纯选修的测验，可以让你自己再练习一些这类计算。</p>
+<p><span class="ts">09:00</span>那么接下来，就让我们把学到的矩阵乘法知识，应用回神经网络的向量化实现上。</p>
+<p><span class="ts">09:08</span>我得说，我第一次理解向量化实现的时候，觉得这真的太酷了。</p>
+<p><span class="ts">09:15</span>我自己已经用非向量化方式实现神经网络有一阵子了。</p>
+<p><span class="ts">09:21</span>当我最终理解了向量化实现，并第一次以那种方式实现它时，它运行得比我之前做的任何实现都快。</p>
+<p><span class="ts">09:31</span>我就想，哇，我真希望自己能早点搞懂这个。</p>
+<p><span class="ts">09:39</span>向量化实现有点复杂，但它能让神经网络运行得快得多。</p>
+</main>
+<nav class="pager"><a href="P057.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P059.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 63 个带时间戳的段落、6 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>

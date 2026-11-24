@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f6f4ef">
+<title>第 70 讲 进阶优化算法 · 字幕重制版</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="top">
+<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<h1>第 70 讲 进阶优化算法</h1>
+<p class="lead">课程二 高级学习算法 · 第 2 周 · 6:41 · 分 P 70 · 49 段 12 图</p>
+</header>
+<main>
+<p><span class="ts">00:03</span>梯度下降是一种在机器学习中被广泛使用的优化算法，它是许多算法的基础，例如线性回归、逻辑回归以及神经网络的早期实现。</p>
+<p><span class="ts">00:19</span>但事实证明，现在有一些其他的优化算法，在最小化代价函数方面，甚至比梯度下降更好。</p>
+<p><span class="ts">00:28</span>在本视频中，我们将探讨一种算法，它能帮助你比梯度下降更快地训练你的神经网络。</p>
+<p><span class="ts">00:36</span>回想一下，这是一步梯度下降的表达式。</p>
+<figure><img src="img/P070/kf001.jpg" alt="00:37" loading="lazy"><figcaption>00:37</figcaption></figure>
+<p><span class="ts">00:41</span>参数 W 下标 j 被更新为 w 下标 j 减去学习率 alpha 乘以这个偏导数项。</p>
+<p><span class="ts">00:49</span>我们怎样才能让这做得更好呢？</p>
+<p><span class="ts">00:52</span>在这个例子中，我使用一个由这些椭圆构成的等高线图来绘制代价函数 j。</p>
+<p><span class="ts">01:01</span>因此，这个代价函数的最小值位于下面这些椭圆的中心。</p>
+<p><span class="ts">01:07</span>现在，如果你在此处开始梯度下降，如果 alpha 很小，一步梯度下降可能会带你向那个方向走一点点，然后是另一步，再一步，又一步，接着一步。</p>
+<p><span class="ts">01:22</span>你会注意到，梯度下降的每一步几乎都朝着完全相同的方向前进。</p>
+<p><span class="ts">01:28</span>如果你发现是这种情况，你可能会想，那么，我们为什么不把 alpha 调大一些呢？</p>
+<p><span class="ts">01:34</span>我们能否有一种算法，能自动增大 alpha，让它迈出更大的步伐，从而更快地到达最小值呢？</p>
+<p><span class="ts">01:43</span>有一种叫做 ADAM 算法的算法可以做到这一点。</p>
+<p><span class="ts">01:49</span>如果它发现学习率太小，而我们只是一遍又一遍地以微小的步伐朝相似的方向前进，我们就应该把学习率 alpha 调大。</p>
+<p><span class="ts">02:01</span>相比之下，这里又是同一个代价函数。</p>
+<figure><img src="img/P070/kf002.jpg" alt="02:02" loading="lazy"><figcaption>02:02</figcaption></figure>
+<p><span class="ts">02:05</span>如果我们从这里开始，并有一个相对较大的学习率 alpha，那么可能第一步梯度下降把我们带到这里，第二步带到这里，第三步，第四步，第五步，第六步。</p>
+<figure><img src="img/P070/kf003.jpg" alt="02:07" loading="lazy"><figcaption>02:07</figcaption></figure>
+<p><span class="ts">02:21</span>如果你看到梯度下降像这样来回震荡，你可能会倾向于说，那么，我们为什么不把学习率调小呢？</p>
+<figure><img src="img/P070/kf004.jpg" alt="02:23" loading="lazy"><figcaption>02:23</figcaption></figure>
+<p><span class="ts">02:29</span>而 ADAM 算法也能自动做到这点。 N。</p>
+<p><span class="ts">02:33</span>有了更小的学习率，你就可以沿着一条更平滑的路径走向代价函数的最小值。</p>
+<p><span class="ts">02:41</span>所以，根据梯度下降的进行情况，有时你希望有一个更大的学习率 alpha，有时你希望有一个更小的学习率 alpha。</p>
+<figure><img src="img/P070/kf005.jpg" alt="02:42" loading="lazy"><figcaption>02:42</figcaption></figure>
+<p><span class="ts">02:51</span>因此，ADAM 算法可以自动调整学习率。</p>
+<figure><img src="img/P070/kf006.jpg" alt="02:51" loading="lazy"><figcaption>02:51</figcaption></figure>
+<p><span class="ts">02:56</span>ADAM 代表自适应矩估计，简称 ADAM。</p>
+<p><span class="ts">03:02</span>不用太担心这个名字的含义。</p>
+<p><span class="ts">03:04</span>这只是作者们给这个算法起的名字。</p>
+<p><span class="ts">03:08</span>但有趣的是，ADAM 算法并不使用单一的全局学习率 alpha。</p>
+<p><span class="ts">03:14</span>它为你模型的每一个参数都使用不同的学习率。</p>
+<p><span class="ts">03:19</span>所以，如果你有参数 w 一到 w 十以及 b，那么它实际上有十一个学习率参数，对应 w 一到 w 十的一、alpha 二，一直到 alpha 十，以及，我称之对应参数 b 的 alpha 十一。</p>
+<figure><img src="img/P070/kf007.jpg" alt="03:21" loading="lazy"><figcaption>03:21</figcaption></figure>
+<p><span class="ts">03:37</span>ADAM 算法背后的直觉是，如果一个参数，w 下标 j 或 b，似乎一直在朝大致相同的方向移动，这就是我们在上一张幻灯片上第一个例子中看到的。</p>
+<figure><img src="img/P070/kf008.jpg" alt="03:38" loading="lazy"><figcaption>03:38</figcaption></figure>
+<p><span class="ts">03:51</span>但如果它似乎一直在朝大致相同的方向移动，我们就增加该参数的学习率。</p>
+<p><span class="ts">03:58</span>让我们朝着那个方向走得更快些。</p>
+<p><span class="ts">04:01</span>相反地，如果一个参数不停地来回震荡，这是你在上一张幻灯片上第二个例子中看到的，那就不要让它继续震荡或来回反弹。n。</p>
+<figure><img src="img/P070/kf009.jpg" alt="04:02" loading="lazy"><figcaption>04:02</figcaption></figure>
+<p><span class="ts">04:13</span>我们就把那个参数的调小一点。</p>
+<p><span class="ts">04:18</span>ADAM 如何做到这点的细节有些复杂，超出了本课程的范围。</p>
+<p><span class="ts">04:24</span>但如果你日后参加一些更高级的深度学习课程，你可能会学习到更多关于这个 ADAM 算法细节的内。</p>
+<p><span class="ts">04:35</span>但在代码中，你这样实现它。</p>
+<figure><img src="img/P070/kf010.jpg" alt="04:36" loading="lazy"><figcaption>04:36</figcaption></figure>
+<p><span class="ts">04:42</span>你编译模型的方式也与之前非常相似，区别仅在于我们现在向编译函数添加了一个额外的参数，即我们指定要使用的优化器是 tf.keras. 中的优化器。</p>
+<p><span class="ts">05:01</span>所以 ADAM 优化算法确实需要一个默认的初始学习率 alpha。</p>
+<p><span class="ts">05:07</span>在这个例子中，我将初始学习率设置为十的负三次方。</p>
+<p><span class="ts">05:14</span>但你在实践中使用 ADAM 算法时，值得为这个初始的、默认的全局学习率尝试几个值。</p>
+<p><span class="ts">05:22</span>尝试一些更大和更小的值，看看哪个能带给你最快的学习性能。</p>
+<p><span class="ts">05:28</span>然而，比起你在先前课程中学到的原始梯度下降算法，由于 ADAM 算法能够自动适应学习率，它对你所选择的学习率的确切值更为鲁棒。</p>
+<figure><img src="img/P070/kf011.jpg" alt="05:30" loading="lazy"><figcaption>05:30</figcaption></figure>
+<figure><img src="img/P070/kf012.jpg" alt="05:43" loading="lazy"><figcaption>05:43</figcaption></figure>
+<p><span class="ts">05:45</span>尽管如此，对这个参数稍作调整，看看能否获得更快的训练速度，仍然是值得的。</p>
+<p><span class="ts">05:52</span>ADAM 优化算法的内容就是这些。</p>
+<p><span class="ts">05:55</span>它通常比梯度下降快得多，并且已经成为从业者训练神经网络的事实标准。</p>
+<p><span class="ts">06:05</span>所以，如果你在决定使用什么学习算法，用什么优化算法来训练你的神经网络，一个稳妥的选择就是直接使用 ADAM 优化算法。</p>
+<p><span class="ts">06:16</span>如今，大多数从业者会使用 ADAM，而不是原始的梯度下降算法。</p>
+<p><span class="ts">06:23</span>有了这个，我希望你的学习算法能够学习得快得多。</p>
+<p><span class="ts">06:30</span>现在，在接下来的几个视频中，我想谈谈神经网络的一些更高级的概念。</p>
+<p><span class="ts">06:37</span>特别是，在下一个视频中，让我们来看一些替代的层类型。</p>
+</main>
+<nav class="pager"><a href="P069.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P071.html">下一讲 →</a></nav>
+<footer>
+<p>本页为 B 站 BV1DLRbBTE6E 的字幕 OCR 重制版，共 49 个带时间戳的段落、12 张关键帧插图。</p>
+<p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
+</footer>
+</div>
+</body>
+</html>
