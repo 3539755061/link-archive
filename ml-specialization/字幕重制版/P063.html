@@ -20,7 +20,7 @@
 <p><span class="ts">00:14</span>根据目标标签或真实标签的不同，输出层的激活函数会有一个相当自然的选择。</p>
 <p><span class="ts">00:26</span>随后，我们也会看看神经网络隐藏层激活函数的选择。</p>
 <p><span class="ts">00:34</span>你可以为神经网络中不同的神经元选择不同的激活函数。</p>
-<figure><img src="img/P063/kf001.jpg" alt="00:35" loading="lazy"><figcaption>00:35</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf001.jpg" alt="画面 00:35" loading="lazy"><figcaption>画面 00:35</figcaption></figure>
 <p><span class="ts">00:40</span>在考虑输出层的激活函数时，通常取决于目标或真实标签是什么，会有一个相当自然的选择。</p>
 <p><span class="ts">00:56</span>如果你在做一个分类问题，其中 y 要么是零，要么是一，那么激活函数几乎总是最自然的选择，因为这样神经网络就能学会预测 y 等于一的概率，就像我们之前在逻辑回归中做的那样。</p>
 <p><span class="ts">01:12</span>因为这样神经网络就能学会预测 y 等于一的概率，就像我们之前在逻辑回归中做的那样。</p>
@@ -37,16 +37,16 @@
 <p><span class="ts">02:41</span>所以，在为输出层选择激活函数时，通常取决于你试图预测的标签是什么，就会有一个相当自然的选择。</p>
 <p><span class="ts">02:53</span>事实上，这张幻灯片上的指导原则，也几乎就是我一直以来为神经网络输出层选择激活函数的方式。</p>
 <p><span class="ts">03:03</span>那么神经网络的隐藏层呢！</p>
-<figure><img src="img/P063/kf002.jpg" alt="03:03" loading="lazy"><figcaption>03:03</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf002.jpg" alt="画面 03:03" loading="lazy"><figcaption>画面 03:03</figcaption></figure>
 <p><span class="ts">03:07</span>事实证明，ReLU 激活函数是目前许多从业者在训练神经网络时最常用的选择。</p>
 <p><span class="ts">03:19</span>尽管我们最初是用 sigmoid 激活函数来描述神经网络的，并且事实上，在神经网络发展的早期，人们确实在很多地方使用 sigmoid 激活函数。</p>
-<figure><img src="img/P063/kf003.jpg" alt="03:23" loading="lazy"><figcaption>03:23</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf003.jpg" alt="画面 03:23" loading="lazy"><figcaption>画面 03:23</figcaption></figure>
 <p><span class="ts">03:34</span>但这个领域已经发展到更频繁地使用 ReLU，几乎不再用 sigmoid，唯一的例外是，如果你有二元分类问题，确实会在输出层使用 sigmoid 激活函数。n。</p>
-<figure><img src="img/P063/kf004.jpg" alt="03:48" loading="lazy"><figcaption>03:48</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf004.jpg" alt="画面 03:48" loading="lazy"><figcaption>画面 03:48</figcaption></figure>
 <p><span class="ts">03:51</span>首先，比较 ReLU 和 sigmoid 激活函数，ReLU 计算起来更快一些，因为它只需要计算零和 z 的最大值，而 sigmoid 则需要取指数，然后取倒数等等。</p>
-<figure><img src="img/P063/kf005.jpg" alt="03:53" loading="lazy"><figcaption>03:53</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf005.jpg" alt="画面 03:53" loading="lazy"><figcaption>画面 03:53</figcaption></figure>
 <p><span class="ts">04:08</span>所以它的效率稍低一些。</p>
-<figure><img src="img/P063/kf006.jpg" alt="04:09" loading="lazy"><figcaption>04:09</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf006.jpg" alt="画面 04:09" loading="lazy"><figcaption>画面 04:09</figcaption></figure>
 <p><span class="ts">04:10</span>但第二个原因，也是更重要的一个原因，是 ReLU 函数只在图的这一部分，也就是左侧这里，变得平坦。</p>
 <p><span class="ts">04:24</span>而 sigmoid 激活函数，有两个地方会变得平坦。</p>
 <p><span class="ts">04:28</span>它在图的左侧变平，在图的右侧也变平。</p>
@@ -56,14 +56,14 @@
 <p><span class="ts">05:01</span>这会导致代价函数 J(W，B）中有更多平坦区域，梯度很小，从而减慢学习速度。</p>
 <p><span class="ts">05:11</span>我知道这只是一个直观的解释，但研究人员发现，使用 ReLU 激活函数也能让你的神经网络学习得更快些。</p>
 <p><span class="ts">05:22</span>这就是为什么对于大多数从业者来说，如果要决定为隐藏层使用什么激活函数，ReLU 激活函数已成为目前最常用的选择。</p>
-<figure><img src="img/P063/kf007.jpg" alt="05:24" loading="lazy"><figcaption>05:24</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf007.jpg" alt="画面 05:24" loading="lazy"><figcaption>画面 05:24</figcaption></figure>
 <p><span class="ts">05:33</span>事实上，如果我在构建一个神经网络，我也是这样为隐藏层选择激活函数的。</p>
-<figure><img src="img/P063/kf008.jpg" alt="05:40" loading="lazy"><figcaption>05:40</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf008.jpg" alt="画面 05:40" loading="lazy"><figcaption>画面 05:40</figcaption></figure>
 <p><span class="ts">05:41</span>总结一下，关于如何为神经网络选择激活函数，以下是我的建议。</p>
 <p><span class="ts">05:49</span>对于输出层，如果是二分类问题，用 sigmoid；如果 y 是可正可负的数字，用线性；如果 y 只能取正值，或者说零和正值，也就是非负值，那就用 ReLU。</p>
-<figure><img src="img/P063/kf009.jpg" alt="05:51" loading="lazy"><figcaption>05:51</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf009.jpg" alt="画面 05:51" loading="lazy"><figcaption>画面 05:51</figcaption></figure>
 <p><span class="ts">06:07</span>然后对于隐藏层，我建议直接默认使用 ReLU 作为激活函数。</p>
-<figure><img src="img/P063/kf010.jpg" alt="06:07" loading="lazy"><figcaption>06:07</figcaption></figure>
+<figure class="shot"><img src="img/P063/kf010.jpg" alt="画面 06:07" loading="lazy"><figcaption>画面 06:07</figcaption></figure>
 <p><span class="ts">06:15</span>在 TensorFlow 中，你可以这样实现。</p>
 <p><span class="ts">06:19</span>不再像我们之前那样写等于 sigmoid，你可以为隐藏层，也就是第一隐藏层、第二隐藏层，让 TensorFlow 使用 ReLU 激活函数。</p>
 <p><span class="ts">06:33</span>然后对于输出层，在这个例子中，我让它使用了 sigmoid 激活函数。</p>

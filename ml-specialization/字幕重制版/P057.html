@@ -18,24 +18,24 @@
 <p><span class="ts">00:03</span>你知道，矩阵就是一个数字块或者说二维数组。</p>
 <p><span class="ts">00:08</span>两个矩阵相乘是什么意思呢？</p>
 <p><span class="ts">00:13</span>为了逐步理解矩阵乘法，我们先来看看向量之间的点乘是怎么做的。</p>
-<figure><img src="img/P057/kf001.jpg" alt="00:14" loading="lazy"><figcaption>00:14</figcaption></figure>
+<figure class="shot"><img src="img/P057/kf001.jpg" alt="画面 00:14" loading="lazy"><figcaption>画面 00:14</figcaption></figure>
 <p><span class="ts">00:22</span>我们以这个向量（一，二）和这个向量（三，四）的点乘为例。</p>
 <p><span class="ts">00:31</span>如果 z 是这两个向量的点乘，那么计算 z 的方法就是用第一个元素乘以这里的第一个元素。</p>
 <p><span class="ts">00:40</span>也就是一乘三，加上第二个元素乘第二个元素，也就是加上二乘四。</p>
 <p><span class="ts">00:48</span>所以就是三加八，等于十一。</p>
 <p><span class="ts">00:54</span>更一般的情况是，如果 z 是向量 a 和向量 w 的点乘，那你计算 z 的方法就是，将第一对元素相乘，然后是第二对元素相乘，然后是第三对，以此类推，最后把所有乘积加起来。</p>
-<figure><img src="img/P057/kf002.jpg" alt="00:55" loading="lazy"><figcaption>00:55</figcaption></figure>
-<figure><img src="img/P057/kf003.jpg" alt="01:13" loading="lazy"><figcaption>01:13</figcaption></figure>
+<figure class="shot"><img src="img/P057/kf002.jpg" alt="画面 00:55" loading="lazy"><figcaption>画面 00:55</figcaption></figure>
+<figure class="shot"><img src="img/P057/kf003.jpg" alt="画面 01:13" loading="lazy"><figcaption>画面 01:13</figcaption></figure>
 <p><span class="ts">01:15</span>实际上，点乘还有另一种等价的写法。给定一个向量 A，即写成列向量的（一，二），你可以把它成。</p>
 <p><span class="ts">01:30</span>也就是说，你可以通过取 A 的转置，把它从所谓的列向量变成一个行向量。</p>
 <p><span class="ts">01:38</span>向量 A 的转置，意思是你把这个向量拿起来，让它的元素像这样横放。</p>
 <p><span class="ts">01:48</span>而事实证明，如果你把 A 转置，这是一个行向量，或者说你可以把它看作一个一乘二矩阵，与 W 相乘。</p>
-<figure><img src="img/P057/kf004.jpg" alt="01:50" loading="lazy"><figcaption>01:50</figcaption></figure>
+<figure class="shot"><img src="img/P057/kf004.jpg" alt="画面 01:50" loading="lazy"><figcaption>画面 01:50</figcaption></figure>
 <p><span class="ts">01:59</span>现在你可以把 W 看作一个二乘一矩阵，总结一下，Z 等于 A 与 W 的点乘，等同于 Z 等于 A 转置，也就是 A 被横放，乘以 W。</p>
-<figure><img src="img/P057/kf005.jpg" alt="02:00" loading="lazy"><figcaption>02:00</figcaption></figure>
+<figure class="shot"><img src="img/P057/kf005.jpg" alt="画面 02:00" loading="lazy"><figcaption>画面 02:00</figcaption></figure>
 <p><span class="ts">02:30</span>这对理解矩阵乘法会有帮助，这两种写法只是完全相同的计算的不同表达，最终结果都是 Z。</p>
 <p><span class="ts">02:41</span>现在我们来看看向量与矩阵的乘法，也就是你用一个向量去乘以一个矩阵。</p>
-<figure><img src="img/P057/kf006.jpg" alt="02:42" loading="lazy"><figcaption>02:42</figcaption></figure>
+<figure class="shot"><img src="img/P057/kf006.jpg" alt="画面 02:42" loading="lazy"><figcaption>画面 02:42</figcaption></figure>
 <p><span class="ts">02:50</span>这里再次给出向量 A（一，二），A 转置就是 A 被横放。</p>
 <p><span class="ts">02:58</span>所以，它不再是二乘一矩阵，而是变成一个一乘二矩阵。</p>
 <p><span class="ts">03:05</span>现在让我创建一个二乘二矩阵 W，包含这四个元素：三、四、五、六。</p>
@@ -50,7 +50,7 @@
 <p><span class="ts">04:29</span>所以它等于十七。</p>
 <p><span class="ts">04:33</span>因此 Z 等于这个一乘二矩阵，元素为十一和十七。</p>
 <p><span class="ts">04:40</span>好，再说最后一件事，我们就结束这个视频，那就是如何把向量矩阵乘法推广到矩阵与矩阵的乘法。</p>
-<figure><img src="img/P057/kf007.jpg" alt="04:44" loading="lazy"><figcaption>04:44</figcaption></figure>
+<figure class="shot"><img src="img/P057/kf007.jpg" alt="画面 04:44" loading="lazy"><figcaption>画面 04:44</figcaption></figure>
 <p><span class="ts">04:53</span>我有一个矩阵 A，包含这四个元素。</p>
 <p><span class="ts">04:56</span>第一列是一、二，第二列是负一、负二。</p>
 <p><span class="ts">05:04</span>我想知道如何计算 A 转置乘以 W。</p>

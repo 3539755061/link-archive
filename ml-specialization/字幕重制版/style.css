@@ -42,3 +42,10 @@ table.idx a{color:#0b5cad;text-decoration:none;border-bottom:1px solid rgba(11,9
   table.idx{font-size:.82em}
   table.idx th:nth-child(3),table.idx td:nth-child(3){display:none}
 }
+
+
+/* 关键帧插图：跟着栏宽走，不撑破版面 */
+figure.shot{margin:1.5em 0 1.7em;text-align:center}
+figure.shot img{display:block;max-width:100%;height:auto;margin:0 auto;border:1px solid var(--line);border-radius:6px;background:#fff}
+figure.shot figcaption{font-size:.76em;color:var(--ink-2);margin-top:.5em;font-family:"JetBrains Mono",Consolas,Menlo,monospace;letter-spacing:.02em}
+@media (max-width:560px){figure.shot img{border-radius:4px}}

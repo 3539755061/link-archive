@@ -16,22 +16,22 @@
 </header>
 <main>
 <p><span class="ts">00:01</span>我们来谈谈逻辑回归，这可能是世界上应用最广泛的单一分类算法了。</p>
-<figure><img src="img/P032/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:12</span>我们继续用判断肿瘤是否为恶性的例子，和之前一样，我们用标签一或是，即正类，来表示恶性肿瘤，用零或否，即负例，来表示良性肿瘤。</p>
-<figure><img src="img/P032/kf002.jpg" alt="00:14" loading="lazy"><figcaption>00:14</figcaption></figure>
-<figure><img src="img/P032/kf003.jpg" alt="00:29" loading="lazy"><figcaption>00:29</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf002.jpg" alt="画面 00:14" loading="lazy"><figcaption>画面 00:14</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf003.jpg" alt="画面 00:29" loading="lazy"><figcaption>画面 00:29</figcaption></figure>
 <p><span class="ts">00:30</span>这是数据集的图表，横轴是肿瘤大小，纵轴只取零和一两个值，因为这是个分类问题。</p>
 <p><span class="ts">00:42</span>你在上个视频中看到，线性回归对于这个问题不是一个好的算法。</p>
 <p><span class="ts">00:48</span>相比之下，逻辑回归最终要做的，是拟合一条看起来像这样的曲线，一条 S 形曲线到这个数据集。</p>
-<figure><img src="img/P032/kf004.jpg" alt="00:50" loading="lazy"><figcaption>00:50</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf004.jpg" alt="画面 00:50" loading="lazy"><figcaption>画面 00:50</figcaption></figure>
 <p><span class="ts">01:01</span>所以在这个例子中，如果一位病患来了，其肿瘤是这个大小，就如我在 x 轴上所示，那么算法将输出零点七，提示这更接近或更可能是恶性而非良性。</p>
-<figure><img src="img/P032/kf005.jpg" alt="01:03" loading="lazy"><figcaption>01:03</figcaption></figure>
-<figure><img src="img/P032/kf006.jpg" alt="01:18" loading="lazy"><figcaption>01:18</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf005.jpg" alt="画面 01:03" loading="lazy"><figcaption>画面 01:03</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf006.jpg" alt="画面 01:18" loading="lazy"><figcaption>画面 01:18</figcaption></figure>
 <p><span class="ts">01:20</span>稍后我们会更多解释零点七在这个情境下实际意味着什么。</p>
 <p><span class="ts">01:25</span>但输出的标签永远不会是零点七，它只能是零或一。</p>
 <p><span class="ts">01:31</span>为了构建逻辑回归算法，有一个我想介绍的重要数学函数，叫做 sigmoid 函数，有时也称为逻辑函数。</p>
-<figure><img src="img/P032/kf007.jpg" alt="01:33" loading="lazy"><figcaption>01:33</figcaption></figure>
-<figure><img src="img/P032/kf008.jpg" alt="01:43" loading="lazy"><figcaption>01:43</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf007.jpg" alt="画面 01:33" loading="lazy"><figcaption>画面 01:33</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf008.jpg" alt="画面 01:43" loading="lazy"><figcaption>画面 01:43</figcaption></figure>
 <p><span class="ts">01:46</span>sigmoid 函数看起来像这样。</p>
 <p><span class="ts">01:49</span>请注意，左侧和右侧图表的 x 轴是不同的。</p>
 <p><span class="ts">01:54</span>在左侧的图中，x 轴上是肿瘤大小，所以全是正数。</p>
@@ -39,71 +39,71 @@
 <p><span class="ts">02:15</span>我在这里展示的只是一个从负三到正三的范围。</p>
 <p><span class="ts">02:21</span>因此 sigmoid 函数输出零到一之间的值。</p>
 <p><span class="ts">02:25</span>如果我用 g of z 来表示这个函数，那么 g of z 的公式等于一除以一加 e 的负 z 次方，其中 e 是一个数学常数，取值约为二点七。</p>
-<figure><img src="img/P032/kf009.jpg" alt="02:27" loading="lazy"><figcaption>02:27</figcaption></figure>
-<figure><img src="img/P032/kf010.jpg" alt="02:42" loading="lazy"><figcaption>02:42</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf009.jpg" alt="画面 02:27" loading="lazy"><figcaption>画面 02:27</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf010.jpg" alt="画面 02:42" loading="lazy"><figcaption>画面 02:42</figcaption></figure>
 <p><span class="ts">02:43</span>因此 e 的负 z 次方就是这个数学常数的负 z 次幂。</p>
 <p><span class="ts">02:49</span>注意，如果 z 非常大，比如一百，e 的负 z 次方就是 e 的负一百次方，这是一个非常非常小的数。</p>
-<figure><img src="img/P032/kf011.jpg" alt="02:51" loading="lazy"><figcaption>02:51</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf011.jpg" alt="画面 02:51" loading="lazy"><figcaption>画面 02:51</figcaption></figure>
 <p><span class="ts">03:01</span>所以这最终变成了，一，一除以一加上一个极其微小的数，因此分母将基本上非常非常接近于一，这就是为什么当 z 很大时，g of z，也就是 z 的 sigmoid 函数，会非常接近于一。</p>
-<figure><img src="img/P032/kf012.jpg" alt="03:01" loading="lazy"><figcaption>03:01</figcaption></figure>
-<figure><img src="img/P032/kf013.jpg" alt="03:06" loading="lazy"><figcaption>03:06</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf012.jpg" alt="画面 03:01" loading="lazy"><figcaption>画面 03:01</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf013.jpg" alt="画面 03:06" loading="lazy"><figcaption>画面 03:06</figcaption></figure>
 <p><span class="ts">03:23</span>相反地，你也可以自己验证一下，当 z 是一个非常大的负数时，g of z 就变成了一除以一个巨大的数，这就是为什么 g of z 非常接近于零。</p>
-<figure><img src="img/P032/kf014.jpg" alt="03:38" loading="lazy"><figcaption>03:38</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf014.jpg" alt="画面 03:38" loading="lazy"><figcaption>画面 03:38</figcaption></figure>
 <p><span class="ts">03:40</span>所以这就是 sigmoid 函数拥有这种形状的原因，它开始非常接近于零，然后慢慢建立或增长到值一。</p>
-<figure><img src="img/P032/kf015.jpg" alt="03:41" loading="lazy"><figcaption>03:41</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf015.jpg" alt="画面 03:41" loading="lazy"><figcaption>画面 03:41</figcaption></figure>
 <p><span class="ts">03:51</span>此外，在 sigmoid 函数中，当 z 等于零时，e 的负 z 次方是 e 的负零次方，这等于一。</p>
-<figure><img src="img/P032/kf016.jpg" alt="03:51" loading="lazy"><figcaption>03:51</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf016.jpg" alt="画面 03:51" loading="lazy"><figcaption>画面 03:51</figcaption></figure>
 <p><span class="ts">04:02</span>因此 g of z 等于一除以一加一，也就是零点五。</p>
 <p><span class="ts">04:10</span>这就是为什么它在纵轴零点五处穿过。</p>
 <p><span class="ts">04:16</span>现在，让我们利用它来构建逻辑回归算法。</p>
-<figure><img src="img/P032/kf017.jpg" alt="04:18" loading="lazy"><figcaption>04:18</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf017.jpg" alt="画面 04:18" loading="lazy"><figcaption>画面 04:18</figcaption></figure>
 <p><span class="ts">04:23</span>第一步，我希望你记得，P 一条直线函数，就像线性回归函数，可以定义为 w 点乘 x 加 b。</p>
-<figure><img src="img/P032/kf018.jpg" alt="04:32" loading="lazy"><figcaption>04:32</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf018.jpg" alt="画面 04:32" loading="lazy"><figcaption>画面 04:32</figcaption></figure>
 <p><span class="ts">04:36</span>那么让我们把这个值存在一个变量里，我将称它为 z。</p>
 <p><span class="ts">04:42</span>这将和你在前一张幻灯片上看到的 z 是一样的，我们稍后就会讲到。</p>
 <p><span class="ts">04:50</span>下一步就是将这个 z 的值传递给 sigmoid 函数，也叫做逻辑函数 g。</p>
 <p><span class="ts">05:01</span>那么现在 g of z 会输出一个由这个公式计算的值，一除以一加 e 的负 z 次方，这个值会在零到。</p>
-<figure><img src="img/P032/kf019.jpg" alt="05:02" loading="lazy"><figcaption>05:02</figcaption></figure>
-<figure><img src="img/P032/kf020.jpg" alt="05:14" loading="lazy"><figcaption>05:14</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf019.jpg" alt="画面 05:02" loading="lazy"><figcaption>画面 05:02</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf020.jpg" alt="画面 05:14" loading="lazy"><figcaption>画面 05:14</figcaption></figure>
 <p><span class="ts">05:14</span>当你把这两个等式放在一起时，它们就给了你逻辑回归模型 f of x，它等于 g of w dot x plus b， 或者等价于 g of z。</p>
 <p><span class="ts">05:34</span>也就是等于这里的这个公式。</p>
 <p><span class="ts">05:42</span>它所做的是输入一个特征或一组特征 x，并输出一个介于零到一之间的数字。</p>
 <p><span class="ts">05:50</span>接下来，我们看看如何解释逻辑回归的输出。</p>
 <p><span class="ts">05:57</span>我们回到肿瘤分类的例子。</p>
-<figure><img src="img/P032/kf021.jpg" alt="05:57" loading="lazy"><figcaption>05:57</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf021.jpg" alt="画面 05:57" loading="lazy"><figcaption>画面 05:57</figcaption></figure>
 <p><span class="ts">06:01</span>我鼓励你思考逻辑回归输出的方式是，将其视为输出在给定某个输入 x 的条件下，类别或标签等于的概率。</p>
-<figure><img src="img/P032/kf022.jpg" alt="06:02" loading="lazy"><figcaption>06:02</figcaption></figure>
-<figure><img src="img/P032/kf023.jpg" alt="06:14" loading="lazy"><figcaption>06:14</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf022.jpg" alt="画面 06:02" loading="lazy"><figcaption>画面 06:02</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf023.jpg" alt="画面 06:14" loading="lazy"><figcaption>画面 06:14</figcaption></figure>
 <p><span class="ts">06:18</span>在这个应用中，x 是肿瘤大小，y 要么是零要么是一，如果你有一位病患前来，她的肿瘤是某个特。</p>
-<figure><img src="img/P032/kf024.jpg" alt="06:20" loading="lazy"><figcaption>06:20</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf024.jpg" alt="画面 06:20" loading="lazy"><figcaption>画面 06:20</figcaption></figure>
 <p><span class="ts">06:30</span>并且基于这个输入 x，模型输出了零点七，那么这意味着模型正在预测，或者模型认为，对于这位病患，真实标签 y 等于一的可能性是百分。</p>
-<figure><img src="img/P032/kf025.jpg" alt="06:31" loading="lazy"><figcaption>06:31</figcaption></figure>
-<figure><img src="img/P032/kf026.jpg" alt="06:37" loading="lazy"><figcaption>06:37</figcaption></figure>
-<figure><img src="img/P032/kf027.jpg" alt="06:47" loading="lazy"><figcaption>06:47</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf025.jpg" alt="画面 06:31" loading="lazy"><figcaption>画面 06:31</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf026.jpg" alt="画面 06:37" loading="lazy"><figcaption>画面 06:37</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf027.jpg" alt="画面 06:47" loading="lazy"><figcaption>画面 06:47</figcaption></figure>
 <p><span class="ts">06:47</span>换句话说，模型在告诉我们，它认为这位病患的肿瘤有百分之七十的几率最终会是恶性的。</p>
 <p><span class="ts">06:57</span>现在，我问你一个问题。</p>
 <p><span class="ts">07:03</span>我们知道 y 必须是零或一。</p>
 <p><span class="ts">07:08</span>那么如果有百分之七十的几率是一，它是零的几率是多少呢？</p>
 <p><span class="ts">07:15</span>所以必然是零或一之一，因此它是零或一的概率，这两个数字加起来必须等于一，或者说百分之百的几率。</p>
 <p><span class="ts">07:27</span>所以这就是为什么，如果是一的几率是零点七或者说百分之七十，那么它是零的几率就一定是零点三或者说百分之三十。</p>
-<figure><img src="img/P032/kf028.jpg" alt="07:29" loading="lazy"><figcaption>07:29</figcaption></figure>
-<figure><img src="img/P032/kf029.jpg" alt="07:39" loading="lazy"><figcaption>07:39</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf028.jpg" alt="画面 07:29" loading="lazy"><figcaption>画面 07:29</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf029.jpg" alt="画面 07:39" loading="lazy"><figcaption>画面 07:39</figcaption></figure>
 <p><span class="ts">07:40</span>如果某天你读到关于逻辑回归的研究论文或博客文章，有时你会看到这个记号，f ofx 等于给定输入特征 x 和参数 w 及 b 下，y 等于的概率 p。</p>
-<figure><img src="img/P032/kf030.jpg" alt="07:41" loading="lazy"><figcaption>07:41</figcaption></figure>
-<figure><img src="img/P032/kf031.jpg" alt="07:56" loading="lazy"><figcaption>07:56</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf030.jpg" alt="画面 07:41" loading="lazy"><figcaption>画面 07:41</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf031.jpg" alt="画面 07:56" loading="lazy"><figcaption>画面 07:56</figcaption></figure>
 <p><span class="ts">07:59</span>这里分号用来表示的是，w 和 b 是影响这个计算的参数，计算的是给定输入特征 x 下 y 等于一的。</p>
-<figure><img src="img/P032/kf032.jpg" alt="08:01" loading="lazy"><figcaption>08:01</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf032.jpg" alt="画面 08:01" loading="lazy"><figcaption>画面 08:01</figcaption></figure>
 <p><span class="ts">08:13</span>就本课程而言，不必太担心这个竖线和分号意味着什么。</p>
-<figure><img src="img/P032/kf033.jpg" alt="08:13" loading="lazy"><figcaption>08:13</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf033.jpg" alt="画面 08:13" loading="lazy"><figcaption>画面 08:13</figcaption></figure>
 <p><span class="ts">08:19</span>在这门课中，你不需要记住或遵循这些数学符号。</p>
 <p><span class="ts">08:24</span>我提到这个，只是因为你可能会在其他地方看到。</p>
 <p><span class="ts">08:28</span>在本视频之后的选修实验中，你也会看到 sigmoid 函数是如何用代码实现的。</p>
 <p><span class="ts">08:36</span>你可以看到一幅图，它使用了 sigmoid 函数，以便在你前一个选修实验中看到的分类任务上做得更。</p>
-<figure><img src="img/P032/kf034.jpg" alt="08:37" loading="lazy"><figcaption>08:37</figcaption></figure>
-<figure><img src="img/P032/kf035.jpg" alt="08:42" loading="lazy"><figcaption>08:42</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf034.jpg" alt="画面 08:37" loading="lazy"><figcaption>画面 08:37</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf035.jpg" alt="画面 08:42" loading="lazy"><figcaption>画面 08:42</figcaption></figure>
 <p><span class="ts">08:45</span>记住，代码会提供给你们，你们只需运行即可。</p>
-<figure><img src="img/P032/kf036.jpg" alt="08:47" loading="lazy"><figcaption>08:47</figcaption></figure>
-<figure><img src="img/P032/kf037.jpg" alt="08:49" loading="lazy"><figcaption>08:49</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf036.jpg" alt="画面 08:47" loading="lazy"><figcaption>画面 08:47</figcaption></figure>
+<figure class="shot"><img src="img/P032/kf037.jpg" alt="画面 08:49" loading="lazy"><figcaption>画面 08:49</figcaption></figure>
 <p><span class="ts">08:50</span>我希望你们去看看，熟悉一下代码。</p>
 <p><span class="ts">08:56</span>你现在知道了什么是逻辑回归模型，以及定义逻辑回归的数学公式。</p>
 <p><span class="ts">09:06</span>在很长一段时间里，大量的互联网广告实际上就是由逻辑回归的一个稍微变体所驱动的。</p>

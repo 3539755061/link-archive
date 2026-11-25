@@ -16,14 +16,14 @@
 </header>
 <main>
 <p><span class="ts">00:04</span>本周我们将学习如何让线性回归变得更快、更强大。</p>
-<figure><img src="img/P021/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:10</span>到本周结束，你将完成这门第一门课程三分之二的内容。</p>
 <p><span class="ts">00:16</span>我们先来看一个线性回归版本，它不仅能看一个特征，还能看许多不同的特征。</p>
 <p><span class="ts">00:25</span>在原始版本的线性回归中，你只有一个特征 x，即房屋的面积，并且你能预测 y，也就是房价。</p>
-<figure><img src="img/P021/kf002.jpg" alt="00:26" loading="lazy"><figcaption>00:26</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf002.jpg" alt="画面 00:26" loading="lazy"><figcaption>画面 00:26</figcaption></figure>
 <p><span class="ts">00:38</span>那时模型是 f 下 w，下 b，括号 x 等于 wx 加 b。</p>
 <p><span class="ts">00:46</span>但现在，如果你不仅仅有房屋面积这一个特征来尝试预测价格呢？</p>
-<figure><img src="img/P021/kf003.jpg" alt="00:47" loading="lazy"><figcaption>00:47</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf003.jpg" alt="画面 00:47" loading="lazy"><figcaption>画面 00:47</figcaption></figure>
 <p><span class="ts">00:52</span>如果你还知道卧室的数量、楼层的数量以及房龄，这似乎会给你更多信息来预测价格。</p>
 <p><span class="ts">01:05</span>为了引入一点新的符号，我们将使用变量 x 下标一、x 下标二、x 下标三和 x 下标四来表示这四个特征。</p>
 <p><span class="ts">01:17</span>为简单起见，我们再引入一点符号。</p>
@@ -33,8 +33,8 @@
 <p><span class="ts">01:42</span>所以在这个例子中，n 等于四。</p>
 <p><span class="ts">01:45</span>和之前一样，我们将使用 x 上标 i 来表示第 i 个训练样本。</p>
 <p><span class="ts">01:53</span>那么这里，x 上标 i 实际上将是一个包含四个数字的列表，或者有时我们称之为一个向量，它包含了第 i 个训练样本的所有特征。</p>
-<figure><img src="img/P021/kf004.jpg" alt="01:54" loading="lazy"><figcaption>01:54</figcaption></figure>
-<figure><img src="img/P021/kf005.jpg" alt="02:08" loading="lazy"><figcaption>02:08</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf004.jpg" alt="画面 01:54" loading="lazy"><figcaption>画面 01:54</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf005.jpg" alt="画面 02:08" loading="lazy"><figcaption>画面 02:08</figcaption></figure>
 <p><span class="ts">02:09</span>举个具体例子，带括号的 x 上标二将是第二个训练样本的特征向量。</p>
 <p><span class="ts">02:19</span>所以它将等于这个：一千四百一十六，三十二和四十。</p>
 <p><span class="ts">02:25</span>严格来说，我是把这些数字写成了一行。</p>
@@ -43,36 +43,36 @@
 <p><span class="ts">02:38</span>对于现在这个目的，这没那么重要。</p>
 <p><span class="ts">02:41</span>而为了指代第 i 个训练样本中的特定特征，我将写作 x 上标 i，下标 j。</p>
 <p><span class="ts">02:52</span>举例来说，x 上标二，下标三，将是第二个训练样本中第三个特征的值，也就是楼层数量，所以那将等于二。</p>
-<figure><img src="img/P021/kf006.jpg" alt="02:54" loading="lazy"><figcaption>02:54</figcaption></figure>
-<figure><img src="img/P021/kf007.jpg" alt="03:06" loading="lazy"><figcaption>03:06</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf006.jpg" alt="画面 02:54" loading="lazy"><figcaption>画面 02:54</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf007.jpg" alt="画面 03:06" loading="lazy"><figcaption>画面 03:06</figcaption></figure>
 <p><span class="ts">03:08</span>有时，为了强调这个 x 二不只是一个数字，而实际上是一个数字列表，即一个向量，我们会在它上面画一个小箭头，就为了直观地表示它是一个向量，这里也一样。</p>
-<figure><img src="img/P021/kf008.jpg" alt="03:09" loading="lazy"><figcaption>03:09</figcaption></figure>
-<figure><img src="img/P021/kf009.jpg" alt="03:23" loading="lazy"><figcaption>03:23</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf008.jpg" alt="画面 03:09" loading="lazy"><figcaption>画面 03:09</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf009.jpg" alt="画面 03:23" loading="lazy"><figcaption>画面 03:23</figcaption></figure>
 <p><span class="ts">03:24</span>但你在自己的符号中不必非得画这个箭头。</p>
 <p><span class="ts">03:29</span>你可以把这个箭头看作一个可选的标识符，有时用它只是为了强调这是一个向量而不是一个数字。</p>
 <p><span class="ts">03:37</span>现在我们有了多个特征，来看看我们的模型会是什么样子。</p>
-<figure><img src="img/P021/kf010.jpg" alt="03:37" loading="lazy"><figcaption>03:37</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf010.jpg" alt="画面 03:37" loading="lazy"><figcaption>画面 03:37</figcaption></figure>
 <p><span class="ts">03:43</span>之前，我们是这样定义模型的，那时 x 是单个特征，也就是单个数字，但现在有了多个特征，我们将有不同的定义。</p>
-<figure><img src="img/P021/kf011.jpg" alt="03:45" loading="lazy"><figcaption>03:45</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf011.jpg" alt="画面 03:45" loading="lazy"><figcaption>画面 03:45</figcaption></figure>
 <p><span class="ts">03:55</span>取而代之，模型将是 f 下 w，下 b，括号 x 等于 w 一 x 一加 w 二 x 二加 w 三 x 三加 w 四 x 四加 b。</p>
-<figure><img src="img/P021/kf012.jpg" alt="03:57" loading="lazy"><figcaption>03:57</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf012.jpg" alt="画面 03:57" loading="lazy"><figcaption>画面 03:57</figcaption></figure>
 <p><span class="ts">04:13</span>对于房价预测，一个可能的模型可能是，我们估计房价为零点一乘以 x 一，即房屋面积，加上四乘以 x 二，即卧室数量，加上十乘以 x 三，即楼层数量，减去二乘以 x 四，即房龄，再加上八。</p>
 <p><span class="ts">04:25</span>加上四乘以 x 二，即卧室数量，加上十乘以 x 三，即楼层数量，减去二乘以 x 四，即房龄，再加上八。</p>
-<figure><img src="img/P021/kf013.jpg" alt="04:26" loading="lazy"><figcaption>04:26</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf013.jpg" alt="画面 04:26" loading="lazy"><figcaption>画面 04:26</figcaption></figure>
 <p><span class="ts">04:37</span>让我们稍微思考一下如何解释这些参数。</p>
-<figure><img src="img/P021/kf014.jpg" alt="04:39" loading="lazy"><figcaption>04:39</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf014.jpg" alt="画面 04:39" loading="lazy"><figcaption>画面 04:39</figcaption></figure>
 <p><span class="ts">04:41</span>如果模型试图以千美元为单位预测房价，你可以认为这个 b 等于八十意味着，一栋房子的基础价格起步价大约是八万美元，假设它没有面积、没有卧室、没有楼层，也没有房龄。</p>
-<figure><img src="img/P021/kf015.jpg" alt="04:43" loading="lazy"><figcaption>04:43</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf015.jpg" alt="画面 04:43" loading="lazy"><figcaption>画面 04:43</figcaption></figure>
 <p><span class="ts">04:59</span>你可以认为这个零点一意味着，也许每增加一平方英尺，价格就会增加零点一千美元，也就是一百。</p>
-<figure><img src="img/P021/kf016.jpg" alt="05:01" loading="lazy"><figcaption>05:01</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf016.jpg" alt="画面 05:01" loading="lazy"><figcaption>画面 05:01</figcaption></figure>
 <p><span class="ts">05:12</span>因为我们说每增加一平方英尺，价格就增加零点一，你知道，乘以一千美元，也就是一百美元。</p>
-<figure><img src="img/P021/kf017.jpg" alt="05:12" loading="lazy"><figcaption>05:12</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf017.jpg" alt="画面 05:12" loading="lazy"><figcaption>画面 05:12</figcaption></figure>
 <p><span class="ts">05:22</span>也许每增加一间浴室，价格增加四千美元。</p>
 <p><span class="ts">05:28</span>每增加一个楼层，价格可能增加一万美元。</p>
 <p><span class="ts">05:32</span>而房龄每增加一年，价格可能减少两千美元，因为参数是负二。</p>
 <p><span class="ts">05:41</span>一般来说，如果你有 n 个特征，那么模型将看起来像这样。</p>
 <p><span class="ts">05:50</span>这里再次给出具有 n 个特征的模型定义。</p>
-<figure><img src="img/P021/kf018.jpg" alt="05:50" loading="lazy"><figcaption>05:50</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf018.jpg" alt="画面 05:50" loading="lazy"><figcaption>画面 05:50</figcaption></figure>
 <p><span class="ts">05:55</span>我们接下来要做的是引入一点符号，来以一种更简单但等价的方式重写这个表达式。</p>
 <p><span class="ts">06:04</span>让我们将 w 定义为一个数字列表，列出参数 w 一、w 二、w 三，一直到 wn。</p>
 <p><span class="ts">06:13</span>在数学中，这被称为向量。</p>
@@ -86,8 +86,8 @@
 <p><span class="ts">07:05</span>我也将 x 写作一个列表或向量，同样是行向量，它列出了所有特征 x 一、x 二、x 三，一直到 xn。</p>
 <p><span class="ts">07:19</span>这同样是一个向量，所以我将在顶部加一个小箭头来表示。</p>
 <p><span class="ts">07:28</span>在上方的符号中，我们也可以在这里和这里添加小箭头，以表示那个 w 和那个 x 实际上是这些数字的。</p>
-<figure><img src="img/P021/kf019.jpg" alt="07:30" loading="lazy"><figcaption>07:30</figcaption></figure>
-<figure><img src="img/P021/kf020.jpg" alt="07:39" loading="lazy"><figcaption>07:39</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf019.jpg" alt="画面 07:30" loading="lazy"><figcaption>画面 07:30</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf020.jpg" alt="画面 07:39" loading="lazy"><figcaption>画面 07:39</figcaption></figure>
 <p><span class="ts">07:44</span>有了这种符号，模型现在可以更简洁地重写为 f 括号 x 等于向量 w 点乘 x，再加上数字 b。</p>
 <p><span class="ts">07:55</span>这个点指的是线性代数中向量 x 的点积。</p>
 <p><span class="ts">08:05</span>那么这个点积到底是什么呢？</p>
@@ -98,10 +98,10 @@
 <p><span class="ts">09:20</span>这种具有多个输入特征的线性回归模型，其名称是多元线性回归。</p>
 <p><span class="ts">09:26</span>这与单变量回归形成对比，后者只有一个特征。</p>
 <p><span class="ts">09:32</span>顺便提一下，你可能以为这个算法叫多变量回归，但那术语实际上指的是其他东西，我们这里不会。</p>
-<figure><img src="img/P021/kf021.jpg" alt="09:34" loading="lazy"><figcaption>09:34</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf021.jpg" alt="画面 09:34" loading="lazy"><figcaption>画面 09:34</figcaption></figure>
 <p><span class="ts">09:42</span>所以我要称这个模型为多元线性回归。</p>
 <p><span class="ts">09:47</span>以上就是具有多个特征的线性回归，也称为多元线性回归。</p>
-<figure><img src="img/P021/kf022.jpg" alt="09:58" loading="lazy"><figcaption>09:58</figcaption></figure>
+<figure class="shot"><img src="img/P021/kf022.jpg" alt="画面 09:58" loading="lazy"><figcaption>画面 09:58</figcaption></figure>
 <p><span class="ts">10:07</span>为了实现它，有一个非常巧妙的技巧叫做向量化，它会使实现这个以及许多其他学习算法变得简单得多。让我们进入下期视频看看什么是向量化。</p>
 </main>
 <nav class="pager"><a href="P020.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P022.html">下一讲 →</a></nav>

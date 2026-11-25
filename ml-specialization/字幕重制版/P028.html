@@ -16,13 +16,13 @@
 </header>
 <main>
 <p><span class="ts">00:03</span>恰当的学习率选择会让你的学习算法运行得好得多。</p>
-<figure><img src="img/P028/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:08</span>如果它太小，算法会跑得非常慢。</p>
 <p><span class="ts">00:11</span>而如果它太大，它甚至可能不会收敛。</p>
 <p><span class="ts">00:15</span>我们来看看如何为你的模型选择一个好的学习率。</p>
 <p><span class="ts">00:19</span>具体来说，如果你画出了一定迭代次数下的代价，并注意到代价有时上升有时下降，你应该将这视为梯度下降没有正常工作的明确信号。</p>
-<figure><img src="img/P028/kf002.jpg" alt="00:21" loading="lazy"><figcaption>00:21</figcaption></figure>
-<figure><img src="img/P028/kf003.jpg" alt="00:34" loading="lazy"><figcaption>00:34</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf002.jpg" alt="画面 00:21" loading="lazy"><figcaption>画面 00:21</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf003.jpg" alt="画面 00:34" loading="lazy"><figcaption>画面 00:34</figcaption></figure>
 <p><span class="ts">00:35</span>这可能意味着代码中有 bug，或者有时可能意味着你的学习率太大了。</p>
 <p><span class="ts">00:41</span>这里有一个图示说明可能发生的情况。</p>
 <p><span class="ts">00:45</span>这里，纵轴是代价函数 j，横轴代表某个参数，比如 w 一。</p>
@@ -31,51 +31,51 @@
 <p><span class="ts">01:14</span>这就是为什么代价有时会上升而不是下降。</p>
 <p><span class="ts">01:19</span>要解决这个问题，你可以使用一个较小的学习率。</p>
 <p><span class="ts">01:24</span>这样，你的更新可能从这开始，下降一点点，再下降一点点，并有望持续下降，直到达到全局最小。</p>
-<figure><img src="img/P028/kf004.jpg" alt="01:25" loading="lazy"><figcaption>01:25</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf004.jpg" alt="画面 01:25" loading="lazy"><figcaption>画面 01:25</figcaption></figure>
 <p><span class="ts">01:35</span>有时你可能会看到代价在每次迭代后持续上升，就像这里的这条曲线。</p>
-<figure><img src="img/P028/kf005.jpg" alt="01:36" loading="lazy"><figcaption>01:36</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf005.jpg" alt="画面 01:36" loading="lazy"><figcaption>画面 01:36</figcaption></figure>
 <p><span class="ts">01:43</span>这也很可能是由于学习率太大，可以通过选择一个较小的学习率来解决。</p>
 <p><span class="ts">01:51</span>但像这样的学习率表现也可能预示着代码中可能存在的 bug。</p>
 <p><span class="ts">01:57</span>例如，如果我写的代码里 w 一的更新方式是 w 一加 alpha 乘以其导数项，这可能导致代价在每次迭代时持续增加。</p>
-<figure><img src="img/P028/kf006.jpg" alt="01:58" loading="lazy"><figcaption>01:58</figcaption></figure>
-<figure><img src="img/P028/kf007.jpg" alt="02:10" loading="lazy"><figcaption>02:10</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf006.jpg" alt="画面 01:58" loading="lazy"><figcaption>画面 01:58</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf007.jpg" alt="画面 02:10" loading="lazy"><figcaption>画面 02:10</figcaption></figure>
 <p><span class="ts">02:12</span>这是因为加上导数项会让你的代价离全局最小值越来越远，而不是越来越近。</p>
 <p><span class="ts">02:20</span>所以要记住，你想用的是减号，所以代码应该更新 w 一为 w 一减去 alpha 乘以导数项。</p>
 <p><span class="ts">02:32</span>对于正确实现梯度下降的一个调试技巧是，只要学习率足够小，代价函数就应该在每一次迭代中都下降。</p>
-<figure><img src="img/P028/kf008.jpg" alt="02:34" loading="lazy"><figcaption>02:34</figcaption></figure>
-<figure><img src="img/P028/kf009.jpg" alt="02:43" loading="lazy"><figcaption>02:43</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf008.jpg" alt="画面 02:34" loading="lazy"><figcaption>画面 02:34</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf009.jpg" alt="画面 02:43" loading="lazy"><figcaption>画面 02:43</figcaption></figure>
 <p><span class="ts">02:44</span>所以如果梯度下降不起作用，我常常会做的一件事，也希望你觉得这个技巧有用，我常常会做的一件事就是把 alpha 设成一个非常非常小的数字，看看这能否让代价在每次迭代中都下降。e。</p>
-<figure><img src="img/P028/kf010.jpg" alt="02:46" loading="lazy"><figcaption>02:46</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf010.jpg" alt="画面 02:46" loading="lazy"><figcaption>画面 02:46</figcaption></figure>
 <p><span class="ts">03:02</span>如果即使 alpha 设得非常小，代价 j 也没有在每一次迭代中都下降，反而有时上升，那么这通常意味着代码中的某个地方有 bug。</p>
-<figure><img src="img/P028/kf011.jpg" alt="03:04" loading="lazy"><figcaption>03:04</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf011.jpg" alt="画面 03:04" loading="lazy"><figcaption>画面 03:04</figcaption></figure>
 <p><span class="ts">03:16</span>注意，把 alpha 设得极其小在这里是作为一个调试步骤来用的，而一个极其小的 alpha 值对于实际训练你的学习算法来说不会是最有效的选择。</p>
-<figure><img src="img/P028/kf012.jpg" alt="03:17" loading="lazy"><figcaption>03:17</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf012.jpg" alt="画面 03:17" loading="lazy"><figcaption>画面 03:17</figcaption></figure>
 <p><span class="ts">03:29</span>一个重要的权衡是，如果你的学习率太小，梯度下降就可能需要大量的迭代次数来收敛。</p>
-<figure><img src="img/P028/kf013.jpg" alt="03:30" loading="lazy"><figcaption>03:30</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf013.jpg" alt="画面 03:30" loading="lazy"><figcaption>画面 03:30</figcaption></figure>
 <p><span class="ts">03:37</span>所以，当我运行梯度下降时，我通常会尝试一组不同的学习率 alpha 值。</p>
-<figure><img src="img/P028/kf014.jpg" alt="03:38" loading="lazy"><figcaption>03:38</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf014.jpg" alt="画面 03:38" loading="lazy"><figcaption>画面 03:38</figcaption></figure>
 <p><span class="ts">03:44</span>我可能会尝试从零点零零一的学习率开始，我也可能会尝试一个十倍大的学习率，比如零点零一和零点一，等等。</p>
-<figure><img src="img/P028/kf015.jpg" alt="03:45" loading="lazy"><figcaption>03:45</figcaption></figure>
-<figure><img src="img/P028/kf016.jpg" alt="03:55" loading="lazy"><figcaption>03:55</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf015.jpg" alt="画面 03:45" loading="lazy"><figcaption>画面 03:45</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf016.jpg" alt="画面 03:55" loading="lazy"><figcaption>画面 03:55</figcaption></figure>
 <p><span class="ts">03:56</span>并且对于每个 alpha 的选择，你可能只运行梯度下降少量几次迭代，并画出代价函数 j 关于迭代次数的图像。</p>
-<figure><img src="img/P028/kf017.jpg" alt="03:58" loading="lazy"><figcaption>03:58</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf017.jpg" alt="画面 03:58" loading="lazy"><figcaption>画面 03:58</figcaption></figure>
 <p><span class="ts">04:08</span>在尝试了几个不同的值之后，你可能就会挑出那个看起来能快速且能持续降低代价的 alpha 值。</p>
-<figure><img src="img/P028/kf018.jpg" alt="04:08" loading="lazy"><figcaption>04:08</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf018.jpg" alt="画面 04:08" loading="lazy"><figcaption>画面 04:08</figcaption></figure>
 <p><span class="ts">04:18</span>事实上，我实际做的是尝试像这样的一系列取值。</p>
 <p><span class="ts">04:24</span>在尝试了零点零零一之后，我会将学习率提高三倍到零点零零三，之后，我会尝试零点零一，这又大约是零点零零三的三倍大。</p>
-<figure><img src="img/P028/kf019.jpg" alt="04:25" loading="lazy"><figcaption>04:25</figcaption></figure>
-<figure><img src="img/P028/kf020.jpg" alt="04:38" loading="lazy"><figcaption>04:38</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf019.jpg" alt="画面 04:25" loading="lazy"><figcaption>画面 04:25</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf020.jpg" alt="画面 04:38" loading="lazy"><figcaption>画面 04:38</figcaption></figure>
 <p><span class="ts">04:39</span>所以，这大致就是在尝试梯度下降时，让每个 alpha 值大约比前一个值大三倍。</p>
 <p><span class="ts">04:48</span>所以我将尝试一系列的值，直到我找到一个值它太小了，然后也确保我找到一个值它太大了。</p>
 <p><span class="ts">04:57</span>然后我会慢慢地尝试挑选最大的可能学习率，或者就是挑一个比我找到的最大合理值稍微小一点的。</p>
-<figure><img src="img/P028/kf021.jpg" alt="04:59" loading="lazy"><figcaption>04:59</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf021.jpg" alt="画面 04:59" loading="lazy"><figcaption>画面 04:59</figcaption></figure>
 <p><span class="ts">05:07</span>当我那样做时，通常能为我的模型找到一个好的学习率。</p>
-<figure><img src="img/P028/kf022.jpg" alt="05:09" loading="lazy"><figcaption>05:09</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf022.jpg" alt="画面 05:09" loading="lazy"><figcaption>画面 05:09</figcaption></figure>
 <p><span class="ts">05:12</span>所以，我希望这个技巧对于你为梯度下降的实现选择一个好的学习率也会很有用。</p>
 <p><span class="ts">05:25</span>在接下来的选修实验中，你还可以看看特征缩放在代码中是如何完成的，也看看学习率 alpha 的不同选择如何导致你模型训练得更好或更差。</p>
 <p><span class="ts">05:36</span>我希望你享受调试 alpha 的值，并观察选择不同 alpha 值所带来的不同结果。</p>
 <p><span class="ts">05:44</span>所以，请看一看并运行选修实验中的代码，以获得关于特征缩放以及学习率 alpha 的更深的直观理解。</p>
-<figure><img src="img/P028/kf023.jpg" alt="05:52" loading="lazy"><figcaption>05:52</figcaption></figure>
+<figure class="shot"><img src="img/P028/kf023.jpg" alt="画面 05:52" loading="lazy"><figcaption>画面 05:52</figcaption></figure>
 <p><span class="ts">05:55</span>选择学习率是训练许多学习算法的关键一环，我希望这个视频能给你关于不同选择的直观感受，以及如何去挑选一个好的 alpha 值。</p>
 <p><span class="ts">06:07</span>现在，还有一些想法可以用来使多元线性回归更加强大，那就是选择自定义特征，这也将。</p>
 <p><span class="ts">06:17</span>允许你去拟合曲线，而不只是一条直线，到你的数据上。</p>

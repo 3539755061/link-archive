@@ -16,9 +16,9 @@
 </header>
 <main>
 <p><span class="ts">00:03</span>现在你已经了解了几种不同的学习算法，线性回归和逻辑回归。</p>
-<figure><img src="img/P037/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:09</span>它们在很多任务上都表现良好，但有时在应用中，算法可能会遇到一个叫做过拟合的问题，这会导致它表现不佳。</p>
-<figure><img src="img/P037/kf002.jpg" alt="00:11" loading="lazy"><figcaption>00:11</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf002.jpg" alt="画面 00:11" loading="lazy"><figcaption>画面 00:11</figcaption></figure>
 <p><span class="ts">00:20</span>本视频我想向你展示什么是过拟合，以及一个与之密切相关、几乎相反的问题，即欠拟合。</p>
 <p><span class="ts">00:30</span>在接下来的几个视频里，我会与你分享一些解决过拟合的技巧。</p>
 <p><span class="ts">00:36</span>特别是有一种叫做正则化的方法。</p>
@@ -26,7 +26,7 @@
 <p><span class="ts">00:44</span>而正则化将帮助你最小化这个过拟合问题，并让你的学习算法工作得更好。</p>
 <p><span class="ts">00:52</span>那么，我们来看看什么是过拟合。</p>
 <p><span class="ts">00:56</span>为了帮助我们理解什么是过拟合，我们来看几个例子。</p>
-<figure><img src="img/P037/kf003.jpg" alt="00:57" loading="lazy"><figcaption>00:57</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf003.jpg" alt="画面 00:57" loading="lazy"><figcaption>画面 00:57</figcaption></figure>
 <p><span class="ts">01:03</span>让我们回到用线性回归预测房价的原始例子，你想根据房屋面积来预测价格。</p>
 <p><span class="ts">01:15</span>为了帮助我们理解什么是过拟合，我们来看一个线性回归的例子，我将回到我们一直用的那个用线性回归预测房价的示例。</p>
 <p><span class="ts">01:29</span>假设你的数据集看起来像这样，输入特征 x 是房屋面积，y 是你试图预测的房屋价格。</p>
@@ -41,24 +41,24 @@
 <p><span class="ts">02:32</span>在机器学习中，偏差这个词有多重含义。</p>
 <p><span class="ts">02:38</span>检查学习算法是否基于性别或种族等特征存在偏差是绝对关键的。</p>
 <p><span class="ts">02:47</span>但偏差这个词还有第二个技术含义，也就是我在这里使用的含义，即如果算法欠拟合了数据，意味着它甚至不能很好地拟合训练集。</p>
-<figure><img src="img/P037/kf004.jpg" alt="02:48" loading="lazy"><figcaption>02:48</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf004.jpg" alt="画面 02:48" loading="lazy"><figcaption>画面 02:48</figcaption></figure>
 <p><span class="ts">03:01</span>训练数据中存在明显的模式，而算法却无法捕捉到。</p>
-<figure><img src="img/P037/kf005.jpg" alt="03:02" loading="lazy"><figcaption>03:02</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf005.jpg" alt="画面 03:02" loading="lazy"><figcaption>画面 03:02</figcaption></figure>
 <p><span class="ts">03:07</span>看待这种偏差的另一种方式是，好像学习算法有一个非常强的先入之见，或者我们说它有很强的偏。</p>
-<figure><img src="img/P037/kf006.jpg" alt="03:09" loading="lazy"><figcaption>03:09</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf006.jpg" alt="画面 03:09" loading="lazy"><figcaption>画面 03:09</figcaption></figure>
 <p><span class="ts">03:17</span>认为房价会是房屋面积的一个完全线性函数，而罔顾与之相反的数据。</p>
-<figure><img src="img/P037/kf007.jpg" alt="03:18" loading="lazy"><figcaption>03:18</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf007.jpg" alt="画面 03:18" loading="lazy"><figcaption>画面 03:18</figcaption></figure>
 <p><span class="ts">03:26</span>所以，这种数据是线性的先入之见导致它拟合了一条很差的直线，进而导致它欠拟合数据。</p>
 <p><span class="ts">03:37</span>现在来看模型的第二种变体，如果你转而用一个有两个特征 x 和 x 平方的二次函数来拟合数据，那么当你拟合参数 W 一和二时，你可以得到一条拟合得稍微好一些的曲线。</p>
-<figure><img src="img/P037/kf008.jpg" alt="03:43" loading="lazy"><figcaption>03:43</figcaption></figure>
-<figure><img src="img/P037/kf009.jpg" alt="03:58" loading="lazy"><figcaption>03:58</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf008.jpg" alt="画面 03:43" loading="lazy"><figcaption>画面 03:43</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf009.jpg" alt="画面 03:58" loading="lazy"><figcaption>画面 03:58</figcaption></figure>
 <p><span class="ts">04:01</span>此外，如果你有一栋新房子，不在目前这五个训练样本里，这个模型对这栋新房子的预测大概会相当不错。</p>
 <p><span class="ts">04:13</span>所以，如果你是一位房地产经纪人，你希望你的学习算法即使在训练集之外的样本上也能表现良好，这被称为泛化。</p>
-<figure><img src="img/P037/kf010.jpg" alt="04:14" loading="lazy"><figcaption>04:14</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf010.jpg" alt="画面 04:14" loading="lazy"><figcaption>画面 04:14</figcaption></figure>
 <p><span class="ts">04:24</span>技术上，我们说希望你的学习算法能很好地泛化，这意味着即使在它从未见过的全新样本上也能做出好的预测。</p>
-<figure><img src="img/P037/kf011.jpg" alt="04:26" loading="lazy"><figcaption>04:26</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf011.jpg" alt="画面 04:26" loading="lazy"><figcaption>画面 04:26</figcaption></figure>
 <p><span class="ts">04:35</span>所以，这个二次模型似乎能很好地拟合训练集，虽非完美，但已相当不错。</p>
-<figure><img src="img/P037/kf012.jpg" alt="04:36" loading="lazy"><figcaption>04:36</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf012.jpg" alt="画面 04:36" loading="lazy"><figcaption>画面 04:36</figcaption></figure>
 <p><span class="ts">04:41</span>并且我认为它能很好地泛化到新样本上。</p>
 <p><span class="ts">04:46</span>现在，我们看看另一个极端。</p>
 <p><span class="ts">04:49</span>如果用一个四次多项式来拟合数据会怎样呢？</p>
@@ -67,9 +67,9 @@
 <p><span class="ts">05:11</span>你可能会得到一条看起来像这样的曲线。</p>
 <p><span class="ts">05:14</span>一方面，这看起来在拟合训练数据上做得极其出色，因为它完美地穿过了所有训练数据点。</p>
 <p><span class="ts">05:24</span>事实上，你将能够选择出导致代价函数精确等于零的参数，因为在这五个训练样本上的误差都是零。</p>
-<figure><img src="img/P037/kf013.jpg" alt="05:25" loading="lazy"><figcaption>05:25</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf013.jpg" alt="画面 05:25" loading="lazy"><figcaption>画面 05:25</figcaption></figure>
 <p><span class="ts">05:36</span>但这是一条非常曲折的曲线。</p>
-<figure><img src="img/P037/kf014.jpg" alt="05:36" loading="lazy"><figcaption>05:36</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf014.jpg" alt="画面 05:36" loading="lazy"><figcaption>画面 05:36</figcaption></figure>
 <p><span class="ts">05:42</span>并且，如果这里有这样一个房屋面积，模型会预测这栋房子比那些面积比它小的房子还要便宜。</p>
 <p><span class="ts">05:52</span>所以，我们不认为这是一个预测房价的特别好的模型。</p>
 <p><span class="ts">05:58</span>技术术语是，我们会说这个模型过拟合了数据，或者说这个模型有过拟合问题。</p>
@@ -79,17 +79,17 @@
 <p><span class="ts">06:29</span>在机器学习中，很多人会将过拟合和高方差几乎互换使用，也会将欠拟合和高偏差几乎互换使用。</p>
 <p><span class="ts">06:41</span>过拟合或高方差背后的直觉是，算法非常非常努力地去拟合每一个训练样本。</p>
 <p><span class="ts">06:49</span>而事实证明，如果你的训练集哪怕只有一点点不同，比如某栋房子的定价只是稍微高一点或低一点，那么算法所拟合的函数最终可能会完全不同。</p>
-<figure><img src="img/P037/kf015.jpg" alt="06:51" loading="lazy"><figcaption>06:51</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf015.jpg" alt="画面 06:51" loading="lazy"><figcaption>画面 06:51</figcaption></figure>
 <p><span class="ts">07:04</span>所以，如果两个不同的机器学习工程师，用只是略有不同的数据集去拟合这个四次多项式模型，他们最终可能得到完全不同的预测，或者说变化很大的预测。</p>
-<figure><img src="img/P037/kf016.jpg" alt="07:06" loading="lazy"><figcaption>07:06</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf016.jpg" alt="画面 07:06" loading="lazy"><figcaption>画面 07:06</figcaption></figure>
 <p><span class="ts">07:18</span>这就是为什么我们说这个算法具有高方差。</p>
-<figure><img src="img/P037/kf017.jpg" alt="07:19" loading="lazy"><figcaption>07:19</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf017.jpg" alt="画面 07:19" loading="lazy"><figcaption>画面 07:19</figcaption></figure>
 <p><span class="ts">07:23</span>对比这个最右边的模型和中间的模型，对于同一栋房子，似乎中间的模型给出了更合理的价格预测。</p>
-<figure><img src="img/P037/kf018.jpg" alt="07:24" loading="lazy"><figcaption>07:24</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf018.jpg" alt="画面 07:24" loading="lazy"><figcaption>画面 07:24</figcaption></figure>
 <p><span class="ts">07:34</span>中间这种情况并没有一个正式的名字，但我将称它为恰到好处，因为它既不是欠拟合也不是过拟合。</p>
-<figure><img src="img/P037/kf019.jpg" alt="07:35" loading="lazy"><figcaption>07:35</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf019.jpg" alt="画面 07:35" loading="lazy"><figcaption>画面 07:35</figcaption></figure>
 <p><span class="ts">07:44</span>所以我们可以说，机器学习的目标是找到一个希望既不欠拟合也不过拟合的模型。</p>
-<figure><img src="img/P037/kf020.jpg" alt="07:45" loading="lazy"><figcaption>07:45</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf020.jpg" alt="画面 07:45" loading="lazy"><figcaption>画面 07:45</figcaption></figure>
 <p><span class="ts">07:52</span>换句话说，希望找到一个既没有高偏差也没有高方差的模型。</p>
 <p><span class="ts">07:59</span>当我想起欠拟合和过拟合、高偏差和高方差时，我有时会想起金发姑娘和三只熊的儿童故事。</p>
 <p><span class="ts">08:11</span>在这个儿童故事里，一个叫金发姑娘的女孩拜访了熊一家的家。</p>
@@ -97,36 +97,36 @@
 <p><span class="ts">08:23</span>还有一碗粥太烫了，没法吃。</p>
 <p><span class="ts">08:28</span>但有一碗粥既不太凉也不太烫。</p>
 <p><span class="ts">08:37</span>总结一下，如果你的特征太多，像右边那个四次多项式一样，那么模型可能会很好地拟合训练集，但几乎是好过头了，即过拟合，并具有高方差。</p>
-<figure><img src="img/P037/kf021.jpg" alt="08:38" loading="lazy"><figcaption>08:38</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf021.jpg" alt="画面 08:38" loading="lazy"><figcaption>画面 08:38</figcaption></figure>
 <p><span class="ts">08:51</span>另一方面，如果你的特征太少，在这个例子中，就像左边那个模型一样，它会欠拟合并且具有高偏差。</p>
 <p><span class="ts">09:01</span>而在这个例子中，使用二次特征 x 和 x 平方，似乎就恰到好处。</p>
-<figure><img src="img/P037/kf022.jpg" alt="09:02" loading="lazy"><figcaption>09:02</figcaption></figure>
-<figure><img src="img/P037/kf023.jpg" alt="09:06" loading="lazy"><figcaption>09:06</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf022.jpg" alt="画面 09:02" loading="lazy"><figcaption>画面 09:02</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf023.jpg" alt="画面 09:06" loading="lazy"><figcaption>画面 09:06</figcaption></figure>
 <p><span class="ts">09:08</span>到目前为止，我们只看了线性回归模型的欠拟合和过拟合。</p>
 <p><span class="ts">09:14</span>类似地，过拟合也同样适用于分类问题。</p>
-<figure><img src="img/P037/kf024.jpg" alt="09:17" loading="lazy"><figcaption>09:17</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf024.jpg" alt="画面 09:17" loading="lazy"><figcaption>画面 09:17</figcaption></figure>
 <p><span class="ts">09:18</span>这是一个有两个特征 x 一和 x 二的分类示例。</p>
 <p><span class="ts">09:24</span>其中 x 一可能是肿瘤大小，x 二是患者的年龄。</p>
 <p><span class="ts">09:29</span>我们试图对肿瘤是恶性还是良性进行分类，如这些叉号和圆圈所示。</p>
 <p><span class="ts">09:37</span>你可以做的一件事是拟合一个逻辑回归模型，像这样一个简单模型，照常，g 是 sigmoid 函数，里面这项是 z。</p>
-<figure><img src="img/P037/kf025.jpg" alt="09:39" loading="lazy"><figcaption>09:39</figcaption></figure>
-<figure><img src="img/P037/kf026.jpg" alt="09:51" loading="lazy"><figcaption>09:51</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf025.jpg" alt="画面 09:39" loading="lazy"><figcaption>画面 09:39</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf026.jpg" alt="画面 09:51" loading="lazy"><figcaption>画面 09:51</figcaption></figure>
 <p><span class="ts">09:53</span>如果你这样做，最终会得到一条直线作为决策边界。</p>
 <p><span class="ts">10:00</span>这条线就是 z 等于零的位置，它将正负样本分开。</p>
 <p><span class="ts">10:11</span>它看起来还可以，但似乎也不是一个非常好的拟合。</p>
 <p><span class="ts">10:16</span>所以这是一个欠拟合或说高偏差的例子。</p>
-<figure><img src="img/P037/kf027.jpg" alt="10:22" loading="lazy"><figcaption>10:22</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf027.jpg" alt="画面 10:22" loading="lazy"><figcaption>画面 10:22</figcaption></figure>
 <p><span class="ts">10:24</span>如果你在特征中加入这些二次项，那么 z 就变成了中间这个新项，而决策边界，也就是 z 等于零的位置，可以看起来更像这样，更像一个椭圆或椭圆的一部分。</p>
-<figure><img src="img/P037/kf028.jpg" alt="10:26" loading="lazy"><figcaption>10:26</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf028.jpg" alt="画面 10:26" loading="lazy"><figcaption>画面 10:26</figcaption></figure>
 <p><span class="ts">10:40</span>这是一个相当好的数据拟合，尽管它并未完美分类训练集中的每一个训练样本。</p>
-<figure><img src="img/P037/kf029.jpg" alt="10:41" loading="lazy"><figcaption>10:41</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf029.jpg" alt="画面 10:41" loading="lazy"><figcaption>画面 10:41</figcaption></figure>
 <p><span class="ts">10:48</span>注意这些叉号中的一些是如何被分到圆圈中的。</p>
 <p><span class="ts">10:56</span>我将称之为恰到好处，看起来它能很好地泛化到新病患。</p>
-<figure><img src="img/P037/kf030.jpg" alt="11:02" loading="lazy"><figcaption>11:02</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf030.jpg" alt="画面 11:02" loading="lazy"><figcaption>画面 11:02</figcaption></figure>
 <p><span class="ts">11:03</span>最后，在另一个极端，如果你用一个非常高的多项式去拟合，像这样有很多很多特征，那么模型可能会非常努力，扭曲或弯折自身，来找到一个能完美拟合你训练数据的决策边界。</p>
 <p><span class="ts">11:23</span>拥有所有这些高阶多项式特征会让算法选择这个确实过于复杂的决策边界。</p>
 <p><span class="ts">11:33</span>如果特征是肿瘤大小和年龄，而你试图将肿瘤分类为恶性或良性，那么这个模型看起来并不像是一个用来做预测的好模型。Andrew。</p>
-<figure><img src="img/P037/kf031.jpg" alt="11:35" loading="lazy"><figcaption>11:35</figcaption></figure>
+<figure class="shot"><img src="img/P037/kf031.jpg" alt="画面 11:35" loading="lazy"><figcaption>画面 11:35</figcaption></figure>
 <p><span class="ts">11:45</span>再一次，这是一个过拟合和高方差的例子，因为这个模型，尽管在训练集上表现非常好，但看起来无法很好地泛化到新样本上。</p>
 <p><span class="ts">11:58</span>现在你已经看到了一个算法如何欠拟合或具有高偏差，或者过拟合并具有高方差。</p>
 <p><span class="ts">12:06</span>你可能想知道如何才能得到一个刚刚好的模型。</p>

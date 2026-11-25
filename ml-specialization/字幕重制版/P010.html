@@ -16,11 +16,11 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>在本期视频中，我们来看看监督学习的工作流程是怎样的。</p>
-<figure><img src="img/P010/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:08</span>监督学习算法会输入一个数据集，那么它到底做了什么，又会输出什么呢？</p>
 <p><span class="ts">00:14</span>我们在这期视频中一探究竟。</p>
 <p><span class="ts">00:18</span>回顾一下，监督学习中的训练集既包含输入特征，比如房屋面积，也包含输出目标，比如房价。</p>
-<figure><img src="img/P010/kf002.jpg" alt="00:19" loading="lazy"><figcaption>00:19</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf002.jpg" alt="画面 00:19" loading="lazy"><figcaption>画面 00:19</figcaption></figure>
 <p><span class="ts">00:28</span>输出目标是模型将要学习的正确答案。</p>
 <p><span class="ts">00:34</span>为了训练模型，你将训练集，包括输入特征和输出目标，一并提供给学习算法。</p>
 <p><span class="ts">00:43</span>然后，你的监督学习算法就会产生某个函数。</p>
@@ -40,12 +40,12 @@
 <p><span class="ts">02:40</span>目前，我们先坚持用一条直线来表示 f。</p>
 <p><span class="ts">02:45</span>那么你的函数可以写成 f，下标 w，逗号 b，括号 x 等于，我将使用 w 乘以 x 加 b。</p>
 <p><span class="ts">02:57</span>我稍后会定义 w 和 b，但现在只需知道 w 和 b 是数字，它们取的值将决定基于输入特征 x 得出的预测值 y。</p>
-<figure><img src="img/P010/kf003.jpg" alt="02:59" loading="lazy"><figcaption>02:59</figcaption></figure>
-<figure><img src="img/P010/kf004.jpg" alt="03:13" loading="lazy"><figcaption>03:13</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf003.jpg" alt="画面 02:59" loading="lazy"><figcaption>画面 02:59</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf004.jpg" alt="画面 03:13" loading="lazy"><figcaption>画面 03:13</figcaption></figure>
 <p><span class="ts">03:14</span>所以这个 fw，b，括号 x，意味着 f 是一个接收输入 x 的函数，并且取决于 w 和 b 的值，f 会输出某个预测。</p>
-<figure><img src="img/P010/kf005.jpg" alt="03:15" loading="lazy"><figcaption>03:15</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf005.jpg" alt="画面 03:15" loading="lazy"><figcaption>画面 03:15</figcaption></figure>
 <p><span class="ts">03:30</span>作为这种写法的替代，我有时也会简写成括号 x，而不在下标中显式地包含 w 和 b。</p>
-<figure><img src="img/P010/kf006.jpg" alt="03:31" loading="lazy"><figcaption>03:31</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf006.jpg" alt="画面 03:31" loading="lazy"><figcaption>画面 03:31</figcaption></figure>
 <p><span class="ts">03:42</span>这只是一种更简单的记法，但与 fw，b，括号 x 的意思完全相同。</p>
 <p><span class="ts">03:49</span>我们把训练集画在图上，横轴是输入特征 x，纵轴是输出目标 y。</p>
 <p><span class="ts">04:00</span>记住，算法从这些数据中学习，并生成一条最佳拟合线，可能就像这里这条。</p>
@@ -53,30 +53,30 @@
 <p><span class="ts">04:18</span>或者更简单地，我们可以省略 w 和 b，只写成 f 括号 x 等于 wx 加 b。</p>
 <p><span class="ts">04:27</span>这个函数所做的是，利用一条关于 x 的直线函数来预测 y 的值。</p>
 <p><span class="ts">04:35</span>你可能会问，我们为什么要选择线性函数，即一条直线，而不是某些非线性函数，比如一条曲线或抛物线呢？</p>
-<figure><img src="img/P010/kf007.jpg" alt="04:36" loading="lazy"><figcaption>04:36</figcaption></figure>
-<figure><img src="img/P010/kf008.jpg" alt="04:46" loading="lazy"><figcaption>04:46</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf007.jpg" alt="画面 04:36" loading="lazy"><figcaption>画面 04:36</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf008.jpg" alt="画面 04:46" loading="lazy"><figcaption>画面 04:46</figcaption></figure>
 <p><span class="ts">04:47</span>有时你确实也需要拟合更复杂的非线性函数，比如像这样的曲线。</p>
 <p><span class="ts">04:54</span>但既然线性函数相对简单且易于处理，我们就先用直线作为基础，这最终会帮助你过渡到更复杂的非线性模型。</p>
-<figure><img src="img/P010/kf009.jpg" alt="04:56" loading="lazy"><figcaption>04:56</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf009.jpg" alt="画面 04:56" loading="lazy"><figcaption>画面 04:56</figcaption></figure>
 <p><span class="ts">05:07</span>这个模型有个名字，叫做线性回归。</p>
-<figure><img src="img/P010/kf010.jpg" alt="05:08" loading="lazy"><figcaption>05:08</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf010.jpg" alt="画面 05:08" loading="lazy"><figcaption>画面 05:08</figcaption></figure>
 <p><span class="ts">05:12</span>更具体地说，这是单变量线性回归，其中“单变量”一词意味着只有一个输入变量或特征 x，即房屋的面积。</p>
-<figure><img src="img/P010/kf011.jpg" alt="05:14" loading="lazy"><figcaption>05:14</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf011.jpg" alt="画面 05:14" loading="lazy"><figcaption>画面 05:14</figcaption></figure>
 <p><span class="ts">05:24</span>具有一个输入变量的线性模型的另一个名称是单变量线性回归，其中“uni”在拉丁语中意为“一”，“variate”意为“变量”。</p>
-<figure><img src="img/P010/kf012.jpg" alt="05:26" loading="lazy"><figcaption>05:26</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf012.jpg" alt="画面 05:26" loading="lazy"><figcaption>画面 05:26</figcaption></figure>
 <p><span class="ts">05:38</span>所以单变量就是“一个变量”的另一种说法。</p>
-<figure><img src="img/P010/kf013.jpg" alt="05:39" loading="lazy"><figcaption>05:39</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf013.jpg" alt="画面 05:39" loading="lazy"><figcaption>画面 05:39</figcaption></figure>
 <p><span class="ts">05:43</span>在之后的视频里，你还会看到回归的一种变体，那时你要做的预测不仅仅基于房屋的面积，还基于你可能了解的有关房子的许多其他方面，比如卧室数量和其他特征。</p>
-<figure><img src="img/P010/kf014.jpg" alt="05:44" loading="lazy"><figcaption>05:44</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf014.jpg" alt="画面 05:44" loading="lazy"><figcaption>画面 05:44</figcaption></figure>
 <p><span class="ts">05:58</span>顺便提一下，你看完这期视频后，还有一个可选的实验练习。</p>
-<figure><img src="img/P010/kf015.jpg" alt="05:59" loading="lazy"><figcaption>05:59</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf015.jpg" alt="画面 05:59" loading="lazy"><figcaption>画面 05:59</figcaption></figure>
 <p><span class="ts">06:04</span>你不需要编写任何代码。</p>
 <p><span class="ts">06:06</span>只需回顾一下，运行代码，看看它的功能，它会向你展示如何操作。</p>
 <p><span class="ts">06:12</span>在 Python 中定义一个直线函数。</p>
 <p><span class="ts">06:16</span>这个实验会让你选择 w 和 b 的值，来尝试拟合训练数据。</p>
-<figure><img src="img/P010/kf016.jpg" alt="06:20" loading="lazy"><figcaption>06:20</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf016.jpg" alt="画面 06:20" loading="lazy"><figcaption>画面 06:20</figcaption></figure>
 <p><span class="ts">06:23</span>如果你不想做这个实验也没关系，但我希望你看完这期视频后能去尝试一下。</p>
-<figure><img src="img/P010/kf017.jpg" alt="06:26" loading="lazy"><figcaption>06:26</figcaption></figure>
+<figure class="shot"><img src="img/P010/kf017.jpg" alt="画面 06:26" loading="lazy"><figcaption>画面 06:26</figcaption></figure>
 <p><span class="ts">06:33</span>为了让这个方法奏效，你必须做的最重要的事情之一就是构建一个代价函数。</p>
 <p><span class="ts">06:39</span>代价函数的概念是机器学习中最普遍、最重要的概念之一，用于线性回归以及训练世界上许多最先进的 AI 模型。</p>
 <p><span class="ts">06:51</span>那么，让我们进入下期视频，看看如何构建一个代价函数。</p>

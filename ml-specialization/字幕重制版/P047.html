@@ -20,9 +20,9 @@
 <p><span class="ts">00:14</span>一旦你掌握了这一点，你就能用这些构建块将它们组合起来，形成一个大神经网络。</p>
 <p><span class="ts">00:22</span>我们来看看一层神经元是如何工作的。</p>
 <p><span class="ts">00:26</span>这是我们之前需求预测例子中的示例，我们有四个输入特征，它们被输入到隐藏层的这三个神经元中，然后这层将输出发送到只有一个神经元的输出层。</p>
-<figure><img src="img/P047/kf001.jpg" alt="00:28" loading="lazy"><figcaption>00:28</figcaption></figure>
+<figure class="shot"><img src="img/P047/kf001.jpg" alt="画面 00:28" loading="lazy"><figcaption>画面 00:28</figcaption></figure>
 <p><span class="ts">00:44</span>我们来放大看看这个隐藏层，理解它的计算过程。</p>
-<figure><img src="img/P047/kf002.jpg" alt="00:45" loading="lazy"><figcaption>00:45</figcaption></figure>
+<figure class="shot"><img src="img/P047/kf002.jpg" alt="画面 00:45" loading="lazy"><figcaption>画面 00:45</figcaption></figure>
 <p><span class="ts">00:50</span>这个隐藏层接收四个数字作为输入，这四个数字分别输入给这三个神经元中的每一个。</p>
 <p><span class="ts">00:59</span>而这三个神经元中的每一个，实际上都在实现一个小型逻辑回归单元，或者说一个小型逻辑回归函数。</p>
 <p><span class="ts">01:10</span>掌这弟一十神经九来说。</p>
@@ -35,7 +35,7 @@
 <p><span class="ts">02:20</span>现在，我们来看第二个神经元。</p>
 <p><span class="ts">02:23</span>第二个神经元有参数 W 二和 b 二，这组 w 二、b 二是第二个逻辑单元的参数。</p>
 <p><span class="ts">02:36</span>它计算 a 二等于逻辑函数 g 作用于 w 二与 x 的点积加上 b 二，这可能是另一个数字，比如零点七，因为在这个例子中，我们认为潜在买家会注意到这件 T 恤的概率是零点七。</p>
-<figure><img src="img/P047/kf003.jpg" alt="02:48" loading="lazy"><figcaption>02:48</figcaption></figure>
+<figure class="shot"><img src="img/P047/kf003.jpg" alt="画面 02:48" loading="lazy"><figcaption>画面 02:48</figcaption></figure>
 <p><span class="ts">02:59</span>类似地，第三个神经元有第三组参数 w 三、b 三，并同样计算出一个激活值 a 三，等于 g 作用于 w 三与 x 的点积加上 b 三，这个数值可能是零点二。</p>
 <p><span class="ts">03:11</span>等于 g 作用于 w 三与 x 的点积加上 b 三，这个数值可能是零点二。</p>
 <p><span class="ts">03:18</span>那么，在这个例子中，这三个神经元输出了零点三、零点七和零点二，而这三个数字组成的向量，就成了激活值向量 A，之后被传递给这个神经网络的最终输出层。</p>
@@ -51,15 +51,15 @@
 <p><span class="ts">05:01</span>因此，它的参数同样用上标方括号一来标记，像这样。</p>
 <p><span class="ts">05:08</span>类似地，我可以加上方括号上标，像这样，来表示这些是该神经网络第一层隐藏单元的激活值。</p>
 <p><span class="ts">05:22</span>我知道这些标记法可能开始显得有些杂乱，但要记住的是，每当你看到这个上标方括号一，它指的就是与神经网络第一层相关的那个量。</p>
-<figure><img src="img/P047/kf004.jpg" alt="05:23" loading="lazy"><figcaption>05:23</figcaption></figure>
-<figure><img src="img/P047/kf005.jpg" alt="05:36" loading="lazy"><figcaption>05:36</figcaption></figure>
+<figure class="shot"><img src="img/P047/kf004.jpg" alt="画面 05:23" loading="lazy"><figcaption>画面 05:23</figcaption></figure>
+<figure class="shot"><img src="img/P047/kf005.jpg" alt="画面 05:36" loading="lazy"><figcaption>画面 05:36</figcaption></figure>
 <p><span class="ts">05:39</span>如果你看到上标方括号二，它指的就是与神经网络第二层相关的量。</p>
 <p><span class="ts">05:48</span>以此类推，对于层数更多的神经网络，其他层也同理，包括第三层、第四层，等等。</p>
 <p><span class="ts">05:57</span>那么，这就是这个神经网络第一层的计算过程。</p>
 <p><span class="ts">06:02</span>它的输出就是这个激活向量 a，带上标方括号一。</p>
 <p><span class="ts">06:09</span>我要把它复制到这里，因为这个输出将成为第二层的输入。</p>
 <p><span class="ts">06:18</span>现在，我们来放大看看这个神经网络的第二层，也就是输出层的计算过程。</p>
-<figure><img src="img/P047/kf006.jpg" alt="06:26" loading="lazy"><figcaption>06:26</figcaption></figure>
+<figure class="shot"><img src="img/P047/kf006.jpg" alt="画面 06:26" loading="lazy"><figcaption>画面 06:26</figcaption></figure>
 <p><span class="ts">06:27</span>输入给第二层的是第一层的输出。</p>
 <p><span class="ts">06:32</span>所以 A 一就是我们在这张幻灯片前半部分刚刚算出的那个向量：零点三、零点七、零点二。</p>
 <p><span class="ts">06:45</span>由于输出层只有一个神经元，它所做的一切就是计算 a 下标一，也就是它第一个且唯一一个神经元的输出，等于 g，即 S 型函数，作用于 w 下标一与 a 上标方括号一的点积。</p>
@@ -71,7 +71,7 @@
 <p><span class="ts">07:55</span>所以 a 上标方括号二就是这层的输出。</p>
 <p><span class="ts">08:01</span>因此，我也要把它复制到这里，作为神经网络的最终输出。</p>
 <p><span class="ts">08:07</span>为了让标记一致，你也可以加上这些上标方括号二，来表示这些是和神经网络第二层相关的参数和激活值。</p>
-<figure><img src="img/P047/kf007.jpg" alt="08:22" loading="lazy"><figcaption>08:22</figcaption></figure>
+<figure class="shot"><img src="img/P047/kf007.jpg" alt="画面 08:22" loading="lazy"><figcaption>画面 08:22</figcaption></figure>
 <p><span class="ts">08:23</span>一旦神经网络计算出 A 二，还有一个最终的、可供你选择是否实现的步骤，那就是如果你想要一个二元的预测，比如一或零，是不是畅销品，是或否，你可以取数字 a 上标方括号一下标-。</p>
 <p><span class="ts">08:45</span>这就是我们算出的零点八四这个数字，所以，如果它大于零点五，你就可以预测 y hat 等于一。</p>
 <p><span class="ts">08:58</span>如果它小于零点五，那么就预测 y hat 等于零。</p>

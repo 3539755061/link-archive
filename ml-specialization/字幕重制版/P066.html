@@ -18,7 +18,7 @@
 <p><span class="ts">00:02</span>softmax 回归算法是逻辑回归（一种二分类算法）在多分类场景下的推广。</p>
 <p><span class="ts">00:14</span>我们来看看它是如何工作的。</p>
 <p><span class="ts">00:17</span>回想一下，当 y 可以取两个可能的输出值，即零或一时，就适用逻辑回归。</p>
-<figure><img src="img/P066/kf001.jpg" alt="00:18" loading="lazy"><figcaption>00:18</figcaption></figure>
+<figure class="shot"><img src="img/P066/kf001.jpg" alt="画面 00:18" loading="lazy"><figcaption>画面 00:18</figcaption></figure>
 <p><span class="ts">00:27</span>它计算输出的方式是，先计算 z 等于 w 与 x 的点积再加上 b，然后计算我这里要称之为 a 等于 g(z)的值，也就是应用于 z 的 S 型函数。</p>
 <p><span class="ts">00:44</span>我们将其解释为逻辑回归对给定输入特征 x 下 y 等于一的概率估计。</p>
 <p><span class="ts">00:55</span>现在，来一道快速测试题。</p>
@@ -62,11 +62,11 @@
 <p><span class="ts">06:43</span>并且注意，根据这个公式的构造，如果你把 a 一、a 二一直到 a 下标 n 全部加起来的，这些数字最终总是。</p>
 <p><span class="ts">06:54</span>这样我们就说明了如何计算 softmax 回归模型。</p>
 <p><span class="ts">06:59</span>我不会在本视频中证明这一点，但事实表明，如果你在 n 等于二的情况下应用 softmax 回归，即只有两个可能的输出类别，那么 softmax 回归最终计算出的结果基本上与逻辑回归相同。</p>
-<figure><img src="img/P066/kf002.jpg" alt="07:01" loading="lazy"><figcaption>07:01</figcaption></figure>
+<figure class="shot"><img src="img/P066/kf002.jpg" alt="画面 07:01" loading="lazy"><figcaption>画面 07:01</figcaption></figure>
 <p><span class="ts">07:18</span>参数最终会有些许不同，但它会简化为一个逻辑回归模型。</p>
-<figure><img src="img/P066/kf003.jpg" alt="07:20" loading="lazy"><figcaption>07:20</figcaption></figure>
+<figure class="shot"><img src="img/P066/kf003.jpg" alt="画面 07:20" loading="lazy"><figcaption>画面 07:20</figcaption></figure>
 <p><span class="ts">07:24</span>但这就是为什么 softmax 回归模型是逻辑回归的推广。</p>
-<figure><img src="img/P066/kf004.jpg" alt="07:29" loading="lazy"><figcaption>07:29</figcaption></figure>
+<figure class="shot"><img src="img/P066/kf004.jpg" alt="画面 07:29" loading="lazy"><figcaption>画面 07:29</figcaption></figure>
 <p><span class="ts">07:29</span>定义了 softmax 回归如何计算其输出之后，我们现在来看看如何为 softmax 回归指定代价函数。</p>
 <p><span class="ts">07:40</span>回想一下逻辑回归，这是我们之前的内容。</p>
 <p><span class="ts">07:44</span>我们说过 z 等于这个，然后我之前写过 a 一即 g(z)，被解释为 y 等于一的概率。</p>
@@ -92,8 +92,8 @@
 <p><span class="ts">10:35</span>但如果它认为，比方说，a 下标只有百分之五十的概率，那么损失就会变大一点。</p>
 <p><span class="ts">10:43</span>并且 a 下标越小，损失就越大。</p>
 <p><span class="ts">10:48</span>这就激励算法让 a 下标 j 尽可能大，尽可能接近于一，因为无论 y 的实际值是什么，你都希望算法能寄希望于认为 y 是那个值的概率相当大。</p>
-<figure><img src="img/P066/kf005.jpg" alt="10:50" loading="lazy"><figcaption>10:50</figcaption></figure>
-<figure><img src="img/P066/kf006.jpg" alt="11:03" loading="lazy"><figcaption>11:03</figcaption></figure>
+<figure class="shot"><img src="img/P066/kf005.jpg" alt="画面 10:50" loading="lazy"><figcaption>画面 10:50</figcaption></figure>
+<figure class="shot"><img src="img/P066/kf006.jpg" alt="画面 11:03" loading="lazy"><figcaption>画面 11:03</figcaption></figure>
 <p><span class="ts">11:04</span>注意，在这个损失函数中，每个训练样本中的 y 只能取一个值。</p>
 <p><span class="ts">11:12</span>所以你最终只为 a 下标 j 的一个值计算这个负对数，该值对应的是在那个特定训练样本中 y 等于 j 的实。</p>
 <p><span class="ts">11:24</span>例如，如果 y 等于二，你最终计算的是 a 二的负对数，而不会计算 a 一的负对数或这里的其他任何项。</p>

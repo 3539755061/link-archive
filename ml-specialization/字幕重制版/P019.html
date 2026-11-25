@@ -16,12 +16,12 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>此前，你依次了解了线性回归模型、代价函数，然后是梯度下降算法。</p>
-<figure><img src="img/P019/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:11</span>本期视频我们将把这些内容整合起来，并将平方误差代价函数与梯度下降结合，用于线性回归模型。</p>
 <p><span class="ts">00:21</span>这将使我们能够训练线性回归模型，为训练数据拟合一条直线。</p>
 <p><span class="ts">00:31</span>这是线性回归模型，右边是平方误差代价函数，下方是梯度下降算法。</p>
-<figure><img src="img/P019/kf002.jpg" alt="00:32" loading="lazy"><figcaption>00:32</figcaption></figure>
-<figure><img src="img/P019/kf003.jpg" alt="00:39" loading="lazy"><figcaption>00:39</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf002.jpg" alt="画面 00:32" loading="lazy"><figcaption>画面 00:32</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf003.jpg" alt="画面 00:39" loading="lazy"><figcaption>画面 00:39</figcaption></figure>
 <p><span class="ts">00:42</span>事实证明，如果你计算这些导数，你会得到下面这些项。</p>
 <p><span class="ts">00:49</span>关于 w 的导数是这个：m 分之一乘以从 i 等于一到 m 的求和。</p>
 <p><span class="ts">00:58</span>然后是误差项，也就是预测值与实际值之差，再乘以输入特征 x 上标 i。</p>
@@ -33,13 +33,13 @@
 <p><span class="ts">01:41</span>但如果你不记得微积分，或对此不感兴趣，也别担心。</p>
 <p><span class="ts">01:46</span>你可以完全跳过下一张幻灯片的内容，仍然能够实现梯度下降并完成这门课，一切都会正常运行的。</p>
 <p><span class="ts">01:56</span>这张幻灯片是整个专项课程中数学内容最多的之一，再次强调，这完全是可选的，我们将展示如何计算导数项。我们从第一项开始。</p>
-<figure><img src="img/P019/kf004.jpg" alt="01:56" loading="lazy"><figcaption>01:56</figcaption></figure>
-<figure><img src="img/P019/kf005.jpg" alt="02:11" loading="lazy"><figcaption>02:11</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf004.jpg" alt="画面 01:56" loading="lazy"><figcaption>画面 01:56</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf005.jpg" alt="画面 02:11" loading="lazy"><figcaption>画面 02:11</figcaption></figure>
 <p><span class="ts">02:15</span>我们首先代入代价函数 J 的定义。</p>
 <p><span class="ts">02:20</span>括号 w，b 等于这个。</p>
 <p><span class="ts">02:25</span>也就是二 m 分之一乘以这个平方误差项的总和。现在还要记住，f 括号 w，b，括号 x 上标 i 等于这里的。</p>
-<figure><img src="img/P019/kf006.jpg" alt="02:26" loading="lazy"><figcaption>02:26</figcaption></figure>
-<figure><img src="img/P019/kf007.jpg" alt="02:38" loading="lazy"><figcaption>02:38</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf006.jpg" alt="画面 02:26" loading="lazy"><figcaption>画面 02:26</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf007.jpg" alt="画面 02:38" loading="lazy"><figcaption>画面 02:38</figcaption></figure>
 <p><span class="ts">02:43</span>也就是 W 乘以 x 上标 i 加 b。</p>
 <p><span class="ts">02:48</span>我们要做的是，计算右边这个等式关于 w 的导数，也叫偏导数。</p>
 <p><span class="ts">03:01</span>如果你以前上过微积分课，当然没上过也完全没关系。</p>
@@ -52,29 +52,29 @@
 <p><span class="ts">04:05</span>所以两个二再次抵消，你最终得到关于 b 的导数表达式。</p>
 <p><span class="ts">04:13</span>那么现在，你有了这两个导数表达式，就可以将它们代入梯度下降算法了。</p>
 <p><span class="ts">04:23</span>这就是线性回归的梯度下降算法。</p>
-<figure><img src="img/P019/kf008.jpg" alt="04:23" loading="lazy"><figcaption>04:23</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf008.jpg" alt="画面 04:23" loading="lazy"><figcaption>画面 04:23</figcaption></figure>
 <p><span class="ts">04:27</span>你反复执行对 w 和 b 的这些更新，直到收敛。</p>
-<figure><img src="img/P019/kf009.jpg" alt="04:28" loading="lazy"><figcaption>04:28</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf009.jpg" alt="画面 04:28" loading="lazy"><figcaption>画面 04:28</figcaption></figure>
 <p><span class="ts">04:34</span>记住，这个 f 是线性回归模型，所以它等于 w 乘以 x 加 b。</p>
 <p><span class="ts">04:43</span>这个表达式是代价函数关于 w 的导数，而这个表达式是代价函数关于 b 的导数。</p>
 <p><span class="ts">04:54</span>提醒一下，你需要在每一步同时更新 w 和 b。</p>
 <p><span class="ts">05:02</span>现在，让我们熟悉一下梯度下降是如何工作的。</p>
-<figure><img src="img/P019/kf010.jpg" alt="05:02" loading="lazy"><figcaption>05:02</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf010.jpg" alt="画面 05:02" loading="lazy"><figcaption>画面 05:02</figcaption></figure>
 <p><span class="ts">05:05</span>我们之前看到梯度下降的一个问题是，它可能会导致局部最小值，而非全局最小值。全局最小值是指在所有可能点中，代价函数 J 值最低的那个点。</p>
-<figure><img src="img/P019/kf011.jpg" alt="05:07" loading="lazy"><figcaption>05:07</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf011.jpg" alt="画面 05:07" loading="lazy"><figcaption>画面 05:07</figcaption></figure>
 <p><span class="ts">05:21</span>你可能还记得这个曲面图，它看起来像个有草有鸟的户外公园，在小山丘上放松，有几处起伏。</p>
-<figure><img src="img/P019/kf012.jpg" alt="05:22" loading="lazy"><figcaption>05:22</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf012.jpg" alt="画面 05:22" loading="lazy"><figcaption>画面 05:22</figcaption></figure>
 <p><span class="ts">05:31</span>这个函数有不止一个局部最小值。</p>
 <p><span class="ts">05:35</span>记住，这取决于你在哪里初始化参数 w 和 b，你可能会止于不同的局部最小值。</p>
 <p><span class="ts">05:45</span>你可能最终到达这里，也可能到达这里。</p>
 <p><span class="ts">05:49</span>但事实证明，当你将平方误差代价函数用于线性回归时，这个代价函数不会，也永远不会有多个局部最小值。n。</p>
-<figure><img src="img/P019/kf013.jpg" alt="05:50" loading="lazy"><figcaption>05:50</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf013.jpg" alt="画面 05:50" loading="lazy"><figcaption>画面 05:50</figcaption></figure>
 <p><span class="ts">06:00</span>因为它呈碗形，所以只有一个全局最小值。</p>
-<figure><img src="img/P019/kf014.jpg" alt="06:02" loading="lazy"><figcaption>06:02</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf014.jpg" alt="画面 06:02" loading="lazy"><figcaption>画面 06:02</figcaption></figure>
 <p><span class="ts">06:05</span>对此的技术术语是，这个代价函数是一个凸函数。</p>
 <p><span class="ts">06:12</span>非正式地说，凸函数就是碗形函数，除了单一的全局最小值之外，它不能有任何其他局部最小值。</p>
 <p><span class="ts">06:22</span>因此，当你在凸函数上实现梯度下降时，一个很好的特性是，只要你的学习率选择得当，它总会收敛到全局最小值。</p>
-<figure><img src="img/P019/kf015.jpg" alt="06:24" loading="lazy"><figcaption>06:24</figcaption></figure>
+<figure class="shot"><img src="img/P019/kf015.jpg" alt="画面 06:24" loading="lazy"><figcaption>画面 06:24</figcaption></figure>
 <p><span class="ts">06:36</span>恭喜你，你现在知道如何为线性回归实现梯度下降了。</p>
 <p><span class="ts">06:41</span>本周我们只剩下最后一期视频了。</p>
 <p><span class="ts">06:44</span>在那期视频中，我们将看到这个算法的实际运行。</p>

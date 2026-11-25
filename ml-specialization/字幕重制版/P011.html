@@ -16,25 +16,25 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>要实现线性回归，关键的第一步就是定义代价函数。</p>
-<figure><img src="img/P011/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:08</span>这就是我们本期视频要构建的内容。</p>
 <p><span class="ts">00:12</span>代价函数能告诉我们模型的表现如何，这样我们就能尝试让它做得更好。</p>
 <p><span class="ts">00:19</span>我们来看看这具体意味着什么。</p>
 <p><span class="ts">00:23</span>回顾一下，你有一个训练集，包含了输入特征 x 和输出目标 y。</p>
-<figure><img src="img/P011/kf002.jpg" alt="00:24" loading="lazy"><figcaption>00:24</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf002.jpg" alt="画面 00:24" loading="lazy"><figcaption>画面 00:24</figcaption></figure>
 <p><span class="ts">00:30</span>而你要用来拟合这个训练集的模型，就是这个线性函数 f 下 w，下 b，括号 x 等于 w 乘以 x 加 b。</p>
 <p><span class="ts">00:42</span>再引入一点术语，这里的 w 和 b 被称为模型的参数。</p>
 <p><span class="ts">00:49</span>在机器学习中，模型的参数是你在训练过程中可以调整的变量，目的是改进模型。</p>
 <p><span class="ts">00:58</span>有时你也会听到参数 w 和 b 被称为系数或权重。</p>
 <p><span class="ts">01:07</span>现在，我们来看看这些参数 w 和 b 到底起什么作用。</p>
 <p><span class="ts">01:12</span>根据你为 w 和 b 选择的值，你会得到不同的函数括号 x，从而在图上生成不同的直线。</p>
-<figure><img src="img/P011/kf003.jpg" alt="01:14" loading="lazy"><figcaption>01:14</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf003.jpg" alt="画面 01:14" loading="lazy"><figcaption>画面 01:14</figcaption></figure>
 <p><span class="ts">01:22</span>记住，我们可以把 f 写作 fw，b，括号 x 的简写。</p>
 <p><span class="ts">01:29</span>我们来看几张 f 括号 x 在图表上的图示。</p>
 <p><span class="ts">01:35</span>也许你已经很熟悉在图上来画线了，但即使这对你来说是复习，我也希望这能帮你建立直觉，理解参数 w 和 b 是如何决定 f 的。</p>
-<figure><img src="img/P011/kf004.jpg" alt="01:36" loading="lazy"><figcaption>01:36</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf004.jpg" alt="画面 01:36" loading="lazy"><figcaption>画面 01:36</figcaption></figure>
 <p><span class="ts">01:48</span>当 w 等于零，b 等于一点五时，f 看起来就是这样一条水平线。</p>
-<figure><img src="img/P011/kf005.jpg" alt="01:49" loading="lazy"><figcaption>01:49</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf005.jpg" alt="画面 01:49" loading="lazy"><figcaption>画面 01:49</figcaption></figure>
 <p><span class="ts">01:56</span>这时，函数 f 括号 x 等于零乘以 x 加一点五。</p>
 <p><span class="ts">02:06</span>它总是预测一点五作为 y 的估计值。</p>
 <p><span class="ts">02:15</span>而在这里，b 也被称为 y 截距，因为它在这张图上与纵轴或 y 轴相交于此。</p>
@@ -52,21 +52,21 @@
 <p><span class="ts">03:32</span>同样，斜率是零点五除以一。</p>
 <p><span class="ts">03:36</span>所以 W 的值给出了斜率，也就是零点五。</p>
 <p><span class="ts">03:41</span>回想一下，你有一个像这里展示的训练集。</p>
-<figure><img src="img/P011/kf006.jpg" alt="03:42" loading="lazy"><figcaption>03:42</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf006.jpg" alt="画面 03:42" loading="lazy"><figcaption>画面 03:42</figcaption></figure>
 <p><span class="ts">03:46</span>对于线性回归，你要做的就是为参数 w 和 b 选择合适的值，使得从函数 f 得到的这条直线能够很好地拟合数据，就像可能这里展示的这条线。</p>
-<figure><img src="img/P011/kf007.jpg" alt="03:47" loading="lazy"><figcaption>03:47</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf007.jpg" alt="画面 03:47" loading="lazy"><figcaption>画面 03:47</figcaption></figure>
 <p><span class="ts">04:00</span>当我说这条线拟合数据时，从视觉上，你可以认为，与其他那些不那么靠近这些点的可能直线相比，由 f 定义的这条线大致穿过了，或者说相当接近训练样本。</p>
-<figure><img src="img/P011/kf008.jpg" alt="04:01" loading="lazy"><figcaption>04:01</figcaption></figure>
-<figure><img src="img/P011/kf009.jpg" alt="04:16" loading="lazy"><figcaption>04:16</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf008.jpg" alt="画面 04:01" loading="lazy"><figcaption>画面 04:01</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf009.jpg" alt="画面 04:16" loading="lazy"><figcaption>画面 04:16</figcaption></figure>
 <p><span class="ts">04:18</span>提醒一下符号记法，像这里这样的一个训练样本，由 x 上标 i，y 上标 i 定义，其中 y 是目标。</p>
 <p><span class="ts">04:33</span>对于给定的输入 x 上标，函数 f 也会为 y 做出一个预测值，它所预测的这个 y 值在此显示为 yhat 上标 i。</p>
 <p><span class="ts">04:48</span>对于我们选择的模型，f 括号 x 上标 i 等于 w 乘以 x 上标 i 加 b。</p>
 <p><span class="ts">04:56</span>换句话说，预测值 y hat 上标 i 等于 fw，b，括号 x 上标 i，对于我们正在使用的模型，f 括号 x 上标 i 等于标。</p>
-<figure><img src="img/P011/kf010.jpg" alt="04:58" loading="lazy"><figcaption>04:58</figcaption></figure>
-<figure><img src="img/P011/kf011.jpg" alt="05:14" loading="lazy"><figcaption>05:14</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf010.jpg" alt="画面 04:58" loading="lazy"><figcaption>画面 04:58</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf011.jpg" alt="画面 05:14" loading="lazy"><figcaption>画面 05:14</figcaption></figure>
 <p><span class="ts">05:15</span>那么现在的问题是，你如何找到 w 和 b 的值，使得对于许多或所有训练样本 x 上标 i，y 上标 i，预测值上标 i 都接近真实目标 y 上标 i？</p>
-<figure><img src="img/P011/kf012.jpg" alt="05:16" loading="lazy"><figcaption>05:16</figcaption></figure>
-<figure><img src="img/P011/kf013.jpg" alt="05:32" loading="lazy"><figcaption>05:32</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf012.jpg" alt="画面 05:16" loading="lazy"><figcaption>画面 05:16</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf013.jpg" alt="画面 05:32" loading="lazy"><figcaption>画面 05:32</figcaption></figure>
 <p><span class="ts">05:32</span>为了回答这个问题，我们先来看看如何衡量一条线拟合训练数据的好坏。</p>
 <p><span class="ts">05:40</span>为此，我们将构建我们的代价函数。</p>
 <p><span class="ts">05:44</span>代价函数接收预测值 y hat，并通过计算 y hat 减去 y 来将其与目标 y 进行比较。</p>
@@ -79,25 +79,25 @@
 <p><span class="ts">06:30</span>我们将从 i 等于一，二，三，一直求和到 m。</p>
 <p><span class="ts">06:36</span>记住，m 是训练样本的数量，对于这个数据集是四十七。</p>
 <p><span class="ts">06:42</span>注意，如果我们有更多的训练样本，m 变大了，由于要对更多样本求和，你的代价函数会计算出一个更大的数值 Andrew。</p>
-<figure><img src="img/P011/kf014.jpg" alt="06:44" loading="lazy"><figcaption>06:44</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf014.jpg" alt="画面 06:44" loading="lazy"><figcaption>画面 06:44</figcaption></figure>
 <p><span class="ts">06:52</span>所以，为了构建一个不会因为训练集规模变大而自动变大的代价函数，按照惯例，我们会计算平均平方误差，而不是总的平方误差。</p>
-<figure><img src="img/P011/kf015.jpg" alt="07:06" loading="lazy"><figcaption>07:06</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf015.jpg" alt="画面 07:06" loading="lazy"><figcaption>画面 07:06</figcaption></figure>
 <p><span class="ts">07:06</span>我们通过除以 m 来实现，像这样。</p>
 <p><span class="ts">07:16</span>按照惯例，机器学习领域的人们实际使用的代价函数，额外除以了二乘以 m。</p>
 <p><span class="ts">07:24</span>这额外的除以二，仅仅是为了让我们后续的一些计算看起来更简洁一些，但无论你加不加上这个除以二，代价函数都能正常工作。</p>
-<figure><img src="img/P011/kf016.jpg" alt="07:25" loading="lazy"><figcaption>07:25</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf016.jpg" alt="画面 07:25" loading="lazy"><figcaption>画面 07:25</figcaption></figure>
 <p><span class="ts">07:36</span>所以，这里的这个表达式就是代价函数，我们将把它写作 J，括号 w，b，来指代这个代价函数。</p>
-<figure><img src="img/P011/kf017.jpg" alt="07:37" loading="lazy"><figcaption>07:37</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf017.jpg" alt="画面 07:37" loading="lazy"><figcaption>画面 07:37</figcaption></figure>
 <p><span class="ts">07:46</span>它也被称为平方误差代价函数，之所以叫这个名字，是因为你在计算这些误差项的平方。在机器学习中，不同的人会在不同的应用中使用不同的代价函数。</p>
-<figure><img src="img/P011/kf018.jpg" alt="07:48" loading="lazy"><figcaption>07:48</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf018.jpg" alt="画面 07:48" loading="lazy"><figcaption>画面 07:48</figcaption></figure>
 <p><span class="ts">08:03</span>但平方误差代价函数是迄今为止线性回归中最常用的一种。</p>
 <p><span class="ts">08:03</span>但平方误差代价函数是迄今为止线性回归中最常用的一种，而且就此而言，对于所有回归问题也是一样，它在许多应用中似乎都能给出很好的结果。</p>
-<figure><img src="img/P011/kf019.jpg" alt="08:05" loading="lazy"><figcaption>08:05</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf019.jpg" alt="画面 08:05" loading="lazy"><figcaption>画面 08:05</figcaption></figure>
 <p><span class="ts">08:18</span>提醒一下，预测值 y hat 等于模型 f 在 x 处的输出。</p>
 <p><span class="ts">08:28</span>因此，我们可以将代价函数 J 括号 w，b 改写为：二 m 分之一，乘以从 i 等于一到 m 的，f 括号 x 上标 i 减去上标 i 的平方，求和。</p>
-<figure><img src="img/P011/kf020.jpg" alt="08:29" loading="lazy"><figcaption>08:29</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf020.jpg" alt="画面 08:29" loading="lazy"><figcaption>画面 08:29</figcaption></figure>
 <p><span class="ts">08:45</span>最终，我们是要找到让代价函数变小的 w 和 b 的值。</p>
-<figure><img src="img/P011/kf021.jpg" alt="08:46" loading="lazy"><figcaption>08:46</figcaption></figure>
+<figure class="shot"><img src="img/P011/kf021.jpg" alt="画面 08:46" loading="lazy"><figcaption>画面 08:46</figcaption></figure>
 <p><span class="ts">08:52</span>但在进行到那一步之前，让我们先更直观地理解一下 J 括号 w，b 到底在计算什么。</p>
 <p><span class="ts">09:00</span>此时此刻，你可能会想，我们为了定义代价函数做了好多数学运算，但它到底在做什么呢？</p>
 <p><span class="ts">09:09</span>让我们进入下期视频，我们将通过一个例子逐步了解代价函数实际在计算什么，希望能帮你建立直觉，理解 J 括号 w，b 很大与代价 J 很小分别意味着什么。</p>

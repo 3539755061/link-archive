@@ -18,7 +18,7 @@
 <p><span class="ts">00:02</span>为了说明神经网络如何工作，我们从一个例子开始讲起。</p>
 <p><span class="ts">00:07</span>我们将用一个需求预测的例子，你关注一款产品并试图预测：这款产品会不会成为畅销品？</p>
 <p><span class="ts">00:18</span>在这个例子中，你销售 T 恤，你想知道某款特定的 T 恤是否会成为畅销品，也就是，是或否。</p>
-<figure><img src="img/P045/kf001.jpg" alt="00:20" loading="lazy"><figcaption>00:20</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf001.jpg" alt="画面 00:20" loading="lazy"><figcaption>画面 00:20</figcaption></figure>
 <p><span class="ts">00:28</span>你收集了不同 T 恤的数据，包括它们以不同价格出售的情况，以及哪些成了畅销品。</p>
 <p><span class="ts">00:36</span>如今，零售商就使用这类应用来更好地规划库存水平和营销活动。</p>
 <p><span class="ts">00:45</span>如果你知道什么可能成为畅销品，你就会提前规划，比如，提前多采购一些库存。</p>
@@ -29,16 +29,16 @@
 <p><span class="ts">01:34</span>术语 A 代表激活，实际上这是一个来自神经科学的术语，指的是一个神经元向其下游的其他神经元发送高输出或电脉冲的程度。</p>
 <p><span class="ts">01:48</span>事实证明，这个逻辑回归单元，或者说这个小小的逻辑回归算法，可以被看作是对大脑中单个神经元的一个高度简化的模型。N。</p>
 <p><span class="ts">02:00</span>在这个模型中，神经元所做的是接收它的输入一一价格 x，然后计算上面的这个公式，并输出通过这个公式算出的数字 a，它输出的是这款 T 恤成为畅销品的概率。</p>
-<figure><img src="img/P045/kf002.jpg" alt="02:01" loading="lazy"><figcaption>02:01</figcaption></figure>
-<figure><img src="img/P045/kf003.jpg" alt="02:18" loading="lazy"><figcaption>02:18</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf002.jpg" alt="画面 02:01" loading="lazy"><figcaption>画面 02:01</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf003.jpg" alt="画面 02:18" loading="lazy"><figcaption>画面 02:18</figcaption></figure>
 <p><span class="ts">02:18</span>另一种思考神经元的方式是，把它看作一台微小的计算机，其唯一的任务就是输入一个或几个数字，比如价格，然后输出一个或几个其他数字。</p>
 <p><span class="ts">02:34</span>在这个例子里，也就是输出这款 T 恤成为畅销品的概率。</p>
 <p><span class="ts">02:40</span>正如我在上一个视频中提到的，一个逻辑回归算法比你大脑中任何生物神经元所做的都要简单得多，这就是为什么人工神经网络是对人类大脑如此极度简化的模型，尽管在实践中，正如你所知，深度学习算法确实效果非常好。</p>
-<figure><img src="img/P045/kf004.jpg" alt="02:46" loading="lazy"><figcaption>02:46</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf004.jpg" alt="画面 02:46" loading="lazy"><figcaption>画面 02:46</figcaption></figure>
 <p><span class="ts">03:04</span>鉴于对单个神经元的这种描述，构建一个神经网络现在只需要把一堆这样的神经元连接起来，或者说组合在一起。</p>
-<figure><img src="img/P045/kf005.jpg" alt="03:05" loading="lazy"><figcaption>03:05</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf005.jpg" alt="画面 03:05" loading="lazy"><figcaption>画面 03:05</figcaption></figure>
 <p><span class="ts">03:15</span>我们现在来看一个更复杂的需求预测例子。</p>
-<figure><img src="img/P045/kf006.jpg" alt="03:15" loading="lazy"><figcaption>03:15</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf006.jpg" alt="画面 03:15" loading="lazy"><figcaption>画面 03:15</figcaption></figure>
 <p><span class="ts">03:19</span>在这个例子中，我们将用四个特征来预测一款 T 恤是否会成为畅销品。</p>
 <p><span class="ts">03:26</span>这四个特征是：T 恤的价格、运费、该款 T 恤的市场营销投入，以及材质质量。</p>
 <p><span class="ts">03:35</span>是高质量的厚棉布，还是质量可能较差的材料？</p>
@@ -54,9 +54,9 @@
 <p><span class="ts">04:51</span>最后，我将创建另一个神经元来估算：人们是否认为这是高品质的？</p>
 <p><span class="ts">04:59</span>而这可能主要取决于 T 恤的价格和材质质量。</p>
 <p><span class="ts">05:05</span>价格在这里是一个因素，因为，幸运或不幸的是，如果有一款价格非常高的 T 恤，人们有时会认为它的质量很高，因为如果它非常昂贵，那么人们或许会觉得它肯定质量很好。</p>
-<figure><img src="img/P045/kf007.jpg" alt="05:07" loading="lazy"><figcaption>05:07</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf007.jpg" alt="画面 05:07" loading="lazy"><figcaption>画面 05:07</figcaption></figure>
 <p><span class="ts">05:23</span>有了这些关于负担性、认知度和感知质量的估算值，我们再把这三个神经元的输出连接到右边的另一个神经元上。</p>
-<figure><img src="img/P045/kf008.jpg" alt="05:25" loading="lazy"><figcaption>05:25</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf008.jpg" alt="画面 05:25" loading="lazy"><figcaption>画面 05:25</figcaption></figure>
 <p><span class="ts">05:34</span>这就是另一个逻辑回归单元，它最终输入这三个数字，并输出这款 T 恤成为畅销品的概率。</p>
 <p><span class="ts">05:43</span>那么，用神经网络的术语来说，我们要把这三个神经元归为一组，构成所谓的层。</p>
 <p><span class="ts">05:53</span>一个层就是一组神经元，它们以相同或相似的特征作为输入，并一起输出几个数字。</p>
@@ -95,15 +95,15 @@
 <p><span class="ts">11:36</span>你在这里看到的是，有一个逻辑回归算法，或者说逻辑回归单元，它正在输入一款 T 恤的负担性、认知度和感知质量，并使用这三个特征来估算该 T 恤成为畅销品的概率。</p>
 <p><span class="ts">11:54</span>所以，这仅仅是逻辑回归。</p>
 <p><span class="ts">11:59</span>但有趣的是，这里使用的不是价格、运费、市场营销投入等原始特征，而是一组新的、可能更好的特征，即负担性、认知度和感知质量，它们有望更具预测性地判断一款 T 恤是否能成为畅销品。</p>
-<figure><img src="img/P045/kf009.jpg" alt="12:00" loading="lazy"><figcaption>12:00</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf009.jpg" alt="画面 12:00" loading="lazy"><figcaption>画面 12:00</figcaption></figure>
 <p><span class="ts">12:18</span>因此，我们可以把这个神经网络看作是逻辑回归。</p>
-<figure><img src="img/P045/kf010.jpg" alt="12:19" loading="lazy"><figcaption>12:19</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf010.jpg" alt="画面 12:19" loading="lazy"><figcaption>画面 12:19</figcaption></figure>
 <p><span class="ts">12:23</span>但它这个版本的逻辑回归能够学习自己的特征，从而更容易做出准确的预测。</p>
 <p><span class="ts">12:32</span>事实上，你可能还记得之前课程中那个房屋的例子，我们说过，如果你想预测一栋房子的价格，你可能会取临街宽度或地块的宽度，乘以地块的深度，来构建一个更复杂的特征。</p>
-<figure><img src="img/P045/kf011.jpg" alt="12:34" loading="lazy"><figcaption>12:34</figcaption></figure>
-<figure><img src="img/P045/kf012.jpg" alt="12:40" loading="lazy"><figcaption>12:40</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf011.jpg" alt="画面 12:34" loading="lazy"><figcaption>画面 12:34</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf012.jpg" alt="画面 12:40" loading="lazy"><figcaption>画面 12:40</figcaption></figure>
 <p><span class="ts">12:49</span>即 x 一乘以 x 二，也就是地块的面积。</p>
-<figure><img src="img/P045/kf013.jpg" alt="12:51" loading="lazy"><figcaption>12:51</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf013.jpg" alt="画面 12:51" loading="lazy"><figcaption>画面 12:51</figcaption></figure>
 <p><span class="ts">12:55</span>在那里，我们做的是手动特征工程，必须查看 x 一和 x 二这两个特征，并手动决定如何将它们组合起来，以得出更好的特征。</p>
 <p><span class="ts">13:06</span>而神经网络所做的，是不需要你手动设计特征，它可以自己学习，正如你稍后会看到的，来生成它自己的特征，从而让学习问题对自身来说变得更容易。</p>
 <p><span class="ts">13:23</span>这正是使神经网络成为当今世界上最强大的学习算法之一的原因。</p>
@@ -116,15 +116,15 @@
 <p><span class="ts">14:28</span>它会完全自行决定在这个隐藏层中想要使用哪些特征。</p>
 <p><span class="ts">14:38</span>那么，你在这里看到了一个神经网络的例子，这个神经网络只有一个隐藏层。</p>
 <p><span class="ts">14:46</span>我们再看看其他几个神经网络的例子，特别是那些含多个隐藏层的例子。</p>
-<figure><img src="img/P045/kf014.jpg" alt="14:51" loading="lazy"><figcaption>14:51</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf014.jpg" alt="画面 14:51" loading="lazy"><figcaption>画面 14:51</figcaption></figure>
 <p><span class="ts">14:54</span>这里有个例子：这个神经网络有一个输入特征向量 x，它被馈送到一个隐藏层，我将称之为第一个隐藏层。</p>
 <p><span class="ts">15:06</span>那么，假设这个隐藏层有三个神经元，它就会输出一个包含三个激活值的向量。</p>
 <p><span class="ts">15:14</span>这三个数字随后可以被输入到第二个隐藏层。</p>
 <p><span class="ts">15:19</span>而如果这个第二个隐藏层有两个神经元，即两个逻辑单元，那么这个第二隐藏层将输出另一个向量，这次包含两个激活值，该向量可能会被传递到输出层，然后输出神经网络的最终预测结果。</p>
-<figure><img src="img/P045/kf015.jpg" alt="15:21" loading="lazy"><figcaption>15:21</figcaption></figure>
-<figure><img src="img/P045/kf016.jpg" alt="15:37" loading="lazy"><figcaption>15:37</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf015.jpg" alt="画面 15:21" loading="lazy"><figcaption>画面 15:21</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf016.jpg" alt="画面 15:37" loading="lazy"><figcaption>画面 15:37</figcaption></figure>
 <p><span class="ts">15:38</span>或者，有力一“例于。</p>
-<figure><img src="img/P045/kf017.jpg" alt="15:40" loading="lazy"><figcaption>15:40</figcaption></figure>
+<figure class="shot"><img src="img/P045/kf017.jpg" alt="画面 15:40" loading="lazy"><figcaption>画面 15:40</figcaption></figure>
 <p><span class="ts">15:41</span>这里有一个神经网络，它的输入进入第一个隐藏层。</p>
 <p><span class="ts">15:46</span>第一个隐藏层的输出进入第二个隐藏层，再到第三个隐藏层，最后到达输出层。</p>
 <p><span class="ts">15:55</span>当你在构建自己的神经网络时，你需要做出的一个决策是：你想要多少个隐藏层，以及你希望每个隐藏层包含多少个神经元。</p>

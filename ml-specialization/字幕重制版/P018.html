@@ -16,12 +16,12 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>学习率 alpha 的选择，将对你实现梯度下降的效率产生巨大影响。</p>
-<figure><img src="img/P018/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:10</span>如果 alpha，也就是学习率，选择不当，梯度下降甚至可能根本无法工作。</p>
 <p><span class="ts">00:17</span>在本期视频中，让我们更深入地了解一下学习率。</p>
 <p><span class="ts">00:22</span>这也将帮助你在实现梯度下降时选择更好的学习率。</p>
 <p><span class="ts">00:29</span>这里再次给出梯度下降的规则。</p>
-<figure><img src="img/P018/kf002.jpg" alt="00:30" loading="lazy"><figcaption>00:30</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf002.jpg" alt="画面 00:30" loading="lazy"><figcaption>画面 00:30</figcaption></figure>
 <p><span class="ts">00:33</span>w 被更新为 w 减去学习率 alpha 乘以导数项。</p>
 <p><span class="ts">00:39</span>为了更了解学习率 alpha 的作用，我们来看看如果学习率 alpha 太小或太大，分别会发生什么。</p>
 <p><span class="ts">00:49</span>对于学习率太小的情况，这里有一张图，横轴是 W，纵轴是代价 J。</p>
@@ -51,7 +51,7 @@
 <p><span class="ts">04:09</span>所以，如果学习率太大，梯度下降可能会越过目标，甚至可能永远无法到达最小值。</p>
 <p><span class="ts">04:17</span>另一种说法是，梯度下降可能无法收敛，甚至可能发散。</p>
 <p><span class="ts">04:27</span>那么，这里还有一个你可能想问的问题。</p>
-<figure><img src="img/P018/kf003.jpg" alt="04:27" loading="lazy"><figcaption>04:27</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf003.jpg" alt="画面 04:27" loading="lazy"><figcaption>画面 04:27</figcaption></figure>
 <p><span class="ts">04:31</span>如果你的参数 w 已经在这个点上了，也就是你的代价 J 已经处于一个局部最小值，会怎样？</p>
 <p><span class="ts">04:41</span>你认为，如果你已经到达了一个最小值，梯度下降的一步会做什么？</p>
 <p><span class="ts">04:52</span>我刚学这些内容的时候，也花了很长时间才想明白。</p>
@@ -65,15 +65,15 @@
 <p><span class="ts">06:01</span>这里，那是因为导数项等于零。</p>
 <p><span class="ts">06:06</span>这等同于说，让我们将 w 设为等于 w。</p>
 <p><span class="ts">06:12</span>所以，这意味着如果你已经在一个局部最小值处，梯度下降会让 w 保持不变，因为它只是将 w 的新值更新成与旧值完全一样。</p>
-<figure><img src="img/P018/kf004.jpg" alt="06:13" loading="lazy"><figcaption>06:13</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf004.jpg" alt="画面 06:13" loading="lazy"><figcaption>画面 06:13</figcaption></figure>
 <p><span class="ts">06:26</span>具体来说，假设当前 w 的值是五，alpha 是零点一，经过一次迭代，你将 w 更新为 w 减去 alpha 乘以零，它仍然等于五。h。</p>
-<figure><img src="img/P018/kf005.jpg" alt="06:27" loading="lazy"><figcaption>06:27</figcaption></figure>
-<figure><img src="img/P018/kf006.jpg" alt="06:39" loading="lazy"><figcaption>06:39</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf005.jpg" alt="画面 06:27" loading="lazy"><figcaption>画面 06:27</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf006.jpg" alt="画面 06:39" loading="lazy"><figcaption>画面 06:39</figcaption></figure>
 <p><span class="ts">06:44</span>所以，如果你的参数已经把你带到了一个局部最小值，那么进一步的梯度下降步骤将完全不做任何。</p>
-<figure><img src="img/P018/kf007.jpg" alt="06:45" loading="lazy"><figcaption>06:45</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf007.jpg" alt="画面 06:45" loading="lazy"><figcaption>画面 06:45</figcaption></figure>
 <p><span class="ts">06:54</span>它不会改变参数，而这正是你想要的，因为它将解保持在了那个局部最小值。</p>
-<figure><img src="img/P018/kf008.jpg" alt="06:55" loading="lazy"><figcaption>06:55</figcaption></figure>
-<figure><img src="img/P018/kf009.jpg" alt="07:01" loading="lazy"><figcaption>07:01</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf008.jpg" alt="画面 06:55" loading="lazy"><figcaption>画面 06:55</figcaption></figure>
+<figure class="shot"><img src="img/P018/kf009.jpg" alt="画面 07:01" loading="lazy"><figcaption>画面 07:01</figcaption></figure>
 <p><span class="ts">07:02</span>这也解释了为什么即使学习率 alpha 固定，梯度下降也能到达一个局部最小值。</p>
 <p><span class="ts">07:11</span>为了说明这一点，让我们看另一个例子。</p>
 <p><span class="ts">07:15</span>这是我们要最小化的代价函数 J 括号 w。</p>

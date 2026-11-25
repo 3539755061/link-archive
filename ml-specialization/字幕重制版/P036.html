@@ -16,71 +16,71 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>为了拟合逻辑回归模型的参数，我们将尝试找到能最小化代价函数关于 w 和 b 的值的参数 w。</p>
-<figure><img src="img/P036/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
-<figure><img src="img/P036/kf002.jpg" alt="00:04" loading="lazy"><figcaption>00:04</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf002.jpg" alt="画面 00:04" loading="lazy"><figcaption>画面 00:04</figcaption></figure>
 <p><span class="ts">00:13</span>我们仍会应用梯度下降来实现这一点。</p>
 <p><span class="ts">00:20</span>在本视频中，我们将聚焦于如何为参数 w 和 b 找到好的选择。</p>
-<figure><img src="img/P036/kf003.jpg" alt="00:21" loading="lazy"><figcaption>00:21</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf003.jpg" alt="画面 00:21" loading="lazy"><figcaption>画面 00:21</figcaption></figure>
 <p><span class="ts">00:28</span>如果你给模型一个新的输入 x，比如医院里来了一位新病患，他有特定的肿瘤大小和年龄，需要做出诊断，那么模型就可以做出预测，或者说它可以尝试估计标签为一的概率。</p>
-<figure><img src="img/P036/kf004.jpg" alt="00:30" loading="lazy"><figcaption>00:30</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf004.jpg" alt="画面 00:30" loading="lazy"><figcaption>画面 00:30</figcaption></figure>
 <p><span class="ts">00:48</span>你可以用来最小化代价函数的算法就是梯度下降。</p>
-<figure><img src="img/P036/kf005.jpg" alt="00:49" loading="lazy"><figcaption>00:49</figcaption></figure>
-<figure><img src="img/P036/kf006.jpg" alt="00:54" loading="lazy"><figcaption>00:54</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf005.jpg" alt="画面 00:49" loading="lazy"><figcaption>画面 00:49</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf006.jpg" alt="画面 00:54" loading="lazy"><figcaption>画面 00:54</figcaption></figure>
 <p><span class="ts">00:56</span>所以如果你想最小化关于 w 和 b 的代价函数 J，那么，这就是常规的梯度下降算法，你重复更新每个参数，用 l 旧值减去 alpha，也就是学习率，乘以这个导数项。</p>
-<figure><img src="img/P036/kf007.jpg" alt="01:04" loading="lazy"><figcaption>01:04</figcaption></figure>
-<figure><img src="img/P036/kf008.jpg" alt="01:14" loading="lazy"><figcaption>01:14</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf007.jpg" alt="画面 01:04" loading="lazy"><figcaption>画面 01:04</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf008.jpg" alt="画面 01:14" loading="lazy"><figcaption>画面 01:14</figcaption></figure>
 <p><span class="ts">01:17</span>我们来看一下关于 wj 的导数，也就是上面这一项，照常，j 的取值范围是从一到 n，其中 n 是特征的数量。</p>
-<figure><img src="img/P036/kf009.jpg" alt="01:18" loading="lazy"><figcaption>01:18</figcaption></figure>
-<figure><img src="img/P036/kf010.jpg" alt="01:30" loading="lazy"><figcaption>01:30</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf009.jpg" alt="画面 01:18" loading="lazy"><figcaption>画面 01:18</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf010.jpg" alt="画面 01:30" loading="lazy"><figcaption>画面 01:30</figcaption></figure>
 <p><span class="ts">01:30</span>如果有人应用微积分法则，你可以证明代价函数大写关于 wj 的导数等于这里的这个表达式。</p>
 <p><span class="ts">01:43</span>它是 m 分之一乘以从一到 m 求和的这个误差项，即 f 减去标签 y 再乘以 xj。</p>
 <p><span class="ts">01:59</span>这里，这个 xij 是第 i 个训练样本的第 j 个特征。</p>
 <p><span class="ts">02:07</span>现在，我们也来看一下 J 关于参数 b 的导数。</p>
 <p><span class="ts">02:12</span>结果就是这里的这个表达式，它和上面的表达式非常相似，除了末尾没有乘以这个带有上标 i 下标 j 的 x。</p>
-<figure><img src="img/P036/kf011.jpg" alt="02:14" loading="lazy"><figcaption>02:14</figcaption></figure>
-<figure><img src="img/P036/kf012.jpg" alt="02:25" loading="lazy"><figcaption>02:25</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf011.jpg" alt="画面 02:14" loading="lazy"><figcaption>画面 02:14</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf012.jpg" alt="画面 02:25" loading="lazy"><figcaption>画面 02:25</figcaption></figure>
 <p><span class="ts">02:26</span>提醒一下，与你在线性回归中看到的类似，执行这些更新的方式是要使用同步更新，意味着你会先为所有这些更新计算右侧的值。</p>
-<figure><img src="img/P036/kf013.jpg" alt="02:27" loading="lazy"><figcaption>02:27</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf013.jpg" alt="画面 02:27" loading="lazy"><figcaption>画面 02:27</figcaption></figure>
 <p><span class="ts">02:39</span>然后同时覆写左侧所有的值。</p>
-<figure><img src="img/P036/kf014.jpg" alt="02:40" loading="lazy"><figcaption>02:40</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf014.jpg" alt="画面 02:40" loading="lazy"><figcaption>画面 02:40</figcaption></figure>
 <p><span class="ts">02:46</span>那么，让我把这些导数表达式拿过来，代入到这些项中。</p>
 <p><span class="ts">02:54</span>这就给出了逻辑回归的梯度下降。</p>
 <p><span class="ts">03:00</span>现在，你可能会好奇一件有趣的事，这两个方程看起来和我们之前为线性回归想出的算法一模一样。</p>
-<figure><img src="img/P036/kf015.jpg" alt="03:01" loading="lazy"><figcaption>03:01</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf015.jpg" alt="画面 03:01" loading="lazy"><figcaption>画面 03:01</figcaption></figure>
 <p><span class="ts">03:13</span>所以你可能会想，线性回归是不是实际上就等同于逻辑回归？</p>
 <p><span class="ts">03:19</span>嗯，尽管这些方程看起来一样，但这不是线性回归的原因在于，函数 f 的定义已经变了。</p>
 <p><span class="ts">03:31</span>在线性回归中，x 的 f 是这样的，是 wx 加 b，但在逻辑回归中，f 被定义为应用于 wx 加 b 的函数。</p>
-<figure><img src="img/P036/kf016.jpg" alt="03:32" loading="lazy"><figcaption>03:32</figcaption></figure>
-<figure><img src="img/P036/kf017.jpg" alt="03:38" loading="lazy"><figcaption>03:38</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf016.jpg" alt="画面 03:32" loading="lazy"><figcaption>画面 03:32</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf017.jpg" alt="画面 03:38" loading="lazy"><figcaption>画面 03:38</figcaption></figure>
 <p><span class="ts">03:44</span>所以尽管写出来的算法在线性回归和逻辑回归中看起来相同，但实际上它们是两个非常不同的算法，因为关于 x 的 f 的定义不同。</p>
-<figure><img src="img/P036/kf018.jpg" alt="03:46" loading="lazy"><figcaption>03:46</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf018.jpg" alt="画面 03:46" loading="lazy"><figcaption>画面 03:46</figcaption></figure>
 <p><span class="ts">03:58</span>当我们之前讨论线性回归的梯度下降时，你看到了如何监控梯度下降以确保它收敛。</p>
-<figure><img src="img/P036/kf019.jpg" alt="03:58" loading="lazy"><figcaption>03:58</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf019.jpg" alt="画面 03:58" loading="lazy"><figcaption>画面 03:58</figcaption></figure>
 <p><span class="ts">04:07</span>你可以对逻辑回归应用同样的方法来确保它也能收敛。</p>
 <p><span class="ts">04:14</span>我写出这些更新式时，像是你每次更新参数 wj 中的一个参数。</p>
 <p><span class="ts">04:24</span>与讨论线性回归的向量化实现类似，你也可以使用向量化来让逻辑回归的梯度下降运行得更快。</p>
 <p><span class="ts">04:37</span>我不会在这个视频中深入探讨向量化实现的细节，但你也可以在选修实验中了解更多并看到相关代码。</p>
-<figure><img src="img/P036/kf020.jpg" alt="04:39" loading="lazy"><figcaption>04:39</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf020.jpg" alt="画面 04:39" loading="lazy"><figcaption>画面 04:39</figcaption></figure>
 <p><span class="ts">04:48</span>那么现在，你知道了如何为逻辑回归实现梯度下降。</p>
-<figure><img src="img/P036/kf021.jpg" alt="04:50" loading="lazy"><figcaption>04:50</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf021.jpg" alt="画面 04:50" loading="lazy"><figcaption>画面 04:50</figcaption></figure>
 <p><span class="ts">04:54</span>你可能还记得我们在使用线性回归时的特征缩放，你看到了特征缩放，也就是将所有特征缩放到相似的值范围，比如负一到正一之间，这如何能帮助梯度下降更快地收敛。</p>
-<figure><img src="img/P036/kf022.jpg" alt="04:56" loading="lazy"><figcaption>04:56</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf022.jpg" alt="画面 04:56" loading="lazy"><figcaption>画面 04:56</figcaption></figure>
 <p><span class="ts">05:12</span>以同样的方式应用特征缩放，将不同特征缩放到相似的值范围，也可以加速逻辑回归的梯度下降。</p>
-<figure><img src="img/P036/kf023.jpg" alt="05:12" loading="lazy"><figcaption>05:12</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf023.jpg" alt="画面 05:12" loading="lazy"><figcaption>画面 05:12</figcaption></figure>
 <p><span class="ts">05:22</span>在接下来的选修实验中，你也会看到逻辑回归的梯度是如何在代码中计算的。</p>
-<figure><img src="img/P036/kf024.jpg" alt="05:22" loading="lazy"><figcaption>05:22</figcaption></figure>
-<figure><img src="img/P036/kf025.jpg" alt="05:28" loading="lazy"><figcaption>05:28</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf024.jpg" alt="画面 05:22" loading="lazy"><figcaption>画面 05:22</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf025.jpg" alt="画面 05:28" loading="lazy"><figcaption>画面 05:28</figcaption></figure>
 <p><span class="ts">05:31</span>这会很有用，因为你将在本周结束时的练习实验中实现它。</p>
-<figure><img src="img/P036/kf026.jpg" alt="05:38" loading="lazy"><figcaption>05:38</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf026.jpg" alt="画面 05:38" loading="lazy"><figcaption>画面 05:38</figcaption></figure>
 <p><span class="ts">05:38</span>在你于该实验中运行梯度下降之后，会有一系列漂亮的动画图表展示梯度下降的实际运作过程。</p>
-<figure><img src="img/P036/kf027.jpg" alt="05:40" loading="lazy"><figcaption>05:40</figcaption></figure>
-<figure><img src="img/P036/kf028.jpg" alt="05:43" loading="lazy"><figcaption>05:43</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf027.jpg" alt="画面 05:40" loading="lazy"><figcaption>画面 05:40</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf028.jpg" alt="画面 05:43" loading="lazy"><figcaption>画面 05:43</figcaption></figure>
 <p><span class="ts">05:48</span>你会看到 sigmoid 函数、代价的等高线图、代价的三维曲面图以及学习曲线，都随着梯度下降的运行。</p>
-<figure><img src="img/P036/kf029.jpg" alt="05:50" loading="lazy"><figcaption>05:50</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf029.jpg" alt="画面 05:50" loading="lazy"><figcaption>画面 05:50</figcaption></figure>
 <p><span class="ts">06:00</span>在那之后还有另一个选修实验，它简短而精悍，但也非常有用，因为它会向你展示如何使用流行的，车，来训练用于分类的逻辑回归模型。</p>
-<figure><img src="img/P036/kf030.jpg" alt="06:00" loading="lazy"><figcaption>06:00</figcaption></figure>
-<figure><img src="img/P036/kf031.jpg" alt="06:06" loading="lazy"><figcaption>06:06</figcaption></figure>
-<figure><img src="img/P036/kf032.jpg" alt="06:11" loading="lazy"><figcaption>06:11</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf030.jpg" alt="画面 06:00" loading="lazy"><figcaption>画面 06:00</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf031.jpg" alt="画面 06:06" loading="lazy"><figcaption>画面 06:06</figcaption></figure>
+<figure class="shot"><img src="img/P036/kf032.jpg" alt="画面 06:11" loading="lazy"><figcaption>画面 06:11</figcaption></figure>
 <p><span class="ts">06:14</span>当今许多公司的机器学习从业者都在日常工作中经常使用 scikit-learn。</p>
 <p><span class="ts">06:21</span>所以我希望你也能看看 scikit-learn 的这个函数，并了解它的使用方法。</p>
 <p><span class="ts">06:30</span>你现在知道如何实现逻辑回归了。</p>

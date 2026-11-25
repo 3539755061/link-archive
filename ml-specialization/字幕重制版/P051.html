@@ -22,7 +22,7 @@
 <p><span class="ts">00:48</span>因此，了解这些约定是有好处的，这样你就能实现正确的代码，并有望让你的神经网络顺利运行起来。</p>
 <p><span class="ts">00:57</span>我们先来看一看 TensorFlow 是如何表示数据的。</p>
 <p><span class="ts">01:02</span>假设你有这样一个来自咖啡例子中的数据集。</p>
-<figure><img src="img/P051/kf001.jpg" alt="01:03" loading="lazy"><figcaption>01:03</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf001.jpg" alt="画面 01:03" loading="lazy"><figcaption>画面 01:03</figcaption></figure>
 <p><span class="ts">01:07</span>我提到过，你会像这样写 X。</p>
 <p><span class="ts">01:11</span>那么，你这里为什么要有双层方括号呢？</p>
 <p><span class="ts">01:16</span>我们来看看 NumPy 是如何存储向量和矩阵的。</p>
@@ -30,7 +30,7 @@
 <p><span class="ts">01:29</span>我们会通过几个具体的例子，而你将能够完成实现神经网络所需的一切矩阵和向量操作。</p>
 <p><span class="ts">01:39</span>我们先从一个矩阵的例子开始。</p>
 <p><span class="ts">01:42</span>这是一两行三列的矩阵。</p>
-<figure><img src="img/P051/kf002.jpg" alt="01:42" loading="lazy"><figcaption>01:42</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf002.jpg" alt="画面 01:42" loading="lazy"><figcaption>画面 01:42</figcaption></figure>
 <p><span class="ts">01:48</span>注意，这里有一、二两行，和一、二、三列。</p>
 <p><span class="ts">01:57</span>所以我们叫它二乘三矩阵。</p>
 <p><span class="ts">02:02</span>按照惯例，矩阵的维度记作行数乘以列数。</p>
@@ -51,7 +51,7 @@
 <p><span class="ts">03:44</span>你看到了个二乘三矩阵和一个四乘二矩阵的例子。</p>
 <p><span class="ts">03:49</span>矩阵也可以是其他维度，比如一乘二或二乘一。</p>
 <p><span class="ts">03:56</span>我们会在下一张幻灯片看到这些例子。</p>
-<figure><img src="img/P051/kf003.jpg" alt="03:59" loading="lazy"><figcaption>03:59</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf003.jpg" alt="画面 03:59" loading="lazy"><figcaption>画面 03:59</figcaption></figure>
 <p><span class="ts">04:00</span>那我们之前把 x 设为输入特征向量时，做的是将 x 设为 np.array，里面用双层方括号包着“二百。</p>
 <p><span class="ts">04:13</span>这样做的效果是创建了一个一乘二的矩阵，也就是只有一行两列。</p>
 <p><span class="ts">04:23</span>我们来看另一个例子。</p>
@@ -72,14 +72,14 @@
 <p><span class="ts">06:24</span>而在 TensorFlow 中，约定是使用矩阵来表示数据。</p>
 <p><span class="ts">06:30</span>为什么会有这种约定上的转变呢？</p>
 <p><span class="ts">06:33</span>嗯，事实证明，TensorFlow 是为了处理超大数据集而设计的，通过用矩阵而不是一维数组来表示数据，能让 TensorFlow 内部的运算效率更高一些。</p>
-<figure><img src="img/P051/kf004.jpg" alt="06:48" loading="lazy"><figcaption>06:48</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf004.jpg" alt="画面 06:48" loading="lazy"><figcaption>画面 06:48</figcaption></figure>
 <p><span class="ts">06:49</span>那么，回到我们最初的例子，对于这个数据集中特征为“二百摄氏度、十七分钟的第一个训练样本，我们会像这样表示它。</p>
 <p><span class="ts">07:00</span>所以，这实际上是一个一乘二的矩阵，正好有一行两列来存储数字二百和十七。</p>
 <p><span class="ts">07:12</span>如果这些看起来像是很多细节和非常复杂的约定，不用担心。</p>
 <p><span class="ts">07:18</span>在可选的实验和练习实验中，你将亲自看到代码的具体实现，这一切都会变得更清晰。</p>
-<figure><img src="img/P051/kf005.jpg" alt="07:26" loading="lazy"><figcaption>07:26</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf005.jpg" alt="画面 07:26" loading="lazy"><figcaption>画面 07:26</figcaption></figure>
 <p><span class="ts">07:27</span>回到在神经网络中执行前向传播或推理的代码，当你计算 A 一等于第一层应用到 x 时，A 一是。</p>
-<figure><img src="img/P051/kf006.jpg" alt="07:28" loading="lazy"><figcaption>07:28</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf006.jpg" alt="画面 07:28" loading="lazy"><figcaption>画面 07:28</figcaption></figure>
 <p><span class="ts">07:41</span>嗯，A 一实际上将会是，因为这里有三个数字，实际上会是一个一乘三的矩阵。</p>
 <p><span class="ts">07:52</span>如果你打印输出 A 一，你会得到类似这样的东西。</p>
 <p><span class="ts">07:57</span>它是 tf.，零点二、零点七、零点三，形状是一乘三。</p>
@@ -93,7 +93,7 @@
 <p><span class="ts">09:04</span>这是 NumPy 和 TensorFlow 创建历史造成的一个产物。</p>
 <p><span class="ts">09:10</span>不幸的是，这两种表示矩阵的方式已经深深嵌入了这些系统。事实上，如果你想将 A 一，这个张量。</p>
 <p><span class="ts">09:25</span>转换回 NumPy 数组，你可以用这个函数 a 一.numpy()，它将取相同的数据并以 NumPy 数组的形式返回，而不是 TensorFlow 数组或 TensorFlow 矩阵的形式。</p>
-<figure><img src="img/P051/kf007.jpg" alt="09:39" loading="lazy"><figcaption>09:39</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf007.jpg" alt="画面 09:39" loading="lazy"><figcaption>画面 09:39</figcaption></figure>
 <p><span class="ts">09:41</span>现在，我们来看看第二层输出的激活值会是什么样子。</p>
 <p><span class="ts">09:48</span>第二层是一个具有一个单元和 sigmoid 激活函数的 Dense 层，A 二是通过将第二层应用到 A 一上来计算的。</p>
 <p><span class="ts">10:02</span>A 二可能是一个像零点八的数字，严格来说，这是一个一乘一的矩阵。</p>
@@ -102,7 +102,7 @@
 <p><span class="ts">10:20</span>如果你打印输出 A 二，你会看到它是一个 TensorFlow 张量，只有一个元素，一个数字，零点八，它是一个一乘一的矩阵。</p>
 <p><span class="ts">10:32</span>再次说明，它是一个32的浮点数，占用三十二位计算机内存。</p>
 <p><span class="ts">10:40</span>再次，你可以使用 A 二.numpy()将 TensorFlow 张量转换为 NumPy 矩阵，这将会把它转回一个看起来像这样的 NumPy 数组。</p>
-<figure><img src="img/P051/kf008.jpg" alt="10:41" loading="lazy"><figcaption>10:41</figcaption></figure>
+<figure class="shot"><img src="img/P051/kf008.jpg" alt="画面 10:41" loading="lazy"><figcaption>画面 10:41</figcaption></figure>
 <p><span class="ts">10:54</span>所以，这希望能让你了解数据在 TensorFlow 和 NumPy 中是如何表示的。</p>
 <p><span class="ts">11:00</span>我习惯在 NumPy 中加载和操作数据，但当你把 NumPy 数组传给 TensorFlow 时，TensorFlow 喜欢把它转换成自己的内部格式，也就是张量，然后利用张量进行高效运算。</p>
 <p><span class="ts">11:19</span>而当你读回数据时，你可以让它保持为张量，或者把它转回 NumPy 数组。</p>

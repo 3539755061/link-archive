@@ -16,108 +16,108 @@
 </header>
 <main>
 <p><span class="ts">00:01</span>欢迎来到本课程的第三周。</p>
-<figure><img src="img/P031/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:04</span>到本周结束，你就完成了这个专项课程的第一门课。</p>
 <p><span class="ts">00:11</span>上周，你学习了线性回归，它预测的是一个数字。</p>
 <p><span class="ts">00:16</span>本周，你将学习分类，其中你的输出变量只能取少数几个可能值中的一个，而不是一个无限范围内的任意数字。</p>
 <p><span class="ts">00:28</span>事实证明，线性回归对于分类问题来说不是一个好的算法。我们来看看为什么，而这会将我们引向，一个不同的算法，称为逻辑回归，它是当今最受欢迎和应用最广泛的学习算法之一。</p>
 <p><span class="ts">00:47</span>这里有一些分类问题的例子。回想一下判断一封邮件是否为垃圾邮件的例子。</p>
-<figure><img src="img/P031/kf002.jpg" alt="00:49" loading="lazy"><figcaption>00:49</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf002.jpg" alt="画面 00:49" loading="lazy"><figcaption>画面 00:49</figcaption></figure>
 <p><span class="ts">00:56</span>那么，你想要输出的答案要么是“否”，要么是“是”。</p>
 <p><span class="ts">01:02</span>另一个例子将是判断一笔在线金融交易是否欺诈。</p>
 <p><span class="ts">01:08</span>打击在线金融欺诈是我曾经从事过的工作，那种感觉异常令人振奋，因为我知道外面有人试图偷钱，而我团队的职责就是阻止他们。</p>
-<figure><img src="img/P031/kf003.jpg" alt="01:09" loading="lazy"><figcaption>01:09</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf003.jpg" alt="画面 01:09" loading="lazy"><figcaption>画面 01:09</figcaption></figure>
 <p><span class="ts">01:22</span>所以，问题是，给定一笔金融交易，你的学习算法能否判断出这笔交易是否欺诈，比如这张信用卡是不是被盗了？。</p>
 <p><span class="ts">01:34</span>我们之前触及过的另一个例子是试图将肿瘤分类为恶性或非恶性。</p>
-<figure><img src="img/P031/kf004.jpg" alt="01:34" loading="lazy"><figcaption>01:34</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf004.jpg" alt="画面 01:34" loading="lazy"><figcaption>画面 01:34</figcaption></figure>
 <p><span class="ts">01:42</span>在这每一个问题中，你想要预测的变量只能是两个可能值之一，否或是。</p>
-<figure><img src="img/P031/kf005.jpg" alt="01:48" loading="lazy"><figcaption>01:48</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf005.jpg" alt="画面 01:48" loading="lazy"><figcaption>画面 01:48</figcaption></figure>
 <p><span class="ts">01:52</span>这种只有两种可能输出的分类问题，被称为二元分类，其中二元一词指的是只有两个可能的类别，或者说两个可能的分类。</p>
-<figure><img src="img/P031/kf006.jpg" alt="01:53" loading="lazy"><figcaption>01:53</figcaption></figure>
-<figure><img src="img/P031/kf007.jpg" alt="01:57" loading="lazy"><figcaption>01:57</figcaption></figure>
-<figure><img src="img/P031/kf008.jpg" alt="02:06" loading="lazy"><figcaption>02:06</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf006.jpg" alt="画面 01:53" loading="lazy"><figcaption>画面 01:53</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf007.jpg" alt="画面 01:57" loading="lazy"><figcaption>画面 01:57</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf008.jpg" alt="画面 02:06" loading="lazy"><figcaption>画面 02:06</figcaption></figure>
 <p><span class="ts">02:07</span>在这些问题中，我会相对交替地使用类别和分类这两个术语。</p>
 <p><span class="ts">02:15</span>它们基本上指的是同一个意思。</p>
 <p><span class="ts">02:18</span>按照惯例，我们可以用几种常见的方式来指称这两个类别或分类。</p>
 <p><span class="ts">02:25</span>我们通常将类别指定为否或是，或者有时等效为假或真，或者非常普遍地使用数字零或一，这遵循了计算机科学中零表示假、一表示真的通用惯例。</p>
-<figure><img src="img/P031/kf009.jpg" alt="02:26" loading="lazy"><figcaption>02:26</figcaption></figure>
-<figure><img src="img/P031/kf010.jpg" alt="02:42" loading="lazy"><figcaption>02:42</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf009.jpg" alt="画面 02:26" loading="lazy"><figcaption>画面 02:26</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf010.jpg" alt="画面 02:42" loading="lazy"><figcaption>画面 02:42</figcaption></figure>
 <p><span class="ts">02:44</span>我通常会使用数字零和一来表示答案 y，因为这将最贴合我们想要实现的学习算法类型。</p>
 <p><span class="ts">02:56</span>但当我们谈论它时，我们常常也会说否或是，或者假或真。</p>
 <p><span class="ts">03:03</span>常用的术语之一是将假或零类称为负类，而将真或一类称为正类。</p>
 <p><span class="ts">03:15</span>例如，对于垃圾邮件分类，一封非垃圾邮件可能被称为负例，因为对于“是否是垃圾邮件”这个问题，其输出为否或零。</p>
-<figure><img src="img/P031/kf011.jpg" alt="03:17" loading="lazy"><figcaption>03:17</figcaption></figure>
-<figure><img src="img/P031/kf012.jpg" alt="03:29" loading="lazy"><figcaption>03:29</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf011.jpg" alt="画面 03:17" loading="lazy"><figcaption>画面 03:17</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf012.jpg" alt="画面 03:29" loading="lazy"><figcaption>画面 03:29</figcaption></figure>
 <p><span class="ts">03:30</span>相比之下，一封垃圾邮件可能被称为正训练样本，因为对于“是否是垃圾邮件”，其答案为是或真。</p>
-<figure><img src="img/P031/kf013.jpg" alt="03:31" loading="lazy"><figcaption>03:31</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf013.jpg" alt="画面 03:31" loading="lazy"><figcaption>画面 03:31</figcaption></figure>
 <p><span class="ts">03:43</span>需要明确的是，正和负并不一定意味着好与坏，或者邪恶与善良。</p>
-<figure><img src="img/P031/kf014.jpg" alt="03:43" loading="lazy"><figcaption>03:43</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf014.jpg" alt="画面 03:43" loading="lazy"><figcaption>画面 03:43</figcaption></figure>
 <p><span class="ts">03:49</span>正例和负例只是用来传达“不存在或零或假”相对于“存在或真或一”的概念，针对你可能正在寻找的某种东西。</p>
-<figure><img src="img/P031/kf015.jpg" alt="03:51" loading="lazy"><figcaption>03:51</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf015.jpg" alt="画面 03:51" loading="lazy"><figcaption>画面 03:51</figcaption></figure>
 <p><span class="ts">04:00</span>比如一封邮件不存在或存在垃圾属性，或者一项活动中不存在或存在欺诈，或者一个肿瘤中不存在或存在恶性。</p>
-<figure><img src="img/P031/kf016.jpg" alt="04:02" loading="lazy"><figcaption>04:02</figcaption></figure>
-<figure><img src="img/P031/kf017.jpg" alt="04:13" loading="lazy"><figcaption>04:13</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf016.jpg" alt="画面 04:02" loading="lazy"><figcaption>画面 04:02</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf017.jpg" alt="画面 04:13" loading="lazy"><figcaption>画面 04:13</figcaption></figure>
 <p><span class="ts">04:14</span>在非垃圾邮件和垃圾邮件之间，你把哪个叫做假或零，把哪个叫做真或一是有点随意的。</p>
 <p><span class="ts">04:24</span>通常，任何一种选择都可行。</p>
 <p><span class="ts">04:28</span>所以，另一位工程师实际上可能会将其对调，让正类表示一封好邮件的存在，或者让正类表示一笔真实金融交易或一位健康病患的存在。</p>
-<figure><img src="img/P031/kf018.jpg" alt="04:29" loading="lazy"><figcaption>04:29</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf018.jpg" alt="画面 04:29" loading="lazy"><figcaption>画面 04:29</figcaption></figure>
 <p><span class="ts">04:42</span>那么，你如何构建一个分类算法呢？</p>
-<figure><img src="img/P031/kf019.jpg" alt="04:42" loading="lazy"><figcaption>04:42</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf019.jpg" alt="画面 04:42" loading="lazy"><figcaption>画面 04:42</figcaption></figure>
 <p><span class="ts">04:46</span>这是一个训练集的示例，用于分类肿瘤是否为恶性。</p>
 <p><span class="ts">04:51</span>类别一，即正类、是类，或者良性类零，即负类。</p>
 <p><span class="ts">05:00</span>我将肿瘤大小画在横轴上，也将标签画在了纵轴上。</p>
 <p><span class="ts">05:07</span>顺便说一下，在第一周，当我们首次谈到分类时，这是我们之前在数轴上可视化的方式，但现在我们把类别称作零和一，并画在了纵轴上。</p>
-<figure><img src="img/P031/kf020.jpg" alt="05:09" loading="lazy"><figcaption>05:09</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf020.jpg" alt="画面 05:09" loading="lazy"><figcaption>画面 05:09</figcaption></figure>
 <p><span class="ts">05:23</span>现在，你可以在这个训练集上尝试的一件事是，应用你已经知道的算法，即线性回归，并试着用一条直线去拟合数据。</p>
-<figure><img src="img/P031/kf021.jpg" alt="05:24" loading="lazy"><figcaption>05:24</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf021.jpg" alt="画面 05:24" loading="lazy"><figcaption>画面 05:24</figcaption></figure>
 <p><span class="ts">05:34</span>如果你这样做，也许这条直线看起来像这样，对吗？</p>
-<figure><img src="img/P031/kf022.jpg" alt="05:35" loading="lazy"><figcaption>05:35</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf022.jpg" alt="画面 05:35" loading="lazy"><figcaption>画面 05:35</figcaption></figure>
 <p><span class="ts">05:42</span>线性回归不仅预测零和一这两个值，它预测所有介于零和一之间的数字，甚至小于零或大于一的数。</p>
-<figure><img src="img/P031/kf023.jpg" alt="05:44" loading="lazy"><figcaption>05:44</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf023.jpg" alt="画面 05:44" loading="lazy"><figcaption>画面 05:44</figcaption></figure>
 <p><span class="ts">05:53</span>但在这里，我们想要预测的是类别。</p>
-<figure><img src="img/P031/kf024.jpg" alt="05:54" loading="lazy"><figcaption>05:54</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf024.jpg" alt="画面 05:54" loading="lazy"><figcaption>画面 05:54</figcaption></figure>
 <p><span class="ts">05:57</span>你可以尝试的一件事是选取一个阈值，比如说零点五，这样如果模型输出一个低于零点五的值，那么你就预测 y 等于零，即非恶性。</p>
-<figure><img src="img/P031/kf025.jpg" alt="05:58" loading="lazy"><figcaption>05:58</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf025.jpg" alt="画面 05:58" loading="lazy"><figcaption>画面 05:58</figcaption></figure>
 <p><span class="ts">06:12</span>而如果模型输出一个等于或大于零点五的数字，则预测 y 等于一，即恶性。</p>
-<figure><img src="img/P031/kf026.jpg" alt="06:12" loading="lazy"><figcaption>06:12</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf026.jpg" alt="画面 06:12" loading="lazy"><figcaption>画面 06:12</figcaption></figure>
 <p><span class="ts">06:21</span>注意，这个阈值零点五在这一点与最佳拟合直线相交。</p>
 <p><span class="ts">06:30</span>所以，如果你在这里画一条垂直线，所有左侧的最终预测为等于零，而所有右侧的最终预测为 y。</p>
-<figure><img src="img/P031/kf027.jpg" alt="06:31" loading="lazy"><figcaption>06:31</figcaption></figure>
-<figure><img src="img/P031/kf028.jpg" alt="06:41" loading="lazy"><figcaption>06:41</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf027.jpg" alt="画面 06:31" loading="lazy"><figcaption>画面 06:31</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf028.jpg" alt="画面 06:41" loading="lazy"><figcaption>画面 06:41</figcaption></figure>
 <p><span class="ts">06:42</span>现在，对于这个特定的数据集，看起来线性回归似乎可以做出一些合理的推断。</p>
 <p><span class="ts">06:50</span>但是现在，我们来看看如果你的数据集再多一个训练样本会发生什么，这个样本就在这里，在最右。</p>
-<figure><img src="img/P031/kf029.jpg" alt="06:51" loading="lazy"><figcaption>06:51</figcaption></figure>
-<figure><img src="img/P031/kf030.jpg" alt="07:02" loading="lazy"><figcaption>07:02</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf029.jpg" alt="画面 06:51" loading="lazy"><figcaption>画面 06:51</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf030.jpg" alt="画面 07:02" loading="lazy"><figcaption>画面 07:02</figcaption></figure>
 <p><span class="ts">07:03</span>请注意，这个训练样本本不应该真正改变你对数据点的分类方式。</p>
 <p><span class="ts">07:10</span>我们刚才画的这条垂直分割线，作为分界线仍然是有意义的，即比这小的肿瘤应分类为零，比这大的肿瘤应分类为一。</p>
-<figure><img src="img/P031/kf031.jpg" alt="07:11" loading="lazy"><figcaption>07:11</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf031.jpg" alt="画面 07:11" loading="lazy"><figcaption>画面 07:11</figcaption></figure>
 <p><span class="ts">07:22</span>但是，一旦你在右侧添加了这个额外的训练样本，线性回归的最佳拟合线将会像这样移动。</p>
-<figure><img src="img/P031/kf032.jpg" alt="07:23" loading="lazy"><figcaption>07:23</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf032.jpg" alt="画面 07:23" loading="lazy"><figcaption>画面 07:23</figcaption></figure>
 <p><span class="ts">07:31</span>而如果你继续使用零点五的阈值，你现在会注意到，这个点左侧的一切都被预测为零，非恶性，而这个点右侧的一切都被预测为一或恶性。</p>
-<figure><img src="img/P031/kf033.jpg" alt="07:32" loading="lazy"><figcaption>07:32</figcaption></figure>
-<figure><img src="img/P031/kf034.jpg" alt="07:46" loading="lazy"><figcaption>07:46</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf033.jpg" alt="画面 07:32" loading="lazy"><figcaption>画面 07:32</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf034.jpg" alt="画面 07:46" loading="lazy"><figcaption>画面 07:46</figcaption></figure>
 <p><span class="ts">07:49</span>这并非我们想要的，因为将在很右边添加那个样本，不应该改变我们关于如何分类恶性肿瘤和良性肿瘤的任何结论。</p>
-<figure><img src="img/P031/kf035.jpg" alt="07:50" loading="lazy"><figcaption>07:50</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf035.jpg" alt="画面 07:50" loading="lazy"><figcaption>画面 07:50</figcaption></figure>
 <p><span class="ts">08:00</span>但如果你尝试用线性回归来做这件事，加上这一个感觉本不应该改变任何事情的样本，最终却导致我们为这个分类问题学习到了一个差得多的函数。</p>
-<figure><img src="img/P031/kf036.jpg" alt="08:02" loading="lazy"><figcaption>08:02</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf036.jpg" alt="画面 08:02" loading="lazy"><figcaption>画面 08:02</figcaption></figure>
 <p><span class="ts">08:15</span>显然，当肿瘤很大时，我们希望算法将其分类为恶性。</p>
-<figure><img src="img/P031/kf037.jpg" alt="08:17" loading="lazy"><figcaption>08:17</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf037.jpg" alt="画面 08:17" loading="lazy"><figcaption>画面 08:17</figcaption></figure>
 <p><span class="ts">08:22</span>所以我们刚才看到的是，线性回归导致最佳拟合线在我们在右侧多加一个样本时发生了移动，因此分割线，也称为决策边界，也向右移动了。</p>
-<figure><img src="img/P031/kf038.jpg" alt="08:23" loading="lazy"><figcaption>08:23</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf038.jpg" alt="画面 08:23" loading="lazy"><figcaption>画面 08:23</figcaption></figure>
 <p><span class="ts">08:39</span>你将在下个视频中学习更多关于决策边界的内容。</p>
-<figure><img src="img/P031/kf039.jpg" alt="08:39" loading="lazy"><figcaption>08:39</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf039.jpg" alt="画面 08:39" loading="lazy"><figcaption>画面 08:39</figcaption></figure>
 <p><span class="ts">08:44</span>你也会学习一个叫做逻辑回归的算法，其结果的输出值将始终介于零到一之间，并且该算法将避免我们在这张幻灯片上看到的这些问题。</p>
-<figure><img src="img/P031/kf040.jpg" alt="08:46" loading="lazy"><figcaption>08:46</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf040.jpg" alt="画面 08:46" loading="lazy"><figcaption>画面 08:46</figcaption></figure>
 <p><span class="ts">08:59</span>顺便说一下，关于逻辑回归这个名字，一件令人困惑的事是，尽管名字里有“回归”二字，它实际上却用于分类。</p>
 <p><span class="ts">09:09</span>不要被这个名字迷惑，它是因为历史原因而得名的。</p>
-<figure><img src="img/P031/kf041.jpg" alt="09:11" loading="lazy"><figcaption>09:11</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf041.jpg" alt="画面 09:11" loading="lazy"><figcaption>画面 09:11</figcaption></figure>
 <p><span class="ts">09:14</span>它实际上用于解决二元分类问题，其输出标签要么是零，要么是一。</p>
-<figure><img src="img/P031/kf042.jpg" alt="09:22" loading="lazy"><figcaption>09:22</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf042.jpg" alt="画面 09:22" loading="lazy"><figcaption>画面 09:22</figcaption></figure>
 <p><span class="ts">09:22</span>在接下来的选修实验中，你也将看看当你尝试使用线性回归进行分类时会发生什么。</p>
 <p><span class="ts">09:31</span>有时你运气好，它可能行得通，但通常它无法很好地工作，这就是为什么我自己不将线性回归用于。</p>
-<figure><img src="img/P031/kf043.jpg" alt="09:38" loading="lazy"><figcaption>09:38</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf043.jpg" alt="画面 09:38" loading="lazy"><figcaption>画面 09:38</figcaption></figure>
 <p><span class="ts">09:42</span>在选修实验中，你会看到一个尝试在两个类别间进行分类的交互式图表，希望你能注意到这通常是无法很好运作的，这没关系，因为这激发了我们使用不同模型来做分类任务的需求。</p>
-<figure><img src="img/P031/kf044.jpg" alt="09:44" loading="lazy"><figcaption>09:44</figcaption></figure>
+<figure class="shot"><img src="img/P031/kf044.jpg" alt="画面 09:44" loading="lazy"><figcaption>画面 09:44</figcaption></figure>
 <p><span class="ts">10:05</span>所以，请看看这个选修实验，之后，我们将进入下一个视频，去看看用于分类的逻辑回归。</p>
 </main>
 <nav class="pager"><a href="P030.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P032.html">下一讲 →</a></nav>

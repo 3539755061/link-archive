@@ -18,7 +18,7 @@
 <p><span class="ts">00:03</span>上个视频中，你看到了如何在 Python 中实现前向传播，但那是通过为每一个神经元硬编码代码行来实现的。</p>
 <p><span class="ts">00:13</span>现在，我们来看看在 Python 中更通用的前向传播实现。</p>
 <p><span class="ts">00:18</span>和上个视频类似，我这个视频的目标是给你展示代码，以便当你在实践实验室和选修实验室中再次看到它时，知道如何解读。N。</p>
-<figure><img src="img/P054/kf001.jpg" alt="00:19" loading="lazy"><figcaption>00:19</figcaption></figure>
+<figure class="shot"><img src="img/P054/kf001.jpg" alt="画面 00:19" loading="lazy"><figcaption>画面 00:19</figcaption></figure>
 <p><span class="ts">00:30</span>所以，在我们讲解这个例子时，不用担心要记下每一行代码。</p>
 <p><span class="ts">00:36</span>如果你能通读代码并理解它，那绝对就足够了。</p>
 <p><span class="ts">00:40</span>你可以做的是，编写一个函数来实现一个全连接层，也就是神经网络中的单层。</p>
@@ -44,16 +44,16 @@
 <p><span class="ts">04:09</span>循环第二次，当你计算第二个单元的激活值时，它会提取对应 W 一二的第二列，以此类推，循环第三次也是如此。</p>
 <p><span class="ts">04:21</span>然后你用通常的公式计算 z，即参数 w 与接收到的激活值做点乘，再加上。</p>
 <p><span class="ts">04:33</span>之后计算激活值 a_等于 g，也就是对 z 应用 sigmoid 函数。</p>
-<figure><img src="img/P054/kf002.jpg" alt="04:39" loading="lazy"><figcaption>04:39</figcaption></figure>
+<figure class="shot"><img src="img/P054/kf002.jpg" alt="画面 04:39" loading="lazy"><figcaption>画面 04:39</figcaption></figure>
 <p><span class="ts">04:41</span>循环三次，你就为激活值向量 a 计算出了所有三个值。</p>
 <p><span class="ts">04:51</span>所以，dense 函数的作用是，输入来自前一层的激活值，并根据当前层的参数，返回下一层的激活值。</p>
 <p><span class="ts">05:03</span>有了 dense 函数，你可以这样将几个全连接层按顺序串接起来，实现神经网络中的前向传播。</p>
 <p><span class="ts">05:16</span>你可以计算激活值 a 一为：a 一等于 dense(X,W 一,B 一)，这里的 W 一、B 一是第一个隐藏层的参数，有时也称作权重。</p>
 <p><span class="ts">05:33</span>然后你可以计算 a 二为：dense(刚才算出的 a 一,W 二,B 二)，W 二、B 二是第二个隐藏层的参数或权重，接着计算 a 三和 a 四。g。</p>
 <p><span class="ts">05:50</span>如果这是一个四层神经网络，那么最终输出 f(x)就等于 a 四，你就返回 f(x)。</p>
-<figure><img src="img/P054/kf003.jpg" alt="05:51" loading="lazy"><figcaption>05:51</figcaption></figure>
+<figure class="shot"><img src="img/P054/kf003.jpg" alt="画面 05:51" loading="lazy"><figcaption>画面 05:51</figcaption></figure>
 <p><span class="ts">06:02</span>注意这里我用的是大写 W，因为按照线性代数的符号惯例，指代矩阵时用大写字母，小写则指代向量和标量。</p>
-<figure><img src="img/P054/kf004.jpg" alt="06:03" loading="lazy"><figcaption>06:03</figcaption></figure>
+<figure class="shot"><img src="img/P054/kf004.jpg" alt="画面 06:03" loading="lazy"><figcaption>画面 06:03</figcaption></figure>
 <p><span class="ts">06:17</span>所以，因为它是矩阵，这就是大写 W。</p>
 <p><span class="ts">06:24</span>你现在知道如何从零开始自己实现前向传播了。</p>
 <p><span class="ts">06:29</span>而且你将在这个视频后的实践实验室里，亲自看到、运行并练习所有这些代码。</p>

@@ -16,19 +16,19 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>在本期视频中，我们将了解监督学习的整体流程是怎样的。</p>
-<figure><img src="img/P009/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <p><span class="ts">00:08</span>具体来说，你会看到本课程的第一个模型，线性回归模型。</p>
 <p><span class="ts">00:14</span>它的意思就是给数据拟合一条直线。</p>
 <p><span class="ts">00:18</span>这可能是当今世界上应用最广泛的学习算法。</p>
 <p><span class="ts">00:24</span>随着你熟悉线性回归，你在这里看到的许多概念，也将适用于其他机器学习模型，即你后续在本专项课程中会看到的模型。</p>
 <p><span class="ts">00:36</span>我们先从一个可以用线性回归解决的问题开始。</p>
-<figure><img src="img/P009/kf002.jpg" alt="00:37" loading="lazy"><figcaption>00:37</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf002.jpg" alt="画面 00:37" loading="lazy"><figcaption>画面 00:37</figcaption></figure>
 <p><span class="ts">00:40</span>假设你想根据房子的面积来预测房价。</p>
 <p><span class="ts">00:44</span>这是我们本周早些时候见过的例子。</p>
 <p><span class="ts">00:48</span>我们将使用一个来自美国波特兰市的房屋面积和价格的数据集。</p>
 <p><span class="ts">00:55</span>这里我们有一张图，横轴是房屋的面积，单位是平方英尺，纵轴是房价，单位是千美元。</p>
 <p><span class="ts">01:06</span>接下来，我们把数据集中不同房屋的数据点绘制出来。</p>
-<figure><img src="img/P009/kf003.jpg" alt="01:08" loading="lazy"><figcaption>01:08</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf003.jpg" alt="画面 01:08" loading="lazy"><figcaption>画面 01:08</figcaption></figure>
 <p><span class="ts">01:11</span>这里的每个数据点，每一个小叉号都代表一套最近售出的房子，有其面积和价格。</p>
 <p><span class="ts">01:21</span>现在，假设你是波特兰的一名房地产经纪人，正帮一位客户出售她的房子。</p>
 <p><span class="ts">01:26</span>她问你，你觉得这套房子能卖多少钱？</p>
@@ -38,9 +38,9 @@
 <p><span class="ts">01:46</span>你可以做的一件事是，基于这个数据集构建一个线性回归模型。</p>
 <p><span class="ts">01:52</span>你的模型会给数据拟合一条直线，可能看起来像这样。</p>
 <p><span class="ts">01:57</span>基于这条拟合数据的直线，你大概能看出来，如果一套房子是一千二百五十平方英尺，它会与这条最佳拟合线相交于这里。</p>
-<figure><img src="img/P009/kf004.jpg" alt="01:59" loading="lazy"><figcaption>01:59</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf004.jpg" alt="画面 01:59" loading="lazy"><figcaption>画面 01:59</figcaption></figure>
 <p><span class="ts">02:10</span>如果你沿着这一点追溯到左侧的纵轴，可以看到价格大约在这个位置，比如大概是二十二万美元。</p>
-<figure><img src="img/P009/kf005.jpg" alt="02:11" loading="lazy"><figcaption>02:11</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf005.jpg" alt="画面 02:11" loading="lazy"><figcaption>画面 02:11</figcaption></figure>
 <p><span class="ts">02:18</span>这就是所谓的监督学习模型的一个例子。</p>
 <p><span class="ts">02:23</span>我们称之为监督学习，是因为你首先通过提供带有正确答案的数据来训练你的模型。</p>
 <p><span class="ts">02:31</span>因为你给模型的例子，既包含了每套房子的面积，也包含了模型应为每套房子预测的价格。</p>
@@ -48,8 +48,8 @@
 <p><span class="ts">02:48</span>这个线性回归模型是一种特定类型的监督学习模型。</p>
 <p><span class="ts">02:53</span>它被称为回归模型，因为它预测的是数字形式的输出，比如价格和美元金额。</p>
 <p><span class="ts">03:03</span>任何预测数字的监督学习模型，比如二十二万、一点五或负三十三点二，都是在解决所谓的回归问题。</p>
-<figure><img src="img/P009/kf006.jpg" alt="03:04" loading="lazy"><figcaption>03:04</figcaption></figure>
-<figure><img src="img/P009/kf007.jpg" alt="03:13" loading="lazy"><figcaption>03:13</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf006.jpg" alt="画面 03:04" loading="lazy"><figcaption>画面 03:04</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf007.jpg" alt="画面 03:13" loading="lazy"><figcaption>画面 03:13</figcaption></figure>
 <p><span class="ts">03:17</span>所以线性回归是回归模型的一个例子，但也存在其他解决回归问题的模型。</p>
 <p><span class="ts">03:26</span>我们将在本专项课程的第二门课中看到其中一些。</p>
 <p><span class="ts">03:31</span>提醒一下，与回归模型相对应，另一种最常见的监督学习模型叫做分类模型。</p>
@@ -60,40 +60,40 @@
 <p><span class="ts">04:14</span>如果你的模型是在识别猫和狗，这就是两种可能的输出。</p>
 <p><span class="ts">04:21</span>或者你也许正试图识别患者身上十种可能病症中的任何一种。</p>
 <p><span class="ts">04:28</span>所以，如果可能的输出是离散、有限的集合，我们就称之为分类问题；而在回归中，模型可能输出的数字有无穷多个。</p>
-<figure><img src="img/P009/kf008.jpg" alt="04:29" loading="lazy"><figcaption>04:29</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf008.jpg" alt="画面 04:29" loading="lazy"><figcaption>画面 04:29</figcaption></figure>
 <p><span class="ts">04:40</span>除了用左侧这种图表来可视化这些数据，还有一种看待数据的方式会很有用，那就是右侧的这个数。</p>
-<figure><img src="img/P009/kf009.jpg" alt="04:40" loading="lazy"><figcaption>04:40</figcaption></figure>
-<figure><img src="img/P009/kf010.jpg" alt="04:51" loading="lazy"><figcaption>04:51</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf009.jpg" alt="画面 04:40" loading="lazy"><figcaption>画面 04:40</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf010.jpg" alt="画面 04:51" loading="lazy"><figcaption>画面 04:51</figcaption></figure>
 <p><span class="ts">04:58</span>这指的是房屋的面积，也就是这一列。</p>
 <p><span class="ts">05:04</span>你试图预测的价格，就是这一列。</p>
 <p><span class="ts">05:10</span>请注意，横轴和纵轴分别对应这两列，面积和价格。</p>
 <p><span class="ts">05:20</span>所以，如果这个数据表中有四十七行，那么左侧图表中就有四十七个小叉号，每个叉号对应表格中。</p>
-<figure><img src="img/P009/kf011.jpg" alt="05:22" loading="lazy"><figcaption>05:22</figcaption></figure>
-<figure><img src="img/P009/kf012.jpg" alt="05:32" loading="lazy"><figcaption>05:32</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf011.jpg" alt="画面 05:22" loading="lazy"><figcaption>画面 05:22</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf012.jpg" alt="画面 05:32" loading="lazy"><figcaption>画面 05:32</figcaption></figure>
 <p><span class="ts">05:38</span>例如，表格的第一行是一套面积为二千一百零四平方英尺的房子，大约在这个位置，这套房子以四十万美元的价格售出，大约在这个位置。</p>
 <p><span class="ts">05:58</span>所以，表格的第一行就绘制成了这里的这个数据点。</p>
 <p><span class="ts">06:05</span>现在，我们来看一些用于描述数据的符号。</p>
-<figure><img src="img/P009/kf013.jpg" alt="06:08" loading="lazy"><figcaption>06:08</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf013.jpg" alt="画面 06:08" loading="lazy"><figcaption>画面 06:08</figcaption></figure>
 <p><span class="ts">06:09</span>这些符号在你的机器学习之旅中会很有用。</p>
 <p><span class="ts">06:14</span>随着你对机器学习术语越来越熟悉，这也将是你用来与他人讨论机器学习概念的术语，因为其中很多术语在整个 AI 领域都相当标准。</p>
-<figure><img src="img/P009/kf014.jpg" alt="06:16" loading="lazy"><figcaption>06:16</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf014.jpg" alt="画面 06:16" loading="lazy"><figcaption>画面 06:16</figcaption></figure>
 <p><span class="ts">06:28</span>在本专项课程中，你会多次看到这些符号，所以第一次记不住所有内容也没关系。</p>
-<figure><img src="img/P009/kf015.jpg" alt="06:29" loading="lazy"><figcaption>06:29</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf015.jpg" alt="画面 06:29" loading="lazy"><figcaption>画面 06:29</figcaption></figure>
 <p><span class="ts">06:36</span>它们会随着时间自然变得熟悉起来。</p>
 <p><span class="ts">06:40</span>你刚刚看到的、用来训练模型的数据集，叫做训练集。</p>
-<figure><img src="img/P009/kf016.jpg" alt="06:40" loading="lazy"><figcaption>06:40</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf016.jpg" alt="画面 06:40" loading="lazy"><figcaption>画面 06:40</figcaption></figure>
 <p><span class="ts">06:49</span>请注意，你客户的那套房子不在这个数据集中，因为它尚未售出，没人知道它的价格。</p>
 <p><span class="ts">06:58</span>因此，要预测你客户的房价，你首先要用训练集来训练模型进行学习，然后该模型就能预测你客户房屋的价格了。</p>
-<figure><img src="img/P009/kf017.jpg" alt="07:00" loading="lazy"><figcaption>07:00</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf017.jpg" alt="画面 07:00" loading="lazy"><figcaption>画面 07:00</figcaption></figure>
 <p><span class="ts">07:11</span>在机器学习中，表示此处输入的标准符号是小写 x，我们称之为输入变量。</p>
-<figure><img src="img/P009/kf018.jpg" alt="07:11" loading="lazy"><figcaption>07:11</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf018.jpg" alt="画面 07:11" loading="lazy"><figcaption>画面 07:11</figcaption></figure>
 <p><span class="ts">07:20</span>它也叫做特征或输入特征。</p>
 <p><span class="ts">07:27</span>例如，对于训练集中的第一套房子，x 就是房屋的面积，所以 x 等于二千一百零四。</p>
 <p><span class="ts">07:37</span>表示输出变量的标准符号是小写 y，这个变量是你试图预测的，有时也被称为目标变量。</p>
 <p><span class="ts">07:52</span>在这里，y 就是房价，对于第一个训练样本，它等于四百。</p>
 <p><span class="ts">08:05</span>数据集里每套房子对应一行，在这个自行车训练集中，共有四十七行，每一行代表一个不同的训练。</p>
-<figure><img src="img/P009/kf019.jpg" alt="08:07" loading="lazy"><figcaption>08:07</figcaption></figure>
-<figure><img src="img/P009/kf020.jpg" alt="08:16" loading="lazy"><figcaption>08:16</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf019.jpg" alt="画面 08:07" loading="lazy"><figcaption>画面 08:07</figcaption></figure>
+<figure class="shot"><img src="img/P009/kf020.jpg" alt="画面 08:16" loading="lazy"><figcaption>画面 08:16</figcaption></figure>
 <p><span class="ts">08:21</span>我们将使用小写 m 来表示训练样本的总数，因此这里 m 等于四十七。</p>
 <p><span class="ts">08:31</span>为了表示单个训练样本，我们将使用括号 x，逗号，y 的记法。</p>
 <p><span class="ts">08:40</span>对于第一个训练样本，x，y，这对数字是二千一百零四，四百。</p>

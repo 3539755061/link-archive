@@ -18,7 +18,7 @@
 <p><span class="ts">00:01</span>话不多说，我们直接进入神经网络的向量化实现。</p>
 <p><span class="ts">00:07</span>我们来看看你在之前视频中见过的代码，希望矩阵乘法，也就是那个矩阵乘法计算，能让你更明白。</p>
 <p><span class="ts">00:19</span>你之前看到了如何取矩阵 A 并计算 A 的转置乘以 W，得到这个矩阵 Z。</p>
-<figure><img src="img/P059/kf001.jpg" alt="00:20" loading="lazy"><figcaption>00:20</figcaption></figure>
+<figure class="shot"><img src="img/P059/kf001.jpg" alt="画面 00:20" loading="lazy"><figcaption>画面 00:20</figcaption></figure>
 <p><span class="ts">00:31</span>如果这是矩阵 A，这是一个 NumPy 数组，其元素对应我上面写的内容，那么 A 的转置，我将写成 AT，将是这个矩阵，同样，A 的列现在被放到了行上。</p>
 <p><span class="ts">00:52</span>顺便说一下，除了这样设置 AT，在 NumPy 中计算 AT 的另一种方法是写 AT 等于 A 点 T。</p>
 <p><span class="ts">01:04</span>那是转置函数，它将矩阵的列取出来并放到一边。</p>
@@ -30,7 +30,7 @@
 <p><span class="ts">01:46</span>这是调用 matmul 函数的另一种方式，尽管我觉得使用 np 点 matmul 更清晰。</p>
 <p><span class="ts">01:55</span>所以你在这门课看到的代码中，我们就用这样的 matmul 函数，而不是这个符号。</p>
 <p><span class="ts">02:03</span>那么，我们来看看前向传播的向量化实现是什么样子的。</p>
-<figure><img src="img/P059/kf002.jpg" alt="02:03" loading="lazy"><figcaption>02:03</figcaption></figure>
+<figure class="shot"><img src="img/P059/kf002.jpg" alt="画面 02:03" loading="lazy"><figcaption>画面 02:03</figcaption></figure>
 <p><span class="ts">02:08</span>我将设置 A 的转置等于输入特征值二一七。</p>
 <p><span class="ts">02:16</span>这就是常规的输入特征值，二百度烘烤咖啡十七分钟。</p>
 <p><span class="ts">02:22</span>所以这是一个一乘二的矩阵。</p>
@@ -44,7 +44,7 @@
 <p><span class="ts">03:41</span>最后，如果函数 g 将 sigmoid 函数逐个元素应用于这三个数，也就是说，将 sigmoid 函数应用于一六五、负五三一和九百。</p>
 <p><span class="ts">03:55</span>那么你最终得到 a 等于 g 作用于这个矩阵 z，结果是一零一。</p>
 <p><span class="ts">04:02</span>它是一、零、一，因为 sigmoid 函数作用于一六五的结果非常接近一，你知道，不考虑数值舍入误差，它基本就是一。</p>
-<figure><img src="img/P059/kf003.jpg" alt="04:18" loading="lazy"><figcaption>04:18</figcaption></figure>
+<figure class="shot"><img src="img/P059/kf003.jpg" alt="画面 04:18" loading="lazy"><figcaption>画面 04:18</figcaption></figure>
 <p><span class="ts">04:20</span>我们来看看如何在代码中实现。</p>
 <p><span class="ts">04:23</span>A 的转置等于这个，就是这个一乘二的数组二一七。</p>
 <p><span class="ts">04:29</span>矩阵 W 是这个二乘三矩阵。</p>
@@ -52,7 +52,7 @@
 <p><span class="ts">04:54</span>然后 A_，也就是这个层的输出，等于 g，即逐个元素应用于这个矩阵 Z 的激活函数。</p>
 <p><span class="ts">05:07</span>然后你返回 A_，这就给出了这个值。</p>
 <p><span class="ts">05:13</span>如果你把这张幻灯片和几个视频前的幻灯片比较，会发现只有一点小区别，根据惯例，在 TensorFlow 中的实现方式，我们不把这个变量叫 AT，而是叫 A_in，这也是为什么这同样是代码的正确实现。</p>
-<figure><img src="img/P059/kf004.jpg" alt="05:23" loading="lazy"><figcaption>05:23</figcaption></figure>
+<figure class="shot"><img src="img/P059/kf004.jpg" alt="画面 05:23" loading="lazy"><figcaption>画面 05:23</figcaption></figure>
 <p><span class="ts">05:34</span>TensorFlow 中还有一个惯例，即单个样本实际上是在矩阵 x 中按行排列的，而不是在矩阵 x 的转置中，这就是为什么在 TensorFlow 中代码实现看起来像这样。</p>
 <p><span class="ts">05:50</span>但这解释了为什么只用几行代码，你就能在神经网络中实现前向传播。</p>
 <p><span class="ts">05:57</span>而且，还能获得巨大的好处，因为现代计算机非常擅长高效地实现矩阵乘法，比如 matmul。</p>

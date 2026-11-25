@@ -16,12 +16,12 @@
 </header>
 <main>
 <p><span class="ts">00:02</span>记住，代价函数为你提供了一种衡量特定参数集合拟合训练数据效果的方法，并由此为你提供了一种尝试选择更好参数的途径。</p>
-<figure><img src="img/P034/kf001.jpg" alt="00:01" loading="lazy"><figcaption>00:01</figcaption></figure>
-<figure><img src="img/P034/kf002.jpg" alt="00:04" loading="lazy"><figcaption>00:04</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf002.jpg" alt="画面 00:04" loading="lazy"><figcaption>画面 00:04</figcaption></figure>
 <p><span class="ts">00:16</span>本视频我们将探讨为什么平方误差代价函数对于逻辑回归来说不是一个理想的代价函数，并将着眼于一个不同的代价函数，它能帮助我们为逻辑回归选择更好的参数。</p>
 <p><span class="ts">00:31</span>这是一个逻辑回归模型的训练集可能的模样，这里每一行可能对应一位去看医生并最终获得某种诊断的病人。</p>
-<figure><img src="img/P034/kf003.jpg" alt="00:32" loading="lazy"><figcaption>00:32</figcaption></figure>
-<figure><img src="img/P034/kf004.jpg" alt="00:43" loading="lazy"><figcaption>00:43</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf003.jpg" alt="画面 00:32" loading="lazy"><figcaption>画面 00:32</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf004.jpg" alt="画面 00:43" loading="lazy"><figcaption>画面 00:43</figcaption></figure>
 <p><span class="ts">00:46</span>和之前一样，我们用 m 来表示训练样本的数量。</p>
 <p><span class="ts">00:53</span>每个训练样本都有一个或多个特征，比如肿瘤大小、病患年龄等等，总共有 n 个特征。</p>
 <p><span class="ts">01:04</span>那么，我们把这些特征叫做 x 一到 xn。</p>
@@ -29,61 +29,61 @@
 <p><span class="ts">01:18</span>最后，逻辑回归模型由这个等式定义。</p>
 <p><span class="ts">01:24</span>好的，那么你想要回答的问题是，给定这个训练集，你如何选择参数 w 和 b？</p>
 <p><span class="ts">01:33</span>回想一下，对于线性回归，这是平方误差代价函数。</p>
-<figure><img src="img/P034/kf005.jpg" alt="01:34" loading="lazy"><figcaption>01:34</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf005.jpg" alt="画面 01:34" loading="lazy"><figcaption>画面 01:34</figcaption></figure>
 <p><span class="ts">01:38</span>我唯一改变的一点是，我把那个二分之一放到了求和符号里面，而不是外面。</p>
 <p><span class="ts">01:45</span>你可能还记得，在线性回归的情况下，当 x 的 f 是线性函数 w 点乘 x 加 b 时，代价函数看起来像这样，是一个凸函数，形如弓形或吊床状。</p>
-<figure><img src="img/P034/kf006.jpg" alt="01:47" loading="lazy"><figcaption>01:47</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf006.jpg" alt="画面 01:47" loading="lazy"><figcaption>画面 01:47</figcaption></figure>
 <p><span class="ts">02:00</span>所以梯度下降看起来会是这样，你走一步，再走一步，再走一步，以此类推，最终收敛到全局最小。</p>
 <p><span class="ts">02:11</span>现在，你可以尝试为逻辑回归使用同样的代价函数，但结果是，如果我写出 x 的 f 等于一除以一加 e 的负 wx 加 b 次方，并用这个 x 的 f 的值绘制代价函数，那么代价将看起来像这样。</p>
-<figure><img src="img/P034/kf007.jpg" alt="02:12" loading="lazy"><figcaption>02:12</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf007.jpg" alt="画面 02:12" loading="lazy"><figcaption>画面 02:12</figcaption></figure>
 <p><span class="ts">02:32</span>这变成了所谓的非凸代价函数。</p>
 <p><span class="ts">02:38</span>这意味着，如果你尝试使用梯度下降，这里有很多局部最小值会让你陷入困境。</p>
 <p><span class="ts">02:48</span>所以对于逻辑回归来说，这个平方误差代价函数并非一个好的选择。</p>
-<figure><img src="img/P034/kf008.jpg" alt="02:51" loading="lazy"><figcaption>02:51</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf008.jpg" alt="画面 02:51" loading="lazy"><figcaption>画面 02:51</figcaption></figure>
 <p><span class="ts">02:55</span>相反，将有一个不同的代价函数，它能使代价函数再次成为凸函数，从而保证梯度下降能收敛到全局最小值。</p>
-<figure><img src="img/P034/kf009.jpg" alt="02:56" loading="lazy"><figcaption>02:56</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf009.jpg" alt="画面 02:56" loading="lazy"><figcaption>画面 02:56</figcaption></figure>
 <p><span class="ts">03:06</span>我唯一改变的一点是，我把那个二分之一放到了求和符号里面，而不是外面。</p>
-<figure><img src="img/P034/kf010.jpg" alt="03:07" loading="lazy"><figcaption>03:07</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf010.jpg" alt="画面 03:07" loading="lazy"><figcaption>画面 03:07</figcaption></figure>
 <p><span class="ts">03:13</span>这会让你们稍后在这张幻灯片上看到的数学推导稍微简单一点。</p>
 <p><span class="ts">03:19</span>为了构建一个新的代价函数，一个我们将用于逻辑回归的代价函数，我要稍微改动一下代价函数关于 w 和 b 的定义。</p>
-<figure><img src="img/P034/kf011.jpg" alt="03:21" loading="lazy"><figcaption>03:21</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf011.jpg" alt="画面 03:21" loading="lazy"><figcaption>画面 03:21</figcaption></figure>
 <p><span class="ts">03:30</span>特别地，请看这个求和号内部，我们把这个项称为单个训练样本上的损失。</p>
-<figure><img src="img/P034/kf012.jpg" alt="03:31" loading="lazy"><figcaption>03:31</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf012.jpg" alt="画面 03:31" loading="lazy"><figcaption>画面 03:31</figcaption></figure>
 <p><span class="ts">03:41</span>我将用这个大写 L 来表示损失，它是学习算法预测值 x 的 f 以及真实标签 y 的函数。</p>
 <p><span class="ts">03:56</span>所以，给定预测 f ofx 和真实标签 y 的损失，在这种情况下，等于二分之一乘以这个差值的平方。</p>
-<figure><img src="img/P034/kf013.jpg" alt="03:57" loading="lazy"><figcaption>03:57</figcaption></figure>
-<figure><img src="img/P034/kf014.jpg" alt="04:06" loading="lazy"><figcaption>04:06</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf013.jpg" alt="画面 03:57" loading="lazy"><figcaption>画面 03:57</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf014.jpg" alt="画面 04:06" loading="lazy"><figcaption>画面 04:06</figcaption></figure>
 <p><span class="ts">04:07</span>我们很快会看到，通过为这个损失函数选择一种不同的形式，我们将能够保持整体代价函数，也就是 m 分之一乘以这些损失函数之和，是一个凸函数。</p>
-<figure><img src="img/P034/kf015.jpg" alt="04:08" loading="lazy"><figcaption>04:08</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf015.jpg" alt="画面 04:08" loading="lazy"><figcaption>画面 04:08</figcaption></figure>
 <p><span class="ts">04:21</span>这个损失函数输入 x 的 f 和真实标签 y，并告诉我们在这个样本上我们做得有多好。</p>
-<figure><img src="img/P034/kf016.jpg" alt="04:23" loading="lazy"><figcaption>04:23</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf016.jpg" alt="画面 04:23" loading="lazy"><figcaption>画面 04:23</figcaption></figure>
 <p><span class="ts">04:32</span>我就在这里写下我们将用于逻辑回归的损失函数的定义。</p>
 <p><span class="ts">04:40</span>如果标签等于零，那么损失就是一减 x 的 f 的负对数。</p>
 <p><span class="ts">04:57</span>我们来看看为什么这个损失函数希望是有道理的。</p>
 <p><span class="ts">05:04</span>让我们首先考虑 y 等于一的情况，并绘制这个函数的图像，以获得一些关于这个损失函数在做什么的直观理解。</p>
-<figure><img src="img/P034/kf017.jpg" alt="05:05" loading="lazy"><figcaption>05:05</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf017.jpg" alt="画面 05:05" loading="lazy"><figcaption>画面 05:05</figcaption></figure>
 <p><span class="ts">05:15</span>记住，损失函数衡量的是你在一个训练样本上的表现，而通过将所有训练样本上的损失加起来，你才得到了代价函数，它衡量的是你在整个训练集上的表现。</p>
-<figure><img src="img/P034/kf018.jpg" alt="05:16" loading="lazy"><figcaption>05:16</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf018.jpg" alt="画面 05:16" loading="lazy"><figcaption>画面 05:16</figcaption></figure>
 <p><span class="ts">05:31</span>如果你画出 f 的对数，它看起来像这里的这条曲线，其中 f 在横轴上。</p>
-<figure><img src="img/P034/kf019.jpg" alt="05:31" loading="lazy"><figcaption>05:31</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf019.jpg" alt="画面 05:31" loading="lazy"><figcaption>画面 05:31</figcaption></figure>
 <p><span class="ts">05:41</span>那么，f 的负对数的图像看起来像这样，我们只需将曲线沿横轴翻转即可。</p>
 <p><span class="ts">05:50</span>注意，它在 f 等于一处与横轴相交，并从那里继续向下。</p>
 <p><span class="ts">06:03</span>因此，f 始终在零到一之间，因为逻辑回归的输出总是在零到一之间。</p>
 <p><span class="ts">06:11</span>函数唯一相关的部分因此就是这里的这一段，对应于 f 在零到一之间。</p>
 <p><span class="ts">06:22</span>所以让我们放大并仔细看看图像的这部分。</p>
-<figure><img src="img/P034/kf020.jpg" alt="06:22" loading="lazy"><figcaption>06:22</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf020.jpg" alt="画面 06:22" loading="lazy"><figcaption>画面 06:22</figcaption></figure>
 <p><span class="ts">06:27</span>如果算法预测的概率接近于一且真实标签为一，那么损失就非常小。</p>
 <p><span class="ts">06:42</span>现在，继续以真实标签 y 为一的例子来说，假设它真的是恶性肿瘤，如果算法预测为零点五，那么损失位于这里这一点，稍高一些，但还不算太高。</p>
-<figure><img src="img/P034/kf021.jpg" alt="06:44" loading="lazy"><figcaption>06:44</figcaption></figure>
-<figure><img src="img/P034/kf022.jpg" alt="06:56" loading="lazy"><figcaption>06:56</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf021.jpg" alt="画面 06:44" loading="lazy"><figcaption>画面 06:44</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf022.jpg" alt="画面 06:56" loading="lazy"><figcaption>画面 06:56</figcaption></figure>
 <p><span class="ts">07:00</span>而相比之下，如果算法输出了零点一，如果它认为肿瘤恶性的几率只有百分之十，但 y 实际上是一，它确实是恶性的，那么损失就是这里这个高得多的值。</p>
-<figure><img src="img/P034/kf023.jpg" alt="07:01" loading="lazy"><figcaption>07:01</figcaption></figure>
-<figure><img src="img/P034/kf024.jpg" alt="07:16" loading="lazy"><figcaption>07:16</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf023.jpg" alt="画面 07:01" loading="lazy"><figcaption>画面 07:01</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf024.jpg" alt="画面 07:16" loading="lazy"><figcaption>画面 07:16</figcaption></figure>
 <p><span class="ts">07:19</span>所以当等于一时，损失函数激励或者说推动、帮助算法去做出更准确的预测，因为当它预测的值接近一时，损失是最低的。</p>
-<figure><img src="img/P034/kf025.jpg" alt="07:21" loading="lazy"><figcaption>07:21</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf025.jpg" alt="画面 07:21" loading="lazy"><figcaption>画面 07:21</figcaption></figure>
 <p><span class="ts">07:33</span>在这张幻灯片上，我们一直在看 y 等于一时的损失情况。</p>
-<figure><img src="img/P034/kf026.jpg" alt="07:33" loading="lazy"><figcaption>07:33</figcaption></figure>
-<figure><img src="img/P034/kf027.jpg" alt="07:38" loading="lazy"><figcaption>07:38</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf026.jpg" alt="画面 07:33" loading="lazy"><figcaption>画面 07:33</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf027.jpg" alt="画面 07:38" loading="lazy"><figcaption>画面 07:38</figcaption></figure>
 <p><span class="ts">07:39</span>在这张幻灯片上，我们来看损失函数的第二部分，对应于 y 等于零的情况。</p>
 <p><span class="ts">07:46</span>在这种情况下，损失是一减 x 的 f 的负对数。</p>
 <p><span class="ts">07:53</span>当绘制这个函数时，它实际上看起来像这样。</p>
@@ -91,41 +91,41 @@
 <p><span class="ts">08:06</span>如果我们放大来看，这就是它的样子。</p>
 <p><span class="ts">08:10</span>因此在这张图中，对应等于零，纵轴显示了不同 x 的 f 值对应的损失值。</p>
 <p><span class="ts">08:23</span>当 f 为零或非常接近于零时，损失也会非常小，这意味着如果真实标签是零，而模型的预测非常接近于零，那么，你几乎就猜对了。</p>
-<figure><img src="img/P034/kf028.jpg" alt="08:25" loading="lazy"><figcaption>08:25</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf028.jpg" alt="画面 08:25" loading="lazy"><figcaption>画面 08:25</figcaption></figure>
 <p><span class="ts">08:37</span>所以损失相应地也非常接近于零。</p>
-<figure><img src="img/P034/kf029.jpg" alt="08:37" loading="lazy"><figcaption>08:37</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf029.jpg" alt="画面 08:37" loading="lazy"><figcaption>画面 08:37</figcaption></figure>
 <p><span class="ts">08:41</span>x 的 f 的值越大，损失就越大，因为预测离真实标签零更远了。</p>
 <p><span class="ts">08:50</span>事实上，当预测值接近一时，损失实际上趋于无穷大。</p>
 <p><span class="ts">08:57</span>回到肿瘤预测的例子，这说的是，如果模型预测病患的肿瘤几乎可以确定是恶性的，比如有百分之九十九点九的恶性几率。</p>
-<figure><img src="img/P034/kf030.jpg" alt="08:58" loading="lazy"><figcaption>08:58</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf030.jpg" alt="画面 08:58" loading="lazy"><figcaption>画面 08:58</figcaption></figure>
 <p><span class="ts">09:08</span>但结果它其实不是恶性的。</p>
-<figure><img src="img/P034/kf031.jpg" alt="09:09" loading="lazy"><figcaption>09:09</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf031.jpg" alt="画面 09:09" loading="lazy"><figcaption>画面 09:09</figcaption></figure>
 <p><span class="ts">09:14</span>那么我们用一个非常高的损失来惩罚模型。</p>
 <p><span class="ts">09:18</span>所以在这种 y 等于零的情况下，与上一张幻灯片中 y 等于一的情况相似，预测 f of x 离 y 的真实值越远，损失就越高。</p>
-<figure><img src="img/P034/kf032.jpg" alt="09:20" loading="lazy"><figcaption>09:20</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf032.jpg" alt="画面 09:20" loading="lazy"><figcaption>画面 09:20</figcaption></figure>
 <p><span class="ts">09:30</span>事实上，如果 f ofx 趋近于零，这里的损失实际上会变得非常非常大，实际上趋于无穷大。</p>
-<figure><img src="img/P034/kf033.jpg" alt="09:31" loading="lazy"><figcaption>09:31</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf033.jpg" alt="画面 09:31" loading="lazy"><figcaption>画面 09:31</figcaption></figure>
 <p><span class="ts">09:41</span>所以当真实标签为一时，算法被强烈激励着不要预测太接近零的值。</p>
-<figure><img src="img/P034/kf034.jpg" alt="09:50" loading="lazy"><figcaption>09:50</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf034.jpg" alt="画面 09:50" loading="lazy"><figcaption>画面 09:50</figcaption></figure>
 <p><span class="ts">09:50</span>那么在本视频中，你了解了为什么平方误差代价函数对逻辑回归效果不佳。</p>
 <p><span class="ts">09:58</span>我们还定义了单个训练样本的损失，并为逻辑回归的损失函数提出了一个新定义。</p>
 <p><span class="ts">10:10</span>事实证明，采用这种损失函数的选择，整体代价函数将是凸的，因此你可以可靠地使用梯度下降来将你带到全局最小值。</p>
-<figure><img src="img/P034/kf035.jpg" alt="10:12" loading="lazy"><figcaption>10:12</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf035.jpg" alt="画面 10:12" loading="lazy"><figcaption>画面 10:12</figcaption></figure>
 <p><span class="ts">10:22</span>证明这个函数是凸的已超出本课程的范围。</p>
-<figure><img src="img/P034/kf036.jpg" alt="10:23" loading="lazy"><figcaption>10:23</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf036.jpg" alt="画面 10:23" loading="lazy"><figcaption>画面 10:23</figcaption></figure>
 <p><span class="ts">10:28</span>你可能还记得，代价函数是整个训练集的函数，因此是各个训练样本上损失函数的平均值，或者说 m 分之一乘以它们之和。</p>
-<figure><img src="img/P034/kf037.jpg" alt="10:29" loading="lazy"><figcaption>10:29</figcaption></figure>
-<figure><img src="img/P034/kf038.jpg" alt="10:41" loading="lazy"><figcaption>10:41</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf037.jpg" alt="画面 10:29" loading="lazy"><figcaption>画面 10:29</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf038.jpg" alt="画面 10:41" loading="lazy"><figcaption>画面 10:41</figcaption></figure>
 <p><span class="ts">10:42</span>所以，特定参数集合 W 和 b 上的代价等于，m 分之一乘以所有训练样本上的损失之和。</p>
 <p><span class="ts">10:57</span>如果你能找到一组参数 w 和 b 的值来最小化这个代价，那么你就为逻辑回归获得了一组相当好的参数 w 和 b 的值。</p>
-<figure><img src="img/P034/kf039.jpg" alt="10:58" loading="lazy"><figcaption>10:58</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf039.jpg" alt="画面 10:58" loading="lazy"><figcaption>画面 10:58</figcaption></figure>
 <p><span class="ts">11:09</span>在接下来的选修实验中，你可以看看平方误差代价函数是如何在分类问题上效果不佳的，因为你会。g 看到曲面图导致了一个非常波动的、有许多局部最小值代价曲面。</p>
-<figure><img src="img/P034/kf040.jpg" alt="11:16" loading="lazy"><figcaption>11:16</figcaption></figure>
-<figure><img src="img/P034/kf041.jpg" alt="11:20" loading="lazy"><figcaption>11:20</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf040.jpg" alt="画面 11:16" loading="lazy"><figcaption>画面 11:16</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf041.jpg" alt="画面 11:20" loading="lazy"><figcaption>画面 11:20</figcaption></figure>
 <p><span class="ts">11:25</span>然后你会看到新的逻辑损失函数。</p>
-<figure><img src="img/P034/kf042.jpg" alt="11:30" loading="lazy"><figcaption>11:30</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf042.jpg" alt="画面 11:30" loading="lazy"><figcaption>画面 11:30</figcaption></figure>
 <p><span class="ts">11:30</span>正如你在此所见，这产生了一个漂亮且平滑的凸曲面图，没有那些局部最小值。</p>
-<figure><img src="img/P034/kf043.jpg" alt="11:33" loading="lazy"><figcaption>11:33</figcaption></figure>
+<figure class="shot"><img src="img/P034/kf043.jpg" alt="画面 11:33" loading="lazy"><figcaption>画面 11:33</figcaption></figure>
 <p><span class="ts">11:39</span>所以请在这个视频之后看看代码和图表。</p>
 <p><span class="ts">11:46</span>好的，那么本视频我们看了很多内容。</p>
 <p><span class="ts">11:48</span>在下个视频中，让我们回过头来，取单个训练样本的损失函数，并用它来定义整个训练集的整体代价函数。</p>

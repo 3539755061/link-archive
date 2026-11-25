@@ -18,26 +18,26 @@
 <p><span class="ts">00:03</span>你在上一视频中看到的带 softmax 层的神经网络实现是可以工作的，但有一种更好的实现方式。</p>
 <p><span class="ts">00:14</span>我们来看看那种实现可能出什么问题，以及如何改进它。</p>
 <p><span class="ts">00:20</span>我先向你展示在计算机中计算同一个量的两种不同方式。</p>
-<figure><img src="img/P068/kf001.jpg" alt="00:20" loading="lazy"><figcaption>00:20</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf001.jpg" alt="画面 00:20" loading="lazy"><figcaption>画面 00:20</figcaption></figure>
 <p><span class="ts">00:25</span>方式一，我们可以设 x 等于一万分之二。</p>
 <p><span class="ts">00:30</span>方式二，我们可以设 x 等于一加一万分之一，减去一减一万分之一，你先计算这个，再计算这个，然后取差值。</p>
-<figure><img src="img/P068/kf002.jpg" alt="00:31" loading="lazy"><figcaption>00:31</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf002.jpg" alt="画面 00:31" loading="lazy"><figcaption>画面 00:31</figcaption></figure>
 <p><span class="ts">00:45</span>如果你化简这个表达式，结果会等于一万分之二。</p>
 <p><span class="ts">00:51</span>让我在这个中演示一下。</p>
 <p><span class="ts">00:54</span>首先，设 x 等于一万分之二，并将结果打印到很多位小数精度。</p>
-<figure><img src="img/P068/kf003.jpg" alt="00:54" loading="lazy"><figcaption>00:54</figcaption></figure>
-<figure><img src="img/P068/kf004.jpg" alt="01:04" loading="lazy"><figcaption>01:04</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf003.jpg" alt="画面 00:54" loading="lazy"><figcaption>画面 00:54</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf004.jpg" alt="画面 01:04" loading="lazy"><figcaption>画面 01:04</figcaption></figure>
 <p><span class="ts">01:05</span>其次，让我设 x 等于，我坚持要计算一加一万分之一，然后从中减去一减一万分之一，再把它打印。</p>
 <p><span class="ts">01:17</span>嗯，好吧，这看起来有点偏差。</p>
-<figure><img src="img/P068/kf005.jpg" alt="01:19" loading="lazy"><figcaption>01:19</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf005.jpg" alt="画面 01:19" loading="lazy"><figcaption>画面 01:19</figcaption></figure>
 <p><span class="ts">01:26</span>因为计算机只有有限的内存来存储每个数字，在这里称为浮点数，根据你决定如何计算一万分之二这个值，结果可能会有或多或少的数值舍入误差。</p>
-<figure><img src="img/P068/kf006.jpg" alt="01:28" loading="lazy"><figcaption>01:28</figcaption></figure>
-<figure><img src="img/P068/kf007.jpg" alt="01:43" loading="lazy"><figcaption>01:43</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf006.jpg" alt="画面 01:28" loading="lazy"><figcaption>画面 01:28</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf007.jpg" alt="画面 01:43" loading="lazy"><figcaption>画面 01:43</figcaption></figure>
 <p><span class="ts">01:45</span>事实证明，虽然我们一直用来计算 softmax 代价函数的方式是正确的，但有另一种不同的表述方式可以减少这些数值舍入误差，从而在 TensorFlow 中得到更精确的计算结果。</p>
-<figure><img src="img/P068/kf008.jpg" alt="01:46" loading="lazy"><figcaption>01:46</figcaption></figure>
-<figure><img src="img/P068/kf009.jpg" alt="01:54" loading="lazy"><figcaption>01:54</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf008.jpg" alt="画面 01:46" loading="lazy"><figcaption>画面 01:46</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf009.jpg" alt="画面 01:54" loading="lazy"><figcaption>画面 01:54</figcaption></figure>
 <p><span class="ts">02:02</span>让我先用逻辑回归更详细地解释一下，然后我们会展示这些思想如何应用于改进我们的 softmax 实现。</p>
-<figure><img src="img/P068/kf010.jpg" alt="02:02" loading="lazy"><figcaption>02:02</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf010.jpg" alt="画面 02:02" loading="lazy"><figcaption>画面 02:02</figcaption></figure>
 <p><span class="ts">02:13</span>那么，首先让我用逻辑回归来说明这些思想，然后再继续展示如何也改进你的 softmax 实现。</p>
 <p><span class="ts">02:24</span>回想一下逻辑回归，如果你想计算损失函数，对于给定的样本，你会首先计算这个输出激活值 A，即 g(z)，或一除以一加 e 的负 z 次方。</p>
 <p><span class="ts">02:38</span>然后你使用这里的这个表达式计算损失。</p>
@@ -56,7 +56,7 @@
 <p><span class="ts">05:04</span>这段代码的一个缺点是它变得稍微不那么易读，但这使得 TensorFlow 产生更少的数值舍入误差。</p>
 <p><span class="ts">05:14</span>现在，在逻辑回归的情况下，这两种实现实际上都工作得不错，但是当涉及 softmax 时，数值舍入误差会变得更糟。</p>
 <p><span class="ts">05:25</span>现在让我们采纳这个思想，并将其应用到 softmax 回归。</p>
-<figure><img src="img/P068/kf011.jpg" alt="05:25" loading="lazy"><figcaption>05:25</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf011.jpg" alt="画面 05:25" loading="lazy"><figcaption>画面 05:25</figcaption></figure>
 <p><span class="ts">05:31</span>回想一下，你在上一视频中看到的是按如下方式计算激活值。</p>
 <p><span class="ts">05:38</span>激活值是 z 一到 z 十的函数 g，其中例如 a 一，等于 e 的 z 一次方除以 e 的 z 下标 j 次方的和。</p>
 <p><span class="ts">05:50</span>然后损失是这个，取决于 y 的实际值，是某个 a 下标 j 的负对数。</p>
@@ -74,14 +74,14 @@
 <p><span class="ts">07:53</span>逻辑回归的数值舍入误差没那么严重，但还是建议你使用底部的这个实现。</p>
 <p><span class="ts">08:05</span>并且从概念上讲，这段代码和你之前拥有的第一个版本做的是同样的事情，只是它在数值上稍微更精确一些。</p>
 <p><span class="ts">08:16</span>虽然缺点可能是理解起来也稍微更难一点。</p>
-<figure><img src="img/P068/kf012.jpg" alt="08:19" loading="lazy"><figcaption>08:19</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf012.jpg" alt="画面 08:19" loading="lazy"><figcaption>画面 08:19</figcaption></figure>
 <p><span class="ts">08:20</span>现在，还有最后一个细节，那就是我们现在已经将神经网络改为使用线性激活函数，而不是激活函数。</p>
-<figure><img src="img/P068/kf013.jpg" alt="08:22" loading="lazy"><figcaption>08:22</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf013.jpg" alt="画面 08:22" loading="lazy"><figcaption>画面 08:22</figcaption></figure>
 <p><span class="ts">08:31</span>所以神经网络的最后一层不再输出这些概率 A 一到 A 十。</p>
 <p><span class="ts">08:39</span>它改为输出 Z 一到 Z 十。</p>
-<figure><img src="img/P068/kf014.jpg" alt="08:42" loading="lazy"><figcaption>08:42</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf014.jpg" alt="画面 08:42" loading="lazy"><figcaption>画面 08:42</figcaption></figure>
 <p><span class="ts">08:43</span>我在逻辑回归的例子中没有谈到这一点，但如果你将输出逻辑函数与损失函数结合在一起，那么对于逻辑回归，你也必须像这样修改代码，对输出值进行处理，通过逻辑函数映射它，以实际得到概率。</p>
-<figure><img src="img/P068/kf015.jpg" alt="08:48" loading="lazy"><figcaption>08:48</figcaption></figure>
+<figure class="shot"><img src="img/P068/kf015.jpg" alt="画面 08:48" loading="lazy"><figcaption>画面 08:48</figcaption></figure>
 <p><span class="ts">09:04</span>现在你知道了如何使用 softmax 输出层进行多类别分类，以及如何以一种数值稳定的方式进行。</p>
 <p><span class="ts">09:14</span>在结束多类别分类之前，我还想和你分享另一种类型的分类问题，叫做多标签分类问题。</p>
 <p><span class="ts">09:24</span>我们下一视频再谈这个。</p>

@@ -26,7 +26,7 @@
 <p><span class="ts">01:04</span>我们将从微积分的最基础部分开始建立，以确保你拥有理解反向传播如何工作所需的所有直觉。</p>
 <p><span class="ts">01:14</span>我们来看看。</p>
 <p><span class="ts">01:16</span>我将使用一个简化的代价函数，j 关于 w 等于 w 的平方。</p>
-<figure><img src="img/P072/kf001.jpg" alt="01:16" loading="lazy"><figcaption>01:16</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf001.jpg" alt="画面 01:16" loading="lazy"><figcaption>画面 01:16</figcaption></figure>
 <p><span class="ts">01:24</span>所以代价函数是参数 w 和比如说 b 的函数。</p>
 <p><span class="ts">01:30</span>而对于这个简化的代价函数，我们暂且假设 j 关于 w 等于 w 的平方。</p>
 <p><span class="ts">01:36</span>在这个例子中我将忽略 b。</p>
@@ -57,7 +57,7 @@
 <p><span class="ts">05:19</span>顺便说一句，你可以随时暂停视频，并自己用其他的 epsilon 值尝试这个计算。</p>
 <p><span class="ts">05:27</span>关键在于，只要 epsilon 非常小，J 关于 W 增加的量与 W 增加的量之比就应该是六比一。</p>
 <p><span class="ts">05:37</span>所以请随意用其他的 epsilon 值自己尝试，看看这是否真的成立。</p>
-<figure><img src="img/P072/kf002.jpg" alt="05:42" loading="lazy"><figcaption>05:42</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf002.jpg" alt="画面 05:42" loading="lazy"><figcaption>画面 05:42</figcaption></figure>
 <p><span class="ts">05:43</span>这就引出了导数的一个非正式定义，即每当 w 增加一个微小量 epsilon，这导致 j 关于 w 增加 k 乘.。</p>
 <p><span class="ts">05:58</span>在我们刚才的例子中，k 等于六。</p>
 <p><span class="ts">06:02</span>那么我们就说 j 关于 w 对 w 的导数等于 k，在刚才的例子中，k 再次等于六。</p>
@@ -68,7 +68,7 @@
 <p><span class="ts">06:58</span>因此我们不用费心去对 w 下标 j 做巨大的改变。</p>
 <p><span class="ts">07:03</span>但如果导数很大，这意味着即使是对 w 下标 j 的微小改变，也能在多大程度上改变或降低代价函数关于 w 方面产生巨大影响。</p>
 <p><span class="ts">07:16</span>所以在这种情况下，我们对 w 下标 j 做一个更大的改变，因为这样做实际上会极大地影响我们能降低多少代价函数 j。</p>
-<figure><img src="img/P072/kf003.jpg" alt="07:26" loading="lazy"><figcaption>07:26</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf003.jpg" alt="画面 07:26" loading="lazy"><figcaption>画面 07:26</figcaption></figure>
 <p><span class="ts">07:26</span>我们来看几个关于导数的例子。</p>
 <p><span class="ts">07:31</span>你在刚才的例子中看到的是，如果 w 等于三，且 j 关于 w 等于 w 的平方等于九，那么如果 w 增加了 epsilon 零点零零一，那么 j 关于 w 变为 j 关于三点零零一，现在是九点零零六零零一，或者换句话说，j 增加了大约零点零零六，N。</p>
 <p><span class="ts">07:59</span>即六乘以零点零零一，或六乘以 epsilon，这就是为什么 j 关于 w 对 w 的导数等于六。</p>
@@ -101,14 +101,14 @@
 <p><span class="ts">12:16</span>关于 W 等于 W 的平方。</p>
 <p><span class="ts">12:20</span>但 j 关于 w 的导数取决于 w。</p>
 <p><span class="ts">12:24</span>当 w 为负三时，导数是负六。</p>
-<figure><img src="img/P072/kf004.jpg" alt="12:34" loading="lazy"><figcaption>12:34</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf004.jpg" alt="画面 12:34" loading="lazy"><figcaption>画面 12:34</figcaption></figure>
 <p><span class="ts">12:35</span>事实证明，如果你熟悉微积分，再说一次，不熟悉也完全没问题。</p>
 <p><span class="ts">12:42</span>微积分使我们能够计算出 J 关于 W 对 W 的导数为二乘以 W。</p>
 <p><span class="ts">12:51</span>稍后，我将向你展示如何使用 Python 和一个叫做 SymPy 的巧妙 Python 包来自行计算这些导数。</p>
 <p><span class="ts">13:02</span>但因为微积分告诉我们 w 的平方，j 关于 w 的导数是二 w，这就是为什么当 w 为三时，导数是二乘以三。</p>
 <p><span class="ts">13:16</span>当它为二时是二乘以二。</p>
 <p><span class="ts">13:22</span>当它为负三时是二乘以负三，因为这个 w 的值乘以二，结果就给出了导数。</p>
-<figure><img src="img/P072/kf005.jpg" alt="13:30" loading="lazy"><figcaption>13:30</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf005.jpg" alt="画面 13:30" loading="lazy"><figcaption>画面 13:30</figcaption></figure>
 <p><span class="ts">13:33</span>在我们结束之前，再多看几个例子。</p>
 <p><span class="ts">13:37</span>对于这些例子，我将设 W 等于二。</p>
 <p><span class="ts">13:42</span>你在上一张幻灯片中看到，如果 J 关于 W 是 W 的平方，那么我所说的导数将是二乘以 W，即四。</p>
@@ -120,53 +120,53 @@
 <p><span class="ts">14:28</span>或者如果 J 关于 W 是 W 分之一呢？</p>
 <p><span class="ts">14:32</span>在这种情况下，W 分之一，二分之一将是零点五。</p>
 <p><span class="ts">14:38</span>当代价函数 J 关于 W 是 W 的立方、或 W、或 W 分之一时，J 关于 W 关于 W 的导数是多少呢？！</p>
-<figure><img src="img/P072/kf006.jpg" alt="14:47" loading="lazy"><figcaption>14:47</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf006.jpg" alt="画面 14:47" loading="lazy"><figcaption>画面 14:47</figcaption></figure>
 <p><span class="ts">14:50</span>让我向你展示如何使用一个名为 SymPy 的库或包来自行计算这些导数。</p>
 <p><span class="ts">14:57</span>那么让我首先导入 SymPy。</p>
-<figure><img src="img/P072/kf007.jpg" alt="14:59" loading="lazy"><figcaption>14:59</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf007.jpg" alt="画面 14:59" loading="lazy"><figcaption>画面 14:59</figcaption></figure>
 <p><span class="ts">15:02</span>我要做的是告诉 SymPy，我将使用 J 和 W 作为计算导数的符号。</p>
 <p><span class="ts">15:13</span>对于我们的第一个例子，我们的代价函数等于 w 的平方。</p>
-<figure><img src="img/P072/kf008.jpg" alt="15:20" loading="lazy"><figcaption>15:20</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf008.jpg" alt="画面 15:20" loading="lazy"><figcaption>画面 15:20</figcaption></figure>
 <p><span class="ts">15:21</span>请注意 SymPy 实际上也用这种漂亮的字体呈现了它。</p>
 <p><span class="ts">15:27</span>现在，如果我们想用 SymPy 求关于 W 的导数，我们应该这样做。</p>
-<figure><img src="img/P072/kf009.jpg" alt="15:31" loading="lazy"><figcaption>15:31</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf009.jpg" alt="画面 15:31" loading="lazy"><figcaption>画面 15:31</figcaption></figure>
 <p><span class="ts">15:33</span>你看到 SymPy 告诉你这个导数是二 w。</p>
 <p><span class="ts">15:38</span>让我实际选择一个变量 dj_dw，将其设为等于这个。</p>
-<figure><img src="img/P072/kf010.jpg" alt="15:40" loading="lazy"><figcaption>15:40</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf010.jpg" alt="画面 15:40" loading="lazy"><figcaption>画面 15:40</figcaption></figure>
 <p><span class="ts">15:44</span>我在此再输入一遍，把它打印出来。</p>
 <p><span class="ts">15:51</span>如果你想将 w 的值代入这个表达式求值，你可以执行 .(w,二)。</p>
 <p><span class="ts">16:00</span>这意味着将 w 等于二的值代入此表达式并求值。</p>
-<figure><img src="img/P072/kf011.jpg" alt="16:03" loading="lazy"><figcaption>16:03</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf011.jpg" alt="画面 16:03" loading="lazy"><figcaption>画面 16:03</figcaption></figure>
 <p><span class="ts">16:07</span>这给出了值四，这就是为什么当 w 等于二时，我们看到的导数是四。</p>
-<figure><img src="img/P072/kf012.jpg" alt="16:08" loading="lazy"><figcaption>16:08</figcaption></figure>
-<figure><img src="img/P072/kf013.jpg" alt="16:15" loading="lazy"><figcaption>16:15</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf012.jpg" alt="画面 16:08" loading="lazy"><figcaption>画面 16:08</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf013.jpg" alt="画面 16:15" loading="lazy"><figcaption>画面 16:15</figcaption></figure>
 <p><span class="ts">16:17</span>我们再看其他几个例子。</p>
 <p><span class="ts">16:19</span>如果是 W 的立方呢？</p>
-<figure><img src="img/P072/kf014.jpg" alt="16:19" loading="lazy"><figcaption>16:19</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf014.jpg" alt="画面 16:19" loading="lazy"><figcaption>画面 16:19</figcaption></figure>
 <p><span class="ts">16:24</span>那么导数变为三乘以 w 的平方。</p>
 <p><span class="ts">16:28</span>所以从微积分可知，这也是 SymPy 为我们计算的，如果 j 是 w 的立方，那么 j 关于 w 的导数是方。</p>
-<figure><img src="img/P072/kf015.jpg" alt="16:30" loading="lazy"><figcaption>16:30</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf015.jpg" alt="画面 16:30" loading="lazy"><figcaption>画面 16:30</figcaption></figure>
 <p><span class="ts">16:39</span>并且取决于 w 的值，导数的值也会改变。</p>
 <p><span class="ts">16:45</span>我们可以代入，如果 w 等于二，在这种情况下你会得到十二。</p>
 <p><span class="ts">16:52</span>或者如来寻宁 W 呢？</p>
-<figure><img src="img/P072/kf016.jpg" alt="16:53" loading="lazy"><figcaption>16:53</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf016.jpg" alt="画面 16:53" loading="lazy"><figcaption>画面 16:53</figcaption></figure>
 <p><span class="ts">16:56</span>在这种情况下，导数正好等于一。</p>
 <p><span class="ts">17:01</span>或者我们最后的例子是：如果 j 等于 w 分之一呢？</p>
-<figure><img src="img/P072/kf017.jpg" alt="17:05" loading="lazy"><figcaption>17:05</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf017.jpg" alt="画面 17:05" loading="lazy"><figcaption>画面 17:05</figcaption></figure>
 <p><span class="ts">17:07</span>在这种情况下，导数结果是负的 w 平方分之一。</p>
-<figure><img src="img/P072/kf018.jpg" alt="17:12" loading="lazy"><figcaption>17:12</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf018.jpg" alt="画面 17:12" loading="lazy"><figcaption>画面 17:12</figcaption></figure>
 <p><span class="ts">17:16</span>那么我要做的是，把我们计算出的导数整理一下。</p>
 <p><span class="ts">17:20</span>记住，对于 w 的平方，它是二 w。</p>
-<figure><img src="img/P072/kf019.jpg" alt="17:24" loading="lazy"><figcaption>17:24</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf019.jpg" alt="画面 17:24" loading="lazy"><figcaption>画面 17:24</figcaption></figure>
 <p><span class="ts">17:25</span>对于 w 的立方，它是三 w 的平方。</p>
-<figure><img src="img/P072/kf020.jpg" alt="17:28" loading="lazy"><figcaption>17:28</figcaption></figure>
-<figure><img src="img/P072/kf021.jpg" alt="17:32" loading="lazy"><figcaption>17:32</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf020.jpg" alt="画面 17:28" loading="lazy"><figcaption>画面 17:28</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf021.jpg" alt="画面 17:32" loading="lazy"><figcaption>画面 17:32</figcaption></figure>
 <p><span class="ts">17:32</span>而对于 w 分之一，它是负的 w 平方分之一。</p>
 <p><span class="ts">17:37</span>让我们把这个复制回我们的另一张幻灯片。</p>
-<figure><img src="img/P072/kf022.jpg" alt="17:37" loading="lazy"><figcaption>17:37</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf022.jpg" alt="画面 17:37" loading="lazy"><figcaption>画面 17:37</figcaption></figure>
 <p><span class="ts">17:42</span>所以 SymPy，或者说实际上是微积分，告诉我们的是，如果 J 关于 W 是 w 的立方，导数是三 w 的平方，当 w 等于二时，等于十二。</p>
 <p><span class="ts">17:55</span>当 j 关于 w 等于 w 时，导数正好等于一。</p>
-<figure><img src="img/P072/kf023.jpg" alt="17:56" loading="lazy"><figcaption>17:56</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf023.jpg" alt="画面 17:56" loading="lazy"><figcaption>画面 17:56</figcaption></figure>
 <p><span class="ts">17:59</span>而当 j 关于 w 是 W 分之一时，是负的 w 平方分之一，当 w 等于二时，是负四分之一。</p>
 <p><span class="ts">18:11</span>让我们再次核对一下我们从 SymPy 得到的这些表达式是否正确。</p>
 <p><span class="ts">18:19</span>所以让我们尝试将 w 增加 epsilon。</p>
@@ -187,12 +187,12 @@
 <p><span class="ts">20:10</span>而这个零点零零零二五，是零点二五乘以 epsilon。</p>
 <p><span class="ts">20:18</span>它下降了这么多，或者说它增加了负零点二五乘以 epsilon，因为负零点二五乘以 epsilon 等于这里的这一项。</p>
 <p><span class="ts">20:29</span>所以我们看到，如果 w 增加了 epsilon，j 关于 w 就会增加负四分之一或负零点二五乘以 epsilon，这就是为什么这种情况下的导数是负四分之一。</p>
-<figure><img src="img/P072/kf024.jpg" alt="20:43" loading="lazy"><figcaption>20:43</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf024.jpg" alt="画面 20:43" loading="lazy"><figcaption>画面 20:43</figcaption></figure>
 <p><span class="ts">20:45</span>所以我希望，通过这些例子，你对 j 关于 w 对 w 的导数意味着什么有点感觉了。</p>
 <p><span class="ts">20:54</span>它不过是问，如果 w 增加了 epsilon，j 关于 w 会增加多少？</p>
 <p><span class="ts">21:02</span>会增加某个常数 k 乘以 epsilon，而这个常数 k 就是导数。</p>
 <p><span class="ts">21:09</span>并且 K 的值将同时取决于函数 j 关于 w 是什么，以及 w 的值是多少。</p>
-<figure><img src="img/P072/kf025.jpg" alt="21:12" loading="lazy"><figcaption>21:12</figcaption></figure>
+<figure class="shot"><img src="img/P072/kf025.jpg" alt="画面 21:12" loading="lazy"><figcaption>画面 21:12</figcaption></figure>
 <p><span class="ts">21:17</span>在本视频结束之前，我想简要提一下你在其它文本中可能看到的用于书写导数的符号，即如果 j 关于 w 是单个变量的函数，比如说 w，那么数学家有时会将导数写成 d dw，作用于 j 关于 w。</p>
 <p><span class="ts">21:27</span>即如果 j 关于 w 是单个变量的函数，比如说 w，那么数学家有时会将导数写成 d dw，作用于 j 关于.。</p>
 <p><span class="ts">21:38</span>注意这里，这个符号使用的是小写字母 d。</p>

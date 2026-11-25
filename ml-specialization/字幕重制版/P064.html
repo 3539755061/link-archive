@@ -17,13 +17,13 @@
 <main>
 <p><span class="ts">00:03</span>我们来看看为什么神经网络需要激活函数，以及如果在神经网络的每个神经元中都使用线性激活函数，它为什么就行不通。</p>
 <p><span class="ts">00:16</span>回顾一下这个需求预测的例子。</p>
-<figure><img src="img/P064/kf001.jpg" alt="00:17" loading="lazy"><figcaption>00:17</figcaption></figure>
+<figure class="shot"><img src="img/P064/kf001.jpg" alt="画面 00:17" loading="lazy"><figcaption>画面 00:17</figcaption></figure>
 <p><span class="ts">00:19</span>如果我们为这个神经网络中的所有节点都使用线性激活函数，会发生什么？</p>
 <p><span class="ts">00:26</span>结果是，这个大型神经网络将变得和线性回归没什么两样。</p>
 <p><span class="ts">00:33</span>这就违背了使用神经网络的初衷，因为它只能拟合我们第一门课中学过的线性回归模型，无法处理任何更复杂的情况。</p>
 <p><span class="ts">00:47</span>我们用一个更简单的例子来说明。</p>
 <p><span class="ts">00:51</span>来看这个神经网络的例子，输入 x 只是一个数字，我们有一个隐藏单元，参数为 w 一和 b 一。</p>
-<figure><img src="img/P064/kf002.jpg" alt="00:52" loading="lazy"><figcaption>00:52</figcaption></figure>
+<figure class="shot"><img src="img/P064/kf002.jpg" alt="画面 00:52" loading="lazy"><figcaption>画面 00:52</figcaption></figure>
 <p><span class="ts">01:04</span>它输出 a 一，这里也只是一个数字。</p>
 <p><span class="ts">01:08</span>然后第二层是输出层，它也只有一个输出单元，参数为 w 二和 b 二，并输出 a 二，这同样只是一个数字，N 个标量，也就是神经网络的输出 f（x)。</p>
 <p><span class="ts">01:26</span>我们来看看，如果所有地方都使用线性激活函数，即 g(z）等于 z，这个神经网络会怎样。</p>
@@ -38,7 +38,7 @@
 <p><span class="ts">02:56</span>与其使用带有一个隐藏层和一个输出层的神经网络，我们还不如直接使用一个线性回归模型。</p>
 <p><span class="ts">03:04</span>如果你熟悉线性代数，这个结果源于这样一个事实：线性函数的线性函数本身还是线性函数。</p>
 <p><span class="ts">03:14</span>这就是为什么在神经网络中拥有多个层，并不能让神经网络计算出更复杂的特征，或学到比线性函数更复杂的东西。</p>
-<figure><img src="img/P064/kf003.jpg" alt="03:26" loading="lazy"><figcaption>03:26</figcaption></figure>
+<figure class="shot"><img src="img/P064/kf003.jpg" alt="画面 03:26" loading="lazy"><figcaption>画面 03:26</figcaption></figure>
 <p><span class="ts">03:28</span>如果你有一个像这样的多层神经网络，并且对所有隐藏层都使用线性激活函数，同时也对输出层使用线性激活函数，那么结果就是这个模型计算出的输出完全等价于线性回归。</p>
 <p><span class="ts">03:42</span>那么结果就是这个模型计算出的输出完全等价于线性回归。</p>
 <p><span class="ts">03:49</span>输出 A 四可以表示为输入特征 x 的线性函数加 b。</p>

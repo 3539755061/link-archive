@@ -18,7 +18,7 @@
 <p><span class="ts">00:02</span>让我们来看看，用 TensorFlow 代码训练神经网络的细节，它到底在做什么。</p>
 <p><span class="ts">00:10</span>我们来深入探讨一下。</p>
 <p><span class="ts">00:13</span>在了解训练神经网络的细节之前，我们先回顾一下，在上一个课程中是如何训练逻辑回归模型的。</p>
-<figure><img src="img/P061/kf001.jpg" alt="00:14" loading="lazy"><figcaption>00:14</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf001.jpg" alt="画面 00:14" loading="lazy"><figcaption>画面 00:14</figcaption></figure>
 <p><span class="ts">00:22</span>构建逻辑回归模型的第一步，是给定输入特征 x 和参数 w、b，指定如何计算输出。</p>
 <p><span class="ts">00:34</span>所以在第一门课中，我们说逻辑回归函数预测 f(x)等于 g，也就是对 w 点乘 x 加 b 应用 sigmoid 函数，即对 w 点乘 x 加 b 应用 sigmoid 函数。n。</p>
 <p><span class="ts">00:50</span>所以如采2定 W 点乘 X 加 b，那么 f 就等于一除以一加 e 的负 z 次方。</p>
@@ -44,7 +44,7 @@
 <p><span class="ts">03:56</span>现在，我们来看看这三步如何对应到训练神经网络上。</p>
 <p><span class="ts">04:01</span>我们将在接下来的三张幻灯片中更详细地讲解，但简单来说，第一步，给定输入 X 和参数 W、B，指定如何计算输出。</p>
 <p><span class="ts">04:13</span>这通过这段代码片段完成，你应该对上周指定神经网络的内容很熟悉。</p>
-<figure><img src="img/P061/kf002.jpg" alt="04:14" loading="lazy"><figcaption>04:14</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf002.jpg" alt="画面 04:14" loading="lazy"><figcaption>画面 04:14</figcaption></figure>
 <p><span class="ts">04:20</span>这实际上足以指定，例如，前向传播或推理算法所需的计算。</p>
 <p><span class="ts">04:27</span>第二步是编译模型，并告诉它你想使用哪种损失。</p>
 <p><span class="ts">04:33</span>这是你用来指定这个损失函数的代码，即二元交叉熵损失函数。</p>
@@ -52,12 +52,12 @@
 <p><span class="ts">04:50</span>第三步是调用一个函数，尝试将成本作为神经网络参数的函数来最小化。</p>
 <p><span class="ts">04:58</span>让我们在训练神经网络的背景下，更详细地看看这三个步骤。</p>
 <p><span class="ts">05:05</span>第一步，给定输入 X 和参数 W、B，指定如何计算输出。</p>
-<figure><img src="img/P061/kf003.jpg" alt="05:05" loading="lazy"><figcaption>05:05</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf003.jpg" alt="画面 05:05" loading="lazy"><figcaption>画面 05:05</figcaption></figure>
 <p><span class="ts">05:12</span>这段代码片段指定了神经网络的整个架构。</p>
 <p><span class="ts">05:18</span>它告诉你，第一个隐藏层有二十五个隐藏单元，接着下一层有十五个，然后有一个输出单元，并且我们使用的是 sigmoid 激活函数。n。</p>
 <p><span class="ts">05:30</span>因此，基于这段代码片段，我们也知道了参数有哪些：第一层的 w 一、b 一，第二层的参数，以及第三层的参数。</p>
 <p><span class="ts">05:41</span>所以这段代码片段指定了神经网络的整个架构，因此告诉 TensorFlow，为了计算输出 A 三或者 f，作为输入 X 和参数（这里我们记为 W、B）的函数，它需要的一切信息。</p>
-<figure><img src="img/P061/kf004.jpg" alt="06:04" loading="lazy"><figcaption>06:04</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf004.jpg" alt="画面 06:04" loading="lazy"><figcaption>画面 06:04</figcaption></figure>
 <p><span class="ts">06:05</span>在第二步中，你必须指定损失函数是什么，这也将定义我们用来训练神经网络的成本函数。</p>
 <p><span class="ts">06:14</span>对于手写数字分类问题，图像要么是零，要么是一。</p>
 <p><span class="ts">06:22</span>这里最常用的损失函数是。</p>
@@ -71,11 +71,11 @@
 <p><span class="ts">07:30</span>它实际上曾是一个完全独立于 TensorFlow 的项目，但最终被合并到了 TensorFlow 中，这就是为什么我们有 tf.keras..点这个损失函数的名字。</p>
 <p><span class="ts">07:45</span>顺便说一下，我并非总能记住 TensorFlow 中所有损失函数的名字，但我自己会快速在网上搜索一下，找到正确的名字，然后把它插入到我的代码里。</p>
 <p><span class="ts">07:57</span>指定了相对于单个训练样本的损失后，TensorFlow 知道你想要最小化的成本，就是所有 m 个训练样本上损失的平均值。</p>
-<figure><img src="img/P061/kf005.jpg" alt="07:59" loading="lazy"><figcaption>07:59</figcaption></figure>
-<figure><img src="img/P061/kf006.jpg" alt="08:11" loading="lazy"><figcaption>08:11</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf005.jpg" alt="画面 07:59" loading="lazy"><figcaption>画面 07:59</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf006.jpg" alt="画面 08:11" loading="lazy"><figcaption>画面 08:11</figcaption></figure>
 <p><span class="ts">08:13</span>优化这个成本函数，将使神经网络拟合你的二元分类数据。</p>
 <p><span class="ts">08:21</span>如果你想解决回归问题而非分类问题，你也可以告诉 TensorFlow 使用不同的损失函数来编译你的模型。</p>
-<figure><img src="img/P061/kf007.jpg" alt="08:23" loading="lazy"><figcaption>08:23</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf007.jpg" alt="画面 08:23" loading="lazy"><figcaption>画面 08:23</figcaption></figure>
 <p><span class="ts">08:34</span>例如，如果你有一个回归问题，并且如果你想最小化平方误差损失，这就是平方误差损失，如果你的学习算法输出 f(x)，目标或真实标签是 y，损失等于二分之一乘以平方误差，n。</p>
 <p><span class="ts">08:44</span>这就是平方误差损失，如果你的学习算法输出 f(x)，目标或真实标签是 y，损失等于二分之一乘以平.方误差。</p>
 <p><span class="ts">08:55</span>那么你可以在 TensorFlow 中使用这个损失函数，也就是名字可能更直观的均方误差损失函数。</p>
@@ -83,12 +83,12 @@
 <p><span class="ts">09:10</span>在这个表达式中，我用 J(W，B)来表示成本函数。</p>
 <p><span class="ts">09:18</span>成本函数是神经网络中所有参数的函数。</p>
 <p><span class="ts">09:23</span>所以你可以把大写 W 理解为包括 W 一、W 二、W 三，即整个神经网络中的所有 W 参数，而大写 B 则包括 B 一、B。</p>
-<figure><img src="img/P061/kf008.jpg" alt="09:25" loading="lazy"><figcaption>09:25</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf008.jpg" alt="画面 09:25" loading="lazy"><figcaption>画面 09:25</figcaption></figure>
 <p><span class="ts">09:39</span>因此，如果你相对于 W 和 B 优化成本函数，你就是在尝试针对神经网络中的所有参数进行优化。</p>
 <p><span class="ts">09:50</span>在上面，我也是把 f(x)写为神经网络的输出。</p>
 <p><span class="ts">09:56</span>但如果你想，我们也可以写成 f(w,b)，如果我们想强调神经网络作为 x 函数的输出，取决于神经网络所有层中的所有参数。N。</p>
 <p><span class="ts">10:09</span>以上就是损失函数和成本函数。</p>
-<figure><img src="img/P061/kf009.jpg" alt="10:13" loading="lazy"><figcaption>10:13</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf009.jpg" alt="画面 10:13" loading="lazy"><figcaption>画面 10:13</figcaption></figure>
 <p><span class="ts">10:14</span>最后，你会要求 TensorFlow 最小化成本函数。</p>
 <p><span class="ts">10:20</span>你可能还记得第一门课里的梯度下降算法。</p>
 <p><span class="ts">10:24</span>如果你使用梯度下降来训练神经网络的参数，那么你会重复地，对于每一层 L，对于每一个单元 J，根据减去学习率 alpha 乘以成本函数对该参数的偏导数，来更新。</p>
@@ -110,7 +110,7 @@
 <p><span class="ts">13:05</span>所以当深度学习还比较年轻、不太成熟时，包括我在内的许多开发者都是用 Python、C 或其他库从零开始实现东西。</p>
 <p><span class="ts">13:16</span>但今天，深度学习库已经足够成熟，大多数开发者会使用这些库。</p>
 <p><span class="ts">13:23</span>事实上，如今大多数神经网络的商业实现都使用像 TensorFlow 或 PyTorch 这样的库。</p>
-<figure><img src="img/P061/kf010.jpg" alt="13:23" loading="lazy"><figcaption>13:23</figcaption></figure>
+<figure class="shot"><img src="img/P061/kf010.jpg" alt="画面 13:23" loading="lazy"><figcaption>画面 13:23</figcaption></figure>
 <p><span class="ts">13:31</span>但如我所提，理解它们底层的工作原理仍然有用，这样如果发生意料之外的事（这在今天的库中仍会发生），你更有可能知道如何修复它。</p>
 <p><span class="ts">13:44</span>现在你知道了如何训练一个基本的神经网络，也叫多层感知器，你可以对神经网络做一些改动，让，它变得更强大。</p>
 <p><span class="ts">13:57</span>在下一个视频中，我们来看看如何换用不同的激活函数，作为我们一直使用的 sigmoid 激活函数的替代。</p>
