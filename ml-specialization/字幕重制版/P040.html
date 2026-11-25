@@ -20,87 +20,87 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P039.html">← 上一讲</a><span class="mid">第 40 / 72 讲</span><a class="next" href="P041.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:02</span>在本视频中，我们将弄清楚如何让梯度下降适用于正则化线性回归。</p>
+<p><span class="tx">在本视频中，我们将弄清楚如何让梯度下降适用于正则化线性回归。</span><span class="ts">00:02</span></p>
 <figure class="shot"><img src="img/P040/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
-<p><span class="ts">00:10</span>这是我们在上一个视频中为正则化线性回归提出的代价函数。</p>
+<p><span class="tx">这是我们在上一个视频中为正则化线性回归提出的代价函数。</span><span class="ts">00:10</span></p>
 <figure class="shot"><img src="img/P040/kf002.jpg" alt="画面 00:11" loading="lazy"><figcaption>画面 00:11</figcaption></figure>
-<p><span class="ts">00:16</span>第一部分是常规的平方误差代价函数。</p>
-<p><span class="ts">00:21</span>现在你有了这个额外的正则化项，其中 lambda 是正则化参数。</p>
-<p><span class="ts">00:28</span>你想要找到能够最小化这个正则化代价函数的参数 w 和 b。</p>
-<p><span class="ts">00:35</span>之前，在我们添加第二个正则化项之前，我们对原始的、只有第一项的代价函数使用了梯度下降法。</p>
+<p><span class="tx">第一部分是常规的平方误差代价函数。</span><span class="ts">00:16</span></p>
+<p><span class="tx">现在你有了这个额外的正则化项，其中 lambda 是正则化参数。</span><span class="ts">00:21</span></p>
+<p><span class="tx">你想要找到能够最小化这个正则化代价函数的参数 w 和 b。</span><span class="ts">00:28</span></p>
+<p><span class="tx">之前，在我们添加第二个正则化项之前，我们对原始的、只有第一项的代价函数使用了梯度下降法。</span><span class="ts">00:35</span></p>
 <figure class="shot"><img src="img/P040/kf003.jpg" alt="画面 00:37" loading="lazy"><figcaption>画面 00:37</figcaption></figure>
-<p><span class="ts">00:46</span>之前，我们有如下的梯度下降算法，即根据这个公式，对于 j 从一到 n，我们反复更新参数 wj，同时 b 也进行类似的更新。</p>
+<p><span class="tx">之前，我们有如下的梯度下降算法，即根据这个公式，对于 j 从一到 n，我们反复更新参数 wj，同时 b 也进行类似的更新。</span><span class="ts">00:46</span></p>
 <figure class="shot"><img src="img/P040/kf004.jpg" alt="画面 00:49" loading="lazy"><figcaption>画面 00:49</figcaption></figure>
 <figure class="shot"><img src="img/P040/kf005.jpg" alt="画面 01:01" loading="lazy"><figcaption>画面 01:01</figcaption></figure>
-<p><span class="ts">01:02</span>再次强调，alpha 是一个很小的正数，称为学习率。</p>
-<p><span class="ts">01:08</span>事实上，正则化线性回归的更新看起来完全一样，只不过现在代价函数的定义略有不同。</p>
-<p><span class="ts">01:17</span>之前，对 w 的导数由这个表达式给出，对 b 的导数由这个表达式给出。</p>
-<p><span class="ts">01:30</span>现在我们添加了额外的正则化项，唯一的变化是，关于 W 的导数表达式最后会多出一项。</p>
-<p><span class="ts">01:42</span>也就是加上 lambda 除以 m 再乘以 w j。</p>
-<p><span class="ts">01:48</span>具体来说，对于新定义的代价函数 J，这里的两个表达式就是对 wj 和 J 对 b 的新的导数。</p>
-<p><span class="ts">02:03</span>回忆一下，我们不对 b 进行正则化，所以我们不试图缩小 b。</p>
-<p><span class="ts">02:10</span>这就是为什么 b 的更新保持不变，而 W 的更新会改变，因为正则化项会导致我们试图缩小 Wj。</p>
-<p><span class="ts">02:23</span>那么，让我们采用这些导数的定义，并将它们放回左边的表达式中，写出正则化线性回归的梯度下降算法。</p>
+<p><span class="tx">再次强调，alpha 是一个很小的正数，称为学习率。</span><span class="ts">01:02</span></p>
+<p><span class="tx">事实上，正则化线性回归的更新看起来完全一样，只不过现在代价函数的定义略有不同。</span><span class="ts">01:08</span></p>
+<p><span class="tx">之前，对 w 的导数由这个表达式给出，对 b 的导数由这个表达式给出。</span><span class="ts">01:17</span></p>
+<p><span class="tx">现在我们添加了额外的正则化项，唯一的变化是，关于 W 的导数表达式最后会多出一项。</span><span class="ts">01:30</span></p>
+<p><span class="tx">也就是加上 lambda 除以 m 再乘以 w j。</span><span class="ts">01:42</span></p>
+<p><span class="tx">具体来说，对于新定义的代价函数 J，这里的两个表达式就是对 wj 和 J 对 b 的新的导数。</span><span class="ts">01:48</span></p>
+<p><span class="tx">回忆一下，我们不对 b 进行正则化，所以我们不试图缩小 b。</span><span class="ts">02:03</span></p>
+<p><span class="tx">这就是为什么 b 的更新保持不变，而 W 的更新会改变，因为正则化项会导致我们试图缩小 Wj。</span><span class="ts">02:10</span></p>
+<p><span class="tx">那么，让我们采用这些导数的定义，并将它们放回左边的表达式中，写出正则化线性回归的梯度下降算法。</span><span class="ts">02:23</span></p>
 <figure class="shot"><img src="img/P040/kf006.jpg" alt="画面 02:24" loading="lazy"><figcaption>画面 02:24</figcaption></figure>
-<p><span class="ts">02:35</span>因此，为了实现正则化线性回归的梯度下降，你的代码需要执行以下操作。</p>
+<p><span class="tx">因此，为了实现正则化线性回归的梯度下降，你的代码需要执行以下操作。</span><span class="ts">02:35</span></p>
 <figure class="shot"><img src="img/P040/kf007.jpg" alt="画面 02:35" loading="lazy"><figcaption>画面 02:35</figcaption></figure>
-<p><span class="ts">02:43</span>这是对于 j 从一到 n 的 wj 的更新，这是 b 的更新。</p>
-<p><span class="ts">02:50</span>像往常一样，请记住对所有参数进行同步更新。</p>
-<p><span class="ts">02:58</span>现在，为了让这个算法起作用，你需要了解的就是这些。</p>
-<p><span class="ts">03:03</span>但我想在本视频的剩余部分讲一些可选材料。</p>
-<p><span class="ts">03:07</span>目的是让你对这个公式实际的作用有一个稍深入的理解，并简要讨论一下这些导数是如何推导出来。</p>
-<p><span class="ts">03:17</span>本视频的其余部分完全是可选的。</p>
-<p><span class="ts">03:21</span>跳过本视频的剩余部分完全没有问题。</p>
-<p><span class="ts">03:25</span>但如果你对数学有浓厚的兴趣，那就请继续跟我看下去。</p>
-<p><span class="ts">03:32</span>能在这里陪你一会儿总是件愉快的事。</p>
-<p><span class="ts">03:36</span>通过这些方程，也许你也能对数学以及导数的作用建立更深入的理解。</p>
-<p><span class="ts">03:44</span>那么，让我们来看一看。</p>
-<p><span class="ts">03:46</span>我们来看一下 Wj 的更新规则，并用另一种方式重写它。</p>
+<p><span class="tx">这是对于 j 从一到 n 的 wj 的更新，这是 b 的更新。</span><span class="ts">02:43</span></p>
+<p><span class="tx">像往常一样，请记住对所有参数进行同步更新。</span><span class="ts">02:50</span></p>
+<p><span class="tx">现在，为了让这个算法起作用，你需要了解的就是这些。</span><span class="ts">02:58</span></p>
+<p><span class="tx">但我想在本视频的剩余部分讲一些可选材料。</span><span class="ts">03:03</span></p>
+<p><span class="tx">目的是让你对这个公式实际的作用有一个稍深入的理解，并简要讨论一下这些导数是如何推导出来。</span><span class="ts">03:07</span></p>
+<p><span class="tx">本视频的其余部分完全是可选的。</span><span class="ts">03:17</span></p>
+<p><span class="tx">跳过本视频的剩余部分完全没有问题。</span><span class="ts">03:21</span></p>
+<p><span class="tx">但如果你对数学有浓厚的兴趣，那就请继续跟我看下去。</span><span class="ts">03:25</span></p>
+<p><span class="tx">能在这里陪你一会儿总是件愉快的事。</span><span class="ts">03:32</span></p>
+<p><span class="tx">通过这些方程，也许你也能对数学以及导数的作用建立更深入的理解。</span><span class="ts">03:36</span></p>
+<p><span class="tx">那么，让我们来看一看。</span><span class="ts">03:44</span></p>
+<p><span class="tx">我们来看一下 Wj 的更新规则，并用另一种方式重写它。</span><span class="ts">03:46</span></p>
 <figure class="shot"><img src="img/P040/kf008.jpg" alt="画面 03:46" loading="lazy"><figcaption>画面 03:46</figcaption></figure>
-<p><span class="ts">03:53</span>我们正在将 wj 更新为：一乘以 Wj，减去 alpha 乘以 lambda 除以 m 再乘以 w j。</p>
-<p><span class="ts">04:05</span>所以我把最后这项移到了前面。</p>
-<p><span class="ts">04:09</span>然后减去 alpha 乘以 m 分之一，再乘以后面的那部分项。</p>
-<p><span class="ts">04:16</span>我们只是稍微重新排列了一下各项。</p>
-<p><span class="ts">04:20</span>如果简化一下，那么我们就是在说，wj 被更新为：wj 乘以括号一减去 alpha 乘以 lambda 除以 m，再减去 alpha 乘以后面的这一项。</p>
+<p><span class="tx">我们正在将 wj 更新为：一乘以 Wj，减去 alpha 乘以 lambda 除以 m 再乘以 w j。</span><span class="ts">03:53</span></p>
+<p><span class="tx">所以我把最后这项移到了前面。</span><span class="ts">04:05</span></p>
+<p><span class="tx">然后减去 alpha 乘以 m 分之一，再乘以后面的那部分项。</span><span class="ts">04:09</span></p>
+<p><span class="tx">我们只是稍微重新排列了一下各项。</span><span class="ts">04:16</span></p>
+<p><span class="tx">如果简化一下，那么我们就是在说，wj 被更新为：wj 乘以括号一减去 alpha 乘以 lambda 除以 m，再减去 alpha 乘以后面的这一项。</span><span class="ts">04:20</span></p>
 <figure class="shot"><img src="img/P040/kf009.jpg" alt="画面 04:21" loading="lazy"><figcaption>画面 04:21</figcaption></figure>
-<p><span class="ts">04:35</span>你可能会认出，这第二项正是没有正则化的线性回归的常规梯度下降更新。</p>
+<p><span class="tx">你可能会认出，这第二项正是没有正则化的线性回归的常规梯度下降更新。</span><span class="ts">04:35</span></p>
 <figure class="shot"><img src="img/P040/kf010.jpg" alt="画面 04:35" loading="lazy"><figcaption>画面 04:35</figcaption></figure>
-<p><span class="ts">04:44</span>这是我们在有正则化之前的线性回归更新，也是我们在课程第二周看到的项。</p>
-<p><span class="ts">04:53</span>因此，添加正则化后唯一的变化是，不再是将 wj 设置为等于 wj 减去 alpha 乘以这一项，而是乘以这个数再减去常规的更新项。</p>
+<p><span class="tx">这是我们在有正则化之前的线性回归更新，也是我们在课程第二周看到的项。</span><span class="ts">04:44</span></p>
+<p><span class="tx">因此，添加正则化后唯一的变化是，不再是将 wj 设置为等于 wj 减去 alpha 乘以这一项，而是乘以这个数再减去常规的更新项。</span><span class="ts">04:53</span></p>
 <figure class="shot"><img src="img/P040/kf011.jpg" alt="画面 04:54" loading="lazy"><figcaption>画面 04:54</figcaption></figure>
-<p><span class="ts">05:08</span>这就是我们课程第一周的内容。</p>
+<p><span class="tx">这就是我们课程第一周的内容。</span><span class="ts">05:08</span></p>
 <figure class="shot"><img src="img/P040/kf012.jpg" alt="画面 05:09" loading="lazy"><figcaption>画面 05:09</figcaption></figure>
-<p><span class="ts">05:12</span>那么，前面的这一项是什么呢？</p>
-<p><span class="ts">05:15</span>alpha 是一个非常小的正数，比如零点零一。</p>
-<p><span class="ts">05:20</span>lambda 通常是一个小数字，比如一或者十。</p>
-<p><span class="ts">05:27</span>在这个例子中，假设 lambda 等于一，m 是训练集大小，比如五十。</p>
-<p><span class="ts">05:34</span>那么当你计算 alpha 乘以 lambda 除以 m 时，比如说零点零一乘以一除以五十，这一项最终是一个很小的正数，比如零点零零零二。</p>
-<p><span class="ts">05:51</span>因此，一减去 alpha 乘以 lambda 除以 m 将是一个略小于一的数字，在这种情况下为零点九九九八。</p>
+<p><span class="tx">那么，前面的这一项是什么呢？</span><span class="ts">05:12</span></p>
+<p><span class="tx">alpha 是一个非常小的正数，比如零点零一。</span><span class="ts">05:15</span></p>
+<p><span class="tx">lambda 通常是一个小数字，比如一或者十。</span><span class="ts">05:20</span></p>
+<p><span class="tx">在这个例子中，假设 lambda 等于一，m 是训练集大小，比如五十。</span><span class="ts">05:27</span></p>
+<p><span class="tx">那么当你计算 alpha 乘以 lambda 除以 m 时，比如说零点零一乘以一除以五十，这一项最终是一个很小的正数，比如零点零零零二。</span><span class="ts">05:34</span></p>
+<p><span class="tx">因此，一减去 alpha 乘以 lambda 除以 m 将是一个略小于一的数字，在这种情况下为零点九九九八。</span><span class="ts">05:51</span></p>
 <figure class="shot"><img src="img/P040/kf013.jpg" alt="画面 05:53" loading="lazy"><figcaption>画面 05:53</figcaption></figure>
-<p><span class="ts">06:01</span>所以这一项的效果是，在梯度下降的每一次迭代中，你在进行常规更新之前，都要将 wj 乘以零点九九九八，也就是乘以一个略小于一的数字。</p>
+<p><span class="tx">所以这一项的效果是，在梯度下降的每一次迭代中，你在进行常规更新之前，都要将 wj 乘以零点九九九八，也就是乘以一个略小于一的数字。</span><span class="ts">06:01</span></p>
 <figure class="shot"><img src="img/P040/kf014.jpg" alt="画面 06:15" loading="lazy"><figcaption>画面 06:15</figcaption></figure>
-<p><span class="ts">06:17</span>因此，正则化在每一次迭代中所做的是，将 w 乘以一个略小于一的数字，这会产生使 wj 的值略微缩小的效果。</p>
+<p><span class="tx">因此，正则化在每一次迭代中所做的是，将 w 乘以一个略小于一的数字，这会产生使 wj 的值略微缩小的效果。</span><span class="ts">06:17</span></p>
 <figure class="shot"><img src="img/P040/kf015.jpg" alt="画面 06:18" loading="lazy"><figcaption>画面 06:18</figcaption></figure>
 <figure class="shot"><img src="img/P040/kf016.jpg" alt="画面 06:29" loading="lazy"><figcaption>画面 06:29</figcaption></figure>
-<p><span class="ts">06:30</span>这为我们提供了另一个视角，理解为什么正则化会在每次迭代中产生使参数 wj 略微缩小的效果，这就是正则化的工作原理。</p>
+<p><span class="tx">这为我们提供了另一个视角，理解为什么正则化会在每次迭代中产生使参数 wj 略微缩小的效果，这就是正则化的工作原理。</span><span class="ts">06:30</span></p>
 <figure class="shot"><img src="img/P040/kf017.jpg" alt="画面 06:32" loading="lazy"><figcaption>画面 06:32</figcaption></figure>
-<p><span class="ts">06:42</span>如果你对这些导数项是如何计算出来的感到好奇，我还有最后一张可选的幻灯片，简要介绍一下导数项的计算过程。Andrew。</p>
+<p><span class="tx">如果你对这些导数项是如何计算出来的感到好奇，我还有最后一张可选的幻灯片，简要介绍一下导数项的计算过程。Andrew。</span><span class="ts">06:42</span></p>
 <figure class="shot"><img src="img/P040/kf018.jpg" alt="画面 06:44" loading="lazy"><figcaption>画面 06:44</figcaption></figure>
-<p><span class="ts">06:53</span>再次强调，这张幻灯片和本视频的其余部分完全是可选的，这意味着你完成练习实验和测验都不需要这些内容。</p>
-<p><span class="ts">07:03</span>那么，让我们快速浏览一下导数的计算过程。</p>
+<p><span class="tx">再次强调，这张幻灯片和本视频的其余部分完全是可选的，这意味着你完成练习实验和测验都不需要这些内容。</span><span class="ts">06:53</span></p>
+<p><span class="tx">那么，让我们快速浏览一下导数的计算过程。</span><span class="ts">07:03</span></p>
 <figure class="shot"><img src="img/P040/kf019.jpg" alt="画面 07:04" loading="lazy"><figcaption>画面 07:04</figcaption></figure>
-<p><span class="ts">07:06</span>J 对 Wj 的导数看起来是这样的。</p>
-<p><span class="ts">07:24</span>回忆一下，线性回归的 f(x) 定义为 w 点乘 x 加上 b，或者说 w 点积 x 再加 b。</p>
-<p><span class="ts">07:34</span>根据微积分规则，导数最终看起来是这样的：等于一除以两倍的 m，乘以 i 从一到 m 的和，是 w 点乘 x 加 b 减 y，再乘以两倍的 xj，再加上正则化项的导数，也就是 lambda 除以两倍的 m，再乘以两倍的 wj。</p>
-<p><span class="ts">08:04</span>注意，第二项不再有 j 从一到 n 的求和符号。</p>
-<p><span class="ts">08:12</span>这里的二和这里的二约掉了，这里的二和这里的二也约掉了。</p>
-<p><span class="ts">08:18</span>因此，它简化成了这里的这个表达式。</p>
-<p><span class="ts">08:26</span>最后，记住 w 点乘 x 加 b 就是 f(x)，所以你可以把它重写成下面的这个表达式。</p>
-<p><span class="ts">08:36</span>这就是为什么使用这个表达式来计算正则化线性回归中的梯度。</p>
-<p><span class="ts">08:43</span>那么，现在你知道如何实现正则化线性回归了。</p>
-<p><span class="ts">08:48</span>使用这种方法，当你拥有大量特征但训练集相对较小时，它确实能减少过拟合。</p>
-<p><span class="ts">08:55</span>这应该能让线性回归在许多问题上表现得更好。在下一个视频中，我们将把这个正则化的思想应用到逻辑回归上，以避免逻辑回归也出现过拟合。一。</p>
-<p><span class="ts">09:10</span>让我们在下一个视频中看看这个内容。</p>
+<p><span class="tx">J 对 Wj 的导数看起来是这样的。</span><span class="ts">07:06</span></p>
+<p><span class="tx">回忆一下，线性回归的 f(x) 定义为 w 点乘 x 加上 b，或者说 w 点积 x 再加 b。</span><span class="ts">07:24</span></p>
+<p><span class="tx">根据微积分规则，导数最终看起来是这样的：等于一除以两倍的 m，乘以 i 从一到 m 的和，是 w 点乘 x 加 b 减 y，再乘以两倍的 xj，再加上正则化项的导数，也就是 lambda 除以两倍的 m，再乘以两倍的 wj。</span><span class="ts">07:34</span></p>
+<p><span class="tx">注意，第二项不再有 j 从一到 n 的求和符号。</span><span class="ts">08:04</span></p>
+<p><span class="tx">这里的二和这里的二约掉了，这里的二和这里的二也约掉了。</span><span class="ts">08:12</span></p>
+<p><span class="tx">因此，它简化成了这里的这个表达式。</span><span class="ts">08:18</span></p>
+<p><span class="tx">最后，记住 w 点乘 x 加 b 就是 f(x)，所以你可以把它重写成下面的这个表达式。</span><span class="ts">08:26</span></p>
+<p><span class="tx">这就是为什么使用这个表达式来计算正则化线性回归中的梯度。</span><span class="ts">08:36</span></p>
+<p><span class="tx">那么，现在你知道如何实现正则化线性回归了。</span><span class="ts">08:43</span></p>
+<p><span class="tx">使用这种方法，当你拥有大量特征但训练集相对较小时，它确实能减少过拟合。</span><span class="ts">08:48</span></p>
+<p><span class="tx">这应该能让线性回归在许多问题上表现得更好。在下一个视频中，我们将把这个正则化的思想应用到逻辑回归上，以避免逻辑回归也出现过拟合。一。</span><span class="ts">08:55</span></p>
+<p><span class="tx">让我们在下一个视频中看看这个内容。</span><span class="ts">09:10</span></p>
 </main>
 <nav class="pager"><a href="P039.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P041.html">下一讲 →</a></nav>
 <footer>

@@ -20,66 +20,66 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P049.html">← 上一讲</a><span class="mid">第 50 / 72 讲</span><a class="next" href="P051.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:01</span>TensorFlow 是实现深度学习算法的领先框架之一。我做项目的时候，TensorFlow 实际上是我最常用的。</p>
-<p><span class="ts">00:11</span>另一个流行的工具是 PyTorch。</p>
-<p><span class="ts">00:15</span>但在这个专项课程里，我们将重点关注 TensorFlow。</p>
-<p><span class="ts">00:19</span>在本视频中，我们来看看如何在代码中使用 TensorFlow 实现推理。</p>
-<p><span class="ts">00:27</span>神经网络的一个非凡之处在于，同一个算法可以应用于这么多不同的领域。</p>
+<p><span class="tx">TensorFlow 是实现深度学习算法的领先框架之一。我做项目的时候，TensorFlow 实际上是我最常用的。</span><span class="ts">00:01</span></p>
+<p><span class="tx">另一个流行的工具是 PyTorch。</span><span class="ts">00:11</span></p>
+<p><span class="tx">但在这个专项课程里，我们将重点关注 TensorFlow。</span><span class="ts">00:15</span></p>
+<p><span class="tx">在本视频中，我们来看看如何在代码中使用 TensorFlow 实现推理。</span><span class="ts">00:19</span></p>
+<p><span class="tx">神经网络的一个非凡之处在于，同一个算法可以应用于这么多不同的领域。</span><span class="ts">00:27</span></p>
 <figure class="shot"><img src="img/P050/kf001.jpg" alt="画面 00:28" loading="lazy"><figcaption>画面 00:28</figcaption></figure>
-<p><span class="ts">00:35</span>所以，为了让大家在本视频和一些实验中看清神经网络在做什么，我将用另一个例子来说明推理过程。</p>
-<p><span class="ts">00:48</span>我有时候确实喜欢自己在家烘焙咖啡豆。</p>
-<p><span class="ts">00:52</span>我最喜欢的其实是哥伦比亚咖啡豆。</p>
-<p><span class="ts">00:56</span>那么，学习算法能否帮助优化，像这样的烘焙过程所得到的咖啡豆品质呢？</p>
-<p><span class="ts">01:03</span>烘焙咖啡时，你可以控制的两个参数是：将生咖啡豆加热变成美味熟豆的温度，以及烘焙的时长，也就是你要烤多久。</p>
+<p><span class="tx">所以，为了让大家在本视频和一些实验中看清神经网络在做什么，我将用另一个例子来说明推理过程。</span><span class="ts">00:35</span></p>
+<p><span class="tx">我有时候确实喜欢自己在家烘焙咖啡豆。</span><span class="ts">00:48</span></p>
+<p><span class="tx">我最喜欢的其实是哥伦比亚咖啡豆。</span><span class="ts">00:52</span></p>
+<p><span class="tx">那么，学习算法能否帮助优化，像这样的烘焙过程所得到的咖啡豆品质呢？</span><span class="ts">00:56</span></p>
+<p><span class="tx">烘焙咖啡时，你可以控制的两个参数是：将生咖啡豆加热变成美味熟豆的温度，以及烘焙的时长，也就是你要烤多久。</span><span class="ts">01:03</span></p>
 <figure class="shot"><img src="img/P050/kf002.jpg" alt="画面 01:04" loading="lazy"><figcaption>画面 01:04</figcaption></figure>
 <figure class="shot"><img src="img/P050/kf003.jpg" alt="画面 01:15" loading="lazy"><figcaption>画面 01:15</figcaption></figure>
-<p><span class="ts">01:18</span>在这个稍微简化的例子中，我们创建了一个数据集，包含不同的温度、不同的时长，以及标明我们烘焙的咖啡是否好喝的标签。</p>
-<p><span class="ts">01:34</span>这里，正类 y 等于一对应好喝的咖啡，而零，即负类，对应不好喝的咖啡。</p>
-<p><span class="ts">01:44</span>所以，理解这个数据集的一个合理方式似乎是：如果你用太低的温度烘焙，它没被烤熟，结果就是火候不足。</p>
+<p><span class="tx">在这个稍微简化的例子中，我们创建了一个数据集，包含不同的温度、不同的时长，以及标明我们烘焙的咖啡是否好喝的标签。</span><span class="ts">01:18</span></p>
+<p><span class="tx">这里，正类 y 等于一对应好喝的咖啡，而零，即负类，对应不好喝的咖啡。</span><span class="ts">01:34</span></p>
+<p><span class="tx">所以，理解这个数据集的一个合理方式似乎是：如果你用太低的温度烘焙，它没被烤熟，结果就是火候不足。</span><span class="ts">01:44</span></p>
 <figure class="shot"><img src="img/P050/kf004.jpg" alt="画面 01:55" loading="lazy"><figcaption>画面 01:55</figcaption></figure>
-<p><span class="ts">01:56</span>如果你烤的时间不够长，时长太短，那也不是一炉烘焙得当的豆子。</p>
-<p><span class="ts">02:04</span>最后，如果你烤得太久或温度太高，结果你就会得到过度烘焙的豆子。</p>
-<p><span class="ts">02:13</span>所以那样也不算好咖啡。</p>
-<p><span class="ts">02:15</span>只有在这么个小三角区域里的点，才对应着好喝的咖啡。</p>
-<p><span class="ts">02:21</span>这个例子相较真实的咖啡烘焙做了一点简化。</p>
-<p><span class="ts">02:26</span>尽管这个例子是为了说明而简化的，但确实已经有人在做一些严肃的项目，利用机器学习来优化咖啡烘焙了。</p>
-<p><span class="ts">02:38</span>所以，任务就是，给定一个包含温度和时长的特征向量 x，比如二百摄氏度、十七分钟，我们如何在神经网络中进行推理，来让它告诉我们，这个温度和时长设定能否得到好喝的咖啡？。</p>
-<p><span class="ts">03:00</span>它看起来是这样的。</p>
+<p><span class="tx">如果你烤的时间不够长，时长太短，那也不是一炉烘焙得当的豆子。</span><span class="ts">01:56</span></p>
+<p><span class="tx">最后，如果你烤得太久或温度太高，结果你就会得到过度烘焙的豆子。</span><span class="ts">02:04</span></p>
+<p><span class="tx">所以那样也不算好咖啡。</span><span class="ts">02:13</span></p>
+<p><span class="tx">只有在这么个小三角区域里的点，才对应着好喝的咖啡。</span><span class="ts">02:15</span></p>
+<p><span class="tx">这个例子相较真实的咖啡烘焙做了一点简化。</span><span class="ts">02:21</span></p>
+<p><span class="tx">尽管这个例子是为了说明而简化的，但确实已经有人在做一些严肃的项目，利用机器学习来优化咖啡烘焙了。</span><span class="ts">02:26</span></p>
+<p><span class="tx">所以，任务就是，给定一个包含温度和时长的特征向量 x，比如二百摄氏度、十七分钟，我们如何在神经网络中进行推理，来让它告诉我们，这个温度和时长设定能否得到好喝的咖啡？。</span><span class="ts">02:38</span></p>
+<p><span class="tx">它看起来是这样的。</span><span class="ts">03:00</span></p>
 <figure class="shot"><img src="img/P050/kf005.jpg" alt="画面 03:02" loading="lazy"><figcaption>画面 03:02</figcaption></figure>
-<p><span class="ts">03:03</span>将 x 设为一个包含俩数字的数组。</p>
-<p><span class="ts">03:09</span>输入特征是二百摄氏度和十七分钟。</p>
-<p><span class="ts">03:15</span>然后，你将第一层创建为网络的第一个隐藏层，用 Dense，左括号，units 等于三，表示这一层有三个单元或三个隐藏单元，并使用 S 型函数作为激活函数。</p>
-<p><span class="ts">03:32</span>Dense 是我们目前为止所学的那种神经网络层的另一个名称。</p>
-<p><span class="ts">03:38</span>随着你对神经网络了解得更多，你还会学到其他类型的层。</p>
-<p><span class="ts">03:44</span>但就目前而言，在我们所有的例子中，我们将只使用 dense 层，也就是你在过去几个视频中学到的那种层类型。</p>
-<p><span class="ts">03:55</span>接下来，你通过取第一层，它实际上是一个函数，并对 x 的值应用这个第一层的函数，来计算 A 一。</p>
-<p><span class="ts">04:06</span>这样你就得到了 A 一，它将是三个数字的列表，因为第一层有三个单元。</p>
-<p><span class="ts">04:14</span>为了说明，这里的 A 一可能是零点二、零点七、零点三。</p>
-<p><span class="ts">04:20</span>接下来，对于第二个隐藏层，第二层将是 Dense。 N。</p>
+<p><span class="tx">将 x 设为一个包含俩数字的数组。</span><span class="ts">03:03</span></p>
+<p><span class="tx">输入特征是二百摄氏度和十七分钟。</span><span class="ts">03:09</span></p>
+<p><span class="tx">然后，你将第一层创建为网络的第一个隐藏层，用 Dense，左括号，units 等于三，表示这一层有三个单元或三个隐藏单元，并使用 S 型函数作为激活函数。</span><span class="ts">03:15</span></p>
+<p><span class="tx">Dense 是我们目前为止所学的那种神经网络层的另一个名称。</span><span class="ts">03:32</span></p>
+<p><span class="tx">随着你对神经网络了解得更多，你还会学到其他类型的层。</span><span class="ts">03:38</span></p>
+<p><span class="tx">但就目前而言，在我们所有的例子中，我们将只使用 dense 层，也就是你在过去几个视频中学到的那种层类型。</span><span class="ts">03:44</span></p>
+<p><span class="tx">接下来，你通过取第一层，它实际上是一个函数，并对 x 的值应用这个第一层的函数，来计算 A 一。</span><span class="ts">03:55</span></p>
+<p><span class="tx">这样你就得到了 A 一，它将是三个数字的列表，因为第一层有三个单元。</span><span class="ts">04:06</span></p>
+<p><span class="tx">为了说明，这里的 A 一可能是零点二、零点七、零点三。</span><span class="ts">04:14</span></p>
+<p><span class="tx">接下来，对于第二个隐藏层，第二层将是 Dense。 N。</span><span class="ts">04:20</span></p>
 <figure class="shot"><img src="img/P050/kf006.jpg" alt="画面 04:20" loading="lazy"><figcaption>画面 04:20</figcaption></figure>
-<p><span class="ts">04:25</span>这次它只有一个单元，并且同样使用 S 型激活函数。</p>
-<p><span class="ts">04:30</span>然后，你可以通过将这个第二层的函数应用于来自第一层的激活值 A 一来计算 A 二。</p>
-<p><span class="ts">04:39</span>这样会得到 A 二的值，仅为说明，它可能是零点八。</p>
-<p><span class="ts">04:45</span>最后，如果你希望以零点五作为阈值，那么你只需测试 A 二是否大于等于零点五，并相应地设置等于一或零，也就是正类或负类。N。</p>
+<p><span class="tx">这次它只有一个单元，并且同样使用 S 型激活函数。</span><span class="ts">04:25</span></p>
+<p><span class="tx">然后，你可以通过将这个第二层的函数应用于来自第一层的激活值 A 一来计算 A 二。</span><span class="ts">04:30</span></p>
+<p><span class="tx">这样会得到 A 二的值，仅为说明，它可能是零点八。</span><span class="ts">04:39</span></p>
+<p><span class="tx">最后，如果你希望以零点五作为阈值，那么你只需测试 A 二是否大于等于零点五，并相应地设置等于一或零，也就是正类或负类。N。</span><span class="ts">04:45</span></p>
 <figure class="shot"><img src="img/P050/kf007.jpg" alt="画面 04:47" loading="lazy"><figcaption>画面 04:47</figcaption></figure>
-<p><span class="ts">04:59</span>所以，这就是如何在 TensorFlow 中用神经网络做推理。</p>
-<p><span class="ts">05:04</span>这里还有一些我没有展开讲的额外细节，比如如何加载 TensorFlow 库，以及如何加载神经网络的参数 W 和。</p>
-<p><span class="ts">05:16</span>但我们会在实验中讲到这些。</p>
-<p><span class="ts">05:20</span>所以请务必去看看实验。</p>
-<p><span class="ts">05:22</span>但这些就是前向传播的关键步骤，以及如何计算 A 一、A 二，并可选择性地对 A 二进行阈值判断。</p>
-<p><span class="ts">05:35</span>我们安回到子与数子力关可题。</p>
-<p><span class="ts">05:40</span>在这个例子中，x 是像素强度值的列表。</p>
+<p><span class="tx">所以，这就是如何在 TensorFlow 中用神经网络做推理。</span><span class="ts">04:59</span></p>
+<p><span class="tx">这里还有一些我没有展开讲的额外细节，比如如何加载 TensorFlow 库，以及如何加载神经网络的参数 W 和。</span><span class="ts">05:04</span></p>
+<p><span class="tx">但我们会在实验中讲到这些。</span><span class="ts">05:16</span></p>
+<p><span class="tx">所以请务必去看看实验。</span><span class="ts">05:20</span></p>
+<p><span class="tx">但这些就是前向传播的关键步骤，以及如何计算 A 一、A 二，并可选择性地对 A 二进行阈值判断。</span><span class="ts">05:22</span></p>
+<p><span class="tx">我们安回到子与数子力关可题。</span><span class="ts">05:35</span></p>
+<p><span class="tx">在这个例子中，x 是像素强度值的列表。</span><span class="ts">05:40</span></p>
 <figure class="shot"><img src="img/P050/kf008.jpg" alt="画面 05:40" loading="lazy"><figcaption>画面 05:40</figcaption></figure>
-<p><span class="ts">05:45</span>所以 x 等于这个像素强度值列表的 numpy 数组。</p>
-<p><span class="ts">05:51</span>然后，为了初始化并执行一步前向传播，第一层是一个具有二十五个单元和 S 型激活函数的 Dense 层。</p>
-<p><span class="ts">06:03</span>接着，你计算 A 一等于应用于 x 的第一层函数。</p>
-<p><span class="ts">06:09</span>要构建并通过第二层执行推理，你类似地按如下设置第二层，然后计算 a 二等于应用于 a 一的第二层 p 数。</p>
-<p><span class="ts">06:23</span>然后，第三层是第三个也是最后一个 Dense 层。</p>
-<p><span class="ts">06:28</span>最后，你可以有选择性地对 A 三进行阈值处理，以给出 y-hat 的二元预测。</p>
-<p><span class="ts">06:36</span>所以，这就是在 TensorFlow 中执行推理的语法。</p>
-<p><span class="ts">06:40</span>我之前简单提到的一件事是 numpy 数组的结构。</p>
-<p><span class="ts">06:45</span>TensorFlow 以某种特定的方式处理数据，搞清楚这一点很重要。</p>
-<p><span class="ts">06:53</span>因此，在下一个视频中，我们来看看 TensorFlow 是如何处理数据的。</p>
+<p><span class="tx">所以 x 等于这个像素强度值列表的 numpy 数组。</span><span class="ts">05:45</span></p>
+<p><span class="tx">然后，为了初始化并执行一步前向传播，第一层是一个具有二十五个单元和 S 型激活函数的 Dense 层。</span><span class="ts">05:51</span></p>
+<p><span class="tx">接着，你计算 A 一等于应用于 x 的第一层函数。</span><span class="ts">06:03</span></p>
+<p><span class="tx">要构建并通过第二层执行推理，你类似地按如下设置第二层，然后计算 a 二等于应用于 a 一的第二层 p 数。</span><span class="ts">06:09</span></p>
+<p><span class="tx">然后，第三层是第三个也是最后一个 Dense 层。</span><span class="ts">06:23</span></p>
+<p><span class="tx">最后，你可以有选择性地对 A 三进行阈值处理，以给出 y-hat 的二元预测。</span><span class="ts">06:28</span></p>
+<p><span class="tx">所以，这就是在 TensorFlow 中执行推理的语法。</span><span class="ts">06:36</span></p>
+<p><span class="tx">我之前简单提到的一件事是 numpy 数组的结构。</span><span class="ts">06:40</span></p>
+<p><span class="tx">TensorFlow 以某种特定的方式处理数据，搞清楚这一点很重要。</span><span class="ts">06:45</span></p>
+<p><span class="tx">因此，在下一个视频中，我们来看看 TensorFlow 是如何处理数据的。</span><span class="ts">06:53</span></p>
 </main>
 <nav class="pager"><a href="P049.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P051.html">下一讲 →</a></nav>
 <footer>

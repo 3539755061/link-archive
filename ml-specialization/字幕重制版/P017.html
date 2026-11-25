@@ -20,71 +20,71 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P016.html">← 上一讲</a><span class="mid">第 17 / 72 讲</span><a class="next" href="P018.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:03</span>现在，让我们更深入地探究梯度下降，以获得更好的直觉，理解它在做什么以及为什么它可能是有道理的。</p>
+<p><span class="tx">现在，让我们更深入地探究梯度下降，以获得更好的直觉，理解它在做什么以及为什么它可能是有道理的。</span><span class="ts">00:03</span></p>
 <figure class="shot"><img src="img/P017/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <figure class="shot"><img src="img/P017/kf002.jpg" alt="画面 00:04" loading="lazy"><figcaption>画面 00:04</figcaption></figure>
-<p><span class="ts">00:14</span>这是你在上一期视频中看到的梯度下降算法。</p>
+<p><span class="tx">这是你在上一期视频中看到的梯度下降算法。</span><span class="ts">00:14</span></p>
 <figure class="shot"><img src="img/P017/kf003.jpg" alt="画面 00:15" loading="lazy"><figcaption>画面 00:15</figcaption></figure>
-<p><span class="ts">00:18</span>提醒一下，这个变量，这个希腊符号 alpha，是学习率。</p>
-<p><span class="ts">00:24</span>学习率控制着你在更新模型参数 w 和 b 时所迈步幅的大小。</p>
-<p><span class="ts">00:32</span>那么这里的这一项，这个 d 比 dw，是一个导数项。</p>
-<p><span class="ts">00:38</span>按照数学惯例，这个 d 在这里用的是这种有趣的字体。</p>
-<p><span class="ts">00:44</span>万一有观看者拥有数学博士学位，或者是多变量微积分专家，他们可能会想，那不是导数，那是偏导数。</p>
+<p><span class="tx">提醒一下，这个变量，这个希腊符号 alpha，是学习率。</span><span class="ts">00:18</span></p>
+<p><span class="tx">学习率控制着你在更新模型参数 w 和 b 时所迈步幅的大小。</span><span class="ts">00:24</span></p>
+<p><span class="tx">那么这里的这一项，这个 d 比 dw，是一个导数项。</span><span class="ts">00:32</span></p>
+<p><span class="tx">按照数学惯例，这个 d 在这里用的是这种有趣的字体。</span><span class="ts">00:38</span></p>
+<p><span class="tx">万一有观看者拥有数学博士学位，或者是多变量微积分专家，他们可能会想，那不是导数，那是偏导数。</span><span class="ts">00:44</span></p>
 <figure class="shot"><img src="img/P017/kf004.jpg" alt="画面 00:45" loading="lazy"><figcaption>画面 00:45</figcaption></figure>
 <figure class="shot"><img src="img/P017/kf005.jpg" alt="画面 00:56" loading="lazy"><figcaption>画面 00:56</figcaption></figure>
-<p><span class="ts">00:56</span>但出于实现机器学习算法的目的，我就直接称之为导数，不去纠结这些细小的区别了。</p>
-<p><span class="ts">01:06</span>所以我们现在要重点关注的是，更直观地理解这个学习率以及这个导数项在做什么，以及为什么当它们像这样相乘时，会导致参数 w 和 b 的更新。</p>
+<p><span class="tx">但出于实现机器学习算法的目的，我就直接称之为导数，不去纠结这些细小的区别了。</span><span class="ts">00:56</span></p>
+<p><span class="tx">所以我们现在要重点关注的是，更直观地理解这个学习率以及这个导数项在做什么，以及为什么当它们像这样相乘时，会导致参数 w 和 b 的更新。</span><span class="ts">01:06</span></p>
 <figure class="shot"><img src="img/P017/kf006.jpg" alt="画面 01:07" loading="lazy"><figcaption>画面 01:07</figcaption></figure>
 <figure class="shot"><img src="img/P017/kf007.jpg" alt="画面 01:21" loading="lazy"><figcaption>画面 01:21</figcaption></figure>
-<p><span class="ts">01:23</span>为了做到这一点，我们使用一个稍微简单的例子，在这个例子中我们致力于最小化仅一个参数。</p>
-<p><span class="ts">01:32</span>假设你有一个仅关于一个参数 w 的代价函数 J，其中 w 是一个数字。</p>
-<p><span class="ts">01:40</span>这意味着梯度下降现在看起来像这样。</p>
-<p><span class="ts">01:44</span>w 被更新为 w 减去学习率 alpha 乘以 J 括号 w 对 w 的导数。</p>
-<p><span class="ts">01:53</span>你正试图通过调整参数 w 来最小化代价。</p>
-<p><span class="ts">01:59</span>这就像我们之前的例子，当时我们暂时将 b 设为零。</p>
+<p><span class="tx">为了做到这一点，我们使用一个稍微简单的例子，在这个例子中我们致力于最小化仅一个参数。</span><span class="ts">01:23</span></p>
+<p><span class="tx">假设你有一个仅关于一个参数 w 的代价函数 J，其中 w 是一个数字。</span><span class="ts">01:32</span></p>
+<p><span class="tx">这意味着梯度下降现在看起来像这样。</span><span class="ts">01:40</span></p>
+<p><span class="tx">w 被更新为 w 减去学习率 alpha 乘以 J 括号 w 对 w 的导数。</span><span class="ts">01:44</span></p>
+<p><span class="tx">你正试图通过调整参数 w 来最小化代价。</span><span class="ts">01:53</span></p>
+<p><span class="tx">这就像我们之前的例子，当时我们暂时将 b 设为零。</span><span class="ts">01:59</span></p>
 <figure class="shot"><img src="img/P017/kf008.jpg" alt="画面 02:00" loading="lazy"><figcaption>画面 02:00</figcaption></figure>
-<p><span class="ts">02:05</span>只有一个参数 w 而不是两个，你就能看代价函数 J 的二维图，而不是三维图。</p>
-<p><span class="ts">02:15</span>我们来看看梯度下降对这个函数 J 括号 w 做了什么。</p>
-<p><span class="ts">02:21</span>这里，横轴是参数 w，纵轴是代价 J 括号 w。</p>
-<p><span class="ts">02:30</span>现在，让我们用某个 w 的起始值来初始化梯度下降。</p>
-<p><span class="ts">02:39</span>想象一下，你从函数 J 上的这个点开始。</p>
-<p><span class="ts">02:45</span>梯度下降要做的是，将 w 更新为 w 减去学习率 alpha 乘以 J 括号 w 对 w 的导数。</p>
-<p><span class="ts">02:56</span>我们来看看这个导数项意味着什么。</p>
-<p><span class="ts">03:00</span>理解曲线上这一点导数的一种方法是，画一条切线，也就是一条在那一点与该曲线相切的直线。</p>
-<p><span class="ts">03:12</span>在数学上，这条线的斜率就是函数 J 在这一点的导数。</p>
-<p><span class="ts">03:18</span>为了得到斜率，你可以画个像这样的小三角形。</p>
-<p><span class="ts">03:24</span>如果你计算这个三角形的高除以宽，那就是斜率。</p>
-<p><span class="ts">03:30</span>举例来说，这个斜率可能是，比如，二除以一。</p>
-<p><span class="ts">03:36</span>当切线朝右上方时，斜率为正，这意味着这个导数是一个正数，所以它大于零。</p>
-<p><span class="ts">03:48</span>因此，更新后的 w 将是 w 减去学习率乘以某个正数。</p>
-<p><span class="ts">03:59</span>所以，如果你用 w 减去一个正数，你最终得到的新 w 值会变小。</p>
-<p><span class="ts">04:07</span>所以在图上，你是在向左移动。</p>
-<p><span class="ts">04:14</span>你可能会注意到，如果你目标是降低代价 J，这样做是正确的，因为当你在这条曲线上向左移动时，代价 J 会减小，你正越来越接近 J 的最小值，最小值在这里。</p>
+<p><span class="tx">只有一个参数 w 而不是两个，你就能看代价函数 J 的二维图，而不是三维图。</span><span class="ts">02:05</span></p>
+<p><span class="tx">我们来看看梯度下降对这个函数 J 括号 w 做了什么。</span><span class="ts">02:15</span></p>
+<p><span class="tx">这里，横轴是参数 w，纵轴是代价 J 括号 w。</span><span class="ts">02:21</span></p>
+<p><span class="tx">现在，让我们用某个 w 的起始值来初始化梯度下降。</span><span class="ts">02:30</span></p>
+<p><span class="tx">想象一下，你从函数 J 上的这个点开始。</span><span class="ts">02:39</span></p>
+<p><span class="tx">梯度下降要做的是，将 w 更新为 w 减去学习率 alpha 乘以 J 括号 w 对 w 的导数。</span><span class="ts">02:45</span></p>
+<p><span class="tx">我们来看看这个导数项意味着什么。</span><span class="ts">02:56</span></p>
+<p><span class="tx">理解曲线上这一点导数的一种方法是，画一条切线，也就是一条在那一点与该曲线相切的直线。</span><span class="ts">03:00</span></p>
+<p><span class="tx">在数学上，这条线的斜率就是函数 J 在这一点的导数。</span><span class="ts">03:12</span></p>
+<p><span class="tx">为了得到斜率，你可以画个像这样的小三角形。</span><span class="ts">03:18</span></p>
+<p><span class="tx">如果你计算这个三角形的高除以宽，那就是斜率。</span><span class="ts">03:24</span></p>
+<p><span class="tx">举例来说，这个斜率可能是，比如，二除以一。</span><span class="ts">03:30</span></p>
+<p><span class="tx">当切线朝右上方时，斜率为正，这意味着这个导数是一个正数，所以它大于零。</span><span class="ts">03:36</span></p>
+<p><span class="tx">因此，更新后的 w 将是 w 减去学习率乘以某个正数。</span><span class="ts">03:48</span></p>
+<p><span class="tx">所以，如果你用 w 减去一个正数，你最终得到的新 w 值会变小。</span><span class="ts">03:59</span></p>
+<p><span class="tx">所以在图上，你是在向左移动。</span><span class="ts">04:07</span></p>
+<p><span class="tx">你可能会注意到，如果你目标是降低代价 J，这样做是正确的，因为当你在这条曲线上向左移动时，代价 J 会减小，你正越来越接近 J 的最小值，最小值在这里。</span><span class="ts">04:14</span></p>
 <figure class="shot"><img src="img/P017/kf009.jpg" alt="画面 04:15" loading="lazy"><figcaption>画面 04:15</figcaption></figure>
-<p><span class="ts">04:30</span>所以到目前为止，梯度下降似乎在做正确的事情。</p>
+<p><span class="tx">所以到目前为止，梯度下降似乎在做正确的事情。</span><span class="ts">04:30</span></p>
 <figure class="shot"><img src="img/P017/kf010.jpg" alt="画面 04:31" loading="lazy"><figcaption>画面 04:31</figcaption></figure>
-<p><span class="ts">04:35</span>现在，让我们看看另一个例子。</p>
-<p><span class="ts">04:38</span>我们取和上面相同的函数 J 括号 W，但现在假设你将梯度下降初始化在一个不同的位置。</p>
-<p><span class="ts">04:48</span>比如，为 W 选一个起始值，在左边这里。</p>
-<p><span class="ts">04:57</span>现在，记住导数项是 J 括号 w 对 w 的导数。</p>
-<p><span class="ts">05:05</span>当我们看上图这一点的切线时，这条线的斜率就是 J 在这一点的导数。</p>
-<p><span class="ts">05:12</span>但这条切线是朝右下方倾斜的。</p>
-<p><span class="ts">05:16</span>所以这条向右下倾斜的线具有负斜率。</p>
-<p><span class="ts">05:21</span>换句话说，J 在这个点的导数是一个负数。</p>
-<p><span class="ts">05:26</span>例如，如果你画一个三角形，那么像这样的高是负二，宽是一。</p>
-<p><span class="ts">05:34</span>所以斜率是负二除以一，结果是负二，一个负数。</p>
-<p><span class="ts">05:41</span>所以当你更新 w 时，你得到的是 w 减去学习率乘以一个负数。</p>
-<p><span class="ts">05:48</span>这就意味着你从 w 中减去一个负数。</p>
-<p><span class="ts">05:53</span>但减去一个负数意味着加上一个正数，所以你最终增加了 w。</p>
-<p><span class="ts">06:03</span>因为减去一个负数，等同于给 w 加上一个正数。</p>
-<p><span class="ts">06:09</span>所以这一步梯度下降导致 W 增加，这意味着你在图上向右移动，而你的代价 J 已经下降到这里了。</p>
-<p><span class="ts">06:22</span>再一次，看起来梯度下降在做合理的事情。</p>
-<p><span class="ts">06:30</span>所以希望这最后两个例子，能展示一些关于导数项在做什么，以及它为何能帮助梯度下降改变 W 以带你接近最小值的背后直觉。</p>
+<p><span class="tx">现在，让我们看看另一个例子。</span><span class="ts">04:35</span></p>
+<p><span class="tx">我们取和上面相同的函数 J 括号 W，但现在假设你将梯度下降初始化在一个不同的位置。</span><span class="ts">04:38</span></p>
+<p><span class="tx">比如，为 W 选一个起始值，在左边这里。</span><span class="ts">04:48</span></p>
+<p><span class="tx">现在，记住导数项是 J 括号 w 对 w 的导数。</span><span class="ts">04:57</span></p>
+<p><span class="tx">当我们看上图这一点的切线时，这条线的斜率就是 J 在这一点的导数。</span><span class="ts">05:05</span></p>
+<p><span class="tx">但这条切线是朝右下方倾斜的。</span><span class="ts">05:12</span></p>
+<p><span class="tx">所以这条向右下倾斜的线具有负斜率。</span><span class="ts">05:16</span></p>
+<p><span class="tx">换句话说，J 在这个点的导数是一个负数。</span><span class="ts">05:21</span></p>
+<p><span class="tx">例如，如果你画一个三角形，那么像这样的高是负二，宽是一。</span><span class="ts">05:26</span></p>
+<p><span class="tx">所以斜率是负二除以一，结果是负二，一个负数。</span><span class="ts">05:34</span></p>
+<p><span class="tx">所以当你更新 w 时，你得到的是 w 减去学习率乘以一个负数。</span><span class="ts">05:41</span></p>
+<p><span class="tx">这就意味着你从 w 中减去一个负数。</span><span class="ts">05:48</span></p>
+<p><span class="tx">但减去一个负数意味着加上一个正数，所以你最终增加了 w。</span><span class="ts">05:53</span></p>
+<p><span class="tx">因为减去一个负数，等同于给 w 加上一个正数。</span><span class="ts">06:03</span></p>
+<p><span class="tx">所以这一步梯度下降导致 W 增加，这意味着你在图上向右移动，而你的代价 J 已经下降到这里了。</span><span class="ts">06:09</span></p>
+<p><span class="tx">再一次，看起来梯度下降在做合理的事情。</span><span class="ts">06:22</span></p>
+<p><span class="tx">所以希望这最后两个例子，能展示一些关于导数项在做什么，以及它为何能帮助梯度下降改变 W 以带你接近最小值的背后直觉。</span><span class="ts">06:30</span></p>
 <figure class="shot"><img src="img/P017/kf011.jpg" alt="画面 06:31" loading="lazy"><figcaption>画面 06:31</figcaption></figure>
-<p><span class="ts">06:44</span>我希望这期视频让你对梯度下降中导数项的作用有了一定的理解。</p>
-<p><span class="ts">06:51</span>梯度下降算法中另一个关键的量是学习率 alpha。</p>
-<p><span class="ts">06:58</span>如果它太小会怎样，或者如果它太大会发生什么？</p>
-<p><span class="ts">07:04</span>在下期视频中，让我们更深入地看看参数 alpha，以帮助建立关于它做什么的直觉，以及如何为你的梯度下降实现选择一个好的 alpha 值。</p>
+<p><span class="tx">我希望这期视频让你对梯度下降中导数项的作用有了一定的理解。</span><span class="ts">06:44</span></p>
+<p><span class="tx">梯度下降算法中另一个关键的量是学习率 alpha。</span><span class="ts">06:51</span></p>
+<p><span class="tx">如果它太小会怎样，或者如果它太大会发生什么？</span><span class="ts">06:58</span></p>
+<p><span class="tx">在下期视频中，让我们更深入地看看参数 alpha，以帮助建立关于它做什么的直觉，以及如何为你的梯度下降实现选择一个好的 alpha 值。</span><span class="ts">07:04</span></p>
 </main>
 <nav class="pager"><a href="P016.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P018.html">下一讲 →</a></nav>
 <footer>

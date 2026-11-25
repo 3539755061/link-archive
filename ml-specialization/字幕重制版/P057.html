@@ -20,81 +20,81 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P056.html">← 上一讲</a><span class="mid">第 57 / 72 讲</span><a class="next" href="P058.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:03</span>你知道，矩阵就是一个数字块或者说二维数组。</p>
-<p><span class="ts">00:08</span>两个矩阵相乘是什么意思呢？</p>
-<p><span class="ts">00:13</span>为了逐步理解矩阵乘法，我们先来看看向量之间的点乘是怎么做的。</p>
+<p><span class="tx">你知道，矩阵就是一个数字块或者说二维数组。</span><span class="ts">00:03</span></p>
+<p><span class="tx">两个矩阵相乘是什么意思呢？</span><span class="ts">00:08</span></p>
+<p><span class="tx">为了逐步理解矩阵乘法，我们先来看看向量之间的点乘是怎么做的。</span><span class="ts">00:13</span></p>
 <figure class="shot"><img src="img/P057/kf001.jpg" alt="画面 00:14" loading="lazy"><figcaption>画面 00:14</figcaption></figure>
-<p><span class="ts">00:22</span>我们以这个向量（一，二）和这个向量（三，四）的点乘为例。</p>
-<p><span class="ts">00:31</span>如果 z 是这两个向量的点乘，那么计算 z 的方法就是用第一个元素乘以这里的第一个元素。</p>
-<p><span class="ts">00:40</span>也就是一乘三，加上第二个元素乘第二个元素，也就是加上二乘四。</p>
-<p><span class="ts">00:48</span>所以就是三加八，等于十一。</p>
-<p><span class="ts">00:54</span>更一般的情况是，如果 z 是向量 a 和向量 w 的点乘，那你计算 z 的方法就是，将第一对元素相乘，然后是第二对元素相乘，然后是第三对，以此类推，最后把所有乘积加起来。</p>
+<p><span class="tx">我们以这个向量（一，二）和这个向量（三，四）的点乘为例。</span><span class="ts">00:22</span></p>
+<p><span class="tx">如果 z 是这两个向量的点乘，那么计算 z 的方法就是用第一个元素乘以这里的第一个元素。</span><span class="ts">00:31</span></p>
+<p><span class="tx">也就是一乘三，加上第二个元素乘第二个元素，也就是加上二乘四。</span><span class="ts">00:40</span></p>
+<p><span class="tx">所以就是三加八，等于十一。</span><span class="ts">00:48</span></p>
+<p><span class="tx">更一般的情况是，如果 z 是向量 a 和向量 w 的点乘，那你计算 z 的方法就是，将第一对元素相乘，然后是第二对元素相乘，然后是第三对，以此类推，最后把所有乘积加起来。</span><span class="ts">00:54</span></p>
 <figure class="shot"><img src="img/P057/kf002.jpg" alt="画面 00:55" loading="lazy"><figcaption>画面 00:55</figcaption></figure>
 <figure class="shot"><img src="img/P057/kf003.jpg" alt="画面 01:13" loading="lazy"><figcaption>画面 01:13</figcaption></figure>
-<p><span class="ts">01:15</span>实际上，点乘还有另一种等价的写法。给定一个向量 A，即写成列向量的（一，二），你可以把它成。</p>
-<p><span class="ts">01:30</span>也就是说，你可以通过取 A 的转置，把它从所谓的列向量变成一个行向量。</p>
-<p><span class="ts">01:38</span>向量 A 的转置，意思是你把这个向量拿起来，让它的元素像这样横放。</p>
-<p><span class="ts">01:48</span>而事实证明，如果你把 A 转置，这是一个行向量，或者说你可以把它看作一个一乘二矩阵，与 W 相乘。</p>
+<p><span class="tx">实际上，点乘还有另一种等价的写法。给定一个向量 A，即写成列向量的（一，二），你可以把它成。</span><span class="ts">01:15</span></p>
+<p><span class="tx">也就是说，你可以通过取 A 的转置，把它从所谓的列向量变成一个行向量。</span><span class="ts">01:30</span></p>
+<p><span class="tx">向量 A 的转置，意思是你把这个向量拿起来，让它的元素像这样横放。</span><span class="ts">01:38</span></p>
+<p><span class="tx">而事实证明，如果你把 A 转置，这是一个行向量，或者说你可以把它看作一个一乘二矩阵，与 W 相乘。</span><span class="ts">01:48</span></p>
 <figure class="shot"><img src="img/P057/kf004.jpg" alt="画面 01:50" loading="lazy"><figcaption>画面 01:50</figcaption></figure>
-<p><span class="ts">01:59</span>现在你可以把 W 看作一个二乘一矩阵，总结一下，Z 等于 A 与 W 的点乘，等同于 Z 等于 A 转置，也就是 A 被横放，乘以 W。</p>
+<p><span class="tx">现在你可以把 W 看作一个二乘一矩阵，总结一下，Z 等于 A 与 W 的点乘，等同于 Z 等于 A 转置，也就是 A 被横放，乘以 W。</span><span class="ts">01:59</span></p>
 <figure class="shot"><img src="img/P057/kf005.jpg" alt="画面 02:00" loading="lazy"><figcaption>画面 02:00</figcaption></figure>
-<p><span class="ts">02:30</span>这对理解矩阵乘法会有帮助，这两种写法只是完全相同的计算的不同表达，最终结果都是 Z。</p>
-<p><span class="ts">02:41</span>现在我们来看看向量与矩阵的乘法，也就是你用一个向量去乘以一个矩阵。</p>
+<p><span class="tx">这对理解矩阵乘法会有帮助，这两种写法只是完全相同的计算的不同表达，最终结果都是 Z。</span><span class="ts">02:30</span></p>
+<p><span class="tx">现在我们来看看向量与矩阵的乘法，也就是你用一个向量去乘以一个矩阵。</span><span class="ts">02:41</span></p>
 <figure class="shot"><img src="img/P057/kf006.jpg" alt="画面 02:42" loading="lazy"><figcaption>画面 02:42</figcaption></figure>
-<p><span class="ts">02:50</span>这里再次给出向量 A（一，二），A 转置就是 A 被横放。</p>
-<p><span class="ts">02:58</span>所以，它不再是二乘一矩阵，而是变成一个一乘二矩阵。</p>
-<p><span class="ts">03:05</span>现在让我创建一个二乘二矩阵 W，包含这四个元素：三、四、五、六。</p>
-<p><span class="ts">03:17</span>如果你想计算大写的 Z 等于 A 转置乘以 W。</p>
-<p><span class="ts">03:17</span>如果你想计算大写的 Z 等于 A 转置乘以 W，结果 Z 会是一个一乘二矩阵。</p>
-<p><span class="ts">03:37</span>要计算 Z 的第一个值，我们取 A 转置，也就是这里的一和二，然后和 W 的第一列相乘。</p>
-<p><span class="ts">03:50</span>所以要计算 Z 的第一个元素，你得到一乘三加二乘四，我们之前见过，结果等于十一。</p>
-<p><span class="ts">04:01</span>所以 Z 的第一个元素是十一。</p>
-<p><span class="ts">04:05</span>我们再来算算 Z 的第二个元素是多少。</p>
-<p><span class="ts">04:09</span>你只需重复这个过程，但现在是用 A 转置去乘以 W 的第二列。</p>
-<p><span class="ts">04:17</span>做这个计算，你得到一乘五加二乘六，等于五加十二，结果是十七。</p>
-<p><span class="ts">04:29</span>所以它等于十七。</p>
-<p><span class="ts">04:33</span>因此 Z 等于这个一乘二矩阵，元素为十一和十七。</p>
-<p><span class="ts">04:40</span>好，再说最后一件事，我们就结束这个视频，那就是如何把向量矩阵乘法推广到矩阵与矩阵的乘法。</p>
+<p><span class="tx">这里再次给出向量 A（一，二），A 转置就是 A 被横放。</span><span class="ts">02:50</span></p>
+<p><span class="tx">所以，它不再是二乘一矩阵，而是变成一个一乘二矩阵。</span><span class="ts">02:58</span></p>
+<p><span class="tx">现在让我创建一个二乘二矩阵 W，包含这四个元素：三、四、五、六。</span><span class="ts">03:05</span></p>
+<p><span class="tx">如果你想计算大写的 Z 等于 A 转置乘以 W。</span><span class="ts">03:17</span></p>
+<p><span class="tx">如果你想计算大写的 Z 等于 A 转置乘以 W，结果 Z 会是一个一乘二矩阵。</span><span class="ts">03:17</span></p>
+<p><span class="tx">要计算 Z 的第一个值，我们取 A 转置，也就是这里的一和二，然后和 W 的第一列相乘。</span><span class="ts">03:37</span></p>
+<p><span class="tx">所以要计算 Z 的第一个元素，你得到一乘三加二乘四，我们之前见过，结果等于十一。</span><span class="ts">03:50</span></p>
+<p><span class="tx">所以 Z 的第一个元素是十一。</span><span class="ts">04:01</span></p>
+<p><span class="tx">我们再来算算 Z 的第二个元素是多少。</span><span class="ts">04:05</span></p>
+<p><span class="tx">你只需重复这个过程，但现在是用 A 转置去乘以 W 的第二列。</span><span class="ts">04:09</span></p>
+<p><span class="tx">做这个计算，你得到一乘五加二乘六，等于五加十二，结果是十七。</span><span class="ts">04:17</span></p>
+<p><span class="tx">所以它等于十七。</span><span class="ts">04:29</span></p>
+<p><span class="tx">因此 Z 等于这个一乘二矩阵，元素为十一和十七。</span><span class="ts">04:33</span></p>
+<p><span class="tx">好，再说最后一件事，我们就结束这个视频，那就是如何把向量矩阵乘法推广到矩阵与矩阵的乘法。</span><span class="ts">04:40</span></p>
 <figure class="shot"><img src="img/P057/kf007.jpg" alt="画面 04:44" loading="lazy"><figcaption>画面 04:44</figcaption></figure>
-<p><span class="ts">04:53</span>我有一个矩阵 A，包含这四个元素。</p>
-<p><span class="ts">04:56</span>第一列是一、二，第二列是负一、负二。</p>
-<p><span class="ts">05:04</span>我想知道如何计算 A 转置乘以 W。</p>
-<p><span class="ts">05:10</span>和上一张幻灯片不同，这里的 A 是一个矩阵，而不只是一个向量。</p>
-<p><span class="ts">05:16</span>但矩阵就是一组不同的向量按列堆叠在一起。</p>
-<p><span class="ts">05:22</span>所以我们先来看看 A 的转置是什么。</p>
-<p><span class="ts">05:26</span>为了计算 A 的转置，我们要取 A 的各列，和对向量做转置时的情况类似，我们要把这些列逐一拿过来并横放。</p>
-<p><span class="ts">05:39</span>所以第一列（一，二）变成了第一行（一，二），因为它被横放了。</p>
-<p><span class="ts">05:48</span>而第二列（负一，负二）被横放后变成（负一，负二），就像这样。</p>
-<p><span class="ts">05:56</span>所以转置一个矩阵的方法就是，取出各列，然后一列接一列地把它们横放。</p>
-<p><span class="ts">06:03</span>这样你就得到了 A 的转置。</p>
-<p><span class="ts">06:08</span>接下来，我们有这个矩阵 W，我把它写成三、四、五、六。</p>
-<p><span class="ts">06:17</span>所以它有一列（三，四）和一列（五，六，我鼓励你用一种方式来看待矩阵，至少这对实现神经网络很有用，就是当你看到一个矩阵时，去想。</p>
-<p><span class="ts">06:34</span>而当你看到一个矩阵的转置时，就去想它的行被组合在一起，正如此处用 A 和 A 转置以及 W 所展示的样子。</p>
-<p><span class="ts">06:46</span>现在我来展示如何计算 A 转置乘以 W。</p>
-<p><span class="ts">06:53</span>为了进行这个计算，我把 A 的列记为 A 一和 A 二。</p>
-<p><span class="ts">07:01</span>这意味着 A 一转置是 A 转置的第一行，A 二转置是 A 转置的第二行。</p>
-<p><span class="ts">07:13</span>然后，和之前一样，我把 W 的列记为 W 一和 W 二。</p>
-<p><span class="ts">07:25</span>我们要做的第一件事是，先忽略 A 的第二行，只看 A 的第一行。</p>
-<p><span class="ts">07:35</span>我们取这一行（一，二），也就是 A 一转置，用它去乘以 W。</p>
-<p><span class="ts">07:44</span>你从上一张幻灯片已经知道怎么做了。</p>
-<p><span class="ts">07:48</span>第一个元素是（一，二）与（三，四）的内积或点乘。</p>
-<p><span class="ts">07:55</span>所以结果是一乘三加二乘四，等于十一。</p>
-<p><span class="ts">08:00</span>然后第二个元素是（一，二），即 A 转置，与（五，六）的内积。</p>
-<p><span class="ts">08:12</span>所以是五乘一加六乘二，即五加十二，等于十七。</p>
-<p><span class="ts">08:19</span>这样你就得到了 Z 等于 A 转置 W 的第一行。</p>
-<p><span class="ts">08:25</span>我们做的就是用 A 一转置去乘以 W。</p>
-<p><span class="ts">08:30</span>这正是我们在上一张幻灯片中做过的。</p>
-<p><span class="ts">08:34</span>接下来，我们暂时忘掉 A 一，只看 A 二，用 A 二转置去乘以 W。</p>
-<p><span class="ts">08:44</span>现在我们算的是 A 二转置乘以 W。</p>
-<p><span class="ts">08:49</span>要计算这个，我们先把负一、负二和（三，四）做点乘。</p>
-<p><span class="ts">08:57</span>得到负一乘三加负二乘四，结果是负十一。</p>
-<p><span class="ts">09:06</span>然后我们还要计算 A 二转置乘以第二列，即负一乘五加负二乘六，结果是负十七。</p>
-<p><span class="ts">09:19</span>最终你得到 A 转置乘以 W 等于这个二乘二矩阵。</p>
-<p><span class="ts">09:27</span>我们接下来谈谈矩阵乘法的一般形式。</p>
-<p><span class="ts">09:35</span>这就是一个向量与矩阵相乘，或者说矩阵与矩阵相乘的例子。</p>
-<p><span class="ts">09:42</span>其中涉及很多向量之间的点乘运算，它们以特定的方式排列来逐一构建输出 Z 的各个元素。</p>
-<p><span class="ts">09:52</span>我知道这内容很多，但在下个视频里，我们来看看矩阵乘法的一般形式是如何定义的。</p>
-<p><span class="ts">10:00</span>希望那能让这一切都变得清晰。</p>
+<p><span class="tx">我有一个矩阵 A，包含这四个元素。</span><span class="ts">04:53</span></p>
+<p><span class="tx">第一列是一、二，第二列是负一、负二。</span><span class="ts">04:56</span></p>
+<p><span class="tx">我想知道如何计算 A 转置乘以 W。</span><span class="ts">05:04</span></p>
+<p><span class="tx">和上一张幻灯片不同，这里的 A 是一个矩阵，而不只是一个向量。</span><span class="ts">05:10</span></p>
+<p><span class="tx">但矩阵就是一组不同的向量按列堆叠在一起。</span><span class="ts">05:16</span></p>
+<p><span class="tx">所以我们先来看看 A 的转置是什么。</span><span class="ts">05:22</span></p>
+<p><span class="tx">为了计算 A 的转置，我们要取 A 的各列，和对向量做转置时的情况类似，我们要把这些列逐一拿过来并横放。</span><span class="ts">05:26</span></p>
+<p><span class="tx">所以第一列（一，二）变成了第一行（一，二），因为它被横放了。</span><span class="ts">05:39</span></p>
+<p><span class="tx">而第二列（负一，负二）被横放后变成（负一，负二），就像这样。</span><span class="ts">05:48</span></p>
+<p><span class="tx">所以转置一个矩阵的方法就是，取出各列，然后一列接一列地把它们横放。</span><span class="ts">05:56</span></p>
+<p><span class="tx">这样你就得到了 A 的转置。</span><span class="ts">06:03</span></p>
+<p><span class="tx">接下来，我们有这个矩阵 W，我把它写成三、四、五、六。</span><span class="ts">06:08</span></p>
+<p><span class="tx">所以它有一列（三，四）和一列（五，六，我鼓励你用一种方式来看待矩阵，至少这对实现神经网络很有用，就是当你看到一个矩阵时，去想。</span><span class="ts">06:17</span></p>
+<p><span class="tx">而当你看到一个矩阵的转置时，就去想它的行被组合在一起，正如此处用 A 和 A 转置以及 W 所展示的样子。</span><span class="ts">06:34</span></p>
+<p><span class="tx">现在我来展示如何计算 A 转置乘以 W。</span><span class="ts">06:46</span></p>
+<p><span class="tx">为了进行这个计算，我把 A 的列记为 A 一和 A 二。</span><span class="ts">06:53</span></p>
+<p><span class="tx">这意味着 A 一转置是 A 转置的第一行，A 二转置是 A 转置的第二行。</span><span class="ts">07:01</span></p>
+<p><span class="tx">然后，和之前一样，我把 W 的列记为 W 一和 W 二。</span><span class="ts">07:13</span></p>
+<p><span class="tx">我们要做的第一件事是，先忽略 A 的第二行，只看 A 的第一行。</span><span class="ts">07:25</span></p>
+<p><span class="tx">我们取这一行（一，二），也就是 A 一转置，用它去乘以 W。</span><span class="ts">07:35</span></p>
+<p><span class="tx">你从上一张幻灯片已经知道怎么做了。</span><span class="ts">07:44</span></p>
+<p><span class="tx">第一个元素是（一，二）与（三，四）的内积或点乘。</span><span class="ts">07:48</span></p>
+<p><span class="tx">所以结果是一乘三加二乘四，等于十一。</span><span class="ts">07:55</span></p>
+<p><span class="tx">然后第二个元素是（一，二），即 A 转置，与（五，六）的内积。</span><span class="ts">08:00</span></p>
+<p><span class="tx">所以是五乘一加六乘二，即五加十二，等于十七。</span><span class="ts">08:12</span></p>
+<p><span class="tx">这样你就得到了 Z 等于 A 转置 W 的第一行。</span><span class="ts">08:19</span></p>
+<p><span class="tx">我们做的就是用 A 一转置去乘以 W。</span><span class="ts">08:25</span></p>
+<p><span class="tx">这正是我们在上一张幻灯片中做过的。</span><span class="ts">08:30</span></p>
+<p><span class="tx">接下来，我们暂时忘掉 A 一，只看 A 二，用 A 二转置去乘以 W。</span><span class="ts">08:34</span></p>
+<p><span class="tx">现在我们算的是 A 二转置乘以 W。</span><span class="ts">08:44</span></p>
+<p><span class="tx">要计算这个，我们先把负一、负二和（三，四）做点乘。</span><span class="ts">08:49</span></p>
+<p><span class="tx">得到负一乘三加负二乘四，结果是负十一。</span><span class="ts">08:57</span></p>
+<p><span class="tx">然后我们还要计算 A 二转置乘以第二列，即负一乘五加负二乘六，结果是负十七。</span><span class="ts">09:06</span></p>
+<p><span class="tx">最终你得到 A 转置乘以 W 等于这个二乘二矩阵。</span><span class="ts">09:19</span></p>
+<p><span class="tx">我们接下来谈谈矩阵乘法的一般形式。</span><span class="ts">09:27</span></p>
+<p><span class="tx">这就是一个向量与矩阵相乘，或者说矩阵与矩阵相乘的例子。</span><span class="ts">09:35</span></p>
+<p><span class="tx">其中涉及很多向量之间的点乘运算，它们以特定的方式排列来逐一构建输出 Z 的各个元素。</span><span class="ts">09:42</span></p>
+<p><span class="tx">我知道这内容很多，但在下个视频里，我们来看看矩阵乘法的一般形式是如何定义的。</span><span class="ts">09:52</span></p>
+<p><span class="tx">希望那能让这一切都变得清晰。</span><span class="ts">10:00</span></p>
 </main>
 <nav class="pager"><a href="P056.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P058.html">下一讲 →</a></nav>
 <footer>

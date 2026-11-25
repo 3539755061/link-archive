@@ -20,89 +20,89 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P038.html">← 上一讲</a><span class="mid">第 39 / 72 讲</span><a class="next" href="P040.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:02</span>在上一个视频中，我们了解到正则化尝试让参数 w 一到 w n 的值变小，以减少过拟合。</p>
+<p><span class="tx">在上一个视频中，我们了解到正则化尝试让参数 w 一到 w n 的值变小，以减少过拟合。</span><span class="ts">00:02</span></p>
 <figure class="shot"><img src="img/P039/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
-<p><span class="ts">00:11</span>在本视频中，我们将基于这个直观理解，为你的学习算法开发一个修正后的代价函数，你可以用它来实际应用正则化。一，回顾一下之前视频中的这个例子，我们看到，如果用二次函数拟合这些数据，会得到相当好的拟合。</p>
+<p><span class="tx">在本视频中，我们将基于这个直观理解，为你的学习算法开发一个修正后的代价函数，你可以用它来实际应用正则化。一，回顾一下之前视频中的这个例子，我们看到，如果用二次函数拟合这些数据，会得到相当好的拟合。</span><span class="ts">00:11</span></p>
 <figure class="shot"><img src="img/P039/kf002.jpg" alt="画面 00:28" loading="lazy"><figcaption>画面 00:28</figcaption></figure>
-<p><span class="ts">00:36</span>但是，如果你拟合一个非常高阶的多项式，最终会得到一条过拟合数据的曲线。</p>
+<p><span class="tx">但是，如果你拟合一个非常高阶的多项式，最终会得到一条过拟合数据的曲线。</span><span class="ts">00:36</span></p>
 <figure class="shot"><img src="img/P039/kf003.jpg" alt="画面 00:36" loading="lazy"><figcaption>画面 00:36</figcaption></figure>
-<p><span class="ts">00:45</span>现在，考虑下面这种做法。</p>
-<p><span class="ts">00:48</span>假设你有办法让参数 W 三和 w 四变得非常非常小，比如说接近于零。</p>
-<p><span class="ts">01:00</span>假设我们不直接最小化这个目标函数，这是线性回归的代价函数。</p>
-<p><span class="ts">01:08</span>假设我们修改代价函数，给它加上一千乘以 w 三的平方，再加上一千乘以 w 四的平方。</p>
-<p><span class="ts">01:19</span>这里我选择一千是因为它是一个大数，但其他任何非常大的数字也可以。</p>
-<p><span class="ts">01:25</span>因此，使用这个修正后的代价函数，如果 w 三和 w 四很大，实际上就会对模型进行惩罚。</p>
-<p><span class="ts">01:34</span>因为如果你想最小化这个函数，让这个新的代价函数变小的唯一方法就是让 w 三和 w 四都变小，否则，这一千乘以 W 三的平方和一千乘以 w 四的平方项将会变得非常大。</p>
+<p><span class="tx">现在，考虑下面这种做法。</span><span class="ts">00:45</span></p>
+<p><span class="tx">假设你有办法让参数 W 三和 w 四变得非常非常小，比如说接近于零。</span><span class="ts">00:48</span></p>
+<p><span class="tx">假设我们不直接最小化这个目标函数，这是线性回归的代价函数。</span><span class="ts">01:00</span></p>
+<p><span class="tx">假设我们修改代价函数，给它加上一千乘以 w 三的平方，再加上一千乘以 w 四的平方。</span><span class="ts">01:08</span></p>
+<p><span class="tx">这里我选择一千是因为它是一个大数，但其他任何非常大的数字也可以。</span><span class="ts">01:19</span></p>
+<p><span class="tx">因此，使用这个修正后的代价函数，如果 w 三和 w 四很大，实际上就会对模型进行惩罚。</span><span class="ts">01:25</span></p>
+<p><span class="tx">因为如果你想最小化这个函数，让这个新的代价函数变小的唯一方法就是让 w 三和 w 四都变小，否则，这一千乘以 W 三的平方和一千乘以 w 四的平方项将会变得非常大。</span><span class="ts">01:34</span></p>
 <figure class="shot"><img src="img/P039/kf004.jpg" alt="画面 01:44" loading="lazy"><figcaption>画面 01:44</figcaption></figure>
-<p><span class="ts">01:53</span>所以，当你最小化这个函数时，最终会得到 w 三接近于零，w 四也接近于零。</p>
-<p><span class="ts">02:01</span>这样我们实际上就几乎消除了特征 x 的三次方和 x 的四次方的影响，去掉了这里的这两项。</p>
-<p><span class="ts">02:13</span>如果我们这样做，那么最终对数据的拟合就会更接近二次函数，可能只包含来自 x 的三次方和 x 的四次方特征的微小贡献。</p>
+<p><span class="tx">所以，当你最小化这个函数时，最终会得到 w 三接近于零，w 四也接近于零。</span><span class="ts">01:53</span></p>
+<p><span class="tx">这样我们实际上就几乎消除了特征 x 的三次方和 x 的四次方的影响，去掉了这里的这两项。</span><span class="ts">02:01</span></p>
+<p><span class="tx">如果我们这样做，那么最终对数据的拟合就会更接近二次函数，可能只包含来自 x 的三次方和 x 的四次方特征的微小贡献。</span><span class="ts">02:13</span></p>
 <figure class="shot"><img src="img/P039/kf005.jpg" alt="画面 02:15" loading="lazy"><figcaption>画面 02:15</figcaption></figure>
-<p><span class="ts">02:26</span>这很好，因为与所有参数都可以很大并最终得到这条剧烈波动的曲线相比，这样对数据的拟合要好。</p>
-<p><span class="ts">02:37</span>更一般地，这就是正则化背后的思想。</p>
+<p><span class="tx">这很好，因为与所有参数都可以很大并最终得到这条剧烈波动的曲线相比，这样对数据的拟合要好。</span><span class="ts">02:26</span></p>
+<p><span class="tx">更一般地，这就是正则化背后的思想。</span><span class="ts">02:37</span></p>
 <figure class="shot"><img src="img/P039/kf006.jpg" alt="画面 02:39" loading="lazy"><figcaption>画面 02:39</figcaption></figure>
-<p><span class="ts">02:42</span>其思想是，如果参数的值较小，那就有点像拥有一个更简单的模型，也许特征更少，因此更不容易出现过拟合。</p>
+<p><span class="tx">其思想是，如果参数的值较小，那就有点像拥有一个更简单的模型，也许特征更少，因此更不容易出现过拟合。</span><span class="ts">02:42</span></p>
 <figure class="shot"><img src="img/P039/kf007.jpg" alt="画面 02:43" loading="lazy"><figcaption>画面 02:43</figcaption></figure>
-<p><span class="ts">02:54</span>在上一张幻灯片中，我们只惩罚了，或者说只正则化了 W 三和 w 四。</p>
+<p><span class="tx">在上一张幻灯片中，我们只惩罚了，或者说只正则化了 W 三和 w 四。</span><span class="ts">02:54</span></p>
 <figure class="shot"><img src="img/P039/kf008.jpg" alt="画面 02:55" loading="lazy"><figcaption>画面 02:55</figcaption></figure>
-<p><span class="ts">03:03</span>但更一般地，正则化的实现方式通常是，如果你有很多特征，比如一百个特征。</p>
-<p><span class="ts">03:11</span>你可能不知道哪些是最重要的特征，哪些应该被惩罚。</p>
-<p><span class="ts">03:16</span>因此，正则化通常的实现方式是惩罚所有特征，或者更准确地说，惩罚所有的 W 参数。</p>
-<p><span class="ts">03:26</span>并且可以证明，这通常会导致拟合出一个更平滑、更简单、波动更小的函数，从而更不容易过拟合。</p>
-<p><span class="ts">03:36</span>所以，对于这个例子，如果你有包含一百个特征的房屋数据，可能很难事先挑选出哪些特征该包含哪些该排除。</p>
+<p><span class="tx">但更一般地，正则化的实现方式通常是，如果你有很多特征，比如一百个特征。</span><span class="ts">03:03</span></p>
+<p><span class="tx">你可能不知道哪些是最重要的特征，哪些应该被惩罚。</span><span class="ts">03:11</span></p>
+<p><span class="tx">因此，正则化通常的实现方式是惩罚所有特征，或者更准确地说，惩罚所有的 W 参数。</span><span class="ts">03:16</span></p>
+<p><span class="tx">并且可以证明，这通常会导致拟合出一个更平滑、更简单、波动更小的函数，从而更不容易过拟合。</span><span class="ts">03:26</span></p>
+<p><span class="tx">所以，对于这个例子，如果你有包含一百个特征的房屋数据，可能很难事先挑选出哪些特征该包含哪些该排除。</span><span class="ts">03:36</span></p>
 <figure class="shot"><img src="img/P039/kf009.jpg" alt="画面 03:37" loading="lazy"><figcaption>画面 03:37</figcaption></figure>
-<p><span class="ts">03:45</span>那么，我们就构建一个使用全部一百个特征的模型。</p>
+<p><span class="tx">那么，我们就构建一个使用全部一百个特征的模型。</span><span class="ts">03:45</span></p>
 <figure class="shot"><img src="img/P039/kf010.jpg" alt="画面 03:47" loading="lazy"><figcaption>画面 03:47</figcaption></figure>
-<p><span class="ts">03:50</span>因此，你有一百个参数，w 一到 w 一百，以及第一百零一个参数 b。</p>
-<p><span class="ts">04:00</span>因为我们不知道这些参数中哪些是重要的，让我们稍微惩罚所有的参数，通过添加一个新项：lambda 乘以 j 从一到 n 的和，其中 n 是一百，即特征的数量，求和项为 wj 的平方，以此来缩小所有参数。</p>
+<p><span class="tx">因此，你有一百个参数，w 一到 w 一百，以及第一百零一个参数 b。</span><span class="ts">03:50</span></p>
+<p><span class="tx">因为我们不知道这些参数中哪些是重要的，让我们稍微惩罚所有的参数，通过添加一个新项：lambda 乘以 j 从一到 n 的和，其中 n 是一百，即特征的数量，求和项为 wj 的平方，以此来缩小所有参数。</span><span class="ts">04:00</span></p>
 <figure class="shot"><img src="img/P039/kf011.jpg" alt="画面 04:06" loading="lazy"><figcaption>画面 04:06</figcaption></figure>
-<p><span class="ts">04:21</span>这个值 lambda 是希腊字母 lambda，也被称为正则化参数。</p>
+<p><span class="tx">这个值 lambda 是希腊字母 lambda，也被称为正则化参数。</span><span class="ts">04:21</span></p>
 <figure class="shot"><img src="img/P039/kf012.jpg" alt="画面 04:23" loading="lazy"><figcaption>画面 04:23</figcaption></figure>
-<p><span class="ts">04:30</span>因此，类似于选择学习率 alpha，你现在也需要为 lambda 选择一个数值。</p>
-<p><span class="ts">04:39</span>有几点我想指出：按照惯例，我们不仅使用 lambda 乘以 wj 的平方的和，还会将 lambda 除以两倍的 m，这样这里的第一项和第二项都按两倍的 m 分之一进行缩放。</p>
+<p><span class="tx">因此，类似于选择学习率 alpha，你现在也需要为 lambda 选择一个数值。</span><span class="ts">04:30</span></p>
+<p><span class="tx">有几点我想指出：按照惯例，我们不仅使用 lambda 乘以 wj 的平方的和，还会将 lambda 除以两倍的 m，这样这里的第一项和第二项都按两倍的 m 分之一进行缩放。</span><span class="ts">04:39</span></p>
 <figure class="shot"><img src="img/P039/kf013.jpg" alt="画面 04:41" loading="lazy"><figcaption>画面 04:41</figcaption></figure>
-<p><span class="ts">04:57</span>事实证明，通过以相同方式缩放这两项，选择一个好的 lambda 值会变得稍微容易一些。</p>
+<p><span class="tx">事实证明，通过以相同方式缩放这两项，选择一个好的 lambda 值会变得稍微容易一些。</span><span class="ts">04:57</span></p>
 <figure class="shot"><img src="img/P039/kf014.jpg" alt="画面 04:58" loading="lazy"><figcaption>画面 04:58</figcaption></figure>
-<p><span class="ts">05:07</span>你会发现，即使你的训练集规模增大，比如说你找到了更多的训练样本，那么 m，也就是训练集大小变得更大了，如果你有这额外的除以两倍的 m 的缩放，那么你之前选择的同一个 lambda 值也更有可能继续有效。</p>
+<p><span class="tx">你会发现，即使你的训练集规模增大，比如说你找到了更多的训练样本，那么 m，也就是训练集大小变得更大了，如果你有这额外的除以两倍的 m 的缩放，那么你之前选择的同一个 lambda 值也更有可能继续有效。</span><span class="ts">05:07</span></p>
 <figure class="shot"><img src="img/P039/kf015.jpg" alt="画面 05:08" loading="lazy"><figcaption>画面 05:08</figcaption></figure>
-<p><span class="ts">05:27</span>另外，顺便说一下，按照惯例，我们不打算惩罚参数 b 过大。</p>
+<p><span class="tx">另外，顺便说一下，按照惯例，我们不打算惩罚参数 b 过大。</span><span class="ts">05:27</span></p>
 <figure class="shot"><img src="img/P039/kf016.jpg" alt="画面 05:28" loading="lazy"><figcaption>画面 05:28</figcaption></figure>
-<p><span class="ts">05:32</span>在实践中，是否这样做影响非常小。</p>
-<p><span class="ts">05:37</span>一些机器学习工程师，实际上一些学习算法的实现，也会包含 lambda 除以两倍的 m 乘以 b 平方这。</p>
+<p><span class="tx">在实践中，是否这样做影响非常小。</span><span class="ts">05:32</span></p>
+<p><span class="tx">一些机器学习工程师，实际上一些学习算法的实现，也会包含 lambda 除以两倍的 m 乘以 b 平方这。</span><span class="ts">05:37</span></p>
 <figure class="shot"><img src="img/P039/kf017.jpg" alt="画面 05:39" loading="lazy"><figcaption>画面 05:39</figcaption></figure>
 <figure class="shot"><img src="img/P039/kf018.jpg" alt="画面 05:50" loading="lazy"><figcaption>画面 05:50</figcaption></figure>
-<p><span class="ts">05:53</span>更常见的惯例，也是本课程中将采用的，是只正则化参数 w，而不正则化参数 b。</p>
-<p><span class="ts">06:02</span>所以，总结一下，在这个修正后的代价函数中，我们想要最小化原始的代价，即均方误差代价，再加上第二项，称为正则化项。</p>
+<p><span class="tx">更常见的惯例，也是本课程中将采用的，是只正则化参数 w，而不正则化参数 b。</span><span class="ts">05:53</span></p>
+<p><span class="tx">所以，总结一下，在这个修正后的代价函数中，我们想要最小化原始的代价，即均方误差代价，再加上第二项，称为正则化项。</span><span class="ts">06:02</span></p>
 <figure class="shot"><img src="img/P039/kf019.jpg" alt="画面 06:04" loading="lazy"><figcaption>画面 06:04</figcaption></figure>
 <figure class="shot"><img src="img/P039/kf020.jpg" alt="画面 06:16" loading="lazy"><figcaption>画面 06:16</figcaption></figure>
-<p><span class="ts">06:17</span>因此，这个新的代价函数在你可能拥有的两个目标之间进行权衡。</p>
-<p><span class="ts">06:23</span>尝试最小化第一项，通过最小化预测值与实际值之间差的平方，来鼓励算法很好地拟合训练数据。</p>
-<p><span class="ts">06:33</span>而尝试最小化第二项，算法也会尝试保持参数 w 较小，这将有助于减少过拟合。</p>
-<p><span class="ts">06:43</span>你选择的 lambda 值指定了这两个目标之间的相对重要性，或者说相对的权衡，或者说你如何平衡这两个目标。</p>
+<p><span class="tx">因此，这个新的代价函数在你可能拥有的两个目标之间进行权衡。</span><span class="ts">06:17</span></p>
+<p><span class="tx">尝试最小化第一项，通过最小化预测值与实际值之间差的平方，来鼓励算法很好地拟合训练数据。</span><span class="ts">06:23</span></p>
+<p><span class="tx">而尝试最小化第二项，算法也会尝试保持参数 w 较小，这将有助于减少过拟合。</span><span class="ts">06:33</span></p>
+<p><span class="tx">你选择的 lambda 值指定了这两个目标之间的相对重要性，或者说相对的权衡，或者说你如何平衡这两个目标。</span><span class="ts">06:43</span></p>
 <figure class="shot"><img src="img/P039/kf021.jpg" alt="画面 06:45" loading="lazy"><figcaption>画面 06:45</figcaption></figure>
-<p><span class="ts">06:54</span>让我们看看不同的 lambda 值会导致你的学习算法有什么行为。</p>
+<p><span class="tx">让我们看看不同的 lambda 值会导致你的学习算法有什么行为。</span><span class="ts">06:54</span></p>
 <figure class="shot"><img src="img/P039/kf022.jpg" alt="画面 06:55" loading="lazy"><figcaption>画面 06:55</figcaption></figure>
-<p><span class="ts">07:00</span>我们继续使用线性回归的房价预测例子。</p>
-<p><span class="ts">07:05</span>所以 f(x) 是线性回归模型。</p>
-<p><span class="ts">07:08</span>如果 lambda 被设置为零，那么你根本没有使用正则化项，因为正则化项乘以了零。</p>
-<p><span class="ts">07:18</span>因此，如果 lambda 为零，你最终会拟合出这条过度波动、过度复杂的曲线，导致过拟合。</p>
-<p><span class="ts">07:26</span>这是 lambda 为零的一个极端情况。</p>
-<p><span class="ts">07:30</span>现在我们来看另一个极端。</p>
-<p><span class="ts">07:32</span>如果你将 lambda 设置为一个非常非常大的数字，比如 lambda 等于十的十次方。</p>
-<p><span class="ts">07:40</span>那么你就对右边的这个正则化项赋予了非常大的权重。</p>
-<p><span class="ts">07:46</span>最小化这个函数的唯一方法是确保所有的 W 值都非常接近于零。</p>
-<p><span class="ts">07:54</span>因此，如果 lambda 非常非常大，学习算法将选择 w 一、w 二、w 三和 w 四都极其接近于零。</p>
-<p><span class="ts">08:05</span>于是，f(x)基本上就等于 b，所以学习算法拟合出的是一条水平的直线，导致欠拟合。</p>
-<p><span class="ts">08:16</span>回顾一下，如果 lambda 为零，这个模型会过拟合。</p>
-<p><span class="ts">08:21</span>如果 lambda 非常大，比如十的十次方，这个模型会欠拟合。</p>
-<p><span class="ts">08:26</span>因此，你需要的是某个介于两者之间的 lambda 值，它能更恰当地平衡第一项和第二项，即在最小化均方误差和保持参数较小之间进行权衡。</p>
+<p><span class="tx">我们继续使用线性回归的房价预测例子。</span><span class="ts">07:00</span></p>
+<p><span class="tx">所以 f(x) 是线性回归模型。</span><span class="ts">07:05</span></p>
+<p><span class="tx">如果 lambda 被设置为零，那么你根本没有使用正则化项，因为正则化项乘以了零。</span><span class="ts">07:08</span></p>
+<p><span class="tx">因此，如果 lambda 为零，你最终会拟合出这条过度波动、过度复杂的曲线，导致过拟合。</span><span class="ts">07:18</span></p>
+<p><span class="tx">这是 lambda 为零的一个极端情况。</span><span class="ts">07:26</span></p>
+<p><span class="tx">现在我们来看另一个极端。</span><span class="ts">07:30</span></p>
+<p><span class="tx">如果你将 lambda 设置为一个非常非常大的数字，比如 lambda 等于十的十次方。</span><span class="ts">07:32</span></p>
+<p><span class="tx">那么你就对右边的这个正则化项赋予了非常大的权重。</span><span class="ts">07:40</span></p>
+<p><span class="tx">最小化这个函数的唯一方法是确保所有的 W 值都非常接近于零。</span><span class="ts">07:46</span></p>
+<p><span class="tx">因此，如果 lambda 非常非常大，学习算法将选择 w 一、w 二、w 三和 w 四都极其接近于零。</span><span class="ts">07:54</span></p>
+<p><span class="tx">于是，f(x)基本上就等于 b，所以学习算法拟合出的是一条水平的直线，导致欠拟合。</span><span class="ts">08:05</span></p>
+<p><span class="tx">回顾一下，如果 lambda 为零，这个模型会过拟合。</span><span class="ts">08:16</span></p>
+<p><span class="tx">如果 lambda 非常大，比如十的十次方，这个模型会欠拟合。</span><span class="ts">08:21</span></p>
+<p><span class="tx">因此，你需要的是某个介于两者之间的 lambda 值，它能更恰当地平衡第一项和第二项，即在最小化均方误差和保持参数较小之间进行权衡。</span><span class="ts">08:26</span></p>
 <figure class="shot"><img src="img/P039/kf023.jpg" alt="画面 08:28" loading="lazy"><figcaption>画面 08:28</figcaption></figure>
-<p><span class="ts">08:43</span>当 lambda 的值既不过小也不过大，而是恰到好处时，你就有望能够拟合一个四阶多项式，保留所有这些特征，但得到的函数看起来像这样。w。</p>
-<p><span class="ts">08:57</span>这就是正则化的工作原理。</p>
-<p><span class="ts">09:00</span>在本专业课程后面讨论模型选择时，我们还会看到多种为 lambda 选择好值的方法。</p>
-<p><span class="ts">09:09</span>在接下来的两个视频中，我们将详细阐述如何将正则化应用于线性回归和逻辑回归，以及如何使用梯度下降来训练这些模型。</p>
-<p><span class="ts">09:21</span>掌握了这些，你就能避免过拟合问题了。</p>
-<p><span class="ts">09:24</span>对于这两种算法都是如此。</p>
+<p><span class="tx">当 lambda 的值既不过小也不过大，而是恰到好处时，你就有望能够拟合一个四阶多项式，保留所有这些特征，但得到的函数看起来像这样。w。</span><span class="ts">08:43</span></p>
+<p><span class="tx">这就是正则化的工作原理。</span><span class="ts">08:57</span></p>
+<p><span class="tx">在本专业课程后面讨论模型选择时，我们还会看到多种为 lambda 选择好值的方法。</span><span class="ts">09:00</span></p>
+<p><span class="tx">在接下来的两个视频中，我们将详细阐述如何将正则化应用于线性回归和逻辑回归，以及如何使用梯度下降来训练这些模型。</span><span class="ts">09:09</span></p>
+<p><span class="tx">掌握了这些，你就能避免过拟合问题了。</span><span class="ts">09:21</span></p>
+<p><span class="tx">对于这两种算法都是如此。</span><span class="ts">09:24</span></p>
 </main>
 <nav class="pager"><a href="P038.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P040.html">下一讲 →</a></nav>
 <footer>

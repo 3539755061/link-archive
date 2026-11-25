@@ -20,60 +20,60 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P034.html">← 上一讲</a><span class="mid">第 35 / 72 讲</span><a class="next" href="P036.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:02</span>在上一个视频中，你看到了逻辑回归的损失函数和代价函数。</p>
+<p><span class="tx">在上一个视频中，你看到了逻辑回归的损失函数和代价函数。</span><span class="ts">00:02</span></p>
 <figure class="shot"><img src="img/P035/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
-<p><span class="ts">00:08</span>本视频会让你看到一种稍微简单一点的方式来写出损失和代价函数，这样当我们进入梯度下降以拟合逻辑回归模型参数时，实现起来能更简单一些。</p>
-<p><span class="ts">00:24</span>提醒一下，这是我们在上个视频中为逻辑回归定义的损失函数。</p>
+<p><span class="tx">本视频会让你看到一种稍微简单一点的方式来写出损失和代价函数，这样当我们进入梯度下降以拟合逻辑回归模型参数时，实现起来能更简单一些。</span><span class="ts">00:08</span></p>
+<p><span class="tx">提醒一下，这是我们在上个视频中为逻辑回归定义的损失函数。</span><span class="ts">00:24</span></p>
 <figure class="shot"><img src="img/P035/kf002.jpg" alt="画面 00:26" loading="lazy"><figcaption>画面 00:26</figcaption></figure>
-<p><span class="ts">00:32</span>现在，因为我们仍然在处理一个二元分类问题，要么是零，要么是一。</p>
-<p><span class="ts">00:39</span>因为只能是零或一，并且不能取零和一以外的任何值，我们将能想出一种更简单的方式来写出这个损失函数。</p>
+<p><span class="tx">现在，因为我们仍然在处理一个二元分类问题，要么是零，要么是一。</span><span class="ts">00:32</span></p>
+<p><span class="tx">因为只能是零或一，并且不能取零和一以外的任何值，我们将能想出一种更简单的方式来写出这个损失函数。</span><span class="ts">00:39</span></p>
 <figure class="shot"><img src="img/P035/kf003.jpg" alt="画面 00:41" loading="lazy"><figcaption>画面 00:41</figcaption></figure>
-<p><span class="ts">00:51</span>你可以按如下方式写出损失函数。</p>
+<p><span class="tx">你可以按如下方式写出损失函数。</span><span class="ts">00:51</span></p>
 <figure class="shot"><img src="img/P035/kf004.jpg" alt="画面 00:51" loading="lazy"><figcaption>画面 00:51</figcaption></figure>
-<p><span class="ts">00:55</span>给定预测值 f 和目标标签 y，损失等于负 y 乘以 f 的对数，减去一减 y 乘以一减 f 的对数。</p>
+<p><span class="tx">给定预测值 f 和目标标签 y，损失等于负 y 乘以 f 的对数，减去一减 y 乘以一减 f 的对数。</span><span class="ts">00:55</span></p>
 <figure class="shot"><img src="img/P035/kf005.jpg" alt="画面 00:55" loading="lazy"><figcaption>画面 00:55</figcaption></figure>
-<p><span class="ts">01:12</span>结果证明，我们刚刚用一行写出的这个等式，完全等价于上面这个更复杂的公式。</p>
-<p><span class="ts">01:22</span>我们来看看为什么是这样。</p>
-<p><span class="ts">01:25</span>现在，记住，y 只能取一或零这两个值。</p>
-<p><span class="ts">01:33</span>在第一种情况，假设 y 等于一。</p>
-<p><span class="ts">01:38</span>这里的第一个是一，而这个一减 y 就是一减一，因此等于零。</p>
-<p><span class="ts">01:48</span>于是损失就变成了负一乘以 f 的对数，减去零乘以后面一堆结果为零的东西，后面那项就没了。</p>
-<p><span class="ts">02:00</span>所以当 y 等于一时，损失确实就是上面的第一项，即 x 的 f 的负对数。</p>
-<p><span class="ts">02:10</span>我们再看看第二种情况，当 y 等于零时。</p>
-<p><span class="ts">02:16</span>在这种情况下，这里的这个 y 等于零，所以第一项就消失了。</p>
-<p><span class="ts">02:23</span>而第二项是一减零乘以那个对数项。</p>
-<p><span class="ts">02:31</span>所以损失就变成了这个负一乘以一减 x 的 f 的对数。</p>
-<p><span class="ts">02:46</span>所以，在 y 等于零的情况下，我们也得到了和上面所定义的同样的原始损失函数。</p>
-<p><span class="ts">02:55</span>所以你所看到的是，无论 y 是一还是零，这里的这个单一表达式都等价于上面那个更复杂的表达式，这就是为什么这能让我们用更简单的方式写出损失，仅用一个等式，而无需像上面那样将这两种情况分开。灿 w。</p>
+<p><span class="tx">结果证明，我们刚刚用一行写出的这个等式，完全等价于上面这个更复杂的公式。</span><span class="ts">01:12</span></p>
+<p><span class="tx">我们来看看为什么是这样。</span><span class="ts">01:22</span></p>
+<p><span class="tx">现在，记住，y 只能取一或零这两个值。</span><span class="ts">01:25</span></p>
+<p><span class="tx">在第一种情况，假设 y 等于一。</span><span class="ts">01:33</span></p>
+<p><span class="tx">这里的第一个是一，而这个一减 y 就是一减一，因此等于零。</span><span class="ts">01:38</span></p>
+<p><span class="tx">于是损失就变成了负一乘以 f 的对数，减去零乘以后面一堆结果为零的东西，后面那项就没了。</span><span class="ts">01:48</span></p>
+<p><span class="tx">所以当 y 等于一时，损失确实就是上面的第一项，即 x 的 f 的负对数。</span><span class="ts">02:00</span></p>
+<p><span class="tx">我们再看看第二种情况，当 y 等于零时。</span><span class="ts">02:10</span></p>
+<p><span class="tx">在这种情况下，这里的这个 y 等于零，所以第一项就消失了。</span><span class="ts">02:16</span></p>
+<p><span class="tx">而第二项是一减零乘以那个对数项。</span><span class="ts">02:23</span></p>
+<p><span class="tx">所以损失就变成了这个负一乘以一减 x 的 f 的对数。</span><span class="ts">02:31</span></p>
+<p><span class="tx">所以，在 y 等于零的情况下，我们也得到了和上面所定义的同样的原始损失函数。</span><span class="ts">02:46</span></p>
+<p><span class="tx">所以你所看到的是，无论 y 是一还是零，这里的这个单一表达式都等价于上面那个更复杂的表达式，这就是为什么这能让我们用更简单的方式写出损失，仅用一个等式，而无需像上面那样将这两种情况分开。灿 w。</span><span class="ts">02:55</span></p>
 <figure class="shot"><img src="img/P035/kf006.jpg" alt="画面 03:02" loading="lazy"><figcaption>画面 03:02</figcaption></figure>
-<p><span class="ts">03:16</span>利用这个简化的损失函数，让我们回过头来写出逻辑回归的代价函数。</p>
+<p><span class="tx">利用这个简化的损失函数，让我们回过头来写出逻辑回归的代价函数。</span><span class="ts">03:16</span></p>
 <figure class="shot"><img src="img/P035/kf007.jpg" alt="画面 03:16" loading="lazy"><figcaption>画面 03:16</figcaption></figure>
-<p><span class="ts">03:25</span>那么，这里再次给出这个简化的损失函数。</p>
+<p><span class="tx">那么，这里再次给出这个简化的损失函数。</span><span class="ts">03:25</span></p>
 <figure class="shot"><img src="img/P035/kf008.jpg" alt="画面 03:25" loading="lazy"><figcaption>画面 03:25</figcaption></figure>
-<p><span class="ts">03:29</span>回想一下，代价就是在整个包含 m 个样本的训练集上所求的损失的平均值。</p>
-<p><span class="ts">03:38</span>所以，它是 m 分之一乘以从 i 等于一到 m 的损失之和。</p>
-<p><span class="ts">03:45</span>现在，如果你代入上述简化损失的定义，那么它看起来就是这样：m 分之一乘以上面这一项的和。</p>
+<p><span class="tx">回想一下，代价就是在整个包含 m 个样本的训练集上所求的损失的平均值。</span><span class="ts">03:29</span></p>
+<p><span class="tx">所以，它是 m 分之一乘以从 i 等于一到 m 的损失之和。</span><span class="ts">03:38</span></p>
+<p><span class="tx">现在，如果你代入上述简化损失的定义，那么它看起来就是这样：m 分之一乘以上面这一项的和。</span><span class="ts">03:45</span></p>
 <figure class="shot"><img src="img/P035/kf009.jpg" alt="画面 03:47" loading="lazy"><figcaption>画面 03:47</figcaption></figure>
 <figure class="shot"><img src="img/P035/kf010.jpg" alt="画面 03:55" loading="lazy"><figcaption>画面 03:55</figcaption></figure>
-<p><span class="ts">03:56</span>如果你把负号提出来并移到外面，那么你就得到了这里的这个表达式。</p>
+<p><span class="tx">如果你把负号提出来并移到外面，那么你就得到了这里的这个表达式。</span><span class="ts">03:56</span></p>
 <figure class="shot"><img src="img/P035/kf011.jpg" alt="画面 04:01" loading="lazy"><figcaption>画面 04:01</figcaption></figure>
-<p><span class="ts">04:03</span>而这就是代价函数，几乎是每个人用来训练逻辑回归的代价函数。</p>
-<p><span class="ts">04:11</span>现在，你可能想知道，我们本可以选择很多其他的代价函数，为什么偏偏选择这个特定的函数呢？</p>
-<p><span class="ts">04:20</span>虽然我们在这门课上没有时间对此做非常详细的讨论，但我只想提一下，这个特定的代价函数是从统计学推导而来的，用到了一个称为最大似然估计的统计原理，该原理是统计学中关于如何为不同模型高效地找到参数的一种思想。</p>
+<p><span class="tx">而这就是代价函数，几乎是每个人用来训练逻辑回归的代价函数。</span><span class="ts">04:03</span></p>
+<p><span class="tx">现在，你可能想知道，我们本可以选择很多其他的代价函数，为什么偏偏选择这个特定的函数呢？</span><span class="ts">04:11</span></p>
+<p><span class="tx">虽然我们在这门课上没有时间对此做非常详细的讨论，但我只想提一下，这个特定的代价函数是从统计学推导而来的，用到了一个称为最大似然估计的统计原理，该原理是统计学中关于如何为不同模型高效地找到参数的一种思想。</span><span class="ts">04:20</span></p>
 <figure class="shot"><img src="img/P035/kf012.jpg" alt="画面 04:27" loading="lazy"><figcaption>画面 04:27</figcaption></figure>
-<p><span class="ts">04:43</span>并且这个代价函数有一个很好的性质，即它是凸的。</p>
+<p><span class="tx">并且这个代价函数有一个很好的性质，即它是凸的。</span><span class="ts">04:43</span></p>
 <figure class="shot"><img src="img/P035/kf013.jpg" alt="画面 04:44" loading="lazy"><figcaption>画面 04:44</figcaption></figure>
-<p><span class="ts">04:49</span>但不用担心去学习最大似然的细节，它只是这个特定代价函数背后更深层的原理和依据。</p>
-<p><span class="ts">05:00</span>接下来的选修实验将向你展示如何在代码中实现逻辑回归的代价函数，我建议你去看看，因为你会在本周结束时的练习实验中实现它。</p>
+<p><span class="tx">但不用担心去学习最大似然的细节，它只是这个特定代价函数背后更深层的原理和依据。</span><span class="ts">04:49</span></p>
+<p><span class="tx">接下来的选修实验将向你展示如何在代码中实现逻辑回归的代价函数，我建议你去看看，因为你会在本周结束时的练习实验中实现它。</span><span class="ts">05:00</span></p>
 <figure class="shot"><img src="img/P035/kf014.jpg" alt="画面 05:01" loading="lazy"><figcaption>画面 05:01</figcaption></figure>
 <figure class="shot"><img src="img/P035/kf015.jpg" alt="画面 05:04" loading="lazy"><figcaption>画面 05:04</figcaption></figure>
 <figure class="shot"><img src="img/P035/kf016.jpg" alt="画面 05:10" loading="lazy"><figcaption>画面 05:10</figcaption></figure>
-<p><span class="ts">05:17</span>这个即将到来的选修实验也会向你展示，两种不同的参数选择将如何导致不同的代价计算。</p>
+<p><span class="tx">这个即将到来的选修实验也会向你展示，两种不同的参数选择将如何导致不同的代价计算。</span><span class="ts">05:17</span></p>
 <figure class="shot"><img src="img/P035/kf017.jpg" alt="画面 05:20" loading="lazy"><figcaption>画面 05:20</figcaption></figure>
 <figure class="shot"><img src="img/P035/kf018.jpg" alt="画面 05:24" loading="lazy"><figcaption>画面 05:24</figcaption></figure>
-<p><span class="ts">05:26</span>所以，你可以在图中看到，拟合得更好的蓝色决策边界相对于品红色的决策边界具有更低的代价。</p>
-<p><span class="ts">05:38</span>那么，有了简化的代价函数，我们现在准备好投入应用梯度下降于逻辑回归了。</p>
-<p><span class="ts">05:45</span>让我们在下一个视频中看看。</p>
+<p><span class="tx">所以，你可以在图中看到，拟合得更好的蓝色决策边界相对于品红色的决策边界具有更低的代价。</span><span class="ts">05:26</span></p>
+<p><span class="tx">那么，有了简化的代价函数，我们现在准备好投入应用梯度下降于逻辑回归了。</span><span class="ts">05:38</span></p>
+<p><span class="tx">让我们在下一个视频中看看。</span><span class="ts">05:45</span></p>
 </main>
 <nav class="pager"><a href="P034.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P036.html">下一讲 →</a></nav>
 <footer>

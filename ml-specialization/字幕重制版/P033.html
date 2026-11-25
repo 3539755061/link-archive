@@ -20,101 +20,101 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P032.html">← 上一讲</a><span class="mid">第 33 / 72 讲</span><a class="next" href="P034.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:02</span>在上个视频中，你学习了逻辑回归模型。</p>
+<p><span class="tx">在上个视频中，你学习了逻辑回归模型。</span><span class="ts">00:02</span></p>
 <figure class="shot"><img src="img/P033/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
-<p><span class="ts">00:06</span>现在，让我们看看决策边界，以更好地理解逻辑回归是如何计算其预测的。</p>
-<p><span class="ts">00:14</span>回顾一下，逻辑回归模型的输出分两步计算。</p>
+<p><span class="tx">现在，让我们看看决策边界，以更好地理解逻辑回归是如何计算其预测的。</span><span class="ts">00:06</span></p>
+<p><span class="tx">回顾一下，逻辑回归模型的输出分两步计算。</span><span class="ts">00:14</span></p>
 <figure class="shot"><img src="img/P033/kf002.jpg" alt="画面 00:15" loading="lazy"><figcaption>画面 00:15</figcaption></figure>
-<p><span class="ts">00:21</span>第一步，你计算 z，即 w 点乘 x 加 b。</p>
-<p><span class="ts">00:27</span>然后你将 sigmoid 函数 g 应用于这个值 z。</p>
-<p><span class="ts">00:32</span>这里再次给出 sigmoid 函数的公式。</p>
-<p><span class="ts">00:37</span>另一种写法是，我们可以说 f 等于 g，即 sigmoid 函数，也叫做逻辑函数，应用于 w 点乘 x 加，当然，这就是 z 的值。</p>
+<p><span class="tx">第一步，你计算 z，即 w 点乘 x 加 b。</span><span class="ts">00:21</span></p>
+<p><span class="tx">然后你将 sigmoid 函数 g 应用于这个值 z。</span><span class="ts">00:27</span></p>
+<p><span class="tx">这里再次给出 sigmoid 函数的公式。</span><span class="ts">00:32</span></p>
+<p><span class="tx">另一种写法是，我们可以说 f 等于 g，即 sigmoid 函数，也叫做逻辑函数，应用于 w 点乘 x 加，当然，这就是 z 的值。</span><span class="ts">00:37</span></p>
 <figure class="shot"><img src="img/P033/kf003.jpg" alt="画面 00:38" loading="lazy"><figcaption>画面 00:38</figcaption></figure>
 <figure class="shot"><img src="img/P033/kf004.jpg" alt="画面 00:53" loading="lazy"><figcaption>画面 00:53</figcaption></figure>
-<p><span class="ts">00:54</span>如果你取 sigmoid 函数的定义并代入 z 的定义，你会发现 x 的 f 等于这里的这个公式，一除以一加 e 的负 z 次方，你可能还记得我们在上一个视频中说过，我们将其解释为在给定 x 和参数 w 和 b 的条件下，y 等于一的概率。</p>
-<p><span class="ts">01:15</span>你可能还记得我们在上一个视频中说过，我们将其解释为在给定 x 和参数 w 和 b 的条件下，y 等于一的概率。</p>
+<p><span class="tx">如果你取 sigmoid 函数的定义并代入 z 的定义，你会发现 x 的 f 等于这里的这个公式，一除以一加 e 的负 z 次方，你可能还记得我们在上一个视频中说过，我们将其解释为在给定 x 和参数 w 和 b 的条件下，y 等于一的概率。</span><span class="ts">00:54</span></p>
+<p><span class="tx">你可能还记得我们在上一个视频中说过，我们将其解释为在给定 x 和参数 w 和 b 的条件下，y 等于一的概率。</span><span class="ts">01:15</span></p>
 <figure class="shot"><img src="img/P033/kf005.jpg" alt="画面 01:16" loading="lazy"><figcaption>画面 01:16</figcaption></figure>
-<p><span class="ts">01:24</span>所以这会是一个数字，比如零点七或零点三。</p>
+<p><span class="tx">所以这会是一个数字，比如零点七或零点三。</span><span class="ts">01:24</span></p>
 <figure class="shot"><img src="img/P033/kf006.jpg" alt="画面 01:26" loading="lazy"><figcaption>画面 01:26</figcaption></figure>
-<p><span class="ts">01:30</span>现在，如果你想让学习算法预测，y 的值会是零还是一？</p>
-<p><span class="ts">01:38</span>那么，你可以做的一件事是设置一个阈值，高于该阈值则预测 y 为一，或者说你将预测值设为等于一，而低于该阈值时，你会说 yhat，即我的预测，将等于零。</p>
+<p><span class="tx">现在，如果你想让学习算法预测，y 的值会是零还是一？</span><span class="ts">01:30</span></p>
+<p><span class="tx">那么，你可以做的一件事是设置一个阈值，高于该阈值则预测 y 为一，或者说你将预测值设为等于一，而低于该阈值时，你会说 yhat，即我的预测，将等于零。</span><span class="ts">01:38</span></p>
 <figure class="shot"><img src="img/P033/kf007.jpg" alt="画面 01:39" loading="lazy"><figcaption>画面 01:39</figcaption></figure>
-<p><span class="ts">01:55</span>一个常见的选择是选取零点五作为阈值，这样如果 f 大于或等于零点五，则预测 y 为一。</p>
+<p><span class="tx">一个常见的选择是选取零点五作为阈值，这样如果 f 大于或等于零点五，则预测 y 为一。</span><span class="ts">01:55</span></p>
 <figure class="shot"><img src="img/P033/kf008.jpg" alt="画面 01:56" loading="lazy"><figcaption>画面 01:56</figcaption></figure>
-<p><span class="ts">02:06</span>我们将该预测写作 yhat 等于一，或者如果 x 的 f 小于零点五，则预测 y 为零。</p>
-<p><span class="ts">02:15</span>或者换句话说，预测 y hat 等于零。</p>
-<p><span class="ts">02:20</span>那么现在让我们更深入地探讨模型何时会预测为一。</p>
-<p><span class="ts">02:24</span>换句话说，何时 x 的 f 大于或等于零点五？</p>
-<p><span class="ts">02:30</span>我们记得 x 的 f 恰好等于 g of z，所以当 g of z 大于或等于零点五时，f 就大于或等于零点五。</p>
+<p><span class="tx">我们将该预测写作 yhat 等于一，或者如果 x 的 f 小于零点五，则预测 y 为零。</span><span class="ts">02:06</span></p>
+<p><span class="tx">或者换句话说，预测 y hat 等于零。</span><span class="ts">02:15</span></p>
+<p><span class="tx">那么现在让我们更深入地探讨模型何时会预测为一。</span><span class="ts">02:20</span></p>
+<p><span class="tx">换句话说，何时 x 的 f 大于或等于零点五？</span><span class="ts">02:24</span></p>
+<p><span class="tx">我们记得 x 的 f 恰好等于 g of z，所以当 g of z 大于或等于零点五时，f 就大于或等于零点五。</span><span class="ts">02:30</span></p>
 <figure class="shot"><img src="img/P033/kf009.jpg" alt="画面 02:31" loading="lazy"><figcaption>画面 02:31</figcaption></figure>
-<p><span class="ts">02:43</span>但 g of z 何时大于或等于零点五呢？</p>
+<p><span class="tx">但 g of z 何时大于或等于零点五呢？</span><span class="ts">02:43</span></p>
 <figure class="shot"><img src="img/P033/kf010.jpg" alt="画面 02:44" loading="lazy"><figcaption>画面 02:44</figcaption></figure>
-<p><span class="ts">02:48</span>嗯，这是这里的 sigmoid 函数。</p>
-<p><span class="ts">02:52</span>所以当 z 大于或等于零时，g of z 就大于或等于零点五，对吗？</p>
-<p><span class="ts">03:02</span>也就是说，当 z 落在右半边时。</p>
-<p><span class="ts">03:09</span>最后，何时 z 大于或等于零呢？</p>
-<p><span class="ts">03:14</span>嗯，z 等于 w 点乘 x 加 b，所以当 w 点乘 x 加 b 大于或等于零时，z 就大于或等于零。</p>
-<p><span class="ts">03:27</span>回顾一下，你在这里看到的是，当 w 点乘 x 加 b 大于或等于零时，模型预测为一。</p>
-<p><span class="ts">03:40</span>反过来，当 w 点乘 x 加 b 小于零时，算法预测 y 为零。</p>
-<p><span class="ts">03:50</span>那么，鉴于此，我们现在来可视化一下模型是如何做预测的。</p>
-<p><span class="ts">03:56</span>我将举一个分类问题的例子，其中你有两个特征，x 一和 x 二，而不是只有一个特征。</p>
+<p><span class="tx">嗯，这是这里的 sigmoid 函数。</span><span class="ts">02:48</span></p>
+<p><span class="tx">所以当 z 大于或等于零时，g of z 就大于或等于零点五，对吗？</span><span class="ts">02:52</span></p>
+<p><span class="tx">也就是说，当 z 落在右半边时。</span><span class="ts">03:02</span></p>
+<p><span class="tx">最后，何时 z 大于或等于零呢？</span><span class="ts">03:09</span></p>
+<p><span class="tx">嗯，z 等于 w 点乘 x 加 b，所以当 w 点乘 x 加 b 大于或等于零时，z 就大于或等于零。</span><span class="ts">03:14</span></p>
+<p><span class="tx">回顾一下，你在这里看到的是，当 w 点乘 x 加 b 大于或等于零时，模型预测为一。</span><span class="ts">03:27</span></p>
+<p><span class="tx">反过来，当 w 点乘 x 加 b 小于零时，算法预测 y 为零。</span><span class="ts">03:40</span></p>
+<p><span class="tx">那么，鉴于此，我们现在来可视化一下模型是如何做预测的。</span><span class="ts">03:50</span></p>
+<p><span class="tx">我将举一个分类问题的例子，其中你有两个特征，x 一和 x 二，而不是只有一个特征。</span><span class="ts">03:56</span></p>
 <figure class="shot"><img src="img/P033/kf011.jpg" alt="画面 03:56" loading="lazy"><figcaption>画面 03:56</figcaption></figure>
-<p><span class="ts">04:05</span>这是一个训练集，红色小叉号表示正例，蓝色小圆圈表示负例。</p>
-<p><span class="ts">04:15</span>红色叉号对应等于一，蓝色圆圈对应 y 等于零。</p>
-<p><span class="ts">04:25</span>逻辑回归模型将使用这个函数 x 的 f 等于 g of z 来进行预测，其中 z 现在是这里的这个表达式，w 一 x 一加 w 二 x 二加 b，因为我们有两个特征 x 一和 x 二。</p>
-<p><span class="ts">04:45</span>并且，对于这个例子，我们假设参数的值是 w 一等于一，w 二等于一，b 等于负三。</p>
-<p><span class="ts">04:58</span>现在让我们看看逻辑回归是如何做出预测的。</p>
-<p><span class="ts">05:03</span>特别地，让我们弄清楚何时 wx 加 b 大于或等于零，以及何时 wx 加 b 小于零。</p>
-<p><span class="ts">05:14</span>为了搞清楚这一点，有一条非常值得关注的线，那就是当 wx 加 b 恰好等于零的时候。</p>
-<p><span class="ts">05:23</span>结果，这条线也被称为决策边界，因为在这条线上你对于 y 是零还是一几乎持中立态度。</p>
-<p><span class="ts">05:37</span>现在，对于我们上面写下的参数值 w 一、w 二和 b，这个决策边界就是 x 一加 x 二减三。</p>
-<p><span class="ts">05:52</span>所以何时 x 一加 x 二减三等于零呢？</p>
-<p><span class="ts">05:59</span>嗯，那将对应于直线 x 一加 x 二等于三。</p>
-<p><span class="ts">06:11</span>因此，这条线就是决策边界，如果特征 x 在这条线的右侧，逻辑回归将预测为一，而如果在这条线的左侧，逻辑回归将预测为零。</p>
+<p><span class="tx">这是一个训练集，红色小叉号表示正例，蓝色小圆圈表示负例。</span><span class="ts">04:05</span></p>
+<p><span class="tx">红色叉号对应等于一，蓝色圆圈对应 y 等于零。</span><span class="ts">04:15</span></p>
+<p><span class="tx">逻辑回归模型将使用这个函数 x 的 f 等于 g of z 来进行预测，其中 z 现在是这里的这个表达式，w 一 x 一加 w 二 x 二加 b，因为我们有两个特征 x 一和 x 二。</span><span class="ts">04:25</span></p>
+<p><span class="tx">并且，对于这个例子，我们假设参数的值是 w 一等于一，w 二等于一，b 等于负三。</span><span class="ts">04:45</span></p>
+<p><span class="tx">现在让我们看看逻辑回归是如何做出预测的。</span><span class="ts">04:58</span></p>
+<p><span class="tx">特别地，让我们弄清楚何时 wx 加 b 大于或等于零，以及何时 wx 加 b 小于零。</span><span class="ts">05:03</span></p>
+<p><span class="tx">为了搞清楚这一点，有一条非常值得关注的线，那就是当 wx 加 b 恰好等于零的时候。</span><span class="ts">05:14</span></p>
+<p><span class="tx">结果，这条线也被称为决策边界，因为在这条线上你对于 y 是零还是一几乎持中立态度。</span><span class="ts">05:23</span></p>
+<p><span class="tx">现在，对于我们上面写下的参数值 w 一、w 二和 b，这个决策边界就是 x 一加 x 二减三。</span><span class="ts">05:37</span></p>
+<p><span class="tx">所以何时 x 一加 x 二减三等于零呢？</span><span class="ts">05:52</span></p>
+<p><span class="tx">嗯，那将对应于直线 x 一加 x 二等于三。</span><span class="ts">05:59</span></p>
+<p><span class="tx">因此，这条线就是决策边界，如果特征 x 在这条线的右侧，逻辑回归将预测为一，而如果在这条线的左侧，逻辑回归将预测为零。</span><span class="ts">06:11</span></p>
 <figure class="shot"><img src="img/P033/kf012.jpg" alt="画面 06:12" loading="lazy"><figcaption>画面 06:12</figcaption></figure>
 <figure class="shot"><img src="img/P033/kf013.jpg" alt="画面 06:24" loading="lazy"><figcaption>画面 06:24</figcaption></figure>
-<p><span class="ts">06:29</span>换句话说，我们刚刚可视化的是当参数 w 一、w 二和 b 分别为一、一和负三时，逻辑回归的决策边界。</p>
+<p><span class="tx">换句话说，我们刚刚可视化的是当参数 w 一、w 二和 b 分别为一、一和负三时，逻辑回归的决策边界。</span><span class="ts">06:29</span></p>
 <figure class="shot"><img src="img/P033/kf014.jpg" alt="画面 06:30" loading="lazy"><figcaption>画面 06:30</figcaption></figure>
-<p><span class="ts">06:42</span>当然，如果你选择了不同的参数，决策边界将会是不同的线。</p>
+<p><span class="tx">当然，如果你选择了不同的参数，决策边界将会是不同的线。</span><span class="ts">06:42</span></p>
 <figure class="shot"><img src="img/P033/kf015.jpg" alt="画面 06:43" loading="lazy"><figcaption>画面 06:43</figcaption></figure>
 <figure class="shot"><img src="img/P033/kf016.jpg" alt="画面 06:48" loading="lazy"><figcaption>画面 06:48</figcaption></figure>
-<p><span class="ts">06:49</span>现在，让我们看一个更复杂的例子，其中决策边界不再是一条直线。</p>
-<p><span class="ts">06:56</span>和之前一样，叉号表示 y 等于一的类，小圆圈表示 y 等于零的类。</p>
-<p><span class="ts">07:07</span>在上周早些时候，你看到了如何在线性回归中使用多项式，你可以在逻辑回归中做同样的事。</p>
-<p><span class="ts">07:16</span>那么，让我们设 z 为 W 一 x 一的平方加 w 二 x 二的平方加 b。</p>
-<p><span class="ts">07:26</span>用这种特征选择，将多项式特征引入逻辑回归，所以 x 的 f，也就是 g of z，现在是这里的这个表达式的 g。</p>
+<p><span class="tx">现在，让我们看一个更复杂的例子，其中决策边界不再是一条直线。</span><span class="ts">06:49</span></p>
+<p><span class="tx">和之前一样，叉号表示 y 等于一的类，小圆圈表示 y 等于零的类。</span><span class="ts">06:56</span></p>
+<p><span class="tx">在上周早些时候，你看到了如何在线性回归中使用多项式，你可以在逻辑回归中做同样的事。</span><span class="ts">07:07</span></p>
+<p><span class="tx">那么，让我们设 z 为 W 一 x 一的平方加 w 二 x 二的平方加 b。</span><span class="ts">07:16</span></p>
+<p><span class="tx">用这种特征选择，将多项式特征引入逻辑回归，所以 x 的 f，也就是 g of z，现在是这里的这个表达式的 g。</span><span class="ts">07:26</span></p>
 <figure class="shot"><img src="img/P033/kf017.jpg" alt="画面 07:28" loading="lazy"><figcaption>画面 07:28</figcaption></figure>
-<p><span class="ts">07:40</span>我们假设最终选择 w 一和 w 二为一，b 为负一。</p>
+<p><span class="tx">我们假设最终选择 w 一和 w 二为一，b 为负一。</span><span class="ts">07:40</span></p>
 <figure class="shot"><img src="img/P033/kf018.jpg" alt="画面 07:41" loading="lazy"><figcaption>画面 07:41</figcaption></figure>
-<p><span class="ts">07:49</span>所以等于一乘以 x 一的平方加一乘以 x 二的平方减一。</p>
-<p><span class="ts">07:56</span>和之前一样，决策边界将对应于 z 等于零的情况。</p>
-<p><span class="ts">08:03</span>因此，当 x 一的平方加 x 二的平方等于一时，这个表达式将等于零。</p>
-<p><span class="ts">08:10</span>如果你在左侧的图上画出对应于 x 一的平方加 x 二的平方等于一的曲线，结果就是这个圆。</p>
-<p><span class="ts">08:22</span>当 x 一的平方加 x 二的平方大于或等于一时，那是圆外的这个区域，此时你会预测 Y 为一。</p>
-<p><span class="ts">08:33</span>相反，当 x 一的平方加 x 二的平方小于一时，那是圆内的这个区域，此时你会预测为零。</p>
+<p><span class="tx">所以等于一乘以 x 一的平方加一乘以 x 二的平方减一。</span><span class="ts">07:49</span></p>
+<p><span class="tx">和之前一样，决策边界将对应于 z 等于零的情况。</span><span class="ts">07:56</span></p>
+<p><span class="tx">因此，当 x 一的平方加 x 二的平方等于一时，这个表达式将等于零。</span><span class="ts">08:03</span></p>
+<p><span class="tx">如果你在左侧的图上画出对应于 x 一的平方加 x 二的平方等于一的曲线，结果就是这个圆。</span><span class="ts">08:10</span></p>
+<p><span class="tx">当 x 一的平方加 x 二的平方大于或等于一时，那是圆外的这个区域，此时你会预测 Y 为一。</span><span class="ts">08:22</span></p>
+<p><span class="tx">相反，当 x 一的平方加 x 二的平方小于一时，那是圆内的这个区域，此时你会预测为零。</span><span class="ts">08:33</span></p>
 <figure class="shot"><img src="img/P033/kf019.jpg" alt="画面 08:45" loading="lazy"><figcaption>画面 08:45</figcaption></figure>
-<p><span class="ts">08:46</span>那么，我们能得到比这些更复杂的决策边界吗？</p>
-<p><span class="ts">08:53</span>你可以通过使用更高阶的多项式项来做到。比如 z 等于 w 一 x 一加 w 二 x 二加 w 三 x 一的平方加 W 四 x 一 x 二加 w 五 x 二的平方。</p>
+<p><span class="tx">那么，我们能得到比这些更复杂的决策边界吗？</span><span class="ts">08:46</span></p>
+<p><span class="tx">你可以通过使用更高阶的多项式项来做到。比如 z 等于 w 一 x 一加 w 二 x 二加 w 三 x 一的平方加 W 四 x 一 x 二加 w 五 x 二的平方。</span><span class="ts">08:53</span></p>
 <figure class="shot"><img src="img/P033/kf020.jpg" alt="画面 08:55" loading="lazy"><figcaption>画面 08:55</figcaption></figure>
-<p><span class="ts">09:09</span>那么你就有可能得到更加复杂的决策边界。</p>
+<p><span class="tx">那么你就有可能得到更加复杂的决策边界。</span><span class="ts">09:09</span></p>
 <figure class="shot"><img src="img/P033/kf021.jpg" alt="画面 09:09" loading="lazy"><figcaption>画面 09:09</figcaption></figure>
-<p><span class="ts">09:16</span>比如这个例子中的边界，一个椭圆，像这样，或者选择不同的参数，你甚至可以得到更复杂的决策边界，看起来可能像这样的函数。</p>
+<p><span class="tx">比如这个例子中的边界，一个椭圆，像这样，或者选择不同的参数，你甚至可以得到更复杂的决策边界，看起来可能像这样的函数。</span><span class="ts">09:16</span></p>
 <figure class="shot"><img src="img/P033/kf022.jpg" alt="画面 09:18" loading="lazy"><figcaption>画面 09:18</figcaption></figure>
 <figure class="shot"><img src="img/P033/kf023.jpg" alt="画面 09:30" loading="lazy"><figcaption>画面 09:30</figcaption></figure>
-<p><span class="ts">09:32</span>所以，这是一个比我们之前见过的更复杂的决策边界的例子。</p>
-<p><span class="ts">09:39</span>这个逻辑回归的实现将在这个形状内部预测 y 等于一，而在形状外部，它会预测 y 等于零。</p>
-<p><span class="ts">09:51</span>因此，有了这些多项式特征，你可以得到非常复杂的决策边界。</p>
-<p><span class="ts">09:56</span>换句话说，逻辑回归可以学习拟合相当复杂的数据。</p>
-<p><span class="ts">10:02</span>然而，如果你不包含任何这些高阶多项式，也就是说你使用的唯一特征是 x 一、x 二、x 三等等，那么逻辑回归的决策边界将永远是线性的，永远是一条直线。下。</p>
+<p><span class="tx">所以，这是一个比我们之前见过的更复杂的决策边界的例子。</span><span class="ts">09:32</span></p>
+<p><span class="tx">这个逻辑回归的实现将在这个形状内部预测 y 等于一，而在形状外部，它会预测 y 等于零。</span><span class="ts">09:39</span></p>
+<p><span class="tx">因此，有了这些多项式特征，你可以得到非常复杂的决策边界。</span><span class="ts">09:51</span></p>
+<p><span class="tx">换句话说，逻辑回归可以学习拟合相当复杂的数据。</span><span class="ts">09:56</span></p>
+<p><span class="tx">然而，如果你不包含任何这些高阶多项式，也就是说你使用的唯一特征是 x 一、x 二、x 三等等，那么逻辑回归的决策边界将永远是线性的，永远是一条直线。下。</span><span class="ts">10:02</span></p>
 <figure class="shot"><img src="img/P033/kf024.jpg" alt="画面 10:03" loading="lazy"><figcaption>画面 10:03</figcaption></figure>
-<p><span class="ts">10:15</span>然而，如果你不包含任何这些高阶多项式，也就是说你使用的唯一特征是 x 一、x 二、x 三等等，那么逻辑回归的决策边界将永远是线性的，永远是一条直线。</p>
+<p><span class="tx">然而，如果你不包含任何这些高阶多项式，也就是说你使用的唯一特征是 x 一、x 二、x 三等等，那么逻辑回归的决策边界将永远是线性的，永远是一条直线。</span><span class="ts">10:15</span></p>
 <figure class="shot"><img src="img/P033/kf025.jpg" alt="画面 10:16" loading="lazy"><figcaption>画面 10:16</figcaption></figure>
-<p><span class="ts">10:17</span>在接下来的选修实验中，你还会看到决策边界的代码实现。</p>
-<p><span class="ts">10:25</span>在该实验的示例中，会有两个特征，所以你可以看到决策边界是一条线。</p>
+<p><span class="tx">在接下来的选修实验中，你还会看到决策边界的代码实现。</span><span class="ts">10:17</span></p>
+<p><span class="tx">在该实验的示例中，会有两个特征，所以你可以看到决策边界是一条线。</span><span class="ts">10:25</span></p>
 <figure class="shot"><img src="img/P033/kf026.jpg" alt="画面 10:26" loading="lazy"><figcaption>画面 10:26</figcaption></figure>
-<p><span class="ts">10:32</span>通过这些可视化，我希望你现在对逻辑回归能得到的模型范围有了一个认识。</p>
-<p><span class="ts">10:40</span>既然你已经看到了 f 可能计算出的结果，让我们看看如何实际训练一个逻辑回归模型。</p>
-<p><span class="ts">10:49</span>我们将首先了解逻辑回归的代价函数，之后，再弄清楚如何将梯度下降应用于它。</p>
+<p><span class="tx">通过这些可视化，我希望你现在对逻辑回归能得到的模型范围有了一个认识。</span><span class="ts">10:32</span></p>
+<p><span class="tx">既然你已经看到了 f 可能计算出的结果，让我们看看如何实际训练一个逻辑回归模型。</span><span class="ts">10:40</span></p>
+<p><span class="tx">我们将首先了解逻辑回归的代价函数，之后，再弄清楚如何将梯度下降应用于它。</span><span class="ts">10:49</span></p>
 </main>
 <nav class="pager"><a href="P032.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P034.html">下一讲 →</a></nav>
 <footer>

@@ -20,99 +20,99 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P015.html">← 上一讲</a><span class="mid">第 16 / 72 讲</span><a class="next" href="P017.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:05</span>我们来看看如何实际实现梯度下降算法。</p>
+<p><span class="tx">我们来看看如何实际实现梯度下降算法。</span><span class="ts">00:05</span></p>
 <figure class="shot"><img src="img/P016/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
-<p><span class="ts">00:10</span>让我写下梯度下降算法。</p>
+<p><span class="tx">让我写下梯度下降算法。</span><span class="ts">00:10</span></p>
 <figure class="shot"><img src="img/P016/kf002.jpg" alt="画面 00:11" loading="lazy"><figcaption>画面 00:11</figcaption></figure>
-<p><span class="ts">00:16</span>在每一步中，参数 w 会被更新为 w 的旧值减去 alpha 乘以这一项，即代价函数 J 括号 w，b 对 w 的偏导数。</p>
-<p><span class="ts">00:31</span>所以这个表达式说的是，更新你的参数 w，方法是取 w 的当前值，并对其进行少量调整，也就是右边这个表达式，减去 alpha 乘以后面这一项。</p>
+<p><span class="tx">在每一步中，参数 w 会被更新为 w 的旧值减去 alpha 乘以这一项，即代价函数 J 括号 w，b 对 w 的偏导数。</span><span class="ts">00:16</span></p>
+<p><span class="tx">所以这个表达式说的是，更新你的参数 w，方法是取 w 的当前值，并对其进行少量调整，也就是右边这个表达式，减去 alpha 乘以后面这一项。</span><span class="ts">00:31</span></p>
 <figure class="shot"><img src="img/P016/kf003.jpg" alt="画面 00:33" loading="lazy"><figcaption>画面 00:33</figcaption></figure>
 <figure class="shot"><img src="img/P016/kf004.jpg" alt="画面 00:47" loading="lazy"><figcaption>画面 00:47</figcaption></figure>
-<p><span class="ts">00:48</span>好的，如果你觉得这个等式里有太多内容，没关系。</p>
-<p><span class="ts">01:00</span>首先，这里的这个等号记法。</p>
-<p><span class="ts">01:03</span>注意，我说过我们用这个等号来给 w 赋值。</p>
-<p><span class="ts">01:09</span>所以在这里，这个等号是赋值运算符。</p>
-<p><span class="ts">01:14</span>具体来说，在这种语境下，如果你写代码 a 等于 c，意思是取 c 的值，并将其存储到电脑的变量 a 中。</p>
-<p><span class="ts">01:26</span>或者如果你写 a 等于 a 加一，意思是将 a 的值设为 a 加一，即将 a 的值增加一。</p>
-<p><span class="ts">01:37</span>所以编程中的赋值运算符与数学中的真值断言是不同的，在数学里，如果我写 a 等于 c，我是在断言，即我声称 a 和 c 的值彼此相等。</p>
+<p><span class="tx">好的，如果你觉得这个等式里有太多内容，没关系。</span><span class="ts">00:48</span></p>
+<p><span class="tx">首先，这里的这个等号记法。</span><span class="ts">01:00</span></p>
+<p><span class="tx">注意，我说过我们用这个等号来给 w 赋值。</span><span class="ts">01:03</span></p>
+<p><span class="tx">所以在这里，这个等号是赋值运算符。</span><span class="ts">01:09</span></p>
+<p><span class="tx">具体来说，在这种语境下，如果你写代码 a 等于 c，意思是取 c 的值，并将其存储到电脑的变量 a 中。</span><span class="ts">01:14</span></p>
+<p><span class="tx">或者如果你写 a 等于 a 加一，意思是将 a 的值设为 a 加一，即将 a 的值增加一。</span><span class="ts">01:26</span></p>
+<p><span class="tx">所以编程中的赋值运算符与数学中的真值断言是不同的，在数学里，如果我写 a 等于 c，我是在断言，即我声称 a 和 c 的值彼此相等。</span><span class="ts">01:37</span></p>
 <figure class="shot"><img src="img/P016/kf005.jpg" alt="画面 01:38" loading="lazy"><figcaption>画面 01:38</figcaption></figure>
 <figure class="shot"><img src="img/P016/kf006.jpg" alt="画面 01:51" loading="lazy"><figcaption>画面 01:51</figcaption></figure>
-<p><span class="ts">01:54</span>而且希望我永远不会写一个真值断言 a 等于 a 加一，因为你知道，那根本不可能是真的。</p>
-<p><span class="ts">02:04</span>所以在 Python 和其他编程语言中，真值断言有时会写成双等号。</p>
-<p><span class="ts">02:12</span>所以你可能会看到代码写 a 双等于 c，如果你在测试 a 是否等于 c。</p>
-<p><span class="ts">02:18</span>但在数学记法中，正如我们通常使用的，比如在这些视频里，等号既可以用于赋值，也可以用于真值断言。</p>
+<p><span class="tx">而且希望我永远不会写一个真值断言 a 等于 a 加一，因为你知道，那根本不可能是真的。</span><span class="ts">01:54</span></p>
+<p><span class="tx">所以在 Python 和其他编程语言中，真值断言有时会写成双等号。</span><span class="ts">02:04</span></p>
+<p><span class="tx">所以你可能会看到代码写 a 双等于 c，如果你在测试 a 是否等于 c。</span><span class="ts">02:12</span></p>
+<p><span class="tx">但在数学记法中，正如我们通常使用的，比如在这些视频里，等号既可以用于赋值，也可以用于真值断言。</span><span class="ts">02:18</span></p>
 <figure class="shot"><img src="img/P016/kf007.jpg" alt="画面 02:20" loading="lazy"><figcaption>画面 02:20</figcaption></figure>
-<p><span class="ts">02:29</span>所以当我写等号时，我会尽量说清楚我们到底是在给变量赋值，还是在断言两个值相等的真值。</p>
+<p><span class="tx">所以当我写等号时，我会尽量说清楚我们到底是在给变量赋值，还是在断言两个值相等的真值。</span><span class="ts">02:29</span></p>
 <figure class="shot"><img src="img/P016/kf008.jpg" alt="画面 02:30" loading="lazy"><figcaption>画面 02:30</figcaption></figure>
-<p><span class="ts">02:41</span>现在，让我们更深入地了解这个等式中各个符号的含义。</p>
-<p><span class="ts">02:47</span>这里的符号是希腊字母 alpha。</p>
-<p><span class="ts">02:51</span>在这个等式中，alpha 也被称为学习率。</p>
-<p><span class="ts">02:57</span>学习率通常是一个介于零和一之间的较小的正数。</p>
-<p><span class="ts">03:06</span>alpha 的作用是，它基本上控制了你下山时迈出的步子有多大。</p>
-<p><span class="ts">03:13</span>如果 alpha 非常大，那对应的是一个非常激进的梯度下降过程，你会试图迈出巨大的步幅下山。</p>
-<p><span class="ts">03:22</span>而如果 alpha 非常小，那你就会迈着小碎步下山。</p>
-<p><span class="ts">03:28</span>我们稍后会回来更深入地探讨如何选择一个好的学习率 alpha。</p>
-<p><span class="ts">03:34</span>最后，这一项是代价函数 J 的导数项。</p>
-<p><span class="ts">03:41</span>我们现在先不深究这个导数的细节，但稍后你会了解更多关于导数项的内容。</p>
-<p><span class="ts">03:48</span>但就目前而言，你可以把我在洋红色框中标注的这个导数项，看作是告诉你想要朝哪个方向迈出你的一小步。</p>
+<p><span class="tx">现在，让我们更深入地了解这个等式中各个符号的含义。</span><span class="ts">02:41</span></p>
+<p><span class="tx">这里的符号是希腊字母 alpha。</span><span class="ts">02:47</span></p>
+<p><span class="tx">在这个等式中，alpha 也被称为学习率。</span><span class="ts">02:51</span></p>
+<p><span class="tx">学习率通常是一个介于零和一之间的较小的正数。</span><span class="ts">02:57</span></p>
+<p><span class="tx">alpha 的作用是，它基本上控制了你下山时迈出的步子有多大。</span><span class="ts">03:06</span></p>
+<p><span class="tx">如果 alpha 非常大，那对应的是一个非常激进的梯度下降过程，你会试图迈出巨大的步幅下山。</span><span class="ts">03:13</span></p>
+<p><span class="tx">而如果 alpha 非常小，那你就会迈着小碎步下山。</span><span class="ts">03:22</span></p>
+<p><span class="tx">我们稍后会回来更深入地探讨如何选择一个好的学习率 alpha。</span><span class="ts">03:28</span></p>
+<p><span class="tx">最后，这一项是代价函数 J 的导数项。</span><span class="ts">03:34</span></p>
+<p><span class="tx">我们现在先不深究这个导数的细节，但稍后你会了解更多关于导数项的内容。</span><span class="ts">03:41</span></p>
+<p><span class="tx">但就目前而言，你可以把我在洋红色框中标注的这个导数项，看作是告诉你想要朝哪个方向迈出你的一小步。</span><span class="ts">03:48</span></p>
 <figure class="shot"><img src="img/P016/kf009.jpg" alt="画面 03:49" loading="lazy"><figcaption>画面 03:49</figcaption></figure>
-<p><span class="ts">04:00</span>再结合学习率 alpha，它也决定了你下山时步幅的大小。</p>
+<p><span class="tx">再结合学习率 alpha，它也决定了你下山时步幅的大小。</span><span class="ts">04:00</span></p>
 <figure class="shot"><img src="img/P016/kf010.jpg" alt="画面 04:01" loading="lazy"><figcaption>画面 04:01</figcaption></figure>
-<p><span class="ts">04:08</span>现在，我的确想提一下，导数来自微积分。</p>
-<p><span class="ts">04:13</span>即使你不熟悉微积分，也别担心。</p>
-<p><span class="ts">04:17</span>即使完全不懂任何微积分，你也能在本期和下期视频中，弄清楚关于这个导数项你需要知道的所有。</p>
+<p><span class="tx">现在，我的确想提一下，导数来自微积分。</span><span class="ts">04:08</span></p>
+<p><span class="tx">即使你不熟悉微积分，也别担心。</span><span class="ts">04:13</span></p>
+<p><span class="tx">即使完全不懂任何微积分，你也能在本期和下期视频中，弄清楚关于这个导数项你需要知道的所有。</span><span class="ts">04:17</span></p>
 <figure class="shot"><img src="img/P016/kf011.jpg" alt="画面 04:18" loading="lazy"><figcaption>画面 04:18</figcaption></figure>
-<p><span class="ts">04:28</span>记住，你的模型有两个参数，不仅仅是 w，还有 b。</p>
+<p><span class="tx">记住，你的模型有两个参数，不仅仅是 w，还有 b。</span><span class="ts">04:28</span></p>
 <figure class="shot"><img src="img/P016/kf012.jpg" alt="画面 04:28" loading="lazy"><figcaption>画面 04:28</figcaption></figure>
-<p><span class="ts">04:33</span>因此你也有一个更新参数 b 的赋值操作，看起来非常相似。</p>
-<p><span class="ts">04:40</span>b 被赋值为 b 的旧值减去学习率 alpha 乘以这个稍有不同的导数项，即 J 括号 w，b 对 b 的偏导数。</p>
-<p><span class="ts">04:54</span>还记得在曲面图上，你正迈着小碎步直到抵达山谷底部吗？</p>
-<p><span class="ts">05:02</span>对于梯度下降算法，你会重复这两个更新步骤，直到算法收敛。</p>
-<p><span class="ts">05:09</span>我所说的收敛，是指你到达了局部最小值那个点，在此之后，参数 w 和 b 不再随着你每多走一步而发生大大变化。</p>
+<p><span class="tx">因此你也有一个更新参数 b 的赋值操作，看起来非常相似。</span><span class="ts">04:33</span></p>
+<p><span class="tx">b 被赋值为 b 的旧值减去学习率 alpha 乘以这个稍有不同的导数项，即 J 括号 w，b 对 b 的偏导数。</span><span class="ts">04:40</span></p>
+<p><span class="tx">还记得在曲面图上，你正迈着小碎步直到抵达山谷底部吗？</span><span class="ts">04:54</span></p>
+<p><span class="tx">对于梯度下降算法，你会重复这两个更新步骤，直到算法收敛。</span><span class="ts">05:02</span></p>
+<p><span class="tx">我所说的收敛，是指你到达了局部最小值那个点，在此之后，参数 w 和 b 不再随着你每多走一步而发生大大变化。</span><span class="ts">05:09</span></p>
 <figure class="shot"><img src="img/P016/kf013.jpg" alt="画面 05:11" loading="lazy"><figcaption>画面 05:11</figcaption></figure>
-<p><span class="ts">05:21</span>现在，关于如何正确实现梯度下降，还有一个更微妙的细节。</p>
+<p><span class="tx">现在，关于如何正确实现梯度下降，还有一个更微妙的细节。</span><span class="ts">05:21</span></p>
 <figure class="shot"><img src="img/P016/kf014.jpg" alt="画面 05:22" loading="lazy"><figcaption>画面 05:22</figcaption></figure>
-<p><span class="ts">05:27</span>你要更新两个参数，w 和 b，对吧？</p>
-<p><span class="ts">05:32</span>所以这个更新对两个参数 w 和 b 都会发生。</p>
-<p><span class="ts">05:37</span>一个重要的细节是，对于梯度下降，你需要同时更新 w 和 b，意思是你想在同一时间更新这两个参数。</p>
+<p><span class="tx">你要更新两个参数，w 和 b，对吧？</span><span class="ts">05:27</span></p>
+<p><span class="tx">所以这个更新对两个参数 w 和 b 都会发生。</span><span class="ts">05:32</span></p>
+<p><span class="tx">一个重要的细节是，对于梯度下降，你需要同时更新 w 和 b，意思是你想在同一时间更新这两个参数。</span><span class="ts">05:37</span></p>
 <figure class="shot"><img src="img/P016/kf015.jpg" alt="画面 05:39" loading="lazy"><figcaption>画面 05:39</figcaption></figure>
 <figure class="shot"><img src="img/P016/kf016.jpg" alt="画面 05:50" loading="lazy"><figcaption>画面 05:50</figcaption></figure>
-<p><span class="ts">05:51</span>我这么说的意思是，在这个表达式中，你要将 w 从旧 w 更新为新 w。</p>
-<p><span class="ts">06:00</span>同时你也在将 b 从其旧值更新为 b 的新值。</p>
-<p><span class="ts">06:06</span>而实现的方法是计算右侧，为 W 和 B 计算出这个东西，并在同一时刻，同时将 W 和 B 更新为新值。</p>
-<p><span class="ts">06:22</span>那么，我们来看看这意味着什么。</p>
-<p><span class="ts">06:25</span>这是实现梯度下降的正确方式，即执行同时更新。</p>
-<p><span class="ts">06:31</span>这将一个变量 temp_w 设为那个表达式，也就是 w 减去这一项。</p>
-<p><span class="ts">06:39</span>我们再设另一个变量 temp_b，等于那个，即 b 减去这一项。</p>
-<p><span class="ts">06:46</span>这样你计算了两个右侧，算出了两个更新值，并把它们存入变量 temp_w 和 temp_b 中。</p>
-<p><span class="ts">06:56</span>然后你把 temp_w 的值复制给 w，再把 temp_b 的值复制给 b。</p>
-<p><span class="ts">07:06</span>现在，你可能注意到的一点是，这里的 w 值是 w 被更新之前的值。</p>
-<p><span class="ts">07:15</span>这里，请注意，进入导数项的是更新前的 w，明白了吗？</p>
-<p><span class="ts">07:23</span>相比之下，这里有一个不正确的梯度下降实现，它没有执行同时更新。</p>
-<p><span class="ts">07:30</span>在这个不正确的实现中，我们计算 temp_w，和之前一样。</p>
-<p><span class="ts">07:39</span>现在，情况开始有所不同了。</p>
-<p><span class="ts">07:42</span>我们在为另一个参数 b 计算新值之前，就先用 temp_w 中的值更新了 w。</p>
-<p><span class="ts">07:51</span>接下来，我们计算 temp_b 等于 b 减去这一项。</p>
-<p><span class="ts">07:58</span>最后，我们用 temp_b 中的值更新 b。</p>
-<p><span class="ts">08:03</span>右边实现和左边实现的区别在于，如果你看这里，这个 w 已经被更新成了这个新值。</p>
+<p><span class="tx">我这么说的意思是，在这个表达式中，你要将 w 从旧 w 更新为新 w。</span><span class="ts">05:51</span></p>
+<p><span class="tx">同时你也在将 b 从其旧值更新为 b 的新值。</span><span class="ts">06:00</span></p>
+<p><span class="tx">而实现的方法是计算右侧，为 W 和 B 计算出这个东西，并在同一时刻，同时将 W 和 B 更新为新值。</span><span class="ts">06:06</span></p>
+<p><span class="tx">那么，我们来看看这意味着什么。</span><span class="ts">06:22</span></p>
+<p><span class="tx">这是实现梯度下降的正确方式，即执行同时更新。</span><span class="ts">06:25</span></p>
+<p><span class="tx">这将一个变量 temp_w 设为那个表达式，也就是 w 减去这一项。</span><span class="ts">06:31</span></p>
+<p><span class="tx">我们再设另一个变量 temp_b，等于那个，即 b 减去这一项。</span><span class="ts">06:39</span></p>
+<p><span class="tx">这样你计算了两个右侧，算出了两个更新值，并把它们存入变量 temp_w 和 temp_b 中。</span><span class="ts">06:46</span></p>
+<p><span class="tx">然后你把 temp_w 的值复制给 w，再把 temp_b 的值复制给 b。</span><span class="ts">06:56</span></p>
+<p><span class="tx">现在，你可能注意到的一点是，这里的 w 值是 w 被更新之前的值。</span><span class="ts">07:06</span></p>
+<p><span class="tx">这里，请注意，进入导数项的是更新前的 w，明白了吗？</span><span class="ts">07:15</span></p>
+<p><span class="tx">相比之下，这里有一个不正确的梯度下降实现，它没有执行同时更新。</span><span class="ts">07:23</span></p>
+<p><span class="tx">在这个不正确的实现中，我们计算 temp_w，和之前一样。</span><span class="ts">07:30</span></p>
+<p><span class="tx">现在，情况开始有所不同了。</span><span class="ts">07:39</span></p>
+<p><span class="tx">我们在为另一个参数 b 计算新值之前，就先用 temp_w 中的值更新了 w。</span><span class="ts">07:42</span></p>
+<p><span class="tx">接下来，我们计算 temp_b 等于 b 减去这一项。</span><span class="ts">07:51</span></p>
+<p><span class="tx">最后，我们用 temp_b 中的值更新 b。</span><span class="ts">07:58</span></p>
+<p><span class="tx">右边实现和左边实现的区别在于，如果你看这里，这个 w 已经被更新成了这个新值。</span><span class="ts">08:03</span></p>
 <figure class="shot"><img src="img/P016/kf017.jpg" alt="画面 08:08" loading="lazy"><figcaption>画面 08:08</figcaption></figure>
-<p><span class="ts">08:13</span>而正是这个更新后的 w，实际进入了代价函数 J 括号 w，b 中。</p>
-<p><span class="ts">08:20</span>这意味着，右边这里的这一项，和你在左边看到的这一项，并不相同。</p>
-<p><span class="ts">08:28</span>那也意味着，右边这个 temp_b 项，和左边的 temp_b 项也不完全相同。</p>
-<p><span class="ts">08:37</span>因此，右边更新后的 b 值，和左边变量 b 更新后的值也不相同。</p>
-<p><span class="ts">08:46</span>用代码实现梯度下降时，实际上采用正确的同时更新方式实现起来更自然。</p>
-<p><span class="ts">08:57</span>当你听别人谈论梯度下降时，他们总是指执行参数同时更新的梯度下降。</p>
-<p><span class="ts">09:05</span>然而，如果你要实现非同时更新，结果多半也能差不多工作，但这样做并非真正正确的实现方式。</p>
-<p><span class="ts">09:17</span>这其实是某种具有不同性质的其他算法。</p>
-<p><span class="ts">09:21</span>所以，我建议你坚持正确的同步更新，不要使用右边这个不正确的版本。</p>
-<p><span class="ts">09:30</span>那么，这就是梯度下降。</p>
-<p><span class="ts">09:32</span>在下期视频中，我们将详细探讨导数项，你在本期视频中看到过，但我们并未真正详细讨论。</p>
-<p><span class="ts">09:42</span>导数是微积分的一部分。</p>
-<p><span class="ts">09:44</span>再强调一次，如果你不熟悉微积分，别担心。</p>
-<p><span class="ts">09:49</span>你完全不需要懂微积分就能完成这门课或这个专项课程，你将拥有实现梯度下降所需的全部信息。</p>
-<p><span class="ts">10:00</span>在接下来的下期视频中，我们会一起过一遍导数，而你将会带着自己实现和应用梯度下降所需的直觉和知识离开。</p>
-<p><span class="ts">10:12</span>我认为，知道如何实现这个，对你来说会是件激动人心的事。</p>
-<p><span class="ts">10:18</span>那么，让我们进入下期视频，看看具体怎么做。</p>
+<p><span class="tx">而正是这个更新后的 w，实际进入了代价函数 J 括号 w，b 中。</span><span class="ts">08:13</span></p>
+<p><span class="tx">这意味着，右边这里的这一项，和你在左边看到的这一项，并不相同。</span><span class="ts">08:20</span></p>
+<p><span class="tx">那也意味着，右边这个 temp_b 项，和左边的 temp_b 项也不完全相同。</span><span class="ts">08:28</span></p>
+<p><span class="tx">因此，右边更新后的 b 值，和左边变量 b 更新后的值也不相同。</span><span class="ts">08:37</span></p>
+<p><span class="tx">用代码实现梯度下降时，实际上采用正确的同时更新方式实现起来更自然。</span><span class="ts">08:46</span></p>
+<p><span class="tx">当你听别人谈论梯度下降时，他们总是指执行参数同时更新的梯度下降。</span><span class="ts">08:57</span></p>
+<p><span class="tx">然而，如果你要实现非同时更新，结果多半也能差不多工作，但这样做并非真正正确的实现方式。</span><span class="ts">09:05</span></p>
+<p><span class="tx">这其实是某种具有不同性质的其他算法。</span><span class="ts">09:17</span></p>
+<p><span class="tx">所以，我建议你坚持正确的同步更新，不要使用右边这个不正确的版本。</span><span class="ts">09:21</span></p>
+<p><span class="tx">那么，这就是梯度下降。</span><span class="ts">09:30</span></p>
+<p><span class="tx">在下期视频中，我们将详细探讨导数项，你在本期视频中看到过，但我们并未真正详细讨论。</span><span class="ts">09:32</span></p>
+<p><span class="tx">导数是微积分的一部分。</span><span class="ts">09:42</span></p>
+<p><span class="tx">再强调一次，如果你不熟悉微积分，别担心。</span><span class="ts">09:44</span></p>
+<p><span class="tx">你完全不需要懂微积分就能完成这门课或这个专项课程，你将拥有实现梯度下降所需的全部信息。</span><span class="ts">09:49</span></p>
+<p><span class="tx">在接下来的下期视频中，我们会一起过一遍导数，而你将会带着自己实现和应用梯度下降所需的直觉和知识离开。</span><span class="ts">10:00</span></p>
+<p><span class="tx">我认为，知道如何实现这个，对你来说会是件激动人心的事。</span><span class="ts">10:12</span></p>
+<p><span class="tx">那么，让我们进入下期视频，看看具体怎么做。</span><span class="ts">10:18</span></p>
 </main>
 <nav class="pager"><a href="P015.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P017.html">下一讲 →</a></nav>
 <footer>

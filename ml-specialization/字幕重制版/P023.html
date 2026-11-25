@@ -20,68 +20,68 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P022.html">← 上一讲</a><span class="mid">第 23 / 72 讲</span><a class="next" href="P024.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:03</span>我记得我第一次学习向量化的时候，我在电脑上花了好几个小时，先是运行一个未向量化的算法版本，看看它运行多久，然后再运行代码的向量化版本，看看它又快了多少。</p>
+<p><span class="tx">我记得我第一次学习向量化的时候，我在电脑上花了好几个小时，先是运行一个未向量化的算法版本，看看它运行多久，然后再运行代码的向量化版本，看看它又快了多少。</span><span class="ts">00:03</span></p>
 <figure class="shot"><img src="img/P023/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
 <figure class="shot"><img src="img/P023/kf002.jpg" alt="画面 00:04" loading="lazy"><figcaption>画面 00:04</figcaption></figure>
-<p><span class="ts">00:20</span>我只是花了几个小时摆弄这个，而它让我大为震惊，同一个算法向量化后竟能跑得如此之快。</p>
-<p><span class="ts">00:30</span>这对我来说几乎就像一个魔法把戏。</p>
-<p><span class="ts">00:33</span>在本视频中，我们来弄清楚这个魔法把戏究竟是如何运作的。</p>
-<p><span class="ts">00:39</span>让我们更深入地了解，向量化实现是如何在你的电脑背后工作的。</p>
+<p><span class="tx">我只是花了几个小时摆弄这个，而它让我大为震惊，同一个算法向量化后竟能跑得如此之快。</span><span class="ts">00:20</span></p>
+<p><span class="tx">这对我来说几乎就像一个魔法把戏。</span><span class="ts">00:30</span></p>
+<p><span class="tx">在本视频中，我们来弄清楚这个魔法把戏究竟是如何运作的。</span><span class="ts">00:33</span></p>
+<p><span class="tx">让我们更深入地了解，向量化实现是如何在你的电脑背后工作的。</span><span class="ts">00:39</span></p>
 <figure class="shot"><img src="img/P023/kf003.jpg" alt="画面 00:40" loading="lazy"><figcaption>画面 00:40</figcaption></figure>
-<p><span class="ts">00:45</span>我们来看这个 for 循环。</p>
-<p><span class="ts">00:47</span>像这样的 for 循环在没有向量化的情况下运行。</p>
-<p><span class="ts">00:52</span>所以如果 j 的范围从零到，比如说十五，这段代码会一个接一个地执行操作。</p>
-<p><span class="ts">01:01</span>在第一个时间步，我将它记为时间零或 t 零，它首先对索引为零的值进行操作。</p>
-<p><span class="ts">01:11</span>在下一个时间步，它计算对应索引为一的值，以此类推，直到第十五步，它完成了那步计算。</p>
-<p><span class="ts">01:22</span>换句话说，它一次一步、一步接一步地执行这些计算。</p>
-<p><span class="ts">01:30</span>相比之下，NumPy 中的这个函数是在计算机硬件中以向量化方式实现的。</p>
-<p><span class="ts">01:38</span>因此，计算机可以获取向量 w 和 x 的所有值，在单一步骤中，它同时并行地将每一对 w 和 x 相乘。</p>
+<p><span class="tx">我们来看这个 for 循环。</span><span class="ts">00:45</span></p>
+<p><span class="tx">像这样的 for 循环在没有向量化的情况下运行。</span><span class="ts">00:47</span></p>
+<p><span class="tx">所以如果 j 的范围从零到，比如说十五，这段代码会一个接一个地执行操作。</span><span class="ts">00:52</span></p>
+<p><span class="tx">在第一个时间步，我将它记为时间零或 t 零，它首先对索引为零的值进行操作。</span><span class="ts">01:01</span></p>
+<p><span class="tx">在下一个时间步，它计算对应索引为一的值，以此类推，直到第十五步，它完成了那步计算。</span><span class="ts">01:11</span></p>
+<p><span class="tx">换句话说，它一次一步、一步接一步地执行这些计算。</span><span class="ts">01:22</span></p>
+<p><span class="tx">相比之下，NumPy 中的这个函数是在计算机硬件中以向量化方式实现的。</span><span class="ts">01:30</span></p>
+<p><span class="tx">因此，计算机可以获取向量 w 和 x 的所有值，在单一步骤中，它同时并行地将每一对 w 和 x 相乘。</span><span class="ts">01:38</span></p>
 <figure class="shot"><img src="img/P023/kf004.jpg" alt="画面 01:39" loading="lazy"><figcaption>画面 01:39</figcaption></figure>
 <figure class="shot"><img src="img/P023/kf005.jpg" alt="画面 01:50" loading="lazy"><figcaption>画面 01:50</figcaption></figure>
-<p><span class="ts">01:51</span>在那之后，计算机取得这十六个数字，并使用专门的硬件非常高效地将它们全部加总起来，而不是需要一个接一个地执行不同的加法来累加这十六个数字。</p>
+<p><span class="tx">在那之后，计算机取得这十六个数字，并使用专门的硬件非常高效地将它们全部加总起来，而不是需要一个接一个地执行不同的加法来累加这十六个数字。</span><span class="ts">01:51</span></p>
 <figure class="shot"><img src="img/P023/kf006.jpg" alt="画面 01:53" loading="lazy"><figcaption>画面 01:53</figcaption></figure>
-<p><span class="ts">02:07</span>这意味着带有向量化的代码能在比没有向量化的代码少得多的时间内完成计算。</p>
+<p><span class="tx">这意味着带有向量化的代码能在比没有向量化的代码少得多的时间内完成计算。</span><span class="ts">02:07</span></p>
 <figure class="shot"><img src="img/P023/kf007.jpg" alt="画面 02:07" loading="lazy"><figcaption>画面 02:07</figcaption></figure>
-<p><span class="ts">02:16</span>而当你在大数据集上运行学习算法或尝试训练大型模型时，这点就更加重要，而这通常是机器学习中的情形。</p>
+<p><span class="tx">而当你在大数据集上运行学习算法或尝试训练大型模型时，这点就更加重要，而这通常是机器学习中的情形。</span><span class="ts">02:16</span></p>
 <figure class="shot"><img src="img/P023/kf008.jpg" alt="画面 02:18" loading="lazy"><figcaption>画面 02:18</figcaption></figure>
-<p><span class="ts">02:27</span>所以这就是为什么能够写出学习算法的向量化实现，是让学习算法高效运行、并因此能很好地扩展到许多现代机器学习算法如今必须处理的大数据集上的关键一步。</p>
+<p><span class="tx">所以这就是为什么能够写出学习算法的向量化实现，是让学习算法高效运行、并因此能很好地扩展到许多现代机器学习算法如今必须处理的大数据集上的关键一步。</span><span class="ts">02:27</span></p>
 <figure class="shot"><img src="img/P023/kf009.jpg" alt="画面 02:29" loading="lazy"><figcaption>画面 02:29</figcaption></figure>
-<p><span class="ts">02:43</span>现在，让我们来看一个具体的例子，说明这如何有助于实现多元线性回归，即具有多个输入特征的线性回归。</p>
+<p><span class="tx">现在，让我们来看一个具体的例子，说明这如何有助于实现多元线性回归，即具有多个输入特征的线性回归。</span><span class="ts">02:43</span></p>
 <figure class="shot"><img src="img/P023/kf010.jpg" alt="画面 02:45" loading="lazy"><figcaption>画面 02:45</figcaption></figure>
-<p><span class="ts">02:54</span>假设你有一个包含十六个特征和十六个参数 w 一到 w 十六的问题，此外还有参数 b。</p>
+<p><span class="tx">假设你有一个包含十六个特征和十六个参数 w 一到 w 十六的问题，此外还有参数 b。</span><span class="ts">02:54</span></p>
 <figure class="shot"><img src="img/P023/kf011.jpg" alt="画面 02:55" loading="lazy"><figcaption>画面 02:55</figcaption></figure>
-<p><span class="ts">03:06</span>你为这十六个权重计算了十六个导数项。</p>
-<p><span class="ts">03:11</span>在代码中，也许你将 w 和 d 的值存储在两个 NumPy 数组中，其中 d 存储导数的值。</p>
+<p><span class="tx">你为这十六个权重计算了十六个导数项。</span><span class="ts">03:06</span></p>
+<p><span class="tx">在代码中，也许你将 w 和 d 的值存储在两个 NumPy 数组中，其中 d 存储导数的值。</span><span class="ts">03:11</span></p>
 <figure class="shot"><img src="img/P023/kf012.jpg" alt="画面 03:15" loading="lazy"><figcaption>画面 03:15</figcaption></figure>
-<p><span class="ts">03:21</span>对于这个例子，我将暂时忽略参数 b。</p>
-<p><span class="ts">03:26</span>现在，你想为这十六个参数中的每一个计算更新。</p>
-<p><span class="ts">03:31</span>所以，对于 j 从一到十六，wj 被更新为 wj 减去学习率，比如零点一，在代码中，如果没有向量化，你会做类似这样的事。</p>
-<p><span class="ts">03:52</span>更新 W 一为 W 一减去学习率零点一乘以 D 一，接着类似地更新 W 二，以此类推直到 W 十六，更新为 W 十六减去零点一乘以 D 十六。</p>
-<p><span class="ts">04:10</span>在代码中，如果没有向量化，你可以用像这样的一个 for 循环，for j in range(0, 16)，设 wj 等于 wj 减去零点一乘以 dj。</p>
-<p><span class="ts">04:28</span>相比之下，有了向量化，你可以把计算机的并行处理硬件想象成这样，它取向量 w 中的所有十六个值，并并行地减去零点一乘以向量 d 中的所有十六个值，并在同一步骤中，同时将全部十六个计算结果赋回给 W。</p>
-<p><span class="ts">04:54</span>在代码中，你可以这样实现：w 被赋值为 w 减去零点一乘以 d。</p>
-<p><span class="ts">05:04</span>在幕后，计算机取这些 NumPy 数组 W 和 d，并使用并行处理硬件高效地执行所有十六次计算。</p>
-<p><span class="ts">05:15</span>所以，使用向量化实现，你应该会得到一个高效得多的线性回归实现。</p>
-<p><span class="ts">05:22</span>如果你只有十六个特征，速度差异也许不会很大，但如果你有成千上万个特征以及可能非常大的训练集，这种向量化实现将在你的学习算法的运行时间上产生巨大差异。</p>
+<p><span class="tx">对于这个例子，我将暂时忽略参数 b。</span><span class="ts">03:21</span></p>
+<p><span class="tx">现在，你想为这十六个参数中的每一个计算更新。</span><span class="ts">03:26</span></p>
+<p><span class="tx">所以，对于 j 从一到十六，wj 被更新为 wj 减去学习率，比如零点一，在代码中，如果没有向量化，你会做类似这样的事。</span><span class="ts">03:31</span></p>
+<p><span class="tx">更新 W 一为 W 一减去学习率零点一乘以 D 一，接着类似地更新 W 二，以此类推直到 W 十六，更新为 W 十六减去零点一乘以 D 十六。</span><span class="ts">03:52</span></p>
+<p><span class="tx">在代码中，如果没有向量化，你可以用像这样的一个 for 循环，for j in range(0, 16)，设 wj 等于 wj 减去零点一乘以 dj。</span><span class="ts">04:10</span></p>
+<p><span class="tx">相比之下，有了向量化，你可以把计算机的并行处理硬件想象成这样，它取向量 w 中的所有十六个值，并并行地减去零点一乘以向量 d 中的所有十六个值，并在同一步骤中，同时将全部十六个计算结果赋回给 W。</span><span class="ts">04:28</span></p>
+<p><span class="tx">在代码中，你可以这样实现：w 被赋值为 w 减去零点一乘以 d。</span><span class="ts">04:54</span></p>
+<p><span class="tx">在幕后，计算机取这些 NumPy 数组 W 和 d，并使用并行处理硬件高效地执行所有十六次计算。</span><span class="ts">05:04</span></p>
+<p><span class="tx">所以，使用向量化实现，你应该会得到一个高效得多的线性回归实现。</span><span class="ts">05:15</span></p>
+<p><span class="tx">如果你只有十六个特征，速度差异也许不会很大，但如果你有成千上万个特征以及可能非常大的训练集，这种向量化实现将在你的学习算法的运行时间上产生巨大差异。</span><span class="ts">05:22</span></p>
 <figure class="shot"><img src="img/P023/kf013.jpg" alt="画面 05:24" loading="lazy"><figcaption>画面 05:24</figcaption></figure>
-<p><span class="ts">05:39</span>这可能是代码在一两分钟内完成，还是花费很多很多小时做同样事情的区别。</p>
-<p><span class="ts">05:52</span>在这个视频之后的选修实验中，你会看到对机器学习中最常用的 Python 库之一的介绍，这个库我们在本视频中已经提及，叫做 NumPy。</p>
+<p><span class="tx">这可能是代码在一两分钟内完成，还是花费很多很多小时做同样事情的区别。</span><span class="ts">05:39</span></p>
+<p><span class="tx">在这个视频之后的选修实验中，你会看到对机器学习中最常用的 Python 库之一的介绍，这个库我们在本视频中已经提及，叫做 NumPy。</span><span class="ts">05:52</span></p>
 <figure class="shot"><img src="img/P023/kf014.jpg" alt="画面 05:56" loading="lazy"><figcaption>画面 05:56</figcaption></figure>
-<p><span class="ts">05:59</span>你将看到如何在代码中创建向量，这些向量或数字列表被称为 NumPy 数组。</p>
-<p><span class="ts">06:07</span>你也将看到如何使用一个叫做 dot 的 NumPy 函数来取两个向量的点积。</p>
+<p><span class="tx">你将看到如何在代码中创建向量，这些向量或数字列表被称为 NumPy 数组。</span><span class="ts">05:59</span></p>
+<p><span class="tx">你也将看到如何使用一个叫做 dot 的 NumPy 函数来取两个向量的点积。</span><span class="ts">06:07</span></p>
 <figure class="shot"><img src="img/P023/kf015.jpg" alt="画面 06:07" loading="lazy"><figcaption>画面 06:07</figcaption></figure>
 <figure class="shot"><img src="img/P023/kf016.jpg" alt="画面 06:10" loading="lazy"><figcaption>画面 06:10</figcaption></figure>
-<p><span class="ts">06:15</span>你还会看到向量化后的代码，比如使用 dot 函数，如何能比 for 循环跑得快得多。</p>
+<p><span class="tx">你还会看到向量化后的代码，比如使用 dot 函数，如何能比 for 循环跑得快得多。</span><span class="ts">06:15</span></p>
 <figure class="shot"><img src="img/P023/kf017.jpg" alt="画面 06:15" loading="lazy"><figcaption>画面 06:15</figcaption></figure>
 <figure class="shot"><img src="img/P023/kf018.jpg" alt="画面 06:19" loading="lazy"><figcaption>画面 06:19</figcaption></figure>
-<p><span class="ts">06:24</span>事实上，你将亲自为这些代码计时，并有望看到它运行得更快。</p>
-<p><span class="ts">06:31</span>这个选修实验介绍了相当多的新 NumPy 语法。</p>
+<p><span class="tx">事实上，你将亲自为这些代码计时，并有望看到它运行得更快。</span><span class="ts">06:24</span></p>
+<p><span class="tx">这个选修实验介绍了相当多的新 NumPy 语法。</span><span class="ts">06:31</span></p>
 <figure class="shot"><img src="img/P023/kf019.jpg" alt="画面 06:35" loading="lazy"><figcaption>画面 06:35</figcaption></figure>
-<p><span class="ts">06:36</span>所以当你阅读这个选修实验时，请不要觉得你必须立刻理解所有代码，但你可以保存这个，并在处理存储在 NumPy 数组中的数据时，把它当作一份参考资料来查看。</p>
+<p><span class="tx">所以当你阅读这个选修实验时，请不要觉得你必须立刻理解所有代码，但你可以保存这个，并在处理存储在 NumPy 数组中的数据时，把它当作一份参考资料来查看。</span><span class="ts">06:36</span></p>
 <figure class="shot"><img src="img/P023/kf020.jpg" alt="画面 06:38" loading="lazy"><figcaption>画面 06:38</figcaption></figure>
-<p><span class="ts">06:51</span>那么，恭喜你完成了这个关于向量化的视频。</p>
-<p><span class="ts">07:05</span>你已经学习了实现机器学习算法中最重要也最有用的技巧之一。在下一个视频中，我们将把多元线性回归的数学与向量化结合起来，以便你用向量化为多元线性回归实现梯度下降。</p>
-<p><span class="ts">07:12</span>让我们进入下一个视频。</p>
+<p><span class="tx">那么，恭喜你完成了这个关于向量化的视频。</span><span class="ts">06:51</span></p>
+<p><span class="tx">你已经学习了实现机器学习算法中最重要也最有用的技巧之一。在下一个视频中，我们将把多元线性回归的数学与向量化结合起来，以便你用向量化为多元线性回归实现梯度下降。</span><span class="ts">07:05</span></p>
+<p><span class="tx">让我们进入下一个视频。</span><span class="ts">07:12</span></p>
 </main>
 <nav class="pager"><a href="P022.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P024.html">下一讲 →</a></nav>
 <footer>

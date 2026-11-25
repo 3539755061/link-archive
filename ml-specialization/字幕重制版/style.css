@@ -82,7 +82,9 @@ nav.topnav .mid{color:var(--ink-2);font-variant-numeric:tabular-nums}
   nav.topnav.toc .mid{flex:1 1 100%;text-align:right;font-size:.76em;padding-top:.1em}
   main{padding-bottom:1em}
   p{margin-bottom:.9em}
-  .ts{display:block;font-size:.7em;margin:0 0 .12em;color:#a2947f}
+  main p{padding-right:0;display:grid;grid-template-columns:minmax(0,1fr);row-gap:.08em}
+  main p .ts{position:static;grid-row:1;font-size:.68em;margin:0;color:#a2947f}
+  main p .tx{grid-row:2}
   figure.shot{margin:1em 0 1.2em}
   figure.shot figcaption{font-size:.7em;margin-top:.35em}
   nav.pager{font-size:.9em;gap:.4em;margin-top:1.4em;padding-top:1em}
@@ -125,6 +127,11 @@ h1{margin:0 0 .55em;font-size:1.56em;line-height:1.36;text-wrap:balance}
 .lead span:not(:last-child)::after{content:"·";margin-left:.5em;color:#c9bcaa}
 nav.topnav{margin:0 0 2.1em;padding:.55em 0;border-top:1px solid var(--line)}
 main p{margin:0 0 1em;text-wrap:pretty}
+@media (min-width:641px){
+  main p{position:relative;padding-right:3.4em}
+  main p .ts{position:absolute;right:0;top:.32em;margin:0;padding:0;font-size:.7em;line-height:1.3;
+    color:#9c9083;letter-spacing:.02em;font-variant-numeric:tabular-nums}
+}
 figure.shot{margin:1.6em 0 1.8em}
 figure.shot img{border:1px solid rgba(31,35,40,.1);
   box-shadow:0 1px 2px rgba(31,35,40,.10),0 5px 16px rgba(31,35,40,.06)}
@@ -148,14 +155,17 @@ html[data-theme="night"]{
 html[data-theme="night"] nav.themes button.on{color:#191b1f}
 html[data-theme="night"] img{filter:brightness(.86)}
 html[data-theme="night"] figure.shot img{background:#20242b}
+html[data-theme="night"] main p .ts{color:#767d87}
 html[data-theme="night"] .floatnav a{box-shadow:0 2px 12px rgba(0,0,0,.5)}
 
 html[data-theme="note"]{
   --fs:15px;--lh:1.72;--measure:52em;--gap:clamp(18px,3vw,42px);
   --accent:#3f6ea8;--link:#1f5c9e;
 }
-html[data-theme="note"] main p{display:grid;grid-template-columns:3.6em minmax(0,1fr);column-gap:.7em;margin:0 0 .5em}
-html[data-theme="note"] .ts{margin:0;text-align:right;font-size:.8em;padding-top:.3em}
+html[data-theme="note"] main p{display:grid;grid-template-columns:3.6em minmax(0,1fr);column-gap:.7em;margin:0 0 .5em;padding-right:0}
+html[data-theme="note"] main p .tx{grid-column:2;grid-row:1}
+html[data-theme="note"] main p .ts{position:static;grid-column:1;grid-row:1;margin:0;text-align:right;
+  font-size:.8em;padding-top:.3em;color:#9a8f82}
 html[data-theme="note"] h1{font-size:1.44em;border-bottom-width:2px}
 html[data-theme="note"] header.top{padding:clamp(18px,3vw,34px) 0 .3em}
 html[data-theme="note"] figure.shot{margin:.95em 0 1.15em}

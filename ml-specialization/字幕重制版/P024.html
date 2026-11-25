@@ -20,86 +20,86 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P023.html">← 上一讲</a><span class="mid">第 24 / 72 讲</span><a class="next" href="P025.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:03</span>你已经学习了梯度下降，多元线性回归，还有向量化。</p>
+<p><span class="tx">你已经学习了梯度下降，多元线性回归，还有向量化。</span><span class="ts">00:03</span></p>
 <figure class="shot"><img src="img/P024/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
-<p><span class="ts">00:09</span>让我们把这些结合起来，用向量化为多元线性回归实现梯度下降。</p>
-<p><span class="ts">00:18</span>我们先快速回顾一下多元线性回归是什么样子的。</p>
+<p><span class="tx">让我们把这些结合起来，用向量化为多元线性回归实现梯度下降。</span><span class="ts">00:09</span></p>
+<p><span class="tx">我们先快速回顾一下多元线性回归是什么样子的。</span><span class="ts">00:18</span></p>
 <figure class="shot"><img src="img/P024/kf002.jpg" alt="画面 00:19" loading="lazy"><figcaption>画面 00:19</figcaption></figure>
-<p><span class="ts">00:23</span>使用我们之前的符号，我们来看看如何用向量符号更简洁地书写它。</p>
-<p><span class="ts">00:29</span>我们有参数 w 一到 wn 以及 b，但我们不把 w 一到 w n 看作是独立的数字，即独立的参数，而是让我们把所有 W 收集到一个向量 W 中，这样现在 W 就是一个长度为 n 的向量。</p>
-<p><span class="ts">00:52</span>所以我们只需将此模型的参数视为一个向量 w 以及 b，其中 b 仍然是一个数字，与之前一样。</p>
-<p><span class="ts">01:02</span>之前我们是这样定义多元线性回归的，现在用向量符号，我们可以将模型写为，f 关于 w、b 和 x 等于向量 w 点乘向量 x 再加上 b。</p>
+<p><span class="tx">使用我们之前的符号，我们来看看如何用向量符号更简洁地书写它。</span><span class="ts">00:23</span></p>
+<p><span class="tx">我们有参数 w 一到 wn 以及 b，但我们不把 w 一到 w n 看作是独立的数字，即独立的参数，而是让我们把所有 W 收集到一个向量 W 中，这样现在 W 就是一个长度为 n 的向量。</span><span class="ts">00:29</span></p>
+<p><span class="tx">所以我们只需将此模型的参数视为一个向量 w 以及 b，其中 b 仍然是一个数字，与之前一样。</span><span class="ts">00:52</span></p>
+<p><span class="tx">之前我们是这样定义多元线性回归的，现在用向量符号，我们可以将模型写为，f 关于 w、b 和 x 等于向量 w 点乘向量 x 再加上 b。</span><span class="ts">01:02</span></p>
 <figure class="shot"><img src="img/P024/kf003.jpg" alt="画面 01:03" loading="lazy"><figcaption>画面 01:03</figcaption></figure>
-<p><span class="ts">01:18</span>记住，这里的点表示点积。</p>
+<p><span class="tx">记住，这里的点表示点积。</span><span class="ts">01:18</span></p>
 <figure class="shot"><img src="img/P024/kf004.jpg" alt="画面 01:18" loading="lazy"><figcaption>画面 01:18</figcaption></figure>
-<p><span class="ts">01:22</span>我们的代价函数可以定义为 j 关于 w 一到 w n。</p>
-<p><span class="ts">01:29</span>和 b 的函数，但我们不把 j 仅仅看作这 n 个不同参数 wj 以及 b 的函数，我们要把 j 写为参数向量 w 和数字 b 的函数。</p>
+<p><span class="tx">我们的代价函数可以定义为 j 关于 w 一到 w n。</span><span class="ts">01:22</span></p>
+<p><span class="tx">和 b 的函数，但我们不把 j 仅仅看作这 n 个不同参数 wj 以及 b 的函数，我们要把 j 写为参数向量 w 和数字 b 的函数。</span><span class="ts">01:29</span></p>
 <figure class="shot"><img src="img/P024/kf005.jpg" alt="画面 01:31" loading="lazy"><figcaption>画面 01:31</figcaption></figure>
 <figure class="shot"><img src="img/P024/kf006.jpg" alt="画面 01:43" loading="lazy"><figcaption>画面 01:43</figcaption></figure>
-<p><span class="ts">01:45</span>所以这 w-到 w n 被这个向量 w 所替代。</p>
-<p><span class="ts">01:52</span>而 j 现在接受其输入，m-个向量 w 和一个数字 b，并返回一个数字。</p>
-<p><span class="ts">02:02</span>我们将重复地更新每个参数 wj，使其等于 wj 减去 alpha 乘以代价 j 的导数，其中 j 有参数一全和 b。</p>
+<p><span class="tx">所以这 w-到 w n 被这个向量 w 所替代。</span><span class="ts">01:45</span></p>
+<p><span class="tx">而 j 现在接受其输入，m-个向量 w 和一个数字 b，并返回一个数字。</span><span class="ts">01:52</span></p>
+<p><span class="tx">我们将重复地更新每个参数 wj，使其等于 wj 减去 alpha 乘以代价 j 的导数，其中 j 有参数一全和 b。</span><span class="ts">02:02</span></p>
 <figure class="shot"><img src="img/P024/kf007.jpg" alt="画面 02:04" loading="lazy"><figcaption>画面 02:04</figcaption></figure>
-<p><span class="ts">02:18</span>再次，我们把这个记为关于向量 w 和数字 b 的 j。</p>
+<p><span class="tx">再次，我们把这个记为关于向量 w 和数字 b 的 j。</span><span class="ts">02:18</span></p>
 <figure class="shot"><img src="img/P024/kf008.jpg" alt="画面 02:19" loading="lazy"><figcaption>画面 02:19</figcaption></figure>
-<p><span class="ts">02:25</span>我们来看看当你实现梯度下降时，这会是什么样子。</p>
-<p><span class="ts">02:30</span>特别地，我们来看看导数项。</p>
-<p><span class="ts">02:34</span>我们将会看到，和单一特征相比，有多个特征时的梯度下降会变得有些许不同。</p>
+<p><span class="tx">我们来看看当你实现梯度下降时，这会是什么样子。</span><span class="ts">02:25</span></p>
+<p><span class="tx">特别地，我们来看看导数项。</span><span class="ts">02:30</span></p>
+<p><span class="tx">我们将会看到，和单一特征相比，有多个特征时的梯度下降会变得有些许不同。</span><span class="ts">02:34</span></p>
 <figure class="shot"><img src="img/P024/kf009.jpg" alt="画面 02:36" loading="lazy"><figcaption>画面 02:36</figcaption></figure>
-<p><span class="ts">02:42</span>这是我们只有一个特征时做梯度下降所用的式子。</p>
-<p><span class="ts">02:47</span>我们对 w 有一条更新规则，对 b 有另一条独立的更新规则。</p>
-<p><span class="ts">02:56</span>这里这一项是代价函数 j 关于参数 w 的导数。</p>
-<p><span class="ts">03:04</span>类似地，我们对参数 b 也有一条更新规则。</p>
-<p><span class="ts">03:08</span>在单变量回归中，我们只有一个特征，现在，这是我们当有 n 个特征，且 n 大于等于二时的新记号。</p>
-<p><span class="ts">03:24</span>我们得到梯度下降的更新规则，更新 W 一为 w 一减去 alpha 乘以这里的这个表达式。</p>
-<p><span class="ts">03:33</span>这个公式实际上就是代价 j 关于 W 一的导数。</p>
-<p><span class="ts">03:41</span>右边关于 W 一的导数公式看起来和左边仅有一个特征的情况非常相似。</p>
+<p><span class="tx">这是我们只有一个特征时做梯度下降所用的式子。</span><span class="ts">02:42</span></p>
+<p><span class="tx">我们对 w 有一条更新规则，对 b 有另一条独立的更新规则。</span><span class="ts">02:47</span></p>
+<p><span class="tx">这里这一项是代价函数 j 关于参数 w 的导数。</span><span class="ts">02:56</span></p>
+<p><span class="tx">类似地，我们对参数 b 也有一条更新规则。</span><span class="ts">03:04</span></p>
+<p><span class="tx">在单变量回归中，我们只有一个特征，现在，这是我们当有 n 个特征，且 n 大于等于二时的新记号。</span><span class="ts">03:08</span></p>
+<p><span class="tx">我们得到梯度下降的更新规则，更新 W 一为 w 一减去 alpha 乘以这里的这个表达式。</span><span class="ts">03:24</span></p>
+<p><span class="tx">这个公式实际上就是代价 j 关于 W 一的导数。</span><span class="ts">03:33</span></p>
+<p><span class="tx">右边关于 W 一的导数公式看起来和左边仅有一个特征的情况非常相似。</span><span class="ts">03:41</span></p>
 <figure class="shot"><img src="img/P024/kf010.jpg" alt="画面 03:42" loading="lazy"><figcaption>画面 03:42</figcaption></figure>
 <figure class="shot"><img src="img/P024/kf011.jpg" alt="画面 03:48" loading="lazy"><figcaption>画面 03:48</figcaption></figure>
-<p><span class="ts">03:50</span>误差项仍然是预测值 f of x 减去目标 y。</p>
-<p><span class="ts">03:56</span>一个不同之处在于 w 和 x 现在是向量。</p>
-<p><span class="ts">04:02</span>正如左边的 W 现在变成了右边的 W 一，左边的 xi 现在则变成了右边的带下标一的 xi。</p>
-<p><span class="ts">04:14</span>而这只针对 j 等于一的情况。</p>
-<p><span class="ts">04:19</span>对于多元线性回归，我们有从一变化到 n，所以我们将更新参数 w 一、W 二，一直到 wn。</p>
-<p><span class="ts">04:34</span>然后和之前一样，我们将更新 b。</p>
-<p><span class="ts">04:39</span>如果你实现了这些，你就得到了多元回归的梯度下降。</p>
-<p><span class="ts">04:44</span>以上就是多元回归梯度下降的内容。</p>
+<p><span class="tx">误差项仍然是预测值 f of x 减去目标 y。</span><span class="ts">03:50</span></p>
+<p><span class="tx">一个不同之处在于 w 和 x 现在是向量。</span><span class="ts">03:56</span></p>
+<p><span class="tx">正如左边的 W 现在变成了右边的 W 一，左边的 xi 现在则变成了右边的带下标一的 xi。</span><span class="ts">04:02</span></p>
+<p><span class="tx">而这只针对 j 等于一的情况。</span><span class="ts">04:14</span></p>
+<p><span class="tx">对于多元线性回归，我们有从一变化到 n，所以我们将更新参数 w 一、W 二，一直到 wn。</span><span class="ts">04:19</span></p>
+<p><span class="tx">然后和之前一样，我们将更新 b。</span><span class="ts">04:34</span></p>
+<p><span class="tx">如果你实现了这些，你就得到了多元回归的梯度下降。</span><span class="ts">04:39</span></p>
+<p><span class="tx">以上就是多元回归梯度下降的内容。</span><span class="ts">04:44</span></p>
 <figure class="shot"><img src="img/P024/kf012.jpg" alt="画面 04:48" loading="lazy"><figcaption>画面 04:48</figcaption></figure>
-<p><span class="ts">04:49</span>在结束这个视频之前，我想快速提一下，或者说做个旁注，介绍另一种为线性回归寻找 w 和 b 的。</p>
+<p><span class="tx">在结束这个视频之前，我想快速提一下，或者说做个旁注，介绍另一种为线性回归寻找 w 和 b 的。</span><span class="ts">04:49</span></p>
 <figure class="shot"><img src="img/P024/kf013.jpg" alt="画面 04:51" loading="lazy"><figcaption>画面 04:51</figcaption></figure>
 <figure class="shot"><img src="img/P024/kf014.jpg" alt="画面 05:01" loading="lazy"><figcaption>画面 05:01</figcaption></figure>
-<p><span class="ts">05:06</span>虽然事实证明梯度下降是用于最小化代价函数 j 以找到 w 和 b 的一个极好方法，但还有另一种算法，它只适用于线性回归。</p>
+<p><span class="tx">虽然事实证明梯度下降是用于最小化代价函数 j 以找到 w 和 b 的一个极好方法，但还有另一种算法，它只适用于线性回归。</span><span class="ts">05:06</span></p>
 <figure class="shot"><img src="img/P024/kf015.jpg" alt="画面 05:07" loading="lazy"><figcaption>画面 05:07</figcaption></figure>
-<p><span class="ts">05:18</span>而几乎不适用于你在本专项课程中看到的其他用于求解 w 和 b 的算法。</p>
+<p><span class="tx">而几乎不适用于你在本专项课程中看到的其他用于求解 w 和 b 的算法。</span><span class="ts">05:18</span></p>
 <figure class="shot"><img src="img/P024/kf016.jpg" alt="画面 05:20" loading="lazy"><figcaption>画面 05:20</figcaption></figure>
-<p><span class="ts">05:27</span>而这种方法不需要迭代式的梯度下降算法。</p>
-<p><span class="ts">05:32</span>它被称为正规方程法，事实证明，可以使用高级线性代数库，仅在一次运算中就能直接解出 w 和 b，无需迭代。</p>
+<p><span class="tx">而这种方法不需要迭代式的梯度下降算法。</span><span class="ts">05:27</span></p>
+<p><span class="tx">它被称为正规方程法，事实证明，可以使用高级线性代数库，仅在一次运算中就能直接解出 w 和 b，无需迭代。</span><span class="ts">05:32</span></p>
 <figure class="shot"><img src="img/P024/kf017.jpg" alt="画面 05:34" loading="lazy"><figcaption>画面 05:34</figcaption></figure>
-<p><span class="ts">05:44</span>正规方程法的一些缺点是，首先，与梯度下降不同，它不能泛化到其他学习算法上，比如你下周将要学习的逻辑回归算法，或你在本专项课程稍后看到的神经网络或其他算法。</p>
+<p><span class="tx">正规方程法的一些缺点是，首先，与梯度下降不同，它不能泛化到其他学习算法上，比如你下周将要学习的逻辑回归算法，或你在本专项课程稍后看到的神经网络或其他算法。</span><span class="ts">05:44</span></p>
 <figure class="shot"><img src="img/P024/kf018.jpg" alt="画面 05:45" loading="lazy"><figcaption>画面 05:45</figcaption></figure>
-<p><span class="ts">06:02</span>如果特征数量 n 很大，正规方程法也会相当慢。</p>
+<p><span class="tx">如果特征数量 n 很大，正规方程法也会相当慢。</span><span class="ts">06:02</span></p>
 <figure class="shot"><img src="img/P024/kf019.jpg" alt="画面 06:02" loading="lazy"><figcaption>画面 06:02</figcaption></figure>
-<p><span class="ts">06:07</span>几乎没有任何机器学习从业者应该自己实现正规方程法，但如果你使用一个成熟的机器学习库并调用线性回归，那么在后端，它有可能正使用这种方法来求解 W 和 B。</p>
+<p><span class="tx">几乎没有任何机器学习从业者应该自己实现正规方程法，但如果你使用一个成熟的机器学习库并调用线性回归，那么在后端，它有可能正使用这种方法来求解 W 和 B。</span><span class="ts">06:07</span></p>
 <figure class="shot"><img src="img/P024/kf020.jpg" alt="画面 06:09" loading="lazy"><figcaption>画面 06:09</figcaption></figure>
 <figure class="shot"><img src="img/P024/kf021.jpg" alt="画面 06:14" loading="lazy"><figcaption>画面 06:14</figcaption></figure>
-<p><span class="ts">06:26</span>所以，如果你在面试中听到正规方程这个术语，指的就是这个方法。</p>
+<p><span class="tx">所以，如果你在面试中听到正规方程这个术语，指的就是这个方法。</span><span class="ts">06:26</span></p>
 <figure class="shot"><img src="img/P024/kf022.jpg" alt="画面 06:26" loading="lazy"><figcaption>画面 06:26</figcaption></figure>
-<p><span class="ts">06:32</span>不用担心正规方程的工作原理细节。</p>
-<p><span class="ts">06:36</span>只需了解某些机器学习库可能会在其后端使用这种复杂的方法来求解 W 和 B。</p>
-<p><span class="ts">06:44</span>但对于大多数学习算法，包括你自己如何实现线性回归，梯度下降往往是完成任务的更好方法。</p>
+<p><span class="tx">不用担心正规方程的工作原理细节。</span><span class="ts">06:32</span></p>
+<p><span class="tx">只需了解某些机器学习库可能会在其后端使用这种复杂的方法来求解 W 和 B。</span><span class="ts">06:36</span></p>
+<p><span class="tx">但对于大多数学习算法，包括你自己如何实现线性回归，梯度下降往往是完成任务的更好方法。</span><span class="ts">06:44</span></p>
 <figure class="shot"><img src="img/P024/kf023.jpg" alt="画面 06:53" loading="lazy"><figcaption>画面 06:53</figcaption></figure>
-<p><span class="ts">06:54</span>在本视频之后的选修实验中，你将看到如何在代码中定义一个多元回归模型，以及如何计算预测值。</p>
-<p><span class="ts">07:06</span>你也会看到如何为一个多元线性回归模型计算代价并实现梯度下降。</p>
-<p><span class="ts">07:14</span>这将使用 Python 的 NumPy 库，所以如果有些代码看起来很陌生，那没关系。</p>
+<p><span class="tx">在本视频之后的选修实验中，你将看到如何在代码中定义一个多元回归模型，以及如何计算预测值。</span><span class="ts">06:54</span></p>
+<p><span class="tx">你也会看到如何为一个多元线性回归模型计算代价并实现梯度下降。</span><span class="ts">07:06</span></p>
+<p><span class="tx">这将使用 Python 的 NumPy 库，所以如果有些代码看起来很陌生，那没关系。</span><span class="ts">07:14</span></p>
 <figure class="shot"><img src="img/P024/kf024.jpg" alt="画面 07:20" loading="lazy"><figcaption>画面 07:20</figcaption></figure>
-<p><span class="ts">07:24</span>但你也应该可以自由去看看之前那个介绍 NumPy 和向量化的选修实验，来复习一下 NumPy 函数以及如何在代码中实现它们。卫物凝23。</p>
+<p><span class="tx">但你也应该可以自由去看看之前那个介绍 NumPy 和向量化的选修实验，来复习一下 NumPy 函数以及如何在代码中实现它们。卫物凝23。</span><span class="ts">07:24</span></p>
 <figure class="shot"><img src="img/P024/kf025.jpg" alt="画面 07:30" loading="lazy"><figcaption>画面 07:30</figcaption></figure>
-<p><span class="ts">07:34</span>那么，就是这些。</p>
-<p><span class="ts">07:36</span>你现在懂得了多元线性回归。</p>
-<p><span class="ts">07:39</span>这大概是当今世界上使用最广泛的单一学习算法了。</p>
-<p><span class="ts">07:47</span>仅需几个小技巧，比如恰当地选择和缩放特征，以及恰当地选择学习率 alpha，你就能让它工作得好得多。</p>
-<p><span class="ts">07:56</span>那么，本周就只剩几个视频了。</p>
-<p><span class="ts">08:00</span>让我们进入下一个视频，去看看那些将帮助你把多元线性回归应用得更好的小技巧。</p>
+<p><span class="tx">那么，就是这些。</span><span class="ts">07:34</span></p>
+<p><span class="tx">你现在懂得了多元线性回归。</span><span class="ts">07:36</span></p>
+<p><span class="tx">这大概是当今世界上使用最广泛的单一学习算法了。</span><span class="ts">07:39</span></p>
+<p><span class="tx">仅需几个小技巧，比如恰当地选择和缩放特征，以及恰当地选择学习率 alpha，你就能让它工作得好得多。</span><span class="ts">07:47</span></p>
+<p><span class="tx">那么，本周就只剩几个视频了。</span><span class="ts">07:56</span></p>
+<p><span class="tx">让我们进入下一个视频，去看看那些将帮助你把多元线性回归应用得更好的小技巧。</span><span class="ts">08:00</span></p>
 </main>
 <nav class="pager"><a href="P023.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P025.html">下一讲 →</a></nav>
 <footer>

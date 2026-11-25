@@ -20,51 +20,51 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P061.html">← 上一讲</a><span class="mid">第 62 / 72 讲</span><a class="next" href="P063.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:02</span>到目前为止，我们在所有节点中，在隐藏层和输出层中，都一直使用着 sigmoid 激活函数。</p>
-<p><span class="ts">00:12</span>我们最初这样做，是因为我们是通过逻辑回归，创建大量逻辑回归单元并将它们串联起来，来构建，神经网络的。</p>
-<p><span class="ts">00:24</span>但如果你使用其他激活函数，你的神经网络可以变得强大得多。</p>
-<p><span class="ts">00:30</span>我们来看看如何做到这一点。</p>
-<p><span class="ts">00:33</span>回顾一下上周的需求预测例子，给定价格、运费、营销材料，你会尝试预测某个产品是否高度实惠，是否有良好的认知度和高感知质量，并基于此，尝试预测它是否是畅销品。</p>
+<p><span class="tx">到目前为止，我们在所有节点中，在隐藏层和输出层中，都一直使用着 sigmoid 激活函数。</span><span class="ts">00:02</span></p>
+<p><span class="tx">我们最初这样做，是因为我们是通过逻辑回归，创建大量逻辑回归单元并将它们串联起来，来构建，神经网络的。</span><span class="ts">00:12</span></p>
+<p><span class="tx">但如果你使用其他激活函数，你的神经网络可以变得强大得多。</span><span class="ts">00:24</span></p>
+<p><span class="tx">我们来看看如何做到这一点。</span><span class="ts">00:30</span></p>
+<p><span class="tx">回顾一下上周的需求预测例子，给定价格、运费、营销材料，你会尝试预测某个产品是否高度实惠，是否有良好的认知度和高感知质量，并基于此，尝试预测它是否是畅销品。</span><span class="ts">00:33</span></p>
 <figure class="shot"><img src="img/P062/kf001.jpg" alt="画面 00:35" loading="lazy"><figcaption>画面 00:35</figcaption></figure>
-<p><span class="ts">00:50</span>但这假设了认知度可能是二元的，要么人们知道，要么不知道。</p>
+<p><span class="tx">但这假设了认知度可能是二元的，要么人们知道，要么不知道。</span><span class="ts">00:50</span></p>
 <figure class="shot"><img src="img/P062/kf002.jpg" alt="画面 00:52" loading="lazy"><figcaption>画面 00:52</figcaption></figure>
-<p><span class="ts">00:58</span>但似乎潜在买家对你所售 T 恤的认知程度可能不是二元的。</p>
-<p><span class="ts">01:06</span>他们可能有一点点认知、有一定认知、极度认知，或者它可能已经彻底病毒式传播了。</p>
-<p><span class="ts">01:17</span>所以，与其将认知度建模为一个二元数字，零或一，并试图估计认知度的概率。</p>
-<p><span class="ts">01:18</span>所以，与其将认知度建模为一个二元数字，零或一，并试图估计认知度的概率，或者与其将认知度仅建模为一个介于零和一之间的数字，也许认知度应该是任何非负数，因为认知度可以有任何非负数值，从零一直到非常非常大的数字。</p>
-<p><span class="ts">01:26</span>或者与其将认知度仅建模为一个介于零和一之间的数字，也许认知度应该是任何非负数，因为认知.度可以有任何非负数值，从零一直到非常非常大的数字。</p>
-<p><span class="ts">01:42</span>因此，以前我们曾用这个方程来计算第二个隐藏单元的激活值，即估计认知度，其中 g 是函数，因此取值在零和一之间。n。</p>
-<p><span class="ts">01:58</span>如果你想允许 A 二能取到更大的正值，我们可以换用不同的激活函数。</p>
-<p><span class="ts">02:10</span>事实证明，神经网络中一个非常常见的激活函数选择是这个函数。</p>
-<p><span class="ts">02:18</span>它是这样的，如果 z 是这个，那么 g (z)在左侧是零，然后在零的右侧是一条呈四十五度角的直线。</p>
-<p><span class="ts">02:31</span>所以当 z 大于等于零时，g （z)就等于 z。</p>
-<p><span class="ts">02:43</span>它的数学方程是：g（z)等于零和 z 中的最大值。</p>
-<p><span class="ts">02:50</span>你可以自行验证一下，零和 z 的最大值是否就得出了我在这里画出的这条曲线。</p>
-<p><span class="ts">03:02</span>如果 A 一二等于这个 Z 值的 G（Z)，那么激活值 A 现在可以取零或任何非负数。</p>
-<p><span class="ts">03:17</span>它叫做 ReLU，大小写有点特别。</p>
-<p><span class="ts">03:22</span>ReLU 代表的是，同样一个有点晦涩的术语，但它代表修正线性单元。</p>
-<p><span class="ts">03:29</span>不用太纠结“修正”是什么意思，或者“线性单元”是什么意思。</p>
-<p><span class="ts">03:36</span>这只是作者当初提出这个特定激活函数时给它起的名字。</p>
-<p><span class="ts">03:42</span>但深度学习领域的大多数人就直接说 ReLU 来指代这个 G (Z)。</p>
-<p><span class="ts">03:49</span>更一般地说，对于 G（Z)用什么，你是有选择的。</p>
-<p><span class="ts">03:54</span>有时我们会选用不同于 sigmoid 激活函数的选项。</p>
-<p><span class="ts">03:59</span>以下是几种最常用的激活函数。</p>
+<p><span class="tx">但似乎潜在买家对你所售 T 恤的认知程度可能不是二元的。</span><span class="ts">00:58</span></p>
+<p><span class="tx">他们可能有一点点认知、有一定认知、极度认知，或者它可能已经彻底病毒式传播了。</span><span class="ts">01:06</span></p>
+<p><span class="tx">所以，与其将认知度建模为一个二元数字，零或一，并试图估计认知度的概率。</span><span class="ts">01:17</span></p>
+<p><span class="tx">所以，与其将认知度建模为一个二元数字，零或一，并试图估计认知度的概率，或者与其将认知度仅建模为一个介于零和一之间的数字，也许认知度应该是任何非负数，因为认知度可以有任何非负数值，从零一直到非常非常大的数字。</span><span class="ts">01:18</span></p>
+<p><span class="tx">或者与其将认知度仅建模为一个介于零和一之间的数字，也许认知度应该是任何非负数，因为认知.度可以有任何非负数值，从零一直到非常非常大的数字。</span><span class="ts">01:26</span></p>
+<p><span class="tx">因此，以前我们曾用这个方程来计算第二个隐藏单元的激活值，即估计认知度，其中 g 是函数，因此取值在零和一之间。n。</span><span class="ts">01:42</span></p>
+<p><span class="tx">如果你想允许 A 二能取到更大的正值，我们可以换用不同的激活函数。</span><span class="ts">01:58</span></p>
+<p><span class="tx">事实证明，神经网络中一个非常常见的激活函数选择是这个函数。</span><span class="ts">02:10</span></p>
+<p><span class="tx">它是这样的，如果 z 是这个，那么 g (z)在左侧是零，然后在零的右侧是一条呈四十五度角的直线。</span><span class="ts">02:18</span></p>
+<p><span class="tx">所以当 z 大于等于零时，g （z)就等于 z。</span><span class="ts">02:31</span></p>
+<p><span class="tx">它的数学方程是：g（z)等于零和 z 中的最大值。</span><span class="ts">02:43</span></p>
+<p><span class="tx">你可以自行验证一下，零和 z 的最大值是否就得出了我在这里画出的这条曲线。</span><span class="ts">02:50</span></p>
+<p><span class="tx">如果 A 一二等于这个 Z 值的 G（Z)，那么激活值 A 现在可以取零或任何非负数。</span><span class="ts">03:02</span></p>
+<p><span class="tx">它叫做 ReLU，大小写有点特别。</span><span class="ts">03:17</span></p>
+<p><span class="tx">ReLU 代表的是，同样一个有点晦涩的术语，但它代表修正线性单元。</span><span class="ts">03:22</span></p>
+<p><span class="tx">不用太纠结“修正”是什么意思，或者“线性单元”是什么意思。</span><span class="ts">03:29</span></p>
+<p><span class="tx">这只是作者当初提出这个特定激活函数时给它起的名字。</span><span class="ts">03:36</span></p>
+<p><span class="tx">但深度学习领域的大多数人就直接说 ReLU 来指代这个 G (Z)。</span><span class="ts">03:42</span></p>
+<p><span class="tx">更一般地说，对于 G（Z)用什么，你是有选择的。</span><span class="ts">03:49</span></p>
+<p><span class="tx">有时我们会选用不同于 sigmoid 激活函数的选项。</span><span class="ts">03:54</span></p>
+<p><span class="tx">以下是几种最常用的激活函数。</span><span class="ts">03:59</span></p>
 <figure class="shot"><img src="img/P062/kf003.jpg" alt="画面 03:59" loading="lazy"><figcaption>画面 03:59</figcaption></figure>
-<p><span class="ts">04:04</span>你见过 sigmoid 激活函数，g （z）等于这个 S 形函数。</p>
-<p><span class="ts">04:11</span>上一张幻灯片，我们刚看了 ReLU，也就是修正线性单元，g（z)等于零和 z 的最大值。</p>
-<p><span class="ts">04:22</span>还有另一个值得一提的激活函数，叫做线性激活函数，它就是 g（z)等于 z。</p>
-<p><span class="ts">04:32</span>有时如果你使用线性激活函数，人们会说我们没有使用任何激活函数，因为如果 a 等于 g (z)，而 g(z)等于 z，那么 a 就等于这个，比如 w 点乘 x 加 b。i。</p>
-<p><span class="ts">04:48</span>因此，这就好像里面根本没有 g 一样。</p>
-<p><span class="ts">04:52</span>所以当你使用这个线性激活函数 g（z）时，有时人们会说，嗯，我们没有使用任何激活函数。</p>
-<p><span class="ts">05:00</span>尽管在本课程中，我会称之为使用线性激活函数，而不是没有激活函数。</p>
-<p><span class="ts">05:08</span>但如果你听到别人使用那种说法，那就是他们的意思。</p>
-<p><span class="ts">05:16</span>这三种可能是神经网络中迄今为止最常用的激活函数了。</p>
-<p><span class="ts">05:24</span>本周晚些时候，我们将涉及第四种，叫做 softmax 激活函数。</p>
-<p><span class="ts">05:30</span>但有了这些激活函数，你将能构建出丰富多样且强大的神经网络。</p>
-<p><span class="ts">05:38</span>那么，在构建神经网络时，对于每个神经元，你是想用 sigmoid 激活函数，还是 ReLU 激活函数，或是线性激活函数呢？</p>
-<p><span class="ts">05:49</span>你如何在这些不同的激活函数之间做出选择呢？</p>
-<p><span class="ts">05:54</span>我们下个视频再来探讨。</p>
-<p><span class="ts">05:54</span>我们下个视频再来探讨。</p>
+<p><span class="tx">你见过 sigmoid 激活函数，g （z）等于这个 S 形函数。</span><span class="ts">04:04</span></p>
+<p><span class="tx">上一张幻灯片，我们刚看了 ReLU，也就是修正线性单元，g（z)等于零和 z 的最大值。</span><span class="ts">04:11</span></p>
+<p><span class="tx">还有另一个值得一提的激活函数，叫做线性激活函数，它就是 g（z)等于 z。</span><span class="ts">04:22</span></p>
+<p><span class="tx">有时如果你使用线性激活函数，人们会说我们没有使用任何激活函数，因为如果 a 等于 g (z)，而 g(z)等于 z，那么 a 就等于这个，比如 w 点乘 x 加 b。i。</span><span class="ts">04:32</span></p>
+<p><span class="tx">因此，这就好像里面根本没有 g 一样。</span><span class="ts">04:48</span></p>
+<p><span class="tx">所以当你使用这个线性激活函数 g（z）时，有时人们会说，嗯，我们没有使用任何激活函数。</span><span class="ts">04:52</span></p>
+<p><span class="tx">尽管在本课程中，我会称之为使用线性激活函数，而不是没有激活函数。</span><span class="ts">05:00</span></p>
+<p><span class="tx">但如果你听到别人使用那种说法，那就是他们的意思。</span><span class="ts">05:08</span></p>
+<p><span class="tx">这三种可能是神经网络中迄今为止最常用的激活函数了。</span><span class="ts">05:16</span></p>
+<p><span class="tx">本周晚些时候，我们将涉及第四种，叫做 softmax 激活函数。</span><span class="ts">05:24</span></p>
+<p><span class="tx">但有了这些激活函数，你将能构建出丰富多样且强大的神经网络。</span><span class="ts">05:30</span></p>
+<p><span class="tx">那么，在构建神经网络时，对于每个神经元，你是想用 sigmoid 激活函数，还是 ReLU 激活函数，或是线性激活函数呢？</span><span class="ts">05:38</span></p>
+<p><span class="tx">你如何在这些不同的激活函数之间做出选择呢？</span><span class="ts">05:49</span></p>
+<p><span class="tx">我们下个视频再来探讨。</span><span class="ts">05:54</span></p>
+<p><span class="tx">我们下个视频再来探讨。</span><span class="ts">05:54</span></p>
 </main>
 <nav class="pager"><a href="P061.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P063.html">下一讲 →</a></nav>
 <footer>

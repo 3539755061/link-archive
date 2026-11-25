@@ -20,53 +20,53 @@ if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e
 </header>
 <nav class="topnav"><a class="prev" href="P058.html">← 上一讲</a><span class="mid">第 59 / 72 讲</span><a class="next" href="P060.html">下一讲 →</a></nav>
 <main>
-<p><span class="ts">00:01</span>话不多说，我们直接进入神经网络的向量化实现。</p>
-<p><span class="ts">00:07</span>我们来看看你在之前视频中见过的代码，希望矩阵乘法，也就是那个矩阵乘法计算，能让你更明白。</p>
-<p><span class="ts">00:19</span>你之前看到了如何取矩阵 A 并计算 A 的转置乘以 W，得到这个矩阵 Z。</p>
+<p><span class="tx">话不多说，我们直接进入神经网络的向量化实现。</span><span class="ts">00:01</span></p>
+<p><span class="tx">我们来看看你在之前视频中见过的代码，希望矩阵乘法，也就是那个矩阵乘法计算，能让你更明白。</span><span class="ts">00:07</span></p>
+<p><span class="tx">你之前看到了如何取矩阵 A 并计算 A 的转置乘以 W，得到这个矩阵 Z。</span><span class="ts">00:19</span></p>
 <figure class="shot"><img src="img/P059/kf001.jpg" alt="画面 00:20" loading="lazy"><figcaption>画面 00:20</figcaption></figure>
-<p><span class="ts">00:31</span>如果这是矩阵 A，这是一个 NumPy 数组，其元素对应我上面写的内容，那么 A 的转置，我将写成 AT，将是这个矩阵，同样，A 的列现在被放到了行上。</p>
-<p><span class="ts">00:52</span>顺便说一下，除了这样设置 AT，在 NumPy 中计算 AT 的另一种方法是写 AT 等于 A 点 T。</p>
-<p><span class="ts">01:04</span>那是转置函数，它将矩阵的列取出来并放到一边。</p>
-<p><span class="ts">01:09</span>在代码中，你会这样初始化矩阵 W。</p>
-<p><span class="ts">01:14</span>这是另一个二维 NumPy 数组。</p>
-<p><span class="ts">01:18</span>然后，要计算 Z 等于 A 的转置乘以 W，你会写 Z 等于点 matmul，传入 AT，W。</p>
-<p><span class="ts">01:30</span>这将计算出这里的矩阵 Z，得到下面这个结果。</p>
-<p><span class="ts">01:38</span>顺便一说，如果你读别人的代码，有时会看到 Z 等于 AT 然后符号 W。</p>
-<p><span class="ts">01:46</span>这是调用 matmul 函数的另一种方式，尽管我觉得使用 np 点 matmul 更清晰。</p>
-<p><span class="ts">01:55</span>所以你在这门课看到的代码中，我们就用这样的 matmul 函数，而不是这个符号。</p>
-<p><span class="ts">02:03</span>那么，我们来看看前向传播的向量化实现是什么样子的。</p>
+<p><span class="tx">如果这是矩阵 A，这是一个 NumPy 数组，其元素对应我上面写的内容，那么 A 的转置，我将写成 AT，将是这个矩阵，同样，A 的列现在被放到了行上。</span><span class="ts">00:31</span></p>
+<p><span class="tx">顺便说一下，除了这样设置 AT，在 NumPy 中计算 AT 的另一种方法是写 AT 等于 A 点 T。</span><span class="ts">00:52</span></p>
+<p><span class="tx">那是转置函数，它将矩阵的列取出来并放到一边。</span><span class="ts">01:04</span></p>
+<p><span class="tx">在代码中，你会这样初始化矩阵 W。</span><span class="ts">01:09</span></p>
+<p><span class="tx">这是另一个二维 NumPy 数组。</span><span class="ts">01:14</span></p>
+<p><span class="tx">然后，要计算 Z 等于 A 的转置乘以 W，你会写 Z 等于点 matmul，传入 AT，W。</span><span class="ts">01:18</span></p>
+<p><span class="tx">这将计算出这里的矩阵 Z，得到下面这个结果。</span><span class="ts">01:30</span></p>
+<p><span class="tx">顺便一说，如果你读别人的代码，有时会看到 Z 等于 AT 然后符号 W。</span><span class="ts">01:38</span></p>
+<p><span class="tx">这是调用 matmul 函数的另一种方式，尽管我觉得使用 np 点 matmul 更清晰。</span><span class="ts">01:46</span></p>
+<p><span class="tx">所以你在这门课看到的代码中，我们就用这样的 matmul 函数，而不是这个符号。</span><span class="ts">01:55</span></p>
+<p><span class="tx">那么，我们来看看前向传播的向量化实现是什么样子的。</span><span class="ts">02:03</span></p>
 <figure class="shot"><img src="img/P059/kf002.jpg" alt="画面 02:03" loading="lazy"><figcaption>画面 02:03</figcaption></figure>
-<p><span class="ts">02:08</span>我将设置 A 的转置等于输入特征值二一七。</p>
-<p><span class="ts">02:16</span>这就是常规的输入特征值，二百度烘烤咖啡十七分钟。</p>
-<p><span class="ts">02:22</span>所以这是一个一乘二的矩阵。</p>
-<p><span class="ts">02:26</span>我将取参数 W 一、W 二和 w 三，像这样将它们按列堆叠，形成这个矩阵大写 W。</p>
-<p><span class="ts">02:38</span>而值 b、b、b，我将放入一个一乘三的矩阵，也就是这个矩阵 B，如下所示。</p>
-<p><span class="ts">02:47</span>那么结果是，如果你计算 Z 等于 A 转置乘 W 加 B，会得到这三个数字。</p>
-<p><span class="ts">02:59</span>这是通过取输入特征值并乘以第一列，然后加上 b，得到一六五。</p>
-<p><span class="ts">03:11</span>取这些特征值，与第二列，也就是权重 w 二做点积，再加上 b 二，得到负五三一。</p>
-<p><span class="ts">03:21</span>这些特征值与权重 w 三点积，再加上 b 三，得到九百。</p>
-<p><span class="ts">03:28</span>如果你想仔细核对这些计算，可以暂停视频，但这会给出 z 一一、z 一二和 z 一三的值。</p>
-<p><span class="ts">03:41</span>最后，如果函数 g 将 sigmoid 函数逐个元素应用于这三个数，也就是说，将 sigmoid 函数应用于一六五、负五三一和九百。</p>
-<p><span class="ts">03:55</span>那么你最终得到 a 等于 g 作用于这个矩阵 z，结果是一零一。</p>
-<p><span class="ts">04:02</span>它是一、零、一，因为 sigmoid 函数作用于一六五的结果非常接近一，你知道，不考虑数值舍入误差，它基本就是一。</p>
+<p><span class="tx">我将设置 A 的转置等于输入特征值二一七。</span><span class="ts">02:08</span></p>
+<p><span class="tx">这就是常规的输入特征值，二百度烘烤咖啡十七分钟。</span><span class="ts">02:16</span></p>
+<p><span class="tx">所以这是一个一乘二的矩阵。</span><span class="ts">02:22</span></p>
+<p><span class="tx">我将取参数 W 一、W 二和 w 三，像这样将它们按列堆叠，形成这个矩阵大写 W。</span><span class="ts">02:26</span></p>
+<p><span class="tx">而值 b、b、b，我将放入一个一乘三的矩阵，也就是这个矩阵 B，如下所示。</span><span class="ts">02:38</span></p>
+<p><span class="tx">那么结果是，如果你计算 Z 等于 A 转置乘 W 加 B，会得到这三个数字。</span><span class="ts">02:47</span></p>
+<p><span class="tx">这是通过取输入特征值并乘以第一列，然后加上 b，得到一六五。</span><span class="ts">02:59</span></p>
+<p><span class="tx">取这些特征值，与第二列，也就是权重 w 二做点积，再加上 b 二，得到负五三一。</span><span class="ts">03:11</span></p>
+<p><span class="tx">这些特征值与权重 w 三点积，再加上 b 三，得到九百。</span><span class="ts">03:21</span></p>
+<p><span class="tx">如果你想仔细核对这些计算，可以暂停视频，但这会给出 z 一一、z 一二和 z 一三的值。</span><span class="ts">03:28</span></p>
+<p><span class="tx">最后，如果函数 g 将 sigmoid 函数逐个元素应用于这三个数，也就是说，将 sigmoid 函数应用于一六五、负五三一和九百。</span><span class="ts">03:41</span></p>
+<p><span class="tx">那么你最终得到 a 等于 g 作用于这个矩阵 z，结果是一零一。</span><span class="ts">03:55</span></p>
+<p><span class="tx">它是一、零、一，因为 sigmoid 函数作用于一六五的结果非常接近一，你知道，不考虑数值舍入误差，它基本就是一。</span><span class="ts">04:02</span></p>
 <figure class="shot"><img src="img/P059/kf003.jpg" alt="画面 04:18" loading="lazy"><figcaption>画面 04:18</figcaption></figure>
-<p><span class="ts">04:20</span>我们来看看如何在代码中实现。</p>
-<p><span class="ts">04:23</span>A 的转置等于这个，就是这个一乘二的数组二一七。</p>
-<p><span class="ts">04:29</span>矩阵 W 是这个二乘三矩阵。</p>
-<p><span class="ts">04:37</span>所以，你可以这样在层中实现前向传播：dense 输入 A 转置，W B 等于 Z 等于 matmul A 转置乘 W。</p>
-<p><span class="ts">04:54</span>然后 A_，也就是这个层的输出，等于 g，即逐个元素应用于这个矩阵 Z 的激活函数。</p>
-<p><span class="ts">05:07</span>然后你返回 A_，这就给出了这个值。</p>
-<p><span class="ts">05:13</span>如果你把这张幻灯片和几个视频前的幻灯片比较，会发现只有一点小区别，根据惯例，在 TensorFlow 中的实现方式，我们不把这个变量叫 AT，而是叫 A_in，这也是为什么这同样是代码的正确实现。</p>
+<p><span class="tx">我们来看看如何在代码中实现。</span><span class="ts">04:20</span></p>
+<p><span class="tx">A 的转置等于这个，就是这个一乘二的数组二一七。</span><span class="ts">04:23</span></p>
+<p><span class="tx">矩阵 W 是这个二乘三矩阵。</span><span class="ts">04:29</span></p>
+<p><span class="tx">所以，你可以这样在层中实现前向传播：dense 输入 A 转置，W B 等于 Z 等于 matmul A 转置乘 W。</span><span class="ts">04:37</span></p>
+<p><span class="tx">然后 A_，也就是这个层的输出，等于 g，即逐个元素应用于这个矩阵 Z 的激活函数。</span><span class="ts">04:54</span></p>
+<p><span class="tx">然后你返回 A_，这就给出了这个值。</span><span class="ts">05:07</span></p>
+<p><span class="tx">如果你把这张幻灯片和几个视频前的幻灯片比较，会发现只有一点小区别，根据惯例，在 TensorFlow 中的实现方式，我们不把这个变量叫 AT，而是叫 A_in，这也是为什么这同样是代码的正确实现。</span><span class="ts">05:13</span></p>
 <figure class="shot"><img src="img/P059/kf004.jpg" alt="画面 05:23" loading="lazy"><figcaption>画面 05:23</figcaption></figure>
-<p><span class="ts">05:34</span>TensorFlow 中还有一个惯例，即单个样本实际上是在矩阵 x 中按行排列的，而不是在矩阵 x 的转置中，这就是为什么在 TensorFlow 中代码实现看起来像这样。</p>
-<p><span class="ts">05:50</span>但这解释了为什么只用几行代码，你就能在神经网络中实现前向传播。</p>
-<p><span class="ts">05:57</span>而且，还能获得巨大的好处，因为现代计算机非常擅长高效地实现矩阵乘法，比如 matmul。</p>
-<p><span class="ts">06:08</span>这是本周的最后一个视频。</p>
-<p><span class="ts">06:11</span>感谢你一直坚持看完这些可选视频的最后。</p>
-<p><span class="ts">06:16</span>本周剩下的时间，我希望你也去看看，看看测验和实践实验，以及可选的实验，以便更深入地练习这些材料。</p>
-<p><span class="ts">06:28</span>你现在知道了如何在神经网络中进行推理和前向传播，我觉得这真的很酷。</p>
-<p><span class="ts">06:37</span>在你完成测验和实验之后，请一定再回来，下周我们将学习如何真正地训练神经网络。</p>
-<p><span class="ts">06:46</span>那么，期待下周见到你。</p>
+<p><span class="tx">TensorFlow 中还有一个惯例，即单个样本实际上是在矩阵 x 中按行排列的，而不是在矩阵 x 的转置中，这就是为什么在 TensorFlow 中代码实现看起来像这样。</span><span class="ts">05:34</span></p>
+<p><span class="tx">但这解释了为什么只用几行代码，你就能在神经网络中实现前向传播。</span><span class="ts">05:50</span></p>
+<p><span class="tx">而且，还能获得巨大的好处，因为现代计算机非常擅长高效地实现矩阵乘法，比如 matmul。</span><span class="ts">05:57</span></p>
+<p><span class="tx">这是本周的最后一个视频。</span><span class="ts">06:08</span></p>
+<p><span class="tx">感谢你一直坚持看完这些可选视频的最后。</span><span class="ts">06:11</span></p>
+<p><span class="tx">本周剩下的时间，我希望你也去看看，看看测验和实践实验，以及可选的实验，以便更深入地练习这些材料。</span><span class="ts">06:16</span></p>
+<p><span class="tx">你现在知道了如何在神经网络中进行推理和前向传播，我觉得这真的很酷。</span><span class="ts">06:28</span></p>
+<p><span class="tx">在你完成测验和实验之后，请一定再回来，下周我们将学习如何真正地训练神经网络。</span><span class="ts">06:37</span></p>
+<p><span class="tx">那么，期待下周见到你。</span><span class="ts">06:46</span></p>
 </main>
 <nav class="pager"><a href="P058.html">← 上一讲</a><a class="mid" href="index.html">总目录</a><a href="P060.html">下一讲 →</a></nav>
 <footer>
