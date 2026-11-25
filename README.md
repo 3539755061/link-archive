@@ -6,12 +6,12 @@
 
 | 页面 | 内容 | 链接 |
 | --- | --- | --- |
-| 仓库门面 | 卡片式入口，一屏列出全部页面 | [`index.html`](index.html) |
-| 阅读版（推荐） | 16 条链接合成一页，固定行距 1.9、每行 ≤38 字 | [`archive.html`](archive.html) |
-| PDF 版 | 同一份内容，约 56 页，排版不跑版 | [`archive.pdf`](archive.pdf) |
-| 吴恩达《机器学习专项课程》音轨转写版 | 105 讲，按课程、周、讲编排，每段带时间戳 | [`ml-specialization/lectures/index.html`](<ml-specialization/lectures/index.html>) |
-| 吴恩达《机器学习专项课程》字幕重制版 | 72 讲，画面硬字幕 OCR + 关键帧截图 | [`ml-specialization/字幕重制版/index.html`](<ml-specialization/字幕重制版/index.html>) |
-| 课程字幕合集 | 25 门课、2423 讲，中英双语字幕 | [`course-subtitles/index.html`](course-subtitles/index.html) |
+| 仓库门面 | 卡片式入口，一屏列出全部页面 | [index.html](https://3539755061.github.io/link-archive/) |
+| 阅读版（推荐） | 16 条链接合成一页，固定行距 1.9、每行 ≤38 字 | [archive.html](https://3539755061.github.io/link-archive/archive.html) |
+| PDF 版 | 同一份内容，约 56 页，排版不跑版 | [archive.pdf](https://3539755061.github.io/link-archive/archive.pdf) |
+| 吴恩达《机器学习专项课程》音轨转写版 | 105 讲，按课程、周、讲编排，每段带时间戳 | [ml-specialization/lectures/index.html](https://3539755061.github.io/link-archive/ml-specialization/lectures/index.html) |
+| 吴恩达《机器学习专项课程》字幕重制版 | 72 讲，画面硬字幕 OCR + 关键帧截图 | [ml-specialization/字幕重制版/index.html](https://3539755061.github.io/link-archive/ml-specialization/%E5%AD%97%E5%B9%95%E9%87%8D%E5%88%B6%E7%89%88/index.html) |
+| 课程字幕合集 | 25 门课、2423 讲，中英双语字幕 | [course-subtitles/index.html](https://3539755061.github.io/link-archive/course-subtitles/index.html) |
 
 线上访问：<https://3539755061.github.io/link-archive/>
 
@@ -37,13 +37,13 @@
 
 ## 课程讲稿（音轨转写版，105 讲）
 
-[`ml-specialization/lectures/`](<ml-specialization/lectures/index.html>) 收录吴恩达《机器学习专项课程》中文语音版（B 站 BV1DLRbBTE6E，105 个分 P，约 16.8 小时音轨）的转写讲稿。文本由本机语音识别生成并校正术语，按课程、周、讲编排，每段带时间戳，非官方字幕。未完成的讲在页面中显示为“转写中”，重跑生成脚本即可补全。
+[ml-specialization/lectures/](https://3539755061.github.io/link-archive/ml-specialization/lectures/index.html) 收录吴恩达《机器学习专项课程》中文语音版（B 站 BV1DLRbBTE6E，105 个分 P，约 16.8 小时音轨）的转写讲稿。文本由本机语音识别生成并校正术语，按课程、周、讲编排，每段带时间戳，非官方字幕。未完成的讲在页面中显示为“转写中”，重跑生成脚本即可补全。
 
 分讲索引：[`ml-specialization/lectures/README.md`](<ml-specialization/lectures/README.md>)；整篇合订本：[`ml-specialization/full.md`](ml-specialization/full.md)。
 
 ## 课程字幕重制版（画面硬字幕，72 讲）
 
-[`ml-specialization/字幕重制版/`](<ml-specialization/字幕重制版/index.html>) 是另一套稿件：取同一课程 B 站 1080P 画面的底部黄色硬字幕，逐帧 OCR 后按句合并，再配画面稳定段的关键帧截图。与上面的音轨转写版同名讲次内容不同，互不替代。
+[ml-specialization/字幕重制版/](https://3539755061.github.io/link-archive/ml-specialization/%E5%AD%97%E5%B9%95%E9%87%8D%E5%88%B6%E7%89%88/index.html) 是另一套稿件：取同一课程 B 站 1080P 画面的底部黄色硬字幕，逐帧 OCR 后按句合并，再配画面稳定段的关键帧截图。与上面的音轨转写版同名讲次内容不同，互不替代。
 
 - 72 讲、4174 个带时间戳的段落、1206 张关键帧，约 10.5 小时。
 - 五种阅读风格：纸感、夜间、讲义、终端、双栏，选择记在浏览器本地。
@@ -52,7 +52,7 @@
 
 ## 课程字幕合集
 
-[`course-subtitles/`](course-subtitles/index.html) 收录从夸克下载的 26 个课程资料包中提取的字幕：25 门课、2,423 讲、中文约 425 万字，每讲中英各一份 txt。站点每门课一页，中文正文为主、英文原文折叠展开，单页内目录吸顶。`course-subtitles/courses.json` 是课程索引，[`index.html`](course-subtitles/index.html) 为合集入口。
+[course-subtitles/](https://3539755061.github.io/link-archive/course-subtitles/index.html) 收录从夸克下载的 26 个课程资料包中提取的字幕：25 门课、2,423 讲、中文约 425 万字，每讲中英各一份 txt。站点每门课一页，中文正文为主、英文原文折叠展开，单页内目录吸顶。`course-subtitles/courses.json` 是课程索引，[index.html](https://3539755061.github.io/link-archive/course-subtitles/index.html) 为合集入口。
 
 ## 版权与免责
 
@@ -61,3 +61,4 @@
 ## 更新方式
 
 替换 `archive.html` / `archive.pdf` 或各课程目录后 `git commit && git push`，GitHub Pages 会在一分钟左右自动重新发布。仓库根目录的 `.nojekyll` 保证以中文命名的目录能直接访问。
+
