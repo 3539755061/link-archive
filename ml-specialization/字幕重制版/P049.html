@@ -8,12 +8,14 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="progress" id="pg"></div>
 <div class="wrap">
 <header class="top">
 <p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 1 周</p>
 <h1>第 49 讲 推理：做出预测（前向传播）</h1>
 <p class="lead">课程二 高级学习算法 · 第 1 周 · 5:43 · 分 P 49 · 39 段 10 图</p>
 </header>
+<nav class="topnav"><a class="prev" href="P048.html">← 上一讲</a><span class="mid">第 49 / 72 讲</span><a class="next" href="P050.html">下一讲 →</a></nav>
 <main>
 <p><span class="ts">00:02</span>让我们把所学内容整合成一个算法，让神经网络进行推理或做出预测。</p>
 <p><span class="ts">00:14</span>我将用多元例子手写数字识别来说明。</p>
@@ -71,5 +73,31 @@
 <p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
 </footer>
 </div>
+<div class="floatnav"><a href="#top" title="回到顶部" id="ftop">⌃</a><a href="P048.html" title="上一讲">↑</a><a href="P050.html" title="下一讲">↓</a></div>
+<script>
+(function () {
+  var pg = document.getElementById('pg');
+  function up() {
+    var h = document.documentElement;
+    var s = h.scrollTop || document.body.scrollTop;
+    var m = h.scrollHeight - h.clientHeight;
+    if (pg) pg.style.width = (m > 0 ? (s / m * 100) : 0) + '%';
+  }
+  document.addEventListener('scroll', up, { passive: true });
+  up();
+  var ft = document.getElementById('ftop');
+  if (ft) ft.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var a = document.querySelector('nav.topnav a.prev');
+    var b = document.querySelector('nav.topnav a.next');
+    if (e.key === 'ArrowLeft' && a) location.href = a.href;
+    if (e.key === 'ArrowRight' && b) location.href = b.href;
+  });
+})();
+</script>
 </body>
 </html>

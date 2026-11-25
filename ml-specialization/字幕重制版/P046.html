@@ -8,12 +8,14 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="progress" id="pg"></div>
 <div class="wrap">
 <header class="top">
 <p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 1 周</p>
 <h1>第 46 讲 示例：图像识别</h1>
 <p class="lead">课程二 高级学习算法 · 第 1 周 · 6:55 · 分 P 46 · 43 段 6 图</p>
 </header>
+<nav class="topnav"><a class="prev" href="P045.html">← 上一讲</a><span class="mid">第 46 / 72 讲</span><a class="next" href="P047.html">下一讲 →</a></nav>
 <main>
 <p><span class="ts">00:02</span>上个视频中，你看到了神经网络在需求预测示例中是如何工作的。</p>
 <p><span class="ts">00:08</span>我们来看看如何将类似的想法应用到计算机视觉应用中。</p>
@@ -71,5 +73,31 @@
 <p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
 </footer>
 </div>
+<div class="floatnav"><a href="#top" title="回到顶部" id="ftop">⌃</a><a href="P045.html" title="上一讲">↑</a><a href="P047.html" title="下一讲">↓</a></div>
+<script>
+(function () {
+  var pg = document.getElementById('pg');
+  function up() {
+    var h = document.documentElement;
+    var s = h.scrollTop || document.body.scrollTop;
+    var m = h.scrollHeight - h.clientHeight;
+    if (pg) pg.style.width = (m > 0 ? (s / m * 100) : 0) + '%';
+  }
+  document.addEventListener('scroll', up, { passive: true });
+  up();
+  var ft = document.getElementById('ftop');
+  if (ft) ft.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var a = document.querySelector('nav.topnav a.prev');
+    var b = document.querySelector('nav.topnav a.next');
+    if (e.key === 'ArrowLeft' && a) location.href = a.href;
+    if (e.key === 'ArrowRight' && b) location.href = b.href;
+  });
+})();
+</script>
 </body>
 </html>

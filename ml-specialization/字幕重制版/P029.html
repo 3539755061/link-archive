@@ -8,12 +8,14 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="progress" id="pg"></div>
 <div class="wrap">
 <header class="top">
 <p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程一 监督机器学习：回归与分类 › 第 2 周</p>
 <h1>第 29 讲 特征工程</h1>
 <p class="lead">课程一 监督机器学习：回归与分类 · 第 2 周 · 3:13 · 分 P 29 · 20 段 10 图</p>
 </header>
+<nav class="topnav"><a class="prev" href="P028.html">← 上一讲</a><span class="mid">第 29 / 72 讲</span><a class="next" href="P030.html">下一讲 →</a></nav>
 <main>
 <p><span class="ts">00:02</span>特征的选择会对你的学习算法的性能产生巨大影响。</p>
 <figure class="shot"><img src="img/P029/kf001.jpg" alt="画面 00:01" loading="lazy"><figcaption>画面 00:01</figcaption></figure>
@@ -52,5 +54,31 @@
 <p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
 </footer>
 </div>
+<div class="floatnav"><a href="#top" title="回到顶部" id="ftop">⌃</a><a href="P028.html" title="上一讲">↑</a><a href="P030.html" title="下一讲">↓</a></div>
+<script>
+(function () {
+  var pg = document.getElementById('pg');
+  function up() {
+    var h = document.documentElement;
+    var s = h.scrollTop || document.body.scrollTop;
+    var m = h.scrollHeight - h.clientHeight;
+    if (pg) pg.style.width = (m > 0 ? (s / m * 100) : 0) + '%';
+  }
+  document.addEventListener('scroll', up, { passive: true });
+  up();
+  var ft = document.getElementById('ftop');
+  if (ft) ft.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var a = document.querySelector('nav.topnav a.prev');
+    var b = document.querySelector('nav.topnav a.next');
+    if (e.key === 'ArrowLeft' && a) location.href = a.href;
+    if (e.key === 'ArrowRight' && b) location.href = b.href;
+  });
+})();
+</script>
 </body>
 </html>

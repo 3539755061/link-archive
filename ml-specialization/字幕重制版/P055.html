@@ -4,16 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f6f4ef">
-<title>第 55 讲 通往AGI之路是否存在 · 字幕重制版</title>
+<title>第 55 讲 通往 AGI 之路是否存在 · 字幕重制版</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="progress" id="pg"></div>
 <div class="wrap">
 <header class="top">
 <p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 1 周</p>
-<h1>第 55 讲 通往AGI之路是否存在</h1>
+<h1>第 55 讲 通往 AGI 之路是否存在</h1>
 <p class="lead">课程二 高级学习算法 · 第 1 周 · 11:20 · 分 P 55 · 69 段 13 图</p>
 </header>
+<nav class="topnav"><a class="prev" href="P054.html">← 上一讲</a><span class="mid">第 55 / 72 讲</span><a class="next" href="P056.html">下一讲 →</a></nav>
 <main>
 <p><span class="ts">00:02</span>从我还是个青少年、开始摆弄神经网络的时候起，我就一直怀揣着一个梦想，也许有一天能构建一个像我一样聪明，或者说像普通人一样聪明的人工智能系统，这是人工智能最鼓舞人心的梦想之一。</p>
 <p><span class="ts">00:20</span>我至今仍怀揣着这个梦想，但我认为通往那里的道路并不清晰，而且可能非常艰难。</p>
@@ -104,5 +106,31 @@
 <p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
 </footer>
 </div>
+<div class="floatnav"><a href="#top" title="回到顶部" id="ftop">⌃</a><a href="P054.html" title="上一讲">↑</a><a href="P056.html" title="下一讲">↓</a></div>
+<script>
+(function () {
+  var pg = document.getElementById('pg');
+  function up() {
+    var h = document.documentElement;
+    var s = h.scrollTop || document.body.scrollTop;
+    var m = h.scrollHeight - h.clientHeight;
+    if (pg) pg.style.width = (m > 0 ? (s / m * 100) : 0) + '%';
+  }
+  document.addEventListener('scroll', up, { passive: true });
+  up();
+  var ft = document.getElementById('ftop');
+  if (ft) ft.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var a = document.querySelector('nav.topnav a.prev');
+    var b = document.querySelector('nav.topnav a.next');
+    if (e.key === 'ArrowLeft' && a) location.href = a.href;
+    if (e.key === 'ArrowRight' && b) location.href = b.href;
+  });
+})();
+</script>
 </body>
 </html>

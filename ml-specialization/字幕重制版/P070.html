@@ -8,12 +8,14 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<div class="progress" id="pg"></div>
 <div class="wrap">
 <header class="top">
 <p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 2 周</p>
 <h1>第 70 讲 进阶优化算法</h1>
 <p class="lead">课程二 高级学习算法 · 第 2 周 · 6:41 · 分 P 70 · 49 段 12 图</p>
 </header>
+<nav class="topnav"><a class="prev" href="P069.html">← 上一讲</a><span class="mid">第 70 / 72 讲</span><a class="next" href="P071.html">下一讲 →</a></nav>
 <main>
 <p><span class="ts">00:03</span>梯度下降是一种在机器学习中被广泛使用的优化算法，它是许多算法的基础，例如线性回归、逻辑回归以及神经网络的早期实现。</p>
 <p><span class="ts">00:19</span>但事实证明，现在有一些其他的优化算法，在最小化代价函数方面，甚至比梯度下降更好。</p>
@@ -83,5 +85,31 @@
 <p>讲稿著作权归原课程作者；本页仅作学习存档。</p>
 </footer>
 </div>
+<div class="floatnav"><a href="#top" title="回到顶部" id="ftop">⌃</a><a href="P069.html" title="上一讲">↑</a><a href="P071.html" title="下一讲">↓</a></div>
+<script>
+(function () {
+  var pg = document.getElementById('pg');
+  function up() {
+    var h = document.documentElement;
+    var s = h.scrollTop || document.body.scrollTop;
+    var m = h.scrollHeight - h.clientHeight;
+    if (pg) pg.style.width = (m > 0 ? (s / m * 100) : 0) + '%';
+  }
+  document.addEventListener('scroll', up, { passive: true });
+  up();
+  var ft = document.getElementById('ftop');
+  if (ft) ft.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var a = document.querySelector('nav.topnav a.prev');
+    var b = document.querySelector('nav.topnav a.next');
+    if (e.key === 'ArrowLeft' && a) location.href = a.href;
+    if (e.key === 'ArrowRight' && b) location.href = b.href;
+  });
+})();
+</script>
 </body>
 </html>
