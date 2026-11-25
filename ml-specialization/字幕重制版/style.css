@@ -112,3 +112,82 @@ nav.topnav .mid{color:var(--ink-2);font-variant-numeric:tabular-nums}
   :root{--fs:16.5px;--gap:13px}
   h1{font-size:1.28em}
 }
+
+/* 版式：头部、工具条、正文节奏 */
+header.top{padding:clamp(22px,3.2vw,44px) 0 .1em}
+.crumb{font-size:.79em;margin:0 0 .8em;display:flex;flex-wrap:wrap;gap:.15em .45em}
+.crumb span{white-space:nowrap}
+.crumb .sep{color:#c9bcaa}
+h1{margin:0 0 .55em;font-size:1.56em;line-height:1.36;text-wrap:balance}
+.lead{display:flex;flex-wrap:wrap;align-items:baseline;gap:.3em .5em;margin:0 0 1.5em;
+  font-size:.83em;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.lead span{white-space:nowrap}
+.lead span:not(:last-child)::after{content:"·";margin-left:.5em;color:#c9bcaa}
+nav.topnav{margin:0 0 2.1em;padding:.55em 0;border-top:1px solid var(--line)}
+main p{margin:0 0 1em;text-wrap:pretty}
+figure.shot{margin:1.6em 0 1.8em}
+figure.shot img{border:1px solid rgba(31,35,40,.1);
+  box-shadow:0 1px 2px rgba(31,35,40,.10),0 5px 16px rgba(31,35,40,.06)}
+figure.shot figcaption{margin-top:.55em;font-size:.72em;color:#9a8f82;letter-spacing:.04em}
+h2.course{margin:2.4em 0 .6em}
+h3.week{margin:1.8em 0 .45em}
+table.idx tr:hover td{background:rgba(138,90,43,.055)}
+@media print{nav.themes{display:none!important}}
+
+/* 风格切换：纸感（默认） / 夜间 / 讲义 / 终端 / 双栏 */
+nav.themes{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap;margin:0 0 .5em}
+nav.themes button{font-family:inherit;font-size:.72em;line-height:1.7;padding:.15em .75em;cursor:pointer;
+  border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--ink-2)}
+nav.themes button.on{background:var(--accent);border-color:var(--accent);color:#fffdf8}
+html{--link:#0b5cad}
+
+html[data-theme="night"]{
+  --bg:#14161a;--card:#1b1e24;--ink:#d8dbe0;--ink-2:#8d949e;--line:#2b3038;
+  --accent:#c79a5b;--link:#7fb2e5;
+}
+html[data-theme="night"] nav.themes button.on{color:#191b1f}
+html[data-theme="night"] img{filter:brightness(.86)}
+html[data-theme="night"] figure.shot img{background:#20242b}
+html[data-theme="night"] .floatnav a{box-shadow:0 2px 12px rgba(0,0,0,.5)}
+
+html[data-theme="note"]{
+  --fs:15px;--lh:1.72;--measure:52em;--gap:clamp(18px,3vw,42px);
+  --accent:#3f6ea8;--link:#1f5c9e;
+}
+html[data-theme="note"] main p{display:grid;grid-template-columns:3.6em minmax(0,1fr);column-gap:.7em;margin:0 0 .5em}
+html[data-theme="note"] .ts{margin:0;text-align:right;font-size:.8em;padding-top:.3em}
+html[data-theme="note"] h1{font-size:1.44em;border-bottom-width:2px}
+html[data-theme="note"] header.top{padding:clamp(18px,3vw,34px) 0 .3em}
+html[data-theme="note"] figure.shot{margin:.95em 0 1.15em}
+html[data-theme="note"] nav.themes button.on{color:#fff}
+
+html[data-theme="term"]{
+  --bg:#0a0d0b;--card:#101512;--ink:#9fe8a8;--ink-2:#5f8f68;--line:#1e2b22;
+  --accent:#43d97a;--link:#6fe39a;
+}
+html[data-theme="term"] body{font-family:ui-monospace,"Cascadia Mono",Consolas,"Microsoft YaHei",monospace}
+html[data-theme="term"] h1{font-family:inherit;font-size:1.5em;border-bottom-color:#43d97a}
+html[data-theme="term"] .ts{color:#4f8f5d}
+html[data-theme="term"] nav.themes button.on{color:#05130a}
+html[data-theme="term"] figure.shot img{filter:grayscale(.25) brightness(.88)}
+html[data-theme="term"] .floatnav a{box-shadow:0 2px 12px rgba(0,0,0,.6)}
+
+html[data-theme="news"]{--measure:34em}
+@media (min-width:1040px){
+  html[data-theme="news"] .wrap{max-width:78em}
+  html[data-theme="news"] main{column-count:2;column-gap:3.2em;column-rule:1px solid var(--line)}
+  html[data-theme="news"] main p,html[data-theme="news"] main figure{break-inside:avoid}
+}
+
+/* 主题里的链接统一取 --link，覆盖基础样式里写死的蓝色 */
+html[data-theme] .wrap a,html[data-theme] .floatnav a{color:var(--link)}
+html[data-theme] .wrap a{border-bottom-color:rgba(127,178,229,.35)}
+html[data-theme="note"] .wrap a{border-bottom-color:rgba(31,92,158,.35)}
+html[data-theme="news"] .wrap a{border-bottom-color:rgba(127,178,229,.35)}
+
+@media (max-width:640px){
+  nav.themes{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:2px;
+    margin:0 -16px .4em;padding-left:16px;padding-right:16px;scrollbar-width:none}
+  nav.themes::-webkit-scrollbar{display:none}
+  nav.themes button{flex:0 0 auto;min-height:32px;font-size:.76em}
+}

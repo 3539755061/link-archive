@@ -4,16 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f6f4ef">
+<script>(function(){try{var t=localStorage.getItem('mlTheme');
+if(t&&t!=='paper')document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <title>第 60 讲 实现 TensorFlow · 字幕重制版</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="progress" id="pg"></div>
 <div class="wrap">
+<nav class="themes" aria-label="阅读风格"><button type="button" data-t="paper" class='on'>纸感</button><button type="button" data-t="night">夜间</button><button type="button" data-t="note">讲义</button><button type="button" data-t="term">终端</button><button type="button" data-t="news">双栏</button></nav>
 <header class="top">
-<p class="crumb"><a href="index.html">字幕重制版目录</a> › 课程二 高级学习算法 › 第 2 周</p>
+<p class="crumb"><a href="index.html">字幕重制版目录</a><span class="sep">›</span><span>课程二 高级学习算法</span><span class="sep">›</span><span>第 2 周</span></p>
 <h1>第 60 讲 实现 TensorFlow</h1>
-<p class="lead">课程二 高级学习算法 · 第 2 周 · 3:47 · 分 P 60 · 27 段 6 图</p>
+<p class="lead"><span>课程二 高级学习算法</span><span>第 2 周</span><span>3:47</span><span>分 P 60</span><span>27 段</span><span>6 图</span></p>
 </header>
 <nav class="topnav"><a class="prev" href="P059.html">← 上一讲</a><span class="mid">第 60 / 72 讲</span><a class="next" href="P061.html">下一讲 →</a></nav>
 <main>
@@ -81,6 +84,30 @@
     if (e.key === 'ArrowLeft' && a) location.href = a.href;
     if (e.key === 'ArrowRight' && b) location.href = b.href;
   });
+})();
+</script>
+<script>
+(function () {
+  var bar = document.querySelector('nav.themes');
+  if (!bar) return;
+  function mark(t) {
+    var bs = bar.getElementsByTagName('button');
+    for (var i = 0; i < bs.length; i++) bs[i].className = (bs[i].getAttribute('data-t') === t) ? 'on' : '';
+  }
+  function pick(e) {
+    var el = e.target;
+    while (el && el !== bar && !(el.getAttribute && el.getAttribute('data-t'))) el = el.parentNode;
+    if (!el || el === bar) return;
+    var t = el.getAttribute('data-t');
+    if (t === 'paper') document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', t);
+    try { localStorage.setItem('mlTheme', t); } catch (err) {}
+    mark(t);
+    var mc = document.querySelector('meta[name="theme-color"]');
+    if (mc) mc.setAttribute('content', (t === 'night' || t === 'term') ? '#14161a' : '#f6f4ef');
+  }
+  bar.addEventListener('click', pick);
+  mark(document.documentElement.getAttribute('data-theme') || 'paper');
 })();
 </script>
 </body>
